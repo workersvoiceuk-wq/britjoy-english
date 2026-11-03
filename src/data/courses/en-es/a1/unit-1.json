@@ -1,0 +1,107 @@
+{
+  "level": "A1",
+  "unit": "Unit 1",
+  "title": "Saludos y presentaciones",
+  "lessons": [
+    {
+      "id": "a1-u1-l1",
+      "title": "Hola",
+      "tip": "En inglés, «Hello» sirve para todo. «Hi» es más informal, ¡como un «hola» entre amigos!",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "¿Cómo se dice «hola»?", "options": ["Hello", "Goodbye", "Thank you"], "answer": "Hello" },
+        { "type": "multipleChoice", "prompt": "¿Qué significa «Goodbye»?", "options": ["Hola", "Adiós", "Gracias"], "answer": "Adiós" },
+        { "type": "listening", "text": "Hello", "options": ["Hello", "Hi", "Bye"], "answer": "Hello" },
+        { "type": "matching", "pairs": [
+          { "en": "Hello", "es": "Hola" },
+          { "en": "Goodbye", "es": "Adiós" },
+          { "en": "Good morning", "es": "Buenos días" },
+          { "en": "Good night", "es": "Buenas noches" }
+        ] },
+        { "type": "wordBank", "prompt": "Hola, buenos días.", "words": ["Hello,", "good", "morning", "night", "bye"], "answer": "Hello, good morning." },
+        { "type": "multipleChoice", "prompt": "Son las 9 de la mañana. ¿Qué dices?", "options": ["Good morning", "Good night", "Good evening"], "answer": "Good morning" },
+        { "type": "typing", "prompt": "Escribe en inglés: «Adiós»", "answer": "Goodbye", "alternatives": ["Bye", "Good bye", "Good-bye"] },
+        { "type": "listening", "text": "Good night", "answer": "Good night", "alternatives": ["Goodnight"] }
+      ]
+    },
+    {
+      "id": "a1-u1-l2",
+      "title": "¿Cómo estás?",
+      "tip": "«How are you?» casi siempre se responde «I'm fine, thanks». ¡Es más un saludo que una pregunta!",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "¿Cómo se dice «¿Cómo estás?»?", "options": ["How are you?", "Who are you?", "Where are you?"], "answer": "How are you?" },
+        { "type": "multipleChoice", "prompt": "¿Qué significa «I'm fine»?", "options": ["Estoy bien", "Estoy cansado", "Soy feliz"], "answer": "Estoy bien" },
+        { "type": "wordBank", "prompt": "Estoy bien, gracias.", "words": ["I'm", "fine,", "thanks", "you", "are"], "answer": "I'm fine, thanks." },
+        { "type": "listening", "text": "How are you?", "options": ["How are you?", "How old are you?", "Who are you?"], "answer": "How are you?" },
+        { "type": "matching", "pairs": [
+          { "en": "fine", "es": "bien" },
+          { "en": "tired", "es": "cansado" },
+          { "en": "happy", "es": "feliz" },
+          { "en": "thanks", "es": "gracias" }
+        ] },
+        { "type": "typing", "prompt": "Escribe en inglés: «Estoy feliz»", "answer": "I'm happy", "alternatives": ["I am happy"] },
+        { "type": "wordBank", "prompt": "¿Y tú?", "words": ["And", "you?", "how", "I"], "answer": "And you?" },
+        { "type": "typing", "prompt": "Escribe en inglés: «¿Cómo estás?»", "answer": "How are you?" }
+      ]
+    },
+    {
+      "id": "a1-u1-l3",
+      "title": "Me llamo…",
+      "tip": "Para presentarte di «My name is…» o simplemente «I'm…». ¡Las dos están perfectas!",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "¿Cómo se dice «Me llamo Ana»?", "options": ["My name is Ana", "Her name is Ana", "I call Ana"], "answer": "My name is Ana" },
+        { "type": "wordBank", "prompt": "¿Cómo te llamas?", "words": ["What's", "your", "name?", "my", "is"], "answer": "What's your name?" },
+        { "type": "listening", "text": "My name is Tom", "options": ["My name is Tom", "His name is Tom", "I'm not Tom"], "answer": "My name is Tom" },
+        { "type": "matching", "pairs": [
+          { "en": "my", "es": "mi" },
+          { "en": "your", "es": "tu" },
+          { "en": "name", "es": "nombre" },
+          { "en": "nice", "es": "agradable" }
+        ] },
+        { "type": "multipleChoice", "prompt": "Te presentan a alguien. ¿Qué dices?", "options": ["Nice to meet you", "See you later", "Good night"], "answer": "Nice to meet you" },
+        { "type": "wordBank", "prompt": "Encantado de conocerte.", "words": ["Nice", "to", "meet", "you.", "me", "name"], "answer": "Nice to meet you." },
+        { "type": "typing", "prompt": "Escribe en inglés: «Me llamo Luis»", "answer": "My name is Luis", "alternatives": ["I'm Luis", "I am Luis", "My name's Luis"] },
+        { "type": "listening", "text": "What's your name?", "answer": "What's your name?", "alternatives": ["What is your name?"] }
+      ]
+    },
+    {
+      "id": "a1-u1-l4",
+      "title": "¿De dónde eres?",
+      "tip": "Los países y nacionalidades en inglés van siempre con mayúscula: Spain, Spanish, Mexico, Mexican.",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "¿Cómo se dice «¿De dónde eres?»?", "options": ["Where are you from?", "Where are you?", "Who are you?"], "answer": "Where are you from?" },
+        { "type": "wordBank", "prompt": "Soy de España.", "words": ["I'm", "from", "Spain.", "Spanish", "to"], "answer": "I'm from Spain." },
+        { "type": "matching", "pairs": [
+          { "en": "Spain", "es": "España" },
+          { "en": "Mexico", "es": "México" },
+          { "en": "England", "es": "Inglaterra" },
+          { "en": "Colombia", "es": "Colombia" }
+        ] },
+        { "type": "multipleChoice", "prompt": "Una persona de España es…", "options": ["Spanish", "Spain", "Spaniard's"], "answer": "Spanish" },
+        { "type": "listening", "text": "I'm from Mexico", "options": ["I'm from Mexico", "I'm in Mexico", "I'm Mexican"], "answer": "I'm from Mexico" },
+        { "type": "typing", "prompt": "Escribe en inglés: «Soy de Colombia»", "answer": "I'm from Colombia", "alternatives": ["I am from Colombia"] },
+        { "type": "wordBank", "prompt": "Ella es inglesa.", "words": ["She", "is", "English.", "England", "he"], "answer": "She is English.", "alternatives": ["She's English."] },
+        { "type": "typing", "prompt": "Escribe en inglés: «¿De dónde eres?»", "answer": "Where are you from?" }
+      ]
+    },
+    {
+      "id": "a1-u1-l5",
+      "title": "Por favor y gracias",
+      "tip": "En Reino Unido se dice «please» y «thank you» muchísimo. ¡Y «sorry» todavía más!",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "¿Cómo se dice «por favor»?", "options": ["Please", "Sorry", "Thanks"], "answer": "Please" },
+        { "type": "matching", "pairs": [
+          { "en": "please", "es": "por favor" },
+          { "en": "thank you", "es": "gracias" },
+          { "en": "sorry", "es": "perdón" },
+          { "en": "excuse me", "es": "disculpe" }
+        ] },
+        { "type": "multipleChoice", "prompt": "Alguien te dice «Thank you». Respondes…", "options": ["You're welcome", "Excuse me", "Goodbye"], "answer": "You're welcome" },
+        { "type": "listening", "text": "Thank you very much", "options": ["Thank you very much", "Thank you so much", "Thanks a lot"], "answer": "Thank you very much" },
+        { "type": "wordBank", "prompt": "Un café, por favor.", "words": ["A", "coffee,", "please.", "tea", "thanks"], "answer": "A coffee, please." },
+        { "type": "typing", "prompt": "Escribe en inglés: «Muchas gracias»", "answer": "Thank you very much", "alternatives": ["Thanks a lot", "Thank you so much", "Many thanks", "Thanks very much"] },
+        { "type": "wordBank", "prompt": "Perdón, ¿hablas español?", "words": ["Sorry,", "do", "you", "speak", "Spanish?", "English", "are"], "answer": "Sorry, do you speak Spanish?" },
+        { "type": "listening", "text": "Excuse me", "answer": "Excuse me" }
+      ]
+    }
+  ]
+}

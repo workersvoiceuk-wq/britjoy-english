@@ -1,0 +1,47 @@
+{
+  "level": "C2",
+  "unit": "Unit 1",
+  "title": "Precisión y registro",
+  "lessons": [
+    {
+      "id": "c2-u1-l1",
+      "title": "Register",
+      "tip": "At C2, the right word depends on who you're talking to. «Commence» suits a contract; «kick off» suits a team chat.",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "Which is the most appropriate opening for a formal complaint letter?", "options": ["I am writing to express my dissatisfaction with…", "I just wanted to say I'm pretty annoyed about…", "Hey, so here's the thing about…"], "answer": "I am writing to express my dissatisfaction with…" },
+        { "type": "matching", "pairs": [
+          { "en": "commence", "es": "kick off" },
+          { "en": "endeavour", "es": "have a go" },
+          { "en": "ascertain", "es": "find out" },
+          { "en": "reside", "es": "live" }
+        ], "prompt": "Match each formal verb with its informal equivalent." },
+        { "type": "fillBlank", "sentence": "Passengers are kindly requested to ___ from smoking on the platform.", "options": ["refrain", "abstain", "withhold"], "answer": "refrain" },
+        { "type": "fillBlank", "sentence": "Should you ___ any further assistance, please do not hesitate to contact us.", "hint": "Formal inversion replacing «If you need…».", "options": ["require", "required", "requiring"], "answer": "require" },
+        { "type": "wordBank", "prompt": "Rewrite formally: «We didn't get your payment.»", "words": ["We", "have", "yet", "to", "receive", "your", "payment.", "got", "still"], "answer": "We have yet to receive your payment." },
+        { "type": "listening", "text": "Under no circumstances should the door be left unlocked", "options": ["Under no circumstances should the door be left unlocked", "In no circumstances the door should be left unlocked", "Under some circumstances the door should be unlocked"], "answer": "Under no circumstances should the door be left unlocked" },
+        { "type": "multipleChoice", "prompt": "Which sentence is grammatically correct?", "options": ["Seldom have I seen such dedication.", "Seldom I have seen such dedication.", "Seldom have I saw such dedication."], "answer": "Seldom have I seen such dedication." },
+        { "type": "typing", "prompt": "Rewrite with inversion, starting «Not only»: «She speaks Mandarin and she also teaches it.»", "answer": "Not only does she speak Mandarin, but she also teaches it", "alternatives": ["Not only does she speak Mandarin but she also teaches it", "Not only does she speak Mandarin, she also teaches it", "Not only does she speak Mandarin, but she teaches it too"] }
+      ]
+    },
+    {
+      "id": "c2-u1-l2",
+      "title": "Shades of meaning",
+      "tip": "Near-synonyms carry different connotations: «frugal» praises, «stingy» criticises — yet both mean you spend little.",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "Which adjective is the most positive way of describing someone who spends little?", "options": ["frugal", "stingy", "tight-fisted"], "answer": "frugal" },
+        { "type": "fillBlank", "sentence": "The minister's ___ reply gave journalists nothing to work with.", "hint": "Deliberately vague and non-committal.", "options": ["evasive", "elusive", "evocative"], "answer": "evasive" },
+        { "type": "matching", "pairs": [
+          { "en": "imply", "es": "insinuar (quien habla)" },
+          { "en": "infer", "es": "deducir (quien escucha)" },
+          { "en": "flout", "es": "desobedecer abiertamente" },
+          { "en": "flaunt", "es": "presumir de" }
+        ] },
+        { "type": "fillBlank", "sentence": "He was accused of ___ the rules by parking in the disabled bay every single day.", "options": ["flouting", "flaunting", "floating"], "answer": "flouting" },
+        { "type": "listening", "text": "Her argument, though eloquent, was ultimately specious", "answer": "Her argument, though eloquent, was ultimately specious" },
+        { "type": "multipleChoice", "prompt": "«A specious argument» is one that…", "options": ["seems plausible but is actually wrong", "is especially convincing", "is unusually long"], "answer": "seems plausible but is actually wrong" },
+        { "type": "wordBank", "prompt": "Su silencio no implica necesariamente que esté de acuerdo.", "words": ["Her", "silence", "does", "not", "necessarily", "imply", "consent.", "infer", "agreeing"], "answer": "Her silence does not necessarily imply consent." },
+        { "type": "fillBlank", "sentence": "From his tone, I ___ that he wasn't entirely convinced.", "answer": "inferred", "alternatives": ["infer"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Britjoy",
+  "welcome": "¡Hola! Soy Britjoy. Vamos a aprender inglés juntos, paso a paso. Cheerio… ¡digo, empecemos!",
+  "placementIntro": "Primero, un test rapidito de 10 preguntas para saber por dónde empezar. ¡Sin presión!",
+  "placementResult": "¡Brilliant! Te recomiendo empezar en {level}. Puedes cambiar de nivel cuando quieras.",
+  "placementSkip": "Empezar desde cero (A1)",
+  "tips": [
+    "Un poquito cada día vale más que mucho una vez a la semana. Keep calm and practise on!",
+    "Lee las frases en voz alta: tu boca también tiene que aprender inglés.",
+    "Equivocarse es parte del juego. ¡Cada error es una pista!"
+  ],
+  "lockedLevel": "Este nivel se desbloquea al completar el 80 % de las unidades de {previous}.",
+  "levelDone": "¡Has terminado todas las lecciones de {level}! Jolly good. Pasa al siguiente nivel o repasa cuando quieras.",
+  "correct": ["¡Brilliant!", "¡Spot on!", "¡Lovely! Así se hace.", "¡Perfecto! Eres un crack.", "¡Jolly good!", "¡Exacto!"],
+  "wrong": ["¡Casi! Fíjate en la respuesta correcta.", "No pasa nada, ¡a la próxima lo clavas!", "Oops! Mira bien la solución y seguimos.", "Tranquilo, los errores enseñan mucho."],
+  "lessonComplete": ["¡Lección completada! Absolutely smashing.", "¡Lo has bordado! Me quito el sombrero.", "¡Fantástico! Un paso más hacia tu meta."],
+  "perfectLesson": "¡Sin un solo error! Eso merece una taza de té. ☕",
+  "outOfHearts": "Te has quedado sin vidas. Descansa un momento: se recupera una cada 30 minutos.",
+  "noHeartsToStart": "No te quedan vidas. La próxima llega en {time}.",
+  "quitConfirm": "¿Seguro que quieres salir? Perderás el progreso de esta lección."
+}

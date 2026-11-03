@@ -1,0 +1,47 @@
+{
+  "level": "B1",
+  "unit": "Unit 1",
+  "title": "Opiniones y planes",
+  "lessons": [
+    {
+      "id": "b1-u1-l1",
+      "title": "En mi opinión",
+      "tip": "Para dar tu opinión, varía: «I think…», «In my opinion…», «As far as I'm concerned…». ¡Suena mucho más natural!",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "¿Cuál NO sirve para dar una opinión?", "options": ["I'm afraid of", "I think", "In my opinion"], "answer": "I'm afraid of" },
+        { "type": "fillBlank", "sentence": "I ___ that public transport should be free.", "hint": "Creo que el transporte público debería ser gratis.", "options": ["think", "thinking", "am think"], "answer": "think" },
+        { "type": "wordBank", "prompt": "En mi opinión, la ciudad es demasiado ruidosa.", "words": ["In", "my", "opinion,", "the", "city", "is", "too", "noisy.", "very", "to"], "answer": "In my opinion, the city is too noisy." },
+        { "type": "matching", "pairs": [
+          { "en": "I agree", "es": "Estoy de acuerdo" },
+          { "en": "I disagree", "es": "No estoy de acuerdo" },
+          { "en": "It depends", "es": "Depende" },
+          { "en": "That's true", "es": "Es verdad" }
+        ] },
+        { "type": "listening", "text": "I don't think it's a good idea", "options": ["I don't think it's a good idea", "I think it's a good idea", "I didn't know it was your idea"], "answer": "I don't think it's a good idea" },
+        { "type": "fillBlank", "sentence": "I'm not sure I agree ___ you.", "options": ["with", "to", "at"], "answer": "with" },
+        { "type": "typing", "prompt": "Traduce: «No creo que sea caro.»", "answer": "I don't think it's expensive", "alternatives": ["I don't think it is expensive", "I do not think it's expensive", "I do not think it is expensive"] },
+        { "type": "multipleChoice", "prompt": "«I couldn't agree more» significa…", "options": ["Estoy totalmente de acuerdo", "No puedo estar de acuerdo", "Ya no estoy de acuerdo"], "answer": "Estoy totalmente de acuerdo" }
+      ]
+    },
+    {
+      "id": "b1-u1-l2",
+      "title": "Planes de futuro",
+      "tip": "«Going to» es para planes ya decididos; «will» para decisiones del momento o predicciones. «I'm going to study» vs. «I'll get it!»",
+      "exercises": [
+        { "type": "fillBlank", "sentence": "Next summer we're ___ to visit Scotland.", "hint": "Plan ya decidido.", "options": ["going", "will", "go"], "answer": "going" },
+        { "type": "multipleChoice", "prompt": "Suena el teléfono. Dices:", "options": ["I'll get it!", "I'm going to get it!", "I get it!"], "answer": "I'll get it!" },
+        { "type": "wordBank", "prompt": "Voy a empezar un curso de cocina en septiembre.", "words": ["I'm", "going", "to", "start", "a", "cooking", "course", "in", "September.", "will", "on"], "answer": "I'm going to start a cooking course in September." },
+        { "type": "listening", "text": "What are you doing this weekend?", "options": ["What are you doing this weekend?", "What did you do last weekend?", "What do you do at weekends?"], "answer": "What are you doing this weekend?" },
+        { "type": "fillBlank", "sentence": "I'm meeting my friends ___ Saturday evening.", "options": ["on", "in", "at"], "answer": "on" },
+        { "type": "matching", "pairs": [
+          { "en": "plan", "es": "plan" },
+          { "en": "hope", "es": "esperar (desear)" },
+          { "en": "intend", "es": "tener intención" },
+          { "en": "look forward to", "es": "tener ganas de" }
+        ] },
+        { "type": "typing", "prompt": "Traduce: «Creo que lloverá mañana.»", "answer": "I think it will rain tomorrow", "alternatives": ["I think it'll rain tomorrow", "I think it's going to rain tomorrow", "I think it is going to rain tomorrow"] },
+        { "type": "fillBlank", "sentence": "I'm really looking forward to ___ you.", "hint": "Tengo muchas ganas de verte.", "answer": "seeing" }
+      ]
+    }
+  ]
+}

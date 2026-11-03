@@ -1,0 +1,47 @@
+{
+  "level": "B2",
+  "unit": "Unit 1",
+  "title": "Ideas abstractas y condicionales",
+  "lessons": [
+    {
+      "id": "b2-u1-l1",
+      "title": "If only…",
+      "tip": "Second conditional = situación imaginaria: «If I had more time, I would travel». Fíjate: past simple + would.",
+      "exercises": [
+        { "type": "fillBlank", "sentence": "If I ___ more free time, I would learn to play the piano.", "options": ["had", "have", "would have"], "answer": "had" },
+        { "type": "multipleChoice", "prompt": "Which sentence describes an imaginary present situation?", "options": ["If I were rich, I'd buy a boat.", "If it rains, we'll stay in.", "If you heat ice, it melts."], "answer": "If I were rich, I'd buy a boat." },
+        { "type": "wordBank", "prompt": "Si hubiera estudiado más, habría aprobado el examen.", "words": ["If", "I", "had", "studied", "harder,", "I", "would", "have", "passed", "the", "exam.", "will", "pass"], "answer": "If I had studied harder, I would have passed the exam." },
+        { "type": "fillBlank", "sentence": "If she ___ (know) about the meeting, she would have come.", "hint": "Third conditional: past perfect in the if-clause.", "answer": "had known", "alternatives": ["'d known"] },
+        { "type": "listening", "text": "Unless we act now, the problem will only get worse", "options": ["Unless we act now, the problem will only get worse", "If we act now, the problem will get worse", "Until we act, the problem won't get worse"], "answer": "Unless we act now, the problem will only get worse" },
+        { "type": "matching", "pairs": [
+          { "en": "unless", "es": "a menos que" },
+          { "en": "provided that", "es": "siempre que" },
+          { "en": "as long as", "es": "mientras" },
+          { "en": "otherwise", "es": "de lo contrario" }
+        ] },
+        { "type": "typing", "prompt": "Translate: «Yo en tu lugar no lo haría.»", "answer": "If I were you, I wouldn't do it", "alternatives": ["If I were you, I would not do it", "If I was you, I wouldn't do it", "I wouldn't do it if I were you"] },
+        { "type": "fillBlank", "sentence": "I wish I ___ speak Japanese.", "hint": "Desearía saber hablar japonés.", "options": ["could", "can", "will"], "answer": "could" }
+      ]
+    },
+    {
+      "id": "b2-u1-l2",
+      "title": "Big ideas",
+      "tip": "Los sustantivos abstractos (freedom, growth, awareness) suelen ir sin «the» cuando hablas en general: «Freedom is important».",
+      "exercises": [
+        { "type": "matching", "pairs": [
+          { "en": "awareness", "es": "concienciación" },
+          { "en": "growth", "es": "crecimiento" },
+          { "en": "inequality", "es": "desigualdad" },
+          { "en": "wellbeing", "es": "bienestar" }
+        ] },
+        { "type": "multipleChoice", "prompt": "Choose the correct sentence.", "options": ["Happiness doesn't depend on money.", "The happiness doesn't depend of money.", "Happiness doesn't depend of the money."], "answer": "Happiness doesn't depend on money." },
+        { "type": "fillBlank", "sentence": "There is growing ___ of the impact of plastic on the oceans.", "options": ["awareness", "aware", "awaring"], "answer": "awareness" },
+        { "type": "wordBank", "prompt": "La tecnología ha cambiado la forma en que nos comunicamos.", "words": ["Technology", "has", "changed", "the", "way", "we", "communicate.", "how", "changing", "The"], "answer": "Technology has changed the way we communicate." },
+        { "type": "listening", "text": "Education is the key to reducing inequality", "answer": "Education is the key to reducing inequality" },
+        { "type": "fillBlank", "sentence": "It is widely ___ that exercise improves mental health.", "hint": "Passive reporting structure.", "options": ["believed", "believing", "believe"], "answer": "believed" },
+        { "type": "multipleChoice", "prompt": "What does «to some extent» mean?", "options": ["Hasta cierto punto", "En gran medida", "De ninguna manera"], "answer": "Hasta cierto punto" },
+        { "type": "typing", "prompt": "Translate: «La libertad de expresión es un derecho fundamental.»", "answer": "Freedom of speech is a fundamental right", "alternatives": ["Freedom of expression is a fundamental right"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "level": "A1",
+  "unit": "Unit 2",
+  "title": "Números y edad",
+  "lessons": [
+    {
+      "id": "a1-u2-l1",
+      "title": "Números 1–10",
+      "tip": "Ojo con «three» (3): la «th» se pronuncia con la lengua entre los dientes.",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "¿Cómo se dice «tres»?", "options": ["Three", "Tree", "Free"], "answer": "Three" },
+        { "type": "matching", "pairs": [
+          { "en": "one", "es": "uno" },
+          { "en": "two", "es": "dos" },
+          { "en": "five", "es": "cinco" },
+          { "en": "eight", "es": "ocho" }
+        ] },
+        { "type": "listening", "text": "seven", "options": ["7", "6", "11"], "answer": "7" },
+        { "type": "multipleChoice", "prompt": "¿Qué número es «nine»?", "options": ["9", "5", "19"], "answer": "9" },
+        { "type": "typing", "prompt": "Escribe en inglés: «cuatro»", "answer": "four" },
+        { "type": "wordBank", "prompt": "Tengo dos gatos.", "words": ["I", "have", "two", "cats.", "too", "three"], "answer": "I have two cats." },
+        { "type": "listening", "text": "ten", "answer": "ten", "alternatives": ["10"] },
+        { "type": "multipleChoice", "prompt": "Six + four = …", "options": ["ten", "nine", "eleven"], "answer": "ten" }
+      ]
+    },
+    {
+      "id": "a1-u2-l2",
+      "title": "Números 11–20",
+      "tip": "Del 13 al 19 todos terminan en «-teen»: thirteen, fourteen, fifteen… ¡Por eso se llaman «teenagers»!",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "¿Cómo se dice «quince»?", "options": ["Fifteen", "Fifty", "Five"], "answer": "Fifteen" },
+        { "type": "matching", "pairs": [
+          { "en": "eleven", "es": "once" },
+          { "en": "twelve", "es": "doce" },
+          { "en": "thirteen", "es": "trece" },
+          { "en": "twenty", "es": "veinte" }
+        ] },
+        { "type": "listening", "text": "fourteen", "options": ["14", "40", "4"], "answer": "14" },
+        { "type": "listening", "text": "sixteen", "options": ["16", "60", "6"], "answer": "16" },
+        { "type": "typing", "prompt": "Escribe en inglés: «doce»", "answer": "twelve" },
+        { "type": "multipleChoice", "prompt": "Ten + eight = …", "options": ["eighteen", "eighty", "eight"], "answer": "eighteen" },
+        { "type": "wordBank", "prompt": "Hay diecinueve estudiantes.", "words": ["There", "are", "nineteen", "students.", "ninety", "is"], "answer": "There are nineteen students." },
+        { "type": "typing", "prompt": "Escribe en inglés: «veinte»", "answer": "twenty" }
+      ]
+    },
+    {
+      "id": "a1-u2-l3",
+      "title": "¿Cuántos años tienes?",
+      "tip": "En inglés la edad se dice con «to be»: «I am 25», no «I have 25». ¡Es un error muy común!",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "¿Cómo se dice «¿Cuántos años tienes?»?", "options": ["How old are you?", "How many years do you have?", "How are you?"], "answer": "How old are you?" },
+        { "type": "multipleChoice", "prompt": "¿Cómo se dice «Tengo veinte años»?", "options": ["I'm twenty years old", "I have twenty years", "I have twenty old"], "answer": "I'm twenty years old" },
+        { "type": "wordBank", "prompt": "Tengo dieciocho años.", "words": ["I'm", "eighteen", "years", "old.", "have", "age"], "answer": "I'm eighteen years old.", "alternatives": ["I'm eighteen."] },
+        { "type": "listening", "text": "She is twelve years old", "options": ["She is twelve years old", "She is twenty years old", "He is twelve years old"], "answer": "She is twelve years old" },
+        { "type": "matching", "pairs": [
+          { "en": "old", "es": "viejo / de edad" },
+          { "en": "young", "es": "joven" },
+          { "en": "year", "es": "año" },
+          { "en": "age", "es": "edad" }
+        ] },
+        { "type": "typing", "prompt": "Escribe en inglés: «Tengo quince años»", "answer": "I'm fifteen years old", "alternatives": ["I am fifteen years old", "I'm fifteen", "I am fifteen", "I'm 15", "I am 15", "I'm 15 years old", "I am 15 years old"] },
+        { "type": "wordBank", "prompt": "¿Cuántos años tiene él?", "words": ["How", "old", "is", "he?", "she", "are"], "answer": "How old is he?" },
+        { "type": "listening", "text": "How old are you?", "answer": "How old are you?" }
+      ]
+    },
+    {
+      "id": "a1-u2-l4",
+      "title": "Mi número de teléfono",
+      "tip": "Los británicos dicen el 0 como «oh» en los teléfonos, y dos números iguales como «double»: 77 = «double seven».",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "¿Cómo se dice «¿Cuál es tu número de teléfono?»?", "options": ["What's your phone number?", "Where's your phone?", "How is your number?"], "answer": "What's your phone number?" },
+        { "type": "listening", "text": "double seven", "options": ["77", "7", "17"], "answer": "77" },
+        { "type": "listening", "text": "oh, four, five", "options": ["045", "405", "450"], "answer": "045" },
+        { "type": "wordBank", "prompt": "Mi número es el seis, dos, nueve.", "words": ["My", "number", "is", "six,", "two,", "nine.", "your"], "answer": "My number is six, two, nine." },
+        { "type": "matching", "pairs": [
+          { "en": "phone", "es": "teléfono" },
+          { "en": "number", "es": "número" },
+          { "en": "email", "es": "correo" },
+          { "en": "address", "es": "dirección" }
+        ] },
+        { "type": "typing", "prompt": "Escribe en inglés: «mi número»", "answer": "my number" },
+        { "type": "multipleChoice", "prompt": "«Double three» es…", "options": ["33", "6", "23"], "answer": "33" },
+        { "type": "listening", "text": "What's your phone number?", "answer": "What's your phone number?", "alternatives": ["What is your phone number?"] }
+      ]
+    },
+    {
+      "id": "a1-u2-l5",
+      "title": "Decenas y precios",
+      "tip": "Cuidado: «thirteen» (13) y «thirty» (30) suenan parecido. En «thirteen» el acento va al final: thir-TEEN.",
+      "exercises": [
+        { "type": "matching", "pairs": [
+          { "en": "thirty", "es": "treinta" },
+          { "en": "forty", "es": "cuarenta" },
+          { "en": "fifty", "es": "cincuenta" },
+          { "en": "a hundred", "es": "cien" }
+        ] },
+        { "type": "listening", "text": "thirty", "options": ["30", "13", "3"], "answer": "30" },
+        { "type": "listening", "text": "thirteen", "options": ["13", "30", "3"], "answer": "13" },
+        { "type": "multipleChoice", "prompt": "¿Cómo se dice «¿Cuánto cuesta?»?", "options": ["How much is it?", "How many is it?", "How old is it?"], "answer": "How much is it?" },
+        { "type": "wordBank", "prompt": "Cuesta cinco libras.", "words": ["It's", "five", "pounds.", "pound", "fifty"], "answer": "It's five pounds." },
+        { "type": "typing", "prompt": "Escribe en inglés: «cuarenta»", "answer": "forty" },
+        { "type": "multipleChoice", "prompt": "Twenty + twenty-five = …", "options": ["forty-five", "fourteen-five", "fifty-five"], "answer": "forty-five" },
+        { "type": "typing", "prompt": "Escribe en inglés: «¿Cuánto cuesta?»", "answer": "How much is it?", "alternatives": ["How much does it cost?", "How much is this?"] }
+      ]
+    }
+  ]
+}

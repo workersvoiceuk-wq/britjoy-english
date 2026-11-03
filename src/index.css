@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #58cc02;
+  --accent-dark: #46a302;
+  --accent-light: #d7ffb8;
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #3c3c3c;
+  font-family: Nunito, ui-rounded, system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer components {
+  /* The "press" effect: the dark bottom edge collapses when tapped. */
+  .press {
+    transition: transform 80ms ease, border-bottom-width 80ms ease, filter 120ms ease, background-color 150ms ease;
+  }
+  .press:not(:disabled):hover {
+    filter: brightness(1.05);
+  }
+  .press:not(:disabled):active {
+    transform: translateY(3px);
+    border-bottom-width: 1px;
+    margin-bottom: 3px;
+  }
+
+  .tile {
+    @apply press rounded-2xl border-2 border-b-4 border-ink-line bg-white px-4 py-3 text-left text-lg font-bold text-ink;
+  }
+  .tile-selected {
+    @apply border-accent bg-accent-light text-accent-dark;
+  }
+  .tile-correct {
+    @apply border-brand bg-brand-light text-brand-dark;
+  }
+  .tile-wrong {
+    @apply border-bad bg-bad-light text-bad-dark;
+  }
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+.animate-pop { animation: pop-in 220ms ease-out both; }
+.animate-slide-up { animation: slide-up 220ms ease-out both; }
+.animate-float { animation: float 2.4s ease-in-out infinite; }
+.animate-shake { animation: shake 250ms ease-in-out 2; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pop, .animate-slide-up, .animate-float, .animate-shake { animation: none; }
+}

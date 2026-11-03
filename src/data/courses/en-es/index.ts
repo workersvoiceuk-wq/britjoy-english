@@ -1,0 +1,98 @@
+/**
+ * The ONE place where levels and units are registered.
+ *
+ * - New unit:  add `src/data/courses/en-es/<level>/unit-N.json`, import it here
+ *              and append it to that level's `units` array.
+ * - New level: create the folder + JSON files, then add a LevelDefinition below
+ *              (order matters: each level unlocks from the one before it).
+ */
+import type { LevelDefinition, Unit } from '../../../types';
+
+import a1u1 from './a1/unit-1.json';
+import a1u2 from './a1/unit-2.json';
+import a2u1 from './a2/unit-1.json';
+import b1u1 from './b1/unit-1.json';
+import b2u1 from './b2/unit-1.json';
+import c1u1 from './c1/unit-1.json';
+import c2u1 from './c2/unit-1.json';
+
+const unit = (data: unknown) => data as Unit;
+
+export const LEVELS: LevelDefinition[] = [
+  {
+    id: 'A1',
+    name: 'Principiante',
+    description: 'Saludos, presentaciones y números.',
+    accent: '#58CC02',
+    accentDark: '#46A302',
+    accentLight: '#D7FFB8',
+    instructionLanguage: 'es',
+    units: [unit(a1u1), unit(a1u2)],
+  },
+  {
+    id: 'A2',
+    name: 'Elemental',
+    description: 'Rutinas diarias y el pasado.',
+    accent: '#1CB0F6',
+    accentDark: '#1899D6',
+    accentLight: '#DDF4FF',
+    instructionLanguage: 'es',
+    units: [unit(a2u1)],
+  },
+  {
+    id: 'B1',
+    name: 'Intermedio',
+    description: 'Opiniones, planes y experiencias.',
+    accent: '#CE82FF',
+    accentDark: '#A568CC',
+    accentLight: '#F4E6FF',
+    instructionLanguage: 'es',
+    units: [unit(b1u1)],
+  },
+  {
+    id: 'B2',
+    name: 'Intermedio alto',
+    description: 'Temas abstractos y condicionales.',
+    accent: '#FF9600',
+    accentDark: '#CC7800',
+    accentLight: '#FFF0D9',
+    instructionLanguage: 'en',
+    units: [unit(b2u1)],
+  },
+  {
+    id: 'C1',
+    name: 'Avanzado',
+    description: 'Argumentación con matices y expresiones idiomáticas.',
+    accent: '#FF4B4B',
+    accentDark: '#D33131',
+    accentLight: '#FFE1E1',
+    instructionLanguage: 'en',
+    units: [unit(c1u1)],
+  },
+  {
+    id: 'C2',
+    name: 'Maestría',
+    description: 'Precisión casi nativa y registro.',
+    accent: '#2B70C9',
+    accentDark: '#1F5299',
+    accentLight: '#DCE9FA',
+    instructionLanguage: 'en',
+    units: [unit(c2u1)],
+  },
+];
+
+export const LEVEL_IDS = LEVELS.map((l) => l.id);
+
+export function getLevel(id: string): LevelDefinition {
+  return LEVELS.find((l) => l.id === id) ?? LEVELS[0];
+}
+
+export function findLesson(lessonId: string) {
+  for (const level of LEVELS) {
+    for (const u of level.units) {
+      const lesson = u.lessons.find((l) => l.id === lessonId);
+      if (lesson) return { level, unit: u, lesson };
+    }
+  }
+  return null;
+}

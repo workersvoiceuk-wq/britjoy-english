@@ -1,0 +1,47 @@
+{
+  "level": "A2",
+  "unit": "Unit 1",
+  "title": "La rutina diaria y el pasado",
+  "lessons": [
+    {
+      "id": "a2-u1-l1",
+      "title": "Mi día a día",
+      "tip": "Con he, she e it, el presente simple lleva -s: «I work», pero «she works». ¡Esa -s es pequeñita pero importante!",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "¿Cómo se dice «Me levanto a las siete»?", "options": ["I get up at seven", "I get up in seven", "I'm getting at seven"], "answer": "I get up at seven" },
+        { "type": "matching", "pairs": [
+          { "en": "wake up", "es": "despertarse" },
+          { "en": "have breakfast", "es": "desayunar" },
+          { "en": "go to work", "es": "ir al trabajo" },
+          { "en": "go to bed", "es": "acostarse" }
+        ] },
+        { "type": "wordBank", "prompt": "Ella desayuna a las ocho.", "words": ["She", "has", "breakfast", "at", "eight.", "have", "in"], "answer": "She has breakfast at eight." },
+        { "type": "multipleChoice", "prompt": "Elige la forma correcta: «He ___ to work by bus.»", "options": ["goes", "go", "going"], "answer": "goes" },
+        { "type": "listening", "text": "I usually walk to work", "options": ["I usually walk to work", "I usually work at home", "I never walk to work"], "answer": "I usually walk to work" },
+        { "type": "typing", "prompt": "Traduce: «Normalmente ceno a las nueve.»", "answer": "I usually have dinner at nine", "alternatives": ["I normally have dinner at nine", "I usually eat dinner at nine", "I normally eat dinner at nine", "Usually I have dinner at nine"] },
+        { "type": "wordBank", "prompt": "Nunca veo la tele por la mañana.", "words": ["I", "never", "watch", "TV", "in", "the", "morning.", "see", "at"], "answer": "I never watch TV in the morning." },
+        { "type": "listening", "text": "She goes to bed at eleven", "answer": "She goes to bed at eleven", "alternatives": ["She goes to bed at 11"] }
+      ]
+    },
+    {
+      "id": "a2-u1-l2",
+      "title": "Ayer",
+      "tip": "Muchos verbos forman el pasado con -ed (worked, played), pero los más usados son irregulares: go → went, have → had.",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "¿Cuál es el pasado de «go»?", "options": ["went", "goed", "gone"], "answer": "went" },
+        { "type": "matching", "pairs": [
+          { "en": "had", "es": "tuve / tenía" },
+          { "en": "saw", "es": "vi" },
+          { "en": "bought", "es": "compré" },
+          { "en": "ate", "es": "comí" }
+        ] },
+        { "type": "wordBank", "prompt": "Ayer fui al cine.", "words": ["Yesterday", "I", "went", "to", "the", "cinema.", "go", "goed"], "answer": "Yesterday I went to the cinema.", "alternatives": ["I went to the cinema yesterday."] },
+        { "type": "fillBlank", "sentence": "Last night we ___ pizza for dinner.", "hint": "Anoche cenamos pizza.", "options": ["had", "have", "has"], "answer": "had" },
+        { "type": "listening", "text": "I played football last Sunday", "options": ["I played football last Sunday", "I play football every Sunday", "I'll play football on Sunday"], "answer": "I played football last Sunday" },
+        { "type": "multipleChoice", "prompt": "Elige la pregunta correcta:", "options": ["Did you see the film?", "Did you saw the film?", "You did see the film?"], "answer": "Did you see the film?" },
+        { "type": "typing", "prompt": "Traduce: «No trabajé el lunes.»", "answer": "I didn't work on Monday", "alternatives": ["I did not work on Monday", "I didn't work last Monday", "I did not work last Monday"] },
+        { "type": "fillBlank", "sentence": "She ___ (buy) a new phone last week.", "hint": "Escribe el verbo en pasado.", "answer": "bought" }
+      ]
+    }
+  ]
+}

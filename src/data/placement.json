@@ -1,0 +1,14 @@
+{
+  "questions": [
+    { "level": "A1", "type": "multipleChoice", "prompt": "¿Cómo se dice «Me llamo Ana»?", "options": ["My name is Ana", "I have name Ana", "Me name Ana"], "answer": "My name is Ana" },
+    { "level": "A1", "type": "multipleChoice", "prompt": "¿Qué número es «fifteen»?", "options": ["15", "50", "5"], "answer": "15" },
+    { "level": "A2", "type": "multipleChoice", "prompt": "Elige: «Yesterday I ___ to the supermarket.»", "options": ["went", "go", "have gone"], "answer": "went" },
+    { "level": "A2", "type": "multipleChoice", "prompt": "Elige: «She ___ coffee every morning.»", "options": ["drinks", "drink", "is drink"], "answer": "drinks" },
+    { "level": "B1", "type": "multipleChoice", "prompt": "Elige: «I've lived here ___ 2019.»", "options": ["since", "for", "from"], "answer": "since" },
+    { "level": "B1", "type": "multipleChoice", "prompt": "Elige: «If it rains tomorrow, we ___ at home.»", "options": ["'ll stay", "stayed", "would have stayed"], "answer": "'ll stay" },
+    { "level": "B2", "type": "multipleChoice", "prompt": "Choose: «If I ___ you, I'd take the job.»", "options": ["were", "am", "would be"], "answer": "were" },
+    { "level": "B2", "type": "multipleChoice", "prompt": "Choose: «The bridge ___ by the time we arrived.»", "options": ["had been repaired", "has been repaired", "was repairing"], "answer": "had been repaired" },
+    { "level": "C1", "type": "multipleChoice", "prompt": "Choose the best word: «The results were promising, ___ inconclusive.»", "options": ["albeit", "despite", "whereas"], "answer": "albeit" },
+    { "level": "C2", "type": "multipleChoice", "prompt": "Choose: «Scarcely ___ the room when the lights went out.»", "options": ["had she entered", "she had entered", "did she entered"], "answer": "had she entered" }
+  ]
+}

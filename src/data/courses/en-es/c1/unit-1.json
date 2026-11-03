@@ -1,0 +1,47 @@
+{
+  "level": "C1",
+  "unit": "Unit 1",
+  "title": "Argumentar con matices",
+  "lessons": [
+    {
+      "id": "c1-u1-l1",
+      "title": "Hedging",
+      "tip": "Hedging softens claims so you sound measured, not unsure: «It would appear that…», «arguably», «to a large extent».",
+      "exercises": [
+        { "type": "multipleChoice", "prompt": "Which version is the most cautious, academic claim?", "options": ["It would appear that remote work boosts productivity.", "Remote work boosts productivity.", "Everyone knows remote work boosts productivity."], "answer": "It would appear that remote work boosts productivity." },
+        { "type": "fillBlank", "sentence": "The policy is, ___, the most ambitious in a generation.", "hint": "Adverb meaning «it could be argued».", "options": ["arguably", "argumentatively", "arguing"], "answer": "arguably" },
+        { "type": "matching", "pairs": [
+          { "en": "nevertheless", "es": "no obstante" },
+          { "en": "albeit", "es": "aunque (si bien)" },
+          { "en": "notwithstanding", "es": "a pesar de" },
+          { "en": "hence", "es": "de ahí que" }
+        ] },
+        { "type": "wordBank", "prompt": "Although the evidence is limited, the trend seems clear.", "words": ["While", "the", "evidence", "is", "limited,", "the", "trend", "would", "seem", "to", "be", "clear.", "despite", "being"], "answer": "While the evidence is limited, the trend would seem to be clear." },
+        { "type": "listening", "text": "That said, the findings should be treated with a degree of caution", "options": ["That said, the findings should be treated with a degree of caution", "That's why the findings were treated with great caution", "As I said, the findings can't be treated with caution"], "answer": "That said, the findings should be treated with a degree of caution" },
+        { "type": "fillBlank", "sentence": "The results were encouraging, ___ somewhat inconclusive.", "options": ["albeit", "despite", "whereas"], "answer": "albeit" },
+        { "type": "typing", "prompt": "Rewrite more cautiously, starting with «It could be argued that»: «Social media harms democracy.»", "answer": "It could be argued that social media harms democracy" },
+        { "type": "multipleChoice", "prompt": "«To play devil's advocate» means…", "options": ["Defend the opposite view for the sake of argument", "Behave in a wicked way", "Lose an argument on purpose"], "answer": "Defend the opposite view for the sake of argument" }
+      ]
+    },
+    {
+      "id": "c1-u1-l2",
+      "title": "Idioms at work",
+      "tip": "Idioms are fixed: you «hit the nail on the head», never «hit the nail in the head». Learn them as whole chunks.",
+      "exercises": [
+        { "type": "matching", "pairs": [
+          { "en": "a blessing in disguise", "es": "no hay mal que por bien no venga" },
+          { "en": "the last straw", "es": "la gota que colmó el vaso" },
+          { "en": "to cut corners", "es": "hacer chapuzas para ahorrar" },
+          { "en": "to break the ice", "es": "romper el hielo" }
+        ] },
+        { "type": "fillBlank", "sentence": "You've hit the nail on the ___ — that's exactly the problem.", "answer": "head" },
+        { "type": "multipleChoice", "prompt": "Your manager says the project is «on the back burner». It is…", "options": ["Postponed for now", "Urgent", "Cancelled forever"], "answer": "Postponed for now" },
+        { "type": "listening", "text": "Let's not reinvent the wheel", "options": ["Let's not reinvent the wheel", "Let's not lose the deal", "Let's not repeat the meal"], "answer": "Let's not reinvent the wheel" },
+        { "type": "wordBank", "prompt": "No nos precipitemos; vamos a pensarlo con calma.", "words": ["Let's", "not", "jump", "the", "gun;", "let's", "sleep", "on", "it.", "run", "over"], "answer": "Let's not jump the gun; let's sleep on it." },
+        { "type": "fillBlank", "sentence": "Losing that client turned out to be a blessing in ___.", "options": ["disguise", "surprise", "despise"], "answer": "disguise" },
+        { "type": "multipleChoice", "prompt": "Which idiom means «to state the problem directly»?", "options": ["To call a spade a spade", "To beat around the bush", "To sit on the fence"], "answer": "To call a spade a spade" },
+        { "type": "typing", "prompt": "Complete the idiom meaning «stop avoiding the main point»: «Stop beating around the ___»", "answer": "bush", "alternatives": ["the bush"] }
+      ]
+    }
+  ]
+}
