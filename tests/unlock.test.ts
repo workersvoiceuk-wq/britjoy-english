@@ -15,6 +15,7 @@ const unit = (level: string, n: number, lessons: number): Unit => ({
 
 const level = (id: string, units: Unit[]): LevelDefinition => ({
   id,
+  track: id === 'UK' ? 'life' : 'english',
   name: id,
   description: '',
   accent: '#000',
@@ -65,6 +66,18 @@ describe('level unlocking (80% of previous level units)', () => {
 
   it('returns false for unknown levels', () => {
     expect(isLevelUnlocked(LEVELS, 'Z9', {})).toBe(false);
+  });
+});
+
+describe('Vivir en UK track', () => {
+  const UK = level('UK', [unit('UK', 1, 3)]);
+  it('is always unlocked and does not block English levels', () => {
+    expect(isLevelUnlocked([...LEVELS, UK], 'UK', {})).toBe(true);
+    expect(isLevelUnlocked([...LEVELS, UK], 'A2', { A1: completeUnits(A1, 4) })).toBe(true);
+  });
+  it('lets any lesson be taken in any order', () => {
+    expect(isLessonUnlocked(UK, 'uk-u1-l3', {})).toBe(true);
+    expect(isLessonUnlocked(UK, 'nope', {})).toBe(false);
   });
 });
 

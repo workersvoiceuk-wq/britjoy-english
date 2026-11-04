@@ -1,5 +1,6 @@
 import { useEffect, useState, type CSSProperties } from 'react';
 import { LEVELS, findLesson, getLevel } from './data/courses/en-es';
+import { LIFE_LEVEL } from './data/courses/vivir-uk';
 import { isLevelUnlocked } from './logic/unlock';
 import { msUntilNextHeart } from './logic/gamification';
 import { completedByLevel, useProgressStore } from './store/useProgressStore';
@@ -12,9 +13,12 @@ import { LevelSelector } from './components/LevelSelector';
 import { PlacementQuiz } from './components/PlacementQuiz';
 import { LessonScreen, type LessonOutcome } from './components/LessonScreen';
 import { LessonResult } from './components/LessonResult';
+import { BottomNav } from './components/BottomNav';
+import { ResourcesScreen } from './components/ResourcesScreen';
+import { SettingsScreen } from './components/SettingsScreen';
 
 type Screen =
-  | { name: 'path' }
+  | { name: 'home' }
   | { name: 'lesson'; lessonId: string }
   | { name: 'result'; lessonId: string; outcome: LessonOutcome };
 
@@ -28,7 +32,7 @@ function accentStyle(level: LevelDefinition): CSSProperties {
 
 export default function App() {
   const store = useProgressStore();
-  const [screen, setScreen] = useState<Screen>({ name: 'path' });
+  const [screen, setScreen] = useState<Screen>({ name: 'home' });
   const [showLevels, setShowLevels] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const [now, setNow] = useState(() => Date.now());
@@ -44,12 +48,12 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Guard: never sit on a level that is (no longer) unlocked.
+  // Guard: never sit on an English level that is (no longer) unlocked.
   const completed = completedByLevel(store.levels);
   const unlockedCurrent = isLevelUnlocked(LEVELS, store.currentLevel, completed, store.placementLevel);
-  const level = unlockedCurrent ? getLevel(store.currentLevel) : LEVELS[0];
+  const englishLevel = unlockedCurrent ? getLevel(store.currentLevel) : LEVELS[0];
 
-  useEffect(() => setNotice(null), [store.hearts, store.currentLevel]);
+  useEffect(() => setNotice(null), [store.hearts, store.currentLevel, store.tab]);
 
   if (!store.placementDone) {
     return (
@@ -69,7 +73,7 @@ export default function App() {
     setScreen({ name: 'lesson', lessonId });
   };
 
-  const found = screen.name === 'path' ? null : findLesson(screen.lessonId);
+  const found = screen.name === 'home' ? null : findLesson(screen.lessonId);
   if (found && (screen.name === 'lesson' || screen.name === 'result')) {
     return (
       <div style={accentStyle(found.level)}>
@@ -77,7 +81,7 @@ export default function App() {
           <LessonScreen
             level={found.level}
             lesson={found.lesson}
-            onExit={() => setScreen({ name: 'path' })}
+            onExit={() => setScreen({ name: 'home' })}
             onFinish={(outcome) => {
               if (outcome.passed) {
                 store.completeLesson({ level: found.level.id, lessonId: found.lesson.id, xp: outcome.xp, stars: outcome.stars });
@@ -87,16 +91,29 @@ export default function App() {
             }}
           />
         ) : (
-          <LessonResult outcome={screen.outcome} lessonTitle={found.lesson.title} onContinue={() => setScreen({ name: 'path' })} />
+          <LessonResult outcome={screen.outcome} lessonTitle={found.lesson.title} onContinue={() => setScreen({ name: 'home' })} />
         )}
       </div>
     );
   }
 
+  const tab = store.tab;
+  const pathLevel = tab === 'life' ? LIFE_LEVEL : englishLevel;
+
   return (
-    <div style={accentStyle(level)} className="min-h-screen bg-white">
-      <Header level={level} now={now} onOpenLevels={() => setShowLevels(true)} />
-      <LearningPath level={level} completed={completed[level.id] ?? {}} onStart={startLesson} notice={notice} />
+    <div style={accentStyle(pathLevel)} className="paper min-h-screen">
+      <Header
+        now={now}
+        level={tab === 'english' ? englishLevel : undefined}
+        onOpenLevels={() => setShowLevels(true)}
+        title={{ english: 'Inglés', life: 'Vivir en UK', resources: 'Recursos', settings: 'Ajustes' }[tab]}
+      />
+      {(tab === 'english' || tab === 'life') && (
+        <LearningPath level={pathLevel} completed={completed[pathLevel.id] ?? {}} onStart={startLesson} notice={notice} />
+      )}
+      {tab === 'resources' && <ResourcesScreen />}
+      {tab === 'settings' && <SettingsScreen />}
+      <BottomNav />
       {showLevels && <LevelSelector onClose={() => setShowLevels(false)} />}
     </div>
   );

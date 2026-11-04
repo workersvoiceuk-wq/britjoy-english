@@ -1,0 +1,36 @@
+{
+  "intro": "Britjoy te recomienda estos recursos para complementar el curso. Son servicios externos: Voz Unida Mundo Academy no está afiliada a ellos.",
+  "checked": "2026-11",
+  "items": [
+    {
+      "id": "british-council-english-online",
+      "name": "British Council English Online",
+      "icon": "👩‍🏫",
+      "bestFor": "Si quieres profesores, conversación y correcciones.",
+      "details": "Clases en directo con profesores: grupales de 55 minutos y particulares de 25 minutos. Es de pago.",
+      "url": "https://englishonline.britishcouncil.org/"
+    },
+    {
+      "id": "busuu",
+      "name": "Busuu",
+      "icon": "📱",
+      "bestFor": "Si prefieres estudiar desde el móvil a tu ritmo.",
+      "details": "Curso de inglés del nivel A1 al C1 en una app, con lecciones cortas.",
+      "url": "https://www.busuu.com/"
+    },
+    {
+      "id": "british-council-learnenglish",
+      "name": "British Council LearnEnglish",
+      "icon": "🎧",
+      "bestFor": "Si quieres empezar gratis.",
+      "details": "Ejercicios gratuitos de comprensión, pronunciación y situaciones cotidianas.",
+      "url": "https://learnenglish.britishcouncil.org/"
+    }
+  ],
+  "official": [
+    { "name": "GOV.UK", "icon": "🏛️", "details": "Trámites oficiales: visados, ayudas, impuestos.", "url": "https://www.gov.uk/" },
+    { "name": "NHS", "icon": "🏥", "details": "Salud: médico de cabecera (GP), 111 y farmacias.", "url": "https://www.nhs.uk/" },
+    { "name": "Citizens Advice", "icon": "🤝", "details": "Ayuda gratuita e independiente con ayudas, deudas, vivienda y trabajo.", "url": "https://www.citizensadvice.org.uk/" },
+    { "name": "TfL", "icon": "🚆", "details": "Transporte de Londres: tarifas, mapas y estado de las líneas.", "url": "https://tfl.gov.uk/" }
+  ]
+}

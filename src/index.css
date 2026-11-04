@@ -17,11 +17,11 @@ body,
 
 body {
   margin: 0;
+  background-color: #fbf6ec;
   /* Keep content clear of the notch / status bar when running as a native app. */
   padding-top: env(safe-area-inset-top);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
-  background: #ffffff;
   color: #3c3c3c;
   font-family: Nunito, ui-rounded, system-ui, sans-serif;
   -webkit-tap-highlight-color: transparent;
@@ -33,7 +33,7 @@ body::before {
   position: fixed;
   inset: 0 0 auto 0;
   height: env(safe-area-inset-top);
-  background: #ffffff;
+  background: #1d2d5c;
   z-index: 60;
 }
 
@@ -89,4 +89,75 @@ body::before {
 
 @media (prefers-reduced-motion: reduce) {
   .animate-pop, .animate-slide-up, .animate-float, .animate-shake { animation: none; }
+}
+
+/* ---------- British theme ---------- */
+
+/* Bunting (red, white and blue pennants) hanging under the header. */
+.bunting {
+  height: 18px;
+  background:
+    linear-gradient(135deg, #c8102e 25%, transparent 25%) -6px 0 / 48px 18px,
+    linear-gradient(225deg, #c8102e 25%, transparent 25%) -6px 0 / 48px 18px,
+    linear-gradient(135deg, #ffffff 25%, transparent 25%) 10px 0 / 48px 18px,
+    linear-gradient(225deg, #ffffff 25%, transparent 25%) 10px 0 / 48px 18px,
+    linear-gradient(135deg, #1d2d5c 25%, transparent 25%) 26px 0 / 48px 18px,
+    linear-gradient(225deg, #1d2d5c 25%, transparent 25%) 26px 0 / 48px 18px;
+  background-repeat: repeat-x;
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.12));
+}
+
+/* London street-name sign used for unit titles. */
+.street-sign {
+  background: #ffffff;
+  border: 3px solid #1d2d5c;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 4px #ffffff, inset 0 0 0 6px #1d2d5c, 0 4px 0 rgba(29, 45, 92, 0.18);
+}
+.street-sign .district {
+  color: #c8102e;
+}
+
+/* Subtle cobblestone/paper texture for the page. */
+.paper {
+  background-color: #fbf6ec;
+  background-image: radial-gradient(rgba(29, 45, 92, 0.05) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* Britjoy motion (the official artwork itself is never altered). */
+@keyframes britjoy-talk {
+  0%, 100% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-2px) scale(1.015, 0.99); }
+  50% { transform: translateY(0) scale(0.995, 1.01); }
+  75% { transform: translateY(-1px) scale(1.01, 0.995); }
+}
+@keyframes britjoy-hop {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-14px); }
+  55% { transform: translateY(0); }
+  70% { transform: translateY(-6px); }
+}
+@keyframes britjoy-sad {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-4deg) translateY(2px); }
+}
+@keyframes voice-bar {
+  0%, 100% { height: 4px; }
+  50% { height: 14px; }
+}
+.britjoy-talk { animation: britjoy-talk 0.45s ease-in-out infinite; transform-origin: 50% 100%; }
+.britjoy-hop { animation: britjoy-hop 0.9s ease-out 2; transform-origin: 50% 100%; }
+.britjoy-sad { animation: britjoy-sad 1.2s ease-in-out 1; transform-origin: 50% 100%; }
+.voice-bar {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background: #c8102e;
+  animation: voice-bar 0.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .britjoy-talk, .britjoy-hop, .britjoy-sad, .voice-bar { animation: none; }
 }

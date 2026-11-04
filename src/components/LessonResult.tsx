@@ -1,4 +1,6 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
+import { narrate, useVoice } from '../lib/narrator';
+import { sfx } from '../lib/sound';
 import type { LessonOutcome } from './LessonScreen';
 import dialogue from '../data/britjoy-dialogue.json';
 import { pick } from '../lib/util';
@@ -16,11 +18,18 @@ export function LessonResult({ outcome, lessonTitle, onContinue }: Props) {
     () => (outcome.passed ? (outcome.mistakes === 0 ? dialogue.perfectLesson : pick(dialogue.lessonComplete)) : dialogue.outOfHearts),
     [outcome],
   );
+  const speaking = useVoice((v) => v.speaking);
+  useEffect(() => {
+    if (outcome.passed) sfx.complete();
+    else sfx.heart();
+    const t = window.setTimeout(() => void narrate(line), outcome.passed ? 900 : 300);
+    return () => window.clearTimeout(t);
+  }, [outcome.passed, line]);
   const accuracy = Math.round((outcome.correct / Math.max(1, outcome.correct + outcome.mistakes)) * 100);
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center gap-6 px-5 py-10 text-center">
-      <Britjoy expression={outcome.passed ? 'celebrating' : 'sad'} size={160} className={outcome.passed ? 'animate-float' : ''} />
+    <div className="paper mx-auto flex min-h-screen max-w-md flex-col items-center justify-center gap-6 px-5 py-10 text-center">
+      <Britjoy expression={outcome.passed ? 'celebrating' : 'sad'} size={230} speaking={speaking} />
       <div>
         <h1 className={`text-3xl font-black ${outcome.passed ? 'text-[#FFC800]' : 'text-bad'}`}>
           {outcome.passed ? '¡Lección completada!' : 'Sin vidas'}
@@ -50,7 +59,7 @@ export function LessonResult({ outcome, lessonTitle, onContinue }: Props) {
         </>
       )}
 
-      <BritjoySays expression={outcome.passed ? 'happy' : 'sad'} size={52} className="w-full text-left">
+      <BritjoySays expression={outcome.passed ? 'happy' : 'sad'} size={84} className="w-full text-left">
         {line}
       </BritjoySays>
 

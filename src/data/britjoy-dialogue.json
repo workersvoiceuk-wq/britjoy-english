@@ -1,6 +1,6 @@
 {
   "name": "Britjoy",
-  "welcome": "¡Hola! Soy Britjoy. Vamos a aprender inglés juntos, paso a paso. Cheerio… ¡digo, empecemos!",
+  "welcome": "¡Hola! Soy Britjoy, tu guía en el Reino Unido. Vamos a aprender inglés y a manejarnos en la vida diaria, paso a paso.",
   "placementIntro": "Primero, un test rapidito de 10 preguntas para saber por dónde empezar. ¡Sin presión!",
   "placementResult": "¡Brilliant! Te recomiendo empezar en {level}. Puedes cambiar de nivel cuando quieras.",
   "placementSkip": "Empezar desde cero (A1)",
@@ -11,11 +11,33 @@
   ],
   "lockedLevel": "Este nivel se desbloquea al completar el 80 % de las unidades de {previous}.",
   "levelDone": "¡Has terminado todas las lecciones de {level}! Jolly good. Pasa al siguiente nivel o repasa cuando quieras.",
-  "correct": ["¡Brilliant!", "¡Spot on!", "¡Lovely! Así se hace.", "¡Perfecto! Eres un crack.", "¡Jolly good!", "¡Exacto!"],
-  "wrong": ["¡Casi! Fíjate en la respuesta correcta.", "No pasa nada, ¡a la próxima lo clavas!", "Oops! Mira bien la solución y seguimos.", "Tranquilo, los errores enseñan mucho."],
-  "lessonComplete": ["¡Lección completada! Absolutely smashing.", "¡Lo has bordado! Me quito el sombrero.", "¡Fantástico! Un paso más hacia tu meta."],
+  "correct": [
+    "¡Brilliant!",
+    "¡Spot on!",
+    "¡Lovely! Así se hace.",
+    "¡Perfecto! Eres un crack.",
+    "¡Jolly good!",
+    "¡Exacto!"
+  ],
+  "wrong": [
+    "¡Casi! Fíjate en la respuesta correcta.",
+    "No pasa nada, ¡a la próxima lo clavas!",
+    "Oops! Mira bien la solución y seguimos.",
+    "Tranquilo, los errores enseñan mucho."
+  ],
+  "lessonComplete": [
+    "¡Lección completada! Absolutely smashing.",
+    "¡Lo has bordado! Me quito el sombrero.",
+    "¡Fantástico! Un paso más hacia tu meta."
+  ],
   "perfectLesson": "¡Sin un solo error! Eso merece una taza de té. ☕",
   "outOfHearts": "Te has quedado sin vidas. Descansa un momento: se recupera una cada 30 minutos.",
   "noHeartsToStart": "No te quedan vidas. La próxima llega en {time}.",
-  "quitConfirm": "¿Seguro que quieres salir? Perderás el progreso de esta lección."
+  "quitConfirm": "¿Seguro que quieres salir? Perderás el progreso de esta lección.",
+  "lifeTips": [
+    "Aquí aprendes lo práctico: moverte, ir al médico y hacer trámites. Elige el tema que necesites hoy.",
+    "Guarda los enlaces oficiales: GOV.UK, NHS y TfL siempre tienen la información más actual.",
+    "Cada lección empieza con mi explicación y termina con frases en inglés para usar en la vida real."
+  ],
+  "lessonIntro": "Lección: {title}."
 }

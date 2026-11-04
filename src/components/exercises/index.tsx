@@ -6,11 +6,14 @@ import { Listening } from './Listening';
 import { Matching } from './Matching';
 import { Typing } from './Typing';
 import { FillBlank } from './FillBlank';
+import { ExplainCard } from './ExplainCard';
 
 /** Renders the right component for an exercise. Add new exercise types here. */
 export function ExerciseView(props: ExerciseProps<Exercise>) {
   const { exercise } = props;
   switch (exercise.type) {
+    case 'explain':
+      return <ExplainCard {...props} exercise={exercise} />;
     case 'multipleChoice':
       return <MultipleChoice {...props} exercise={exercise} />;
     case 'wordBank':

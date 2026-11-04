@@ -18,7 +18,8 @@ export function unitCompletionRatio(level: LevelDefinition, completed: Completed
 
 /**
  * Level-unlocking rule:
- * - the first level is always unlocked;
+ * - "Vivir en UK" (track "life") is always unlocked;
+ * - the first English level is always unlocked;
  * - any level at or below the placement-quiz result is unlocked;
  * - otherwise a level unlocks once at least 80% of the previous level's units are complete.
  */
@@ -28,6 +29,10 @@ export function isLevelUnlocked(
   completedByLevel: Record<LevelId, CompletedLessons | undefined>,
   placementLevel?: LevelId | null,
 ): boolean {
+  const target = levels.find((l) => l.id === levelId);
+  if (target?.track === 'life') return true;
+  const english = levels.filter((l) => l.track !== 'life');
+  levels = english;
   const index = levels.findIndex((l) => l.id === levelId);
   if (index < 0) return false;
   if (index === 0) return true;
@@ -45,6 +50,8 @@ export function isLevelUnlocked(
  * stay available for practice.
  */
 export function isLessonUnlocked(level: LevelDefinition, lessonId: string, completed: CompletedLessons): boolean {
+  // Survival topics are needed on demand (e.g. Council Tax today), so they are all open.
+  if (level.track === 'life') return level.units.some((u) => u.lessons.some((l) => l.id === lessonId));
   const ordered = level.units.flatMap((u) => u.lessons);
   const index = ordered.findIndex((l) => l.id === lessonId);
   if (index < 0) return false;

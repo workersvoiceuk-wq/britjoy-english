@@ -52,6 +52,9 @@ export function checkChoice(choice: string, answer: string): boolean {
 
 export function checkAnswer(exercise: Exercise, response: ExerciseResponse): CheckResult {
   switch (exercise.type) {
+    case 'explain':
+      // Info slide: nothing to get wrong.
+      return { correct: true, correctAnswer: '' };
     case 'multipleChoice':
       return {
         correct: response.kind === 'text' && checkChoice(response.value, exercise.answer),

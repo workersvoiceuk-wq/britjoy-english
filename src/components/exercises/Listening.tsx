@@ -9,13 +9,8 @@ export function Listening({ exercise, locked, correct, copy, onResponse }: Exerc
   const supported = speechSupported();
   const [revealed, setRevealed] = useState(false);
 
-  useEffect(() => {
-    const t = window.setTimeout(() => speak(exercise.text), 250);
-    return () => {
-      window.clearTimeout(t);
-      stopSpeaking();
-    };
-  }, [exercise.text]);
+  // The lesson screen plays the audio after Britjoy's instruction.
+  useEffect(() => () => stopSpeaking(), []);
 
   return (
     <div className="flex flex-col gap-6">

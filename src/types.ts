@@ -3,6 +3,8 @@
 export type LevelId = string; // "A1" … "C2" (string so new levels need no type change)
 
 export interface MultipleChoiceExercise {
+  /** Optional line Britjoy says aloud before the exercise. */
+  say?: string;
   type: 'multipleChoice';
   prompt: string;
   options: string[];
@@ -10,6 +12,8 @@ export interface MultipleChoiceExercise {
 }
 
 export interface WordBankExercise {
+  /** Optional line Britjoy says aloud before the exercise. */
+  say?: string;
   type: 'wordBank';
   /** Sentence to translate (usually Spanish). */
   prompt: string;
@@ -22,6 +26,8 @@ export interface WordBankExercise {
 }
 
 export interface ListeningExercise {
+  /** Optional line Britjoy says aloud before the exercise. */
+  say?: string;
   type: 'listening';
   /** English text read aloud with speechSynthesis. */
   text: string;
@@ -34,12 +40,16 @@ export interface ListeningExercise {
 }
 
 export interface MatchingExercise {
+  /** Optional line Britjoy says aloud before the exercise. */
+  say?: string;
   type: 'matching';
   prompt?: string;
   pairs: { en: string; es: string }[];
 }
 
 export interface TypingExercise {
+  /** Optional line Britjoy says aloud before the exercise. */
+  say?: string;
   type: 'typing';
   prompt: string;
   answer: string;
@@ -47,6 +57,8 @@ export interface TypingExercise {
 }
 
 export interface FillBlankExercise {
+  /** Optional line Britjoy says aloud before the exercise. */
+  say?: string;
   type: 'fillBlank';
   /** Sentence with "___" marking the gap. */
   sentence: string;
@@ -58,7 +70,25 @@ export interface FillBlankExercise {
   alternatives?: string[];
 }
 
+/**
+ * Explanation card (not graded): Britjoy explains something before practising.
+ * Shown as an info slide; the lion reads `say` (or `body`) aloud.
+ */
+export interface ExplainExercise {
+  type: 'explain';
+  title: string;
+  /** Paragraphs; lines starting with "• " render as bullets. */
+  body: string;
+  /** What Britjoy says aloud (defaults to title + body). */
+  say?: string;
+  /** Key English phrases with their Spanish meaning; tap to hear them. */
+  phrases?: { en: string; es: string }[];
+  /** Official source / further reading. */
+  link?: { label: string; url: string };
+}
+
 export type Exercise =
+  | ExplainExercise
   | MultipleChoiceExercise
   | WordBankExercise
   | ListeningExercise
@@ -71,6 +101,8 @@ export type ExerciseType = Exercise['type'];
 export interface Lesson {
   id: string;
   title: string;
+  /** Emoji shown on the path node (Vivir en UK track). */
+  icon?: string;
   /** Optional tip Britjoy shows on the path before this lesson. */
   tip?: string;
   exercises: Exercise[];
@@ -80,11 +112,19 @@ export interface Unit {
   level: LevelId;
   unit: string;
   title: string;
+  /** Emoji for the unit sign (e.g. 🚆). */
+  icon?: string;
+  /** Date the facts in this unit were last checked against official sources. */
+  checked?: string;
   lessons: Lesson[];
 }
 
+export type TrackId = 'english' | 'life';
+
 export interface LevelDefinition {
   id: LevelId;
+  /** Which course this belongs to. English levels unlock in order; life topics are always open. */
+  track: TrackId;
   name: string;
   description: string;
   /** Accent colours so the learner always knows which level they are in. */

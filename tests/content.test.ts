@@ -11,6 +11,8 @@ function perfectResponse(ex: Exercise): ExerciseResponse {
       return { kind: 'tokens', value: ex.answer.split(' ') };
     case 'matching':
       return { kind: 'matching', mismatches: 0 };
+    case 'explain':
+      return { kind: 'text', value: 'ok' };
     default:
       return { kind: 'text', value: ex.answer };
   }

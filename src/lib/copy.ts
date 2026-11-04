@@ -51,6 +51,8 @@ export function copyFor(lang: Lang): Copy {
 
 export function instructionFor(exercise: Exercise, copy: Copy): string {
   switch (exercise.type) {
+    case 'explain':
+      return exercise.title;
     case 'listening':
       return exercise.prompt ?? (exercise.options ? copy.listeningChoice : copy.listeningTyping);
     case 'matching':

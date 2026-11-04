@@ -7,6 +7,7 @@
  *              (order matters: each level unlocks from the one before it).
  */
 import type { LevelDefinition, Unit } from '../../../types';
+import { LIFE_LEVEL } from '../vivir-uk';
 
 import a1u1 from './a1/unit-1.json';
 import a1u2 from './a1/unit-2.json';
@@ -21,6 +22,7 @@ const unit = (data: unknown) => data as Unit;
 export const LEVELS: LevelDefinition[] = [
   {
     id: 'A1',
+    track: 'english',
     name: 'Principiante',
     description: 'Saludos, presentaciones y números.',
     accent: '#58CC02',
@@ -31,6 +33,7 @@ export const LEVELS: LevelDefinition[] = [
   },
   {
     id: 'A2',
+    track: 'english',
     name: 'Elemental',
     description: 'Rutinas diarias y el pasado.',
     accent: '#1CB0F6',
@@ -41,6 +44,7 @@ export const LEVELS: LevelDefinition[] = [
   },
   {
     id: 'B1',
+    track: 'english',
     name: 'Intermedio',
     description: 'Opiniones, planes y experiencias.',
     accent: '#CE82FF',
@@ -51,6 +55,7 @@ export const LEVELS: LevelDefinition[] = [
   },
   {
     id: 'B2',
+    track: 'english',
     name: 'Intermedio alto',
     description: 'Temas abstractos y condicionales.',
     accent: '#FF9600',
@@ -61,6 +66,7 @@ export const LEVELS: LevelDefinition[] = [
   },
   {
     id: 'C1',
+    track: 'english',
     name: 'Avanzado',
     description: 'Argumentación con matices y expresiones idiomáticas.',
     accent: '#FF4B4B',
@@ -71,6 +77,7 @@ export const LEVELS: LevelDefinition[] = [
   },
   {
     id: 'C2',
+    track: 'english',
     name: 'Maestría',
     description: 'Precisión casi nativa y registro.',
     accent: '#2B70C9',
@@ -83,12 +90,15 @@ export const LEVELS: LevelDefinition[] = [
 
 export const LEVEL_IDS = LEVELS.map((l) => l.id);
 
+/** Every course: English levels plus the "Vivir en UK" survival course. */
+export const ALL_LEVELS: LevelDefinition[] = [...LEVELS, LIFE_LEVEL];
+
 export function getLevel(id: string): LevelDefinition {
-  return LEVELS.find((l) => l.id === id) ?? LEVELS[0];
+  return ALL_LEVELS.find((l) => l.id === id) ?? LEVELS[0];
 }
 
 export function findLesson(lessonId: string) {
-  for (const level of LEVELS) {
+  for (const level of ALL_LEVELS) {
     for (const u of level.units) {
       const lesson = u.lessons.find((l) => l.id === lessonId);
       if (lesson) return { level, unit: u, lesson };

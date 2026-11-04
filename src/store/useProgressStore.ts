@@ -31,6 +31,12 @@ export interface ProgressState {
   heartsSince: number;
   streak: number;
   lastActiveDate: string | null;
+  /** Britjoy reads instructions and explanations aloud. */
+  voiceOn: boolean;
+  /** Sound effects (chimes, correct/wrong). */
+  soundOn: boolean;
+  /** Section open in the bottom navigation. */
+  tab: AppTab;
 
   completePlacement: (level: LevelId | null) => void;
   setCurrentLevel: (level: LevelId) => void;
@@ -38,7 +44,12 @@ export interface ProgressState {
   syncHearts: (now?: number) => void;
   completeLesson: (args: { level: LevelId; lessonId: string; xp: number; stars: 1 | 2 | 3; now?: number }) => void;
   reset: () => void;
+  setVoiceOn: (on: boolean) => void;
+  setSoundOn: (on: boolean) => void;
+  setTab: (tab: AppTab) => void;
 }
+
+export type AppTab = 'english' | 'life' | 'resources' | 'settings';
 
 export const STORAGE_KEY = 'britjoy-english-progress-v1';
 
@@ -54,6 +65,9 @@ const initialState = () => ({
   heartsSince: Date.now(),
   streak: 0,
   lastActiveDate: null as string | null,
+  voiceOn: true,
+  soundOn: true,
+  tab: 'english' as AppTab,
 });
 
 export const useProgressStore = create<ProgressState>()(
@@ -111,10 +125,15 @@ export const useProgressStore = create<ProgressState>()(
       },
 
       reset: () => set(initialState()),
+      setVoiceOn: (on) => set({ voiceOn: on }),
+      setSoundOn: (on) => set({ soundOn: on }),
+      setTab: (tab) => set({ tab }),
     }),
     {
       name: STORAGE_KEY,
-      version: 1,
+      version: 2,
+      // v1 → v2: adds voice/sound settings and the open tab; progress is kept as is.
+      migrate: (persisted) => ({ voiceOn: true, soundOn: true, tab: 'english', ...(persisted as object) }) as ProgressState,
       storage: createJSONStorage(() => localStorage),
       partialize: (s) => ({
         placementDone: s.placementDone,
@@ -126,6 +145,9 @@ export const useProgressStore = create<ProgressState>()(
         heartsSince: s.heartsSince,
         streak: s.streak,
         lastActiveDate: s.lastActiveDate,
+        voiceOn: s.voiceOn,
+        soundOn: s.soundOn,
+        tab: s.tab,
       }),
     },
   ),

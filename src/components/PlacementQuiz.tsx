@@ -7,6 +7,7 @@ import { checkChoice } from '../logic/answer';
 import { fill, shuffle } from '../lib/util';
 import { Britjoy, BritjoySays } from './Britjoy';
 import { Button } from './Button';
+import { narrate } from '../lib/narrator';
 
 interface Props {
   onFinish: (level: string | null) => void;
@@ -24,15 +25,18 @@ export function PlacementQuiz({ onFinish }: Props) {
 
   if (stage === 'intro') {
     return (
-      <div className="mx-auto flex min-h-screen max-w-md flex-col justify-center gap-8 px-5 py-10">
+      <div className="paper mx-auto flex min-h-screen max-w-md flex-col justify-center gap-8 px-5 py-10">
         <div className="flex flex-col items-center gap-2 text-center">
-          <Britjoy expression="celebrating" size={150} className="animate-float" />
-          <h1 className="text-3xl font-black text-brand">Britjoy English</h1>
-          <p className="font-bold text-ink-soft">Inglés para hispanohablantes · A1 → C2</p>
+          <Britjoy expression="happy" size={240} />
+          <h1 className="text-3xl font-black text-navy">Britjoy English</h1>
+          <p className="font-bold text-ink-soft">Inglés A1 → C2 y vida en el Reino Unido</p>
         </div>
-        <BritjoySays expression="happy" size={56}>
-          {dialogue.welcome} {dialogue.placementIntro}
-        </BritjoySays>
+        <button className="text-left" onClick={() => void narrate(`${dialogue.welcome} ${dialogue.placementIntro}`)}>
+          <div className="rounded-2xl border-2 border-navy/15 bg-white px-4 py-3 text-[15px] font-semibold leading-snug shadow-[0_2px_0_rgba(29,45,92,0.12)]">
+            {dialogue.welcome} {dialogue.placementIntro}
+            <span className="mt-1 block text-xs font-bold text-ink-soft">🔊 Toca para escuchar a Britjoy</span>
+          </div>
+        </button>
         <div className="flex flex-col gap-3">
           <Button block onClick={() => setStage('quiz')}>
             Hacer el test
@@ -51,7 +55,7 @@ export function PlacementQuiz({ onFinish }: Props) {
     const right = answers.filter((a) => a.correct).length;
     return (
       <div className="mx-auto flex min-h-screen max-w-md flex-col justify-center gap-8 px-5 py-10 text-center">
-        <Britjoy expression="celebrating" size={140} className="mx-auto" />
+        <Britjoy expression="celebrating" size={220} className="mx-auto" />
         <div>
           <p className="text-sm font-extrabold uppercase text-ink-soft">
             {right}/{questions.length} correctas
@@ -61,7 +65,7 @@ export function PlacementQuiz({ onFinish }: Props) {
           </p>
           <p className="text-lg font-extrabold">{def.name}</p>
         </div>
-        <BritjoySays size={56}>{fill(dialogue.placementResult, { level })}</BritjoySays>
+        <BritjoySays size={84}>{fill(dialogue.placementResult, { level })}</BritjoySays>
         <div className="flex flex-col gap-3">
           <Button block onClick={() => onFinish(level)}>
             Empezar en {level}
