@@ -49,7 +49,7 @@ export interface ProgressState {
   setTab: (tab: AppTab) => void;
 }
 
-export type AppTab = 'english' | 'life' | 'ai' | 'resources' | 'settings';
+export type AppTab = 'home' | 'english' | 'life' | 'ai' | 'resources' | 'settings';
 
 export const STORAGE_KEY = 'britjoy-english-progress-v1';
 
@@ -67,7 +67,7 @@ const initialState = () => ({
   lastActiveDate: null as string | null,
   voiceOn: true,
   soundOn: true,
-  tab: 'english' as AppTab,
+  tab: 'home' as AppTab,
 });
 
 export const useProgressStore = create<ProgressState>()(
@@ -80,6 +80,7 @@ export const useProgressStore = create<ProgressState>()(
           placementDone: true,
           placementLevel: level,
           currentLevel: level ?? get().currentLevel,
+          tab: 'english',
         }),
 
       setCurrentLevel: (level) => set({ currentLevel: level }),

@@ -2,11 +2,11 @@ import { useProgressStore, type AppTab } from '../store/useProgressStore';
 import { sfx } from '../lib/sound';
 
 const TABS: { id: AppTab; icon: string; label: string }[] = [
-  { id: 'english', icon: '🎓', label: 'Inglés' },
+  { id: 'home', icon: '🏫', label: 'Cursos' },
+  { id: 'english', icon: '🎓', label: 'Aprender' },
   { id: 'life', icon: '🇬🇧', label: 'Vivir en UK' },
   { id: 'ai', icon: '🤖', label: 'Modo IA' },
-  { id: 'resources', icon: '📚', label: 'Recursos' },
-  { id: 'settings', icon: '⚙️', label: 'Ajustes' },
+  { id: 'settings', icon: '⚙️', label: 'Más' },
 ];
 
 export function BottomNav() {

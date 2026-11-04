@@ -83,11 +83,12 @@ test('Vivir en UK: every topic is open and the share code video loads', async ({
 test('resources, settings and privacy policy', async ({ page }) => {
   await start(page);
   await page.getByText('Empezar desde cero (A1)').click();
-  await page.getByRole('button', { name: /Recursos/ }).click();
+  await page.getByRole('button', { name: 'Más', exact: true }).click();
+  await page.getByRole('button', { name: /Recursos recomendados/ }).click();
   await expect(page.getByText('British Council English Online')).toBeVisible();
   await expect(page.getByText('Busuu')).toBeVisible();
   await expect(page.getByText('British Council LearnEnglish')).toBeVisible();
-  await page.getByRole('button', { name: /Ajustes/ }).click();
+  await page.getByRole('button', { name: 'Más', exact: true }).click();
   await expect(page.getByText('Voz de Britjoy')).toBeVisible();
   const res = await page.request.get('/privacidad.html');
   expect(res.ok()).toBeTruthy();
@@ -98,7 +99,7 @@ test('running out of hearts ends the lesson', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem(
       'britjoy-english-progress-v1',
-      JSON.stringify({ state: { placementDone: true, hearts: 1, heartsSince: Date.now(), voiceOn: false, soundOn: false }, version: 2 }),
+      JSON.stringify({ state: { placementDone: true, tab: 'english', hearts: 1, heartsSince: Date.now(), voiceOn: false, soundOn: false }, version: 2 }),
     );
   });
   await page.goto('/');
@@ -114,4 +115,21 @@ test('Modo IA tab explains it is not activated until the server is configured', 
   await page.getByText('Empezar desde cero (A1)').click();
   await page.getByRole('button', { name: /Modo IA/ }).click();
   await expect(page.getByText('El Modo IA todavía no está activado')).toBeVisible();
+});
+
+test('academy catalogue lists the courses and opens a course from its detail page', async ({ page }) => {
+  await start(page);
+  await page.getByText('Empezar desde cero (A1)').click();
+  await page.getByRole('button', { name: 'Cursos', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Catálogo de cursos' })).toBeVisible();
+  for (const title of ['Inglés general', 'Inglés para el día a día', 'Inglés para turistas', 'Vivir en el Reino Unido', 'IA con Britjoy']) {
+    await expect(page.getByRole('button', { name: new RegExp(`${title}.*Ver curso`) })).toBeVisible();
+  }
+  await page.getByRole('tab', { name: 'Inteligencia artificial' }).click();
+  await expect(page.getByRole('button', { name: /Inglés para turistas.*Ver curso/ })).toHaveCount(0);
+  await page.getByRole('button', { name: /IA con Britjoy.*Ver curso/ }).click();
+  await expect(page.getByRole('heading', { name: 'Temario' })).toBeVisible();
+  await page.getByRole('button', { name: 'Empezar el curso' }).click();
+  await expect(page.getByRole('button', { name: /De ejemplos a patrones \(disponible\)/ })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Descargar para Android/ })).toHaveCount(0);
 });

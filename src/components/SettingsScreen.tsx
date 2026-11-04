@@ -22,9 +22,19 @@ function Toggle({ label, hint, on, onChange }: { label: string; hint: string; on
 }
 
 export function SettingsScreen() {
-  const { voiceOn, soundOn, setVoiceOn, setSoundOn, reset } = useProgressStore();
+  const { voiceOn, soundOn, setVoiceOn, setSoundOn, reset, setTab } = useProgressStore();
   return (
     <div className="mx-auto max-w-3xl space-y-3 px-4 pb-32 pt-5">
+      <button
+        onClick={() => setTab('resources')}
+        className="press flex w-full items-center justify-between rounded-2xl border-2 border-b-4 border-navy/10 bg-white p-4 text-left"
+      >
+        <span>
+          <span className="block text-lg font-extrabold text-navy">📚 Recursos recomendados</span>
+          <span className="block text-sm font-semibold text-ink-soft">British Council, Busuu, LearnEnglish y webs oficiales.</span>
+        </span>
+        <span aria-hidden className="text-xl text-navy">›</span>
+      </button>
       <Toggle
         label="Voz de Britjoy"
         hint="Britjoy lee en voz alta las explicaciones y las instrucciones."
