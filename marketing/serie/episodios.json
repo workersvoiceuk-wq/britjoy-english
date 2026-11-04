@@ -1,0 +1,177 @@
+{
+  "series": "Britjoy Academy: cómo funciona",
+  "cta": "Pruébalo gratis · workersvoiceuk-wq.github.io/britjoy-english",
+  "keyword": "BRITJOY",
+  "episodes": [
+    {
+      "n": 1,
+      "slug": "conoce-britjoy-academy",
+      "title": "Conoce Britjoy Academy",
+      "hook": "¿Inglés y vida en Reino Unido en una sola app?",
+      "scenes": [
+        {
+          "img": "academia",
+          "caption": "Tu academia gratis",
+          "say": "¡Hola! Soy Britjoy. Bienvenido a mi academia."
+        },
+        {
+          "img": "catalogo",
+          "caption": "5 cursos para elegir",
+          "say": "Inglés del A1 al C2, situaciones reales, vida en UK e IA."
+        },
+        {
+          "img": "curso-detalle",
+          "caption": "Temario claro",
+          "say": "Ves lo que aprenderás, módulo a módulo."
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "slug": "elige-idioma-y-nivel",
+      "title": "Elige tu idioma y tu nivel",
+      "hook": "Paso 1: dime qué idioma hablas",
+      "scenes": [
+        {
+          "img": "idioma",
+          "caption": "10 idiomas para la app",
+          "say": "Elige tu idioma: español, português, polski, العربية…"
+        },
+        {
+          "img": "bienvenida",
+          "caption": "Test o desde cero",
+          "say": "Haz un test de 10 preguntas o empieza desde cero."
+        },
+        {
+          "img": "test-nivel",
+          "caption": "Tu nivel en minutos",
+          "say": "Te digo por qué nivel empezar. ¡Sin presión!"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "slug": "tu-primera-leccion",
+      "title": "Tu primera lección",
+      "hook": "Paso 2: aprende jugando",
+      "scenes": [
+        {
+          "img": "camino-a1",
+          "caption": "Tu camino, lección a lección",
+          "say": "Cada círculo es una lección corta."
+        },
+        {
+          "img": "ejercicio",
+          "caption": "Te lo explico en voz alta",
+          "say": "Leo cada actividad en voz alta para ti."
+        },
+        {
+          "img": "correcto",
+          "caption": "¡Correcto! +XP",
+          "say": "Si aciertas, ¡Brilliant! Si fallas, te enseño la respuesta."
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "slug": "vivir-en-reino-unido",
+      "title": "Vivir en el Reino Unido",
+      "hook": "Paso 3: lo práctico, con fuentes oficiales",
+      "scenes": [
+        {
+          "img": "vivir-uk",
+          "caption": "GP, Universal Credit, Council Tax…",
+          "say": "Transporte, médico, ayudas, alquiler y papeles."
+        },
+        {
+          "img": "gp",
+          "caption": "Revisado con GOV.UK y NHS",
+          "say": "Te explico cómo registrarte en un GP, paso a paso."
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "slug": "turistas-museos-gratis",
+      "title": "Turistas: museos gratis",
+      "hook": "¿Sabías que los grandes museos de Inglaterra son gratis?",
+      "scenes": [
+        {
+          "img": "turistas",
+          "caption": "La semana de Sofía en Londres",
+          "say": "Del pasaporte y la ETA hasta el vuelo de vuelta."
+        },
+        {
+          "img": "museo-1",
+          "caption": "Museos nacionales: entrada gratis",
+          "say": "Entrada general gratis para todos, también turistas."
+        },
+        {
+          "img": "museo-2",
+          "caption": "Reserva, seguridad y horarios",
+          "say": "Reserva tu hora, pasa el control y ¡a disfrutar!"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "slug": "dia-a-dia-familia-garcia",
+      "title": "Día a día: la familia García",
+      "hook": "Aprende inglés viviendo una historia",
+      "scenes": [
+        {
+          "img": "dia-a-dia",
+          "caption": "12 módulos, una historia",
+          "say": "Acompaña a Ana, Diego y Lucía en Londres."
+        },
+        {
+          "img": "capitulo-1",
+          "caption": "Una misión en cada capítulo",
+          "say": "Comprar, el GP, el trabajo, el colegio… ¡Tu voz cuenta!"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "slug": "habla-logros-certificado",
+      "title": "Habla, gana logros y tu certificado",
+      "hook": "Paso 4: habla en voz alta",
+      "scenes": [
+        {
+          "img": "hablar",
+          "caption": "Dilo en voz alta",
+          "say": "Pulsa el micro y dilo en inglés. Yo te escucho."
+        },
+        {
+          "img": "progreso",
+          "caption": "Meta diaria y logros",
+          "say": "Cumple tu meta diaria y desbloquea logros."
+        },
+        {
+          "img": "certificado",
+          "caption": "Tu certificado al terminar",
+          "say": "¡Y al terminar, tu certificado con tu nombre!",
+          "fit": "contain"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "slug": "descargala-y-modo-ia",
+      "title": "Descárgala y practica conmigo",
+      "hook": "Último paso: llévame en el móvil",
+      "scenes": [
+        {
+          "img": "descargas",
+          "caption": "Android ya disponible · iPhone pronto",
+          "say": "Descárgala en Android o úsala gratis en la web."
+        },
+        {
+          "img": "modo-ia",
+          "caption": "Muy pronto: Modo IA",
+          "say": "Muy pronto podrás conversar conmigo con IA."
+        }
+      ]
+    }
+  ]
+}
