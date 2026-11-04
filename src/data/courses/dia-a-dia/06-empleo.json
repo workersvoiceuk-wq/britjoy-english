@@ -154,6 +154,11 @@
             "I'm a quick learner",
             "I am a quick learner"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "I learn quickly.",
+          "hint": "Aprendo rápido."
         }
       ]
     }

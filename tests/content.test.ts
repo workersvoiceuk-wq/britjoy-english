@@ -14,12 +14,14 @@ function perfectResponse(ex: Exercise): ExerciseResponse {
       return { kind: 'matching', mismatches: 0 };
     case 'explain':
       return { kind: 'text', value: 'ok' };
+    case 'speak':
+      return { kind: 'speech', transcript: ex.text };
     default:
       return { kind: 'text', value: ex.answer };
   }
 }
 
-const VALID_TYPES = ['explain', 'multipleChoice', 'wordBank', 'listening', 'matching', 'typing', 'fillBlank'];
+const VALID_TYPES = ['explain', 'speak', 'multipleChoice', 'wordBank', 'listening', 'matching', 'typing', 'fillBlank'];
 
 describe('course content', () => {
   const lessons = ALL_LEVELS.flatMap((level) => level.units.flatMap((u) => u.lessons.map((lesson) => ({ level, unit: u, lesson }))));

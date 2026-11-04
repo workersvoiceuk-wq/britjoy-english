@@ -148,6 +148,11 @@
             "I'm on holiday for a week",
             "I'm visiting for a week on holiday"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "I'm here on holiday for a week.",
+          "hint": "Vengo de vacaciones una semana."
         }
       ]
     }

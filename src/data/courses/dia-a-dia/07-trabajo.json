@@ -151,6 +151,11 @@
             "Where are the gloves?",
             "Where can I find some more gloves?"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "Where can I find more gloves?",
+          "hint": "¿Dónde encuentro más guantes?"
         }
       ]
     }

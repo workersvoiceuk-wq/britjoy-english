@@ -152,6 +152,11 @@
             "What options do I have?",
             "What can I do?"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "What are my options?",
+          "hint": "¿Qué opciones tengo?"
         }
       ]
     }

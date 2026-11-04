@@ -141,6 +141,11 @@
             "Can you bring it to my hotel?",
             "Can you deliver it to my hotel"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "Can you deliver it to my hotel?",
+          "hint": "¿Me la pueden llevar al hotel?"
         }
       ]
     }

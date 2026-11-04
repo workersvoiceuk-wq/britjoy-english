@@ -10,6 +10,8 @@ export function narrationFor(exercise: Exercise, copy: Copy): string {
     case 'multipleChoice':
     case 'typing':
       return `${instructionFor(exercise, copy)}. ${exercise.prompt}`;
+    case 'speak':
+      return `${instructionFor(exercise, copy)}: ${exercise.hint ?? ''}`;
     case 'wordBank':
       return `${instructionFor(exercise, copy)}: ${exercise.prompt}`;
     default:

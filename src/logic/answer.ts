@@ -50,11 +50,27 @@ export function checkChoice(choice: string, answer: string): boolean {
   return normalizeText(choice) === normalizeText(answer);
 }
 
+/**
+ * Speaking tolerance: speech recognisers drop or mishear small words, so the
+ * attempt counts when at least 70% of the target's words were heard (in any order).
+ */
+export function speechMatches(transcript: string, target: string, threshold = 0.7): boolean {
+  const heard = new Set(tokenize(transcript));
+  const words = tokenize(target);
+  if (words.length === 0 || heard.size === 0) return false;
+  const hits = words.filter((w) => heard.has(w)).length;
+  return hits / words.length >= threshold;
+}
+
 export function checkAnswer(exercise: Exercise, response: ExerciseResponse): CheckResult {
   switch (exercise.type) {
     case 'explain':
       // Info slide: nothing to get wrong.
       return { correct: true, correctAnswer: '' };
+    case 'speak':
+      // Skipping ("I can't speak right now") never costs a heart, as in Duolingo.
+      if (response.kind === 'speech' && response.skipped) return { correct: true, correctAnswer: exercise.text };
+      return { correct: response.kind === 'speech' && speechMatches(response.transcript, exercise.text), correctAnswer: exercise.text };
     case 'multipleChoice':
       return {
         correct: response.kind === 'text' && checkChoice(response.value, exercise.answer),

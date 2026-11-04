@@ -96,3 +96,23 @@ describe('checkAnswer', () => {
     expect(checkAnswer({ type: 'wordBank', prompt: '', words: ['a'], answer: 'a' }, { kind: 'text', value: 'a' }).correct).toBe(false);
   });
 });
+
+import { speechMatches } from '../src/logic/answer';
+
+describe('speechMatches (speaking tolerance)', () => {
+  it('accepts a transcript that contains most of the words, ignoring case and punctuation', () => {
+    expect(speechMatches('could you help me please', 'Could you help me, please?')).toBe(true);
+    expect(speechMatches('sounds great what time', 'Sounds great! What time?')).toBe(true);
+  });
+  it('accepts small recogniser slips (70% of the words)', () => {
+    expect(speechMatches('I am here on holiday for week', "I'm here on holiday for a week.")).toBe(true);
+  });
+  it('rejects unrelated or empty speech', () => {
+    expect(speechMatches('good morning', 'Could you help me, please?')).toBe(false);
+    expect(speechMatches('', 'Hello')).toBe(false);
+  });
+  it('treats a skipped speaking exercise as no penalty', () => {
+    expect(checkAnswer({ type: 'speak', text: 'Hello' }, { kind: 'speech', transcript: '', skipped: true }).correct).toBe(true);
+    expect(checkAnswer({ type: 'speak', text: 'Hello there' }, { kind: 'speech', transcript: 'goodbye' }).correct).toBe(false);
+  });
+});

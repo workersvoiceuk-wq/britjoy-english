@@ -153,6 +153,11 @@
             "Can I leave my suitcases here?",
             "Could I leave my bags here?"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "Can I leave my bags here?",
+          "hint": "¿Puedo dejar mis maletas aquí?"
         }
       ]
     }

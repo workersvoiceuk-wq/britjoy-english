@@ -144,6 +144,11 @@
             "How long is the journey?",
             "How long will it take?"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "How long does it take?",
+          "hint": "¿Cuánto tarda?"
         }
       ]
     }

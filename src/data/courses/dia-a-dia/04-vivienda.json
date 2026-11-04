@@ -158,6 +158,11 @@
             "Could you send someone to repair it, please?",
             "Could you please send someone to fix it?"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "Could you send someone to fix it, please?",
+          "hint": "¿Podría mandar a alguien a arreglarlo, por favor?"
         }
       ]
     }

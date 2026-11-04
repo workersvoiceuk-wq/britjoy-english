@@ -145,6 +145,11 @@
             "How much does the special exhibition cost?",
             "How much is the temporary exhibition?"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "How much is the special exhibition?",
+          "hint": "¿Cuánto cuesta la exposición temporal?"
         }
       ]
     },
@@ -272,6 +277,11 @@
             "Could you take a photo of us please?",
             "Could you take our photo?"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "Could you take a photo of us?",
+          "hint": "¿Nos podría hacer una foto?"
         }
       ]
     }

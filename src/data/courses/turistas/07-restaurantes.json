@@ -151,6 +151,11 @@
             "I have a nut allergy",
             "I'm allergic to nuts."
           ]
+        },
+        {
+          "type": "speak",
+          "text": "I'm allergic to nuts.",
+          "hint": "Soy alérgica a los frutos secos."
         }
       ]
     }

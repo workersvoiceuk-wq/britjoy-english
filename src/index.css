@@ -167,3 +167,10 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
   .britjoy-talk, .britjoy-hop, .britjoy-sad, .voice-bar { animation: none; }
 }
+
+/* Printing a certificate: only the certificate is printed. */
+@media print {
+  body * { visibility: hidden; }
+  #certificate, #certificate * { visibility: visible; }
+  #certificate { position: absolute; inset: 0; margin: 0 auto; }
+}

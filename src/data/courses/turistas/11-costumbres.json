@@ -134,6 +134,11 @@
             "Excuse me, could you please help me?",
             "Excuse me, can you help me, please?"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "Excuse me, could you help me, please?",
+          "hint": "Perdone, ¿me podría ayudar, por favor?"
         }
       ]
     }

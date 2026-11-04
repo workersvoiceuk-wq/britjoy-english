@@ -73,27 +73,6 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index]);
 
-  const check = useCallback(() => {
-    if (!response || result || isExplain) return;
-    hush();
-    const r = checkAnswer(exercise, response);
-    const message = pick(r.correct ? dialogue.correct : dialogue.wrong);
-    setResult({ ...r, message });
-    if (r.correct) {
-      sfx.correct();
-      setCorrectCount((c) => c + 1);
-      void narrate(message, voiceLang);
-    } else {
-      sfx.wrong();
-      setMistakes((m) => m + 1);
-      loseHeart();
-      window.setTimeout(() => sfx.heart(), 350);
-      void narrate(message, voiceLang).then(() => {
-        if (exercise.type !== 'matching' && useProgressStore.getState().voiceOn) return speak(r.correctAnswer);
-      });
-    }
-  }, [exercise, response, result, isExplain, loseHeart, voiceLang]);
-
   const advance = useCallback(() => {
     hush();
     if (index + 1 >= total) {
@@ -111,6 +90,33 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
     setResponse(null);
     setResult(null);
   }, [index, total, correctCount, mistakes, onFinish]);
+
+  const check = useCallback(() => {
+    if (!response || result || isExplain) return;
+    hush();
+    // "I can't speak right now": skip the speaking exercise without scoring it.
+    if (response.kind === 'speech' && response.skipped) {
+      advance();
+      return;
+    }
+    const r = checkAnswer(exercise, response);
+    const message = pick(r.correct ? dialogue.correct : dialogue.wrong);
+    setResult({ ...r, message });
+    if (r.correct) {
+      sfx.correct();
+      setCorrectCount((c) => c + 1);
+      void narrate(message, voiceLang);
+    } else {
+      sfx.wrong();
+      setMistakes((m) => m + 1);
+      loseHeart();
+      window.setTimeout(() => sfx.heart(), 350);
+      void narrate(message, voiceLang).then(() => {
+        if (exercise.type !== 'matching' && useProgressStore.getState().voiceOn) return speak(r.correctAnswer);
+      });
+    }
+  }, [exercise, response, result, isExplain, loseHeart, voiceLang, advance]);
+
 
   const next = useCallback(() => {
     if (isExplain) return advance();

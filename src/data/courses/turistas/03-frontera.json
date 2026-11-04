@@ -145,6 +145,11 @@
             "No, I have nothing to declare",
             "No, I've got nothing to declare"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "No, nothing to declare.",
+          "hint": "Anything to declare?"
         }
       ]
     }

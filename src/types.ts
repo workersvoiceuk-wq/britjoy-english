@@ -89,8 +89,20 @@ export interface ExplainExercise {
   video?: { src: string; poster?: string; caption?: string };
 }
 
+/** Speaking practice (Praktika / Duolingo style): say an English sentence out loud. */
+export interface SpeakExercise {
+  /** Optional line Britjoy says aloud before the exercise. */
+  say?: string;
+  type: 'speak';
+  /** English sentence to say. */
+  text: string;
+  /** Spanish meaning shown under it. */
+  hint?: string;
+}
+
 export type Exercise =
   | ExplainExercise
+  | SpeakExercise
   | MultipleChoiceExercise
   | WordBankExercise
   | ListeningExercise
@@ -145,7 +157,9 @@ export interface LevelDefinition {
 export type ExerciseResponse =
   | { kind: 'text'; value: string }
   | { kind: 'tokens'; value: string[] }
-  | { kind: 'matching'; mismatches: number };
+  | { kind: 'matching'; mismatches: number }
+  /** Speaking: what the recogniser heard, or skipped ("I can't speak right now"). */
+  | { kind: 'speech'; transcript: string; skipped?: boolean };
 
 export interface CheckResult {
   correct: boolean;

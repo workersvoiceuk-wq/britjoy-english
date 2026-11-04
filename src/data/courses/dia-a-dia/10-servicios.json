@@ -157,6 +157,11 @@
             "Is there someone who speaks Spanish?",
             "Is there anybody who speaks Spanish?"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "Is there anyone who speaks Spanish?",
+          "hint": "¿Hay alguien que hable español?"
         }
       ]
     }

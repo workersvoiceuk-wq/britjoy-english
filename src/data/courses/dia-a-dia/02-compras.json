@@ -161,6 +161,11 @@
             "Can I have a refund, please?",
             "Could I have a refund, please?"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "I'd like a refund, please.",
+          "hint": "Quisiera un reembolso, por favor."
         }
       ]
     }

@@ -144,6 +144,11 @@
             "Please send an ambulance",
             "We need an ambulance"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "I need an ambulance.",
+          "hint": "Necesito una ambulancia."
         }
       ]
     }

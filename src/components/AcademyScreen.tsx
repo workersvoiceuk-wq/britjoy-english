@@ -6,6 +6,9 @@ import { sfx } from '../lib/sound';
 import { Britjoy } from './Britjoy';
 import { Button } from './Button';
 import { useT } from '../i18n';
+import { achievements } from '../logic/achievements';
+import { toDateKey, visibleStreak } from '../logic/gamification';
+import { Certificate } from './Certificate';
 
 
 function ProgressBar({ value, color }: { value: number; color: string }) {
@@ -59,6 +62,7 @@ function CourseCard({ course, onOpen }: { course: CatalogCourse; onOpen: () => v
 }
 
 function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onClose: () => void; onStart: () => void }) {
+  const [cert, setCert] = useState(false);
   const levels = useProgressStore((s) => s.levels);
   const completed = completedByLevel(levels);
   const stats = courseStats(course, completed);
@@ -90,6 +94,11 @@ function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onC
           <Button variant="primary" block onClick={onStart}>
             {stats.done ? t('academy.resume') : t('academy.start')}
           </Button>
+          {stats.lessons > 0 && stats.done === stats.lessons && (
+            <Button variant="outline" block onClick={() => setCert(true)}>
+              🎓 {t('cert.button')}
+            </Button>
+          )}
 
           <section className="rounded-2xl border-2 border-navy/10 p-4">
             <h3 className="mb-2 text-lg font-black text-navy">{t('academy.learn')}</h3>
@@ -141,7 +150,62 @@ function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onC
           </section>
         </div>
       </div>
+      {cert && <Certificate course={course} onClose={() => setCert(false)} />}
     </div>
+  );
+}
+
+function ProgressPanel() {
+  const t = useT();
+  const { xp, streak, lastActiveDate, levels, dailyGoal, xpByDay } = useProgressStore();
+  const today = toDateKey(new Date());
+  const todayXp = xpByDay[today] ?? 0;
+  const completed = completedByLevel(levels);
+  const coursesDone = CATALOG.filter((c) => {
+    const s = courseStats(c, completed);
+    return s.lessons > 0 && s.done === s.lessons;
+  }).length;
+  const list = achievements({ xp, streak: visibleStreak(streak, lastActiveDate, today), levels }, coursesDone);
+  const pct = Math.min(1, todayXp / dailyGoal);
+  return (
+    <section className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="rounded-3xl border-2 border-navy/10 bg-white p-5">
+        <h2 className="text-lg font-black text-navy">🎯 {t('academy.dailyGoal')}</h2>
+        <div className="mt-3 flex items-center gap-4">
+          <div
+            className="relative h-20 w-20 shrink-0 rounded-full"
+            style={{ background: `conic-gradient(#58CC02 ${pct * 360}deg, #E5E5E5 0deg)` }}
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={dailyGoal}
+            aria-valuenow={todayXp}
+          >
+            <span className="absolute inset-2 flex items-center justify-center rounded-full bg-white text-sm font-black text-navy">
+              {todayXp}/{dailyGoal}
+            </span>
+          </div>
+          <p className="font-bold text-ink-soft">
+            {pct >= 1 ? t('academy.dailyGoalDone') : `${todayXp} / ${dailyGoal} XP`}
+            <span className="mt-1 block text-[#FF9600]">🔥 {visibleStreak(streak, lastActiveDate, today)} {t('header.streak')}</span>
+          </p>
+        </div>
+      </div>
+      <div className="rounded-3xl border-2 border-navy/10 bg-white p-5">
+        <h2 className="text-lg font-black text-navy">🏅 {t('academy.achievements')} · {list.filter((a) => a.earned).length}/{list.length}</h2>
+        <ul className="mt-3 grid grid-cols-5 gap-2">
+          {list.map((a) => (
+            <li
+              key={a.id}
+              title={`${a.title}: ${a.description}`}
+              className={`flex aspect-square items-center justify-center rounded-2xl text-2xl ${a.earned ? 'bg-gold-light' : 'bg-ink-line/60 grayscale'}`}
+              aria-label={`${a.title}${a.earned ? ' ✓' : ''}`}
+            >
+              {a.icon}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 }
 
@@ -184,6 +248,8 @@ export function AcademyScreen() {
           <Britjoy size={150} />
         </div>
       </section>
+
+      <ProgressPanel />
 
       {inProgress.length > 0 && (
         <section className="mt-6">

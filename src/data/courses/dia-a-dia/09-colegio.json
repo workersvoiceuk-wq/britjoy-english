@@ -150,6 +150,11 @@
           "alternatives": [
             "How can we help her at home"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "How can we help her at home?",
+          "hint": "¿Cómo podemos ayudarla en casa?"
         }
       ]
     }

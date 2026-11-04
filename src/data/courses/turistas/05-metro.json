@@ -139,6 +139,11 @@
             "Is it far?",
             "How far is it from here?"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "Is it far from here?",
+          "hint": "¿Está lejos de aquí?"
         }
       ]
     }

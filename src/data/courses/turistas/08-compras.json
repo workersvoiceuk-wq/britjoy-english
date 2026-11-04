@@ -151,6 +151,11 @@
             "Could I have a receipt please",
             "Could I get a receipt, please?"
           ]
+        },
+        {
+          "type": "speak",
+          "text": "Could I have a receipt, please?",
+          "hint": "¿Me da el recibo, por favor?"
         }
       ]
     }

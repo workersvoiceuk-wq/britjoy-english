@@ -20,6 +20,7 @@ const COPY = {
     tapWords: 'Toca las palabras en orden',
     noAudio: 'Tu navegador no puede reproducir audio.',
     showText: 'Mostrar texto',
+    speak: 'Dilo en voz alta',
   },
   en: {
     multipleChoice: 'Choose the correct answer',
@@ -39,6 +40,7 @@ const COPY = {
     tapWords: 'Tap the words in order',
     noAudio: 'Your browser cannot play audio.',
     showText: 'Show text',
+    speak: 'Say it out loud',
   },
 } as const;
 
@@ -53,6 +55,8 @@ export function instructionFor(exercise: Exercise, copy: Copy): string {
   switch (exercise.type) {
     case 'explain':
       return exercise.title;
+    case 'speak':
+      return copy.speak;
     case 'listening':
       return exercise.prompt ?? (exercise.options ? copy.listeningChoice : copy.listeningTyping);
     case 'matching':
