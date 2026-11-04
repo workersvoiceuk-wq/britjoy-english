@@ -171,6 +171,13 @@ export const es = {
   "plus.check": "Ya tengo VUM Academy: comprobar",
   "plus.checkNone": "No encontramos una suscripción activa de VUM Academy con tu email. Si acabas de pagar, espera un minuto y vuelve a comprobar.",
   "plus.checkOk": "¡Listo! VUM Academy está activo en la app.",
+  "path.line": "Línea",
+  "path.zone": "Zona",
+  "path.nextStation": "Próxima estación",
+  "path.departures": "Salidas",
+  "path.closed": "Aún cerrada",
+  "path.arriving": "Llegando",
+  "path.terminus": "Fin de línea: ¡nivel completado!",
 } as const;
 
 export type MessageKey = keyof typeof es;

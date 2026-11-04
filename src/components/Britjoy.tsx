@@ -1,15 +1,42 @@
 /**
  * Britjoy, the guide: the owner's official avatar (Queen's Guard with the
  * "Life in the UK" book), cut out from the owner's image into
- * src/assets/britjoy-avatar.webp. The artwork is never redrawn or recoloured;
- * moods, breathing and "talking" are shown only with movement (CSS transforms).
+ * src/assets/britjoy-avatar.webp and animated in Blender (src/assets/britjoy3d/).
+ * The artwork is never redrawn or recoloured; moods, breathing and talking are
+ * shown only with movement.
  */
-import { useState } from 'react';
-import lionUrl from '../assets/britjoy-avatar.webp';
-import lionSmallUrl from '../assets/britjoy-avatar-320.webp';
+import { useEffect, useState } from 'react';
+// Animated Britjoy made in Blender (blender/britjoy_rig.py): the official artwork
+// as one textured mesh deformed by a skeleton (head, arm, paw, breathing body).
+// Nothing is redrawn or recoloured; the still frame is the untouched pose.
+import stillUrl from '../assets/britjoy3d/britjoy-still.webp';
+import idleUrl from '../assets/britjoy3d/britjoy-idle.webp';
+import talkUrl from '../assets/britjoy3d/britjoy-talk.webp';
+import celebrateUrl from '../assets/britjoy3d/britjoy-celebrate.webp';
 
-/** Width / height of the avatar artwork. */
-const ASPECT = 655 / 572;
+/** Width / height of the rendered frames. */
+const ASPECT = 330 / 300;
+
+/** Animations load after the page, and never for people who asked for less motion or data saving. */
+function useAnimated(): boolean {
+  const [on, setOn] = useState(false);
+  useEffect(() => {
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+    if (reduce || saveData) return;
+    const img = new Image();
+    img.onload = () => setOn(true);
+    const start = () => {
+      img.src = idleUrl;
+      // Warm the talking loop too, so it is ready when Britjoy speaks.
+      new Image().src = talkUrl;
+    };
+    const w = window as Window & { requestIdleCallback?: (cb: () => void) => number };
+    if (w.requestIdleCallback) w.requestIdleCallback(start);
+    else window.setTimeout(start, 400);
+  }, []);
+  return on;
+}
 
 export type BritjoyExpression = 'happy' | 'neutral' | 'sad' | 'celebrating';
 
@@ -22,37 +49,38 @@ interface Props {
   className?: string;
 }
 
-const MOTION: Record<BritjoyExpression, string> = {
-  happy: '',
-  neutral: '',
-  sad: 'britjoy-sad',
-  celebrating: 'britjoy-hop',
-};
-
 export function Britjoy({ expression = 'happy', size = 120, speaking = false, className = '' }: Props) {
   const label = { happy: 'contento', neutral: 'atento', sad: 'te anima', celebrating: 'celebrando' }[expression];
   const [wiggle, setWiggle] = useState(false);
-  // Three layers so the movements add up: arrival bounce, idle breathing, and the
-  // current action (talking, celebrating, sad or a tap wiggle) on the artwork itself.
-  const action = wiggle ? 'britjoy-wiggle' : speaking ? 'britjoy-talk' : MOTION[expression];
+  const animated = useAnimated();
+  const src = !animated ? stillUrl : speaking ? talkUrl : expression === 'celebrating' ? celebrateUrl : idleUrl;
+  // The Blender loops carry the motion; CSS only adds the arrival bounce, the sad
+  // droop and the tap wiggle (and keeps a gentle bob if the loops are not loaded).
+  const css = wiggle
+    ? 'britjoy-wiggle'
+    : expression === 'sad'
+      ? 'britjoy-sad'
+      : animated
+        ? ''
+        : speaking
+          ? 'britjoy-talk'
+          : expression === 'celebrating'
+            ? 'britjoy-hop'
+            : 'britjoy-idle';
   return (
     <span className={`britjoy-enter relative inline-block shrink-0 ${className}`} style={{ height: size, width: size * ASPECT }}>
-      <span className={`block h-full w-full ${speaking || (expression !== 'happy' && expression !== 'neutral') ? '' : 'britjoy-idle'}`}>
-        <img
-          src={lionUrl}
-          srcSet={`${lionSmallUrl} 320w, ${lionUrl} 655w`}
-          sizes={`${Math.round(size * ASPECT)}px`}
-          width={Math.round(size * ASPECT)}
-          height={size}
-          alt={`Britjoy ${label}`}
-          draggable={false}
-          onPointerDown={() => setWiggle(true)}
-          onAnimationEnd={(e) => {
-            if (e.animationName === 'britjoy-wiggle') setWiggle(false);
-          }}
-          className={`britjoy-fade relative h-full w-full select-none object-contain ${action}`}
-        />
-      </span>
+      <img
+        src={src}
+        width={Math.round(size * ASPECT)}
+        height={size}
+        alt={`Britjoy ${label}`}
+        draggable={false}
+        onPointerDown={() => setWiggle(true)}
+        onAnimationEnd={(e) => {
+          if (e.animationName === 'britjoy-wiggle') setWiggle(false);
+        }}
+        className={`britjoy-fade relative h-full w-full select-none object-contain ${css}`}
+      />
       {expression === 'celebrating' && (
         <span aria-hidden className="absolute -right-2 -top-1 text-2xl animate-pop">🎉</span>
       )}

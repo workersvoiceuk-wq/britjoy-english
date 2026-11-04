@@ -164,4 +164,11 @@ export const ro: Messages = {
   "plus.check": "Am deja VUM Academy: verifică",
   "plus.checkNone": "Nu am găsit un abonament VUM Academy activ pentru emailul tău. Dacă tocmai ai plătit, așteaptă un minut și verifică din nou.",
   "plus.checkOk": "Gata! VUM Academy este activ în aplicație.",
+  "path.line": "Linia",
+  "path.zone": "Zona",
+  "path.nextStation": "Următoarea stație",
+  "path.departures": "Plecări",
+  "path.closed": "Încă închisă",
+  "path.arriving": "Sosește",
+  "path.terminus": "Capăt de linie: nivel terminat!",
 };

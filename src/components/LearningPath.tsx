@@ -18,8 +18,6 @@ interface Props {
   notice?: string | null;
 }
 
-// Horizontal offsets that create the winding path (in px).
-const OFFSETS = [0, 44, 72, 44, 0, -44, -72, -44];
 
 export function LearningPath({ level, completed, onStart, notice }: Props) {
   const speaking = useVoice((s) => s.speaking);
@@ -36,7 +34,7 @@ export function LearningPath({ level, completed, onStart, notice }: Props) {
         ? nextLesson.tip ?? fallbackTip
         : fill(dialogue.levelDone, { level: level.id }));
 
-  let position = 0;
+  const allDone = !isLife && !nextLesson && level.units.length > 0;
 
   return (
     <div className="paper relative min-h-screen">
@@ -59,43 +57,59 @@ export function LearningPath({ level, completed, onStart, notice }: Props) {
         </aside>
 
         <div className="flex-1">
+          {/* Departures board: the next lesson, like a station's dot-matrix display. */}
+          {!isLife && level.units.length > 0 && (
+            <div className="departures mb-6 rounded-xl p-3" role="status">
+              <p className="flex items-center justify-between text-[11px] font-bold uppercase tracking-[0.18em] text-white/70">
+                <span>{t('path.departures')} · {t('path.line')} {level.short ?? level.id}</span>
+                <span aria-hidden>●●●</span>
+              </p>
+              <p className="dot-matrix mt-1 truncate text-lg">
+                {allDone ? t('path.terminus') : `${t('path.nextStation')}: ${nextLesson?.title ?? ''}`}
+              </p>
+              {!allDone && <p className="dot-matrix text-sm opacity-80">{t('path.arriving')}…</p>}
+            </div>
+          )}
           {level.units.length === 0 && (
             <p className="rounded-2xl bg-white p-5 text-center font-bold text-ink-soft">{t('path.soon')}</p>
           )}
-          {level.units.map((unit) => (
-            <section key={unit.unit} className="mb-12">
-              <div className="street-sign mb-9 px-5 py-3 text-center">
-                <p className="district text-xs font-black uppercase tracking-[0.2em]">
-                  {isLife
-                    ? 'Vivir en UK'
-                    : level.track === 'english'
-                      ? `${level.id} · ${unit.unit.replace('Unit', 'Unidad')}`
-                      : `${level.name} · ${unit.unit}`}
-                </p>
-                <h2 className="text-xl font-black uppercase tracking-wide text-navy">
-                  {unit.icon && <span className="mr-2" aria-hidden>{unit.icon}</span>}
-                  {unit.title}
-                </h2>
+          {level.units.map((unit, unitIndex) => (
+            <section key={unit.unit} className="mb-10">
+              {/* Line board: the unit is a zone of the line. */}
+              <div className="line-board mb-5 overflow-hidden rounded-xl">
+                <span className="block h-2 bg-accent" aria-hidden />
+                <div className="px-4 py-3">
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-gold-light">
+                    {isLife
+                      ? 'Vivir en UK'
+                      : level.track === 'english'
+                        ? `${t('path.line')} ${level.id} · ${t('path.zone')} ${unitIndex + 1}`
+                        : `${level.name} · ${unit.unit}`}
+                  </p>
+                  <h2 className="text-xl font-black uppercase tracking-wide text-white">
+                    {unit.icon && <span className="me-2" aria-hidden>{unit.icon}</span>}
+                    {unit.title}
+                  </h2>
+                </div>
               </div>
 
-              <ol className="relative flex flex-col items-center gap-7">
-                {unit.lessons.map((lesson) => {
-                  const offset = OFFSETS[position++ % OFFSETS.length];
+              <ol className="tube-line relative">
+                {unit.lessons.map((lesson, i) => {
                   const record = completed[lesson.id];
                   const unlocked = isLessonUnlocked(level, lesson.id, completed);
                   const isNext = !isLife && lesson.id === nextId;
                   const state = record ? 'completed' : unlocked ? 'unlocked' : 'locked';
-                  const face = state === 'locked' ? '🔒' : state === 'completed' ? '✓' : lesson.icon ?? '★';
+                  const last = i === unit.lessons.length - 1;
                   return (
-                    <li
-                      key={lesson.id}
-                      className={`relative flex flex-col items-center ${isNext ? 'mt-8' : ''}`}
-                      style={{ transform: `translateX(${offset}px)` }}
-                    >
-                      {isNext && (
-                        <span className="animate-float absolute -top-9 z-10 whitespace-nowrap rounded-xl border-2 border-navy/15 bg-white px-3 py-1 text-sm font-black uppercase text-royal">
-                          {t('path.start')}
-                        </span>
+                    <li key={lesson.id} className="relative">
+                      {/* Track to the next station: solid once travelled, dashed while closed. */}
+                      {!last && (
+                        <span
+                          aria-hidden
+                          className={`absolute start-[26px] top-9 h-full w-[10px] rounded-full ${
+                            record ? 'bg-accent' : 'track-closed'
+                          }`}
+                        />
                       )}
                       <button
                         disabled={state === 'locked'}
@@ -106,28 +120,48 @@ export function LearningPath({ level, completed, onStart, notice }: Props) {
                         aria-label={`${lesson.title} (${
                           state === 'completed' ? 'completada' : state === 'unlocked' ? 'disponible' : 'bloqueada'
                         })`}
-                        className={`press flex items-center justify-center rounded-full border-b-[6px] text-3xl font-black ${
-                          isNext ? 'h-20 w-20 ring-8 ring-accent-light' : 'h-[72px] w-[72px]'
-                        } ${
-                          state === 'locked'
-                            ? 'border-[#B7B7B7] bg-[#E5E5E5] text-[#AFAFAF]'
-                            : state === 'completed'
-                              ? 'border-gold-dark bg-gold text-white'
-                              : 'border-accent-dark bg-accent text-white'
-                        }`}
+                        className="press group relative flex w-full items-center gap-4 py-2 text-start disabled:cursor-not-allowed"
                       >
-                        {face}
-                      </button>
-                      {record && (
-                        <span className="mt-1 text-sm leading-none tracking-tight" aria-label={`${record.stars} estrellas`}>
-                          {[1, 2, 3].map((s) => (
-                            <span key={s} className={s <= record.stars ? 'text-gold' : 'text-ink-line'}>
-                              ★
-                            </span>
-                          ))}
+                        {/* Station marker */}
+                        <span
+                          aria-hidden
+                          className={`relative z-10 flex h-[62px] w-[62px] shrink-0 items-center justify-center rounded-full border-[7px] text-2xl font-black ${
+                            state === 'locked'
+                              ? 'border-[#BDBDBD] bg-[#EEEEEE] text-[#9E9E9E]'
+                              : state === 'completed'
+                                ? 'border-accent bg-white text-accent'
+                                : 'border-accent bg-white text-accent'
+                          } ${isNext ? 'station-next' : ''}`}
+                        >
+                          {state === 'locked' ? '🔒' : state === 'completed' ? '✓' : lesson.icon ?? '★'}
                         </span>
-                      )}
-                      <span className="mt-1 max-w-[10rem] text-center text-sm font-extrabold text-navy/70">{lesson.title}</span>
+                        {/* Station name board */}
+                        <span
+                          className={`station-name flex-1 rounded-lg px-3 py-2 ${
+                            state === 'locked' ? 'opacity-70' : ''
+                          } ${isNext ? 'ring-4 ring-gold' : ''}`}
+                        >
+                          {isNext && (
+                            <span className="mb-0.5 block text-[11px] font-black uppercase tracking-[0.18em] text-royal">
+                              {t('path.nextStation')} · {t('path.start')}
+                            </span>
+                          )}
+                          <span className="block text-base font-black text-ink">{lesson.title}</span>
+                          {record ? (
+                            <span className="text-sm leading-none" aria-label={`${record.stars} estrellas`}>
+                              {[1, 2, 3].map((s) => (
+                                <span key={s} className={s <= record.stars ? 'text-gold-dark' : 'text-ink-line'}>
+                                  ★
+                                </span>
+                              ))}
+                            </span>
+                          ) : (
+                            state === 'locked' && (
+                              <span className="text-xs font-bold text-ink-soft">{t('path.closed')}</span>
+                            )
+                          )}
+                        </span>
+                      </button>
                     </li>
                   );
                 })}

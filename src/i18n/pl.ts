@@ -164,4 +164,11 @@ export const pl: Messages = {
   "plus.check": "Mam już VUM Academy: sprawdź",
   "plus.checkNone": "Nie znaleźliśmy aktywnej subskrypcji VUM Academy dla twojego e-maila. Jeśli właśnie zapłaciłeś, odczekaj minutę i sprawdź ponownie.",
   "plus.checkOk": "Gotowe! VUM Academy jest aktywna w aplikacji.",
+  "path.line": "Linia",
+  "path.zone": "Strefa",
+  "path.nextStation": "Następna stacja",
+  "path.departures": "Odjazdy",
+  "path.closed": "Jeszcze zamknięta",
+  "path.arriving": "Przyjeżdża",
+  "path.terminus": "Stacja końcowa: poziom ukończony!",
 };

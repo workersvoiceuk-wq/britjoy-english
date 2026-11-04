@@ -164,4 +164,11 @@ export const ar: Messages = {
   "plus.check": "لديّ VUM Academy بالفعل: تحقّق",
   "plus.checkNone": "لم نجد اشتراكًا نشطًا في VUM Academy ببريدك. إذا دفعت للتو، انتظر دقيقة ثم تحقّق مرة أخرى.",
   "plus.checkOk": "تم! أصبح VUM Academy نشطًا في التطبيق.",
+  "path.line": "الخط",
+  "path.zone": "المنطقة",
+  "path.nextStation": "المحطة التالية",
+  "path.departures": "المغادرة",
+  "path.closed": "لم تُفتح بعد",
+  "path.arriving": "يصل الآن",
+  "path.terminus": "نهاية الخط: أكملت المستوى!",
 };

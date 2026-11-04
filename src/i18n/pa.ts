@@ -164,4 +164,11 @@ export const pa: Messages = {
   "plus.check": "ਮੇਰੇ ਕੋਲ VUM Academy ਹੈ: ਜਾਂਚ ਕਰੋ",
   "plus.checkNone": "ਤੁਹਾਡੀ ਈਮੇਲ ਨਾਲ VUM Academy ਦੀ ਕੋਈ ਚਾਲੂ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਨਹੀਂ ਮਿਲੀ। ਜੇ ਤੁਸੀਂ ਹੁਣੇ ਭੁਗਤਾਨ ਕੀਤਾ ਹੈ, ਇੱਕ ਮਿੰਟ ਉਡੀਕ ਕਰਕੇ ਦੁਬਾਰਾ ਜਾਂਚੋ।",
   "plus.checkOk": "ਹੋ ਗਿਆ! VUM Academy ਐਪ ਵਿੱਚ ਚਾਲੂ ਹੈ।",
+  "path.line": "ਲਾਈਨ",
+  "path.zone": "ਜ਼ੋਨ",
+  "path.nextStation": "ਅਗਲਾ ਸਟੇਸ਼ਨ",
+  "path.departures": "ਰਵਾਨਗੀ",
+  "path.closed": "ਅਜੇ ਬੰਦ ਹੈ",
+  "path.arriving": "ਆ ਰਹੀ ਹੈ",
+  "path.terminus": "ਲਾਈਨ ਦਾ ਅੰਤ: ਲੈਵਲ ਪੂਰਾ!",
 };

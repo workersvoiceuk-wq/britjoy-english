@@ -164,4 +164,11 @@ export const ur: Messages = {
   "plus.check": "میرے پاس VUM Academy ہے: چیک کریں",
   "plus.checkNone": "آپ کی ای میل کے ساتھ VUM Academy کی کوئی فعال سبسکرپشن نہیں ملی۔ اگر آپ نے ابھی ادائیگی کی ہے تو ایک منٹ انتظار کر کے دوبارہ چیک کریں۔",
   "plus.checkOk": "ہو گیا! VUM Academy ایپ میں فعال ہے۔",
+  "path.line": "لائن",
+  "path.zone": "زون",
+  "path.nextStation": "اگلا اسٹیشن",
+  "path.departures": "روانگی",
+  "path.closed": "ابھی بند ہے",
+  "path.arriving": "آ رہی ہے",
+  "path.terminus": "لائن کا آخر: لیول مکمل!",
 };
