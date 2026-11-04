@@ -7,8 +7,9 @@ android {
         applicationId "com.workersvoiceuk.britjoyenglish"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        // Google Play needs a higher versionCode for every upload (CI passes it in).
+        versionCode Integer.parseInt(System.getenv("BRITJOY_VERSION_CODE") ?: "1")
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
@@ -16,8 +17,22 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    // Release signing comes ONLY from environment variables (GitHub secrets in CI).
+    // Never commit a keystore or its passwords to this repository.
+    def releaseKeystore = System.getenv("BRITJOY_KEYSTORE_PATH")
+    signingConfigs {
+        release {
+            if (releaseKeystore) {
+                storeFile file(releaseKeystore)
+                storePassword System.getenv("BRITJOY_KEYSTORE_PASSWORD")
+                keyAlias System.getenv("BRITJOY_KEY_ALIAS")
+                keyPassword System.getenv("BRITJOY_KEY_PASSWORD")
+            }
+        }
+    }
     buildTypes {
         release {
+            if (releaseKeystore) signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

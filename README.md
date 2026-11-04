@@ -30,8 +30,10 @@ The same code is packaged as native apps with [Capacitor](https://capacitorjs.co
 `com.workersvoiceuk.britjoyenglish`. Don't change it after the app has been
 published in a store.
 
-`.github/workflows/native.yml` builds both apps on every push. Each finished
-run under **Actions** has these downloadable files:
+`.github/workflows/native.yml` tests and builds both apps on every push: unit
+and Playwright end-to-end tests, an Android emulator run and an iPhone
+simulator run, each with a screenshot. Each finished run under **Actions** has
+these downloadable files:
 
 - **`britjoy-english-android`**: `app-debug.apk`, which you can install
   directly on an Android phone. Allow "install unknown apps" for your browser
@@ -40,8 +42,11 @@ run under **Actions** has these downloadable files:
   A real iPhone or the App Store needs an Apple Developer account
   (99 USD/year) and code signing, which this repository doesn't contain.
 
-Publishing to Google Play needs a release keystore and a Play Console account.
-Neither is included, and no credentials should ever be committed here.
+Store releases (a signed Android AAB, and an iOS IPA that can optionally go to
+TestFlight) come from `.github/workflows/release.yml`, which you run by hand. It
+reads the signing keys from repository secrets. The step-by-step guide is
+[`docs/PUBLICAR.md`](docs/PUBLICAR.md), and the store texts, screenshots and
+graphics are in [`store/`](store/). No credentials are committed here.
 
 In the apps, the listening exercises use the native text-to-speech plugin,
 because Android's WebView has no `speechSynthesis`. The icon and splash
@@ -78,6 +83,42 @@ npx cap open ios                # Xcode (macOS only)
 - **Gamification:** 5 hearts (one lost per mistake; 0 hearts ends the lesson;
   +1 every 30 min), XP (10 per lesson + 1 per correct answer + 5 for a perfect
   lesson), a daily streak and a "lesson complete" screen.
+- **Britjoy talks:** he introduces each lesson and reads every activity aloud.
+  The voice is Spanish or English depending on the level, using the device's
+  speech synthesiser or the native plugin in the apps. He reacts to answers, and
+  in explanation cards he reads the key facts aloud. You can tap him to hear the
+  text again.
+- **Sounds:** synthesised with the Web Audio API, so there are no audio files.
+  Lessons start with the Westminster chime, and there are sounds for correct and
+  wrong answers, losing a heart and finishing a lesson. Voice and sounds can be
+  switched off in **Ajustes**.
+- **British design:** a navy, red and cream palette, bunting, unit titles styled
+  as street signs, and a London skyline.
+- **Sections** (bottom bar): Inglés, Vivir en UK, Recursos (British Council
+  English Online, Busuu, LearnEnglish and official sites) and Ajustes (privacy
+  policy and resetting progress).
+
+### Vivir en UK
+
+This is a practical course for newcomers, always open, and its lessons can be
+taken in any order. It's in `src/data/courses/vivir-uk/`, one JSON file per
+unit, registered in `index.ts`.
+
+| Unit | Lessons |
+|---|---|
+| 🚆 Transporte | Paying for a journey (contactless/Oyster, touch in/out), the Overground lines, trains outside London |
+| 🏥 Salud | Registering with a GP, booking an appointment, 111/999 and pharmacies, wellbeing (with a video) |
+| 💷 Universal Credit | Who can claim, how to claim, payments/advances/journal |
+| 🏠 Council Tax | What it is and who pays, discounts, paying and arrears |
+| 🇬🇧 Vida en UK | Life in the UK test, share code for work (with a video), NI number/eVisa/bank, home and emergencies |
+| 🇪🇸 Extra: España | NIE and TIE (with a video) |
+
+Each lesson starts with `explain` cards that Britjoy reads aloud. A card has
+key facts, English phrases you can tap to hear, a link to the official source
+and, optionally, a video (`public/videos/`). Practice follows.
+
+The facts were checked against GOV.UK on the date in each unit's `checked`
+field. **Rules and amounts change: review this content regularly.**
 
 ### Current content
 
@@ -157,6 +198,9 @@ per unit.
 ### Exercise reference
 
 ```jsonc
+{ "type": "explain", "title": "…", "body": "Text\n• bullet", "say": "what Britjoy says (optional)",
+  "phrases": [{ "en": "…", "es": "…" }], "link": { "label": "…", "url": "https://…" },
+  "video": { "src": "videos/x.mp4", "poster": "videos/x.jpg", "caption": "…" } }   // not graded
 { "type": "multipleChoice", "prompt": "…", "options": ["…"], "answer": "…" }
 { "type": "wordBank", "prompt": "Spanish sentence", "words": ["tiles", "incl.", "distractors"], "answer": "English sentence.", "alternatives": ["Other order."] }
 { "type": "listening", "text": "Spoken English", "options": ["…"], "answer": "…" }   // with options → pick
@@ -181,27 +225,19 @@ and more complex structures.
 No other code changes are needed. (The content test currently expects exactly
 A1–C2, so update its first assertion if you add a level.)
 
-## Replacing Britjoy's avatar
+## Britjoy's avatar
 
-The whole app draws Britjoy through `src/components/Britjoy.tsx`. It has one
-`expression` prop (`happy | neutral | sad | celebrating`) and a `size` prop.
-To use real artwork, put one image per expression in `src/assets/britjoy/` and
-replace the `<svg>` that the `Britjoy` component returns:
+Britjoy is the owner's avatar: the Queen's Guard holding the *Life in the UK*
+book, cut out from the owner's image into `src/assets/britjoy-avatar.webp`.
+The whole app draws him through `src/components/Britjoy.tsx`, with an
+`expression` prop (`happy | neutral | sad | celebrating`), a `size` prop
+(height in px) and a `speaking` prop. Moods and talking are shown only with
+movement; the artwork itself is never redrawn or recoloured.
 
-```tsx
-import happy from '../assets/britjoy/happy.png';
-import neutral from '../assets/britjoy/neutral.png';
-import sad from '../assets/britjoy/sad.png';
-import celebrating from '../assets/britjoy/celebrating.png';
-const IMAGES = { happy, neutral, sad, celebrating };
-
-export function Britjoy({ expression = 'happy', size = 96, className = '' }: Props) {
-  return <img src={IMAGES[expression]} width={size} alt={`Britjoy ${expression}`} className={className} />;
-}
-```
-
-If an official Britjoy illustration exists, use those files rather than
-redrawing the character.
+To change the avatar, replace `britjoy-avatar.webp` with a PNG or WebP that has
+a transparent background, update `ASPECT` in `Britjoy.tsx`, and regenerate the
+icons and splash screens from `assets/` with
+`npx @capacitor/assets generate --android --ios`.
 
 ## Editing Britjoy's dialogue
 
