@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { ListeningExercise } from '../../types';
 import type { ExerciseProps } from './types';
-import { speak, speechSupported } from '../../lib/speech';
+import { speak, speechSupported, stopSpeaking } from '../../lib/speech';
 import { ChoiceList } from './ChoiceList';
 import { TextAnswer } from './TextAnswer';
 
@@ -13,9 +13,9 @@ export function Listening({ exercise, locked, correct, copy, onResponse }: Exerc
     const t = window.setTimeout(() => speak(exercise.text), 250);
     return () => {
       window.clearTimeout(t);
-      if (supported) window.speechSynthesis.cancel();
+      stopSpeaking();
     };
-  }, [exercise.text, supported]);
+  }, [exercise.text]);
 
   return (
     <div className="flex flex-col gap-6">

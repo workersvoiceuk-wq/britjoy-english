@@ -23,6 +23,39 @@ deployment → Source: "GitHub Actions"**. Asset paths are relative
 (`base: './'` in `vite.config.ts`), so the site works at
 `https://<user>.github.io/<repo>/`.
 
+## Android and iOS apps
+
+The same code is packaged as native apps with [Capacitor](https://capacitorjs.com)
+(`android/`, `ios/`, `capacitor.config.ts`). The app ID is
+`com.workersvoiceuk.britjoyenglish`. Don't change it after the app has been
+published in a store.
+
+`.github/workflows/native.yml` builds both apps on every push. Each finished
+run under **Actions** has these downloadable files:
+
+- **`britjoy-english-android`**: `app-debug.apk`, which you can install
+  directly on an Android phone. Allow "install unknown apps" for your browser
+  or file manager.
+- **`britjoy-english-ios-simulator`**: a build for the iOS Simulator on a Mac.
+  A real iPhone or the App Store needs an Apple Developer account
+  (99 USD/year) and code signing, which this repository doesn't contain.
+
+Publishing to Google Play needs a release keystore and a Play Console account.
+Neither is included, and no credentials should ever be committed here.
+
+In the apps, the listening exercises use the native text-to-speech plugin,
+because Android's WebView has no `speechSynthesis`. The icon and splash
+screens are generated from `assets/` with
+`npx @capacitor/assets generate --android --ios`.
+
+Local native development:
+
+```sh
+npm run build && npx cap sync   # copy the web build into android/ and ios/
+npx cap open android            # Android Studio
+npx cap open ios                # Xcode (macOS only)
+```
+
 ## What's included
 
 - **Placement quiz** (10 questions, A1→C2) on first launch. You can also skip

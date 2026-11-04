@@ -15,7 +15,7 @@ export function Header({ level, onOpenLevels, now }: Props) {
   const nextHeart = msUntilNextHeart(hearts, heartsSince, now);
 
   return (
-    <header className="sticky top-0 z-20 border-b-2 border-ink-line bg-white/95 backdrop-blur">
+    <header className="sticky top-[env(safe-area-inset-top)] z-20 border-b-2 border-ink-line bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-4 py-2">
         <button
           onClick={onOpenLevels}

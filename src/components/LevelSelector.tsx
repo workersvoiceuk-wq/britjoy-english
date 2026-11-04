@@ -18,7 +18,7 @@ export function LevelSelector({ onClose }: Props) {
         role="dialog"
         aria-modal="true"
         aria-label="Elige tu nivel"
-        className="animate-slide-up max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-t-3xl bg-white p-5 pb-8 sm:rounded-3xl"
+        className="animate-slide-up max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-t-3xl bg-white p-5 pb-[calc(2rem+env(safe-area-inset-bottom))] sm:rounded-3xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4 flex items-center justify-between">

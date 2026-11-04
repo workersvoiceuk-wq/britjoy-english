@@ -1,7 +1,20 @@
-/** Thin wrapper around the Web Speech API (speechSynthesis), preferring a British voice. */
+/**
+ * Text-to-speech, preferring a British voice.
+ * - In the browser: Web Speech API (speechSynthesis).
+ * - In the Android/iOS apps: the native text-to-speech plugin, because
+ *   Android's WebView has no speechSynthesis.
+ */
+import { Capacitor } from '@capacitor/core';
+import { TextToSpeech } from '@capacitor-community/text-to-speech';
+
+const isNative = Capacitor.isNativePlatform();
+
+function webSpeechSupported(): boolean {
+  return typeof window !== 'undefined' && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+}
 
 export function speechSupported(): boolean {
-  return typeof window !== 'undefined' && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+  return isNative || webSpeechSupported();
 }
 
 function pickVoice(): SpeechSynthesisVoice | undefined {
@@ -14,7 +27,14 @@ function pickVoice(): SpeechSynthesisVoice | undefined {
 }
 
 export function speak(text: string, slow = false): void {
-  if (!speechSupported()) return;
+  if (isNative) {
+    void TextToSpeech.stop()
+      .catch(() => undefined)
+      .then(() => TextToSpeech.speak({ text, lang: 'en-GB', rate: slow ? 0.6 : 0.95 }))
+      .catch(() => undefined);
+    return;
+  }
+  if (!webSpeechSupported()) return;
   const synth = window.speechSynthesis;
   synth.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
@@ -25,7 +45,15 @@ export function speak(text: string, slow = false): void {
   synth.speak(utterance);
 }
 
+export function stopSpeaking(): void {
+  if (isNative) {
+    void TextToSpeech.stop().catch(() => undefined);
+  } else if (webSpeechSupported()) {
+    window.speechSynthesis.cancel();
+  }
+}
+
 // Some browsers load voices asynchronously; touching getVoices() warms the list.
-if (speechSupported()) {
+if (!isNative && webSpeechSupported()) {
   window.speechSynthesis.getVoices();
 }
