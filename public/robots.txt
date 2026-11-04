@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://workersvoiceuk-wq.github.io/britjoy-english/sitemap.xml

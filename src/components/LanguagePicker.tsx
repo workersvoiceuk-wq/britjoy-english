@@ -13,10 +13,10 @@ export function LanguagePicker({ onDone, compact = false }: { onDone?: () => voi
   const t = (k: Parameters<typeof translate>[1]) => translate(choice, k);
 
   const list = (
-    <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3" role="radiogroup" aria-label={t('lang.title')}>
+    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3" role="radiogroup" aria-label={t('lang.title')}>
       {LANGUAGES.map((l) => (
-        <li key={l.code}>
           <button
+            key={l.code}
             role="radio"
             aria-checked={choice === l.code}
             lang={l.code}
@@ -29,17 +29,16 @@ export function LanguagePicker({ onDone, compact = false }: { onDone?: () => voi
             className={`tile w-full text-center ${choice === l.code ? 'tile-selected' : ''}`}
           >
             <span className="block text-lg font-black">{l.native}</span>
-            <span className="block text-xs font-bold opacity-70" dir="ltr">{l.english}</span>
+            <span className="block text-xs font-bold text-ink-soft" dir="ltr">{l.english}</span>
           </button>
-        </li>
       ))}
-    </ul>
+    </div>
   );
 
   if (compact) return list;
 
   return (
-    <div className="paper mx-auto flex min-h-screen max-w-xl flex-col gap-5 px-5 py-8" dir={LANGUAGES.find((l) => l.code === choice)?.rtl ? 'rtl' : 'ltr'}>
+    <main className="paper mx-auto flex min-h-screen max-w-xl flex-col gap-5 px-5 py-8" dir={LANGUAGES.find((l) => l.code === choice)?.rtl ? 'rtl' : 'ltr'}>
       <div className="flex items-center gap-3">
         <Britjoy size={110} />
         <div>
@@ -62,6 +61,6 @@ export function LanguagePicker({ onDone, compact = false }: { onDone?: () => voi
       >
         {t('lang.continue')}
       </Button>
-    </div>
+    </main>
   );
 }

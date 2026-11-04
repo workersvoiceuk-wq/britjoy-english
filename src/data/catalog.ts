@@ -42,7 +42,7 @@ export const CATALOG: CatalogCourse[] = [
     category: 'ingles',
     level: 'A1 → C2',
     emoji: '🎓',
-    color: '#58CC02',
+    color: '#398401',
     badges: ['Test de nivel', 'Audio británico'],
     learn: [
       'Saludar, presentarte y manejar números (A1)',

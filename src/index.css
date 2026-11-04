@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --accent: #58cc02;
-  --accent-dark: #46a302;
+  --accent: #398401;
+  --accent-dark: #2c6701;
   --accent-light: #d7ffb8;
   color-scheme: light;
 }
@@ -55,7 +55,8 @@ body::before {
     @apply press rounded-2xl border-2 border-b-4 border-ink-line bg-white px-4 py-3 text-left text-lg font-bold text-ink;
   }
   .tile-selected {
-    @apply border-accent bg-accent-light text-accent-dark;
+    /* Accent border and fill show the choice; navy text keeps WCAG AA contrast on every level colour. */
+    @apply border-accent bg-accent-light text-navy;
   }
   .tile-correct {
     @apply border-brand bg-brand-light text-brand-dark;

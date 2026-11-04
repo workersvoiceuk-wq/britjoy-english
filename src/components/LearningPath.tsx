@@ -58,7 +58,7 @@ export function LearningPath({ level, completed, onStart, notice }: Props) {
           </button>
         </aside>
 
-        <main className="flex-1">
+        <div className="flex-1">
           {level.units.length === 0 && (
             <p className="rounded-2xl bg-white p-5 text-center font-bold text-ink-soft">{t('path.soon')}</p>
           )}
@@ -134,7 +134,7 @@ export function LearningPath({ level, completed, onStart, notice }: Props) {
               </ol>
             </section>
           ))}
-        </main>
+        </div>
       </div>
       <LondonSkyline className="pointer-events-none absolute inset-x-0 bottom-16 h-40 w-full" />
     </div>

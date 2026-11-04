@@ -5,6 +5,7 @@
  * moods and "talking" are shown only with movement (CSS transforms).
  */
 import lionUrl from '../assets/britjoy-avatar.webp';
+import lionSmallUrl from '../assets/britjoy-avatar-320.webp';
 
 /** Width / height of the avatar artwork. */
 const ASPECT = 655 / 572;
@@ -33,6 +34,10 @@ export function Britjoy({ expression = 'happy', size = 120, speaking = false, cl
     <span className={`relative inline-block shrink-0 ${className}`} style={{ height: size, width: size * ASPECT }}>
       <img
         src={lionUrl}
+        srcSet={`${lionSmallUrl} 320w, ${lionUrl} 655w`}
+        sizes={`${Math.round(size * ASPECT)}px`}
+        width={Math.round(size * ASPECT)}
+        height={size}
         alt={`Britjoy ${label}`}
         draggable={false}
         className={`britjoy-fade h-full w-full select-none object-contain ${speaking ? 'britjoy-talk' : MOTION[expression]}`}

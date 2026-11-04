@@ -81,7 +81,7 @@ function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onC
         <div className="relative flex items-center gap-4 px-5 py-6 text-white" style={{ background: course.color }}>
           <span className="text-6xl" aria-hidden>{course.emoji}</span>
           <div className="min-w-0 flex-1">
-            <p className="text-xs font-black uppercase tracking-wider opacity-90">{course.level} · {t('academy.free')}</p>
+            <p className="text-xs font-black uppercase tracking-wider">{course.level} · {t('academy.free')}</p>
             <h2 className="text-2xl font-black leading-tight">{course.title}</h2>
           </div>
           <button onClick={onClose} className="absolute right-3 top-3 rounded-full bg-black/20 px-2.5 py-1 text-lg" aria-label="Cerrar">✕</button>
@@ -174,8 +174,9 @@ function ProgressPanel() {
         <div className="mt-3 flex items-center gap-4">
           <div
             className="relative h-20 w-20 shrink-0 rounded-full"
-            style={{ background: `conic-gradient(#58CC02 ${pct * 360}deg, #E5E5E5 0deg)` }}
+            style={{ background: `conic-gradient(#398401 ${pct * 360}deg, #E5E5E5 0deg)` }}
             role="progressbar"
+            aria-label={t('academy.dailyGoal')}
             aria-valuemin={0}
             aria-valuemax={dailyGoal}
             aria-valuenow={todayXp}
@@ -186,7 +187,7 @@ function ProgressPanel() {
           </div>
           <p className="font-bold text-ink-soft">
             {pct >= 1 ? t('academy.dailyGoalDone') : `${todayXp} / ${dailyGoal} XP`}
-            <span className="mt-1 block text-[#FF9600]">🔥 {visibleStreak(streak, lastActiveDate, today)} {t('header.streak')}</span>
+            <span className="mt-1 block text-[#AA6400]">🔥 {visibleStreak(streak, lastActiveDate, today)} {t('header.streak')}</span>
           </p>
         </div>
       </div>
@@ -336,11 +337,11 @@ export function AcademyScreen() {
           >
             <span className="text-3xl" aria-hidden>🤖</span>
             <span>
-              <span className="block text-xs uppercase opacity-90">{t('academy.androidKicker')}</span>
+              <span className="block text-xs uppercase">{t('academy.androidKicker')}</span>
               {t('academy.android')}
             </span>
           </a>
-          <span className="flex items-center gap-3 rounded-2xl border-2 border-dashed border-navy/20 px-4 py-3 font-black text-navy/60">
+          <span className="flex items-center gap-3 rounded-2xl border-2 border-dashed border-navy/20 px-4 py-3 font-black text-ink-soft">
             <span className="text-3xl" aria-hidden>🍎</span>
             <span>
               <span className="block text-xs uppercase">iPhone</span>

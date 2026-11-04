@@ -9,11 +9,14 @@ interface Props {
   /** English level shown in the level button; omit to show `title` instead. */
   level?: LevelDefinition;
   title?: string;
+  /** Render the title as the page's <h1> (off when the screen has its own). */
+  titleIsHeading?: boolean;
   onOpenLevels?: () => void;
   now: number;
 }
 
-export function Header({ level, title, onOpenLevels, now }: Props) {
+export function Header({ level, title, onOpenLevels, now, titleIsHeading = true }: Props) {
+  const Title = titleIsHeading ? 'h1' : 'span';
   const { xp, hearts, heartsSince, streak, lastActiveDate } = useProgressStore();
   const plus = usePlus();
   const shownStreak = visibleStreak(streak, lastActiveDate, toDateKey(new Date(now)));
@@ -25,6 +28,8 @@ export function Header({ level, title, onOpenLevels, now }: Props) {
       <div className="bg-navy text-white">
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-4 py-2.5">
           {level && onOpenLevels ? (
+            <>
+            {title && <h1 className="sr-only">{title}</h1>}
             <button
               onClick={onOpenLevels}
               className="press flex items-center gap-2 rounded-2xl border-2 border-b-4 border-accent-dark bg-accent px-3 py-1.5 font-black text-white"
@@ -33,8 +38,9 @@ export function Header({ level, title, onOpenLevels, now }: Props) {
               <span className="text-lg">{level.short ?? level.id}</span>
               <span className="text-xs">▼</span>
             </button>
+            </>
           ) : (
-            <span className="text-lg font-black tracking-wide">{title}</span>
+            <Title className="text-lg font-black tracking-wide">{title}</Title>
           )}
           <div className="flex items-center gap-3 text-base font-extrabold sm:gap-5">
             <span className="flex items-center gap-1 text-[#FFB547]" title="Racha de días seguidos">

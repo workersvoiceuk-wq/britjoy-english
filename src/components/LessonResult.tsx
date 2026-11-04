@@ -32,7 +32,7 @@ export function LessonResult({ outcome, lessonTitle, onContinue }: Props) {
   const accuracy = Math.round((outcome.correct / Math.max(1, outcome.correct + outcome.mistakes)) * 100);
 
   return (
-    <div className="paper mx-auto flex min-h-screen max-w-md flex-col items-center justify-center gap-6 px-5 py-10 text-center">
+    <main className="paper mx-auto flex min-h-screen max-w-md flex-col items-center justify-center gap-6 px-5 py-10 text-center">
       <Britjoy expression={outcome.passed ? 'celebrating' : 'sad'} size={230} speaking={speaking} />
       <div>
         <h1 className={`text-3xl font-black ${outcome.passed ? 'text-[#FFC800]' : 'text-bad'}`}>
@@ -78,6 +78,6 @@ export function LessonResult({ outcome, lessonTitle, onContinue }: Props) {
       <Button block onClick={onContinue} variant={outcome.passed ? 'primary' : 'outline'}>
         {outcome.passed ? t('result.continue') : t('result.back')}
       </Button>
-    </div>
+    </main>
   );
 }

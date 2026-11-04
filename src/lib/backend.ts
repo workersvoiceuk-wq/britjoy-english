@@ -3,7 +3,7 @@
  * The app only ships the project's public URL and public (anon/publishable) key.
  * Every secret (Claude, Stripe) lives in Supabase, never in the app.
  */
-import { createClient, type Session, type SupabaseClient } from '@supabase/supabase-js';
+import type { Session, SupabaseClient } from '@supabase/supabase-js';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { Capacitor } from '@capacitor/core';
@@ -13,9 +13,19 @@ const KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
 
 export const backendConfigured = Boolean(URL_ && KEY);
 
-export const supabase: SupabaseClient | null = backendConfigured
-  ? createClient(URL_!, KEY!, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false } })
-  : null;
+let client: Promise<SupabaseClient | null> | null = null;
+
+/**
+ * The Supabase client, loaded on first use: learners who never sign in don't
+ * download it, which keeps the first page light.
+ */
+export function getSupabase(): Promise<SupabaseClient | null> {
+  if (!backendConfigured) return Promise.resolve(null);
+  client ??= import('@supabase/supabase-js').then(({ createClient }) =>
+    createClient(URL_!, KEY!, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false } }),
+  );
+  return client;
+}
 
 export const functionUrl = (name: string) => (URL_ ? `${URL_}/functions/v1/${name}` : '');
 
@@ -57,12 +67,14 @@ export function isPlusActive(plusUntil: string | null, now = Date.now()): boolea
 export const hasPlus = () => isPlusActive(useAccount.getState().plusUntil);
 
 export async function currentSession(): Promise<Session | null> {
+  const supabase = await getSupabase();
   if (!supabase) return null;
   return (await supabase.auth.getSession()).data.session;
 }
 
 /** Re-reads the learner's Plus status and credits from the server. */
 export async function refreshProfile(): Promise<void> {
+  const supabase = await getSupabase();
   const session = await currentSession();
   if (!supabase || !session) {
     useAccount.getState().clear();
@@ -78,6 +90,7 @@ export async function refreshProfile(): Promise<void> {
 
 /** Step 1 of signing in: Supabase emails a 6-digit code (no password to remember). */
 export async function sendLoginCode(email: string): Promise<void> {
+  const supabase = await getSupabase();
   if (!supabase) throw new Error('not_configured');
   const { error } = await supabase.auth.signInWithOtp({ email: email.trim(), options: { shouldCreateUser: true } });
   if (error) throw error;
@@ -85,6 +98,7 @@ export async function sendLoginCode(email: string): Promise<void> {
 
 /** Step 2: the learner types the code from the email. */
 export async function verifyLoginCode(email: string, code: string): Promise<void> {
+  const supabase = await getSupabase();
   if (!supabase) throw new Error('not_configured');
   const { error } = await supabase.auth.verifyOtp({ email: email.trim(), token: code.trim(), type: 'email' });
   if (error) throw error;
@@ -92,7 +106,7 @@ export async function verifyLoginCode(email: string, code: string): Promise<void
 }
 
 export async function signOut(): Promise<void> {
-  await supabase?.auth.signOut();
+  await (await getSupabase())?.auth.signOut();
   useAccount.getState().clear();
 }
 

@@ -32,7 +32,7 @@ export const TOURIST_LEVEL: LevelDefinition = {
   short: '🧳 Turistas',
   name: 'Inglés para turistas',
   description: 'Tus primeros días en Inglaterra: del pasaporte al viaje de vuelta, misión a misión (A1–B1).',
-  accent: '#00857C',
+  accent: '#00837A',
   accentDark: '#006158',
   accentLight: '#D7F2EF',
   instructionLanguage: 'es',

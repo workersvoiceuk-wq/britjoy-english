@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from 'react';
+import { Suspense, lazy, useEffect, useState, type CSSProperties } from 'react';
 import { ALL_LEVELS, LEVELS, findLesson, getLevel } from './data/courses/en-es';
 import { LIFE_LEVEL } from './data/courses/vivir-uk';
 import { isLevelUnlocked } from './logic/unlock';
@@ -9,19 +9,20 @@ import dialogue from './data/britjoy-dialogue.json';
 import type { LevelDefinition } from './types';
 import { Header } from './components/Header';
 import { LearningPath } from './components/LearningPath';
-import { LevelSelector } from './components/LevelSelector';
-import { PlacementQuiz } from './components/PlacementQuiz';
-import { LessonScreen, type LessonOutcome } from './components/LessonScreen';
-import { LessonResult } from './components/LessonResult';
+const LevelSelector = lazy(() => import('./components/LevelSelector').then((m) => ({ default: m.LevelSelector })));
+const PlacementQuiz = lazy(() => import('./components/PlacementQuiz').then((m) => ({ default: m.PlacementQuiz })));
+import type { LessonOutcome } from './components/LessonScreen';
+const LessonScreen = lazy(() => import('./components/LessonScreen').then((m) => ({ default: m.LessonScreen })));
+const LessonResult = lazy(() => import('./components/LessonResult').then((m) => ({ default: m.LessonResult })));
 import { BottomNav } from './components/BottomNav';
-import { ResourcesScreen } from './components/ResourcesScreen';
-import { SettingsScreen } from './components/SettingsScreen';
-import { AiScreen } from './components/AiScreen';
+const ResourcesScreen = lazy(() => import('./components/ResourcesScreen').then((m) => ({ default: m.ResourcesScreen })));
+const PlusScreen = lazy(() => import('./components/PlusScreen').then((m) => ({ default: m.PlusScreen })));
+const SettingsScreen = lazy(() => import('./components/SettingsScreen').then((m) => ({ default: m.SettingsScreen })));
+const AiScreen = lazy(() => import('./components/AiScreen').then((m) => ({ default: m.AiScreen })));
 import { AcademyScreen } from './components/AcademyScreen';
 import { LanguagePicker } from './components/LanguagePicker';
 import { isRtl, translate, type UiLang } from './i18n';
-import { hasPlus, refreshProfile, supabase } from './lib/backend';
-import { PlusScreen } from './components/PlusScreen';
+import { backendConfigured, getSupabase, hasPlus, refreshProfile, useAccount } from './lib/backend';
 
 type Screen =
   | { name: 'home' }
@@ -36,7 +37,7 @@ function accentStyle(level: LevelDefinition): CSSProperties {
   } as CSSProperties;
 }
 
-export default function App() {
+function AppScreens() {
   const store = useProgressStore();
   const [screen, setScreen] = useState<Screen>({ name: 'home' });
   const [showLevels, setShowLevels] = useState(false);
@@ -73,9 +74,7 @@ export default function App() {
   // returns with ?plus=ok|cancel, which opens the Plus screen.
   const [checkout, setCheckout] = useState<'ok' | 'cancel' | null>(null);
   useEffect(() => {
-    if (!supabase) return;
-    void refreshProfile();
-    const { data } = supabase.auth.onAuthStateChange(() => void refreshProfile());
+    if (!backendConfigured) return;
     const params = new URLSearchParams(window.location.search);
     const result = params.get('plus');
     if (result === 'ok' || result === 'cancel') {
@@ -85,7 +84,16 @@ export default function App() {
       // The webhook may take a few seconds to grant the purchase.
       if (result === 'ok') [3000, 8000, 20000].forEach((ms) => window.setTimeout(() => void refreshProfile(), ms));
     }
-    return () => data.subscription.unsubscribe();
+    // Only signed-in learners load the account code at start-up.
+    if (!useAccount.getState().email && !result) return;
+    let unsubscribe = () => {};
+    void getSupabase().then((supabase) => {
+      if (!supabase) return;
+      void refreshProfile();
+      const { data } = supabase.auth.onAuthStateChange(() => void refreshProfile());
+      unsubscribe = () => data.subscription.unsubscribe();
+    });
+    return () => unsubscribe();
   }, []);
 
   if (!store.uiLang) return <LanguagePicker />;
@@ -93,9 +101,9 @@ export default function App() {
 
   if (!store.placementDone) {
     return (
-      <div style={accentStyle(LEVELS[0])}>
+      <main style={accentStyle(LEVELS[0])}>
         <PlacementQuiz onFinish={(lvl) => store.completePlacement(lvl)} />
-      </div>
+      </main>
     );
   }
 
@@ -141,9 +149,11 @@ export default function App() {
       <Header
         now={now}
         level={tab === 'english' ? englishLevel : undefined}
+        titleIsHeading={tab !== 'home'}
         onOpenLevels={() => setShowLevels(true)}
         title={translate(uiLang, ({ home: 'title.home', english: 'nav.learn', life: 'nav.life', ai: 'nav.ai', resources: 'title.resources', settings: 'nav.more', plus: 'plus.title' } as const)[tab])}
       />
+      <main id="contenido">
       {(tab === 'english' || tab === 'life') && (
         <LearningPath level={pathLevel} completed={completed[pathLevel.id] ?? {}} onStart={startLesson} notice={notice} />
       )}
@@ -152,8 +162,27 @@ export default function App() {
       {tab === 'resources' && <ResourcesScreen />}
       {tab === 'settings' && <SettingsScreen />}
       {tab === 'plus' && <PlusScreen checkout={checkout} />}
+      </main>
       <BottomNav />
       {showLevels && <LevelSelector onClose={() => setShowLevels(false)} />}
     </div>
+  );
+}
+
+/** Screens load on demand (code splitting); this shows while a screen's code arrives. */
+function Loading() {
+  return (
+    <div className="paper flex min-h-screen items-center justify-center" role="status" aria-live="polite">
+      <span className="h-10 w-10 animate-spin rounded-full border-4 border-navy/20 border-t-royal" aria-hidden />
+      <span className="sr-only">Cargando…</span>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <AppScreens />
+    </Suspense>
   );
 }

@@ -159,7 +159,8 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
 
   return (
     <div className="paper flex min-h-screen flex-col">
-      <div className="bg-navy">
+      <header className="bg-navy">
+        <h1 className="sr-only">{lesson.title}</h1>
         <div className="mx-auto flex w-full max-w-2xl items-center gap-3 px-4 py-3">
           <button onClick={exit} className="text-2xl font-black text-white/80" aria-label="Salir de la lección">
             ✕
@@ -167,6 +168,7 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
           <div
             className="h-4 flex-1 overflow-hidden rounded-full bg-white/20"
             role="progressbar"
+            aria-label={lesson.title}
             aria-valuemin={0}
             aria-valuemax={total}
             aria-valuenow={index + (result ? 1 : 0)}
@@ -178,7 +180,7 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
             {plus ? '∞' : hearts}
           </span>
         </div>
-      </div>
+      </header>
       <div className="bunting" aria-hidden />
 
       <main className="mx-auto w-full max-w-2xl flex-1 px-4 pb-52 pt-4">
