@@ -55,7 +55,7 @@ necesitas la cuenta de desarrollador (paso 3) y TestFlight.
    La firma es automática (gestionada por Apple con la clave de API).
 6. En App Store Connect → **TestFlight**, instala la build en tu iPhone con la app TestFlight y pruébala.
 7. Rellena la ficha (textos de `store/ficha-tienda.md`, capturas de `store/screenshots/ios/`,
-   privacidad: «Data Not Collected») y pulsa **Enviar a revisión**.
+   privacidad: las respuestas de «App Store · Privacidad» de la ficha) y pulsa **Enviar a revisión**.
 
 ## 4. Antes de enviar a revisión
 

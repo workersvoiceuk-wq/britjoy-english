@@ -1,4 +1,5 @@
 import { useProgressStore } from '../store/useProgressStore';
+import { usePlus } from '../lib/backend';
 import { MAX_HEARTS, msUntilNextHeart, toDateKey, visibleStreak } from '../logic/gamification';
 import { formatDuration } from '../lib/util';
 import type { LevelDefinition } from '../types';
@@ -14,6 +15,7 @@ interface Props {
 
 export function Header({ level, title, onOpenLevels, now }: Props) {
   const { xp, hearts, heartsSince, streak, lastActiveDate } = useProgressStore();
+  const plus = usePlus();
   const shownStreak = visibleStreak(streak, lastActiveDate, toDateKey(new Date(now)));
   const nextHeart = msUntilNextHeart(hearts, heartsSince, now);
   const t = useT();
@@ -49,7 +51,7 @@ export function Header({ level, title, onOpenLevels, now }: Props) {
               title={hearts < MAX_HEARTS ? `Próxima vida en ${formatDuration(nextHeart)}` : 'Vidas completas'}
             >
               <span aria-hidden>❤️</span>
-              <span>{hearts}</span>
+              <span>{plus ? '∞' : hearts}</span>
               <span className="sr-only">{t('header.hearts')}</span>
             </span>
           </div>

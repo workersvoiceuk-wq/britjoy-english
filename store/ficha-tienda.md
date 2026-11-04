@@ -63,18 +63,25 @@ Voz Unida Mundo Academy · te enseña — Tu voz cuenta.
 
 ## Respuestas para los formularios de las tiendas
 
-**Google Play · Seguridad de los datos (Data safety):**
-- Sin Modo IA activado: la app no recoge ni comparte datos.
-- **Con Modo IA activado** (cuando se configure el servidor): declara «Mensajes de la app» / *Other in-app messages* como **recogidos y compartidos** para «Funcionalidad de la app», **procesados de forma efímera** (no se almacenan en nuestro servidor), **cifrados en tránsito**, **opcionales** (solo si el usuario usa el Modo IA). Compartidos con el proveedor de IA (Anthropic).
-- No hay cuentas, analítica ni anuncios. El progreso se guarda en el dispositivo.
+**Google Play · Seguridad de los datos (Data safety)** (con el servidor activado):
+- **Email** (*Personal info → Email address*): **recogido**, para *Account management* y *App functionality*; **opcional** (solo si el usuario crea cuenta); no se comparte; cifrado en tránsito; el usuario **puede pedir que se borre** (botón «Borrar mi cuenta» en la app y en la web).
+- **Historial de compras** (*Financial info → Purchase history*): recogido, para *App functionality*, opcional. Los pagos son en la web (Stripe); la app no vende nada.
+- **Mensajes de la app** (*Other in-app messages*): **recogidos y compartidos** con el proveedor de IA (Anthropic) para *App functionality*, **procesados de forma efímera** (el servidor no guarda el contenido, solo el número de mensajes), opcionales.
+- **Audio** (micrófono en los ejercicios para hablar): en la app Android el reconocimiento de voz no está disponible y el ejercicio se salta, así que la app **no pide el micrófono**. En la web lo gestiona el navegador.
+- Sin analítica ni anuncios de terceros. El progreso se guarda en el dispositivo.
+- **Borrado de cuenta (obligatorio en Play):** URL para el formulario: `https://workersvoiceuk-wq.github.io/britjoy-english/privacidad.html` (sección «Cuenta») + el botón en la app.
 
 **App Store · Privacidad de la app:**
-- Sin Modo IA: «Data Not Collected».
-- Con Modo IA: *Other User Content* → usado para *App Functionality*, **no vinculado** a la identidad, **sin seguimiento**. La app avisa de que los mensajes se envían a un proveedor de IA externo antes de usarlo, como pide Apple para la IA de terceros.
+- *Contact Info → Email Address*: **vinculado** a la identidad, para *App Functionality*; sin seguimiento.
+- *Purchases → Purchase History*: vinculado, *App Functionality*.
+- *User Content → Other User Content* (mensajes al Modo IA): no vinculado, *App Functionality*. La app avisa de que los mensajes van a un proveedor de IA externo, como pide Apple para la IA de terceros.
+- Apple exige **borrar la cuenta desde la app** (guideline 5.1.1(v)): ya está en «Más → Britjoy Plus y tu cuenta».
 
-**Clasificación de contenido:** app educativa, sin violencia, sin contenido sexual, sin apuestas, sin compras y sin interacción entre usuarios. La lección de bienestar menciona dónde pedir apoyo emocional (Samaritans): es información de ayuda, no contenido sensible.
+**Clasificación de contenido:** app educativa, sin violencia, sin contenido sexual, sin apuestas y sin interacción entre usuarios. La lección de bienestar menciona dónde pedir apoyo emocional (Samaritans): es información de ayuda, no contenido sensible.
 
-**Anuncios:** No contiene anuncios.
+**Compras en la app:** las apps de Android e iOS **no venden nada** y no enlazan a la página de pago (las tiendas lo prohíben para contenido digital sin su sistema de cobro). No muestran precios ni dicen dónde comprar (Apple 3.1.1 / 3.1.3(b)): solo «si ya tienes Plus o créditos, inicia sesión». Quien lo contrató en la web, inicia sesión y le funciona. Si más adelante quieres vender dentro de las apps, hay que añadir Google Play Billing y App Store In-App Purchase (ver `docs/MONETIZACION.md`).
+
+**Anuncios:** en las apps solo aparece la tarjeta «Invita a un amigo» (compartir la app); no hay redes publicitarias ni promociones de terceros, así que la respuesta es **No**. Las tarjetas de Britjoy Plus y de Voz Unida Mundo solo salen en la web. Si algún día se añade AdMob, la respuesta pasa a **Sí** y hace falta el aviso de consentimiento (UMP).
 
 **IA generativa:** el Modo IA genera respuestas con IA (Claude, de Anthropic). Google Play pide declararlo y ofrecer una forma de reportar contenido inapropiado: el usuario puede escribir al soporte de Voz Unida Mundo.
 

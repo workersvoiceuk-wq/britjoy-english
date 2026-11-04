@@ -7,6 +7,7 @@ import {
   regenerateHearts,
   toDateKey,
 } from '../logic/gamification';
+import { hasPlus } from '../lib/backend';
 
 export interface LessonRecord {
   stars: 1 | 2 | 3;
@@ -60,7 +61,7 @@ export interface ProgressState {
   setLearnerName: (name: string) => void;
 }
 
-export type AppTab = 'home' | 'english' | 'life' | 'ai' | 'resources' | 'settings';
+export type AppTab = 'home' | 'english' | 'life' | 'ai' | 'resources' | 'settings' | 'plus';
 
 export const STORAGE_KEY = 'britjoy-english-progress-v1';
 
@@ -109,6 +110,7 @@ export const useProgressStore = create<ProgressState>()(
       },
 
       loseHeart: (now = Date.now()) => {
+        if (hasPlus()) return; // Britjoy Plus: unlimited hearts
         get().syncHearts(now);
         const { hearts, heartsSince } = get();
         if (hearts <= 0) return;

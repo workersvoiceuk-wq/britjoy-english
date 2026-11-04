@@ -135,6 +135,15 @@ Each lesson has 8 exercises. A1 is the most complete level. The higher levels
 are starter samples: **C1/C2 content especially should be reviewed by a
 qualified teacher** before real use.
 
+## Accounts, Britjoy Plus and AI credits
+
+Optional accounts (email + 6-digit code) unlock AI mode and **Britjoy Plus** (unlimited hearts, unlimited AI
+mode, no recommendation cards). Free learners get a few AI messages a day and can buy AI credit packs. Payments
+run on the web through Stripe; the store apps sell nothing and only let existing members sign in. All course
+content stays free. The server (Supabase: database migration and Edge Functions) is in `supabase/`; set-up steps
+are in `supabase/README.md` and the business model in `docs/MONETIZACION.md`. No secret keys are in the
+repository or the app.
+
 ## Project layout
 
 ```

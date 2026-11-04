@@ -1,0 +1,16 @@
+# Supabase project settings used by `supabase functions deploy`.
+# Stripe calls the webhook without a Supabase token; it checks Stripe's signature instead.
+[functions.billing-webhook]
+verify_jwt = false
+
+[functions.britjoy-tutor]
+verify_jwt = true
+
+[functions.billing-checkout]
+verify_jwt = true
+
+[functions.billing-portal]
+verify_jwt = true
+
+[functions.account-delete]
+verify_jwt = true

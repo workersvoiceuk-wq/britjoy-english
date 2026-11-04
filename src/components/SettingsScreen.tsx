@@ -29,6 +29,16 @@ export function SettingsScreen() {
   return (
     <div className="mx-auto max-w-3xl space-y-3 px-4 pb-32 pt-5">
       <button
+        onClick={() => setTab('plus')}
+        className="press flex w-full items-center justify-between rounded-2xl border-2 border-b-4 border-gold bg-gold-light p-4 text-left"
+      >
+        <span>
+          <span className="block text-lg font-extrabold text-navy">👑 {t('settings.plus')}</span>
+          <span className="block text-sm font-semibold text-ink-soft">{t('settings.plusHint')}</span>
+        </span>
+        <span aria-hidden className="text-xl text-navy">›</span>
+      </button>
+      <button
         onClick={() => setTab('resources')}
         className="press flex w-full items-center justify-between rounded-2xl border-2 border-b-4 border-navy/10 bg-white p-4 text-left"
       >
@@ -86,8 +96,9 @@ export function SettingsScreen() {
       <div className="rounded-2xl border-2 border-navy/10 bg-white p-4 text-[15px] font-semibold text-ink-soft">
         <p className="font-extrabold text-navy">{t('settings.about')}</p>
         <p className="mt-1">
-          Britjoy English · versión {APP_VERSION}. Tu progreso se guarda solo en este dispositivo; no hay cuentas. Solo si
-          usas el Modo IA, tus mensajes se envían a nuestro servidor y al proveedor de IA para generar la respuesta.
+          Britjoy English · versión {APP_VERSION}. Tu progreso se guarda solo en este dispositivo. La cuenta (solo tu email) es
+          opcional y sirve para el Modo IA y Britjoy Plus. Si usas el Modo IA, tus mensajes se envían a nuestro servidor
+          y al proveedor de IA para generar la respuesta; los pagos los procesa Stripe.
         </p>
         <p className="mt-2">
           La sección «Vivir en UK» es información general, revisada con fuentes oficiales (GOV.UK, NHS, TfL). No es

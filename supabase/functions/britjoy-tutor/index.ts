@@ -1,22 +1,20 @@
 // Britjoy AI tutor: Supabase Edge Function that proxies the app's "Modo IA" chat
 // to the Claude Messages API. The API key lives ONLY here, as the Supabase secret
 // ANTHROPIC_API_KEY; it is never shipped in the web or mobile app.
+//
+// Learners must be signed in. Each message is paid for before Claude is called
+// (spend_ai_message): Britjoy Plus is unlimited, everyone gets FREE_AI_DAILY free
+// messages a day, then one credit per message. If Claude cannot answer, the
+// message is refunded.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import Anthropic from "npm:@anthropic-ai/sdk";
+import { admin, cors, currentUser, json, preflight } from "../_shared/http.ts";
+import { FREE_AI_DAILY } from "../_shared/products.ts";
 
 const MODEL = "claude-opus-5-5";
 const MAX_TURNS = 20; // conversation history sent per request
 const MAX_CHARS = 1200; // per user message
-const PER_MINUTE = 8; // requests per client per minute (best-effort, per instance)
-
-// Origins allowed to call the tutor: the web app and the Capacitor apps.
-const ALLOWED_ORIGINS = new Set([
-  "https://workersvoiceuk-wq.github.io",
-  "capacitor://localhost", // iOS app
-  "https://localhost", // Android app
-  "http://localhost:5173", // local development
-  "http://localhost:4173",
-]);
+const PER_MINUTE = 8; // requests per learner per minute (best-effort, per instance)
 
 // Static system prompt (kept byte-identical so it can be served from the prompt cache).
 const SYSTEM = `You are Britjoy, a friendly British lion in a Queen's Guard uniform who tutors Spanish speakers in English and helps them with everyday life in the United Kingdom, inside the "Britjoy English" app by Voz Unida Mundo Academy.
@@ -36,20 +34,6 @@ Safety and accuracy:
 const anthropic = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
 const hits = new Map<string, number[]>();
 
-function cors(origin: string | null): Record<string, string> {
-  const allowed = origin && ALLOWED_ORIGINS.has(origin) ? origin : "https://workersvoiceuk-wq.github.io";
-  return {
-    "Access-Control-Allow-Origin": allowed,
-    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    Vary: "Origin",
-  };
-}
-
-function json(body: unknown, status: number, headers: Record<string, string>): Response {
-  return new Response(JSON.stringify(body), { status, headers: { ...headers, "Content-Type": "application/json" } });
-}
-
 function rateLimited(key: string): boolean {
   const now = Date.now();
   const recent = (hits.get(key) ?? []).filter((t) => now - t < 60_000);
@@ -59,16 +43,16 @@ function rateLimited(key: string): boolean {
 }
 
 type Turn = { role: "user" | "assistant"; content: string };
+type Spend = { paid_with: "plus" | "free" | "credit" | "none"; free_left: number; credits: number };
 
 Deno.serve(async (req: Request) => {
-  const origin = req.headers.get("origin");
-  const headers = cors(origin);
-  if (req.method === "OPTIONS") return new Response("ok", { headers });
-  if (req.method !== "POST") return json({ error: "method_not_allowed" }, 405, headers);
-  if (origin && !ALLOWED_ORIGINS.has(origin)) return json({ error: "origin_not_allowed" }, 403, headers);
+  const headers = cors(req.headers.get("origin"));
+  const early = preflight(req, headers);
+  if (early) return early;
 
-  const client = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  if (rateLimited(client)) return json({ error: "rate_limited" }, 429, headers);
+  const user = await currentUser(req);
+  if (!user) return json({ error: "sign_in" }, 401, headers);
+  if (rateLimited(user.id)) return json({ error: "rate_limited" }, 429, headers);
 
   let body: { messages?: Turn[]; level?: string };
   try {
@@ -86,6 +70,15 @@ Deno.serve(async (req: Request) => {
   }
   const level = /^(A1|A2|B1|B2|C1|C2)$/.test(body.level ?? "") ? body.level : "A1";
 
+  const db = admin();
+  const { data, error: spendError } = await db.rpc("spend_ai_message", { p_user: user.id, p_free_daily: FREE_AI_DAILY });
+  const spend = (Array.isArray(data) ? data[0] : data) as Spend | null;
+  if (spendError || !spend) return json({ error: "unavailable" }, 503, headers);
+  const usage = { paidWith: spend.paid_with, freeLeft: spend.free_left, credits: spend.credits };
+  if (spend.paid_with === "none") return json({ error: "no_credits", usage }, 402, headers);
+
+  const refund = () => db.rpc("refund_ai_message", { p_user: user.id, p_paid_with: spend.paid_with });
+
   try {
     const response = await anthropic.beta.messages.create({
       model: MODEL,
@@ -101,15 +94,17 @@ Deno.serve(async (req: Request) => {
     });
 
     if (response.stop_reason === "refusal") {
-      return json({ reply: "Lo siento, no puedo ayudarte con eso. ¿Practicamos inglés o vemos algo de la vida en UK?" }, 200, headers);
+      await refund();
+      return json({ reply: "Lo siento, no puedo ayudarte con eso. ¿Practicamos inglés o vemos algo de la vida en UK?", usage }, 200, headers);
     }
     const reply = response.content
       .filter((b): b is Anthropic.Beta.BetaTextBlock => b.type === "text")
       .map((b) => b.text)
       .join("\n")
       .trim();
-    return json({ reply: reply || "¿Me lo puedes preguntar de otra forma?" }, 200, headers);
+    return json({ reply: reply || "¿Me lo puedes preguntar de otra forma?", usage }, 200, headers);
   } catch (error) {
+    await refund();
     if (error instanceof Anthropic.RateLimitError) return json({ error: "busy" }, 429, headers);
     if (error instanceof Anthropic.AuthenticationError) return json({ error: "not_configured" }, 503, headers);
     if (error instanceof Anthropic.APIError) return json({ error: "upstream", status: error.status }, 502, headers);

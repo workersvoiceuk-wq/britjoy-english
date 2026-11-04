@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { aiConfigured, askBritjoy, type ChatTurn } from '../lib/ai';
+import { AiError, aiConfigured, askBritjoy, type ChatTurn } from '../lib/ai';
+import { useAccount, usePlus } from '../lib/backend';
+import { AccountBox } from './PlusScreen';
 import { useProgressStore } from '../store/useProgressStore';
 import { narrate, useVoice } from '../lib/narrator';
 import { sfx } from '../lib/sound';
@@ -27,6 +29,12 @@ export function AiScreen() {
   const [draft, setDraft] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [errorCode, setErrorCode] = useState<string | null>(null);
+  const email = useAccount((s) => s.email);
+  const credits = useAccount((s) => s.credits);
+  const freeLeft = useAccount((s) => s.freeLeft);
+  const plus = usePlus();
+  const setTab = useProgressStore((s) => s.setTab);
   const endRef = useRef<HTMLDivElement>(null);
   const ready = aiConfigured();
   const t = useT();
@@ -41,6 +49,7 @@ export function AiScreen() {
     setTurns(next);
     setDraft('');
     setError(null);
+    setErrorCode(null);
     setBusy(true);
     try {
       const reply = await askBritjoy(next, /^[ABC][12]$/.test(level) ? level : 'A1');
@@ -49,6 +58,7 @@ export function AiScreen() {
       void narrate(plain(reply));
     } catch (e) {
       setError((e as Error).message);
+      setErrorCode(e instanceof AiError ? e.code : null);
       setTurns(turns); // keep history consistent (ends with an assistant turn or empty)
       setDraft(content);
     } finally {
@@ -66,8 +76,27 @@ export function AiScreen() {
         </div>
       </div>
 
-      {ready && (
+      {ready && !email && (
+        <section className="rounded-2xl border-2 border-navy/10 bg-white p-4">
+          <AccountBox />
+        </section>
+      )}
+
+      {ready && email && (
         <>
+          <p className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-extrabold text-navy/70">
+            {plus ? (
+              <span>👑 Britjoy Plus</span>
+            ) : (
+              <>
+                {freeLeft !== null && <span>{t('ai.freeLeft', { n: freeLeft })}</span>}
+                <span>{t('ai.credits', { n: credits })}</span>
+                <button onClick={() => setTab('plus')} className="text-royal underline">
+                  {t('ai.getMore')}
+                </button>
+              </>
+            )}
+          </p>
           <ul className="space-y-3" aria-live="polite">
             {turns.map((turn, i) => (
               <li key={i} className={`flex ${turn.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -125,6 +154,11 @@ export function AiScreen() {
           {error && (
             <p role="alert" className="mt-3 rounded-xl bg-bad-light px-3 py-2 text-sm font-bold text-bad-dark">
               {error}
+              {errorCode === 'no_credits' && (
+                <button onClick={() => setTab('plus')} className="ms-2 underline">
+                  👑 {t('ai.getMore')}
+                </button>
+              )}
             </p>
           )}
 

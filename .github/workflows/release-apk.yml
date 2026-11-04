@@ -22,7 +22,7 @@ permissions:
   contents: write
 
 env:
-  VITE_AI_ENDPOINT: ${{ vars.VITE_AI_ENDPOINT }}
+  VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
   VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
 
 jobs:

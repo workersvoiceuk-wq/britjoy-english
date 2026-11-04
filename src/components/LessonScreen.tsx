@@ -3,6 +3,7 @@ import type { CheckResult, ExerciseResponse, Lesson, LevelDefinition } from '../
 import { checkAnswer } from '../logic/answer';
 import { lessonStars, lessonXp } from '../logic/gamification';
 import { useProgressStore } from '../store/useProgressStore';
+import { hasPlus, usePlus } from '../lib/backend';
 import { copyFor, instructionFor } from '../lib/copy';
 import { narrationFor } from '../lib/narration';
 import { hush, narrate, useVoice } from '../lib/narrator';
@@ -36,6 +37,7 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
   const copy = copyFor(level.instructionLanguage);
   const voiceLang = level.instructionLanguage === 'es' ? 'es-ES' : 'en-GB';
   const hearts = useProgressStore((s) => s.hearts);
+  const plus = usePlus();
   const loseHeart = useProgressStore((s) => s.loseHeart);
   const speaking = useVoice((s) => s.speaking);
 
@@ -121,7 +123,7 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
   const next = useCallback(() => {
     if (isExplain) return advance();
     if (!result) return;
-    if (!result.correct && useProgressStore.getState().hearts <= 0) {
+    if (!result.correct && useProgressStore.getState().hearts <= 0 && !hasPlus()) {
       hush();
       onFinish({ passed: false, xp: 0, stars: 1, correct: correctCount, mistakes, total });
       return;
@@ -173,7 +175,7 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
           </div>
           <span className="flex items-center gap-1 text-lg font-extrabold text-[#FF8A9B]">
             <span aria-hidden>❤️</span>
-            {hearts}
+            {plus ? '∞' : hearts}
           </span>
         </div>
       </div>

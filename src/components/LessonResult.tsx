@@ -7,6 +7,8 @@ import { pick } from '../lib/util';
 import { Britjoy, BritjoySays } from './Britjoy';
 import { Button } from './Button';
 import { useT } from '../i18n';
+import { PromoCard } from './PromoCard';
+import { useProgressStore } from '../store/useProgressStore';
 
 interface Props {
   outcome: LessonOutcome;
@@ -64,6 +66,14 @@ export function LessonResult({ outcome, lessonTitle, onContinue }: Props) {
       <BritjoySays expression={outcome.passed ? 'happy' : 'sad'} size={84} className="w-full text-left">
         {line}
       </BritjoySays>
+
+      <PromoCard
+        seed={useProgressStore.getState().xp}
+        onOpenPlus={() => {
+          useProgressStore.getState().setTab('plus');
+          onContinue();
+        }}
+      />
 
       <Button block onClick={onContinue} variant={outcome.passed ? 'primary' : 'outline'}>
         {outcome.passed ? t('result.continue') : t('result.back')}

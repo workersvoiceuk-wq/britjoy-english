@@ -20,6 +20,8 @@ import { AiScreen } from './components/AiScreen';
 import { AcademyScreen } from './components/AcademyScreen';
 import { LanguagePicker } from './components/LanguagePicker';
 import { isRtl, translate, type UiLang } from './i18n';
+import { hasPlus, refreshProfile, supabase } from './lib/backend';
+import { PlusScreen } from './components/PlusScreen';
 
 type Screen =
   | { name: 'home' }
@@ -67,7 +69,27 @@ export default function App() {
     document.documentElement.dir = isRtl(uiLang) ? 'rtl' : 'ltr';
   }, [uiLang]);
 
+  // Account: keep Britjoy Plus and AI credits in sync; after Stripe Checkout the web
+  // returns with ?plus=ok|cancel, which opens the Plus screen.
+  const [checkout, setCheckout] = useState<'ok' | 'cancel' | null>(null);
+  useEffect(() => {
+    if (!supabase) return;
+    void refreshProfile();
+    const { data } = supabase.auth.onAuthStateChange(() => void refreshProfile());
+    const params = new URLSearchParams(window.location.search);
+    const result = params.get('plus');
+    if (result === 'ok' || result === 'cancel') {
+      setCheckout(result);
+      useProgressStore.getState().setTab('plus');
+      window.history.replaceState(null, '', window.location.pathname);
+      // The webhook may take a few seconds to grant the purchase.
+      if (result === 'ok') [3000, 8000, 20000].forEach((ms) => window.setTimeout(() => void refreshProfile(), ms));
+    }
+    return () => data.subscription.unsubscribe();
+  }, []);
+
   if (!store.uiLang) return <LanguagePicker />;
+
 
   if (!store.placementDone) {
     return (
@@ -80,7 +102,7 @@ export default function App() {
   const startLesson = (lessonId: string) => {
     store.syncHearts();
     const { hearts, heartsSince } = useProgressStore.getState();
-    if (hearts <= 0) {
+    if (hearts <= 0 && !hasPlus()) {
       setNotice(fill(dialogue.noHeartsToStart, { time: formatDuration(msUntilNextHeart(hearts, heartsSince, Date.now())) }));
       return;
     }
@@ -120,7 +142,7 @@ export default function App() {
         now={now}
         level={tab === 'english' ? englishLevel : undefined}
         onOpenLevels={() => setShowLevels(true)}
-        title={translate(uiLang, ({ home: 'title.home', english: 'nav.learn', life: 'nav.life', ai: 'nav.ai', resources: 'title.resources', settings: 'nav.more' } as const)[tab])}
+        title={translate(uiLang, ({ home: 'title.home', english: 'nav.learn', life: 'nav.life', ai: 'nav.ai', resources: 'title.resources', settings: 'nav.more', plus: 'plus.title' } as const)[tab])}
       />
       {(tab === 'english' || tab === 'life') && (
         <LearningPath level={pathLevel} completed={completed[pathLevel.id] ?? {}} onStart={startLesson} notice={notice} />
@@ -129,6 +151,7 @@ export default function App() {
       {tab === 'ai' && <AiScreen />}
       {tab === 'resources' && <ResourcesScreen />}
       {tab === 'settings' && <SettingsScreen />}
+      {tab === 'plus' && <PlusScreen checkout={checkout} />}
       <BottomNav />
       {showLevels && <LevelSelector onClose={() => setShowLevels(false)} />}
     </div>
