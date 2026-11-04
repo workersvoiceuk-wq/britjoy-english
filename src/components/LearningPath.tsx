@@ -8,6 +8,7 @@ import dialogue from '../data/britjoy-dialogue.json';
 import { fill, pick } from '../lib/util';
 import { narrate, useVoice } from '../lib/narrator';
 import { sfx } from '../lib/sound';
+import { useT } from '../i18n';
 
 interface Props {
   level: LevelDefinition;
@@ -22,6 +23,7 @@ const OFFSETS = [0, 44, 72, 44, 0, -44, -72, -44];
 
 export function LearningPath({ level, completed, onStart, notice }: Props) {
   const speaking = useVoice((s) => s.speaking);
+  const t = useT();
   const isLife = level.track === 'life';
   const nextId = nextLessonId(level, completed);
   const nextLesson = level.units.flatMap((u) => u.lessons).find((l) => l.id === nextId);
@@ -44,21 +46,21 @@ export function LearningPath({ level, completed, onStart, notice }: Props) {
             <BritjoySays expression={notice ? 'sad' : 'happy'} speaking={speaking} size={112}>
               {nextLesson && !notice && !isLife && (
                 <span className="mb-1 block text-xs font-black uppercase tracking-wide text-royal">
-                  Próxima: {nextLesson.title}
+                  {t('path.next')}: {nextLesson.title}
                 </span>
               )}
               {isLife && !notice && (
                 <span className="mb-1 block text-xs font-black uppercase tracking-wide text-royal">Vivir en UK</span>
               )}
               {tip}
-              <span className="mt-1 block text-xs font-bold text-ink-soft">🔊 Toca para escucharme</span>
+              <span className="mt-1 block text-xs font-bold text-ink-soft">🔊 {t('path.tapToListen')}</span>
             </BritjoySays>
           </button>
         </aside>
 
         <main className="flex-1">
           {level.units.length === 0 && (
-            <p className="rounded-2xl bg-white p-5 text-center font-bold text-ink-soft">Muy pronto: nuevas lecciones.</p>
+            <p className="rounded-2xl bg-white p-5 text-center font-bold text-ink-soft">{t('path.soon')}</p>
           )}
           {level.units.map((unit) => (
             <section key={unit.unit} className="mb-12">
@@ -92,7 +94,7 @@ export function LearningPath({ level, completed, onStart, notice }: Props) {
                     >
                       {isNext && (
                         <span className="animate-float absolute -top-9 z-10 whitespace-nowrap rounded-xl border-2 border-navy/15 bg-white px-3 py-1 text-sm font-black uppercase text-royal">
-                          Empezar
+                          {t('path.start')}
                         </span>
                       )}
                       <button

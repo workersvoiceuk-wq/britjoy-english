@@ -7,7 +7,7 @@ async function start(page: Page) {
     if (!localStorage.getItem('britjoy-english-progress-v1')) {
       localStorage.setItem(
         'britjoy-english-progress-v1',
-        JSON.stringify({ state: { voiceOn: false, soundOn: false }, version: 2 }),
+        JSON.stringify({ state: { uiLang: 'es', voiceOn: false, soundOn: false }, version: 3 }),
       );
     }
   });
@@ -132,4 +132,17 @@ test('academy catalogue lists the courses and opens a course from its detail pag
   await page.getByRole('button', { name: 'Empezar el curso' }).click();
   await expect(page.getByRole('button', { name: /De ejemplos a patrones \(disponible\)/ })).toBeVisible();
   await expect(page.getByRole('link', { name: /Descargar para Android/ })).toHaveCount(0);
+});
+
+test('first launch asks which language you speak and switches the interface (RTL for Arabic)', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('radiogroup')).toBeVisible();
+  await page.getByRole('radio', { name: /English/ }).first().click();
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await page.getByText('Start from scratch (A1)').click();
+  await expect(page.getByRole('button', { name: 'Courses', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'More', exact: true }).click();
+  await page.getByRole('radio', { name: /العربية/ }).click();
+  await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
+  await expect(page.getByRole('button', { name: 'الدورات', exact: true })).toBeVisible();
 });

@@ -2,6 +2,7 @@ import { useProgressStore } from '../store/useProgressStore';
 import { MAX_HEARTS, msUntilNextHeart, toDateKey, visibleStreak } from '../logic/gamification';
 import { formatDuration } from '../lib/util';
 import type { LevelDefinition } from '../types';
+import { useT } from '../i18n';
 
 interface Props {
   /** English level shown in the level button; omit to show `title` instead. */
@@ -15,6 +16,7 @@ export function Header({ level, title, onOpenLevels, now }: Props) {
   const { xp, hearts, heartsSince, streak, lastActiveDate } = useProgressStore();
   const shownStreak = visibleStreak(streak, lastActiveDate, toDateKey(new Date(now)));
   const nextHeart = msUntilNextHeart(hearts, heartsSince, now);
+  const t = useT();
 
   return (
     <header className="sticky top-[env(safe-area-inset-top)] z-20">
@@ -24,7 +26,7 @@ export function Header({ level, title, onOpenLevels, now }: Props) {
             <button
               onClick={onOpenLevels}
               className="press flex items-center gap-2 rounded-2xl border-2 border-b-4 border-accent-dark bg-accent px-3 py-1.5 font-black text-white"
-              aria-label={`${level.name}. Cambiar de nivel o curso`}
+              aria-label={`${level.name}. ${t('header.changeLevel')}`}
             >
               <span className="text-lg">{level.short ?? level.id}</span>
               <span className="text-xs">▼</span>
@@ -36,7 +38,7 @@ export function Header({ level, title, onOpenLevels, now }: Props) {
             <span className="flex items-center gap-1 text-[#FFB547]" title="Racha de días seguidos">
               <span aria-hidden>🔥</span>
               <span>{shownStreak}</span>
-              <span className="sr-only">días de racha</span>
+              <span className="sr-only">{t('header.streak')}</span>
             </span>
             <span className="flex items-center gap-1 text-gold-light" title="Experiencia total">
               <span aria-hidden>⚡</span>
@@ -48,7 +50,7 @@ export function Header({ level, title, onOpenLevels, now }: Props) {
             >
               <span aria-hidden>❤️</span>
               <span>{hearts}</span>
-              <span className="sr-only">vidas</span>
+              <span className="sr-only">{t('header.hearts')}</span>
             </span>
           </div>
         </div>

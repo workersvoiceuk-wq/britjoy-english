@@ -37,6 +37,14 @@ export interface ProgressState {
   soundOn: boolean;
   /** Section open in the bottom navigation. */
   tab: AppTab;
+  /** Interface language chosen by the learner ("I speak…"); null until chosen. */
+  uiLang: string | null;
+  /** Daily XP goal (Duolingo-style): 10 casual, 20 regular, 30 serious, 50 intense. */
+  dailyGoal: number;
+  /** XP earned per calendar day (YYYY-MM-DD), kept for the last few weeks. */
+  xpByDay: Record<string, number>;
+  /** Name printed on course certificates. */
+  learnerName: string;
 
   completePlacement: (level: LevelId | null) => void;
   setCurrentLevel: (level: LevelId) => void;
@@ -47,6 +55,9 @@ export interface ProgressState {
   setVoiceOn: (on: boolean) => void;
   setSoundOn: (on: boolean) => void;
   setTab: (tab: AppTab) => void;
+  setUiLang: (lang: string) => void;
+  setDailyGoal: (xp: number) => void;
+  setLearnerName: (name: string) => void;
 }
 
 export type AppTab = 'home' | 'english' | 'life' | 'ai' | 'resources' | 'settings';
@@ -68,6 +79,10 @@ const initialState = () => ({
   voiceOn: true,
   soundOn: true,
   tab: 'home' as AppTab,
+  uiLang: null as string | null,
+  dailyGoal: 20,
+  xpByDay: {} as Record<string, number>,
+  learnerName: '',
 });
 
 export const useProgressStore = create<ProgressState>()(
@@ -111,7 +126,14 @@ export const useProgressStore = create<ProgressState>()(
           completedAt: now,
         };
         const today = toDateKey(new Date(now));
+        // Keep about five weeks of daily XP for the daily goal and streak calendar.
+        const xpByDay = Object.fromEntries(
+          Object.entries({ ...state.xpByDay, [today]: (state.xpByDay[today] ?? 0) + xp })
+            .sort(([a], [b]) => (a < b ? 1 : -1))
+            .slice(0, 35),
+        );
         set({
+          xpByDay,
           xp: state.xp + xp,
           streak: nextStreak(state.streak, state.lastActiveDate, today),
           lastActiveDate: today,
@@ -129,12 +151,28 @@ export const useProgressStore = create<ProgressState>()(
       setVoiceOn: (on) => set({ voiceOn: on }),
       setSoundOn: (on) => set({ soundOn: on }),
       setTab: (tab) => set({ tab }),
+      setUiLang: (lang) => set({ uiLang: lang }),
+      setDailyGoal: (xp) => set({ dailyGoal: xp }),
+      setLearnerName: (name) => set({ learnerName: name.slice(0, 60) }),
     }),
     {
       name: STORAGE_KEY,
-      version: 2,
-      // v1 → v2: adds voice/sound settings and the open tab; progress is kept as is.
-      migrate: (persisted) => ({ voiceOn: true, soundOn: true, tab: 'english', ...(persisted as object) }) as ProgressState,
+      version: 3,
+      // v1 → v2 added voice/sound settings and the open tab; v2 → v3 adds the interface
+      // language (existing learners keep Spanish), daily goal, daily XP and name.
+      migrate: (persisted, version) => {
+        const p = (persisted ?? {}) as Partial<ProgressState>;
+        return {
+          voiceOn: true,
+          soundOn: true,
+          tab: 'english',
+          dailyGoal: 20,
+          xpByDay: {},
+          learnerName: '',
+          ...p,
+          uiLang: p.uiLang ?? (version < 3 && p.placementDone ? 'es' : null),
+        } as ProgressState;
+      },
       storage: createJSONStorage(() => localStorage),
       partialize: (s) => ({
         placementDone: s.placementDone,
@@ -149,6 +187,10 @@ export const useProgressStore = create<ProgressState>()(
         voiceOn: s.voiceOn,
         soundOn: s.soundOn,
         tab: s.tab,
+        uiLang: s.uiLang,
+        dailyGoal: s.dailyGoal,
+        xpByDay: s.xpByDay,
+        learnerName: s.learnerName,
       }),
     },
   ),

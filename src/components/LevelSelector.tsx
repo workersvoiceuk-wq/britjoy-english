@@ -5,6 +5,7 @@ import { isLevelUnlocked, unitCompletionRatio } from '../logic/unlock';
 import { completedByLevel, useProgressStore } from '../store/useProgressStore';
 import dialogue from '../data/britjoy-dialogue.json';
 import { fill } from '../lib/util';
+import { useT } from '../i18n';
 
 interface Props {
   onClose: () => void;
@@ -13,23 +14,24 @@ interface Props {
 export function LevelSelector({ onClose }: Props) {
   const { levels, currentLevel, placementLevel, setCurrentLevel } = useProgressStore();
   const completed = completedByLevel(levels);
+  const t = useT();
 
   return (
     <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/40 sm:items-center" onClick={onClose}>
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Elige tu nivel o curso"
+        aria-label={t('levels.title')}
         className="animate-slide-up max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-t-3xl bg-white p-5 pb-[calc(2rem+env(safe-area-inset-bottom))] sm:rounded-3xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-2xl font-black text-navy">Elige tu nivel o curso</h2>
+          <h2 className="text-2xl font-black text-navy">{t('levels.title')}</h2>
           <button onClick={onClose} className="rounded-full p-2 text-2xl text-ink-soft" aria-label="Cerrar">
             ✕
           </button>
         </div>
-        <h3 className="mb-2 text-sm font-black uppercase tracking-wider text-royal">Por niveles · A1 → C2</h3>
+        <h3 className="mb-2 text-sm font-black uppercase tracking-wider text-royal">{t('levels.byLevel')}</h3>
         <ul className="space-y-3">
           {LEVELS.map((level, i) => {
             const unlocked = isLevelUnlocked(LEVELS, level.id, completed, placementLevel);
@@ -85,7 +87,7 @@ export function LevelSelector({ onClose }: Props) {
           })}
         </ul>
 
-        <h3 className="mb-2 mt-6 text-sm font-black uppercase tracking-wider text-royal">Cursos temáticos</h3>
+        <h3 className="mb-2 mt-6 text-sm font-black uppercase tracking-wider text-royal">{t('levels.topics')}</h3>
         <ul className="space-y-3">
           {SITUATION_LEVELS.map((course) => {
             const lessons = course.units.flatMap((u) => u.lessons);

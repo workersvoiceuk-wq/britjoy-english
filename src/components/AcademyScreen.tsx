@@ -5,8 +5,8 @@ import { completedByLevel, useProgressStore } from '../store/useProgressStore';
 import { sfx } from '../lib/sound';
 import { Britjoy } from './Britjoy';
 import { Button } from './Button';
+import { useT } from '../i18n';
 
-const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 
 function ProgressBar({ value, color }: { value: number; color: string }) {
   return (
@@ -20,6 +20,9 @@ function CourseCard({ course, onOpen }: { course: CatalogCourse; onOpen: () => v
   const levels = useProgressStore((s) => s.levels);
   const stats = courseStats(course, completedByLevel(levels));
   const pct = stats.lessons ? stats.done / stats.lessons : 0;
+  const t = useT();
+  const mods = t(stats.modules === 1 ? 'academy.module' : 'academy.modules', { n: stats.modules });
+  const less = t(stats.lessons === 1 ? 'academy.lesson' : 'academy.lessons', { n: stats.lessons });
   return (
     <button
       onClick={() => {
@@ -27,27 +30,27 @@ function CourseCard({ course, onOpen }: { course: CatalogCourse; onOpen: () => v
         onOpen();
       }}
       className="press group flex h-full flex-col overflow-hidden rounded-3xl border-2 border-b-4 border-navy/10 bg-white text-left"
-      aria-label={`${course.title}. ${stats.modules} módulos, ${stats.lessons} lecciones. Ver curso`}
+      aria-label={`${course.title}. ${mods}, ${less}. ${t('academy.viewCourse')}`}
     >
       <span className="relative flex h-28 items-center justify-between px-5" style={{ background: course.color }}>
         <span className="text-5xl drop-shadow" aria-hidden>{course.emoji}</span>
         <span className="rounded-full bg-white/90 px-2.5 py-1 text-xs font-black uppercase tracking-wide text-navy">{course.level}</span>
       </span>
       <span className="flex flex-1 flex-col p-4">
-        <span className="text-lg font-black leading-tight text-navy">{course.title}</span>
-        <span className="mt-1 line-clamp-3 text-sm font-semibold text-ink-soft">{course.subtitle}</span>
+        <span dir="auto" className="text-lg font-black leading-tight text-navy">{course.title}</span>
+        <span dir="auto" className="mt-1 line-clamp-3 text-sm font-semibold text-ink-soft">{course.subtitle}</span>
         <span className="mt-3 flex flex-wrap gap-1.5">
           {course.badges.map((b) => (
             <span key={b} className="rounded-md bg-gold-light px-2 py-0.5 text-[11px] font-black text-gold-dark">{b}</span>
           ))}
         </span>
         <span className="mt-3 text-xs font-bold text-ink-soft">
-          {plural(stats.modules, 'módulo', 'módulos')} · {plural(stats.lessons, 'lección', 'lecciones')} · ~{stats.hours} h · <span className="text-brand-dark">Gratis</span>
+          {mods} · {less} · {t('academy.hours', { n: stats.hours })} · <span className="text-brand-dark">{t('academy.free')}</span>
         </span>
         <span className="mt-auto pt-3">
           <ProgressBar value={pct} color={course.color} />
           <span className="mt-1 block text-xs font-bold text-ink-soft">
-            {stats.done === 0 ? 'Sin empezar' : `${stats.done}/${stats.lessons} lecciones · ${Math.round(pct * 100)}%`}
+            {stats.done === 0 ? t('academy.notStarted') : t('academy.progress', { done: stats.done, total: stats.lessons, pct: Math.round(pct * 100) })}
           </span>
         </span>
       </span>
@@ -59,6 +62,9 @@ function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onC
   const levels = useProgressStore((s) => s.levels);
   const completed = completedByLevel(levels);
   const stats = courseStats(course, completed);
+  const t = useT();
+  const mods = t(stats.modules === 1 ? 'academy.module' : 'academy.modules', { n: stats.modules });
+  const less = t(stats.lessons === 1 ? 'academy.lesson' : 'academy.lessons', { n: stats.lessons });
   return (
     <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/40 sm:items-center" onClick={onClose}>
       <div
@@ -71,7 +77,7 @@ function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onC
         <div className="relative flex items-center gap-4 px-5 py-6 text-white" style={{ background: course.color }}>
           <span className="text-6xl" aria-hidden>{course.emoji}</span>
           <div className="min-w-0 flex-1">
-            <p className="text-xs font-black uppercase tracking-wider opacity-90">{course.level} · Gratis</p>
+            <p className="text-xs font-black uppercase tracking-wider opacity-90">{course.level} · {t('academy.free')}</p>
             <h2 className="text-2xl font-black leading-tight">{course.title}</h2>
           </div>
           <button onClick={onClose} className="absolute right-3 top-3 rounded-full bg-black/20 px-2.5 py-1 text-lg" aria-label="Cerrar">✕</button>
@@ -79,14 +85,14 @@ function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onC
         <div className="space-y-5 p-5">
           <p className="font-semibold text-ink">{course.subtitle}</p>
           <p className="text-sm font-bold text-ink-soft">
-            {plural(stats.modules, 'módulo', 'módulos')} · {plural(stats.lessons, 'lección', 'lecciones')} · ~{stats.hours} h · Britjoy te lo explica en voz alta
+            {mods} · {less} · {t('academy.hours', { n: stats.hours })} · {t('academy.explained')}
           </p>
           <Button variant="primary" block onClick={onStart}>
-            {stats.done ? 'Continuar el curso' : 'Empezar el curso'}
+            {stats.done ? t('academy.resume') : t('academy.start')}
           </Button>
 
           <section className="rounded-2xl border-2 border-navy/10 p-4">
-            <h3 className="mb-2 text-lg font-black text-navy">Lo que aprenderás</h3>
+            <h3 className="mb-2 text-lg font-black text-navy">{t('academy.learn')}</h3>
             <ul className="grid gap-2 sm:grid-cols-2">
               {course.learn.map((l) => (
                 <li key={l} className="flex gap-2 text-[15px] font-semibold">
@@ -98,7 +104,7 @@ function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onC
           </section>
 
           <section>
-            <h3 className="mb-2 text-lg font-black text-navy">Temario</h3>
+            <h3 className="mb-2 text-lg font-black text-navy">{t('academy.syllabus')}</h3>
             <ol className="space-y-2">
               {course.levels.flatMap((level) =>
                 level.units.map((u) => {
@@ -114,7 +120,7 @@ function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onC
                               {u.title}
                             </span>
                             <span className="shrink-0 text-xs font-bold text-ink-soft">
-                              {done}/{u.lessons.length} lecciones
+                              {done}/{t('academy.lessons', { n: u.lessons.length })}
                             </span>
                           </span>
                         </summary>
@@ -141,6 +147,7 @@ function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onC
 
 export function AcademyScreen() {
   const { setTab, setCurrentLevel, levels, currentLevel } = useProgressStore();
+  const t = useT();
   const [category, setCategory] = useState<Category | 'todos'>('todos');
   const [open, setOpen] = useState<CatalogCourse | null>(null);
   const completed = completedByLevel(levels);
@@ -165,22 +172,22 @@ export function AcademyScreen() {
     <div className="mx-auto max-w-5xl px-4 pb-32 pt-5">
       <section className="relative overflow-hidden rounded-3xl bg-navy px-5 py-6 text-white sm:px-8">
         <div className="relative z-10 max-w-[58%] sm:max-w-[60%]">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-gold-light">Voz Unida Mundo Academy</p>
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-gold-light">{t('academy.kicker')}</p>
           <h1 className="mt-2 text-3xl font-black leading-tight sm:text-4xl">
-            Aprende inglés y a vivir en el Reino Unido
+            {t('academy.heroTitle')}
           </h1>
           <p className="mt-2 text-[15px] font-semibold text-white/85">
-            Cursos gratis, con historias, misiones y Britjoy explicándote cada paso.
+            {t('academy.heroText')}
           </p>
         </div>
-        <div className="absolute -bottom-1 right-0 sm:right-8" aria-hidden>
+        <div className="absolute -bottom-1 end-0 sm:end-8" aria-hidden>
           <Britjoy size={150} />
         </div>
       </section>
 
       {inProgress.length > 0 && (
         <section className="mt-6">
-          <h2 className="mb-3 text-xl font-black text-navy">Continúa donde lo dejaste</h2>
+          <h2 className="mb-3 text-xl font-black text-navy">{t('academy.continue')}</h2>
           <div className="flex gap-3 overflow-x-auto pb-2">
             {inProgress.map((c) => {
               const s = courseStats(c, completed);
@@ -196,7 +203,7 @@ export function AcademyScreen() {
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-extrabold text-navy">{c.title}</span>
                     <ProgressBar value={s.done / s.lessons} color={c.color} />
-                    <span className="mt-0.5 block text-xs font-bold text-ink-soft">{s.done}/{s.lessons} lecciones</span>
+                    <span className="mt-0.5 block text-xs font-bold text-ink-soft">{s.done}/{t('academy.lessons', { n: s.lessons })}</span>
                   </span>
                 </button>
               );
@@ -206,8 +213,8 @@ export function AcademyScreen() {
       )}
 
       <section className="mt-6">
-        <h2 className="mb-3 text-xl font-black text-navy">Catálogo de cursos</h2>
-        <div className="mb-4 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Categorías">
+        <h2 className="mb-3 text-xl font-black text-navy">{t('academy.catalogue')}</h2>
+        <div className="mb-4 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label={t('academy.categories')}>
           {CATEGORIES.map((c) => (
             <button
               key={c.id}
@@ -218,7 +225,7 @@ export function AcademyScreen() {
                 category === c.id ? 'border-navy bg-navy text-white' : 'border-navy/15 bg-white text-navy'
               }`}
             >
-              {c.label}
+              {t(`cat.${c.id}`)}
             </button>
           ))}
         </div>
@@ -236,8 +243,8 @@ export function AcademyScreen() {
         >
           <span className="text-4xl" aria-hidden>🤖</span>
           <span>
-            <span className="block text-lg font-black text-navy">Modo IA: practica con Britjoy</span>
-            <span className="block text-sm font-semibold text-ink-soft">Corrige tus frases y simula situaciones reales.</span>
+            <span className="block text-lg font-black text-navy">{t('academy.aiCardTitle')}</span>
+            <span className="block text-sm font-semibold text-ink-soft">{t('academy.aiCardText')}</span>
           </span>
         </button>
         <button
@@ -246,16 +253,16 @@ export function AcademyScreen() {
         >
           <span className="text-4xl" aria-hidden>📚</span>
           <span>
-            <span className="block text-lg font-black text-navy">Recursos recomendados</span>
-            <span className="block text-sm font-semibold text-ink-soft">British Council, Busuu, LearnEnglish y webs oficiales.</span>
+            <span className="block text-lg font-black text-navy">{t('academy.resTitle')}</span>
+            <span className="block text-sm font-semibold text-ink-soft">{t('academy.resText')}</span>
           </span>
         </button>
       </section>
 
       {!Capacitor.isNativePlatform() && (
       <section className="mt-8 rounded-3xl border-2 border-navy/10 bg-white p-5" aria-labelledby="descargas">
-        <h2 id="descargas" className="text-xl font-black text-navy">Descarga la app</h2>
-        <p className="mt-1 text-sm font-semibold text-ink-soft">Tu progreso de la web no se pasa a la app: cada una guarda el suyo en tu dispositivo.</p>
+        <h2 id="descargas" className="text-xl font-black text-navy">{t('academy.download')}</h2>
+        <p className="mt-1 text-sm font-semibold text-ink-soft">{t('academy.downloadNote')}</p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <a
             href={DOWNLOADS.android}
@@ -263,25 +270,25 @@ export function AcademyScreen() {
           >
             <span className="text-3xl" aria-hidden>🤖</span>
             <span>
-              <span className="block text-xs uppercase opacity-90">Versión beta · APK</span>
-              Descargar para Android
+              <span className="block text-xs uppercase opacity-90">{t('academy.androidKicker')}</span>
+              {t('academy.android')}
             </span>
           </a>
           <span className="flex items-center gap-3 rounded-2xl border-2 border-dashed border-navy/20 px-4 py-3 font-black text-navy/60">
             <span className="text-3xl" aria-hidden>🍎</span>
             <span>
               <span className="block text-xs uppercase">iPhone</span>
-              Próximamente en App Store
+              {t('academy.ios')}
             </span>
           </span>
         </div>
         <p className="mt-3 text-xs font-semibold text-ink-soft">
-          Para instalar el APK, permite «instalar apps desconocidas» para tu navegador. Pronto también en Google Play.
+          {t('academy.apkHelp')}
         </p>
       </section>
       )}
 
-      <p className="mt-8 text-center text-xs font-bold text-ink-soft">Voz Unida Mundo Academy · te enseña — Tu voz cuenta</p>
+      <p className="mt-8 text-center text-xs font-bold text-ink-soft">{t('brand.close')}</p>
 
       {open && <CourseDetail course={open} onClose={() => setOpen(null)} onStart={() => start(open)} />}
     </div>

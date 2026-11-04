@@ -18,6 +18,8 @@ import { ResourcesScreen } from './components/ResourcesScreen';
 import { SettingsScreen } from './components/SettingsScreen';
 import { AiScreen } from './components/AiScreen';
 import { AcademyScreen } from './components/AcademyScreen';
+import { LanguagePicker } from './components/LanguagePicker';
+import { isRtl, translate, type UiLang } from './i18n';
 
 type Screen =
   | { name: 'home' }
@@ -57,6 +59,15 @@ export default function App() {
   const englishLevel = unlockedCurrent ? current : LEVELS[0];
 
   useEffect(() => setNotice(null), [store.hearts, store.currentLevel, store.tab]);
+
+  // Interface language: <html lang/dir> follow the learner's choice (RTL for Arabic and Urdu).
+  const uiLang = (store.uiLang ?? 'es') as UiLang;
+  useEffect(() => {
+    document.documentElement.lang = uiLang;
+    document.documentElement.dir = isRtl(uiLang) ? 'rtl' : 'ltr';
+  }, [uiLang]);
+
+  if (!store.uiLang) return <LanguagePicker />;
 
   if (!store.placementDone) {
     return (
@@ -109,7 +120,7 @@ export default function App() {
         now={now}
         level={tab === 'english' ? englishLevel : undefined}
         onOpenLevels={() => setShowLevels(true)}
-        title={{ home: 'Britjoy Academy', english: 'Aprender', life: 'Vivir en UK', ai: 'Modo IA', resources: 'Recursos', settings: 'Más' }[tab]}
+        title={translate(uiLang, ({ home: 'title.home', english: 'nav.learn', life: 'nav.life', ai: 'nav.ai', resources: 'title.resources', settings: 'nav.more' } as const)[tab])}
       />
       {(tab === 'english' || tab === 'life') && (
         <LearningPath level={pathLevel} completed={completed[pathLevel.id] ?? {}} onStart={startLesson} notice={notice} />

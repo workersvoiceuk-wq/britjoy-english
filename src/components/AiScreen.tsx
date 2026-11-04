@@ -4,6 +4,7 @@ import { useProgressStore } from '../store/useProgressStore';
 import { narrate, useVoice } from '../lib/narrator';
 import { sfx } from '../lib/sound';
 import { Britjoy } from './Britjoy';
+import { useT } from '../i18n';
 
 const SUGGESTIONS = [
   'Corrige mi frase: «Yesterday I go to the doctor»',
@@ -28,6 +29,7 @@ export function AiScreen() {
   const [error, setError] = useState<string | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const ready = aiConfigured();
+  const t = useT();
 
   useEffect(() => endRef.current?.scrollIntoView({ behavior: 'smooth' }), [turns, busy]);
 
@@ -59,37 +61,37 @@ export function AiScreen() {
       <div className="mb-4 flex items-end gap-2">
         <Britjoy size={96} speaking={speaking} expression={busy ? 'neutral' : 'happy'} />
         <div className="mb-2 flex-1 rounded-2xl border-2 border-navy/15 bg-white px-4 py-3 text-[15px] font-semibold leading-snug">
-          <span className="mb-1 block text-xs font-black uppercase tracking-wide text-royal">Modo IA · tu tutor</span>
-          {ready ? WELCOME : 'El Modo IA todavía no está activado en esta versión. Muy pronto podrás conversar conmigo, corregir tus frases y practicar situaciones reales.'}
+          <span className="mb-1 block text-xs font-black uppercase tracking-wide text-royal">{t('ai.kicker')}</span>
+          {ready ? WELCOME : t('ai.notActive')}
         </div>
       </div>
 
       {ready && (
         <>
           <ul className="space-y-3" aria-live="polite">
-            {turns.map((t, i) => (
-              <li key={i} className={`flex ${t.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+            {turns.map((turn, i) => (
+              <li key={i} className={`flex ${turn.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div
                   className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-4 py-3 text-[15px] font-semibold leading-relaxed ${
-                    t.role === 'user' ? 'bg-navy text-white' : 'border-2 border-navy/10 bg-white text-ink'
+                    turn.role === 'user' ? 'bg-navy text-white' : 'border-2 border-navy/10 bg-white text-ink'
                   }`}
                 >
-                  {t.role === 'assistant'
-                    ? t.content.split(/(\*\*.+?\*\*)/g).map((part, j) =>
+                  {turn.role === 'assistant'
+                    ? turn.content.split(/(\*\*.+?\*\*)/g).map((part, j) =>
                         part.startsWith('**') ? (
                           <strong key={j} className="text-navy">{part.slice(2, -2)}</strong>
                         ) : (
                           <span key={j}>{part}</span>
                         ),
                       )
-                    : t.content}
-                  {t.role === 'assistant' && (
+                    : turn.content}
+                  {turn.role === 'assistant' && (
                     <button
-                      onClick={() => void narrate(plain(t.content))}
+                      onClick={() => void narrate(plain(turn.content))}
                       className="mt-1 block text-xs font-extrabold text-royal"
                       aria-label="Escuchar la respuesta"
                     >
-                      🔊 Escuchar
+                      🔊 {t('ai.listen')}
                     </button>
                   )}
                 </div>
@@ -97,7 +99,7 @@ export function AiScreen() {
             ))}
             {busy && (
               <li className="text-sm font-bold text-ink-soft" role="status">
-                Britjoy está escribiendo…
+                {t('ai.typing')}
               </li>
             )}
           </ul>
@@ -105,7 +107,7 @@ export function AiScreen() {
 
           {turns.length === 0 && (
             <div className="mt-2">
-              <p className="mb-2 text-xs font-black uppercase tracking-wider text-navy/60">Prueba con…</p>
+              <p className="mb-2 text-xs font-black uppercase tracking-wider text-navy/60">{t('ai.try')}</p>
               <div className="flex flex-wrap gap-2">
                 {SUGGESTIONS.map((s) => (
                   <button
@@ -140,7 +142,7 @@ export function AiScreen() {
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 maxLength={1200}
-                placeholder="Escribe en español o en inglés…"
+                placeholder={t('ai.placeholder')}
                 className="min-w-0 flex-1 rounded-2xl border-2 border-ink-line bg-cream px-4 py-3 font-semibold outline-none focus:border-navy"
               />
               <button
@@ -148,11 +150,11 @@ export function AiScreen() {
                 disabled={busy || !draft.trim()}
                 className="press rounded-2xl border-b-4 border-royal-dark bg-royal px-4 font-black text-white disabled:border-[#C4C4C4] disabled:bg-[#E5E5E5] disabled:text-[#AFAFAF]"
               >
-                Enviar
+                {t('ai.send')}
               </button>
             </div>
             <p className="mx-auto mt-1 max-w-3xl text-[11px] font-semibold text-ink-soft">
-              La IA puede equivocarse. No compartas datos personales. Para normas y dinero, comprueba GOV.UK.
+              {t('ai.disclaimer')}
             </p>
           </form>
         </>

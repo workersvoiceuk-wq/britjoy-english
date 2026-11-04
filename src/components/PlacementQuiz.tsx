@@ -8,6 +8,7 @@ import { fill, shuffle } from '../lib/util';
 import { Britjoy, BritjoySays } from './Britjoy';
 import { Button } from './Button';
 import { narrate } from '../lib/narrator';
+import { useT } from '../i18n';
 
 interface Props {
   onFinish: (level: string | null) => void;
@@ -16,6 +17,7 @@ interface Props {
 type Question = (typeof placement.questions)[number];
 
 export function PlacementQuiz({ onFinish }: Props) {
+  const t = useT();
   const [stage, setStage] = useState<'intro' | 'quiz' | 'result'>('intro');
   const [index, setIndex] = useState(0);
   const [choice, setChoice] = useState<string | null>(null);
@@ -29,20 +31,20 @@ export function PlacementQuiz({ onFinish }: Props) {
         <div className="flex flex-col items-center gap-2 text-center">
           <Britjoy expression="happy" size={240} />
           <h1 className="text-3xl font-black text-navy">Britjoy English</h1>
-          <p className="font-bold text-ink-soft">Inglés A1 → C2 y vida en el Reino Unido</p>
+          <p className="font-bold text-ink-soft">{t('placement.subtitle')}</p>
         </div>
         <button className="text-left" onClick={() => void narrate(`${dialogue.welcome} ${dialogue.placementIntro}`)}>
           <div className="rounded-2xl border-2 border-navy/15 bg-white px-4 py-3 text-[15px] font-semibold leading-snug shadow-[0_2px_0_rgba(29,45,92,0.12)]">
             {dialogue.welcome} {dialogue.placementIntro}
-            <span className="mt-1 block text-xs font-bold text-ink-soft">🔊 Toca para escuchar a Britjoy</span>
+            <span className="mt-1 block text-xs font-bold text-ink-soft">🔊 {t('placement.tapToListen')}</span>
           </div>
         </button>
         <div className="flex flex-col gap-3">
           <Button block onClick={() => setStage('quiz')}>
-            Hacer el test
+            {t('placement.test')}
           </Button>
           <Button block variant="outline" onClick={() => onFinish(null)}>
-            {dialogue.placementSkip}
+            {t('placement.skip')}
           </Button>
         </div>
       </div>
@@ -71,7 +73,7 @@ export function PlacementQuiz({ onFinish }: Props) {
             Empezar en {level}
           </Button>
           <Button block variant="outline" onClick={() => onFinish(null)}>
-            {dialogue.placementSkip}
+            {t('placement.skip')}
           </Button>
         </div>
       </div>
@@ -111,7 +113,7 @@ export function PlacementQuiz({ onFinish }: Props) {
       </div>
       <div className="mt-auto pt-8">
         <Button block disabled={choice === null} onClick={next}>
-          {index + 1 >= questions.length ? 'Ver resultado' : 'Siguiente'}
+          {index + 1 >= questions.length ? t('placement.result') : t('placement.next')}
         </Button>
       </div>
     </div>

@@ -1,6 +1,8 @@
 import { useProgressStore } from '../store/useProgressStore';
 import { sfx } from '../lib/sound';
 import { hush, narrate } from '../lib/narrator';
+import { useT } from '../i18n';
+import { LanguagePicker } from './LanguagePicker';
 
 const PRIVACY_URL = 'https://workersvoiceuk-wq.github.io/britjoy-english/privacidad.html';
 export const APP_VERSION = '1.0.0';
@@ -22,7 +24,8 @@ function Toggle({ label, hint, on, onChange }: { label: string; hint: string; on
 }
 
 export function SettingsScreen() {
-  const { voiceOn, soundOn, setVoiceOn, setSoundOn, reset, setTab } = useProgressStore();
+  const { voiceOn, soundOn, setVoiceOn, setSoundOn, reset, setTab, dailyGoal, setDailyGoal } = useProgressStore();
+  const t = useT();
   return (
     <div className="mx-auto max-w-3xl space-y-3 px-4 pb-32 pt-5">
       <button
@@ -30,14 +33,14 @@ export function SettingsScreen() {
         className="press flex w-full items-center justify-between rounded-2xl border-2 border-b-4 border-navy/10 bg-white p-4 text-left"
       >
         <span>
-          <span className="block text-lg font-extrabold text-navy">📚 Recursos recomendados</span>
-          <span className="block text-sm font-semibold text-ink-soft">British Council, Busuu, LearnEnglish y webs oficiales.</span>
+          <span className="block text-lg font-extrabold text-navy">📚 {t('academy.resTitle')}</span>
+          <span className="block text-sm font-semibold text-ink-soft">{t('academy.resText')}</span>
         </span>
         <span aria-hidden className="text-xl text-navy">›</span>
       </button>
       <Toggle
-        label="Voz de Britjoy"
-        hint="Britjoy lee en voz alta las explicaciones y las instrucciones."
+        label={t('settings.voice')}
+        hint={t('settings.voiceHint')}
         on={voiceOn}
         onChange={(v) => {
           setVoiceOn(v);
@@ -46,8 +49,8 @@ export function SettingsScreen() {
         }}
       />
       <Toggle
-        label="Sonidos"
-        hint="Campanadas, aciertos y fallos."
+        label={t('settings.sounds')}
+        hint={t('settings.soundsHint')}
         on={soundOn}
         onChange={(v) => {
           setSoundOn(v);
@@ -55,8 +58,33 @@ export function SettingsScreen() {
         }}
       />
 
+      <section className="rounded-2xl border-2 border-navy/10 bg-white p-4">
+        <h2 className="mb-1 text-lg font-extrabold text-navy">🎯 {t('settings.dailyGoal')}</h2>
+        <div className="grid grid-cols-4 gap-2" role="radiogroup" aria-label={t('settings.dailyGoal')}>
+          {[10, 20, 30, 50].map((xp) => (
+            <button
+              key={xp}
+              role="radio"
+              aria-checked={dailyGoal === xp}
+              onClick={() => {
+                sfx.tap();
+                setDailyGoal(xp);
+              }}
+              className={`tile px-2 text-center text-base ${dailyGoal === xp ? 'tile-selected' : ''}`}
+            >
+              {xp} XP
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="rounded-2xl border-2 border-navy/10 bg-white p-4">
+        <h2 className="mb-2 text-lg font-extrabold text-navy">🌍 {t('lang.setting')}</h2>
+        <LanguagePicker compact />
+      </section>
+
       <div className="rounded-2xl border-2 border-navy/10 bg-white p-4 text-[15px] font-semibold text-ink-soft">
-        <p className="font-extrabold text-navy">Sobre la app</p>
+        <p className="font-extrabold text-navy">{t('settings.about')}</p>
         <p className="mt-1">
           Britjoy English · versión {APP_VERSION}. Tu progreso se guarda solo en este dispositivo; no hay cuentas. Solo si
           usas el Modo IA, tus mensajes se envían a nuestro servidor y al proveedor de IA para generar la respuesta.
@@ -67,19 +95,19 @@ export function SettingsScreen() {
           oficial antes de decidir.
         </p>
         <a href={PRIVACY_URL} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block font-extrabold text-navy underline">
-          Política de privacidad ↗
+          {t('settings.privacy')} ↗
         </a>
       </div>
 
       <button
         onClick={() => {
-          if (window.confirm('¿Borrar todo tu progreso (lecciones, XP y racha) de este dispositivo?')) reset();
+          if (window.confirm(t('settings.resetConfirm'))) reset();
         }}
         className="press w-full rounded-2xl border-2 border-b-4 border-royal/30 bg-white p-4 font-extrabold text-royal"
       >
-        Borrar mi progreso
+        {t('settings.reset')}
       </button>
-      <p className="pt-2 text-center text-xs font-bold text-ink-soft">Voz Unida Mundo Academy · te enseña — Tu voz cuenta</p>
+      <p className="pt-2 text-center text-xs font-bold text-ink-soft">{t('brand.close')}</p>
     </div>
   );
 }

@@ -1,17 +1,19 @@
 import { useProgressStore, type AppTab } from '../store/useProgressStore';
 import { sfx } from '../lib/sound';
+import { useT, type MessageKey } from '../i18n';
 
-const TABS: { id: AppTab; icon: string; label: string }[] = [
-  { id: 'home', icon: '🏫', label: 'Cursos' },
-  { id: 'english', icon: '🎓', label: 'Aprender' },
-  { id: 'life', icon: '🇬🇧', label: 'Vivir en UK' },
-  { id: 'ai', icon: '🤖', label: 'Modo IA' },
-  { id: 'settings', icon: '⚙️', label: 'Más' },
+const TABS: { id: AppTab; icon: string; label: MessageKey }[] = [
+  { id: 'home', icon: '🏫', label: 'nav.courses' },
+  { id: 'english', icon: '🎓', label: 'nav.learn' },
+  { id: 'life', icon: '🇬🇧', label: 'nav.life' },
+  { id: 'ai', icon: '🤖', label: 'nav.ai' },
+  { id: 'settings', icon: '⚙️', label: 'nav.more' },
 ];
 
 export function BottomNav() {
   const tab = useProgressStore((s) => s.tab);
   const setTab = useProgressStore((s) => s.setTab);
+  const t_ = useT();
   return (
     <nav
       className="fixed inset-x-0 bottom-0 z-30 border-t-2 border-navy/10 bg-white pb-[env(safe-area-inset-bottom)]"
@@ -40,7 +42,7 @@ export function BottomNav() {
                 >
                   {t.icon}
                 </span>
-                {t.label}
+                {t_(t.label)}
               </button>
             </li>
           );
