@@ -39,4 +39,18 @@ export const TOURIST_LEVEL: LevelDefinition = {
   units: units(import.meta.glob('./turistas/*.json', { eager: true })),
 };
 
-export const SITUATION_LEVELS = [DAILY_LEVEL, TOURIST_LEVEL];
+export const AI_LEVEL: LevelDefinition = {
+  id: 'IA',
+  track: 'ai',
+  short: '🤖 IA',
+  name: 'IA con Britjoy',
+  description: 'Cómo aprende una IA y cómo usarla con cabeza, con el vocabulario en inglés (basado en el curso de IA de Voz Unida Mundo).',
+  accent: '#6D4585',
+  accentDark: '#4E2F61',
+  accentLight: '#EFE5F5',
+  instructionLanguage: 'es',
+  units: units(import.meta.glob('./ia/*.json', { eager: true })),
+};
+
+/** Topic courses listed in the course selector (after the A1–C2 levels). */
+export const SITUATION_LEVELS = [DAILY_LEVEL, TOURIST_LEVEL, AI_LEVEL];

@@ -76,6 +76,17 @@ describe('course content', () => {
     }
   });
 
+  it('IA course: 7 lessons, each opening with an idea and a challenge', () => {
+    const ia = ALL_LEVELS.find((l) => l.id === 'IA')!;
+    const ls = ia.units.flatMap((u) => u.lessons);
+    expect(ls).toHaveLength(7);
+    for (const lesson of ls) {
+      expect(lesson.exercises[0].type, lesson.id).toBe('explain');
+      expect(lesson.exercises.some((e) => e.type === 'explain' && e.title.includes('Reto')), lesson.id).toBe(true);
+      expect(lesson.exercises.filter((e) => e.type !== 'explain').length, lesson.id).toBeGreaterThanOrEqual(5);
+    }
+  });
+
   it('every unit of Vivir en UK records when its facts were checked', () => {
     for (const level of ALL_LEVELS.filter((l) => l.track !== 'english')) {
       for (const u of level.units) expect(u.checked, u.unit).toMatch(/^\d{4}-\d{2}-\d{2}$/);

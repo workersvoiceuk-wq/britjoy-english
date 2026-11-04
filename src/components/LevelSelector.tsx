@@ -85,7 +85,7 @@ export function LevelSelector({ onClose }: Props) {
           })}
         </ul>
 
-        <h3 className="mb-2 mt-6 text-sm font-black uppercase tracking-wider text-royal">Cursos por situaciones · con historia</h3>
+        <h3 className="mb-2 mt-6 text-sm font-black uppercase tracking-wider text-royal">Cursos temáticos</h3>
         <ul className="space-y-3">
           {SITUATION_LEVELS.map((course) => {
             const lessons = course.units.flatMap((u) => u.lessons);

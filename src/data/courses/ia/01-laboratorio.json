@@ -1,0 +1,776 @@
+{
+  "level": "IA",
+  "unit": "Laboratorio",
+  "title": "IA: aprender experimentando",
+  "icon": "🤖",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "ia-01-patterns",
+      "title": "De ejemplos a patrones",
+      "icon": "🌸",
+      "tip": "Observa cómo datos y etiquetas permiten plantear una clasificación.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Idea 1 · De ejemplos a patrones",
+          "body": "Cada punto es una flor. Su posición representa largo y ancho del pétalo. El color indica la especie que ya conocemos. Aquí tú eliges una regla; en el siguiente laboratorio el modelo aprenderá de ejemplos.\n• Objetivo: Observa cómo datos y etiquetas permiten plantear una clasificación.",
+          "say": "Idea 1: De ejemplos a patrones. Cada punto es una flor. Su posición representa largo y ancho del pétalo. El color indica la especie que ya conocemos. Aquí tú eliges una regla; en el siguiente laboratorio el modelo aprenderá de ejemplos.",
+          "phrases": [
+            {
+              "en": "The label is the known answer.",
+              "es": "La etiqueta es la respuesta conocida."
+            },
+            {
+              "en": "Length and width are the inputs.",
+              "es": "El largo y el ancho son las entradas."
+            }
+          ],
+          "link": {
+            "label": "Fuente: Google Developers · Machine Learning Recipes",
+            "url": "https://www.youtube.com/watch?v=cKxRvEZd3Mw"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "Dos flores ficticias muestran medidas de pétalo y etiquetas de especie.\n• Tu tarea: Distingue qué son los datos de entrada y qué son las etiquetas.\n• Pista: Medir una flor no es lo mismo que conocer su especie.",
+          "say": "El reto: Dos flores ficticias muestran medidas de pétalo y etiquetas de especie. Distingue qué son los datos de entrada y qué son las etiquetas."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué aporta una etiqueta en aprendizaje supervisado?",
+          "options": [
+            "El resultado conocido de un ejemplo",
+            "Una garantía de que nunca habrá errores"
+          ],
+          "answer": "El resultado conocido de un ejemplo"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Cuál es correcta?",
+          "options": [
+            "Largo y ancho son entradas; la especie conocida es la etiqueta que intentamos predecir.",
+            "No hace falta comprobar nada: si el modelo responde, funciona."
+          ],
+          "answer": "Largo y ancho son entradas; la especie conocida es la etiqueta que intentamos predecir."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada término de IA en inglés",
+          "pairs": [
+            {
+              "en": "data",
+              "es": "datos"
+            },
+            {
+              "en": "label",
+              "es": "etiqueta"
+            },
+            {
+              "en": "input",
+              "es": "entrada"
+            },
+            {
+              "en": "pattern",
+              "es": "patrón"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "La etiqueta es la respuesta conocida.",
+          "words": [
+            "The",
+            "label",
+            "is",
+            "the",
+            "known",
+            "answer.",
+            "level",
+            "question"
+          ],
+          "answer": "The label is the known answer."
+        },
+        {
+          "type": "listening",
+          "text": "The label is the known answer",
+          "options": [
+            "The label is the known answer",
+            "The level is the known answer",
+            "The table is the new answer"
+          ],
+          "answer": "The label is the known answer"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Length and width are the ___.",
+          "hint": "las entradas",
+          "options": [
+            "inputs",
+            "outputs",
+            "labels"
+          ],
+          "answer": "inputs"
+        }
+      ]
+    },
+    {
+      "id": "ia-02-train",
+      "title": "Entrenar cambia el modelo",
+      "icon": "🏋️",
+      "tip": "Conecta la demostración con el entrenamiento de tu modelo pequeño.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Idea 2 · Entrenar cambia el modelo",
+          "body": "El modelo ve las medidas y las etiquetas Luna/Sol. Entrenar cambia sus números internos para reducir el error. Un peso es uno de esos números: regula cuánto influye una medida. No estamos llamando a un servicio de chat.\n• Objetivo: Conecta la demostración con el entrenamiento de tu modelo pequeño.",
+          "say": "Idea 2: Entrenar cambia el modelo. El modelo ve las medidas y las etiquetas Luna/Sol. Entrenar cambia sus números internos para reducir el error. Un peso es uno de esos números: regula cuánto influye una medida. No estamos llamando a un servicio de chat.",
+          "phrases": [
+            {
+              "en": "Training reduces the error.",
+              "es": "Entrenar reduce el error."
+            },
+            {
+              "en": "A weight is a number inside the model.",
+              "es": "Un peso es un número dentro del modelo."
+            }
+          ],
+          "link": {
+            "label": "Fuente: Google Developers · Machine Learning Recipes",
+            "url": "https://www.youtube.com/watch?v=cKxRvEZd3Mw"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "En el laboratorio ficticio, el modelo falla y ajusta un peso tras ver un ejemplo.\n• Tu tarea: Explica qué cambió y qué dato conocido permitió comparar.\n• Pista: Separa números internos de etiquetas de los ejemplos.",
+          "say": "El reto: En el laboratorio ficticio, el modelo falla y ajusta un peso tras ver un ejemplo. Explica qué cambió y qué dato conocido permitió comparar."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Al entrenar el modelo del laboratorio cambian…",
+          "options": [
+            "Sus pesos para reducir el error",
+            "Los nombres del alumnado"
+          ],
+          "answer": "Sus pesos para reducir el error"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Cuál es correcta?",
+          "options": [
+            "Cambió un peso; la etiqueta conocida permitió comparar la predicción con el resultado esperado.",
+            "No hace falta comprobar nada: si el modelo responde, funciona."
+          ],
+          "answer": "Cambió un peso; la etiqueta conocida permitió comparar la predicción con el resultado esperado."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada término de IA en inglés",
+          "pairs": [
+            {
+              "en": "training",
+              "es": "entrenamiento"
+            },
+            {
+              "en": "weight",
+              "es": "peso"
+            },
+            {
+              "en": "error",
+              "es": "error"
+            },
+            {
+              "en": "model",
+              "es": "modelo"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Entrenar reduce el error.",
+          "words": [
+            "Training",
+            "reduces",
+            "the",
+            "error.",
+            "increases",
+            "train"
+          ],
+          "answer": "Training reduces the error."
+        },
+        {
+          "type": "listening",
+          "text": "A weight is a number inside the model",
+          "options": [
+            "A weight is a number inside the model",
+            "A weight is a number outside the model",
+            "The model is waiting for a number"
+          ],
+          "answer": "A weight is a number inside the model"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Training changes the model's ___.",
+          "hint": "pesos",
+          "options": [
+            "weights",
+            "names",
+            "labels"
+          ],
+          "answer": "weights"
+        }
+      ]
+    },
+    {
+      "id": "ia-03-neuron",
+      "title": "Abre el cálculo",
+      "icon": "🧠",
+      "tip": "Después de la introducción, explora los pesos de una neurona del laboratorio.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Idea 3 · Abre el cálculo",
+          "body": "Cada peso regula cuánto influye una medida. El sesgo es un número que se añade al cálculo y desplaza la decisión. La salida es un número del modelo; una cifra alta no prueba por sí sola que una predicción real sea fiable.\n• Objetivo: Después de la introducción, explora los pesos de una neurona del laboratorio.",
+          "say": "Idea 3: Abre el cálculo. Cada peso regula cuánto influye una medida. El sesgo es un número que se añade al cálculo y desplaza la decisión. La salida es un número del modelo; una cifra alta no prueba por sí sola que una predicción real sea fiable.",
+          "phrases": [
+            {
+              "en": "The bias shifts the decision.",
+              "es": "El sesgo desplaza la decisión."
+            },
+            {
+              "en": "A high output is not proof.",
+              "es": "Una salida alta no es una prueba."
+            }
+          ],
+          "link": {
+            "label": "Fuente: Google Developers · Machine Learning Recipes",
+            "url": "https://www.youtube.com/watch?v=cKxRvEZd3Mw"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "En una neurona virtual, mantienes las medidas y cambias solo el sesgo.\n• Tu tarea: Predice si puede cambiar la decisión aunque la flor sea la misma.\n• Pista: El sesgo desplaza la decisión del modelo.",
+          "say": "El reto: En una neurona virtual, mantienes las medidas y cambias solo el sesgo. Predice si puede cambiar la decisión aunque la flor sea la misma."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué puedes cambiar en la neurona del reto?",
+          "options": [
+            "Pesos y sesgo",
+            "La realidad para que nunca falle"
+          ],
+          "answer": "Pesos y sesgo"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Cuál es correcta?",
+          "options": [
+            "Sí: el sesgo cambia el cálculo del modelo aunque las entradas permanezcan iguales.",
+            "No hace falta comprobar nada: si el modelo responde, funciona."
+          ],
+          "answer": "Sí: el sesgo cambia el cálculo del modelo aunque las entradas permanezcan iguales."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada término de IA en inglés",
+          "pairs": [
+            {
+              "en": "neuron",
+              "es": "neurona"
+            },
+            {
+              "en": "bias",
+              "es": "sesgo"
+            },
+            {
+              "en": "output",
+              "es": "salida"
+            },
+            {
+              "en": "decision",
+              "es": "decisión"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Una salida alta no es una prueba.",
+          "words": [
+            "A",
+            "high",
+            "output",
+            "is",
+            "not",
+            "proof.",
+            "input",
+            "proud"
+          ],
+          "answer": "A high output is not proof."
+        },
+        {
+          "type": "listening",
+          "text": "The bias shifts the decision",
+          "options": [
+            "The bias shifts the decision",
+            "The bus shifts the decision",
+            "The bias changes the data"
+          ],
+          "answer": "The bias shifts the decision"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "You can change the weights and the ___.",
+          "hint": "sesgo",
+          "options": [
+            "bias",
+            "bus",
+            "base"
+          ],
+          "answer": "bias"
+        }
+      ]
+    },
+    {
+      "id": "ia-04-validation",
+      "title": "Prueba con ejemplos nuevos",
+      "icon": "🧪",
+      "tip": "Usa la idea de clasificar y comprueba qué ocurre con datos nuevos.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Idea 4 · Prueba con ejemplos nuevos",
+          "body": "Las nuevas flores incluyen combinaciones distintas de largo y ancho. Usar dos medidas puede ayudar donde una sola se queda corta. Generalizar significa aplicar lo aprendido a ejemplos nuevos. El resultado solo describe este conjunto pequeño.\n• Objetivo: Usa la idea de clasificar y comprueba qué ocurre con datos nuevos.",
+          "say": "Idea 4: Prueba con ejemplos nuevos. Las nuevas flores incluyen combinaciones distintas de largo y ancho. Usar dos medidas puede ayudar donde una sola se queda corta. Generalizar significa aplicar lo aprendido a ejemplos nuevos. El resultado solo describe este conjunto pequeño.",
+          "phrases": [
+            {
+              "en": "Test the model with new examples.",
+              "es": "Prueba el modelo con ejemplos nuevos."
+            },
+            {
+              "en": "Does it generalise?",
+              "es": "¿Generaliza?"
+            }
+          ],
+          "link": {
+            "label": "Fuente: Google Developers · Machine Learning Recipes",
+            "url": "https://www.youtube.com/watch?v=cKxRvEZd3Mw"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "El modelo reconoce sus flores de entrenamiento, pero recibe una flor nueva.\n• Tu tarea: Explica por qué conviene comprobar también ese ejemplo nuevo.\n• Pista: Recordar ejemplos vistos y generalizar son pruebas diferentes.",
+          "say": "El reto: El modelo reconoce sus flores de entrenamiento, pero recibe una flor nueva. Explica por qué conviene comprobar también ese ejemplo nuevo."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué datos ayudan a comprobar si generaliza?",
+          "options": [
+            "Solo los mismos ejemplos de entrenamiento",
+            "Ejemplos distintos de los usados para entrenar"
+          ],
+          "answer": "Ejemplos distintos de los usados para entrenar"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Cuál es correcta?",
+          "options": [
+            "El ejemplo nuevo ayuda a comprobar si la regla funciona más allá de los casos de entrenamiento.",
+            "No hace falta comprobar nada: si el modelo responde, funciona."
+          ],
+          "answer": "El ejemplo nuevo ayuda a comprobar si la regla funciona más allá de los casos de entrenamiento."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada término de IA en inglés",
+          "pairs": [
+            {
+              "en": "test",
+              "es": "probar"
+            },
+            {
+              "en": "new examples",
+              "es": "ejemplos nuevos"
+            },
+            {
+              "en": "generalise",
+              "es": "generalizar"
+            },
+            {
+              "en": "training data",
+              "es": "datos de entrenamiento"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Prueba el modelo con ejemplos nuevos.",
+          "words": [
+            "Test",
+            "the",
+            "model",
+            "with",
+            "new",
+            "examples.",
+            "old",
+            "for"
+          ],
+          "answer": "Test the model with new examples."
+        },
+        {
+          "type": "listening",
+          "text": "Test the model with new examples",
+          "options": [
+            "Test the model with new examples",
+            "Test the model with the same examples",
+            "Train the model with new examples"
+          ],
+          "answer": "Test the model with new examples"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Use ___ examples to check if it generalises.",
+          "hint": "nuevos",
+          "options": [
+            "new",
+            "same",
+            "old"
+          ],
+          "answer": "new"
+        }
+      ]
+    },
+    {
+      "id": "ia-05-bias",
+      "title": "Comprueba qué ejemplos faltan",
+      "icon": "⚖️",
+      "tip": "Mira los datos como una selección de ejemplos, y luego prueba sus límites.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Idea 5 · Comprueba qué ejemplos faltan",
+          "body": "Conocer bien una especie no significa conocer las dos. Al devolver ejemplos Sol al entrenamiento, el modelo puede aprender una separación que antes no veía.\n• Objetivo: Mira los datos como una selección de ejemplos, y luego prueba sus límites.",
+          "say": "Idea 5: Comprueba qué ejemplos faltan. Conocer bien una especie no significa conocer las dos. Al devolver ejemplos Sol al entrenamiento, el modelo puede aprender una separación que antes no veía.",
+          "phrases": [
+            {
+              "en": "Which group is missing?",
+              "es": "¿Qué grupo falta?"
+            },
+            {
+              "en": "Check each group separately.",
+              "es": "Comprueba cada grupo por separado."
+            }
+          ],
+          "link": {
+            "label": "Fuente: Google Developers · Machine Learning Recipes",
+            "url": "https://www.youtube.com/watch?v=cKxRvEZd3Mw"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "El conjunto ficticio contiene muchas flores Luna y ninguna Sol.\n• Tu tarea: Di qué falta comprobar antes de afirmar que reconoce ambas especies.\n• Pista: Revisa el grupo ausente, no solo el resultado total.",
+          "say": "El reto: El conjunto ficticio contiene muchas flores Luna y ninguna Sol. Di qué falta comprobar antes de afirmar que reconoce ambas especies."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Si falta un grupo de ejemplos, ¿qué debes comprobar?",
+          "options": [
+            "Cómo funciona el modelo para ese grupo",
+            "Solo que aparezca un resultado"
+          ],
+          "answer": "Cómo funciona el modelo para ese grupo"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Cuál es correcta?",
+          "options": [
+            "Necesito ejemplos Sol y comprobar por separado cómo funciona el modelo con ellos.",
+            "No hace falta comprobar nada: si el modelo responde, funciona."
+          ],
+          "answer": "Necesito ejemplos Sol y comprobar por separado cómo funciona el modelo con ellos."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada término de IA en inglés",
+          "pairs": [
+            {
+              "en": "missing",
+              "es": "que falta"
+            },
+            {
+              "en": "group",
+              "es": "grupo"
+            },
+            {
+              "en": "fair",
+              "es": "justo / equitativo"
+            },
+            {
+              "en": "check",
+              "es": "comprobar"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Comprueba cada grupo por separado.",
+          "words": [
+            "Check",
+            "each",
+            "group",
+            "separately.",
+            "every",
+            "together"
+          ],
+          "answer": "Check each group separately."
+        },
+        {
+          "type": "listening",
+          "text": "Which group is missing?",
+          "options": [
+            "Which group is missing?",
+            "Which group is winning?",
+            "Which group is this?"
+          ],
+          "answer": "Which group is missing?"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Many correct answers in one group don't prove it works for ___ group.",
+          "hint": "otro",
+          "options": [
+            "another",
+            "any",
+            "the"
+          ],
+          "answer": "another"
+        }
+      ]
+    },
+    {
+      "id": "ia-06-language",
+      "title": "Una continuación no es una certeza",
+      "icon": "💬",
+      "tip": "Distingue la clasificación del vídeo de la predicción de texto del último reto.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Idea 6 · Una continuación no es una certeza",
+          "body": "En las notas ficticias, Luna abre de noche y Sol de día. El pequeño modelo cuenta palabras que siguen a las dos anteriores. Puede mezclar frases. Generar texto y comprobar un hecho son tareas diferentes.\n• Objetivo: Distingue la clasificación del vídeo de la predicción de texto del último reto.",
+          "say": "Idea 6: Una continuación no es una certeza. En las notas ficticias, Luna abre de noche y Sol de día. El pequeño modelo cuenta palabras que siguen a las dos anteriores. Puede mezclar frases. Generar texto y comprobar un hecho son tareas diferentes.",
+          "phrases": [
+            {
+              "en": "Fluent is not the same as true.",
+              "es": "Fluido no es lo mismo que verdadero."
+            },
+            {
+              "en": "Check it against a reliable source.",
+              "es": "Compruébalo con una fuente fiable."
+            }
+          ],
+          "link": {
+            "label": "Fuente: Google Developers · Machine Learning Recipes",
+            "url": "https://www.youtube.com/watch?v=cKxRvEZd3Mw"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "El modelo ficticio completa una frase con una afirmación que no estaba en las notas.\n• Tu tarea: Explica cómo distinguir una continuación fluida de un hecho comprobado.\n• Pista: Generar una frase y verificarla son tareas distintas.",
+          "say": "El reto: El modelo ficticio completa una frase con una afirmación que no estaba en las notas. Explica cómo distinguir una continuación fluida de un hecho comprobado."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Predecir la próxima palabra demuestra…",
+          "options": [
+            "Que la frase es verdadera",
+            "Una continuación posible según el modelo"
+          ],
+          "answer": "Una continuación posible según el modelo"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Cuál es correcta?",
+          "options": [
+            "La frase puede sonar natural; debo contrastar su afirmación con las notas o una fuente adecuada.",
+            "No hace falta comprobar nada: si el modelo responde, funciona."
+          ],
+          "answer": "La frase puede sonar natural; debo contrastar su afirmación con las notas o una fuente adecuada."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada término de IA en inglés",
+          "pairs": [
+            {
+              "en": "next word",
+              "es": "siguiente palabra"
+            },
+            {
+              "en": "fact",
+              "es": "hecho"
+            },
+            {
+              "en": "source",
+              "es": "fuente"
+            },
+            {
+              "en": "reliable",
+              "es": "fiable"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Compruébalo con una fuente fiable.",
+          "words": [
+            "Check",
+            "it",
+            "against",
+            "a",
+            "reliable",
+            "source.",
+            "sauce",
+            "really"
+          ],
+          "answer": "Check it against a reliable source."
+        },
+        {
+          "type": "listening",
+          "text": "Fluent is not the same as true",
+          "options": [
+            "Fluent is not the same as true",
+            "Fluent is the same as true",
+            "Friends are not the same as you"
+          ],
+          "answer": "Fluent is not the same as true"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "A confident tone is not ___ of truth.",
+          "hint": "prueba",
+          "options": [
+            "proof",
+            "proud",
+            "prove"
+          ],
+          "answer": "proof"
+        }
+      ]
+    },
+    {
+      "id": "ia-07-modo-ia",
+      "title": "Usar la IA con cabeza",
+      "icon": "🤖",
+      "tip": "Cómo aprovechar el Modo IA de Britjoy sin fiarte a ciegas.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Idea 7 · Tu tutor con IA",
+          "body": "En el Modo IA, Britjoy usa un modelo de lenguaje para conversar contigo en inglés y explicarte dudas. Recuerda lo aprendido:\n• Un modelo de lenguaje predice continuaciones: puede sonar seguro y equivocarse.\n• Para normas, dinero, salud o papeles, comprueba siempre en la fuente oficial (GOV.UK, NHS).\n• No escribas datos personales: ni contraseñas, ni números de pasaporte o de cuenta, ni tu share code.\n• Úsalo para practicar: pide correcciones, ejemplos y conversaciones de prueba.",
+          "say": "Idea siete. En el Modo IA, Britjoy conversa contigo en inglés. Recuerda: la IA puede sonar segura y equivocarse. Comprueba siempre las normas en la fuente oficial, y nunca escribas datos personales como contraseñas o tu share code.",
+          "phrases": [
+            {
+              "en": "Can you correct my sentence?",
+              "es": "¿Puedes corregir mi frase?"
+            },
+            {
+              "en": "Can you give me another example?",
+              "es": "¿Me das otro ejemplo?"
+            },
+            {
+              "en": "Let's practise a conversation at the GP.",
+              "es": "Practiquemos una conversación en el GP."
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "La IA te dice una cifra sobre el Council Tax que no coincide con lo que leíste en GOV.UK.\n• Tu tarea: decide a cuál haces caso y por qué.\n• Pista: generar texto y comprobar un hecho son tareas distintas.",
+          "say": "El reto: la IA te da una cifra distinta a la de GOV.UK. ¿A cuál haces caso?"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "La IA y GOV.UK dan cifras distintas. ¿Qué haces?",
+          "options": [
+            "Confío en GOV.UK, la fuente oficial",
+            "Confío en la IA porque suena segura",
+            "Hago la media de las dos"
+          ],
+          "answer": "Confío en GOV.UK, la fuente oficial"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué NO debes escribir nunca en el Modo IA?",
+          "options": [
+            "Tu contraseña o tu share code",
+            "Una frase en inglés para que la corrija",
+            "Una pregunta sobre gramática"
+          ],
+          "answer": "Tu contraseña o tu share code"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada término de IA en inglés",
+          "pairs": [
+            {
+              "en": "prompt",
+              "es": "instrucción / petición"
+            },
+            {
+              "en": "answer",
+              "es": "respuesta"
+            },
+            {
+              "en": "personal data",
+              "es": "datos personales"
+            },
+            {
+              "en": "check",
+              "es": "comprobar"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿Puedes corregir mi frase?",
+          "words": [
+            "Can",
+            "you",
+            "correct",
+            "my",
+            "sentence?",
+            "collect",
+            "send"
+          ],
+          "answer": "Can you correct my sentence?"
+        },
+        {
+          "type": "listening",
+          "text": "Can you give me another example?",
+          "options": [
+            "Can you give me another example?",
+            "Can you give me an exam?",
+            "Can you give me another apple?"
+          ],
+          "answer": "Can you give me another example?"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Let's ___ a conversation at the GP.",
+          "hint": "practiquemos",
+          "options": [
+            "practise",
+            "promise",
+            "pretend"
+          ],
+          "answer": "practise"
+        }
+      ]
+    }
+  ]
+}
