@@ -119,24 +119,42 @@ def clear():
     for b in pb:
         b.rotation_euler = (0, 0, 0); b.scale = (1, 1, 1); b.location = (0, 0, 0)
 
-# Loops: (name, frames, keys(frame -> poses)). Body scale (x, y, z) along the bone:
-# Y is the bone's length, so y > 1 = breathing in.
-def idle():
-    for f, (h, a, p, br) in {1: (0, 0, 0, 1.0), 19: (2.2, -3, 4, 1.012), 37: (0, -1, 0, 1.02),
-                              55: (-2.2, 2, -4, 1.012), 73: (0, 0, 0, 1.0)}.items():
-        key(f, rot={'head': h, 'arm': a, 'paw': p, 'body': 0}, scale={'body': (1 + (br - 1) * 0.4, br, 1)})
+# Loops. Real people barely move when idle: small angles look natural, big ones
+# make the tall bearskin hat swing like a pendulum. Head motion is a small tilt
+# plus a 1-2 px nod (translation along the neck), the chest breathes ~0.6 %.
+# Units: degrees; head "nod" in scene units (0.01 = 1 px of the artwork).
+def pose(f, head=0.0, nod=0.0, arm=0.0, paw=0.0, body=0.0, breath=1.0):
+    key(f, rot={'head': head, 'arm': arm, 'paw': paw, 'body': body},
+        scale={'body': (1 + (breath - 1) * 0.3, breath, 1)},
+        loc={'head': (0, nod, 0)})
+
+def idle():  # 3 s, slow breathing with a gentle look around
+    pose(1)
+    pose(19, head=0.8, nod=0.006, arm=-0.8, paw=1.0, breath=1.004)
+    pose(37, head=0.2, nod=0.010, arm=-1.2, paw=0.4, breath=1.006)
+    pose(55, head=-0.7, nod=0.004, arm=-0.4, paw=-0.8, breath=1.003)
+    pose(73)
     return 72
-def talk():
-    for f, (h, a, p, br) in {1: (0, 0, 0, 1.0), 5: (4, -2, 6, 1.01), 9: (-1, 1, -3, 1.0), 13: (3, -4, 8, 1.012),
-                              17: (-2, 2, -2, 1.0), 21: (2.5, -1, 5, 1.008), 25: (0, 0, 0, 1.0)}.items():
-        key(f, rot={'head': h, 'arm': a, 'paw': p, 'body': 0}, scale={'body': (1, br, 1)})
+
+def talk():  # 1 s, small nods on the stressed syllables, the paw gestures
+    pose(1)
+    pose(4, head=0.9, nod=-0.012, arm=-1.0, paw=1.5, breath=1.003)
+    pose(8, head=0.2, nod=0.004, arm=-0.4, paw=0.4, breath=1.0)
+    pose(12, head=1.1, nod=-0.015, arm=-1.8, paw=2.2, breath=1.004)
+    pose(16, head=-0.3, nod=0.002, arm=-0.6, paw=0.6, breath=1.001)
+    pose(20, head=0.6, nod=-0.008, arm=-1.2, paw=1.2, breath=1.003)
+    pose(25)
     return 24
-def celebrate():
-    # Negative arm/paw angles raise the extended paw (checked on the rendered frames).
-    for f, (h, a, p, b, br) in {1: (0, 0, 0, 0, 1.0), 7: (-3, -14, -12, 1.5, 0.97), 13: (4, -26, -20, -1, 1.03),
-                                 19: (-2, -14, -6, 0, 1.0), 25: (4, -26, -22, 1.5, 1.03), 31: (-3, -12, -4, -1, 0.98),
-                                 37: (2, -4, 3, 0, 1.01), 49: (0, 0, 0, 0, 1.0)}.items():
-        key(f, rot={'head': h, 'arm': a, 'paw': p, 'body': b}, scale={'body': (1, br, 1)})
+
+def celebrate():  # 2 s, raises the paw and waves twice, then lowers it
+    pose(1)
+    pose(8, head=-0.8, nod=0.006, arm=-12, paw=-8, breath=1.004)
+    pose(14, head=0.8, nod=0.008, arm=-22, paw=-20, body=0.4, breath=1.008)
+    pose(20, head=0.0, nod=0.006, arm=-20, paw=-6, body=0.2, breath=1.006)
+    pose(26, head=0.9, nod=0.008, arm=-22, paw=-20, body=0.4, breath=1.008)
+    pose(32, head=0.0, nod=0.006, arm=-20, paw=-6, breath=1.006)
+    pose(40, head=0.3, nod=0.002, arm=-8, paw=-2, breath=1.002)
+    pose(49)
     return 48
 
 # --- camera & render ------------------------------------------------------------

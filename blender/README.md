@@ -16,7 +16,10 @@ bpyenv/bin/python blender/britjoy_rig.py -- /ruta/salida            # los tres b
 bpyenv/bin/python blender/britjoy_rig.py -- /ruta/salida celebrate  # solo uno
 ```
 
-Los fotogramas (PNG de 520 px, a 24 fps) se convierten en WebP animado de 330×300 a 12 fps, recortados
-todos con el mismo encuadre (17, 41, 467, 450). Se guardan en `src/assets/britjoy3d/`. La app muestra
-primero `britjoy-still.webp` y carga los bucles después. No los carga si el móvil pide reducir movimiento
-o ahorrar datos.
+**En la app**, Britjoy no usa vídeos grabados. `src/lib/britjoyRig.ts` reproduce **el mismo esqueleto** en el navegador
+con WebGL: los mismos huesos, las mismas zonas de cada hueso y los mismos fotogramas clave, con transiciones suaves.
+Así se mueve con fluidez a la velocidad de la pantalla y solo descarga la imagen original (65 KB). Si cambias el
+movimiento en Blender, copia los mismos ángulos en `LOOPS` de ese archivo; `tests/britjoyRig.test.ts` comprueba que
+celebrar levanta la pata, que el reposo es sutil y que los ciclos empalman.
+
+Si el móvil pide reducir el movimiento o no tiene WebGL, se muestra la imagen fija.
