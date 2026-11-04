@@ -1,0 +1,117 @@
+{
+  "level": "UK",
+  "unit": "Colegios",
+  "title": "El colegio de tus hijos",
+  "icon": "🏫",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "uk-colegios-l1",
+      "title": "Plaza, faltas y comedor",
+      "icon": "🏫",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Lo que debes saber",
+          "body": "• La plaza en un colegio público se pide al council, aunque vengas del extranjero. Ordenas los colegios por preferencia y puedes recurrir si no te dan plaza.\n• La mayoría de los niños empiezan «reception» en septiembre después de cumplir 4 años.\n• Cada council publica las fechas de los trimestres y las vacaciones.\n• Solo pueden faltar si están demasiado enfermos o con permiso previo del colegio. Irse de vacaciones en periodo escolar puede suponer una multa de £80 por progenitor (£160 si no se paga en 21 días).\n• Comedor: gratis en reception, year 1 y year 2 en colegios públicos de Inglaterra, y desde el curso 2026-2027 también si cobras Universal Credit.\n• Uniforme: desde septiembre de 2026, como máximo 3 prendas con logo (4 en secundaria si una es la corbata).",
+          "say": "La plaza en el colegio se pide al ayuntamiento. Los niños solo pueden faltar si están enfermos o con permiso; las vacaciones en época de clase pueden multarse. El comedor es gratis en los primeros cursos, y desde el curso dos mil veintiséis también si cobras Universal Credit.",
+          "phrases": [
+            {
+              "en": "I'm calling to report an absence.",
+              "es": "Llamo para avisar de una ausencia."
+            },
+            {
+              "en": "Is he eligible for free school meals?",
+              "es": "¿Tiene derecho a comedor gratuito?"
+            },
+            {
+              "en": "What time is pick-up?",
+              "es": "¿A qué hora es la recogida?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: plazas escolares",
+            "url": "https://www.gov.uk/schools-admissions"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Dónde se pide plaza en un colegio público?",
+          "options": [
+            "En el council",
+            "En la policía",
+            "En el GP"
+          ],
+          "answer": "En el council"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Te vas de vacaciones en época de clase sin permiso. ¿Qué puede pasar?",
+          "options": [
+            "Una multa de £80 por progenitor",
+            "Nada",
+            "Expulsión del niño"
+          ],
+          "answer": "Una multa de £80 por progenitor"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Desde el curso 2026-2027, si cobras Universal Credit, el comedor…",
+          "options": [
+            "es gratis",
+            "cuesta el doble",
+            "no está disponible"
+          ],
+          "answer": "es gratis"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Llamo para avisar de una ausencia.",
+          "words": [
+            "I'm",
+            "calling",
+            "to",
+            "report",
+            "an",
+            "absence.",
+            "a",
+            "absent"
+          ],
+          "answer": "I'm calling to report an absence."
+        },
+        {
+          "type": "listening",
+          "text": "What time is pick-up?",
+          "options": [
+            "What time is pick-up?",
+            "What time is lunch?",
+            "What time is it?"
+          ],
+          "answer": "What time is pick-up?"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "reception",
+              "es": "primer curso (4-5 años)"
+            },
+            {
+              "en": "pick-up",
+              "es": "recogida"
+            },
+            {
+              "en": "free school meals",
+              "es": "comedor gratuito"
+            },
+            {
+              "en": "term",
+              "es": "trimestre"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "level": "UK",
+  "unit": "Alquiler",
+  "title": "Alquilar: tus derechos",
+  "icon": "🔑",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "uk-alquiler-l1",
+      "title": "La nueva ley del alquiler",
+      "icon": "📜",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Renters' Rights Act 2025 (Inglaterra)",
+          "body": "Desde el 1 de mayo de 2026, en Inglaterra los alquileres «assured» pasaron a ser indefinidos (rolling), sin fecha de fin:\n• Tú puedes irte avisando con un máximo de 2 meses de antelación, por escrito.\n• El casero solo puede echarte con un motivo válido y un aviso «section 8».\n• El alquiler solo puede subir una vez al año, nunca en el primer año, con 2 meses de aviso.\n• No se permite pujar por encima del precio anunciado ni pedir alquiler por adelantado antes de firmar.\n• Señal de reserva: como máximo una semana de alquiler. Fianza: como máximo 5 semanas (si el alquiler anual es menor de £50.000), protegida en un plan oficial.\n• El casero no puede negarse sin un motivo razonable a que tengas mascota.\nOjo: estas reglas no se aplican si vives con el casero en su casa (lodger).",
+          "say": "Desde mayo de dos mil veintiséis, en Inglaterra los alquileres son indefinidos. Tú puedes irte avisando con dos meses. El casero solo puede echarte con un motivo válido. El alquiler sube como mucho una vez al año, y la fianza es de cinco semanas como máximo. Ojo: si vives en casa del casero, estas reglas no se aplican.",
+          "phrases": [
+            {
+              "en": "I'm giving two months' notice.",
+              "es": "Doy dos meses de preaviso."
+            },
+            {
+              "en": "Is the deposit protected?",
+              "es": "¿La fianza está protegida?"
+            },
+            {
+              "en": "Can I keep a pet in the flat?",
+              "es": "¿Puedo tener una mascota en el piso?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: tus derechos como inquilino",
+            "url": "https://www.gov.uk/assured-periodic-tenancies-tenants"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Con cuánto preaviso como máximo puedes dejar tu alquiler?",
+          "options": [
+            "2 meses",
+            "1 semana",
+            "1 año"
+          ],
+          "answer": "2 meses"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cuántas veces al año puede subir el alquiler como máximo?",
+          "options": [
+            "Una vez, y nunca en el primer año",
+            "Cada mes",
+            "Cuando quiera el casero"
+          ],
+          "answer": "Una vez, y nunca en el primer año"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cuál es la fianza máxima habitual?",
+          "options": [
+            "5 semanas de alquiler",
+            "6 meses de alquiler",
+            "No hay límite"
+          ],
+          "answer": "5 semanas de alquiler"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Vives en una habitación dentro de la casa del casero (lodger). ¿Se aplican estas reglas?",
+          "options": [
+            "No",
+            "Sí, todas",
+            "Solo la de mascotas"
+          ],
+          "answer": "No"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Doy dos meses de preaviso.",
+          "words": [
+            "I'm",
+            "giving",
+            "two",
+            "months'",
+            "notice.",
+            "weeks'",
+            "note"
+          ],
+          "answer": "I'm giving two months' notice."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "tenant",
+              "es": "inquilino"
+            },
+            {
+              "en": "landlord",
+              "es": "casero"
+            },
+            {
+              "en": "notice",
+              "es": "preaviso"
+            },
+            {
+              "en": "rent increase",
+              "es": "subida del alquiler"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "uk-alquiler-l2",
+      "title": "Averías, moho y reparaciones",
+      "icon": "🔧",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Lo que debe arreglar el casero",
+          "body": "El casero siempre es responsable de: la estructura y el exterior, la seguridad contra incendios, lavabos, fregaderos, bañeras, tuberías y desagües, la calefacción y el agua caliente, el gas y la instalación eléctrica.\n• Avísale enseguida si hay averías o moho, sobre todo si afectan a la salud.\n• Sigue pagando el alquiler mientras esperas.\n• Si no lo arregla, acude a «environmental health» de tu council.",
+          "say": "El casero es responsable de la calefacción y el agua caliente, el gas, la electricidad, las tuberías y la estructura. Avísale enseguida si hay averías o moho, y sigue pagando el alquiler. Si no lo arregla, acude a environmental health de tu ayuntamiento.",
+          "phrases": [
+            {
+              "en": "There's mould in the bathroom.",
+              "es": "Hay moho en el baño."
+            },
+            {
+              "en": "I'm writing to report a repair.",
+              "es": "Le escribo para avisar de una reparación."
+            },
+            {
+              "en": "When can someone come and fix it?",
+              "es": "¿Cuándo puede venir alguien a arreglarlo?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: reparaciones",
+            "url": "https://www.gov.uk/private-renting/repairs"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Hay moho en el baño. ¿Qué haces primero?",
+          "options": [
+            "Avisar al casero enseguida",
+            "Dejar de pagar el alquiler",
+            "Mudarte sin avisar"
+          ],
+          "answer": "Avisar al casero enseguida"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "El casero no arregla la calefacción. ¿A quién acudes?",
+          "options": [
+            "A environmental health de tu council",
+            "Al 999",
+            "A tu GP"
+          ],
+          "answer": "A environmental health de tu council"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Hay moho en el baño.",
+          "words": [
+            "There's",
+            "mould",
+            "in",
+            "the",
+            "bathroom.",
+            "mold",
+            "kitchen",
+            "on"
+          ],
+          "answer": "There's mould in the bathroom."
+        },
+        {
+          "type": "listening",
+          "text": "When can someone come and fix it?",
+          "options": [
+            "When can someone come and fix it?",
+            "When can I come and see it?",
+            "Who can come and fix it?"
+          ],
+          "answer": "When can someone come and fix it?"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "mould",
+              "es": "moho"
+            },
+            {
+              "en": "leak",
+              "es": "fuga / gotera"
+            },
+            {
+              "en": "heating",
+              "es": "calefacción"
+            },
+            {
+              "en": "repair",
+              "es": "reparación"
+            }
+          ]
+        },
+        {
+          "type": "typing",
+          "prompt": "Escribe en inglés «Le escribo para avisar de una reparación.»",
+          "answer": "I'm writing to report a repair",
+          "alternatives": [
+            "I am writing to report a repair",
+            "I'm writing to report a repair."
+          ]
+        }
+      ]
+    }
+  ]
+}

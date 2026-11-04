@@ -1,0 +1,119 @@
+{
+  "level": "UK",
+  "unit": "Trabajo",
+  "title": "Tus derechos en el trabajo",
+  "icon": "💼",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "uk-trabajo-l1",
+      "title": "Salario, descansos y nómina",
+      "icon": "💼",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Lo mínimo que te corresponde",
+          "body": "• Salario mínimo por hora desde abril de 2026: £12.71 (21 años o más), £10.85 (18 a 20), £8 (menores de 18 y aprendices).\n• Anunciado para abril de 2027: £13.21 (21+), £11.27 (18 a 20) y £8.31 (16 a 17 y aprendices).\n• Antes de empezar, el empleador debe comprobar tu derecho a trabajar (por ejemplo, con un share code).\n• Si trabajas más de 6 horas al día, tienes derecho a un descanso de 20 minutos seguidos, a 11 horas de descanso entre jornadas y a 24 horas a la semana.\n• Debes recibir una nómina (payslip) como tarde el día de pago, con el sueldo bruto, el neto y las deducciones.",
+          "say": "Desde abril de dos mil veintiséis, el salario mínimo para mayores de veintiún años es de doce libras con setenta y uno la hora. Si trabajas más de seis horas, tienes derecho a veinte minutos de descanso. Y siempre debes recibir tu nómina, como tarde el día de pago.",
+          "phrases": [
+            {
+              "en": "When's my break?",
+              "es": "¿Cuándo es mi descanso?"
+            },
+            {
+              "en": "I haven't received my payslip.",
+              "es": "No he recibido mi nómina."
+            },
+            {
+              "en": "I think there's a mistake on my payslip.",
+              "es": "Creo que hay un error en mi nómina."
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: salario mínimo",
+            "url": "https://www.gov.uk/national-minimum-wage-rates"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Tienes 25 años. ¿Cuál es el salario mínimo por hora desde abril de 2026?",
+          "options": [
+            "£12.71",
+            "£10.85",
+            "£8.00"
+          ],
+          "answer": "£12.71"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Trabajas 8 horas. ¿A qué descanso tienes derecho como mínimo?",
+          "options": [
+            "20 minutos seguidos",
+            "Ninguno",
+            "5 minutos cada hora"
+          ],
+          "answer": "20 minutos seguidos"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cuándo debes recibir tu nómina como tarde?",
+          "options": [
+            "El día de pago",
+            "Al final del año",
+            "Solo si la pides"
+          ],
+          "answer": "El día de pago"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Creo que hay un error en mi nómina.",
+          "words": [
+            "I",
+            "think",
+            "there's",
+            "a",
+            "mistake",
+            "on",
+            "my",
+            "payslip.",
+            "miss",
+            "pay"
+          ],
+          "answer": "I think there's a mistake on my payslip."
+        },
+        {
+          "type": "listening",
+          "text": "I haven't received my payslip",
+          "options": [
+            "I haven't received my payslip",
+            "I haven't received my parcel",
+            "I have received my payslip"
+          ],
+          "answer": "I haven't received my payslip"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "payslip",
+              "es": "nómina"
+            },
+            {
+              "en": "break",
+              "es": "descanso"
+            },
+            {
+              "en": "gross pay",
+              "es": "sueldo bruto"
+            },
+            {
+              "en": "net pay",
+              "es": "sueldo neto"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

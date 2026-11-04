@@ -1,0 +1,117 @@
+{
+  "level": "UK",
+  "unit": "Compras",
+  "title": "Compras y reclamaciones",
+  "icon": "🧾",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "uk-consumo-l1",
+      "title": "Devolver y reclamar",
+      "icon": "🧾",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Tus derechos al comprar",
+          "body": "• Si un producto está defectuoso, no es como se describía o no sirve para lo que debe, la tienda tiene que devolverte el dinero. En rebajas tienes los mismos derechos. Un cartel de «no refunds» es ilegal.\n• Si solo has cambiado de opinión (talla, color), en una tienda física no tienes derecho a devolución: depende de la política de la tienda.\n• Online, por teléfono o por correo: 14 días desde que lo recibes para cancelar sin motivo; después, 14 días para devolverlo, y la tienda te reembolsa en 14 días.\n• Si avisas de un defecto en los primeros 6 meses, la tienda debe reparar o sustituir, salvo que demuestre que no venía defectuoso. Puedes reclamar hasta 6 años (5 en Escocia).\n• Ayuda gratuita: Citizens Advice, 0808 223 1133 (Inglaterra y Gales).",
+          "say": "Si un producto está defectuoso, la tienda tiene que devolverte el dinero, también en rebajas. Si compras online, tienes catorce días para cancelar sin dar motivo. Y si necesitas ayuda, Citizens Advice es gratis.",
+          "phrases": [
+            {
+              "en": "It stopped working after a week.",
+              "es": "Dejó de funcionar a la semana."
+            },
+            {
+              "en": "Could I speak to the manager?",
+              "es": "¿Podría hablar con el encargado?"
+            },
+            {
+              "en": "I'd like to cancel my online order.",
+              "es": "Quiero cancelar mi pedido online."
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: derechos del consumidor",
+            "url": "https://www.gov.uk/consumer-protection-rights"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Una tienda tiene un cartel de «no refunds» y te vende algo defectuoso. ¿Te tienen que devolver el dinero?",
+          "options": [
+            "Sí, el cartel es ilegal",
+            "No, por el cartel",
+            "Solo si pagaste en efectivo"
+          ],
+          "answer": "Sí, el cartel es ilegal"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Compras online. ¿Cuántos días tienes para cancelar sin motivo?",
+          "options": [
+            "14 días desde que lo recibes",
+            "2 días",
+            "No se puede"
+          ],
+          "answer": "14 días desde que lo recibes"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "En una tienda física compraste una camisa que no te gusta (no está defectuosa). ¿Tienes derecho a devolverla?",
+          "options": [
+            "No, depende de la política de la tienda",
+            "Sí, siempre",
+            "Solo en rebajas"
+          ],
+          "answer": "No, depende de la política de la tienda"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Dejó de funcionar a la semana.",
+          "words": [
+            "It",
+            "stopped",
+            "working",
+            "after",
+            "a",
+            "week.",
+            "stop",
+            "weak"
+          ],
+          "answer": "It stopped working after a week."
+        },
+        {
+          "type": "listening",
+          "text": "Could I speak to the manager?",
+          "options": [
+            "Could I speak to the manager?",
+            "Could I speak to the owner?",
+            "Can I see the menu?"
+          ],
+          "answer": "Could I speak to the manager?"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "faulty",
+              "es": "defectuoso"
+            },
+            {
+              "en": "refund",
+              "es": "reembolso"
+            },
+            {
+              "en": "repair",
+              "es": "reparar"
+            },
+            {
+              "en": "replace",
+              "es": "sustituir"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
