@@ -1,0 +1,115 @@
+{
+  "level": "UK",
+  "unit": "Council Tax",
+  "title": "Council Tax",
+  "icon": "🏠",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "uk-ct-l1",
+      "title": "Qué es y quién paga",
+      "icon": "🧾",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "El impuesto de tu vivienda",
+          "body": "El Council Tax es un impuesto local sobre la vivienda que cobra tu ayuntamiento (council).\n• Depende de la banda de tu vivienda (de la A a la H en Inglaterra, según su valor en 1991), de lo que cobre tu council y de tus descuentos.\n• Normalmente pagan los adultos de 18 años o más. Las parejas que viven juntas responden juntas.\n• En Gales las bandas van de la A a la I. En Irlanda del Norte no hay Council Tax: hay otro sistema («rates»).",
+          "say": "El Council Tax es un impuesto local sobre tu vivienda que cobra el ayuntamiento. Depende de la banda de la casa y de los descuentos. Normalmente pagan los adultos de dieciocho años o más.",
+          "link": { "label": "GOV.UK: Council Tax", "url": "https://www.gov.uk/council-tax" }
+        },
+        {
+          "type": "explain",
+          "title": "Date de alta al mudarte",
+          "body": "Busca tu council con tu código postal y date de alta en cuanto entres a vivir, con la fecha de entrada.\n• Al mudarte, avisa al council que dejas y al nuevo.\n• No pienses que el casero lo paga siempre: depende del contrato. Pregúntalo por escrito.",
+          "phrases": [
+            { "en": "I've just moved in and I'd like to register for Council Tax.", "es": "Acabo de mudarme y quiero darme de alta en el Council Tax." },
+            { "en": "Which band is my property in?", "es": "¿En qué banda está mi vivienda?" },
+            { "en": "I moved out on the 15th. Please close my account.", "es": "Me fui el día 15. Por favor, cierren mi cuenta." }
+          ],
+          "link": { "label": "GOV.UK: encuentra tu council", "url": "https://www.gov.uk/find-local-council" }
+        },
+        { "type": "multipleChoice", "prompt": "¿Quién cobra el Council Tax?", "options": ["El ayuntamiento (council)", "El casero", "El NHS"], "answer": "El ayuntamiento (council)" },
+        { "type": "multipleChoice", "prompt": "¿De qué depende sobre todo la cantidad?", "options": ["De la banda de la vivienda", "De tu nacionalidad", "De tu nivel de inglés"], "answer": "De la banda de la vivienda" },
+        { "type": "multipleChoice", "prompt": "¿Hay Council Tax en Irlanda del Norte?", "options": ["No, tienen otro sistema (rates)", "Sí, igual que en Inglaterra", "Solo para estudiantes"], "answer": "No, tienen otro sistema (rates)" },
+        { "type": "wordBank", "prompt": "Quiero darme de alta en el Council Tax.", "words": ["I'd", "like", "to", "register", "for", "Council", "Tax.", "pay", "from"], "answer": "I'd like to register for Council Tax." },
+        { "type": "listening", "text": "Which band is my property in?", "options": ["Which band is my property in?", "Which bank is my payment in?", "Where is my property?"], "answer": "Which band is my property in?" },
+        { "type": "matching", "prompt": "Une cada término con su significado", "pairs": [
+          { "en": "council", "es": "ayuntamiento" },
+          { "en": "band", "es": "banda / categoría" },
+          { "en": "move in", "es": "entrar a vivir" },
+          { "en": "landlord", "es": "casero" }
+        ] }
+      ]
+    },
+    {
+      "id": "uk-ct-l2",
+      "title": "Descuentos",
+      "icon": "🏷️",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Pagar menos (hay que pedirlo)",
+          "body": "Los descuentos NO se aplican solos: hay que solicitarlos al council.\n• Vives solo, o los demás adultos no cuentan: 25% de descuento (single person discount).\n• Si todos en la vivienda son estudiantes a tiempo completo, no se paga.\n• Ingresos bajos o ayudas: «Council Tax Reduction», que puede llegar al 100%. Cuenta como public fund: no se puede pedir con NRPF.",
+          "say": "Los descuentos hay que pedirlos. Si vives solo, tienes un veinticinco por ciento. Si todos sois estudiantes a tiempo completo, no se paga. Con ingresos bajos puedes pedir Council Tax Reduction, pero no si tu visado dice no public funds.",
+          "phrases": [
+            { "en": "I live alone. Can I apply for the single person discount?", "es": "Vivo solo/a. ¿Puedo pedir el descuento para personas que viven solas?" },
+            { "en": "I'm a full-time student. How do I apply for an exemption?", "es": "Soy estudiante a tiempo completo. ¿Cómo pido la exención?" },
+            { "en": "I'm on a low income. Am I eligible for Council Tax Reduction?", "es": "Tengo ingresos bajos. ¿Tengo derecho a la Council Tax Reduction?" }
+          ],
+          "link": { "label": "GOV.UK: descuentos", "url": "https://www.gov.uk/council-tax/who-has-to-pay" }
+        },
+        { "type": "multipleChoice", "prompt": "Vives solo. ¿Qué descuento puedes pedir?", "options": ["25%", "50%", "10%"], "answer": "25%" },
+        { "type": "multipleChoice", "prompt": "¿Los descuentos se aplican automáticamente?", "options": ["No, hay que solicitarlos", "Sí, siempre", "Solo en Londres"], "answer": "No, hay que solicitarlos" },
+        { "type": "multipleChoice", "prompt": "Todos en tu casa son estudiantes a tiempo completo. ¿Pagáis Council Tax?", "options": ["No", "Sí, el precio completo", "Solo la mitad"], "answer": "No" },
+        { "type": "wordBank", "prompt": "¿Puedo pedir el descuento para personas que viven solas?", "words": ["Can", "I", "apply", "for", "the", "single", "person", "discount?", "double", "pay"], "answer": "Can I apply for the single person discount?" },
+        { "type": "fillBlank", "sentence": "I'm a full-time ___. How do I apply for an exemption?", "hint": "Soy estudiante a tiempo completo.", "options": ["student", "worker", "tenant"], "answer": "student" },
+        { "type": "listening", "text": "I'm on a low income", "options": ["I'm on a low income", "I'm on a long holiday", "I'm on the line"], "answer": "I'm on a low income" },
+        { "type": "matching", "prompt": "Une cada término con su significado", "pairs": [
+          { "en": "discount", "es": "descuento" },
+          { "en": "exemption", "es": "exención" },
+          { "en": "low income", "es": "ingresos bajos" },
+          { "en": "apply", "es": "solicitar" }
+        ] }
+      ]
+    },
+    {
+      "id": "uk-ct-l3",
+      "title": "Pagar y si te atrasas",
+      "icon": "📬",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Cómo se paga",
+          "body": "Normalmente en 10 pagos mensuales. Si te cuesta, puedes pedir que sean 12.\n• Lo más cómodo es domiciliarlo: «Direct Debit».",
+          "phrases": [
+            { "en": "Can I spread my payments over 12 months instead of 10?", "es": "¿Puedo pagar en 12 meses en lugar de 10?" },
+            { "en": "I'd like to set up a Direct Debit.", "es": "Quiero domiciliar el pago." }
+          ],
+          "link": { "label": "GOV.UK: pagar la factura", "url": "https://www.gov.uk/council-tax/paying-your-bill" }
+        },
+        {
+          "type": "explain",
+          "title": "⚠️ No ignores un recordatorio",
+          "body": "Si no pagas, recibes un recordatorio con 7 días para ponerte al día. Si no lo haces, puedes deber el año entero de golpe.\n• El council puede ir al juzgado (liability order) y sumar costes a la deuda.\n• Después pueden venir agentes de cobro (bailiffs) o descuentos del sueldo o de las ayudas.\n• Si te atrasas, llama enseguida al council para acordar un plan de pago.",
+          "say": "Si te llega un recordatorio, tienes siete días para ponerte al día. Si no, puedes deber el año entero de golpe y la deuda crece. Llama enseguida al council para acordar un plan de pago.",
+          "phrases": [
+            { "en": "I've received a reminder notice. Can we agree a payment plan?", "es": "He recibido un recordatorio. ¿Podemos acordar un plan de pago?" }
+          ],
+          "link": { "label": "GOV.UK: si te atrasas", "url": "https://www.gov.uk/council-tax-arrears" }
+        },
+        { "type": "multipleChoice", "prompt": "¿En cuántos pagos se paga normalmente el Council Tax?", "options": ["10 pagos mensuales", "1 pago al año", "52 pagos semanales"], "answer": "10 pagos mensuales" },
+        { "type": "multipleChoice", "prompt": "Te llega un recordatorio. ¿Cuántos días tienes para pagar?", "options": ["7 días", "60 días", "1 año"], "answer": "7 días" },
+        { "type": "multipleChoice", "prompt": "No puedes pagar este mes. ¿Qué es lo mejor?", "options": ["Llamar al council y pedir un plan de pago", "Ignorar las cartas", "Cambiar de casa sin avisar"], "answer": "Llamar al council y pedir un plan de pago" },
+        { "type": "wordBank", "prompt": "Quiero domiciliar el pago.", "words": ["I'd", "like", "to", "set", "up", "a", "Direct", "Debit.", "down", "credit"], "answer": "I'd like to set up a Direct Debit." },
+        { "type": "fillBlank", "sentence": "Can we agree a payment ___?", "hint": "¿Podemos acordar un plan de pago?", "options": ["plan", "plane", "place"], "answer": "plan" },
+        { "type": "listening", "text": "I've received a reminder notice", "options": ["I've received a reminder notice", "I've received a parking ticket", "I've paid my bill"], "answer": "I've received a reminder notice" },
+        { "type": "matching", "prompt": "Une cada término con su significado", "pairs": [
+          { "en": "bill", "es": "factura" },
+          { "en": "instalment", "es": "plazo / cuota" },
+          { "en": "arrears", "es": "atrasos / deuda" },
+          { "en": "reminder", "es": "recordatorio" }
+        ] }
+      ]
+    }
+  ]
+}

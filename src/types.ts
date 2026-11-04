@@ -85,6 +85,8 @@ export interface ExplainExercise {
   phrases?: { en: string; es: string }[];
   /** Official source / further reading. */
   link?: { label: string; url: string };
+  /** Optional video (file in public/videos/), e.g. a Voz Unida Mundo step-by-step guide. */
+  video?: { src: string; poster?: string; caption?: string };
 }
 
 export type Exercise =

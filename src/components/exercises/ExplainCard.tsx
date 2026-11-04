@@ -3,6 +3,9 @@ import type { ExplainExercise } from '../../types';
 import type { ExerciseProps } from './types';
 import { speak } from '../../lib/speech';
 import { sfx } from '../../lib/sound';
+import { hush } from '../../lib/narrator';
+
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
 
 /** Info slide: Britjoy explains; nothing to answer. */
 export function ExplainCard({ exercise, onResponse }: ExerciseProps<ExplainExercise>) {
@@ -26,6 +29,23 @@ export function ExplainCard({ exercise, onResponse }: ExerciseProps<ExplainExerc
           ),
         )}
       </div>
+
+      {exercise.video && (
+        <figure className="mx-auto mt-4 max-w-[320px]">
+          <video
+            className="aspect-[9/16] w-full rounded-2xl bg-navy object-cover shadow-[0_4px_0_rgba(29,45,92,0.18)]"
+            src={asset(exercise.video.src)}
+            poster={exercise.video.poster ? asset(exercise.video.poster) : undefined}
+            controls
+            playsInline
+            preload="metadata"
+            onPlay={() => hush()}
+          />
+          {exercise.video.caption && (
+            <figcaption className="mt-2 text-center text-xs font-bold text-ink-soft">{exercise.video.caption}</figcaption>
+          )}
+        </figure>
+      )}
 
       {exercise.phrases && exercise.phrases.length > 0 && (
         <div className="mt-5">

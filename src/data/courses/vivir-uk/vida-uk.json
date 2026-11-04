@@ -1,0 +1,157 @@
+{
+  "level": "UK",
+  "unit": "Vida en UK",
+  "title": "Vida en UK y papeles",
+  "icon": "🇬🇧",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "uk-vida-l1",
+      "title": "El examen Life in the UK",
+      "icon": "📘",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Qué es el Life in the UK Test",
+          "body": "Es el examen sobre la vida, la historia y las costumbres británicas que necesitas para pedir la residencia permanente (settlement / ILR) o la ciudadanía británica.\n• 24 preguntas en 45 minutos.\n• Apruebas con un 75% o más.\n• Cuesta £50 y se reserva online con al menos 3 días de antelación.\n• Las preguntas salen solo del libro oficial «Life in the United Kingdom: A Guide for New Residents».",
+          "say": "El examen Life in the UK lo necesitas para la residencia permanente o la ciudadanía. Son veinticuatro preguntas en cuarenta y cinco minutos, y apruebas con un setenta y cinco por ciento. Cuesta cincuenta libras y las preguntas salen solo del libro oficial.",
+          "link": { "label": "GOV.UK: Life in the UK Test", "url": "https://www.gov.uk/life-in-the-uk-test" }
+        },
+        {
+          "type": "explain",
+          "title": "El día del examen",
+          "body": "• Lleva el MISMO documento de identidad con el que reservaste, en original (no vale una foto). Si tienes eVisa, se usa un share code.\n• El nombre de la reserva debe coincidir exactamente con el del documento.\n• Si no llevas el documento correcto, no haces el examen y no te devuelven el dinero.\n• No tienen que hacerlo los menores de 18 ni las personas de 65 o más, entre otros casos.\n• Si suspendes, puedes repetirlo las veces que quieras, pagando cada intento.",
+          "phrases": [
+            { "en": "I'd like to book the Life in the UK test.", "es": "Quiero reservar el examen Life in the UK." },
+            { "en": "Which documents do I need to bring?", "es": "¿Qué documentos tengo que llevar?" }
+          ]
+        },
+        { "type": "multipleChoice", "prompt": "¿Cuántas preguntas tiene el examen?", "options": ["24", "50", "10"], "answer": "24" },
+        { "type": "multipleChoice", "prompt": "¿Qué nota necesitas para aprobar?", "options": ["75% o más", "50% o más", "100%"], "answer": "75% o más" },
+        { "type": "multipleChoice", "prompt": "¿De dónde salen las preguntas?", "options": ["Solo del libro oficial", "De cualquier web de práctica", "Del periódico"], "answer": "Solo del libro oficial" },
+        { "type": "multipleChoice", "prompt": "Reservaste con tu pasaporte. ¿Qué llevas el día del examen?", "options": ["El mismo pasaporte, en original", "Una foto del pasaporte", "Cualquier documento"], "answer": "El mismo pasaporte, en original" },
+        { "type": "wordBank", "prompt": "Quiero reservar el examen Life in the UK.", "words": ["I'd", "like", "to", "book", "the", "Life", "in", "the", "UK", "test.", "read", "pass"], "answer": "I'd like to book the Life in the UK test." },
+        { "type": "listening", "text": "Which documents do I need to bring?", "options": ["Which documents do I need to bring?", "Which questions will be in the test?", "When do I get my results?"], "answer": "Which documents do I need to bring?" }
+      ]
+    },
+    {
+      "id": "uk-vida-l2",
+      "title": "Share code para trabajar",
+      "icon": "🔑",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "¿Te piden un share code?",
+          "body": "Es un código que permite al empleador comprobar tu derecho a trabajar en el Reino Unido. Mira la guía paso a paso de Voz Unida Mundo, con pantallas reales.",
+          "say": "¿Te piden un share code para trabajar? Es un código que permite al empleador comprobar tu derecho a trabajar en el Reino Unido. Vamos a sacarlo paso a paso. Mira el vídeo y después te lo resumo.",
+          "video": { "src": "videos/share-code-paso-a-paso.mp4", "poster": "videos/share-code-paso-a-paso.jpg", "caption": "Voz Unida Mundo · Guía paso a paso (capturas del 16/10/2026, datos ocultos)" },
+          "link": { "label": "GOV.UK: Prove your right to work", "url": "https://www.gov.uk/prove-right-to-work" }
+        },
+        {
+          "type": "explain",
+          "title": "Pasos 1 a 7: entrar en tu cuenta",
+          "body": "1. En GOV.UK abre la guía «Prove your right to work» y pulsa «Start now» (empezar).\n2. Si usas una cuenta UKVI, elige la primera opción y pulsa «Continue».\n3. Elige el documento vinculado a tu cuenta (por ejemplo, el pasaporte).\n4. Escribe el número de ese documento.\n5. Introduce tu fecha de nacimiento como aparece en el documento: Day, Month, Year.\n6. Elige recibir el código de acceso por email o por SMS.\n7. Escribe ese código en la web. Sirve para entrar en tu cuenta: todavía NO es el share code.",
+          "say": "Uno: en GOV.UK abre la guía para demostrar tu derecho a trabajar y pulsa Start now. Dos: si usas una cuenta UKVI, elige la primera opción y pulsa Continue. Tres: elige el documento vinculado a tu cuenta. Cuatro: escribe su número. Cinco: tu fecha de nacimiento: día, mes y año. Seis: elige recibir el código por correo o por mensaje. Siete: escribe ese código. Sirve para entrar en tu cuenta; todavía no es el share code."
+        },
+        {
+          "type": "explain",
+          "title": "Pasos 8 a 14: el código",
+          "body": "8. Si ya habías iniciado sesión, pulsa el primer enlace: ver tu eVisa y obtener un share code. Pulsa «Get a share code».\n9. Hay tres motivos: trabajar, alquilar en Inglaterra u otros fines.\n10. Para trabajar, marca «To prove my right to work».\n11. Revisa tus datos y las condiciones, y pulsa «Get a share code».\n12. Aparece tu share code: mira su fecha de caducidad (dura 90 días). No la confundas con la duración de tu permiso.\n13. Da el share code y tu fecha de nacimiento al empleador.\n14. El empleador lo comprueba en el servicio oficial. Enseñarle una captura no sustituye ese paso.\n• El share code no sustituye un permiso de trabajo.",
+          "say": "Ocho: pulsa Get a share code. Nueve: hay tres motivos: trabajar, alquilar en Inglaterra u otros fines. Diez: para trabajar, marca To prove my right to work. Once: revisa tus datos y pulsa Get a share code. Doce: ya tienes tu share code; mira su fecha de caducidad, dura noventa días. Trece: dale el código y tu fecha de nacimiento al empleador. Catorce: el empleador lo comprueba en el servicio oficial. Enseñarle una captura no sustituye ese paso.",
+          "phrases": [
+            { "en": "Here is my share code and my date of birth.", "es": "Aquí tiene mi share code y mi fecha de nacimiento." },
+            { "en": "My share code is valid for 90 days.", "es": "Mi share code es válido durante 90 días." }
+          ],
+          "link": { "label": "GOV.UK: ver y demostrar tu estatus", "url": "https://www.gov.uk/view-prove-immigration-status" }
+        },
+        { "type": "multipleChoice", "prompt": "¿Cuánto tiempo es válido un share code?", "options": ["90 días", "1 año", "Para siempre"], "answer": "90 días" },
+        { "type": "multipleChoice", "prompt": "¿Qué dos datos le das al empleador?", "options": ["El share code y tu fecha de nacimiento", "Tu contraseña y tu dirección", "Una captura de pantalla"], "answer": "El share code y tu fecha de nacimiento" },
+        { "type": "multipleChoice", "prompt": "El código que te llega por email al entrar (paso 7), ¿es ya el share code?", "options": ["No, solo sirve para entrar en tu cuenta", "Sí, es el share code", "Es tu número de pasaporte"], "answer": "No, solo sirve para entrar en tu cuenta" },
+        { "type": "multipleChoice", "prompt": "Para un trabajo, ¿qué opción marcas?", "options": ["To prove my right to work", "To prove my right to rent in England", "To prove my immigration status for anything else"], "answer": "To prove my right to work" },
+        { "type": "matching", "prompt": "Une cada botón con su significado", "pairs": [
+          { "en": "Start now", "es": "Empezar ahora" },
+          { "en": "Continue", "es": "Continuar" },
+          { "en": "Get a share code", "es": "Obtener el código para compartir" },
+          { "en": "Date of birth", "es": "Fecha de nacimiento" }
+        ] },
+        { "type": "wordBank", "prompt": "Aquí tiene mi share code y mi fecha de nacimiento.", "words": ["Here", "is", "my", "share", "code", "and", "my", "date", "of", "birth.", "your", "day"], "answer": "Here is my share code and my date of birth." },
+        { "type": "listening", "text": "My share code is valid for 90 days", "options": ["My share code is valid for 90 days", "My share code is valid for 19 days", "My visa is valid for 90 days"], "answer": "My share code is valid for 90 days" }
+      ]
+    },
+    {
+      "id": "uk-vida-l3",
+      "title": "NI number, eVisa y banco",
+      "icon": "🪪",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "National Insurance number",
+          "body": "Es tu número para trabajar y cotizar. Se pide online si vives en el Reino Unido y tienes derecho a trabajar.\n• Tarda hasta 4 semanas.\n• Puedes empezar a trabajar antes de tenerlo si demuestras tu derecho a trabajar.\n• Si tienes eVisa o tuviste BRP, puede que ya tengas uno: míralo en tu cuenta UKVI.",
+          "say": "El National Insurance number es tu número para trabajar y cotizar. Se pide online y tarda hasta cuatro semanas, pero puedes empezar a trabajar antes si demuestras tu derecho a trabajar.",
+          "link": { "label": "GOV.UK: pedir el NI number", "url": "https://www.gov.uk/apply-national-insurance-number" }
+        },
+        {
+          "type": "explain",
+          "title": "eVisa y cuenta UKVI",
+          "body": "Los BRP (tarjetas de residencia) han sido sustituidos por eVisas. Tu eVisa está en tu cuenta UKVI, que es gratuita.\n• Para viajar, el eVisa va vinculado a tu pasaporte: mantén actualizado el documento en tu cuenta.\n• Para demostrar tu estatus (trabajo, alquiler) usas un share code.\n• Banco: pregunta por una «basic bank account» y lleva tu pasaporte; si aún no tienes facturas, pregunta qué otra prueba de domicilio aceptan.",
+          "phrases": [
+            { "en": "I'm waiting for my National Insurance number, but I have the right to work.", "es": "Estoy esperando mi NI number, pero tengo derecho a trabajar." },
+            { "en": "I'd like to open a basic bank account.", "es": "Quiero abrir una cuenta básica." },
+            { "en": "What else can I use as proof of address?", "es": "¿Qué otra cosa puedo usar como prueba de domicilio?" }
+          ],
+          "link": { "label": "GOV.UK: eVisa", "url": "https://www.gov.uk/evisa" }
+        },
+        { "type": "multipleChoice", "prompt": "¿Puedes empezar a trabajar antes de tener el NI number?", "options": ["Sí, si demuestras tu derecho a trabajar", "No, nunca", "Solo con permiso del banco"], "answer": "Sí, si demuestras tu derecho a trabajar" },
+        { "type": "multipleChoice", "prompt": "¿Qué sustituyó a los BRP?", "options": ["El eVisa", "El NI number", "El pasaporte"], "answer": "El eVisa" },
+        { "type": "wordBank", "prompt": "Quiero abrir una cuenta básica.", "words": ["I'd", "like", "to", "open", "a", "basic", "bank", "account.", "close", "card"], "answer": "I'd like to open a basic bank account." },
+        { "type": "fillBlank", "sentence": "What else can I use as ___ of address?", "hint": "prueba de domicilio", "options": ["proof", "price", "post"], "answer": "proof" },
+        { "type": "listening", "text": "I have the right to work", "options": ["I have the right to work", "I have to write at work", "I have the right to rent"], "answer": "I have the right to work" },
+        { "type": "matching", "prompt": "Une cada término con su significado", "pairs": [
+          { "en": "right to work", "es": "derecho a trabajar" },
+          { "en": "bank account", "es": "cuenta bancaria" },
+          { "en": "immigration status", "es": "situación migratoria" },
+          { "en": "National Insurance", "es": "seguridad social británica" }
+        ] }
+      ]
+    },
+    {
+      "id": "uk-vida-l4",
+      "title": "Casa y emergencias",
+      "icon": "🚨",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Alquilar: depósito y right to rent",
+          "body": "• En Inglaterra el casero debe comprobar tu «right to rent» antes del alquiler (con un share code).\n• En Inglaterra y Gales, el casero debe proteger tu depósito en un plan oficial (DPS, MyDeposits o TDS) en 30 días. Pide el certificado.\n• Al final, debe devolverlo en 10 días desde que acordéis la cantidad.",
+          "say": "Si alquilas en Inglaterra o Gales, el casero debe proteger tu depósito en un plan oficial en treinta días. Pide siempre el certificado.",
+          "phrases": [
+            { "en": "Which deposit protection scheme is my deposit in?", "es": "¿En qué plan de protección está mi depósito?" }
+          ],
+          "link": { "label": "GOV.UK: protección del depósito", "url": "https://www.gov.uk/tenancy-deposit-protection" }
+        },
+        {
+          "type": "explain",
+          "title": "TV licence y números de emergencia",
+          "body": "• TV licence: la necesitas para ver o grabar TV en directo en cualquier canal o plataforma, y para BBC iPlayer. Netflix o YouTube no la necesitan. Cuesta £180 al año desde abril de 2026.\n• 999: emergencia o delito en curso.\n• 101: policía cuando no es urgente.\n• 111: salud, urgente pero no emergencia.",
+          "say": "Recuerda los números: nueve, nueve, nueve para emergencias; uno, cero, uno para la policía cuando no es urgente; y uno, uno, uno para la salud cuando es urgente pero no una emergencia.",
+          "phrases": [
+            { "en": "Police, please. Someone has broken into my flat.", "es": "Policía, por favor. Han entrado a robar en mi piso." },
+            { "en": "I want to report a stolen bike. It's not an emergency.", "es": "Quiero denunciar el robo de una bici. No es urgente." }
+          ],
+          "link": { "label": "GOV.UK: contactar con la policía", "url": "https://www.gov.uk/contact-police" }
+        },
+        { "type": "multipleChoice", "prompt": "Te roban la bici y no hay peligro. ¿Qué número llamas?", "options": ["101", "999", "111"], "answer": "101" },
+        { "type": "multipleChoice", "prompt": "¿En cuántos días debe proteger el casero tu depósito?", "options": ["30 días", "1 año", "No tiene que hacerlo"], "answer": "30 días" },
+        { "type": "multipleChoice", "prompt": "Solo ves Netflix. ¿Necesitas TV licence?", "options": ["No", "Sí, siempre", "Solo los fines de semana"], "answer": "No" },
+        { "type": "wordBank", "prompt": "Han entrado a robar en mi piso.", "words": ["Someone", "has", "broken", "into", "my", "flat.", "broke", "house"], "answer": "Someone has broken into my flat." },
+        { "type": "listening", "text": "It's not an emergency", "options": ["It's not an emergency", "It's an emergency", "It's not my agency"], "answer": "It's not an emergency" },
+        { "type": "matching", "prompt": "Une cada término con su significado", "pairs": [
+          { "en": "deposit", "es": "fianza / depósito" },
+          { "en": "tenant", "es": "inquilino" },
+          { "en": "flat", "es": "piso" },
+          { "en": "stolen", "es": "robado" }
+        ] }
+      ]
+    }
+  ]
+}

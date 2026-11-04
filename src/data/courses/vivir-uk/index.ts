@@ -8,6 +8,13 @@
  */
 import type { LevelDefinition, Unit } from '../../../types';
 
+import transporte from './transporte.json';
+import salud from './salud.json';
+import universalCredit from './universal-credit.json';
+import councilTax from './council-tax.json';
+import vidaUk from './vida-uk.json';
+import espana from './espana.json';
+
 const unit = (data: unknown) => data as Unit;
 
 export const LIFE_LEVEL: LevelDefinition = {
@@ -19,7 +26,6 @@ export const LIFE_LEVEL: LevelDefinition = {
   accentDark: '#111B3A',
   accentLight: '#E3E8F5',
   instructionLanguage: 'es',
-  units: [],
+  units: [unit(transporte), unit(salud), unit(universalCredit), unit(councilTax), unit(vidaUk), unit(espana)],
 };
 
-export { unit };

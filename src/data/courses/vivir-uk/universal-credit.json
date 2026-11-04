@@ -1,0 +1,111 @@
+{
+  "level": "UK",
+  "unit": "Universal Credit",
+  "title": "Universal Credit",
+  "icon": "💷",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "uk-uc-l1",
+      "title": "¿Puedo pedirlo?",
+      "icon": "❓",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Qué es Universal Credit",
+          "body": "Es una ayuda mensual para personas con ingresos bajos, que trabajen o no. En general debes:\n• Tener 18 años o más (hay excepciones con 16 o 17).\n• Estar por debajo de la edad de jubilación del Estado.\n• Tener £16.000 o menos entre dinero, ahorros e inversiones.\n• Vivir en el Reino Unido. Si eres de la UE, puede que necesites settled o pre-settled status.",
+          "say": "Universal Credit es una ayuda mensual para personas con ingresos bajos, trabajen o no. En general, debes tener dieciocho años o más, estar por debajo de la edad de jubilación, tener dieciséis mil libras o menos en ahorros y vivir en el Reino Unido.",
+          "link": { "label": "GOV.UK: quién puede pedirlo", "url": "https://www.gov.uk/universal-credit/eligibility" }
+        },
+        {
+          "type": "explain",
+          "title": "⚠️ «No public funds»",
+          "body": "Muchos visados llevan la condición «no recourse to public funds» (NRPF). Si tu visado la tiene, NO puedes pedir Universal Credit, Housing Benefit ni Council Tax Reduction, entre otras.\n• Pedirlo igualmente puede causarte problemas con tu situación migratoria y obligarte a devolver el dinero.\n• Algunas prestaciones contributivas (como la New Style JSA o la Statutory Sick Pay) no cuentan como public funds.\n• Si dudas, pide consejo antes de solicitar.",
+          "say": "Muy importante: si tu visado dice no recourse to public funds, no puedes pedir Universal Credit. Pedirlo igualmente puede causarte problemas con tu situación migratoria. Si tienes dudas, pide consejo antes de solicitar.",
+          "link": { "label": "GOV.UK: qué son los public funds", "url": "https://www.gov.uk/government/publications/public-funds--2/public-funds" }
+        },
+        { "type": "multipleChoice", "prompt": "Tu visado dice «no recourse to public funds». ¿Puedes pedir Universal Credit?", "options": ["No", "Sí, sin problema", "Solo el primer mes"], "answer": "No" },
+        { "type": "multipleChoice", "prompt": "En general, ¿cuánto puedes tener en ahorros como máximo para pedirlo?", "options": ["£16.000", "£6.000", "£60.000"], "answer": "£16.000" },
+        { "type": "multipleChoice", "prompt": "¿Universal Credit es solo para personas sin trabajo?", "options": ["No, también para quien trabaja con ingresos bajos", "Sí, solo si no trabajas", "Solo para estudiantes"], "answer": "No, también para quien trabaja con ingresos bajos" },
+        { "type": "matching", "prompt": "Une cada término con su significado", "pairs": [
+          { "en": "claim", "es": "solicitud / solicitar" },
+          { "en": "savings", "es": "ahorros" },
+          { "en": "public funds", "es": "ayudas públicas" },
+          { "en": "eligible", "es": "con derecho a pedirlo" }
+        ] },
+        { "type": "wordBank", "prompt": "Quiero solicitar Universal Credit.", "words": ["I'd", "like", "to", "make", "a", "claim", "for", "Universal", "Credit.", "do", "pay"], "answer": "I'd like to make a claim for Universal Credit." },
+        { "type": "listening", "text": "Am I eligible for Universal Credit?", "options": ["Am I eligible for Universal Credit?", "Am I able to pay by credit card?", "Is Universal Credit a loan?"], "answer": "Am I eligible for Universal Credit?" }
+      ]
+    },
+    {
+      "id": "uk-uc-l2",
+      "title": "Cómo solicitarlo",
+      "icon": "🖥️",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Prepara esto antes",
+          "body": "• Cuenta de banco, building society o credit union.\n• Email y teléfono.\n• Documento de identidad (pasaporte, por ejemplo).\n• Datos de tu vivienda y alquiler.\n• Nóminas, ahorros y otras ayudas que recibas.\n• National Insurance number, si lo tienes.",
+          "link": { "label": "GOV.UK: cómo solicitarlo", "url": "https://www.gov.uk/universal-credit/how-to-claim" }
+        },
+        {
+          "type": "explain",
+          "title": "Los pasos",
+          "body": "1. Crea tu cuenta online y termina la solicitud en 28 días (si no, empiezas de nuevo).\n2. La ayuda cuenta desde el día en que envías la solicitud.\n3. Verifica tu identidad online o en una cita.\n4. Las parejas que viven juntas hacen una solicitud conjunta.\n5. Si no puedes hacerlo online: Universal Credit helpline 0800 328 5644, gratis, de lunes a viernes de 8:00 a 18:00.\n6. Ayuda gratuita: «Help to Claim» de Citizens Advice.",
+          "say": "Crea tu cuenta online y termina la solicitud en veintiocho días. La ayuda cuenta desde el día en que la envías. Después verificas tu identidad. Si no puedes hacerlo online, llama gratis a la helpline: cero ochocientos, trescientos veintiocho, cincuenta y seis, cuarenta y cuatro.",
+          "phrases": [
+            { "en": "I can't verify my identity online. Can I book an appointment?", "es": "No puedo verificar mi identidad online. ¿Puedo pedir una cita?" },
+            { "en": "Do I need to bring any documents to the Jobcentre?", "es": "¿Tengo que llevar algún documento al Jobcentre?" }
+          ]
+        },
+        { "type": "multipleChoice", "prompt": "¿Cuánto tiempo tienes para terminar la solicitud online?", "options": ["28 días", "7 días", "3 meses"], "answer": "28 días" },
+        { "type": "multipleChoice", "prompt": "Vives con tu pareja. ¿Cómo se solicita?", "options": ["Una solicitud conjunta", "Una solicitud cada uno", "Solo la persona que trabaja"], "answer": "Una solicitud conjunta" },
+        { "type": "wordBank", "prompt": "No puedo verificar mi identidad online.", "words": ["I", "can't", "verify", "my", "identity", "online.", "your", "can"], "answer": "I can't verify my identity online." },
+        { "type": "fillBlank", "sentence": "Do I need to bring any ___ to the Jobcentre?", "hint": "¿Tengo que llevar algún documento?", "options": ["documents", "money", "friends"], "answer": "documents" },
+        { "type": "listening", "text": "Can I book an appointment?", "options": ["Can I book an appointment?", "Can I cook an appointment?", "Can I change my account?"], "answer": "Can I book an appointment?" },
+        { "type": "matching", "prompt": "Une cada término con su significado", "pairs": [
+          { "en": "bank account", "es": "cuenta bancaria" },
+          { "en": "payslip", "es": "nómina" },
+          { "en": "rent", "es": "alquiler" },
+          { "en": "joint claim", "es": "solicitud conjunta" }
+        ] }
+      ]
+    },
+    {
+      "id": "uk-uc-l3",
+      "title": "Pagos, anticipos y journal",
+      "icon": "📅",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Cuándo cobras",
+          "body": "• El primer pago llega unas 5 semanas después de solicitar.\n• Cada mes es un «assessment period» (periodo de evaluación) y cobras unos 7 días después de que termine.\n• Si no puedes esperar, pide un «advance payment»: es un PRÉSTAMO que devuelves en 24 meses desde tus pagos.",
+          "say": "El primer pago llega unas cinco semanas después de solicitar. Luego cobras una vez al mes. Si no puedes esperar, pide un advance payment, pero recuerda: es un préstamo y lo devuelves desde tus pagos.",
+          "link": { "label": "GOV.UK: anticipos", "url": "https://www.gov.uk/guidance/universal-credit-advances" }
+        },
+        {
+          "type": "explain",
+          "title": "Claimant commitment y journal",
+          "body": "• El «claimant commitment» es tu acuerdo con el work coach: lo que harás para buscar trabajo o ganar más. Debes aceptarlo antes del primer pago.\n• Si faltas a una cita sin una buena razón, te pueden reducir el pago («sanction»).\n• El «journal» es tu cuenta online: mensajes con el work coach, tareas (to-do list) y cambios. Revísalo cada pocos días.\n• Informa de cualquier cambio: trabajo, dirección, pareja o alquiler.",
+          "phrases": [
+            { "en": "I've posted a message in my journal.", "es": "He dejado un mensaje en mi journal." },
+            { "en": "I can't attend my appointment on Tuesday. Can we rearrange it?", "es": "No puedo ir a la cita del martes. ¿Podemos cambiarla?" },
+            { "en": "I'd like to report a change of circumstances.", "es": "Quiero informar de un cambio en mi situación." }
+          ]
+        },
+        { "type": "multipleChoice", "prompt": "¿Cuándo llega normalmente el primer pago?", "options": ["Unas 5 semanas después", "Al día siguiente", "A los 6 meses"], "answer": "Unas 5 semanas después" },
+        { "type": "multipleChoice", "prompt": "El «advance payment» es…", "options": ["Un préstamo que devuelves desde tus pagos", "Un regalo que no se devuelve", "Una multa"], "answer": "Un préstamo que devuelves desde tus pagos" },
+        { "type": "multipleChoice", "prompt": "Faltas a una cita con el work coach sin una buena razón. ¿Qué puede pasar?", "options": ["Una sanction: te reducen el pago", "Nada", "Te dan un anticipo"], "answer": "Una sanction: te reducen el pago" },
+        { "type": "wordBank", "prompt": "Quiero informar de un cambio en mi situación.", "words": ["I'd", "like", "to", "report", "a", "change", "of", "circumstances.", "repair", "chance"], "answer": "I'd like to report a change of circumstances." },
+        { "type": "fillBlank", "sentence": "I've posted a message in my ___.", "hint": "He dejado un mensaje en mi diario online.", "options": ["journal", "journey", "jacket"], "answer": "journal" },
+        { "type": "listening", "text": "Can we rearrange my appointment?", "options": ["Can we rearrange my appointment?", "Can we arrange a payment?", "Can I change my apartment?"], "answer": "Can we rearrange my appointment?" },
+        { "type": "matching", "prompt": "Une cada término con su significado", "pairs": [
+          { "en": "work coach", "es": "asesor de empleo" },
+          { "en": "advance", "es": "anticipo" },
+          { "en": "sanction", "es": "reducción del pago" },
+          { "en": "assessment period", "es": "periodo de evaluación" }
+        ] }
+      ]
+    }
+  ]
+}

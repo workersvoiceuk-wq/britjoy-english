@@ -1,0 +1,141 @@
+{
+  "level": "UK",
+  "unit": "Transporte",
+  "title": "Overground, metro y tren",
+  "icon": "🚆",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "uk-transporte-l1",
+      "title": "Pagar el viaje",
+      "icon": "💳",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Contactless u Oyster",
+          "body": "En el Overground, el metro (Tube) y los autobuses de Londres no hace falta comprar un billete de papel. Pagas con «pay as you go»:\n• Con tu tarjeta bancaria contactless, el móvil o el reloj.\n• O con una tarjeta Oyster, que se recarga con saldo.",
+          "say": "En el Overground, el metro y los autobuses de Londres no necesitas billete de papel. Pagas con tu tarjeta contactless, el móvil o el reloj, o con una tarjeta Oyster.",
+          "phrases": [
+            { "en": "Does this station accept contactless?", "es": "¿Se puede pagar con contactless en esta estación?" },
+            { "en": "Where can I top up my Oyster card?", "es": "¿Dónde puedo recargar mi tarjeta Oyster?" }
+          ],
+          "link": { "label": "TfL: pay as you go", "url": "https://tfl.gov.uk/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go" }
+        },
+        {
+          "type": "explain",
+          "title": "Touch in y touch out",
+          "body": "Al entrar, acerca la tarjeta al lector amarillo: es el «touch in». Al salir, vuelve a hacerlo: es el «touch out», aunque las barreras estén abiertas.\n• Si no haces touch out, te pueden cobrar la tarifa máxima (maximum fare).\n• En el autobús solo tocas al subir.",
+          "say": "Al entrar, acerca la tarjeta al lector amarillo: eso es touch in. Al salir, vuelve a tocar: touch out, aunque las barreras estén abiertas. Si no lo haces, te pueden cobrar la tarifa máxima.",
+          "phrases": [
+            { "en": "I forgot to touch out. Can I get a refund?", "es": "Se me olvidó validar al salir. ¿Me pueden devolver el dinero?" },
+            { "en": "The barrier won't open.", "es": "La barrera no se abre." }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "Siempre la misma tarjeta",
+          "body": "Usa la misma tarjeta o el mismo móvil para entrar y salir. Si entras con el móvil y sales con la tarjeta física, el sistema cree que son dos viajes incompletos.\n• Saca la tarjeta de la cartera: si acercas varias, puede cobrar la que no querías («card clash»).\n• Hay un tope de gasto diario y semanal («capping»): pasado ese tope, no pagas más. Las cantidades cambian cada año; míralas en la web de TfL."
+        },
+        { "type": "multipleChoice", "prompt": "Entras en la estación con el móvil. ¿Con qué debes salir?", "options": ["Con el mismo móvil", "Con tu tarjeta física", "Con cualquier tarjeta"], "answer": "Con el mismo móvil" },
+        { "type": "multipleChoice", "prompt": "Al salir, las barreras están abiertas. ¿Qué haces?", "options": ["Hago touch out igualmente", "Salgo sin tocar el lector", "Compro un billete de papel"], "answer": "Hago touch out igualmente" },
+        { "type": "matching", "prompt": "Une cada palabra con su significado", "pairs": [
+          { "en": "touch in", "es": "validar al entrar" },
+          { "en": "touch out", "es": "validar al salir" },
+          { "en": "top up", "es": "recargar saldo" },
+          { "en": "fare", "es": "tarifa del viaje" }
+        ] },
+        { "type": "wordBank", "prompt": "Se me olvidó validar al salir.", "words": ["I", "forgot", "to", "touch", "out.", "in", "remember"], "answer": "I forgot to touch out." },
+        { "type": "listening", "text": "Does this station accept contactless?", "options": ["Does this station accept contactless?", "Does this train go to Stratford?", "Where is the ticket office?"], "answer": "Does this station accept contactless?" },
+        { "type": "fillBlank", "sentence": "Where can I ___ up my Oyster card?", "hint": "¿Dónde puedo recargar mi tarjeta Oyster?", "options": ["top", "touch", "pay"], "answer": "top" }
+      ]
+    },
+    {
+      "id": "uk-transporte-l2",
+      "title": "Las líneas del Overground",
+      "icon": "🚉",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Seis líneas con nombre",
+          "body": "Desde 2024 el London Overground ya no es «la línea naranja»: tiene seis líneas con nombre y color propio.\n• Lioness: Euston – Watford Junction.\n• Mildmay: Stratford – Richmond / Clapham Junction.\n• Windrush: Highbury & Islington – Clapham Junction, New Cross, Crystal Palace y West Croydon.\n• Weaver: Liverpool Street – Cheshunt, Enfield Town y Chingford.\n• Suffragette: Gospel Oak – Barking Riverside.\n• Liberty: Romford – Upminster.",
+          "say": "Desde 2024, el London Overground tiene seis líneas con nombre: Lioness, Mildmay, Windrush, Weaver, Suffragette y Liberty. Fíjate en el nombre de la línea y en el destino final del tren.",
+          "link": { "label": "TfL: mapas y estado de las líneas", "url": "https://tfl.gov.uk/" }
+        },
+        {
+          "type": "explain",
+          "title": "Preguntar en la estación",
+          "body": "En los carteles verás el nombre de la línea y el destino final. Si dudas, pregunta al personal: en inglés es normal empezar con «Excuse me».",
+          "phrases": [
+            { "en": "Excuse me, which platform for the Weaver line to Chingford?", "es": "Perdone, ¿qué andén es el de la línea Weaver a Chingford?" },
+            { "en": "Is this train going to Clapham Junction?", "es": "¿Este tren va a Clapham Junction?" },
+            { "en": "Where do I change for the Elizabeth line?", "es": "¿Dónde hago transbordo a la Elizabeth line?" },
+            { "en": "Is there step-free access at this station?", "es": "¿Esta estación tiene acceso sin escaleras?" }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "Lo que oirás por megafonía",
+          "body": "• «Mind the gap»: cuidado con el hueco entre el tren y el andén.\n• «This train terminates here. All change, please»: el tren termina aquí; bajen todos.\n• «There are severe delays on the Mildmay line»: hay retrasos graves en la línea Mildmay.",
+          "phrases": [
+            { "en": "Mind the gap.", "es": "Cuidado con el hueco." },
+            { "en": "This train terminates here. All change, please.", "es": "Este tren termina aquí. Bajen todos, por favor." }
+          ]
+        },
+        { "type": "multipleChoice", "prompt": "¿Qué línea del Overground va de Romford a Upminster?", "options": ["Liberty", "Lioness", "Weaver"], "answer": "Liberty" },
+        { "type": "multipleChoice", "prompt": "Oyes «All change, please». ¿Qué significa?", "options": ["Todos deben bajar del tren", "Hay que cambiar de billete", "El tren cambia de vía"], "answer": "Todos deben bajar del tren" },
+        { "type": "listening", "text": "Mind the gap", "options": ["Mind the gap", "Mind your bags", "Find the map"], "answer": "Mind the gap" },
+        { "type": "wordBank", "prompt": "¿Este tren va a Clapham Junction?", "words": ["Is", "this", "train", "going", "to", "Clapham", "Junction?", "bus", "from"], "answer": "Is this train going to Clapham Junction?" },
+        { "type": "matching", "prompt": "Une cada palabra con su significado", "pairs": [
+          { "en": "platform", "es": "andén" },
+          { "en": "delay", "es": "retraso" },
+          { "en": "change", "es": "hacer transbordo" },
+          { "en": "step-free", "es": "sin escaleras" }
+        ] },
+        { "type": "typing", "prompt": "Escribe en inglés: «¿Dónde hago transbordo a la Elizabeth line?» (empieza con «Where do I…»)", "answer": "Where do I change for the Elizabeth line?", "alternatives": ["Where do I change to the Elizabeth line?"] }
+      ]
+    },
+    {
+      "id": "uk-transporte-l3",
+      "title": "Trenes fuera de Londres",
+      "icon": "🎫",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Billete antes de subir",
+          "body": "Fuera de la zona de pay as you go de Londres, los trenes son de National Rail. Ahí sí necesitas billete: en la taquilla, la máquina, la app o la web.\n• Single: solo ida. Return: ida y vuelta.\n• Off-peak: más barato, fuera de las horas punta.\n• Advance: suele valer solo para un tren concreto.\n• Compra el billete antes de subir. Si no hay forma de comprarlo, guarda una prueba.",
+          "say": "Fuera de Londres, los trenes son de National Rail y necesitas billete antes de subir. Single es solo ida, return es ida y vuelta, y off-peak es más barato fuera de las horas punta.",
+          "link": { "label": "National Rail", "url": "https://www.nationalrail.co.uk/" }
+        },
+        {
+          "type": "explain",
+          "title": "Penalty fare: la multa",
+          "body": "Si viajas sin billete válido te pueden poner una «penalty fare». En National Rail, en Inglaterra, es de £100 más el precio del billete, o £50 más el billete si pagas en 21 días (en vigor desde enero de 2023).\n• Si crees que es injusta, puedes apelar en el plazo que indica el aviso.\n• TfL tiene su propia multa: consulta la cifra actual en su web.",
+          "say": "Si viajas sin billete, te pueden poner una penalty fare. En National Rail, en Inglaterra, son cien libras más el billete, o cincuenta más el billete si pagas en veintiún días. Si crees que es injusta, puedes apelar.",
+          "link": { "label": "GOV.UK: penalty fares", "url": "https://www.gov.uk/government/consultations/rail-penalty-fare-value-reform/outcome/penalty-fare-value-reform-consultation-outcome" }
+        },
+        {
+          "type": "explain",
+          "title": "Railcards: un tercio menos",
+          "body": "Una Railcard te da 1/3 de descuento en muchos billetes de National Rail. Hay varias: 16-25 Railcard, 26-30 Railcard (solo digital) y Network Railcard (Londres y el sureste), entre otras.\n• Tienen precio y condiciones: compruébalos en railcard.co.uk antes de comprarla.",
+          "phrases": [
+            { "en": "I'd like an off-peak return to Brighton, please.", "es": "Un billete de ida y vuelta off-peak a Brighton, por favor." },
+            { "en": "Can I use my Railcard on this ticket?", "es": "¿Puedo usar mi Railcard con este billete?" },
+            { "en": "The ticket machine isn't working.", "es": "La máquina de billetes no funciona." }
+          ],
+          "link": { "label": "Railcards", "url": "https://www.railcard.co.uk/" }
+        },
+        { "type": "multipleChoice", "prompt": "¿Qué billete pides para ir y volver?", "options": ["A return", "A single", "An advance"], "answer": "A return" },
+        { "type": "multipleChoice", "prompt": "En National Rail (Inglaterra), si pagas la penalty fare en 21 días, ¿cuánto pagas?", "options": ["£50 más el billete", "£100 más el billete", "Solo el billete"], "answer": "£50 más el billete" },
+        { "type": "wordBank", "prompt": "Un billete de ida y vuelta off-peak a Brighton, por favor.", "words": ["I'd", "like", "an", "off-peak", "return", "to", "Brighton,", "please.", "single", "from"], "answer": "I'd like an off-peak return to Brighton, please." },
+        { "type": "fillBlank", "sentence": "Can I use my ___ on this ticket?", "hint": "¿Puedo usar mi tarjeta de descuento con este billete?", "options": ["Railcard", "Oyster", "passport"], "answer": "Railcard" },
+        { "type": "listening", "text": "The ticket machine isn't working", "options": ["The ticket machine isn't working", "The ticket office is closed", "My ticket isn't valid"], "answer": "The ticket machine isn't working" },
+        { "type": "matching", "prompt": "Une cada palabra con su significado", "pairs": [
+          { "en": "single", "es": "solo ida" },
+          { "en": "return", "es": "ida y vuelta" },
+          { "en": "off-peak", "es": "fuera de hora punta" },
+          { "en": "penalty fare", "es": "multa por no tener billete" }
+        ] }
+      ]
+    }
+  ]
+}

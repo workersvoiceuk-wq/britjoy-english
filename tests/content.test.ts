@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { LEVELS } from '../src/data/courses/en-es';
+import { existsSync } from 'node:fs';
+import { ALL_LEVELS, LEVELS } from '../src/data/courses/en-es';
 import placement from '../src/data/placement.json';
 import { checkAnswer, normalizeText, tokenize } from '../src/logic/answer';
 import type { Exercise, ExerciseResponse } from '../src/types';
@@ -18,10 +19,10 @@ function perfectResponse(ex: Exercise): ExerciseResponse {
   }
 }
 
-const VALID_TYPES = ['multipleChoice', 'wordBank', 'listening', 'matching', 'typing', 'fillBlank'];
+const VALID_TYPES = ['explain', 'multipleChoice', 'wordBank', 'listening', 'matching', 'typing', 'fillBlank'];
 
 describe('course content', () => {
-  const lessons = LEVELS.flatMap((level) => level.units.flatMap((u) => u.lessons.map((lesson) => ({ level, unit: u, lesson }))));
+  const lessons = ALL_LEVELS.flatMap((level) => level.units.flatMap((u) => u.lessons.map((lesson) => ({ level, unit: u, lesson }))));
 
   it('has every CEFR level with at least one unit of two lessons', () => {
     expect(LEVELS.map((l) => l.id)).toEqual(['A1', 'A2', 'B1', 'B2', 'C1', 'C2']);
@@ -40,10 +41,27 @@ describe('course content', () => {
     }
   });
 
-  it('has 8–12 exercises per lesson', () => {
-    for (const { lesson } of lessons) {
-      expect(lesson.exercises.length, lesson.id).toBeGreaterThanOrEqual(8);
+  it('has 8–12 exercises per English lesson', () => {
+    for (const { level, lesson } of lessons.filter((l) => l.level.track === 'english')) {
+      expect(lesson.exercises.length, `${level.id} ${lesson.id}`).toBeGreaterThanOrEqual(8);
       expect(lesson.exercises.length, lesson.id).toBeLessThanOrEqual(12);
+    }
+  });
+
+  it('Vivir en UK lessons explain first, then practise (5+ graded, 14 max)', () => {
+    const life = lessons.filter((l) => l.level.track === 'life');
+    expect(life.length).toBeGreaterThanOrEqual(15);
+    for (const { lesson } of life) {
+      expect(lesson.exercises[0].type, lesson.id).toBe('explain');
+      const graded = lesson.exercises.filter((e) => e.type !== 'explain').length;
+      expect(graded, lesson.id).toBeGreaterThanOrEqual(5);
+      expect(lesson.exercises.length, lesson.id).toBeLessThanOrEqual(14);
+    }
+  });
+
+  it('every unit of Vivir en UK records when its facts were checked', () => {
+    for (const level of ALL_LEVELS.filter((l) => l.track === 'life')) {
+      for (const u of level.units) expect(u.checked, u.unit).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     }
   });
 
@@ -67,6 +85,14 @@ describe('course content', () => {
           expect(ex.words.length, `${where}: needs distractors`).toBeGreaterThan(tokenize(ex.answer).length);
         }
         if (ex.type === 'fillBlank') expect(ex.sentence, where).toContain('___');
+        if (ex.type === 'explain') {
+          expect(ex.title.length, where).toBeGreaterThan(0);
+          if (ex.link) expect(ex.link.url, where).toMatch(/^https:\/\//);
+          if (ex.video) {
+            expect(existsSync(`public/${ex.video.src}`), `${where}: missing ${ex.video.src}`).toBe(true);
+            if (ex.video.poster) expect(existsSync(`public/${ex.video.poster}`), where).toBe(true);
+          }
+        }
         if (ex.type === 'matching') expect(ex.pairs.length, where).toBeGreaterThanOrEqual(3);
         expect(checkAnswer(ex, perfectResponse(ex)).correct, where).toBe(true);
       });

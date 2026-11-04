@@ -1,0 +1,155 @@
+{
+  "level": "UK",
+  "unit": "Salud",
+  "title": "El médico (GP) y el NHS",
+  "icon": "🏥",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "uk-salud-l1",
+      "title": "Registrarte en un GP",
+      "icon": "📝",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "¿Qué es un GP?",
+          "body": "El GP (General Practitioner) es tu médico de cabecera del NHS. La consulta se llama «GP surgery» o «GP practice».\n• Regístrate en cuanto tengas dirección, no esperes a ponerte enfermo.\n• Las consultas de GP y de enfermería son gratuitas, sea cual sea tu situación migratoria.",
+          "say": "El GP es tu médico de cabecera del NHS. Regístrate en cuanto tengas dirección, sin esperar a ponerte enfermo. Las consultas del GP son gratuitas, sea cual sea tu situación migratoria.",
+          "link": { "label": "GOV.UK: derechos sanitarios de los migrantes", "url": "https://www.gov.uk/guidance/nhs-entitlements-migrant-health-guide" }
+        },
+        {
+          "type": "explain",
+          "title": "No te pueden rechazar por papeles",
+          "body": "En Inglaterra, la guía oficial dice que las consultas no tienen obligación de pedirte prueba de identidad, de domicilio ni de estatus migratorio, y que no pueden rechazarte por no tenerla.\n• Busca un GP cerca de casa con el buscador «Find a GP» de nhs.uk.\n• Muchas consultas tienen un formulario online; si no, ve a recepción.",
+          "phrases": [
+            { "en": "Hello, I'd like to register as a new patient.", "es": "Hola, quiero registrarme como paciente nuevo." },
+            { "en": "I don't have proof of address yet. Can I still register?", "es": "Todavía no tengo prueba de domicilio. ¿Puedo registrarme igual?" },
+            { "en": "Could I have an interpreter? My first language is Spanish.", "es": "¿Podría tener un intérprete? Mi lengua materna es el español." }
+          ],
+          "link": { "label": "NHS: registrarse en un GP", "url": "https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/" }
+        },
+        { "type": "multipleChoice", "prompt": "¿Cuándo es mejor registrarte en un GP?", "options": ["En cuanto tengas dirección", "Solo cuando te pongas enfermo", "Después de un año en el país"], "answer": "En cuanto tengas dirección" },
+        { "type": "multipleChoice", "prompt": "En Inglaterra, ¿pueden rechazarte en el GP por no tener prueba de domicilio?", "options": ["No, según la guía oficial", "Sí, siempre", "Solo si no hablas inglés"], "answer": "No, según la guía oficial" },
+        { "type": "wordBank", "prompt": "Quiero registrarme como paciente nuevo.", "words": ["I'd", "like", "to", "register", "as", "a", "new", "patient.", "doctor", "old"], "answer": "I'd like to register as a new patient." },
+        { "type": "listening", "text": "Could I have an interpreter?", "options": ["Could I have an interpreter?", "Could I have an appointment?", "Could I have a prescription?"], "answer": "Could I have an interpreter?" },
+        { "type": "matching", "prompt": "Une cada palabra con su significado", "pairs": [
+          { "en": "GP surgery", "es": "consulta del médico de cabecera" },
+          { "en": "patient", "es": "paciente" },
+          { "en": "proof of address", "es": "prueba de domicilio" },
+          { "en": "interpreter", "es": "intérprete" }
+        ] },
+        { "type": "fillBlank", "sentence": "I don't have ___ of address yet.", "hint": "Todavía no tengo prueba de domicilio.", "options": ["proof", "price", "place"], "answer": "proof" }
+      ]
+    },
+    {
+      "id": "uk-salud-l2",
+      "title": "Pedir cita con el GP",
+      "icon": "📞",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Cómo pedir la cita",
+          "body": "Cada consulta tiene sus normas: muchas dan citas por teléfono cuando abren, online o con la NHS App.\n• La recepcionista o «care navigator» te preguntará el motivo: no es curiosidad, sirve para enviarte al profesional adecuado.\n• Prepara tus síntomas en una frase: qué te pasa y desde cuándo.\n• Puedes pedir cita por teléfono o presencial.",
+          "say": "Cada consulta tiene sus normas: muchas dan citas por teléfono, online o con la NHS App. La recepcionista te preguntará el motivo para enviarte al profesional adecuado. Prepara tus síntomas en una frase: qué te pasa y desde cuándo.",
+          "link": { "label": "NHS App", "url": "https://www.nhs.uk/nhs-app/" }
+        },
+        {
+          "type": "explain",
+          "title": "Frases para la llamada",
+          "body": "Escúchalas y repítelas en voz alta antes de llamar.",
+          "phrases": [
+            { "en": "I'd like to book an appointment with a GP, please.", "es": "Quiero pedir cita con un médico de cabecera, por favor." },
+            { "en": "Is there anything available today?", "es": "¿Hay alguna cita libre hoy?" },
+            { "en": "It's about a sore throat and fever for three days.", "es": "Es por dolor de garganta y fiebre desde hace tres días." },
+            { "en": "I'd prefer a phone appointment.", "es": "Prefiero una cita por teléfono." },
+            { "en": "I need a repeat prescription.", "es": "Necesito una receta repetida." }
+          ]
+        },
+        { "type": "multipleChoice", "prompt": "La recepcionista te pregunta por qué quieres la cita. ¿Por qué lo hace?", "options": ["Para enviarte al profesional adecuado", "Porque es obligatorio pagar", "Para comprobar tu visado"], "answer": "Para enviarte al profesional adecuado" },
+        { "type": "wordBank", "prompt": "Quiero pedir cita con un médico de cabecera, por favor.", "words": ["I'd", "like", "to", "book", "an", "appointment", "with", "a", "GP,", "please.", "buy", "nurse"], "answer": "I'd like to book an appointment with a GP, please." },
+        { "type": "listening", "text": "Is there anything available today?", "options": ["Is there anything available today?", "Is the pharmacy open today?", "Is the doctor here today?"], "answer": "Is there anything available today?" },
+        { "type": "fillBlank", "sentence": "It's about a sore ___ and fever for three days.", "hint": "dolor de garganta", "options": ["throat", "head", "back"], "answer": "throat" },
+        { "type": "matching", "prompt": "Une cada palabra con su significado", "pairs": [
+          { "en": "appointment", "es": "cita" },
+          { "en": "repeat prescription", "es": "receta repetida" },
+          { "en": "symptoms", "es": "síntomas" },
+          { "en": "fever", "es": "fiebre" }
+        ] },
+        { "type": "typing", "prompt": "Escribe en inglés: «Prefiero una cita por teléfono.»", "answer": "I'd prefer a phone appointment", "alternatives": ["I would prefer a phone appointment", "I'd prefer a telephone appointment", "I would prefer a telephone appointment"] }
+      ]
+    },
+    {
+      "id": "uk-salud-l3",
+      "title": "111, 999 y la farmacia",
+      "icon": "💊",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "¿A quién llamo?",
+          "body": "• 999: emergencia, peligro para la vida. También puedes ir a A&E (urgencias del hospital).\n• 111: urgente pero no una emergencia. Es gratuito y puedes usar también 111.nhs.uk.\n• Para problemas leves, ve primero a la farmacia.",
+          "say": "Si hay peligro para la vida, llama al 999 o ve a urgencias, que se llama A and E. Si es urgente pero no una emergencia, llama al 111. Para problemas leves, ve primero a la farmacia.",
+          "link": { "label": "NHS 111 online", "url": "https://111.nhs.uk/" }
+        },
+        {
+          "type": "explain",
+          "title": "Pharmacy First y las recetas",
+          "body": "En Inglaterra, con «Pharmacy First», la farmacia puede darte tratamiento sin cita con el GP para 7 problemas: dolor de garganta, infección de oído, impétigo, herpes zóster, picaduras de insecto infectadas, sinusitis e infección urinaria sin complicaciones en mujeres (hay límites de edad).\n• Las recetas se pagan solo en Inglaterra (£9.90 por medicamento en 2025/26; comprueba el precio actual). Algunas personas están exentas.\n• El Immigration Health Surcharge no cubre recetas ni dentista.",
+          "phrases": [
+            { "en": "Can the pharmacist help with this, or do I need a GP?", "es": "¿Me puede ayudar el farmacéutico con esto o necesito un GP?" },
+            { "en": "How much is the prescription?", "es": "¿Cuánto cuesta la receta?" },
+            { "en": "It's urgent but not an emergency.", "es": "Es urgente, pero no es una emergencia." }
+          ],
+          "link": { "label": "GOV.UK: Pharmacy First", "url": "https://www.gov.uk/government/publications/pharmacy-first-contractual-framework-2023-to-2025" }
+        },
+        { "type": "multipleChoice", "prompt": "Tu amigo está inconsciente. ¿Qué número llamas?", "options": ["999", "111", "101"], "answer": "999" },
+        { "type": "multipleChoice", "prompt": "Tienes fiebre alta de madrugada, pero no es una emergencia. ¿Qué haces?", "options": ["Llamar al 111", "Llamar al 999", "Esperar una semana"], "answer": "Llamar al 111" },
+        { "type": "multipleChoice", "prompt": "Te duele la garganta. En Inglaterra, ¿dónde puedes ir primero sin cita?", "options": ["A la farmacia", "A A&E", "Al Jobcentre"], "answer": "A la farmacia" },
+        { "type": "listening", "text": "It's urgent but not an emergency", "options": ["It's urgent but not an emergency", "It's an emergency, please hurry", "It's not urgent at all"], "answer": "It's urgent but not an emergency" },
+        { "type": "wordBank", "prompt": "Necesito una ambulancia.", "words": ["I", "need", "an", "ambulance.", "a", "doctor", "want"], "answer": "I need an ambulance." },
+        { "type": "matching", "prompt": "Une cada palabra con su significado", "pairs": [
+          { "en": "A&E", "es": "urgencias del hospital" },
+          { "en": "pharmacist", "es": "farmacéutico" },
+          { "en": "prescription", "es": "receta" },
+          { "en": "exempt", "es": "exento de pagar" }
+        ] }
+      ]
+    },
+    {
+      "id": "uk-salud-l4",
+      "title": "No tienes que poder con todo",
+      "icon": "💙",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Un mensaje para acompañarte",
+          "body": "Empezar de cero en otro país cansa. Mira este vídeo de Voz Unida Mundo.",
+          "say": "Antes de seguir, un mensaje para acompañarte. ¿Hace cuánto dices estoy bien cuando necesitas descansar? Hay días en que responder un mensaje ya cuesta. Si hoy solo pudiste hacer lo básico, eso también cuenta. Puedes descansar sin tener que ganártelo. Busca un poco de compañía: deja que alguien te escuche. Y recuérdalo: tu valor sigue ahí, incluso en los días difíciles.",
+          "video": { "src": "videos/no-tienes-que-poder-con-todo.mp4", "poster": "videos/no-tienes-que-poder-con-todo.jpg", "caption": "Voz Unida Mundo · Vuelve a creer en ti" }
+        },
+        {
+          "type": "explain",
+          "title": "Pedir ayuda también es inglés útil",
+          "body": "Si necesitas hablar con alguien:\n• Samaritans: 116 123, gratis, las 24 horas, todos los días. No hace falta estar en crisis para llamar.\n• Si es urgente pero no una emergencia: 111.\n• Si hay peligro para tu vida o la de otra persona: 999.\n• Tu GP también puede ayudarte con la salud mental.",
+          "say": "Si necesitas hablar con alguien, en Samaritans te escuchan gratis las veinticuatro horas: uno, uno, seis, uno, dos, tres. Si es urgente, el 111. Si hay peligro para la vida, el 999. Y tu GP también puede ayudarte.",
+          "phrases": [
+            { "en": "I'm not feeling great. Can we talk?", "es": "No me siento muy bien. ¿Podemos hablar?" },
+            { "en": "I need a break.", "es": "Necesito un descanso." },
+            { "en": "I've been feeling low lately.", "es": "Últimamente me siento decaído/a." },
+            { "en": "Thank you for listening.", "es": "Gracias por escucharme." }
+          ],
+          "link": { "label": "Samaritans", "url": "https://www.samaritans.org/" }
+        },
+        { "type": "multipleChoice", "prompt": "Según el vídeo, si hoy solo pudiste hacer lo básico…", "options": ["Eso también cuenta", "No has hecho nada", "Tienes que hacer más mañana"], "answer": "Eso también cuenta" },
+        { "type": "multipleChoice", "prompt": "¿A qué número llamas para hablar con Samaritans?", "options": ["116 123", "101", "0800 328 5644"], "answer": "116 123" },
+        { "type": "wordBank", "prompt": "Necesito un descanso.", "words": ["I", "need", "a", "break.", "an", "broke"], "answer": "I need a break." },
+        { "type": "listening", "text": "Thank you for listening", "options": ["Thank you for listening", "Thank you for coming", "Thank you for waiting"], "answer": "Thank you for listening" },
+        { "type": "matching", "prompt": "Une cada frase con su significado", "pairs": [
+          { "en": "I'm not feeling great", "es": "No me siento muy bien" },
+          { "en": "feeling low", "es": "decaído/a" },
+          { "en": "Can we talk?", "es": "¿Podemos hablar?" },
+          { "en": "I need a break", "es": "Necesito un descanso" }
+        ] }
+      ]
+    }
+  ]
+}
