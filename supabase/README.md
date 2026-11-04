@@ -9,7 +9,7 @@ Nunca van en la web, en las apps ni en el repositorio.
 | Pieza | Qué hace |
 |---|---|
 | `migrations/…_accounts_plus_credits.sql` | Crea las tablas `profiles` (Plus y créditos), `ai_usage` (mensajes gratis de hoy) y `purchases` (compras ya aplicadas). La app solo puede **leer** su propia fila; las escrituras solo las hacen las funciones. |
-| `functions/britjoy-tutor` | Modo IA. Exige sesión iniciada y cobra cada mensaje antes de llamar a Claude: con Plus no hay límite, todos tienen `FREE_AI_DAILY` mensajes gratis al día y después cada mensaje gasta 1 crédito. Si Claude falla, el mensaje se devuelve. |
+| `functions/britjoy-tutor` | Modo IA. Exige sesión iniciada y cobra cada mensaje antes de llamar a Claude: con Plus hay `PLUS_AI_DAILY` mensajes al día (15, uso justo), sin Plus `FREE_AI_DAILY` gratis al día (5), y después cada mensaje gasta 1 crédito. Si Claude falla, el mensaje se devuelve. |
 | `functions/billing-checkout` | Abre el pago de Stripe (Plus mensual o anual, o el pack de 100 créditos). Solo se usa en la web. |
 | `functions/billing-webhook` | Recibe los avisos de Stripe (pago completado, renovación, cancelación) y activa Plus o suma créditos. Cada aviso se aplica una sola vez. |
 | `functions/billing-portal` | Abre el portal de Stripe para cambiar o cancelar Plus y descargar recibos. |
@@ -33,7 +33,7 @@ Nunca van en la web, en las apps ni en el repositorio.
 ### 2. Claude (Modo IA)
 1. Crea una clave en https://console.anthropic.com/ (Settings → API keys) y fija un **límite de gasto mensual** en Billing.
 2. En Supabase, **Edge Functions → Secrets**, añade `ANTHROPIC_API_KEY`.
-3. Opcional: `FREE_AI_DAILY` (por defecto, 5 mensajes gratis al día).
+3. Opcional: `FREE_AI_DAILY` (por defecto, 5 mensajes gratis al día) y `PLUS_AI_DAILY` (por defecto, 15 con Plus).
 
 ### 3. Stripe (Britjoy Plus y créditos)
 1. Crea una cuenta en https://dashboard.stripe.com y complétala con los datos de Voz Unida Mundo.
@@ -42,8 +42,8 @@ Nunca van en la web, en las apps ni en el repositorio.
 
    | Producto | Precio | Tipo | Secreto en Supabase con el ID del precio (`price_…`) |
    |---|---|---|---|
-   | Britjoy Plus mensual | £4.99 / mes | Recurrente | `STRIPE_PRICE_PLUS_MONTH` |
-   | Britjoy Plus anual | £39.99 / año | Recurrente | `STRIPE_PRICE_PLUS_YEAR` |
+   | Britjoy Plus mensual | £5.99 / mes | Recurrente | `STRIPE_PRICE_PLUS_MONTH` |
+   | Britjoy Plus anual | £47.99 / año | Recurrente | `STRIPE_PRICE_PLUS_YEAR` |
    | 100 créditos IA | £2.99 | Pago único | `STRIPE_PRICE_CREDITS_100` |
 
 3. **Developers → API keys**: copia la *Secret key* en el secreto `STRIPE_SECRET_KEY`.
@@ -71,7 +71,7 @@ añade estas variables. **No son secretas**: son las públicas de Supabase, pens
 |---|---|
 | `VITE_SUPABASE_URL` | `https://<REF>.supabase.co` |
 | `VITE_SUPABASE_ANON_KEY` | La clave pública *anon* o *publishable* del proyecto (Project Settings → API) |
-| `VITE_PRICE_PLUS_MONTH`, `VITE_PRICE_PLUS_YEAR`, `VITE_PRICE_CREDITS_100` | Opcional: el precio que se **muestra** si lo cambias en Stripe (por defecto 4.99 / 39.99 / 2.99) |
+| `VITE_PRICE_PLUS_MONTH`, `VITE_PRICE_PLUS_YEAR`, `VITE_PRICE_CREDITS_100` | Opcional: el precio que se **muestra** si lo cambias en Stripe (por defecto 5.99 / 47.99 / 2.99) |
 | `VITE_FREE_AI_DAILY` | Opcional: igual que `FREE_AI_DAILY` |
 
 La siguiente publicación de la web (al hacer push a `main`) y de las apps activa todo.
@@ -80,7 +80,7 @@ La siguiente publicación de la web (al hacer push a `main`) y de las apps activ
 1. Con Stripe en modo de prueba, en la web: **Más → Britjoy Plus y tu cuenta**, inicia sesión con tu email y pulsa
    **Elegir** en el plan mensual.
 2. Paga con la tarjeta de prueba `4242 4242 4242 4242` (cualquier fecha futura y cualquier CVC).
-3. Al volver a la app debe aparecer «Tienes Britjoy Plus hasta el …», las vidas en ∞ y el Modo IA sin límite.
+3. Al volver a la app debe aparecer «Tienes Britjoy Plus hasta el …», las vidas en ∞ y el Modo IA con 15 mensajes al día.
 4. Compra el pack de créditos y comprueba que el saldo sube a 100.
 5. En **Gestionar suscripción**, cancela: Plus sigue activo hasta el final del periodo pagado y luego termina solo. Para probarlo al momento, cancela la suscripción «inmediatamente» desde el panel de Stripe.
 6. Cuando todo funcione, repite el paso 3 de Stripe con las claves **live** (modo real).

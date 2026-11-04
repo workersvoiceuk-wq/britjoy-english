@@ -154,7 +154,7 @@ test('Britjoy Plus: compares Free and Plus, shows prices and waits for the backe
   await page.getByRole('button', { name: /Britjoy Plus y tu cuenta/ }).click();
   await expect(page.getByRole('heading', { name: /Britjoy Plus/ }).first()).toBeVisible();
   await expect(page.getByText('Vidas ilimitadas', { exact: true })).toBeVisible();
-  await expect(page.getByText(/4,99\s£ al mes/)).toBeVisible();
+  await expect(page.getByText(/5,99\s£ al mes/)).toBeVisible();
   await expect(page.getByText(/Ahorra 33\s?%/)).toBeVisible();
   await expect(page.getByText('Los pagos todavía no están activados. ¡Muy pronto!')).toBeVisible();
   await expect(page.getByText('Las cuentas todavía no están activadas. ¡Muy pronto!')).toBeVisible();

@@ -1,5 +1,6 @@
 /**
- * Britjoy Plus offer shown in the app. The amounts here are only what the screen
+ * Britjoy Plus offer shown in the app. How these prices were chosen: docs/PRECIOS.md.
+ * The amounts here are only what the screen
  * displays; the real price is whatever the owner sets in Stripe. Keep both in sync
  * (or set VITE_PRICE_* in GitHub Variables to change the display without code).
  */
@@ -10,13 +11,16 @@ const env = import.meta.env as Record<string, string | undefined>;
 export const CURRENCY = env.VITE_PRICE_CURRENCY || 'GBP';
 
 export const PRICES: Record<ProductId, number> = {
-  plus_month: Number(env.VITE_PRICE_PLUS_MONTH || 4.99),
-  plus_year: Number(env.VITE_PRICE_PLUS_YEAR || 39.99),
+  plus_month: Number(env.VITE_PRICE_PLUS_MONTH || 5.99),
+  plus_year: Number(env.VITE_PRICE_PLUS_YEAR || 47.99),
   credits_100: Number(env.VITE_PRICE_CREDITS_100 || 2.99),
 };
 
 /** Free AI messages a day for signed-in learners (must match FREE_AI_DAILY on the server). */
 export const FREE_AI_DAILY = Number(env.VITE_FREE_AI_DAILY || 5);
+
+/** Fair-use AI messages a day with Britjoy Plus (must match PLUS_AI_DAILY on the server). */
+export const PLUS_AI_DAILY = Number(env.VITE_PLUS_AI_DAILY || 15);
 
 export const CREDIT_PACK = 100;
 

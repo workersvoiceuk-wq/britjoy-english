@@ -12,3 +12,6 @@ export const isProduct = (p: unknown): p is ProductId => typeof p === "string" &
 
 /** Free AI messages per day for every signed-in learner. */
 export const FREE_AI_DAILY = Number(Deno.env.get("FREE_AI_DAILY") ?? "5");
+
+/** Fair-use daily AI messages for Britjoy Plus members (see docs/PRECIOS.md). */
+export const PLUS_AI_DAILY = Number(Deno.env.get("PLUS_AI_DAILY") ?? "15");

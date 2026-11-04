@@ -3,13 +3,13 @@
 // ANTHROPIC_API_KEY; it is never shipped in the web or mobile app.
 //
 // Learners must be signed in. Each message is paid for before Claude is called
-// (spend_ai_message): Britjoy Plus is unlimited, everyone gets FREE_AI_DAILY free
-// messages a day, then one credit per message. If Claude cannot answer, the
+// (spend_ai_message): Britjoy Plus members get PLUS_AI_DAILY messages a day (fair
+// use), everyone else FREE_AI_DAILY free messages a day; then one credit each. If Claude cannot answer, the
 // message is refunded.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import Anthropic from "npm:@anthropic-ai/sdk";
 import { admin, cors, currentUser, json, preflight } from "../_shared/http.ts";
-import { FREE_AI_DAILY } from "../_shared/products.ts";
+import { FREE_AI_DAILY, PLUS_AI_DAILY } from "../_shared/products.ts";
 
 const MODEL = "claude-opus-5-5";
 const MAX_TURNS = 20; // conversation history sent per request
@@ -71,7 +71,7 @@ Deno.serve(async (req: Request) => {
   const level = /^(A1|A2|B1|B2|C1|C2)$/.test(body.level ?? "") ? body.level : "A1";
 
   const db = admin();
-  const { data, error: spendError } = await db.rpc("spend_ai_message", { p_user: user.id, p_free_daily: FREE_AI_DAILY });
+  const { data, error: spendError } = await db.rpc("spend_ai_message", { p_user: user.id, p_free_daily: FREE_AI_DAILY, p_plus_daily: PLUS_AI_DAILY });
   const spend = (Array.isArray(data) ? data[0] : data) as Spend | null;
   if (spendError || !spend) return json({ error: "unavailable" }, 503, headers);
   const usage = { paidWith: spend.paid_with, freeLeft: spend.free_left, credits: spend.credits };

@@ -112,7 +112,7 @@ export const ar: Messages = {
   "plus.freeAi": "{n} رسائل يوميًا مع Britjoy بالذكاء الاصطناعي",
   "plus.freeAds": "توصيات من Voz Unida Mundo",
   "plus.perkHearts": "قلوب غير محدودة",
-  "plus.perkAi": "وضع الذكاء الاصطناعي بلا حد يومي",
+  "plus.perkAi": "وضع الذكاء الاصطناعي: {n} رسالة يوميًا (3 أضعاف)",
   "plus.perkNoAds": "بدون توصيات أو إعلانات",
   "plus.perkSupport": "تدعم دورات مجانية للقادمين الجدد إلى المملكة المتحدة",
   "plus.month": "شهري",

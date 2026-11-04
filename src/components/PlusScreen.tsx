@@ -12,7 +12,7 @@ import {
   verifyLoginCode,
   type ProductId,
 } from '../lib/backend';
-import { CREDIT_PACK, FREE_AI_DAILY, PRICES, formatPrice, yearlySaving } from '../lib/plans';
+import { CREDIT_PACK, FREE_AI_DAILY, PLUS_AI_DAILY, PRICES, formatPrice, yearlySaving } from '../lib/plans';
 import { sfx } from '../lib/sound';
 import { useT } from '../i18n';
 import { useProgressStore } from '../store/useProgressStore';
@@ -184,7 +184,7 @@ export function PlusScreen({ checkout = null }: { checkout?: 'ok' | 'cancel' | n
           <ul className="space-y-1">
             <Perk>{t('plus.freeAll')}</Perk>
             <Perk>{t('plus.perkHearts')}</Perk>
-            <Perk>{t('plus.perkAi')}</Perk>
+            <Perk>{t('plus.perkAi', { n: PLUS_AI_DAILY })}</Perk>
             <Perk>{t('plus.perkNoAds')}</Perk>
             <Perk>{t('plus.perkSupport')}</Perk>
           </ul>

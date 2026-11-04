@@ -112,7 +112,7 @@ export const en: Messages = {
   "plus.freeAi": "{n} messages a day with Britjoy AI",
   "plus.freeAds": "Recommendations from Voz Unida Mundo",
   "plus.perkHearts": "Unlimited hearts",
-  "plus.perkAi": "AI mode with no daily limit",
+  "plus.perkAi": "AI mode: {n} messages a day (3 times more)",
   "plus.perkNoAds": "No recommendations or ads",
   "plus.perkSupport": "You support free courses for newcomers to the UK",
   "plus.month": "Monthly",

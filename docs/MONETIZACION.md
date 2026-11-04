@@ -8,9 +8,9 @@ la IA.
 |---|---|---|
 | Todos los cursos, lecciones, vídeos y certificados | ✓ | ✓ |
 | Vidas | 5, que se recargan | ∞ ilimitadas (como Duolingo Super) |
-| Modo IA (tutor Britjoy con Claude) | 5 mensajes al día y luego créditos | Sin límite diario (solo el antiabuso de 8 por minuto) |
+| Modo IA (tutor Britjoy con Claude) | 5 mensajes al día y luego créditos | 15 mensajes al día (uso justo) y luego créditos |
 | Recomendaciones entre lecciones | Sí, solo propias | No |
-| Precio propuesto | — | £4.99 al mes o £39.99 al año (ahorra 33 %) |
+| Precio propuesto | — | £5.99 al mes o £47.99 al año (ahorra 33 %); comparación y márgenes en `docs/PRECIOS.md` |
 
 **Créditos IA** (como Praktika): un pack de 100 por £2.99, que no caduca. 1 crédito = 1 mensaje.
 Sirve para quien no quiere suscripción. Un mensaje corto del tutor cuesta a la academia unos céntimos de API,

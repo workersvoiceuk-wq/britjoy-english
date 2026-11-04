@@ -112,7 +112,7 @@ export const pa: Messages = {
   "plus.freeAi": "Britjoy AI ਨਾਲ ਰੋਜ਼ਾਨਾ {n} ਸੁਨੇਹੇ",
   "plus.freeAds": "Voz Unida Mundo ਦੀਆਂ ਸਿਫ਼ਾਰਸ਼ਾਂ",
   "plus.perkHearts": "ਅਸੀਮਤ ਦਿਲ",
-  "plus.perkAi": "ਰੋਜ਼ਾਨਾ ਹੱਦ ਤੋਂ ਬਿਨਾਂ AI ਮੋਡ",
+  "plus.perkAi": "AI ਮੋਡ: ਰੋਜ਼ਾਨਾ {n} ਸੁਨੇਹੇ (3 ਗੁਣਾ ਵੱਧ)",
   "plus.perkNoAds": "ਨਾ ਸਿਫ਼ਾਰਸ਼ਾਂ ਨਾ ਇਸ਼ਤਿਹਾਰ",
   "plus.perkSupport": "ਤੁਸੀਂ ਯੂਕੇ ਆਉਣ ਵਾਲਿਆਂ ਲਈ ਮੁਫ਼ਤ ਕੋਰਸਾਂ ਦੀ ਮਦਦ ਕਰਦੇ ਹੋ",
   "plus.month": "ਮਹੀਨਾਵਾਰ",

@@ -56,10 +56,11 @@ create trigger on_auth_user_created
   after insert on auth.users
   for each row execute function public.handle_new_user();
 
--- Spends one AI message atomically: Plus members are unlimited (the tutor still
--- rate-limits), everyone gets p_free_daily free messages a day, and after that
--- each message costs one credit. Returns how it was paid, or 'none'.
-create function public.spend_ai_message(p_user uuid, p_free_daily integer)
+-- Spends one AI message atomically: Plus members get p_plus_daily messages a day
+-- (fair use, so one very heavy user cannot cost more than the subscription),
+-- everyone else p_free_daily; after that each message costs one credit.
+-- Returns how it was paid, or 'none'.
+create function public.spend_ai_message(p_user uuid, p_free_daily integer, p_plus_daily integer)
 returns table (paid_with text, free_left integer, credits integer)
 language plpgsql security definer set search_path = '' as $$
 #variable_conflict use_column
@@ -75,10 +76,10 @@ begin
   select messages into v_used from public.ai_usage
     where user_id = p_user and day = current_date for update;
 
-  if v_profile.plus_until is not null and v_profile.plus_until > now() then
+  if v_profile.plus_until is not null and v_profile.plus_until > now() and v_used < p_plus_daily then
     update public.ai_usage set messages = messages + 1 where user_id = p_user and day = current_date;
-    return query select 'plus'::text, greatest(p_free_daily - v_used - 1, 0), v_profile.credits;
-  elsif v_used < p_free_daily then
+    return query select 'plus'::text, p_plus_daily - v_used - 1, v_profile.credits;
+  elsif (v_profile.plus_until is null or v_profile.plus_until <= now()) and v_used < p_free_daily then
     update public.ai_usage set messages = messages + 1 where user_id = p_user and day = current_date;
     return query select 'free'::text, p_free_daily - v_used - 1, v_profile.credits;
   elsif v_profile.credits > 0 then
@@ -129,9 +130,9 @@ $$;
 
 -- Only the Edge Functions (service role) may call these.
 revoke all on function public.handle_new_user() from public, anon, authenticated;
-revoke all on function public.spend_ai_message(uuid, integer) from public, anon, authenticated;
+revoke all on function public.spend_ai_message(uuid, integer, integer) from public, anon, authenticated;
 revoke all on function public.refund_ai_message(uuid, text) from public, anon, authenticated;
 revoke all on function public.apply_purchase(text, uuid, text, integer, timestamptz, integer, text, text) from public, anon, authenticated;
-grant execute on function public.spend_ai_message(uuid, integer) to service_role;
+grant execute on function public.spend_ai_message(uuid, integer, integer) to service_role;
 grant execute on function public.refund_ai_message(uuid, text) to service_role;
 grant execute on function public.apply_purchase(text, uuid, text, integer, timestamptz, integer, text, text) to service_role;

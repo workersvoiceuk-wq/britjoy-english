@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AiError, aiConfigured, askBritjoy, type ChatTurn } from '../lib/ai';
 import { useAccount, usePlus } from '../lib/backend';
+import { PLUS_AI_DAILY } from '../lib/plans';
 import { AccountBox } from './PlusScreen';
 import { useProgressStore } from '../store/useProgressStore';
 import { narrate, useVoice } from '../lib/narrator';
@@ -86,7 +87,9 @@ export function AiScreen() {
         <>
           <p className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-extrabold text-navy/70">
             {plus ? (
-              <span>👑 Britjoy Plus</span>
+              <span>
+                👑 Britjoy Plus{freeLeft !== null ? ` · 🤖 ${freeLeft}/${PLUS_AI_DAILY}` : ''}
+              </span>
             ) : (
               <>
                 {freeLeft !== null && <span>{t('ai.freeLeft', { n: freeLeft })}</span>}

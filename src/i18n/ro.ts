@@ -112,7 +112,7 @@ export const ro: Messages = {
   "plus.freeAi": "{n} mesaje pe zi cu Britjoy IA",
   "plus.freeAds": "Recomandări de la Voz Unida Mundo",
   "plus.perkHearts": "Vieți nelimitate",
-  "plus.perkAi": "Mod IA fără limită zilnică",
+  "plus.perkAi": "Mod IA: {n} mesaje pe zi (de 3 ori mai multe)",
   "plus.perkNoAds": "Fără recomandări sau reclame",
   "plus.perkSupport": "Susții cursuri gratuite pentru cei care ajung în Regatul Unit",
   "plus.month": "Lunar",

@@ -16,6 +16,8 @@ describe('Britjoy Plus', () => {
     expect(formatPrice(4.99, 'en-GB', 'GBP')).toBe('£4.99');
     expect(formatPrice(4.99, 'es', 'GBP')).toMatch(/4,99/);
     expect(yearlySaving(4.99, 39.99)).toBe(33);
+    expect(yearlySaving(5.99, 47.99)).toBe(33);
+    expect(PRICES).toEqual({ plus_month: 5.99, plus_year: 47.99, credits_100: 2.99 });
     expect(yearlySaving(0, 10)).toBe(0);
     expect(PRICES.plus_year).toBeLessThan(PRICES.plus_month * 12);
   });
