@@ -1,0 +1,146 @@
+{
+  "level": "TUR",
+  "unit": "Módulo 5",
+  "title": "Metro, autobús y tren",
+  "icon": "🚇",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "tur-05-metro",
+      "title": "Hasta el British Museum",
+      "icon": "🚇",
+      "tip": "Leer mapas, identificar dirección y entender transbordos.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 5 · Primer día de turismo",
+          "body": "Sofía quiere ir al British Museum. En el mapa del metro (Tube), cada línea tiene un color. Para no perderse:\n• Mira la dirección: northbound (norte), southbound (sur), eastbound (este), westbound (oeste), y el destino final del tren.\n• «Change at…» significa hacer transbordo en esa estación.\n• Paga con contactless o Oyster: toca el lector al entrar y al salir con la misma tarjeta. En el autobús, solo al subir.",
+          "say": "Capítulo cinco. Sofía va al British Museum en metro. Mira la dirección del tren, northbound, southbound, eastbound o westbound, y el destino final. Change at significa hacer transbordo. Y toca la tarjeta al entrar y al salir.",
+          "link": {
+            "label": "TfL: planificador de viajes",
+            "url": "https://tfl.gov.uk/plan-a-journey/"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "Seguir indicaciones",
+          "body": "Al salir del metro, Sofía pregunta por el museo. Las indicaciones en inglés usan pocas palabras:\n• Go straight on: sigue recto · Turn left / right: gira a la izquierda / derecha\n• It's on your left: está a tu izquierda · at the end of the street: al final de la calle",
+          "phrases": [
+            {
+              "en": "Excuse me, which way is the British Museum?",
+              "es": "Perdone, ¿por dónde se va al British Museum?"
+            },
+            {
+              "en": "Go straight on and turn left.",
+              "es": "Siga recto y gire a la izquierda."
+            },
+            {
+              "en": "Where do I change for the Central line?",
+              "es": "¿Dónde hago transbordo a la Central line?"
+            },
+            {
+              "en": "Is it far from here?",
+              "es": "¿Está lejos de aquí?"
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Llega a una atracción siguiendo indicaciones: elige la dirección del tren, haz el transbordo y pregunta el camino.",
+          "say": "Tu misión: llega al museo siguiendo indicaciones."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Quieres ir al este. ¿Qué tren coges?",
+          "options": [
+            "Eastbound",
+            "Westbound",
+            "Northbound"
+          ],
+          "answer": "Eastbound"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "«Change at Holborn» significa…",
+          "options": [
+            "Haz transbordo en Holborn",
+            "Cambia dinero en Holborn",
+            "Baja del tren y sal"
+          ],
+          "answer": "Haz transbordo en Holborn"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada indicación",
+          "pairs": [
+            {
+              "en": "go straight on",
+              "es": "seguir recto"
+            },
+            {
+              "en": "turn left",
+              "es": "girar a la izquierda"
+            },
+            {
+              "en": "on your right",
+              "es": "a tu derecha"
+            },
+            {
+              "en": "far",
+              "es": "lejos"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Perdone, ¿por dónde se va al British Museum?",
+          "words": [
+            "Excuse",
+            "me,",
+            "which",
+            "way",
+            "is",
+            "the",
+            "British",
+            "Museum?",
+            "what",
+            "road"
+          ],
+          "answer": "Excuse me, which way is the British Museum?"
+        },
+        {
+          "type": "listening",
+          "text": "Go straight on and turn left",
+          "options": [
+            "Go straight on and turn left",
+            "Go straight on and turn right",
+            "Go back and turn left"
+          ],
+          "answer": "Go straight on and turn left"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Where do I ___ for the Central line?",
+          "hint": "hago transbordo",
+          "options": [
+            "change",
+            "charge",
+            "chance"
+          ],
+          "answer": "change"
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: escribe en inglés «¿Está lejos de aquí?»",
+          "answer": "Is it far from here?",
+          "alternatives": [
+            "Is it far from here",
+            "Is it far?",
+            "How far is it from here?"
+          ]
+        }
+      ]
+    }
+  ]
+}

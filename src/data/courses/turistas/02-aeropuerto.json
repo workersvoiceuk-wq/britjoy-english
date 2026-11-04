@@ -1,0 +1,148 @@
+{
+  "level": "TUR",
+  "unit": "Módulo 2",
+  "title": "Llegada al aeropuerto",
+  "icon": "🛬",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "tur-02-aeropuerto",
+      "title": "¿Dónde está mi maleta?",
+      "icon": "🧳",
+      "tip": "Seguir señales, recoger equipaje y localizar la salida.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 2 · Aterrizaje",
+          "body": "El avión de Sofía aterriza. Sigue las señales amarillas del aeropuerto:\n• Arrivals: llegadas · Passport control / UK Border: control de pasaportes\n• Baggage reclaim: recogida de equipajes · Exit / Way out: salida\nEspera en la cinta (carousel)… pero su maleta no sale.",
+          "say": "Capítulo dos. El avión de Sofía aterriza. Sigue las señales: arrivals, passport control, baggage reclaim y way out. Espera en la cinta, pero su maleta no sale."
+        },
+        {
+          "type": "explain",
+          "title": "Maleta perdida o retrasada",
+          "body": "• Avisa a la aerolínea antes de salir: la mayoría tiene un mostrador de equipajes (baggage desk) en la sala de recogida.\n• Enseña el resguardo de la etiqueta de facturación (baggage tag) y describe la maleta; una foto en el móvil ayuda.\n• Guarda los recibos de lo básico que compres (aseo, ropa interior): muchas aerolíneas lo reembolsan.\n• Reclama por escrito a la aerolínea: retraso, en 21 días; daños, en 7 días. Tras 21 días sin aparecer, se considera perdida.",
+          "say": "Si tu maleta no sale, ve al mostrador de equipajes de tu aerolínea antes de salir. Enseña tu etiqueta, describe la maleta y guarda los recibos de lo que compres. Reclama por escrito: si se retrasa, en veintiún días.",
+          "phrases": [
+            {
+              "en": "My suitcase didn't come out on the carousel.",
+              "es": "Mi maleta no ha salido en la cinta."
+            },
+            {
+              "en": "Where's the baggage services desk?",
+              "es": "¿Dónde está el mostrador de equipajes?"
+            },
+            {
+              "en": "Here's my baggage tag.",
+              "es": "Aquí tiene mi etiqueta de equipaje."
+            },
+            {
+              "en": "It's a large black suitcase with a red ribbon.",
+              "es": "Es una maleta grande negra con una cinta roja."
+            },
+            {
+              "en": "Can you deliver it to my hotel?",
+              "es": "¿Me la pueden llevar al hotel?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: guía del pasajero aéreo",
+            "url": "https://www.gov.uk/government/publications/air-passenger-travel-guide/air-passenger-travel-guide"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Pregunta dónde se informa de una maleta perdida y descríbela.",
+          "say": "Tu misión: pregunta dónde se informa de una maleta perdida y descríbela."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada señal con su significado",
+          "pairs": [
+            {
+              "en": "arrivals",
+              "es": "llegadas"
+            },
+            {
+              "en": "baggage reclaim",
+              "es": "recogida de equipajes"
+            },
+            {
+              "en": "way out",
+              "es": "salida"
+            },
+            {
+              "en": "carousel",
+              "es": "cinta de equipajes"
+            }
+          ]
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Tu maleta no sale. ¿Qué haces primero?",
+          "options": [
+            "Ir al mostrador de equipajes de la aerolínea",
+            "Salir y llamar mañana",
+            "Coger otra maleta"
+          ],
+          "answer": "Ir al mostrador de equipajes de la aerolínea"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Tu maleta llega con retraso. ¿En cuántos días debes reclamar por escrito?",
+          "options": [
+            "21 días",
+            "1 año",
+            "2 días"
+          ],
+          "answer": "21 días"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿Dónde está el mostrador de equipajes?",
+          "words": [
+            "Where's",
+            "the",
+            "baggage",
+            "services",
+            "desk?",
+            "what",
+            "bag"
+          ],
+          "answer": "Where's the baggage services desk?"
+        },
+        {
+          "type": "listening",
+          "text": "My suitcase didn't come out",
+          "options": [
+            "My suitcase didn't come out",
+            "My suitcase is too heavy",
+            "My suitcase is outside"
+          ],
+          "answer": "My suitcase didn't come out"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "It's a large black suitcase with a red ___.",
+          "hint": "cinta",
+          "options": [
+            "ribbon",
+            "rabbit",
+            "robin"
+          ],
+          "answer": "ribbon"
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: escribe en inglés «¿Me la pueden llevar al hotel?» (empieza con «Can you…»)",
+          "answer": "Can you deliver it to my hotel?",
+          "alternatives": [
+            "Can you send it to my hotel?",
+            "Can you bring it to my hotel?",
+            "Can you deliver it to my hotel"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "level": "DIA",
+  "unit": "Módulo 8",
+  "title": "Llamadas y correos",
+  "icon": "📞",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "dia-08-llamadas",
+      "title": "Deja un mensaje después de la señal",
+      "icon": "📞",
+      "tip": "Dejar mensajes, confirmar citas y escribir solicitudes.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 8 · El buzón de voz",
+          "body": "Diego llama a una academia para apuntarse a clases de inglés, pero salta el buzón de voz:\n«Please leave a message after the tone.»\nUn buen mensaje dice: quién eres, por qué llamas y cómo te pueden contactar. Di los números despacio.",
+          "say": "Capítulo ocho. Diego llama a una academia, pero salta el buzón de voz. Un buen mensaje dice quién eres, por qué llamas y cómo contactarte. Y di los números despacio.",
+          "phrases": [
+            { "en": "Hi, this is Diego García.", "es": "Hola, soy Diego García." },
+            { "en": "I'm calling about the evening English classes.", "es": "Llamo por las clases de inglés de tarde." },
+            { "en": "Could you call me back on 07700 900123?", "es": "¿Podría devolverme la llamada al 07700 900123?" },
+            { "en": "Thanks, bye.", "es": "Gracias, adiós." }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "Confirmar una cita y escribir un email",
+          "body": "La academia responde con un email. Diego confirma la cita por escrito. Estructura básica:\n• Saludo: «Dear Ms Taylor,» (formal) o «Hi Sam,» (informal).\n• Motivo: «I'm writing to confirm…» / «I'm writing to ask about…»\n• Cierre: «Kind regards,» + tu nombre.",
+          "phrases": [
+            { "en": "I'm writing to confirm my appointment on Tuesday at 10am.", "es": "Le escribo para confirmar mi cita del martes a las 10." },
+            { "en": "I'm writing to ask about the course fees.", "es": "Le escribo para preguntar por el precio del curso." },
+            { "en": "Could we move it to Thursday, please?", "es": "¿Podríamos cambiarla al jueves, por favor?" },
+            { "en": "Kind regards, Diego García", "es": "Un saludo, Diego García" }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Deja un mensaje de voz claro y escribe un email corto confirmando tu cita.",
+          "say": "Tu misión: deja un mensaje de voz claro y escribe un email corto confirmando tu cita."
+        },
+        { "type": "multipleChoice", "prompt": "Oyes «Please leave a message after the tone». ¿Qué haces?", "options": ["Dejar un mensaje después de la señal", "Colgar y volver mañana", "Pulsar un botón para pagar"], "answer": "Dejar un mensaje después de la señal" },
+        { "type": "multipleChoice", "prompt": "¿Cómo terminas un email formal?", "options": ["Kind regards,", "See ya!", "Love,"], "answer": "Kind regards," },
+        { "type": "wordBank", "prompt": "¿Podría devolverme la llamada?", "words": ["Could", "you", "call", "me", "back?", "front", "I"], "answer": "Could you call me back?" },
+        { "type": "listening", "text": "I'm calling about the evening classes", "options": ["I'm calling about the evening classes", "I'm calling about the evening glasses", "I'm falling asleep in the evening"], "answer": "I'm calling about the evening classes" },
+        { "type": "matching", "prompt": "Une cada palabra con su significado", "pairs": [
+          { "en": "voicemail", "es": "buzón de voz" },
+          { "en": "call back", "es": "devolver la llamada" },
+          { "en": "confirm", "es": "confirmar" },
+          { "en": "fees", "es": "precio / tasas" }
+        ] },
+        { "type": "fillBlank", "sentence": "I'm writing to ___ my appointment on Tuesday.", "hint": "confirmar", "options": ["confirm", "conform", "complain"], "answer": "confirm" },
+        { "type": "typing", "prompt": "🎯 Misión: escribe en inglés «¿Podríamos cambiarla al jueves, por favor?» (empieza con «Could we…»)", "answer": "Could we move it to Thursday, please?", "alternatives": ["Could we change it to Thursday, please?", "Could we move it to Thursday please", "Could we change it to Thursday please"] }
+      ]
+    }
+  ]
+}

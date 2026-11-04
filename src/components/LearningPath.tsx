@@ -64,7 +64,11 @@ export function LearningPath({ level, completed, onStart, notice }: Props) {
             <section key={unit.unit} className="mb-12">
               <div className="street-sign mb-9 px-5 py-3 text-center">
                 <p className="district text-xs font-black uppercase tracking-[0.2em]">
-                  {isLife ? 'Vivir en UK' : `${level.id} · ${unit.unit.replace('Unit', 'Unidad')}`}
+                  {isLife
+                    ? 'Vivir en UK'
+                    : level.track === 'english'
+                      ? `${level.id} · ${unit.unit.replace('Unit', 'Unidad')}`
+                      : `${level.name} · ${unit.unit}`}
                 </p>
                 <h2 className="text-xl font-black uppercase tracking-wide text-navy">
                   {unit.icon && <span className="mr-2" aria-hidden>{unit.icon}</span>}

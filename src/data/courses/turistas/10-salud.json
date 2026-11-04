@@ -1,0 +1,151 @@
+{
+  "level": "TUR",
+  "unit": "Módulo 10",
+  "title": "Salud y emergencias",
+  "icon": "🚑",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "tur-10-salud",
+      "title": "Una urgencia en el viaje",
+      "icon": "🚑",
+      "tip": "Explicar un problema, dar la ubicación y pedir ayuda.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 10 · Una caída",
+          "body": "Paseando por Covent Garden, Carmen se tuerce el tobillo. Sofía mantiene la calma.\n• 999: emergencia (ambulancia, policía, bomberos). Da la ubicación exacta.\n• 111: urgente, pero no una emergencia.\n• Como visitantes españolas, con la Tarjeta Sanitaria Europea pueden recibir la atención médicamente necesaria.\n• Para todos son gratis: urgencias (A&E), centros de atención urgente, el 111 y las consultas del GP. Si luego hay que ingresar en el hospital, se puede cobrar a quien no vive en el país: lleva un buen seguro de viaje.",
+          "say": "Capítulo diez. Carmen se tuerce el tobillo. Si es una emergencia, el 999. Si es urgente pero no emergencia, el 111. Las urgencias y el 111 son gratis para todos, y las españolas pueden usar la Tarjeta Sanitaria Europea. Viaja siempre con seguro.",
+          "link": {
+            "label": "GOV.UK: atención sanitaria para visitantes",
+            "url": "https://www.gov.uk/guidance/nhs-entitlements-migrant-health-guide"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "Explicar el problema",
+          "body": "Di qué ha pasado, dónde estás y qué necesitas. En la farmacia, pide algo «over the counter» (sin receta).",
+          "phrases": [
+            {
+              "en": "My friend has hurt her ankle.",
+              "es": "Mi amiga se ha hecho daño en el tobillo."
+            },
+            {
+              "en": "We're outside Covent Garden station.",
+              "es": "Estamos en la puerta de la estación de Covent Garden."
+            },
+            {
+              "en": "Where's the nearest A&E?",
+              "es": "¿Dónde están las urgencias más cercanas?"
+            },
+            {
+              "en": "I'm a visitor from Spain. Here's my EHIC.",
+              "es": "Soy visitante de España. Aquí tiene mi tarjeta sanitaria europea."
+            },
+            {
+              "en": "Can I get something for the pain over the counter?",
+              "es": "¿Me puede dar algo sin receta para el dolor?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: seguro de viaje",
+            "url": "https://www.gov.uk/guidance/foreign-travel-insurance"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Describe la emergencia, da la ubicación y pide ayuda, o habla con la farmacia.",
+          "say": "Tu misión: describe el problema, da la ubicación y pide ayuda."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Alguien está inconsciente en la calle. ¿Qué número llamas?",
+          "options": [
+            "999",
+            "111",
+            "101"
+          ],
+          "answer": "999"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué debes decir siempre al llamar al 999?",
+          "options": [
+            "La ubicación exacta",
+            "Tu número de pasaporte",
+            "Tu hotel favorito"
+          ],
+          "answer": "La ubicación exacta"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué tarjeta sanitaria usa una visitante española?",
+          "options": [
+            "La Tarjeta Sanitaria Europea (EHIC)",
+            "La GHIC británica",
+            "Ninguna"
+          ],
+          "answer": "La Tarjeta Sanitaria Europea (EHIC)"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Mi amiga se ha hecho daño en el tobillo.",
+          "words": [
+            "My",
+            "friend",
+            "has",
+            "hurt",
+            "her",
+            "ankle.",
+            "heart",
+            "his"
+          ],
+          "answer": "My friend has hurt her ankle."
+        },
+        {
+          "type": "listening",
+          "text": "Where's the nearest A&E?",
+          "options": [
+            "Where's the nearest A&E?",
+            "Where's the nearest exit?",
+            "Where's the nearest café?"
+          ],
+          "answer": "Where's the nearest A&E?"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "ankle",
+              "es": "tobillo"
+            },
+            {
+              "en": "painkillers",
+              "es": "analgésicos"
+            },
+            {
+              "en": "over the counter",
+              "es": "sin receta"
+            },
+            {
+              "en": "injury",
+              "es": "lesión"
+            }
+          ]
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: escribe en inglés «Necesito una ambulancia.»",
+          "answer": "I need an ambulance",
+          "alternatives": [
+            "I need an ambulance, please",
+            "Please send an ambulance",
+            "We need an ambulance"
+          ]
+        }
+      ]
+    }
+  ]
+}

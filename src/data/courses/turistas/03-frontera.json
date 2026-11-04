@@ -1,0 +1,152 @@
+{
+  "level": "TUR",
+  "unit": "Módulo 3",
+  "title": "Control fronterizo",
+  "icon": "🛃",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "tur-03-frontera",
+      "title": "Passport control",
+      "icon": "🛃",
+      "tip": "Comprender preguntas sobre vacaciones, alojamiento y regreso.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 3 · En la cola de pasaportes",
+          "body": "Antes de la maleta, Sofía pasó por el control de pasaportes.\n• Como ciudadana de la UE con pasaporte biométrico y ETA, puede usar las puertas automáticas (eGates). Para eGates: 8 años o más (de 8 a 17, con un adulto) y medir al menos 120 cm. Con DNI no se pueden usar.\n• Viajeros de México, Argentina o Colombia van al mostrador de un agente (Border Force officer), que normalmente pregunta por qué vienes.\n• Saca el pasaporte de la funda, quítate las gafas de sol y, si viajas en familia, pasad juntos.",
+          "say": "Capítulo tres. En el control de pasaportes, Sofía puede usar las puertas automáticas porque es de la Unión Europea y tiene ETA. Si vienes de México, Argentina o Colombia, irás al mostrador de un agente, que te preguntará por qué vienes.",
+          "link": {
+            "label": "GOV.UK: el control fronterizo",
+            "url": "https://www.gov.uk/uk-border-control"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "La entrevista y la aduana",
+          "body": "El agente puede pedirte pruebas de que vienes de turismo, de que puedes mantenerte, de tu alojamiento y de que volverás. Responde con frases cortas y datos reales.\nAduana: si no llevas nada por encima de lo permitido, pasa por el canal verde («nothing to declare»). Por ejemplo, puedes traer hasta 18 litros de vino o 200 cigarrillos; otros productos, hasta £390.",
+          "phrases": [
+            {
+              "en": "What's the purpose of your visit?",
+              "es": "¿Cuál es el motivo de su visita?"
+            },
+            {
+              "en": "How long are you staying?",
+              "es": "¿Cuánto tiempo se va a quedar?"
+            },
+            {
+              "en": "Where are you staying?",
+              "es": "¿Dónde se aloja?"
+            },
+            {
+              "en": "Do you have a return ticket?",
+              "es": "¿Tiene billete de vuelta?"
+            },
+            {
+              "en": "Anything to declare?",
+              "es": "¿Algo que declarar?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: qué puedes traer",
+            "url": "https://www.gov.uk/bringing-goods-into-uk-personal-use/arriving-in-great-britain"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Responde una entrevista breve: motivo, duración, alojamiento y vuelta.",
+          "say": "Tu misión: responde la entrevista con tus datos: motivo, duración, alojamiento y vuelta."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "El agente pregunta «What's the purpose of your visit?». Respondes…",
+          "options": [
+            "I'm here on holiday.",
+            "I'm from Valencia.",
+            "Yes, please."
+          ],
+          "answer": "I'm here on holiday."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "«How long are you staying?» Respondes…",
+          "options": [
+            "For a week.",
+            "At a hotel.",
+            "By plane."
+          ],
+          "answer": "For a week."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Quién NO puede usar las eGates?",
+          "options": [
+            "Quien viaja con DNI",
+            "Una española de 30 años con pasaporte biométrico y ETA",
+            "Un adulto de la UE con pasaporte biométrico"
+          ],
+          "answer": "Quien viaja con DNI"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Me alojo en un hotel en Camden.",
+          "words": [
+            "I'm",
+            "staying",
+            "at",
+            "a",
+            "hotel",
+            "in",
+            "Camden.",
+            "stay",
+            "on"
+          ],
+          "answer": "I'm staying at a hotel in Camden."
+        },
+        {
+          "type": "listening",
+          "text": "Do you have a return ticket?",
+          "options": [
+            "Do you have a return ticket?",
+            "Do you have a train ticket?",
+            "Do you want a return ticket?"
+          ],
+          "answer": "Do you have a return ticket?"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "purpose",
+              "es": "motivo"
+            },
+            {
+              "en": "accommodation",
+              "es": "alojamiento"
+            },
+            {
+              "en": "return ticket",
+              "es": "billete de vuelta"
+            },
+            {
+              "en": "declare",
+              "es": "declarar"
+            }
+          ]
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: responde «Anything to declare?» → escribe en inglés «No, nada que declarar.»",
+          "answer": "No, nothing to declare",
+          "alternatives": [
+            "Nothing to declare",
+            "No, I have nothing to declare",
+            "No, I've got nothing to declare"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "level": "TUR",
+  "unit": "Módulo 12",
+  "title": "Problemas y regreso",
+  "icon": "🏁",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "tur-12-regreso",
+      "title": "He perdido el tren",
+      "icon": "🏁",
+      "tip": "Resolver retrasos, objetos perdidos y cambios de planes.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 12 · El último día",
+          "body": "El último día, Sofía va a Oxford en tren, pero se le escapa por un minuto. Y además se dejó el paraguas en el metro.\n• Trenes: si se prevé llegar 60 minutos tarde o más, puedes elegir el reembolso o una ruta alternativa. La compensación mínima es del 25% del billete con 60 a 119 minutos de retraso y del 50% con 120 minutos o más. Muchas compañías tienen «Delay Repay», que se paga en el plazo de un mes desde la solicitud.\n• Aviones: si el vuelo se retrasa más de 5 horas, la aerolínea debe ofrecerte el reembolso. Si pierdes una conexión de la misma reserva, te debe ayudar con otro vuelo.",
+          "say": "Capítulo doce, el último día. Sofía pierde el tren por un minuto y se deja el paraguas en el metro. Si tu tren llega con mucho retraso, puedes pedir compensación. Y si tu vuelo se retrasa más de cinco horas, la aerolínea debe ofrecerte el reembolso.",
+          "link": {
+            "label": "GOV.UK: derechos de los pasajeros de tren",
+            "url": "https://www.gov.uk/government/publications/guidance-on-rail-passengers-rights-and-obligations-regulation-no-13712007/guidance-on-regulation-no-13712007-on-rail-passengers-right-and-obligations"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "Pedir opciones y objetos perdidos",
+          "body": "Explica qué ha pasado y pregunta qué opciones tienes. Para objetos perdidos, busca «Lost property».",
+          "phrases": [
+            {
+              "en": "I've just missed my train. What are my options?",
+              "es": "Acabo de perder el tren. ¿Qué opciones tengo?"
+            },
+            {
+              "en": "Can I get the next one with this ticket?",
+              "es": "¿Puedo coger el siguiente con este billete?"
+            },
+            {
+              "en": "Can I claim Delay Repay?",
+              "es": "¿Puedo reclamar Delay Repay?"
+            },
+            {
+              "en": "I left my umbrella on the Tube.",
+              "es": "Me dejé el paraguas en el metro."
+            },
+            {
+              "en": "Where's lost property?",
+              "es": "¿Dónde está la oficina de objetos perdidos?"
+            },
+            {
+              "en": "We apologise for the delay to this service.",
+              "es": "Pedimos disculpas por el retraso de este servicio."
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: guía del pasajero aéreo",
+            "url": "https://www.gov.uk/government/publications/air-passenger-travel-guide/air-passenger-travel-guide"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión final",
+          "body": "Explica que perdiste el tren y pregunta qué opciones tienes. ¡Has terminado el viaje de Sofía!",
+          "say": "Tu misión final: explica que perdiste el tren y pregunta qué opciones tienes. Has terminado el viaje de Sofía. Have a safe trip home!"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Tu tren llega 2 horas tarde. ¿Cuál es la compensación mínima?",
+          "options": [
+            "50% del billete",
+            "Nada",
+            "El billete gratis para siempre"
+          ],
+          "answer": "50% del billete"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Tu vuelo se retrasa 6 horas. ¿Qué debe ofrecerte la aerolínea?",
+          "options": [
+            "El reembolso",
+            "Nada",
+            "Un descuento en la tienda"
+          ],
+          "answer": "El reembolso"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Acabo de perder el tren. ¿Qué opciones tengo?",
+          "words": [
+            "I've",
+            "just",
+            "missed",
+            "my",
+            "train.",
+            "What",
+            "are",
+            "my",
+            "options?",
+            "lost",
+            "is"
+          ],
+          "answer": "I've just missed my train. What are my options?"
+        },
+        {
+          "type": "listening",
+          "text": "We apologise for the delay to this service",
+          "options": [
+            "We apologise for the delay to this service",
+            "We apologise for the change of platform",
+            "We are pleased to welcome you"
+          ],
+          "answer": "We apologise for the delay to this service"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "lost property",
+              "es": "objetos perdidos"
+            },
+            {
+              "en": "delay",
+              "es": "retraso"
+            },
+            {
+              "en": "refund",
+              "es": "reembolso"
+            },
+            {
+              "en": "cancelled",
+              "es": "cancelado"
+            }
+          ]
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "I ___ my umbrella on the Tube.",
+          "hint": "me dejé",
+          "options": [
+            "left",
+            "lost",
+            "lift"
+          ],
+          "answer": "left"
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión final: escribe en inglés «¿Qué opciones tengo?»",
+          "answer": "What are my options?",
+          "alternatives": [
+            "What are my options",
+            "What options do I have?",
+            "What can I do?"
+          ]
+        }
+      ]
+    }
+  ]
+}

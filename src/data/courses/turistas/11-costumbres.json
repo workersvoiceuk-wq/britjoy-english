@@ -1,0 +1,141 @@
+{
+  "level": "TUR",
+  "unit": "Módulo 11",
+  "title": "Costumbres y convivencia",
+  "icon": "🫖",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "tur-11-costumbres",
+      "title": "Excuse me, could you…?",
+      "icon": "🫖",
+      "tip": "Practicar cortesía, turnos de conversación y peticiones amables.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 11 · La cola del autobús",
+          "body": "Sofía nota algo: en el Reino Unido se hace cola (queue) para casi todo, y se dicen mucho «please», «thank you» y «sorry».\n• Para pedir algo, en vez de «I want…», es más natural «Could you…?» o «Could I…?».\n• «Excuse me» sirve para llamar la atención de alguien o para pasar.\n• «Sorry?» con tono de pregunta significa «¿Perdón? ¿Cómo dice?».",
+          "say": "Capítulo once. Sofía descubre que aquí se hace cola para casi todo y que se dice mucho please, thank you y sorry. Para pedir algo con educación, usa could you o could I. Y excuse me, para llamar la atención o para pasar.",
+          "phrases": [
+            {
+              "en": "Excuse me, is this the queue for the bus?",
+              "es": "Perdone, ¿es esta la cola del autobús?"
+            },
+            {
+              "en": "Could you help me, please?",
+              "es": "¿Me podría ayudar, por favor?"
+            },
+            {
+              "en": "Sorry, could you repeat that?",
+              "es": "Perdón, ¿podría repetirlo?"
+            },
+            {
+              "en": "After you.",
+              "es": "Pase usted."
+            },
+            {
+              "en": "Cheers!",
+              "es": "¡Gracias! (informal)"
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Pide ayuda usando «Excuse me» y «Could you…?».",
+          "say": "Tu misión: pide ayuda con excuse me y could you."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cuál es la petición más educada?",
+          "options": [
+            "Could you help me, please?",
+            "Help me.",
+            "I want help."
+          ],
+          "answer": "Could you help me, please?"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Alguien te dice «After you». ¿Qué significa?",
+          "options": [
+            "Pase usted primero",
+            "Ven después",
+            "Sígueme"
+          ],
+          "answer": "Pase usted primero"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "No has entendido algo. ¿Qué dices?",
+          "options": [
+            "Sorry, could you repeat that?",
+            "What?!",
+            "No."
+          ],
+          "answer": "Sorry, could you repeat that?"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Perdone, ¿es esta la cola del autobús?",
+          "words": [
+            "Excuse",
+            "me,",
+            "is",
+            "this",
+            "the",
+            "queue",
+            "for",
+            "the",
+            "bus?",
+            "line",
+            "bas"
+          ],
+          "answer": "Excuse me, is this the queue for the bus?"
+        },
+        {
+          "type": "listening",
+          "text": "Could you help me, please?",
+          "options": [
+            "Could you help me, please?",
+            "Could you tell me, please?",
+            "Could you hold this, please?"
+          ],
+          "answer": "Could you help me, please?"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "queue",
+              "es": "cola"
+            },
+            {
+              "en": "cheers",
+              "es": "gracias (informal)"
+            },
+            {
+              "en": "excuse me",
+              "es": "perdone (para llamar la atención)"
+            },
+            {
+              "en": "sorry?",
+              "es": "¿perdón? ¿cómo dice?"
+            }
+          ]
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: escribe en inglés «Perdone, ¿me podría ayudar, por favor?»",
+          "answer": "Excuse me, could you help me, please?",
+          "alternatives": [
+            "Excuse me, could you help me please?",
+            "Excuse me, could you please help me?",
+            "Excuse me, can you help me, please?"
+          ]
+        }
+      ]
+    }
+  ]
+}

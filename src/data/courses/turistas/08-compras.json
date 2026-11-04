@@ -1,0 +1,158 @@
+{
+  "level": "TUR",
+  "unit": "Módulo 8",
+  "title": "Compras y pagos",
+  "icon": "💷",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "tur-08-compras",
+      "title": "Un adaptador y el recibo",
+      "icon": "💷",
+      "tip": "Entender libras, precios, recibos y preguntas del cajero.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 8 · El móvil sin batería",
+          "body": "El cargador de Sofía no entra en el enchufe: los enchufes británicos son distintos a los españoles. Necesita un adaptador.\nLos precios están en libras (£) y peniques (p): «£12.50» se dice «twelve pounds fifty». En las tiendas casi siempre se puede pagar con tarjeta o contactless.",
+          "say": "Capítulo ocho. El cargador de Sofía no entra en el enchufe británico: necesita un adaptador. Los precios van en libras y peniques: doce libras cincuenta se dice twelve pounds fifty.",
+          "phrases": [
+            {
+              "en": "Do you have a plug adapter for Spain?",
+              "es": "¿Tiene un adaptador de enchufe para España?"
+            },
+            {
+              "en": "How much is it?",
+              "es": "¿Cuánto cuesta?"
+            },
+            {
+              "en": "That comes to twelve pounds fifty.",
+              "es": "Son doce libras con cincuenta."
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "Lo que pregunta el cajero",
+          "body": "• «Would you like your receipt?»: ¿quiere el recibo? Guárdalo siempre.\n• Si un producto está defectuoso o no es como se describía, la tienda debe devolverte el dinero; en rebajas tienes los mismos derechos. Si solo cambias de opinión, depende de la política de la tienda.",
+          "phrases": [
+            {
+              "en": "Would you like your receipt?",
+              "es": "¿Quiere el recibo?"
+            },
+            {
+              "en": "Yes, please. Could I have a receipt?",
+              "es": "Sí, por favor. ¿Me da el recibo?"
+            },
+            {
+              "en": "Do you need a bag?",
+              "es": "¿Necesita bolsa?"
+            },
+            {
+              "en": "I'd like a refund, please. It's faulty.",
+              "es": "Quiero que me devuelvan el dinero. Está defectuoso."
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: devoluciones",
+            "url": "https://www.gov.uk/accepting-returns-and-giving-refunds"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Compra un adaptador, paga con tarjeta y pide el recibo.",
+          "say": "Tu misión: compra un adaptador y pide el recibo."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "«£12.50» se dice…",
+          "options": [
+            "twelve pounds fifty",
+            "twelve fifty pounds",
+            "one two five zero"
+          ],
+          "answer": "twelve pounds fifty"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "En rebajas, si un producto está defectuoso…",
+          "options": [
+            "Tienes los mismos derechos de devolución",
+            "No te lo pueden devolver nunca",
+            "Solo te dan un vale"
+          ],
+          "answer": "Tienes los mismos derechos de devolución"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿Tiene un adaptador de enchufe?",
+          "words": [
+            "Do",
+            "you",
+            "have",
+            "a",
+            "plug",
+            "adapter?",
+            "plugin",
+            "has"
+          ],
+          "answer": "Do you have a plug adapter?"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "receipt",
+              "es": "recibo / ticket"
+            },
+            {
+              "en": "change",
+              "es": "cambio (dinero)"
+            },
+            {
+              "en": "cash",
+              "es": "efectivo"
+            },
+            {
+              "en": "pence",
+              "es": "peniques"
+            }
+          ]
+        },
+        {
+          "type": "listening",
+          "text": "Would you like your receipt?",
+          "options": [
+            "Would you like your receipt?",
+            "Would you like a bag?",
+            "Would you like to pay?"
+          ],
+          "answer": "Would you like your receipt?"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Can I pay by ___?",
+          "hint": "tarjeta",
+          "options": [
+            "card",
+            "car",
+            "cart"
+          ],
+          "answer": "card"
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: escribe en inglés «¿Me da el recibo, por favor?» (empieza con «Could I…»)",
+          "answer": "Could I have a receipt, please?",
+          "alternatives": [
+            "Could I have the receipt, please?",
+            "Could I have a receipt please",
+            "Could I get a receipt, please?"
+          ]
+        }
+      ]
+    }
+  ]
+}

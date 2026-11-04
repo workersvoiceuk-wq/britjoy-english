@@ -1,0 +1,59 @@
+{
+  "level": "DIA",
+  "unit": "Módulo 5",
+  "title": "Salud",
+  "icon": "🩺",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "dia-05-salud",
+      "title": "Lucía tiene fiebre",
+      "icon": "🩺",
+      "tip": "Pedir cita con el GP, explicar síntomas y hablar en la farmacia.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 5 · Una noche con fiebre",
+          "body": "Lucía se despierta con fiebre y dolor de oído. Por la mañana, Ana llama a su GP surgery (ya se registraron al llegar).\n«Good morning, I'd like to book an appointment for my daughter.»\n«What's the problem?»\n«She has a fever and earache since last night.»\nLa recepcionista pregunta el motivo para enviarla al profesional adecuado.",
+          "say": "Capítulo cinco. Lucía se despierta con fiebre y dolor de oído. Por la mañana, Ana llama al GP para pedir cita y explica los síntomas: fiebre y dolor de oído desde anoche.",
+          "phrases": [
+            { "en": "I'd like to book an appointment for my daughter.", "es": "Quisiera pedir cita para mi hija." },
+            { "en": "She has a fever and earache since last night.", "es": "Tiene fiebre y dolor de oído desde anoche." },
+            { "en": "Is there anything available today?", "es": "¿Hay alguna cita libre hoy?" }
+          ],
+          "link": { "label": "NHS: el GP", "url": "https://www.nhs.uk/nhs-services/gps/" }
+        },
+        {
+          "type": "explain",
+          "title": "En la farmacia",
+          "body": "No quedan citas hasta la tarde, así que Ana pasa por la farmacia. En Inglaterra, con «Pharmacy First», el farmacéutico puede tratar algunos problemas (como ciertas infecciones de oído) sin cita con el GP; hay límites de edad.\n• Si es urgente pero no una emergencia: 111. Si hay peligro para la vida: 999.\n• Describe los síntomas: qué, dónde y desde cuándo.",
+          "phrases": [
+            { "en": "Can the pharmacist have a look at my daughter's ear?", "es": "¿Puede el farmacéutico mirar el oído de mi hija?" },
+            { "en": "How often should she take it?", "es": "¿Cada cuánto tiene que tomarlo?" },
+            { "en": "Is it suitable for children?", "es": "¿Es apto para niños?" },
+            { "en": "It hurts here.", "es": "Me duele aquí." }
+          ],
+          "link": { "label": "GOV.UK: Pharmacy First", "url": "https://www.gov.uk/government/publications/pharmacy-first-contractual-framework-2023-to-2025" }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Pide cita para Lucía explicando sus síntomas y pregunta en la farmacia cómo darle el medicamento.",
+          "say": "Tu misión: pide cita explicando los síntomas y pregunta en la farmacia cómo darle el medicamento."
+        },
+        { "type": "multipleChoice", "prompt": "«Earache» significa…", "options": ["Dolor de oído", "Dolor de muelas", "Dolor de espalda"], "answer": "Dolor de oído" },
+        { "type": "wordBank", "prompt": "Quisiera pedir cita para mi hija.", "words": ["I'd", "like", "to", "book", "an", "appointment", "for", "my", "daughter.", "son", "buy"], "answer": "I'd like to book an appointment for my daughter." },
+        { "type": "matching", "prompt": "Une cada síntoma", "pairs": [
+          { "en": "fever", "es": "fiebre" },
+          { "en": "cough", "es": "tos" },
+          { "en": "sore throat", "es": "dolor de garganta" },
+          { "en": "rash", "es": "sarpullido" }
+        ] },
+        { "type": "listening", "text": "How often should she take it?", "options": ["How often should she take it?", "How much does it cost?", "How long is the wait?"], "answer": "How often should she take it?" },
+        { "type": "fillBlank", "sentence": "She has a ___ and earache since last night.", "hint": "fiebre", "options": ["fever", "feather", "favour"], "answer": "fever" },
+        { "type": "multipleChoice", "prompt": "Es urgente pero no una emergencia. ¿A qué número llamas?", "options": ["111", "999", "101"], "answer": "111" },
+        { "type": "typing", "prompt": "🎯 Misión: escribe en inglés «¿Es apto para niños?»", "answer": "Is it suitable for children?", "alternatives": ["Is it OK for children?", "Is it safe for children?", "Is this suitable for children?"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "level": "DIA",
+  "unit": "Módulo 9",
+  "title": "Colegio y familia",
+  "icon": "👨‍👩‍👧",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "dia-09-colegio",
+      "title": "La reunión con la profesora",
+      "icon": "👨‍👩‍👧",
+      "tip": "Hablar con profesores y entender comunicaciones escolares.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 9 · Una carta en la mochila",
+          "body": "Lucía trae a casa una carta del colegio:\n«Dear Parents and Carers, Parents' Evening will be held on Thursday 20th November. Please book a slot with your child's class teacher. Reminder: school is closed on Friday for an INSET day.»\n• Parents' evening: reunión de padres con el profesor.\n• Slot: franja horaria / turno.\n• INSET day: día de formación del profesorado; no hay clase.",
+          "say": "Capítulo nueve. Lucía trae una carta del colegio: hay reunión de padres el jueves y hay que reservar un turno con la profesora. Y el viernes el colegio cierra por un INSET day, un día de formación del profesorado sin clases.",
+          "phrases": [
+            {
+              "en": "Parents' Evening will be held on Thursday.",
+              "es": "La reunión de padres será el jueves."
+            },
+            {
+              "en": "Please book a slot with the class teacher.",
+              "es": "Reserven un turno con el tutor o tutora."
+            },
+            {
+              "en": "School is closed on Friday for an INSET day.",
+              "es": "El viernes no hay clase por formación del profesorado."
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "Hablar con la profesora",
+          "body": "En la reunión, Mrs Okafor dice que Lucía está muy contenta, aunque le cuesta un poco la lectura en inglés. Ana pregunta cómo ayudarla en casa.\n• Un niño solo puede faltar si está demasiado enfermo o con permiso previo del colegio. Avisa al colegio si tu hijo no va: el colegio te contactará aunque falte un solo día.",
+          "phrases": [
+            {
+              "en": "How is Lucía getting on?",
+              "es": "¿Qué tal le va a Lucía?"
+            },
+            {
+              "en": "How can we help her at home?",
+              "es": "¿Cómo podemos ayudarla en casa?"
+            },
+            {
+              "en": "Lucía is ill today and won't be in school.",
+              "es": "Lucía está enferma hoy y no irá al colegio."
+            },
+            {
+              "en": "Is there a reading club after school?",
+              "es": "¿Hay un club de lectura después de clase?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: asistencia escolar",
+            "url": "https://www.gov.uk/school-attendance-absence"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Entiende la carta del colegio, reserva tu turno y pregunta cómo ayudar a tu hija en casa.",
+          "say": "Tu misión: entiende la carta, reserva tu turno y pregunta cómo ayudar en casa."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué es un «INSET day»?",
+          "options": [
+            "Un día sin clase por formación del profesorado",
+            "Un día de excursión",
+            "El primer día de colegio"
+          ],
+          "answer": "Un día sin clase por formación del profesorado"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "«Parents' Evening» es…",
+          "options": [
+            "La reunión de padres con el profesor",
+            "Una fiesta para los padres",
+            "Una clase nocturna para adultos"
+          ],
+          "answer": "La reunión de padres con el profesor"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿Cómo podemos ayudarla en casa?",
+          "words": [
+            "How",
+            "can",
+            "we",
+            "help",
+            "her",
+            "at",
+            "home?",
+            "him",
+            "house"
+          ],
+          "answer": "How can we help her at home?"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra del colegio",
+          "pairs": [
+            {
+              "en": "term",
+              "es": "trimestre"
+            },
+            {
+              "en": "uniform",
+              "es": "uniforme"
+            },
+            {
+              "en": "homework",
+              "es": "deberes"
+            },
+            {
+              "en": "slot",
+              "es": "turno / franja horaria"
+            }
+          ]
+        },
+        {
+          "type": "listening",
+          "text": "How is Lucía getting on?",
+          "options": [
+            "How is Lucía getting on?",
+            "How is Lucía getting home?",
+            "Where is Lucía going?"
+          ],
+          "answer": "How is Lucía getting on?"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Lucía is ___ today and won't be in school.",
+          "hint": "enferma",
+          "options": [
+            "ill",
+            "well",
+            "late"
+          ],
+          "answer": "ill"
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: escribe en inglés «¿Cómo podemos ayudarla en casa?»",
+          "answer": "How can we help her at home?",
+          "alternatives": [
+            "How can we help her at home"
+          ]
+        }
+      ]
+    }
+  ]
+}

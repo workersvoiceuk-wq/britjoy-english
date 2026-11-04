@@ -1,0 +1,151 @@
+{
+  "level": "TUR",
+  "unit": "Módulo 4",
+  "title": "Del aeropuerto al hotel",
+  "icon": "🚆",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "tur-04-al-hotel",
+      "title": "¿Tren o autobús?",
+      "icon": "🚆",
+      "tip": "Comparar tren, autobús y transporte reservado.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 4 · Rumbo a Londres",
+          "body": "Con la maleta en camino a su hotel, Sofía sale del aeropuerto. Tiene varias opciones: tren, metro, autobús o un traslado reservado.\n• Desde Gatwick, por ejemplo, hay trenes Gatwick Express y Thameslink hacia Londres.\n• Desde Heathrow también hay varias opciones de tren y metro.\n• Los precios y horarios cambian: compáralos en la web oficial del aeropuerto o de National Rail antes de comprar.",
+          "say": "Capítulo cuatro. Sofía sale del aeropuerto. Puede ir en tren, metro, autobús o con un traslado reservado. Los precios cambian, así que pregunta y compara antes de comprar.",
+          "link": {
+            "label": "National Rail: planificar el viaje",
+            "url": "https://www.nationalrail.co.uk/"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "Preguntar precio, destino y duración",
+          "body": "Las tres preguntas clave: ¿cuánto cuesta?, ¿va a mi destino?, ¿cuánto tarda?",
+          "phrases": [
+            {
+              "en": "How do I get to central London from here?",
+              "es": "¿Cómo llego al centro de Londres desde aquí?"
+            },
+            {
+              "en": "How much is a single to Victoria?",
+              "es": "¿Cuánto cuesta un billete de ida a Victoria?"
+            },
+            {
+              "en": "How long does it take?",
+              "es": "¿Cuánto tarda?"
+            },
+            {
+              "en": "Can I pay contactless?",
+              "es": "¿Puedo pagar con contactless?"
+            },
+            {
+              "en": "Is this the fast train or does it stop everywhere?",
+              "es": "¿Este tren es directo o para en todas?"
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Pregunta el precio, el destino y la duración del viaje antes de comprar el billete.",
+          "say": "Tu misión: pregunta el precio, el destino y cuánto tarda, antes de comprar."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué preguntas para saber cuánto tarda el viaje?",
+          "options": [
+            "How long does it take?",
+            "How much is it?",
+            "Where is it?"
+          ],
+          "answer": "How long does it take?"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "«A single» es un billete…",
+          "options": [
+            "de ida",
+            "de ida y vuelta",
+            "de primera clase"
+          ],
+          "answer": "de ida"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿Cómo llego al centro de Londres desde aquí?",
+          "words": [
+            "How",
+            "do",
+            "I",
+            "get",
+            "to",
+            "central",
+            "London",
+            "from",
+            "here?",
+            "go",
+            "there"
+          ],
+          "answer": "How do I get to central London from here?"
+        },
+        {
+          "type": "listening",
+          "text": "How much is a single to Victoria?",
+          "options": [
+            "How much is a single to Victoria?",
+            "How much is a single room?",
+            "How many stops to Victoria?"
+          ],
+          "answer": "How much is a single to Victoria?"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "single",
+              "es": "ida"
+            },
+            {
+              "en": "return",
+              "es": "ida y vuelta"
+            },
+            {
+              "en": "fast train",
+              "es": "tren directo / rápido"
+            },
+            {
+              "en": "transfer",
+              "es": "traslado"
+            }
+          ]
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Is this the fast train or does it ___ everywhere?",
+          "hint": "para",
+          "options": [
+            "stop",
+            "shop",
+            "stay"
+          ],
+          "answer": "stop"
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: escribe en inglés «¿Cuánto tarda?»",
+          "answer": "How long does it take?",
+          "alternatives": [
+            "How long does it take",
+            "How long is the journey?",
+            "How long will it take?"
+          ]
+        }
+      ]
+    }
+  ]
+}

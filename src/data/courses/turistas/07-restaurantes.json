@@ -1,0 +1,158 @@
+{
+  "level": "TUR",
+  "unit": "Módulo 7",
+  "title": "Restaurantes y cafés",
+  "icon": "🍽️",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "tur-07-restaurantes",
+      "title": "¿Esto lleva frutos secos?",
+      "icon": "🍽️",
+      "tip": "Pedir comida, expresar necesidades alimentarias y solicitar la cuenta.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 7 · Un pub para comer",
+          "body": "Al mediodía, Sofía entra en un pub. En muchos pubs se pide y se paga en la barra; en un restaurante, el camarero viene a la mesa.\nSofía es alérgica a los frutos secos, así que antes de pedir pregunta por los ingredientes.",
+          "say": "Capítulo siete. Sofía entra en un pub a comer. En muchos pubs se pide en la barra. Como es alérgica a los frutos secos, primero pregunta por los ingredientes.",
+          "phrases": [
+            {
+              "en": "Can I see the menu, please?",
+              "es": "¿Puedo ver la carta, por favor?"
+            },
+            {
+              "en": "I'd like the fish and chips, please.",
+              "es": "Querría el fish and chips, por favor."
+            },
+            {
+              "en": "Does this contain nuts?",
+              "es": "¿Esto lleva frutos secos?"
+            },
+            {
+              "en": "I'm allergic to nuts.",
+              "es": "Soy alérgica a los frutos secos."
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "La cuenta",
+          "body": "Para pagar: «Could we have the bill, please?». Mira la cuenta: si pone «service charge», el servicio ya está incluido.",
+          "phrases": [
+            {
+              "en": "Could we have the bill, please?",
+              "es": "¿Nos trae la cuenta, por favor?"
+            },
+            {
+              "en": "Is service included?",
+              "es": "¿El servicio está incluido?"
+            },
+            {
+              "en": "Can I pay by card?",
+              "es": "¿Puedo pagar con tarjeta?"
+            },
+            {
+              "en": "Do you have a vegetarian option?",
+              "es": "¿Tienen alguna opción vegetariana?"
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Pide un plato y pregunta si lleva un ingrediente al que eres alérgico/a.",
+          "say": "Tu misión: pide un plato y pregunta por un ingrediente."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cómo preguntas si un plato lleva frutos secos?",
+          "options": [
+            "Does this contain nuts?",
+            "Do you like nuts?",
+            "Where are the nuts?"
+          ],
+          "answer": "Does this contain nuts?"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "La cuenta pone «service charge». ¿Qué significa?",
+          "options": [
+            "El servicio está incluido",
+            "Hay un descuento",
+            "Tienes que pagar en efectivo"
+          ],
+          "answer": "El servicio está incluido"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿Nos trae la cuenta, por favor?",
+          "words": [
+            "Could",
+            "we",
+            "have",
+            "the",
+            "bill,",
+            "please?",
+            "bell",
+            "pay"
+          ],
+          "answer": "Could we have the bill, please?"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "starter",
+              "es": "entrante"
+            },
+            {
+              "en": "main course",
+              "es": "plato principal"
+            },
+            {
+              "en": "dessert",
+              "es": "postre"
+            },
+            {
+              "en": "tap water",
+              "es": "agua del grifo"
+            }
+          ]
+        },
+        {
+          "type": "listening",
+          "text": "I'm allergic to nuts",
+          "options": [
+            "I'm allergic to nuts",
+            "I'm a big fan of nuts",
+            "I'm looking for nuts"
+          ],
+          "answer": "I'm allergic to nuts"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "I'd ___ the fish and chips, please.",
+          "hint": "querría",
+          "options": [
+            "like",
+            "live",
+            "love"
+          ],
+          "answer": "like"
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: escribe en inglés «Soy alérgica a los frutos secos.»",
+          "answer": "I'm allergic to nuts",
+          "alternatives": [
+            "I am allergic to nuts",
+            "I have a nut allergy",
+            "I'm allergic to nuts."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -59,8 +59,25 @@ describe('course content', () => {
     }
   });
 
+  it('story courses: modules in order, each opening with a scene and including a mission', () => {
+    for (const level of ALL_LEVELS.filter((l) => l.track === 'daily' || l.track === 'tourist')) {
+      expect(level.units.length, level.id).toBeGreaterThan(0);
+      level.units.forEach((u, i) => {
+        expect(u.unit, `${level.id} module order`).toBe(`Módulo ${i + 1}`);
+        for (const lesson of u.lessons) {
+          expect(lesson.exercises[0].type, lesson.id).toBe('explain');
+          const missions = lesson.exercises.filter((e) => e.type === 'explain' && e.title.includes('Misión'));
+          expect(missions.length, `${lesson.id} needs a 🎯 Misión card`).toBeGreaterThanOrEqual(1);
+          const graded = lesson.exercises.filter((e) => e.type !== 'explain').length;
+          expect(graded, lesson.id).toBeGreaterThanOrEqual(5);
+          expect(lesson.exercises.length, lesson.id).toBeLessThanOrEqual(14);
+        }
+      });
+    }
+  });
+
   it('every unit of Vivir en UK records when its facts were checked', () => {
-    for (const level of ALL_LEVELS.filter((l) => l.track === 'life')) {
+    for (const level of ALL_LEVELS.filter((l) => l.track !== 'english')) {
       for (const u of level.units) expect(u.checked, u.unit).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     }
   });

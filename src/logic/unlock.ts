@@ -18,7 +18,7 @@ export function unitCompletionRatio(level: LevelDefinition, completed: Completed
 
 /**
  * Level-unlocking rule:
- * - "Vivir en UK" (track "life") is always unlocked;
+ * - courses outside the A1–C2 ladder (Vivir en UK, día a día, turistas) are always unlocked;
  * - the first English level is always unlocked;
  * - any level at or below the placement-quiz result is unlocked;
  * - otherwise a level unlocks once at least 80% of the previous level's units are complete.
@@ -30,8 +30,9 @@ export function isLevelUnlocked(
   placementLevel?: LevelId | null,
 ): boolean {
   const target = levels.find((l) => l.id === levelId);
-  if (target?.track === 'life') return true;
-  const english = levels.filter((l) => l.track !== 'life');
+  // Courses outside the A1–C2 ladder (Vivir en UK, día a día, turistas) are always open.
+  if (target && target.track !== 'english') return true;
+  const english = levels.filter((l) => l.track === 'english');
   levels = english;
   const index = levels.findIndex((l) => l.id === levelId);
   if (index < 0) return false;

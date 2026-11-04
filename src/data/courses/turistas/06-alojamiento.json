@@ -1,0 +1,160 @@
+{
+  "level": "TUR",
+  "unit": "Módulo 6",
+  "title": "Alojamiento",
+  "icon": "🏨",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "tur-06-alojamiento",
+      "title": "La habitación no está lista",
+      "icon": "🏨",
+      "tip": "Hacer el registro, preguntar horarios y comunicar problemas.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 6 · Check-in",
+          "body": "Sofía llega al hotel a las 11 de la mañana. Tiene la reserva confirmada, pero el check-in es a las 3 de la tarde y su habitación todavía no está lista.\nEn recepción le preguntan su nombre y le piden el pasaporte y la tarjeta.",
+          "say": "Capítulo seis. Sofía llega al hotel a las once. Tiene la reserva, pero la habitación aún no está lista. Vamos a explicarlo con educación y a pedir una solución.",
+          "phrases": [
+            {
+              "en": "Hi, I have a reservation under the name Sofía Martín.",
+              "es": "Hola, tengo una reserva a nombre de Sofía Martín."
+            },
+            {
+              "en": "Check-in is from 3pm.",
+              "es": "El check-in es a partir de las 3."
+            },
+            {
+              "en": "Can I leave my bags here?",
+              "es": "¿Puedo dejar mis maletas aquí?"
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "Horarios y problemas",
+          "body": "Preguntas útiles: el desayuno, la salida (check-out), el wifi. Y si algo falla en la habitación, explícalo con «There's a problem with…» o «The … doesn't work».",
+          "phrases": [
+            {
+              "en": "What time is breakfast?",
+              "es": "¿A qué hora es el desayuno?"
+            },
+            {
+              "en": "What time is check-out?",
+              "es": "¿A qué hora hay que dejar la habitación?"
+            },
+            {
+              "en": "What's the wifi password?",
+              "es": "¿Cuál es la contraseña del wifi?"
+            },
+            {
+              "en": "The shower doesn't work.",
+              "es": "La ducha no funciona."
+            },
+            {
+              "en": "Could I have an extra towel, please?",
+              "es": "¿Me podría dar otra toalla, por favor?"
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Explica que tu reserva existe pero la habitación no está lista, y pide dejar las maletas.",
+          "say": "Tu misión: explica que tienes reserva pero la habitación no está lista, y pide dejar las maletas."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cómo dices que tienes una reserva?",
+          "options": [
+            "I have a reservation.",
+            "I want a reservation.",
+            "I am a reservation."
+          ],
+          "answer": "I have a reservation."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "«Check-out is at 11am» significa…",
+          "options": [
+            "Hay que dejar la habitación a las 11",
+            "El desayuno es a las 11",
+            "Puedes entrar a las 11"
+          ],
+          "answer": "Hay que dejar la habitación a las 11"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Mi reserva existe, pero la habitación no está lista.",
+          "words": [
+            "My",
+            "booking",
+            "exists,",
+            "but",
+            "the",
+            "room",
+            "isn't",
+            "ready.",
+            "is",
+            "read"
+          ],
+          "answer": "My booking exists, but the room isn't ready."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "booking",
+              "es": "reserva"
+            },
+            {
+              "en": "towel",
+              "es": "toalla"
+            },
+            {
+              "en": "key card",
+              "es": "tarjeta de la habitación"
+            },
+            {
+              "en": "luggage",
+              "es": "equipaje"
+            }
+          ]
+        },
+        {
+          "type": "listening",
+          "text": "What time is breakfast?",
+          "options": [
+            "What time is breakfast?",
+            "What time is check-in?",
+            "What is for breakfast?"
+          ],
+          "answer": "What time is breakfast?"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "The shower doesn't ___.",
+          "hint": "funciona",
+          "options": [
+            "work",
+            "walk",
+            "wash"
+          ],
+          "answer": "work"
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: escribe en inglés «¿Puedo dejar mis maletas aquí?»",
+          "answer": "Can I leave my bags here?",
+          "alternatives": [
+            "Can I leave my luggage here?",
+            "Can I leave my suitcases here?",
+            "Could I leave my bags here?"
+          ]
+        }
+      ]
+    }
+  ]
+}

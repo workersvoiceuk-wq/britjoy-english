@@ -1,0 +1,165 @@
+{
+  "level": "DIA",
+  "unit": "Módulo 4",
+  "title": "Vivienda",
+  "icon": "🏠",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "dia-04-vivienda",
+      "title": "La caldera no funciona",
+      "icon": "🏠",
+      "tip": "Buscar habitación, hablar con el propietario y comunicar una avería.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 4 · Una habitación para Diego",
+          "body": "Antes de que llegara la familia, Diego vivió unas semanas en una habitación compartida. Así la encontró: llamó por un anuncio.\n«Hi, I'm calling about the room. Is it still available?»\n«Yes, it is. It's £750 a month, bills included.»\n• «Bills included» = gastos incluidos (luz, gas, agua…).\n• Pregunta siempre por el depósito y pide el contrato por escrito.",
+          "say": "Capítulo cuatro. Antes de que llegara la familia, Diego alquiló una habitación. Llamó por un anuncio y preguntó si seguía disponible. Recuerda: bills included significa gastos incluidos, y pide siempre el contrato por escrito.",
+          "phrases": [
+            {
+              "en": "I'm calling about the room. Is it still available?",
+              "es": "Llamo por la habitación. ¿Sigue disponible?"
+            },
+            {
+              "en": "Are bills included?",
+              "es": "¿Los gastos están incluidos?"
+            },
+            {
+              "en": "How much is the deposit?",
+              "es": "¿Cuánto es el depósito?"
+            },
+            {
+              "en": "Can I come and see it?",
+              "es": "¿Puedo ir a verla?"
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "Comunicar una avería",
+          "body": "Ahora la familia vive en un piso alquilado. Una mañana de invierno, la caldera (boiler) no funciona: no hay agua caliente ni calefacción. Ana escribe al propietario (landlord).\n• El propietario es responsable de la estructura, la calefacción y el agua caliente, el gas, la instalación eléctrica, las tuberías y los desagües, entre otras cosas.\n• Avísale enseguida (mejor por escrito, guardando copia) y sigue pagando el alquiler mientras esperas.\n• Si no lo arregla, puedes acudir a «environmental health» de tu council.",
+          "phrases": [
+            {
+              "en": "The boiler isn't working.",
+              "es": "La caldera no funciona."
+            },
+            {
+              "en": "We have no hot water or heating.",
+              "es": "No tenemos agua caliente ni calefacción."
+            },
+            {
+              "en": "Could you send someone to fix it, please?",
+              "es": "¿Podría mandar a alguien a arreglarlo, por favor?"
+            },
+            {
+              "en": "When can the engineer come?",
+              "es": "¿Cuándo puede venir el técnico?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: reparaciones en un alquiler",
+            "url": "https://www.gov.uk/private-renting/repairs"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Escribe al landlord: explica la avería, desde cuándo pasa y pide que alguien venga a arreglarla.",
+          "say": "Tu misión: escribe al propietario, explica la avería y pide que alguien venga a arreglarla."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "El anuncio dice «bills included». ¿Qué significa?",
+          "options": [
+            "Gastos incluidos",
+            "Facturas pendientes",
+            "Sin muebles"
+          ],
+          "answer": "Gastos incluidos"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Llamo por la habitación. ¿Sigue disponible?",
+          "words": [
+            "I'm",
+            "calling",
+            "about",
+            "the",
+            "room.",
+            "Is",
+            "it",
+            "still",
+            "available?",
+            "free",
+            "call"
+          ],
+          "answer": "I'm calling about the room. Is it still available?"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "landlord",
+              "es": "propietario / casero"
+            },
+            {
+              "en": "boiler",
+              "es": "caldera"
+            },
+            {
+              "en": "deposit",
+              "es": "depósito / fianza"
+            },
+            {
+              "en": "leak",
+              "es": "fuga / gotera"
+            }
+          ]
+        },
+        {
+          "type": "listening",
+          "text": "We have no hot water or heating",
+          "options": [
+            "We have no hot water or heating",
+            "We have hot water and heating",
+            "We have no hot food"
+          ],
+          "answer": "We have no hot water or heating"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "The boiler isn't ___.",
+          "hint": "La caldera no funciona.",
+          "options": [
+            "working",
+            "walking",
+            "waiting"
+          ],
+          "answer": "working"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "El propietario no arregla la caldera. ¿A quién puedes acudir?",
+          "options": [
+            "A environmental health de tu council",
+            "A la policía (999)",
+            "A nadie: hay que esperar"
+          ],
+          "answer": "A environmental health de tu council"
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: escribe en inglés «¿Podría mandar a alguien a arreglarlo, por favor?» (empieza con «Could you…»)",
+          "answer": "Could you send someone to fix it, please?",
+          "alternatives": [
+            "Could you send someone to fix it please",
+            "Could you send someone to repair it, please?",
+            "Could you please send someone to fix it?"
+          ]
+        }
+      ]
+    }
+  ]
+}

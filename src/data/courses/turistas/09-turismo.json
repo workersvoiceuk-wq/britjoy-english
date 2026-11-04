@@ -1,0 +1,279 @@
+{
+  "level": "TUR",
+  "unit": "Módulo 9",
+  "title": "Turismo y museos",
+  "icon": "🏛️",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "tur-09a-museos",
+      "title": "Entrar en un museo",
+      "icon": "🏛️",
+      "tip": "Cómo entrar en los museos: entrada gratis, reserva, seguridad y lo que se paga.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 9 · Sofía en el British Museum",
+          "body": "¡Por fin, el museo! Una buena noticia: los grandes museos nacionales de Inglaterra tienen entrada general gratis para todo el mundo, también para turistas. El gobierno lo confirmó en septiembre de 2026. Por ejemplo: el British Museum, el Natural History Museum o la National Gallery.\n• Lo que suele pagarse son las exposiciones temporales (special exhibitions) y algunos eventos.",
+          "say": "Capítulo nueve. Sofía llega al British Museum. Buena noticia: los grandes museos nacionales de Inglaterra son gratis para todo el mundo, también para turistas. Lo que se suele pagar son las exposiciones temporales.",
+          "link": {
+            "label": "GOV.UK: los museos nacionales seguirán siendo gratis",
+            "url": "https://www.gov.uk/government/news/national-museums-to-remain-free-for-everyone"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "Cómo es la entrada, paso a paso",
+          "body": "Así fue la visita de Sofía al British Museum (cada museo tiene sus normas: mira su web antes de ir):\n1. Reservó online una entrada gratis con hora («free timed ticket»). Sin reserva se puede entrar según el aforo, a veces con cola.\n2. Llegó a la hora de su reserva.\n3. Pasó el control de seguridad y la revisión del bolso. Las maletas con ruedas y las bolsas grandes no se permiten.\n4. Dentro: plano (floor plan), consigna (cloakroom) y, si quiere, audioguía.\n5. Horario del British Museum: de 10:00 a 17:00, y los viernes hasta las 20:30.\n• Muchos museos piden un donativo voluntario: no es obligatorio.",
+          "say": "Así fue la visita. Uno: Sofía reservó una entrada gratis con hora. Dos: llegó a su hora. Tres: pasó el control de seguridad y la revisión del bolso; las maletas con ruedas no se permiten. Cuatro: dentro cogió un plano. Y recuerda: el donativo es voluntario.",
+          "phrases": [
+            {
+              "en": "Is it free to get in?",
+              "es": "¿La entrada es gratis?"
+            },
+            {
+              "en": "I've booked a free ticket for 11 o'clock.",
+              "es": "He reservado una entrada gratis para las 11."
+            },
+            {
+              "en": "Where's the cloakroom?",
+              "es": "¿Dónde está la consigna?"
+            },
+            {
+              "en": "Can I have a map of the museum?",
+              "es": "¿Me da un plano del museo?"
+            },
+            {
+              "en": "How much is the special exhibition?",
+              "es": "¿Cuánto cuesta la exposición temporal?"
+            }
+          ],
+          "link": {
+            "label": "British Museum: normas de visita",
+            "url": "https://www.britishmuseum.org/visit/visitor-guidelines-and-conditions-entry"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Entra en el museo: confirma tu reserva, pasa la seguridad y pregunta qué es gratis y qué se paga.",
+          "say": "Tu misión: entra en el museo, confirma tu reserva y pregunta qué es gratis y qué se paga."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cuánto cuesta la entrada general a los grandes museos nacionales de Inglaterra?",
+          "options": [
+            "Es gratis para todos",
+            "£20 para turistas",
+            "Solo gratis para británicos"
+          ],
+          "answer": "Es gratis para todos"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué se suele pagar en estos museos?",
+          "options": [
+            "Las exposiciones temporales",
+            "La entrada general",
+            "El plano del museo"
+          ],
+          "answer": "Las exposiciones temporales"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Llevas una maleta con ruedas al British Museum. ¿Qué pasa?",
+          "options": [
+            "No se permite entrar con ella",
+            "La dejas en la sala principal",
+            "Pagas un suplemento"
+          ],
+          "answer": "No se permite entrar con ella"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿La entrada es gratis?",
+          "words": [
+            "Is",
+            "it",
+            "free",
+            "to",
+            "get",
+            "in?",
+            "fee",
+            "out"
+          ],
+          "answer": "Is it free to get in?"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "cloakroom",
+              "es": "consigna / guardarropa"
+            },
+            {
+              "en": "floor plan",
+              "es": "plano"
+            },
+            {
+              "en": "donation",
+              "es": "donativo"
+            },
+            {
+              "en": "exhibition",
+              "es": "exposición"
+            }
+          ]
+        },
+        {
+          "type": "listening",
+          "text": "Where's the cloakroom?",
+          "options": [
+            "Where's the cloakroom?",
+            "Where's the classroom?",
+            "Where's the restroom?"
+          ],
+          "answer": "Where's the cloakroom?"
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: escribe en inglés «¿Cuánto cuesta la exposición temporal?» (How much is…)",
+          "answer": "How much is the special exhibition?",
+          "alternatives": [
+            "How much is the exhibition?",
+            "How much does the special exhibition cost?",
+            "How much is the temporary exhibition?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tur-09b-entradas",
+      "title": "Entradas y accesibilidad",
+      "icon": "🎟️",
+      "tip": "Preguntar horarios, reservar entradas y encontrar lugares.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 9 (II) · Una atracción de pago",
+          "body": "Por la tarde, Sofía quiere subir a una atracción de pago con su amiga Carmen, que va en silla de ruedas. Antes de comprar, pregunta el horario, el precio y la accesibilidad.\n• Step-free access: acceso sin escalones (rampas y ascensores).\n• Muchas atracciones venden entradas con hora; reservar online suele evitar colas.",
+          "say": "Segunda parte. Sofía quiere ir a una atracción con su amiga Carmen, que va en silla de ruedas. Antes de comprar, pregunta el horario, el precio y si hay acceso sin escalones.",
+          "phrases": [
+            {
+              "en": "What time does it open?",
+              "es": "¿A qué hora abre?"
+            },
+            {
+              "en": "Two adults, please.",
+              "es": "Dos adultos, por favor."
+            },
+            {
+              "en": "Is there step-free access?",
+              "es": "¿Hay acceso sin escalones?"
+            },
+            {
+              "en": "Is there a lift?",
+              "es": "¿Hay ascensor?"
+            },
+            {
+              "en": "Could you take a photo of us?",
+              "es": "¿Nos podría hacer una foto?"
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Compra una entrada y pregunta por la accesibilidad.",
+          "say": "Tu misión: compra una entrada y pregunta por la accesibilidad."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "«Step-free access» significa…",
+          "options": [
+            "Acceso sin escalones",
+            "Entrada gratis",
+            "Salida de emergencia"
+          ],
+          "answer": "Acceso sin escalones"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Quieres saber a qué hora cierra. Preguntas…",
+          "options": [
+            "What time does it close?",
+            "What time is it?",
+            "How long is it?"
+          ],
+          "answer": "What time does it close?"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Dos adultos, por favor.",
+          "words": [
+            "Two",
+            "adults,",
+            "please.",
+            "adult",
+            "to"
+          ],
+          "answer": "Two adults, please."
+        },
+        {
+          "type": "listening",
+          "text": "Is there step-free access?",
+          "options": [
+            "Is there step-free access?",
+            "Is there free access?",
+            "Is there a free step?"
+          ],
+          "answer": "Is there step-free access?"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "lift",
+              "es": "ascensor"
+            },
+            {
+              "en": "wheelchair",
+              "es": "silla de ruedas"
+            },
+            {
+              "en": "queue",
+              "es": "cola"
+            },
+            {
+              "en": "opening times",
+              "es": "horario"
+            }
+          ]
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Is there a ___?",
+          "hint": "ascensor",
+          "options": [
+            "lift",
+            "left",
+            "list"
+          ],
+          "answer": "lift"
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: escribe en inglés «¿Nos podría hacer una foto?» (Could you…)",
+          "answer": "Could you take a photo of us?",
+          "alternatives": [
+            "Could you take a picture of us?",
+            "Could you take a photo of us please?",
+            "Could you take our photo?"
+          ]
+        }
+      ]
+    }
+  ]
+}

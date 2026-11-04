@@ -121,12 +121,15 @@ export interface Unit {
   lessons: Lesson[];
 }
 
-export type TrackId = 'english' | 'life';
+/** english = CEFR levels A1–C2 · life = Vivir en UK · daily / tourist = story courses by situation. */
+export type TrackId = 'english' | 'life' | 'daily' | 'tourist';
 
 export interface LevelDefinition {
   id: LevelId;
   /** Which course this belongs to. English levels unlock in order; life topics are always open. */
   track: TrackId;
+  /** Short label for the header button (defaults to the id, e.g. "A1"). */
+  short?: string;
   name: string;
   description: string;
   /** Accent colours so the learner always knows which level they are in. */

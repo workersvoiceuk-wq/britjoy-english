@@ -1,0 +1,155 @@
+{
+  "level": "TUR",
+  "unit": "Módulo 1",
+  "title": "Antes de viajar",
+  "icon": "🛂",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "tur-01-antes-de-viajar",
+      "title": "Pasaporte y ETA",
+      "icon": "🛂",
+      "tip": "Revisar pasaporte, autorización de entrada, alojamiento y documentos del viaje.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 1 · Sofía hace la maleta",
+          "body": "Sofía, de Valencia, va a pasar una semana de vacaciones en Londres. Antes de reservar nada, Britjoy le ayuda a revisar los papeles:\n• Pasaporte válido durante toda la estancia. Con el DNI español no puede entrar como turista (solo en casos especiales, como quien tiene settled o pre-settled status).\n• ETA (Electronic Travel Authorisation): la necesitan los españoles, mexicanos y argentinos para visitar el Reino Unido.\n• Los colombianos necesitan un visado de visitante (Standard Visitor visa, £135).",
+          "say": "Capítulo uno. Sofía, de Valencia, prepara una semana de vacaciones en Londres. Primero, los papeles: necesita su pasaporte, porque con el DNI no puede entrar como turista, y una autorización electrónica llamada ETA. Si vienes de Colombia, necesitas un visado de visitante.",
+          "link": {
+            "label": "GOV.UK: ¿necesito ETA?",
+            "url": "https://www.gov.uk/guidance/check-when-you-can-get-an-electronic-travel-authorisation-eta"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "La ETA, paso a paso",
+          "body": "• Se pide con la app «UK ETA» (en inglés) o en GOV.UK. Cuesta £20 y no se devuelve.\n• Necesitas el pasaporte con el que viajarás, un email y una tarjeta (o Apple Pay / Google Pay). La app escanea el pasaporte y tu cara; en Android hace falta NFC.\n• La respuesta suele llegar en un día, pero puede tardar hasta 3 días laborables: revisa el spam.\n• Vale 2 años (o hasta que caduque el pasaporte) y sirve para varios viajes de hasta 6 meses.\n• Cada viajero necesita la suya, también los niños. Tener ETA no garantiza la entrada.\n• Como turista no puedes trabajar.",
+          "say": "La ETA se pide con la app UK ETA o en GOV.UK y cuesta veinte libras. Suele llegar en un día, pero puede tardar hasta tres días laborables. Vale dos años para varios viajes. Cada viajero necesita la suya, también los niños.",
+          "phrases": [
+            {
+              "en": "Have you applied for your ETA yet?",
+              "es": "¿Ya has pedido tu ETA?"
+            },
+            {
+              "en": "Make sure your passport is valid for the whole of your stay.",
+              "es": "Asegúrate de que tu pasaporte sea válido toda la estancia."
+            },
+            {
+              "en": "Check your spam folder for the email.",
+              "es": "Busca el email en la carpeta de spam."
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: pedir la ETA",
+            "url": "https://www.gov.uk/eta/apply"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Explica en inglés el motivo y la duración de tu visita: vacaciones, una semana.",
+          "say": "Tu misión: explica en inglés el motivo y la duración de tu visita."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Sofía es española y viaja de turismo. ¿Qué necesita?",
+          "options": [
+            "Pasaporte y ETA",
+            "Solo el DNI",
+            "Un visado de trabajo"
+          ],
+          "answer": "Pasaporte y ETA"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cuánto cuesta la ETA?",
+          "options": [
+            "£20",
+            "£135",
+            "Es gratis"
+          ],
+          "answer": "£20"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cuánto puede tardar como máximo la respuesta de la ETA?",
+          "options": [
+            "Hasta 3 días laborables",
+            "Un mes",
+            "Una hora"
+          ],
+          "answer": "Hasta 3 días laborables"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Tu amigo es colombiano y quiere visitar Londres. ¿Qué necesita?",
+          "options": [
+            "Un Standard Visitor visa",
+            "Una ETA",
+            "Nada"
+          ],
+          "answer": "Un Standard Visitor visa"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Estoy de vacaciones una semana.",
+          "words": [
+            "I'm",
+            "here",
+            "on",
+            "holiday",
+            "for",
+            "a",
+            "week.",
+            "work",
+            "month"
+          ],
+          "answer": "I'm here on holiday for a week."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra con su significado",
+          "pairs": [
+            {
+              "en": "passport",
+              "es": "pasaporte"
+            },
+            {
+              "en": "holiday",
+              "es": "vacaciones"
+            },
+            {
+              "en": "stay",
+              "es": "estancia"
+            },
+            {
+              "en": "valid",
+              "es": "válido"
+            }
+          ]
+        },
+        {
+          "type": "listening",
+          "text": "Make sure your passport is valid",
+          "options": [
+            "Make sure your passport is valid",
+            "Make sure your passport is in your bag",
+            "Make sure your ticket is valid"
+          ],
+          "answer": "Make sure your passport is valid"
+        },
+        {
+          "type": "typing",
+          "prompt": "🎯 Misión: escribe en inglés «Vengo de vacaciones una semana.»",
+          "answer": "I'm here on holiday for a week",
+          "alternatives": [
+            "I am here on holiday for a week",
+            "I'm on holiday for a week",
+            "I'm visiting for a week on holiday"
+          ]
+        }
+      ]
+    }
+  ]
+}

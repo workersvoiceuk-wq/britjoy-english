@@ -1,5 +1,5 @@
 import { useEffect, useState, type CSSProperties } from 'react';
-import { LEVELS, findLesson, getLevel } from './data/courses/en-es';
+import { ALL_LEVELS, LEVELS, findLesson, getLevel } from './data/courses/en-es';
 import { LIFE_LEVEL } from './data/courses/vivir-uk';
 import { isLevelUnlocked } from './logic/unlock';
 import { msUntilNextHeart } from './logic/gamification';
@@ -48,10 +48,11 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Guard: never sit on an English level that is (no longer) unlocked.
+  // Guard: never sit on a course/level that is (no longer) unlocked.
   const completed = completedByLevel(store.levels);
-  const unlockedCurrent = isLevelUnlocked(LEVELS, store.currentLevel, completed, store.placementLevel);
-  const englishLevel = unlockedCurrent ? getLevel(store.currentLevel) : LEVELS[0];
+  const current = getLevel(store.currentLevel);
+  const unlockedCurrent = current.track !== 'life' && isLevelUnlocked(ALL_LEVELS, store.currentLevel, completed, store.placementLevel);
+  const englishLevel = unlockedCurrent ? current : LEVELS[0];
 
   useEffect(() => setNotice(null), [store.hearts, store.currentLevel, store.tab]);
 

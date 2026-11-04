@@ -1,0 +1,57 @@
+{
+  "level": "DIA",
+  "unit": "Módulo 1",
+  "title": "Presentaciones",
+  "icon": "👋",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "dia-01-presentaciones",
+      "title": "Hola, soy Ana",
+      "icon": "👋",
+      "tip": "Hablar de ti, tu país, tu familia y tus intereses.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 1 · Una casa nueva en Londres",
+          "body": "Ana García acaba de llegar a Londres desde Valencia con su pareja, Diego, y su hija Lucía, de 8 años. Es sábado por la mañana y la vecina de al lado, Margaret, llama a la puerta con una bandeja de galletas.\n«Hello! I'm Margaret, from number 12. Welcome to the street!»\nAna respira hondo. Es su primera conversación en inglés en su nuevo barrio.",
+          "say": "Capítulo uno: una casa nueva en Londres. Ana acaba de llegar desde Valencia con su pareja, Diego, y su hija Lucía. Es sábado y la vecina, Margaret, llama a la puerta para darles la bienvenida. Es la primera conversación de Ana en su nuevo barrio. Vamos a ayudarla.",
+          "phrases": [
+            { "en": "Hello! I'm Margaret, from number 12.", "es": "¡Hola! Soy Margaret, del número 12." },
+            { "en": "Nice to meet you. I'm Ana.", "es": "Encantada de conocerte. Soy Ana." },
+            { "en": "I'm from Spain, from Valencia.", "es": "Soy de España, de Valencia." }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "Habla de tu familia y tus gustos",
+          "body": "Margaret pregunta por la familia y por qué les gusta hacer. En inglés es normal hacer preguntas cortas y responder con frases sencillas.\n• Para la familia: «This is my partner, Diego» / «This is my daughter, Lucía».\n• Para gustos: «I like…» / «I love…» / «I'm into…» (me interesa).",
+          "phrases": [
+            { "en": "This is my partner, Diego, and my daughter, Lucía.", "es": "Este es mi pareja, Diego, y mi hija, Lucía." },
+            { "en": "We've just moved here.", "es": "Acabamos de mudarnos aquí." },
+            { "en": "I like cooking and walking in the park.", "es": "Me gusta cocinar y pasear por el parque." },
+            { "en": "What do you do in your free time?", "es": "¿Qué haces en tu tiempo libre?" }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Preséntate a Margaret: di tu nombre, de dónde eres, con quién vives y una cosa que te gusta hacer.",
+          "say": "Tu misión: preséntate a Margaret. Di tu nombre, de dónde eres, con quién vives y algo que te gusta hacer."
+        },
+        { "type": "multipleChoice", "prompt": "Margaret dice «Nice to meet you». ¿Qué respondes?", "options": ["Nice to meet you too.", "I'm fine, thanks.", "Goodbye."], "answer": "Nice to meet you too." },
+        { "type": "wordBank", "prompt": "Soy de España, de Valencia.", "words": ["I'm", "from", "Spain,", "from", "Valencia.", "Spanish", "in"], "answer": "I'm from Spain, from Valencia." },
+        { "type": "matching", "prompt": "Une cada palabra de la familia", "pairs": [
+          { "en": "partner", "es": "pareja" },
+          { "en": "daughter", "es": "hija" },
+          { "en": "son", "es": "hijo" },
+          { "en": "neighbour", "es": "vecino/a" }
+        ] },
+        { "type": "listening", "text": "We've just moved here", "options": ["We've just moved here", "We've just arrived home", "We must move here"], "answer": "We've just moved here" },
+        { "type": "fillBlank", "sentence": "This is my ___, Lucía.", "hint": "Esta es mi hija, Lucía.", "options": ["daughter", "partner", "sister"], "answer": "daughter" },
+        { "type": "multipleChoice", "prompt": "¿Cómo preguntas a Margaret qué hace en su tiempo libre?", "options": ["What do you do in your free time?", "What time is it?", "Where do you work free?"], "answer": "What do you do in your free time?" },
+        { "type": "typing", "prompt": "🎯 Misión: escribe en inglés «Me gusta cocinar.»", "answer": "I like cooking", "alternatives": ["I like to cook", "I love cooking", "I enjoy cooking"] }
+      ]
+    }
+  ]
+}

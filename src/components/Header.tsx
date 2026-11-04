@@ -24,9 +24,9 @@ export function Header({ level, title, onOpenLevels, now }: Props) {
             <button
               onClick={onOpenLevels}
               className="press flex items-center gap-2 rounded-2xl border-2 border-b-4 border-accent-dark bg-accent px-3 py-1.5 font-black text-white"
-              aria-label={`Nivel ${level.id}. Cambiar nivel`}
+              aria-label={`${level.name}. Cambiar de nivel o curso`}
             >
-              <span className="text-lg">{level.id}</span>
+              <span className="text-lg">{level.short ?? level.id}</span>
               <span className="text-xs">▼</span>
             </button>
           ) : (

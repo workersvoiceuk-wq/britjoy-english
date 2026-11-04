@@ -1,0 +1,58 @@
+{
+  "level": "DIA",
+  "unit": "Módulo 11",
+  "title": "Conversación social",
+  "icon": "☕",
+  "checked": "2026-11-04",
+  "lessons": [
+    {
+      "id": "dia-11-social",
+      "title": "Hablar del tiempo",
+      "icon": "☕",
+      "tip": "Hablar del tiempo, hacer planes y conversar con compañeros.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Capítulo 11 · El descanso del café",
+          "body": "En el descanso, el compañero de Ana, Tom, empieza a hablar… del tiempo. En el Reino Unido, el tiempo es la forma más fácil de empezar una conversación.\n«Lovely day, isn't it?»\n«Yes, finally some sun! It was freezing yesterday.»\nLas «question tags» (isn't it?, aren't you?) invitan a responder.",
+          "say": "Capítulo once. En el descanso, Tom habla con Ana del tiempo, la forma más británica de empezar una conversación. Lovely day, isn't it? Fíjate en esa pregunta final: invita a responder.",
+          "phrases": [
+            { "en": "Lovely day, isn't it?", "es": "Qué día tan bonito, ¿verdad?" },
+            { "en": "It was freezing yesterday.", "es": "Ayer hacía un frío helador." },
+            { "en": "It's supposed to rain later.", "es": "Dicen que lloverá más tarde." },
+            { "en": "How was your weekend?", "es": "¿Qué tal el fin de semana?" }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "Hacer planes",
+          "body": "Tom propone ir al pub del barrio el viernes con otros compañeros. Para aceptar o rechazar con amabilidad:\n• Aceptar: «Sounds great! What time?»\n• Rechazar: «I'd love to, but I can't this Friday. Maybe next time?»",
+          "phrases": [
+            { "en": "Do you fancy coming to the pub on Friday?", "es": "¿Te apetece venir al pub el viernes?" },
+            { "en": "Sounds great! What time?", "es": "¡Genial! ¿A qué hora?" },
+            { "en": "I'd love to, but I can't this Friday.", "es": "Me encantaría, pero este viernes no puedo." },
+            { "en": "Maybe next time?", "es": "¿Quizás la próxima vez?" }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Misión",
+          "body": "Sigue la conversación sobre el tiempo y responde a la invitación de Tom.",
+          "say": "Tu misión: sigue la conversación sobre el tiempo y responde a la invitación de Tom."
+        },
+        { "type": "multipleChoice", "prompt": "Tom dice «Lovely day, isn't it?». ¿Qué respondes?", "options": ["Yes, it's beautiful!", "No, I'm not.", "It's Tuesday."], "answer": "Yes, it's beautiful!" },
+        { "type": "multipleChoice", "prompt": "«Do you fancy…?» significa…", "options": ["¿Te apetece…?", "¿Te gusta la moda…?", "¿Puedes pagar…?"], "answer": "¿Te apetece…?" },
+        { "type": "matching", "prompt": "Une cada palabra del tiempo", "pairs": [
+          { "en": "freezing", "es": "helador" },
+          { "en": "sunny", "es": "soleado" },
+          { "en": "cloudy", "es": "nublado" },
+          { "en": "rain", "es": "lluvia" }
+        ] },
+        { "type": "wordBank", "prompt": "Me encantaría, pero este viernes no puedo.", "words": ["I'd", "love", "to,", "but", "I", "can't", "this", "Friday.", "like", "next"], "answer": "I'd love to, but I can't this Friday." },
+        { "type": "listening", "text": "How was your weekend?", "options": ["How was your weekend?", "How was your week off?", "Where was your weekend?"], "answer": "How was your weekend?" },
+        { "type": "fillBlank", "sentence": "It's supposed to ___ later.", "hint": "llover", "options": ["rain", "run", "rein"], "answer": "rain" },
+        { "type": "typing", "prompt": "🎯 Misión: acepta la invitación. Escribe en inglés «¡Genial! ¿A qué hora?»", "answer": "Sounds great! What time?", "alternatives": ["Great! What time?", "Sounds good! What time?", "Sounds great, what time?"] }
+      ]
+    }
+  ]
+}

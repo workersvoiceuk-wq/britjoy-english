@@ -1,4 +1,6 @@
 import { LEVELS } from '../data/courses/en-es';
+import { SITUATION_LEVELS } from '../data/courses/situaciones';
+import { sfx } from '../lib/sound';
 import { isLevelUnlocked, unitCompletionRatio } from '../logic/unlock';
 import { completedByLevel, useProgressStore } from '../store/useProgressStore';
 import dialogue from '../data/britjoy-dialogue.json';
@@ -17,16 +19,17 @@ export function LevelSelector({ onClose }: Props) {
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Elige tu nivel"
+        aria-label="Elige tu nivel o curso"
         className="animate-slide-up max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-t-3xl bg-white p-5 pb-[calc(2rem+env(safe-area-inset-bottom))] sm:rounded-3xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-2xl font-black">Elige tu nivel</h2>
+          <h2 className="text-2xl font-black text-navy">Elige tu nivel o curso</h2>
           <button onClick={onClose} className="rounded-full p-2 text-2xl text-ink-soft" aria-label="Cerrar">
             ✕
           </button>
         </div>
+        <h3 className="mb-2 text-sm font-black uppercase tracking-wider text-royal">Por niveles · A1 → C2</h3>
         <ul className="space-y-3">
           {LEVELS.map((level, i) => {
             const unlocked = isLevelUnlocked(LEVELS, level.id, completed, placementLevel);
@@ -75,6 +78,51 @@ export function LevelSelector({ onClose }: Props) {
                         </span>
                       </span>
                     )}
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+
+        <h3 className="mb-2 mt-6 text-sm font-black uppercase tracking-wider text-royal">Cursos por situaciones · con historia</h3>
+        <ul className="space-y-3">
+          {SITUATION_LEVELS.map((course) => {
+            const lessons = course.units.flatMap((u) => u.lessons);
+            const done = lessons.filter((l) => l.id in (completed[course.id] ?? {})).length;
+            const active = course.id === currentLevel;
+            return (
+              <li key={course.id}>
+                <button
+                  onClick={() => {
+                    sfx.tap();
+                    setCurrentLevel(course.id);
+                    onClose();
+                  }}
+                  style={{ borderColor: course.accent }}
+                  className={`press flex w-full items-center gap-4 rounded-2xl border-2 border-b-4 bg-white p-3 text-left ${active ? 'ring-4 ring-accent-light' : ''}`}
+                >
+                  <span
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl"
+                    style={{ background: course.accent }}
+                    aria-hidden
+                  >
+                    {course.short?.split(' ')[0]}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-lg font-extrabold">{course.name}</span>
+                    <span className="block text-sm text-ink-soft">{course.description}</span>
+                    <span className="mt-2 block">
+                      <span className="block h-2.5 overflow-hidden rounded-full bg-ink-line">
+                        <span
+                          className="block h-full rounded-full transition-all"
+                          style={{ width: `${(done / Math.max(1, lessons.length)) * 100}%`, background: course.accent }}
+                        />
+                      </span>
+                      <span className="mt-1 block text-xs font-bold text-ink-soft">
+                        {course.units.length} módulos · {done}/{lessons.length} lecciones
+                      </span>
+                    </span>
                   </span>
                 </button>
               </li>

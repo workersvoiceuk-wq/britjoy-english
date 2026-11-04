@@ -8,6 +8,7 @@
  */
 import type { LevelDefinition, Unit } from '../../../types';
 import { LIFE_LEVEL } from '../vivir-uk';
+import { SITUATION_LEVELS } from '../situaciones';
 
 import a1u1 from './a1/unit-1.json';
 import a1u2 from './a1/unit-2.json';
@@ -90,8 +91,8 @@ export const LEVELS: LevelDefinition[] = [
 
 export const LEVEL_IDS = LEVELS.map((l) => l.id);
 
-/** Every course: English levels plus the "Vivir en UK" survival course. */
-export const ALL_LEVELS: LevelDefinition[] = [...LEVELS, LIFE_LEVEL];
+/** Every course: English levels, the story courses by situation and "Vivir en UK". */
+export const ALL_LEVELS: LevelDefinition[] = [...LEVELS, ...SITUATION_LEVELS, LIFE_LEVEL];
 
 export function getLevel(id: string): LevelDefinition {
   return ALL_LEVELS.find((l) => l.id === id) ?? LEVELS[0];
