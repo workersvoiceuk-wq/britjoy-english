@@ -2,8 +2,9 @@
  * Britjoy, the guide: the owner's official avatar (Queen's Guard with the
  * "Life in the UK" book), cut out from the owner's image into
  * src/assets/britjoy-avatar.webp. The artwork is never redrawn or recoloured;
- * moods and "talking" are shown only with movement (CSS transforms).
+ * moods, breathing and "talking" are shown only with movement (CSS transforms).
  */
+import { useState } from 'react';
 import lionUrl from '../assets/britjoy-avatar.webp';
 import lionSmallUrl from '../assets/britjoy-avatar-320.webp';
 
@@ -30,18 +31,28 @@ const MOTION: Record<BritjoyExpression, string> = {
 
 export function Britjoy({ expression = 'happy', size = 120, speaking = false, className = '' }: Props) {
   const label = { happy: 'contento', neutral: 'atento', sad: 'te anima', celebrating: 'celebrando' }[expression];
+  const [wiggle, setWiggle] = useState(false);
+  // Three layers so the movements add up: arrival bounce, idle breathing, and the
+  // current action (talking, celebrating, sad or a tap wiggle) on the artwork itself.
+  const action = wiggle ? 'britjoy-wiggle' : speaking ? 'britjoy-talk' : MOTION[expression];
   return (
-    <span className={`relative inline-block shrink-0 ${className}`} style={{ height: size, width: size * ASPECT }}>
-      <img
-        src={lionUrl}
-        srcSet={`${lionSmallUrl} 320w, ${lionUrl} 655w`}
-        sizes={`${Math.round(size * ASPECT)}px`}
-        width={Math.round(size * ASPECT)}
-        height={size}
-        alt={`Britjoy ${label}`}
-        draggable={false}
-        className={`britjoy-fade h-full w-full select-none object-contain ${speaking ? 'britjoy-talk' : MOTION[expression]}`}
-      />
+    <span className={`britjoy-enter relative inline-block shrink-0 ${className}`} style={{ height: size, width: size * ASPECT }}>
+      <span className={`block h-full w-full ${speaking || (expression !== 'happy' && expression !== 'neutral') ? '' : 'britjoy-idle'}`}>
+        <img
+          src={lionUrl}
+          srcSet={`${lionSmallUrl} 320w, ${lionUrl} 655w`}
+          sizes={`${Math.round(size * ASPECT)}px`}
+          width={Math.round(size * ASPECT)}
+          height={size}
+          alt={`Britjoy ${label}`}
+          draggable={false}
+          onPointerDown={() => setWiggle(true)}
+          onAnimationEnd={(e) => {
+            if (e.animationName === 'britjoy-wiggle') setWiggle(false);
+          }}
+          className={`britjoy-fade relative h-full w-full select-none object-contain ${action}`}
+        />
+      </span>
       {expression === 'celebrating' && (
         <span aria-hidden className="absolute -right-2 -top-1 text-2xl animate-pop">🎉</span>
       )}
