@@ -11,8 +11,8 @@ const ORDER: Promo[] = ['share', 'plus', 'vum'];
 
 /**
  * House recommendations for free learners (like the cards other learning apps show
- * between lessons): Britjoy Plus, invite a friend, Voz Unida Mundo. No ad network,
- * no tracking. Hidden for Britjoy Plus members; the store apps only show the
+ * between lessons): VUM Academy, invite a friend, Voz Unida Mundo. No ad network,
+ * no tracking. Hidden for VUM Academy members; the store apps only show the
  * invite card.
  */
 export function PromoCard({ seed, onOpenPlus }: { seed: number; onOpenPlus: () => void }) {

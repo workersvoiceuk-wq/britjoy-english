@@ -6,6 +6,7 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { admin } from "../_shared/http.ts";
 import { PRODUCTS, isProduct } from "../_shared/products.ts";
 import { Stripe, periodEnd, stripe } from "../_shared/stripe.ts";
+import { isAcademySubscription } from "../_shared/academy.ts";
 
 const cryptoProvider = Stripe.createSubtleCryptoProvider();
 const ok = () => new Response("ok", { status: 200 });
@@ -62,15 +63,27 @@ Deno.serve(async (req: Request) => {
         await apply({ user, product, credits: PRODUCTS[product].credits, plusUntil, amount: s.amount_total, currency: s.currency, customer });
         break;
       }
-      // Renewals, plan changes, cancellations and failed payments all arrive here.
+      // Renewals, plan changes, cancellations and failed payments all arrive here,
+      // including those of VUM Academy subscriptions bought on vozunidamundo.com.
+      case "customer.subscription.created":
       case "customer.subscription.updated":
       case "customer.subscription.deleted": {
         const sub = event.data.object as Stripe.Subscription;
-        const user = sub.metadata?.user_id;
+        let user: string | null = sub.metadata?.user_id ?? null;
+        // VUM Academy subscriptions come from vozunidamundo.com: find the BritJoy
+        // account with the same verified email as the Stripe customer.
+        if (!user && isAcademySubscription(sub)) {
+          const customer = await client.customers.retrieve(typeof sub.customer === "string" ? sub.customer : sub.customer.id);
+          const email = "deleted" in customer && customer.deleted ? null : customer.email;
+          if (email) {
+            const { data } = await db.rpc("user_id_by_email", { p_email: email });
+            user = (data as string | null) ?? null;
+          }
+        }
         if (!user) break;
-        const active = event.type === "customer.subscription.updated" && ["active", "trialing", "past_due"].includes(sub.status);
+        const active = event.type !== "customer.subscription.deleted" && ["active", "trialing", "past_due"].includes(sub.status);
         const plusUntil = active ? periodEnd(sub) : new Date();
-        await apply({ user, product: sub.metadata?.product ?? "plus", plusUntil });
+        await apply({ user, product: sub.metadata?.product ?? "vum_academy", plusUntil });
         break;
       }
       default:

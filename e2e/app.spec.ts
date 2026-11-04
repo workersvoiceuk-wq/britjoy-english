@@ -147,15 +147,16 @@ test('first launch asks which language you speak and switches the interface (RTL
   await expect(page.getByRole('button', { name: 'الدورات', exact: true })).toBeVisible();
 });
 
-test('Britjoy Plus: compares Free and Plus, shows prices and waits for the backend', async ({ page }) => {
+test('VUM Academy: compares Free and Academy, links to vozunidamundo.com and waits for the backend', async ({ page }) => {
   await start(page);
   await page.getByText('Empezar desde cero (A1)').click();
   await page.getByRole('button', { name: 'Más', exact: true }).click();
-  await page.getByRole('button', { name: /Britjoy Plus y tu cuenta/ }).click();
-  await expect(page.getByRole('heading', { name: /Britjoy Plus/ }).first()).toBeVisible();
+  await page.getByRole('button', { name: /VUM Academy y tu cuenta/ }).click();
+  await expect(page.getByRole('heading', { name: /VUM Academy/ }).first()).toBeVisible();
   await expect(page.getByText('Vidas ilimitadas', { exact: true })).toBeVisible();
   await expect(page.getByText(/5,99\s£ al mes/)).toBeVisible();
-  await expect(page.getByText(/Ahorra 33\s?%/)).toBeVisible();
+  await expect(page.getByRole('link', { name: /Suscribirme en vozunidamundo\.com/ })).toHaveAttribute('href', 'https://vozunidamundo.com/academia/plan/');
+  await expect(page.getByRole('button', { name: 'Ya tengo VUM Academy: comprobar' })).toBeDisabled();
   await expect(page.getByText('Los pagos todavía no están activados. ¡Muy pronto!')).toBeVisible();
   await expect(page.getByText('Las cuentas todavía no están activadas. ¡Muy pronto!')).toBeVisible();
   for (const button of await page.getByRole('button', { name: 'Elegir' }).all()) await expect(button).toBeDisabled();

@@ -97,7 +97,7 @@ export function SettingsScreen() {
         <p className="font-extrabold text-navy">{t('settings.about')}</p>
         <p className="mt-1">
           Britjoy English · versión {APP_VERSION}. Tu progreso se guarda solo en este dispositivo. La cuenta (solo tu email) es
-          opcional y sirve para el Modo IA y Britjoy Plus. Si usas el Modo IA, tus mensajes se envían a nuestro servidor
+          opcional y sirve para el Modo IA y VUM Academy. Si usas el Modo IA, tus mensajes se envían a nuestro servidor
           y al proveedor de IA para generar la respuesta; los pagos los procesa Stripe.
         </p>
         <p className="mt-2">

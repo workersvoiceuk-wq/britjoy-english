@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {
+  VUM_ACADEMY_URL,
   backendConfigured,
   buy,
   deleteAccount,
@@ -7,12 +8,13 @@ import {
   manageSubscription,
   sendLoginCode,
   signOut,
+  syncAcademy,
   useAccount,
   usePlus,
   verifyLoginCode,
   type ProductId,
 } from '../lib/backend';
-import { CREDIT_PACK, FREE_AI_DAILY, PLUS_AI_DAILY, PRICES, formatPrice, yearlySaving } from '../lib/plans';
+import { ACADEMY_MONTHLY, CREDIT_PACK, FREE_AI_DAILY, PLUS_AI_DAILY, PRICES, formatPrice } from '../lib/plans';
 import { sfx } from '../lib/sound';
 import { useT } from '../i18n';
 import { useProgressStore } from '../store/useProgressStore';
@@ -111,14 +113,18 @@ function Perk({ children, on = true }: { children: React.ReactNode; on?: boolean
   );
 }
 
-/** Britjoy Plus: compare Free vs Plus, buy (web), credits, and the account. */
+/**
+ * VUM Academy in the app: compare Free vs Academy, subscribe on vozunidamundo.com
+ * (web only), check an existing subscription by email, AI credits and the account.
+ */
 export function PlusScreen({ checkout = null }: { checkout?: 'ok' | 'cancel' | null }) {
   const t = useT();
   const lang = useProgressStore((s) => s.uiLang) ?? 'es';
   const plus = usePlus();
   const { email, plusUntil, credits } = useAccount();
   const [error, setError] = useState(false);
-  const [busy, setBusy] = useState<ProductId | 'portal' | null>(null);
+  const [busy, setBusy] = useState<ProductId | 'portal' | 'sync' | null>(null);
+  const [syncResult, setSyncResult] = useState<'ok' | 'none' | null>(null);
   const price = (p: ProductId) => formatPrice(PRICES[p], lang);
   const sellHere = canBuyHere() && backendConfigured;
 
@@ -130,6 +136,20 @@ export function PlusScreen({ checkout = null }: { checkout?: 'ok' | 'cancel' | n
       await (p === 'portal' ? manageSubscription() : buy(p));
     } catch {
       setError(true);
+      setBusy(null);
+    }
+  };
+
+  const checkAcademy = async () => {
+    sfx.tap();
+    setBusy('sync');
+    setError(false);
+    setSyncResult(null);
+    try {
+      setSyncResult((await syncAcademy()) ? 'ok' : 'none');
+    } catch {
+      setError(true);
+    } finally {
       setBusy(null);
     }
   };
@@ -183,6 +203,7 @@ export function PlusScreen({ checkout = null }: { checkout?: 'ok' | 'cancel' | n
           <h3 className="mb-2 text-lg font-black text-navy">👑 {t('plus.title')}</h3>
           <ul className="space-y-1">
             <Perk>{t('plus.freeAll')}</Perk>
+            <Perk>{t('plus.perkCourses')}</Perk>
             <Perk>{t('plus.perkHearts')}</Perk>
             <Perk>{t('plus.perkAi', { n: PLUS_AI_DAILY })}</Perk>
             <Perk>{t('plus.perkNoAds')}</Perk>
@@ -191,23 +212,34 @@ export function PlusScreen({ checkout = null }: { checkout?: 'ok' | 'cancel' | n
         </div>
       </section>
 
-      {!plus && canBuyHere() && (
-        <section className="grid gap-3 sm:grid-cols-2" aria-label={t('plus.title')}>
-          <div className="rounded-2xl border-2 border-navy/10 bg-white p-4">
-            <p className="font-black text-navy">{t('plus.month')}</p>
-            <p className="text-2xl font-black text-ink">{t('plus.perMonth', { price: price('plus_month') })}</p>
-            <BuyButton product="plus_month" label={t('plus.buy')} />
-          </div>
-          <div className="relative rounded-2xl border-2 border-royal bg-white p-4">
-            <span className="absolute -top-3 end-3 rounded-full bg-royal px-3 py-0.5 text-xs font-black text-white">
-              {t('plus.save', { pct: yearlySaving() })}
-            </span>
-            <p className="font-black text-navy">{t('plus.year')}</p>
-            <p className="text-2xl font-black text-ink">{t('plus.perYear', { price: price('plus_year') })}</p>
-            <BuyButton product="plus_year" label={t('plus.buy')} />
-          </div>
+      {!plus && (
+        <section className="rounded-2xl border-2 border-royal bg-white p-4" aria-label={t('plus.title')}>
+          {canBuyHere() && (
+            <>
+              <p className="font-black text-navy">{t('plus.month')}</p>
+              <p className="text-2xl font-black text-ink">{t('plus.perMonth', { price: formatPrice(ACADEMY_MONTHLY, lang) })}</p>
+              <a
+                href={VUM_ACADEMY_URL}
+                target="_blank"
+                rel="noopener"
+                className="press mt-3 block w-full rounded-2xl border-b-4 border-royal-dark bg-royal py-3 text-center font-black text-white"
+              >
+                {t('plus.subscribe')} ↗
+              </a>
+            </>
+          )}
+          <p className="mt-2 text-sm font-semibold text-ink-soft">{t('plus.sameEmail')}</p>
+          <button
+            onClick={() => void checkAcademy()}
+            disabled={!backendConfigured || !email || busy !== null}
+            className="press mt-3 w-full rounded-2xl border-2 border-b-4 border-navy/20 bg-white py-3 font-black text-navy disabled:opacity-60"
+          >
+            {t('plus.check')}
+          </button>
+          {syncResult === 'none' && <p role="status" className="mt-2 text-sm font-bold text-ink-soft">{t('plus.checkNone')}</p>}
         </section>
       )}
+      {syncResult === 'ok' && <p role="status" className="rounded-2xl bg-brand-light p-3 font-bold text-brand-dark">{t('plus.checkOk')}</p>}
 
       <section className="rounded-2xl border-2 border-navy/10 bg-white p-4">
         <div className="flex items-baseline justify-between gap-2">

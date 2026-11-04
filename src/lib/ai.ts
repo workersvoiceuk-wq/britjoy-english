@@ -1,7 +1,7 @@
 /**
  * Client for Britjoy's AI tutor (Modo IA). The tutor runs as a Supabase Edge
  * Function; the Claude API key stays on the server (see supabase/README.md).
- * Learners sign in; Britjoy Plus is unlimited, everyone gets a few free messages
+ * Learners sign in; VUM Academy is unlimited, everyone gets a few free messages
  * a day, and then each message uses one credit.
  */
 import { backendConfigured, callFunction, currentSession, useAccount } from './backend';
@@ -24,7 +24,7 @@ const ERRORS: Record<string, string> = {
   busy: 'Hay mucha gente hablando con Britjoy. Inténtalo en un momento.',
   not_configured: 'El Modo IA todavía no está activado.',
   sign_in: 'Inicia sesión para hablar con Britjoy.',
-  no_credits: 'Has usado tus mensajes gratis de hoy. Hazte Britjoy Plus o consigue créditos para seguir.',
+  no_credits: 'Has usado tus mensajes gratis de hoy. Hazte de VUM Academy o consigue créditos para seguir.',
 };
 
 type Usage = { paidWith?: string; freeLeft?: number; credits?: number };

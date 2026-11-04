@@ -1,5 +1,5 @@
 /**
- * Connection to Britjoy's backend (Supabase): accounts, Britjoy Plus, AI credits.
+ * Connection to Britjoy's backend (Supabase): accounts, VUM Academy, AI credits.
  * The app only ships the project's public URL and public (anon/publishable) key.
  * Every secret (Claude, Stripe) lives in Supabase, never in the app.
  */
@@ -34,7 +34,7 @@ export const canBuyHere = () => !Capacitor.isNativePlatform();
 
 export interface AccountState {
   email: string | null;
-  /** ISO date until which Britjoy Plus is active (cached so it also works offline). */
+  /** ISO date until which VUM Academy is active (cached so it also works offline). */
   plusUntil: string | null;
   credits: number;
   /** Free AI messages left today, as last reported by the tutor. */
@@ -63,7 +63,7 @@ export function isPlusActive(plusUntil: string | null, now = Date.now()): boolea
   return Boolean(plusUntil && Date.parse(plusUntil) > now);
 }
 
-/** True when the learner has Britjoy Plus right now. */
+/** True when the learner has VUM Academy right now. */
 export const hasPlus = () => isPlusActive(useAccount.getState().plusUntil);
 
 export async function currentSession(): Promise<Session | null> {
@@ -126,23 +126,34 @@ export async function callFunction<T>(name: string, body: unknown): Promise<{ ok
   return { ok: res.ok, status: res.status, data };
 }
 
-export type ProductId = 'plus_month' | 'plus_year' | 'credits_100';
+export type ProductId = 'credits_100';
 
-/** Opens Stripe Checkout (web) for Plus or a credit pack. */
+/** VUM Academy is sold on Voz Unida Mundo's website; it unlocks the app by email. */
+export const VUM_ACADEMY_URL = 'https://vozunidamundo.com/academia/plan/';
+
+/** Asks the server to look for an active VUM Academy subscription with this account's email. */
+export async function syncAcademy(): Promise<boolean> {
+  const { ok, data } = await callFunction<{ active?: boolean; error?: string }>('academy-sync', {});
+  if (!ok) throw new Error(data.error ?? 'sync_failed');
+  await refreshProfile();
+  return Boolean(data.active);
+}
+
+/** Opens Stripe Checkout (web) for an AI credit pack. */
 export async function buy(product: ProductId): Promise<void> {
   const { ok, data } = await callFunction<{ url?: string; error?: string }>('billing-checkout', { product });
   if (!ok || !data.url) throw new Error(data.error ?? 'checkout_failed');
   window.location.assign(data.url);
 }
 
-/** Opens Stripe's portal to change or cancel Plus. */
+/** Opens Stripe's portal to change or cancel VUM Academy and see receipts. */
 export async function manageSubscription(): Promise<void> {
   const { ok, data } = await callFunction<{ url?: string; error?: string }>('billing-portal', {});
   if (!ok || !data.url) throw new Error(data.error ?? 'portal_failed');
   window.location.assign(data.url);
 }
 
-/** React hook: whether the learner has Britjoy Plus (re-renders when it changes). */
+/** React hook: whether the learner has VUM Academy (re-renders when it changes). */
 export const usePlus = () => useAccount((s) => isPlusActive(s.plusUntil));
 
 /** Deletes the account on the server (and cancels Plus), then signs out. */

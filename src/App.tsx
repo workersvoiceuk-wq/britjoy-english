@@ -70,7 +70,7 @@ function AppScreens() {
     document.documentElement.dir = isRtl(uiLang) ? 'rtl' : 'ltr';
   }, [uiLang]);
 
-  // Account: keep Britjoy Plus and AI credits in sync; after Stripe Checkout the web
+  // Account: keep VUM Academy and AI credits in sync; after Stripe Checkout the web
   // returns with ?plus=ok|cancel, which opens the Plus screen.
   const [checkout, setCheckout] = useState<'ok' | 'cancel' | null>(null);
   useEffect(() => {

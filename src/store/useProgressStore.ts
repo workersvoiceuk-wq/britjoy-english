@@ -110,7 +110,7 @@ export const useProgressStore = create<ProgressState>()(
       },
 
       loseHeart: (now = Date.now()) => {
-        if (hasPlus()) return; // Britjoy Plus: unlimited hearts
+        if (hasPlus()) return; // VUM Academy: unlimited hearts
         get().syncHearts(now);
         const { hearts, heartsSince } = get();
         if (hearts <= 0) return;
