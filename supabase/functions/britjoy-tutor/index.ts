@@ -4,10 +4,10 @@
 //
 // Learners must be signed in. Each message is paid for before Claude is called
 // (spend_ai_message): Britjoy Plus members get PLUS_AI_DAILY messages a day (fair
-// use), everyone else FREE_AI_DAILY free messages a day; then one credit each. If Claude cannot answer, the
-// message is refunded.
+// use), everyone else FREE_AI_DAILY free messages a day; then one credit each.
+// If Claude cannot answer, the message is refunded.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import Anthropic from "npm:@anthropic-ai/sdk";
+import Anthropic from "npm:@anthropic-ai/sdk@1.1.0";
 import { admin, cors, currentUser, json, preflight } from "../_shared/http.ts";
 import { FREE_AI_DAILY, PLUS_AI_DAILY } from "../_shared/products.ts";
 

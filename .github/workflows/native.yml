@@ -16,11 +16,9 @@ concurrency:
   group: native-${{ github.ref }}
   cancel-in-progress: true
 
-# Modo IA: public endpoint + anon key of the Supabase tutor function (repository Variables,
-# not secrets; the Claude API key never leaves Supabase). Empty = AI mode shows "not activated".
-env:
-  VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
-  VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
+# Test builds run WITHOUT the Supabase backend (no VITE_SUPABASE_* variables), so the
+# tests never create accounts or call Stripe/Claude. The published web and store builds
+# (pages.yml, release*.yml) use the repository Variables.
 
 jobs:
   web:

@@ -16,6 +16,15 @@ Nunca van en la web, en las apps ni en el repositorio.
 | `functions/account-delete` | Botón «Borrar mi cuenta». Cancela Plus y borra la cuenta. Lo exigen Google Play y la App Store. |
 | `config.toml` | `billing-webhook` va sin token de Supabase, porque Stripe no lo envía; lo protege la firma de Stripe. |
 
+## Estado del proyecto
+
+- Proyecto de Supabase **`britjoy-english`** (ref `vvpmsmalgzqqfjfrlfwg`, región Londres), creado el 4 de noviembre de 2026.
+- Base de datos aplicada: las dos migraciones de `migrations/`. La revisión de seguridad de Supabase no muestra avisos.
+- Las 5 funciones están desplegadas. Endpoint del webhook de Stripe:
+  `https://vvpmsmalgzqqfjfrlfwg.supabase.co/functions/v1/billing-webhook`
+- Falta lo que solo puede hacer el dueño: los secretos (Claude y Stripe), las plantillas de email y las variables de
+  GitHub (pasos 1.4–1.6, 2, 3 y 5).
+
 ## Puesta en marcha (una vez, unos 30 minutos)
 
 ### 1. Proyecto de Supabase
@@ -23,7 +32,8 @@ Nunca van en la web, en las apps ni en el repositorio.
    El plan gratuito basta para empezar.
 2. **SQL Editor** → pega y ejecuta `migrations/20261104120000_accounts_plus_credits.sql`.
 3. **Authentication → Providers → Email**: déjalo activado.
-4. **Authentication → Email Templates → Magic Link**: cambia el texto para que incluya el código, por ejemplo:
+4. **Authentication → Email Templates**: en **Confirm signup** (primera vez) y en **Magic Link** (las siguientes),
+   cambia el texto para que incluya el código, por ejemplo:
    `Tu código para entrar en Britjoy English es: {{ .Token }}`
    La app pide ese código de 6 dígitos y no usa enlaces.
 5. **Authentication → URL Configuration → Site URL**: `https://workersvoiceuk-wq.github.io/britjoy-english/`.
