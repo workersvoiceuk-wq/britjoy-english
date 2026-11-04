@@ -49,7 +49,7 @@ export interface ProgressState {
   setTab: (tab: AppTab) => void;
 }
 
-export type AppTab = 'english' | 'life' | 'resources' | 'settings';
+export type AppTab = 'english' | 'life' | 'ai' | 'resources' | 'settings';
 
 export const STORAGE_KEY = 'britjoy-english-progress-v1';
 

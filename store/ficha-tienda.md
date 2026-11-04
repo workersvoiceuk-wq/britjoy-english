@@ -64,14 +64,19 @@ Voz Unida Mundo Academy · te enseña — Tu voz cuenta.
 ## Respuestas para los formularios de las tiendas
 
 **Google Play · Seguridad de los datos (Data safety):**
-- ¿La app recoge o comparte datos de usuario? **No.**
-- La app no tiene cuentas, analítica ni anuncios. El progreso se guarda en el dispositivo y no sale de él.
+- Sin Modo IA activado: la app no recoge ni comparte datos.
+- **Con Modo IA activado** (cuando se configure el servidor): declara «Mensajes de la app» / *Other in-app messages* como **recogidos y compartidos** para «Funcionalidad de la app», **procesados de forma efímera** (no se almacenan en nuestro servidor), **cifrados en tránsito**, **opcionales** (solo si el usuario usa el Modo IA). Compartidos con el proveedor de IA (Anthropic).
+- No hay cuentas, analítica ni anuncios. El progreso se guarda en el dispositivo.
 
-**App Store · Privacidad de la app:** «Data Not Collected» (no se recogen datos).
+**App Store · Privacidad de la app:**
+- Sin Modo IA: «Data Not Collected».
+- Con Modo IA: *Other User Content* → usado para *App Functionality*, **no vinculado** a la identidad, **sin seguimiento**. La app avisa de que los mensajes se envían a un proveedor de IA externo antes de usarlo, como pide Apple para la IA de terceros.
 
 **Clasificación de contenido:** app educativa, sin violencia, sin contenido sexual, sin apuestas, sin compras y sin interacción entre usuarios. La lección de bienestar menciona dónde pedir apoyo emocional (Samaritans): es información de ayuda, no contenido sensible.
 
 **Anuncios:** No contiene anuncios.
+
+**IA generativa:** el Modo IA genera respuestas con IA (Claude, de Anthropic). Google Play pide declararlo y ofrecer una forma de reportar contenido inapropiado: el usuario puede escribir al soporte de Voz Unida Mundo.
 
 **Exportación / cifrado (iOS):** la app no usa cifrado propio (`ITSAppUsesNonExemptEncryption = NO` ya está en el proyecto).
 

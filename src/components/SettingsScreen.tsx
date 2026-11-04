@@ -48,8 +48,8 @@ export function SettingsScreen() {
       <div className="rounded-2xl border-2 border-navy/10 bg-white p-4 text-[15px] font-semibold text-ink-soft">
         <p className="font-extrabold text-navy">Sobre la app</p>
         <p className="mt-1">
-          Britjoy English · versión {APP_VERSION}. Tu progreso se guarda solo en este dispositivo; no hay cuentas ni se
-          envían datos personales.
+          Britjoy English · versión {APP_VERSION}. Tu progreso se guarda solo en este dispositivo; no hay cuentas. Solo si
+          usas el Modo IA, tus mensajes se envían a nuestro servidor y al proveedor de IA para generar la respuesta.
         </p>
         <p className="mt-2">
           La sección «Vivir en UK» es información general, revisada con fuentes oficiales (GOV.UK, NHS, TfL). No es

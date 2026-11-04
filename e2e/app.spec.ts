@@ -108,3 +108,10 @@ test('running out of hearts ends the lesson', async ({ page }) => {
   await page.getByRole('button', { name: 'Continuar' }).click();
   await expect(page.getByRole('heading', { name: 'Sin vidas' })).toBeVisible();
 });
+
+test('Modo IA tab explains it is not activated until the server is configured', async ({ page }) => {
+  await start(page);
+  await page.getByText('Empezar desde cero (A1)').click();
+  await page.getByRole('button', { name: /Modo IA/ }).click();
+  await expect(page.getByText('El Modo IA todavía no está activado')).toBeVisible();
+});

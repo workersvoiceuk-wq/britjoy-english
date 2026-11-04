@@ -16,6 +16,12 @@ concurrency:
   group: britjoy-english-pages
   cancel-in-progress: false
 
+# Modo IA: public endpoint + anon key of the Supabase tutor function (repository Variables,
+# not secrets; the Claude API key never leaves Supabase). Empty = AI mode shows "not activated".
+env:
+  VITE_AI_ENDPOINT: ${{ vars.VITE_AI_ENDPOINT }}
+  VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
+
 jobs:
   build:
     runs-on: ubuntu-24.04

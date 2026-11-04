@@ -16,6 +16,7 @@ import { LessonResult } from './components/LessonResult';
 import { BottomNav } from './components/BottomNav';
 import { ResourcesScreen } from './components/ResourcesScreen';
 import { SettingsScreen } from './components/SettingsScreen';
+import { AiScreen } from './components/AiScreen';
 
 type Screen =
   | { name: 'home' }
@@ -107,11 +108,12 @@ export default function App() {
         now={now}
         level={tab === 'english' ? englishLevel : undefined}
         onOpenLevels={() => setShowLevels(true)}
-        title={{ english: 'Inglés', life: 'Vivir en UK', resources: 'Recursos', settings: 'Ajustes' }[tab]}
+        title={{ english: 'Inglés', life: 'Vivir en UK', ai: 'Modo IA', resources: 'Recursos', settings: 'Ajustes' }[tab]}
       />
       {(tab === 'english' || tab === 'life') && (
         <LearningPath level={pathLevel} completed={completed[pathLevel.id] ?? {}} onStart={startLesson} notice={notice} />
       )}
+      {tab === 'ai' && <AiScreen />}
       {tab === 'resources' && <ResourcesScreen />}
       {tab === 'settings' && <SettingsScreen />}
       <BottomNav />

@@ -4,6 +4,7 @@ import { sfx } from '../lib/sound';
 const TABS: { id: AppTab; icon: string; label: string }[] = [
   { id: 'english', icon: '🎓', label: 'Inglés' },
   { id: 'life', icon: '🇬🇧', label: 'Vivir en UK' },
+  { id: 'ai', icon: '🤖', label: 'Modo IA' },
   { id: 'resources', icon: '📚', label: 'Recursos' },
   { id: 'settings', icon: '⚙️', label: 'Ajustes' },
 ];
@@ -16,7 +17,7 @@ export function BottomNav() {
       className="fixed inset-x-0 bottom-0 z-30 border-t-2 border-navy/10 bg-white pb-[env(safe-area-inset-bottom)]"
       aria-label="Secciones"
     >
-      <ul className="mx-auto grid max-w-3xl grid-cols-4">
+      <ul className="mx-auto grid max-w-3xl grid-cols-5">
         {TABS.map((t) => {
           const active = t.id === tab;
           return (
@@ -32,7 +33,7 @@ export function BottomNav() {
                 }`}
               >
                 <span
-                  className={`flex h-9 w-12 items-center justify-center rounded-xl text-2xl transition-colors ${
+                  className={`flex h-9 w-11 items-center justify-center rounded-xl text-2xl transition-colors ${
                     active ? 'bg-royal-light' : ''
                   }`}
                   aria-hidden
