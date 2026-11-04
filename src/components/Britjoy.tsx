@@ -1,9 +1,13 @@
 /**
- * Britjoy, the guide: the owner's OFFICIAL lion avatar (src/assets/britjoy-lion.webp,
- * from approved-britjoy-lion.png). The artwork is never redrawn or recoloured;
+ * Britjoy, the guide: the owner's official avatar (Queen's Guard with the
+ * "Life in the UK" book), cut out from the owner's image into
+ * src/assets/britjoy-avatar.webp. The artwork is never redrawn or recoloured;
  * moods and "talking" are shown only with movement (CSS transforms).
  */
-import lionUrl from '../assets/britjoy-lion.webp';
+import lionUrl from '../assets/britjoy-avatar.webp';
+
+/** Width / height of the avatar artwork. */
+const ASPECT = 655 / 572;
 
 export type BritjoyExpression = 'happy' | 'neutral' | 'sad' | 'celebrating';
 
@@ -26,12 +30,12 @@ const MOTION: Record<BritjoyExpression, string> = {
 export function Britjoy({ expression = 'happy', size = 120, speaking = false, className = '' }: Props) {
   const label = { happy: 'contento', neutral: 'atento', sad: 'te anima', celebrating: 'celebrando' }[expression];
   return (
-    <span className={`relative inline-block shrink-0 ${className}`} style={{ height: size, width: (size * 2) / 3 }}>
+    <span className={`relative inline-block shrink-0 ${className}`} style={{ height: size, width: size * ASPECT }}>
       <img
         src={lionUrl}
         alt={`Britjoy ${label}`}
         draggable={false}
-        className={`h-full w-full select-none object-contain ${speaking ? 'britjoy-talk' : MOTION[expression]}`}
+        className={`britjoy-fade h-full w-full select-none object-contain ${speaking ? 'britjoy-talk' : MOTION[expression]}`}
       />
       {expression === 'celebrating' && (
         <span aria-hidden className="absolute -right-2 -top-1 text-2xl animate-pop">🎉</span>

@@ -125,6 +125,12 @@ body::before {
   background-size: 18px 18px;
 }
 
+/* The avatar is a bust: soften its bottom edge so it doesn't end in a hard line. */
+.britjoy-fade {
+  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+}
+
 /* Britjoy motion (the official artwork itself is never altered). */
 @keyframes britjoy-talk {
   0%, 100% { transform: translateY(0) scale(1); }

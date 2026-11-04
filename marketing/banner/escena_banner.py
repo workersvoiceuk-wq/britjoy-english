@@ -33,6 +33,8 @@ def args():
     p.add_argument("--muestras", type=int, default=96)
     p.add_argument("--blend")
     p.add_argument("--fuente", help="TTF para las letras de nivel (p. ej. Nunito Black)")
+    p.add_argument("--busto", action="store_true",
+                   help="El avatar es un busto (cortado por abajo): se coloca detrás de un mostrador en vez de en un podio")
     return p.parse_args(argv)
 
 
@@ -117,43 +119,54 @@ def build(a):
     scene.world = world
     world.use_nodes = True
     bg = world.node_tree.nodes["Background"]
-    bg.inputs["Color"].default_value = hex_rgba("#F4FCEC")
+    bg.inputs["Color"].default_value = hex_rgba("#FBF6EC")
     bg.inputs["Strength"].default_value = 0.55
 
     # Suelo / pared curvada (ciclorama) para que no se vea horizonte.
     bpy.ops.mesh.primitive_plane_add(size=60, location=(0, 4, 0))
     floor = bpy.context.object
     bend = floor.modifiers.new("curva", "SIMPLE_DEFORM")
-    floor.data.materials.append(material("suelo", "#F7FDF1", rough=0.9))
+    floor.data.materials.append(material("suelo", "#F6EEDD", rough=0.9))
     bpy.ops.mesh.primitive_plane_add(size=60, location=(0, 8, 0), rotation=(math.radians(90), 0, 0))
     wall = bpy.context.object
-    wall.data.materials.append(material("pared", "#E9F8DB", rough=1.0))
+    wall.data.materials.append(material("pared", "#F3EAD6", rough=1.0))
     floor.modifiers.remove(bend)
 
     wide = a.formato == "ancho"
-    lion_x = 2.25 if wide else 0.0
+    lion_x = (2.05 if a.busto else 2.25) if wide else 0.0
     lion_h = 4.2
 
-    # Podio redondeado en el verde de la marca, con canto oscuro.
-    bpy.ops.mesh.primitive_cylinder_add(vertices=96, radius=1.55, depth=0.38, location=(lion_x, 0, 0.19))
-    pod = bpy.context.object
-    m = pod.modifiers.new("bevel", "BEVEL")
-    m.width = 0.08
-    m.segments = 6
-    bpy.ops.object.shade_smooth()
-    pod.data.materials.append(material("podio", "#58CC02", rough=0.35))
-    bpy.ops.mesh.primitive_cylinder_add(vertices=96, radius=1.62, depth=0.12, location=(lion_x, 0, 0.06))
-    edge = bpy.context.object
-    bpy.ops.object.shade_smooth()
-    edge.data.materials.append(material("canto", "#46A302", rough=0.4))
+    if a.busto:
+        # Mostrador azul marino con canto dorado: tapa el corte inferior del busto.
+        rounded_box("mostrador", (4.1, 1.0, 0.95), (lion_x, -0.55, 0.47), "#1D2D5C", bevel=0.1)
+        rounded_box("canto-dorado", (4.2, 1.05, 0.12), (lion_x, -0.56, 0.97), "#C9A227", bevel=0.05)
+        base_z = 0.3
+    else:
+        # Podio redondeado en el verde de la marca, con canto oscuro.
+        bpy.ops.mesh.primitive_cylinder_add(vertices=96, radius=1.55, depth=0.38, location=(lion_x, 0, 0.19))
+        pod = bpy.context.object
+        m = pod.modifiers.new("bevel", "BEVEL")
+        m.width = 0.08
+        m.segments = 6
+        bpy.ops.object.shade_smooth()
+        pod.data.materials.append(material("podio", "#58CC02", rough=0.35))
+        bpy.ops.mesh.primitive_cylinder_add(vertices=96, radius=1.62, depth=0.12, location=(lion_x, 0, 0.06))
+        edge = bpy.context.object
+        bpy.ops.object.shade_smooth()
+        edge.data.materials.append(material("canto", "#46A302", rough=0.4))
+        base_z = 0.38
 
     # León oficial: lámina con la imagen PNG (alfa), sin alterar sus colores.
     img = bpy.data.images.load(a.avatar)
     w, h = img.size
-    bpy.ops.mesh.primitive_plane_add(size=1, location=(lion_x, 0.15, 0.38 + lion_h / 2), rotation=(math.radians(90), 0, 0))
+    lion_w = lion_h * w / h
+    if a.busto:
+        lion_h = 4.0 if wide else 4.4
+        lion_w = lion_h * w / h
+    bpy.ops.mesh.primitive_plane_add(size=1, location=(lion_x, 0.15, base_z + lion_h / 2), rotation=(math.radians(90), 0, 0))
     lion = bpy.context.object
     lion.name = "leon-oficial"
-    lion.scale = (lion_h * w / h, lion_h, 1)
+    lion.scale = (lion_w, lion_h, 1)
     mat = bpy.data.materials.new("leon")
     mat.use_nodes = True
     nt = mat.node_tree
@@ -161,6 +174,7 @@ def build(a):
     tex = nt.nodes.new("ShaderNodeTexImage")
     tex.image = img
     tex.interpolation = "Cubic"
+    tex.extension = "CLIP"  # sin esto, Blender repite la textura y aparece una línea en el borde
     emit = nt.nodes.new("ShaderNodeEmission")
     emit.inputs["Strength"].default_value = 1.0
     transp = nt.nodes.new("ShaderNodeBsdfTransparent")
@@ -178,9 +192,10 @@ def build(a):
 
     # Bloques de nivel A1–C2: dos columnas escalonadas a los lados del león.
     if wide:
-        left_x, right_x, base_z = lion_x - 2.0, lion_x + 1.95, 1.2
+        spread = 2.55 if a.busto else 2.0
+        left_x, right_x, base_z = lion_x - spread, lion_x + spread - 0.05, 1.2
     else:
-        left_x, right_x, base_z = -2.25, 2.25, 1.0
+        left_x, right_x, base_z = (-2.85, 2.85, 1.3) if a.busto else (-2.25, 2.25, 1.0)
     slots = [(left_x, base_z + 2.5), (left_x - 0.3, base_z + 1.35), (left_x, base_z + 0.2),
              (right_x, base_z + 2.5), (right_x + 0.25, base_z + 1.35), (right_x, base_z + 0.2)]
     order = [0, 1, 2, 3, 4, 5]

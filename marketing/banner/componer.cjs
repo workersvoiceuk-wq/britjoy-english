@@ -10,16 +10,16 @@ const css = `
 * { box-sizing: border-box; margin: 0; }
 body { font-family: Nunito, sans-serif; color: #3C3C3C; }
 .lienzo { position: relative; overflow: hidden; background-size: cover; }
-.marca { display: inline-flex; align-items: center; gap: 10px; background: #fff; border: 3px solid #E5E5E5;
-  border-radius: 999px; font-weight: 800; color: #46A302; letter-spacing: .02em; }
-.marca i { width: 12px; height: 12px; border-radius: 50%; background: #58CC02; display: inline-block; }
-h1 { font-weight: 900; line-height: 1.02; letter-spacing: -0.02em; color: #2E2E2E; }
-h1 span { color: #58CC02; }
+.marca { display: inline-flex; align-items: center; gap: 10px; background: #1D2D5C; border: 3px solid #C9A227;
+  border-radius: 999px; font-weight: 800; color: #fff; letter-spacing: .02em; }
+.marca i { width: 12px; height: 12px; border-radius: 50%; background: #C8102E; display: inline-block; }
+h1 { font-weight: 900; line-height: 1.02; letter-spacing: -0.02em; color: #1D2D5C; }
+h1 span { color: #C8102E; }
 p.sub { font-weight: 700; color: #4B4B4B; line-height: 1.3; }
-.boton { display: inline-block; background: #58CC02; color: #fff; font-weight: 900; text-transform: uppercase;
-  letter-spacing: .06em; border-radius: 20px; border-bottom: 7px solid #46A302; }
-.pie { font-weight: 800; color: #5B6B52; }
-.pie b { color: #46A302; }
+.boton { display: inline-block; background: #C8102E; color: #fff; font-weight: 900; text-transform: uppercase;
+  letter-spacing: .06em; border-radius: 20px; border-bottom: 7px solid #950B22; }
+.pie { font-weight: 800; color: #4A5578; }
+.pie b { color: #C8102E; }
 `;
 
 const paginaAncho = `<style>${css}
@@ -29,12 +29,12 @@ const paginaAncho = `<style>${css}
 h1 { font-size: 104px; margin-top: 30px; }
 p.sub { font-size: 36px; margin-top: 26px; width: 760px; }
 .boton { font-size: 34px; padding: 22px 52px; margin-top: 44px; }
-.pie { position: absolute; left: 120px; bottom: 44px; font-size: 24px; }
+.pie { position: absolute; left: 120px; bottom: 40px; font-size: 20px; max-width: 800px; }
 </style>
 <div class="lienzo"><div class="texto">
   <span class="marca"><i></i>Voz Unida Mundo Academy</span>
   <h1>Aprende inglés<br>con <span>Britjoy</span></h1>
-  <p class="sub">Del A1 al C2, paso a paso: lecciones cortas, juegos y un guía que te anima.</p>
+  <p class="sub">Del A1 al C2 y la vida en el Reino Unido, paso a paso, con Britjoy como guía.</p>
   <span class="boton">Empieza ahora</span>
 </div>
 <div class="pie">Voz Unida Mundo Academy · te enseña &nbsp;—&nbsp; <b>Tu voz cuenta</b> &nbsp;·&nbsp; vozunidamundo.com</div></div>`;
@@ -52,7 +52,7 @@ p.sub { font-size: 33px; margin: 16px auto 0; width: 880px; }
 <div class="lienzo"><div class="texto">
   <span class="marca"><i></i>Voz Unida Mundo Academy</span>
   <h1>Aprende inglés<br>con <span>Britjoy</span></h1>
-  <p class="sub">Del A1 al C2, paso a paso, con un guía que te anima.</p>
+  <p class="sub">Del A1 al C2 y la vida en el Reino Unido.</p>
 </div>
 <div class="abajo"><span class="boton">Empieza ahora</span>
 <div class="pie">Voz Unida Mundo Academy · te enseña — <b>Tu voz cuenta</b></div></div></div>`;
