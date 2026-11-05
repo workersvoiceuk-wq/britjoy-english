@@ -1,0 +1,196 @@
+{
+  "id": "newcastle",
+  "order": 12,
+  "icon": "🌉",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Newcastle",
+    "en": "Newcastle"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Newcastle: transporte, vivienda y servicios",
+        "en": "Newcastle: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: Nexus y el Metro de Tyne and Wear; autobuses de varias empresas. Con la tarjeta Pop (pago por uso), desde el 1 de abril de 2026 el billete sencillo de adulto cuesta como máximo 2,50 £, sin importar las zonas, con un tope de 5 £ al día. Con edad de jubilación, el autobús es gratis.\n• Autobús en Inglaterra (fuera de Londres): sencillo de como máximo 3 £ hasta finales de 2026; de enero a diciembre de 2027 el máximo será 2 £ en los servicios que participen.\n• Council: Newcastle City Council. Vivienda social: Newcastle Homes (las casas del council las gestiona Your Homes Newcastle). Sinhogarismo: Housing Advice Centre, 0800 1707 008 (fuera de horario 0191 278 7878, pide el Emergency Homeless Officer). Servicios sociales de adultos: 0191 278 7878.\n• La zona de aire limpio de Newcastle y Gateshead no cobra a los coches particulares.",
+        "en": "• Transport: Nexus and the Tyne and Wear Metro; buses run by several companies. With the Pop card (pay as you go), from 1 April 2026 an adult single costs at most £2.50, whatever the zones, with a £5 daily cap. At State Pension age, buses are free.\n• Buses in England (outside London): singles at most £3 until the end of 2026; from January to December 2027 the maximum will be £2 on participating services.\n• Council: Newcastle City Council. Social housing: Newcastle Homes (council homes are managed by Your Homes Newcastle). Homelessness: Housing Advice Centre, 0800 1707 008 (out of hours 0191 278 7878, ask for the Emergency Homeless Officer). Adult social care: 0191 278 7878.\n• The Newcastle–Gateshead Clean Air Zone doesn't charge private cars."
+      },
+      "say": {
+        "es": "En Newcastle, con la tarjeta Pop, el metro cuesta como máximo dos libras cincuenta por viaje y cinco al día. Para vivienda, Newcastle Homes. Y si te quedas sin casa, llama al Housing Advice Centre.",
+        "en": "In Newcastle, with the Pop card, the Metro costs at most £2.50 a trip and £5 a day. For housing, Newcastle Homes. And if you're homeless, call the Housing Advice Centre."
+      },
+      "link": {
+        "label": {
+          "es": "Newcastle: ayuda si no tienes casa",
+          "en": "Newcastle: housing advice and homelessness"
+        },
+        "url": "https://www.newcastle.gov.uk/services/housing/what-do-if-you-need-housing-advice-or-are-homeless"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Tarjeta Pop: 2,50 £ máx.",
+      "en": "Pop card: £2.50 max"
+    },
+    {
+      "es": "Tope de 5 £ al día",
+      "en": "£5 daily cap"
+    },
+    {
+      "es": "Vivienda: Newcastle Homes",
+      "en": "Housing: Newcastle Homes"
+    },
+    {
+      "es": "Sin casa: 0800 1707 008",
+      "en": "Homeless: 0800 1707 008"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero una tarjeta Pop.",
+      "en": "I'd like a Pop card."
+    },
+    {
+      "es": "¿El metro va al aeropuerto?",
+      "en": "Does the Metro go to the airport?"
+    },
+    {
+      "es": "Necesito asesoría de vivienda.",
+      "en": "I need housing advice."
+    },
+    {
+      "es": "Tengo que dejar mi piso.",
+      "en": "I have to leave my flat."
+    },
+    {
+      "es": "¿Puedo hablar con alguien hoy?",
+      "en": "Can I see someone today?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuál es el tope diario con la tarjeta Pop desde abril de 2026?",
+        "en": "What's the Pop daily cap since April 2026?"
+      },
+      "options": [
+        {
+          "es": "5 £",
+          "en": "£5"
+        },
+        {
+          "es": "20 £",
+          "en": "£20"
+        },
+        {
+          "es": "No hay tope",
+          "en": "No cap"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Dónde pides vivienda social en Newcastle?",
+        "en": "Where do you apply for social housing in Newcastle?"
+      },
+      "options": [
+        {
+          "es": "Newcastle Homes",
+          "en": "Newcastle Homes"
+        },
+        {
+          "es": "Nexus",
+          "en": "Nexus"
+        },
+        {
+          "es": "El aeropuerto",
+          "en": "The airport"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Llamada al Housing Advice Centre",
+      "en": "Calling the Housing Advice Centre"
+    },
+    "scene": {
+      "es": "Tu casero te ha pedido el piso.",
+      "en": "Your landlord wants the flat back."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Necesito asesoría de vivienda.",
+          "en": "I need housing advice."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Qué le pasa?",
+          "en": "What's happening?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Tengo que dejar mi piso en un mes.",
+          "en": "I have to leave my flat in a month."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Ha hecho bien en llamar pronto.",
+          "en": "You did the right thing calling early."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Puedo hablar con alguien hoy?",
+          "en": "Can I see someone today?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Sí, venga esta tarde.",
+          "en": "Yes, come this afternoon."
+        }
+      }
+    ]
+  }
+}

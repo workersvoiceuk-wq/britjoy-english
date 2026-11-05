@@ -1,0 +1,186 @@
+{
+  "id": "nottingham",
+  "order": 13,
+  "icon": "🏹",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Nottingham",
+    "en": "Nottingham"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Nottingham: transporte, vivienda y servicios",
+        "en": "Nottingham: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: Nottingham City Transport (autobuses) y el tranvía NET. Con contactless, el sistema te cobra un tope entre los autobuses de NCT y el tranvía. En NCT, desde junio de 2026: sencillo en la zona de la ciudad 3 £, billete de día 5,70 £ y sencillo nocturno (después de las 19:00) 2 £.\n• Council: Nottingham City Council. Vivienda social: Nottingham HomeLink (con Nottingham City Homes y asociaciones de vivienda). Sinhogarismo: empieza en nottinghamcity.gov.uk/homelessness.\n• Empresas: el Workplace Parking Levy cobra a las empresas con 11 o más plazas de aparcamiento (592 £ por plaza en 2026-27).",
+        "en": "• Transport: Nottingham City Transport (buses) and the NET tram. With contactless you are capped across NCT buses and the tram. On NCT, from June 2026: city-zone single £3, day ticket £5.70 and an evening single (after 7 pm) £2.\n• Council: Nottingham City Council. Social housing: Nottingham HomeLink (with Nottingham City Homes and housing associations). Homelessness: start at nottinghamcity.gov.uk/homelessness.\n• Businesses: the Workplace Parking Levy charges employers with 11 or more parking spaces (£592 a space in 2026-27)."
+      },
+      "say": {
+        "es": "En Nottingham el billete de día de autobús cuesta cinco libras setenta, y por la noche el sencillo cuesta dos. La vivienda social se pide en Nottingham HomeLink.",
+        "en": "In Nottingham a bus day ticket costs £5.70, and in the evening a single costs £2. Social housing is through Nottingham HomeLink."
+      },
+      "link": {
+        "label": {
+          "es": "Nottingham City Council: sinhogarismo",
+          "en": "Nottingham City Council: homelessness"
+        },
+        "url": "https://www.nottinghamcity.gov.uk/homelessness"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Día NCT: 5,70 £",
+      "en": "NCT day: £5.70"
+    },
+    {
+      "es": "Noche: 2 £ el sencillo",
+      "en": "Evening: £2 single"
+    },
+    {
+      "es": "Vivienda: HomeLink",
+      "en": "Housing: HomeLink"
+    },
+    {
+      "es": "Contactless con tope",
+      "en": "Contactless with a cap"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Un billete de día, por favor.",
+      "en": "A day ticket, please."
+    },
+    {
+      "es": "¿Es más barato después de las siete?",
+      "en": "Is it cheaper after seven?"
+    },
+    {
+      "es": "¿Este tranvía va a la estación?",
+      "en": "Does this tram go to the station?"
+    },
+    {
+      "es": "¿Cómo me registro en HomeLink?",
+      "en": "How do I register on HomeLink?"
+    },
+    {
+      "es": "Paso mi tarjeta.",
+      "en": "I'll tap my card."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta el sencillo nocturno de NCT (después de las 19:00)?",
+        "en": "How much is the NCT evening single (after 7 pm)?"
+      },
+      "options": [
+        {
+          "es": "2 £",
+          "en": "£2"
+        },
+        {
+          "es": "5,70 £",
+          "en": "£5.70"
+        },
+        {
+          "es": "10 £",
+          "en": "£10"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Dónde pides vivienda social en Nottingham?",
+        "en": "Where do you apply for social housing in Nottingham?"
+      },
+      "options": [
+        {
+          "es": "Nottingham HomeLink",
+          "en": "Nottingham HomeLink"
+        },
+        {
+          "es": "En el tranvía",
+          "en": "On the tram"
+        },
+        {
+          "es": "Workplace Parking Levy",
+          "en": "Workplace Parking Levy"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el autobús",
+      "en": "On the bus"
+    },
+    "scene": {
+      "es": "Vuelves a casa por la noche.",
+      "en": "You go home in the evening."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Es más barato después de las siete?",
+          "en": "Is it cheaper after seven?"
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Sí, el sencillo cuesta dos libras.",
+          "en": "Yes, a single is two pounds."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Paso mi tarjeta.",
+          "en": "I'll tap my card."
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Perfecto. Siéntese, que arrancamos.",
+          "en": "Perfect. Take a seat, we're off."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Gracias.",
+          "en": "Thanks."
+        }
+      }
+    ]
+  }
+}

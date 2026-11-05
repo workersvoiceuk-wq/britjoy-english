@@ -1,0 +1,186 @@
+{
+  "id": "villavicencio",
+  "order": 11,
+  "icon": "🐎",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Villavicencio",
+    "en": "Villavicencio"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Villavicencio: transporte y alcaldía",
+        "en": "Villavicencio: transport and the mayor's office"
+      },
+      "body": {
+        "es": "• Transporte: buses urbanos; en 2026 el pasaje urbano es de 3.300 $ (hay tarifas mayores a zonas como el aeropuerto o Unillanos).\n• Pico y placa (Decreto 015 de 2026, hasta el 22 de diciembre): lunes a viernes de 6:30 a 9:30 y de 17:00 a 20:00, salvo festivos. Las motos están exentas. Multa: 15 salarios mínimos diarios.\n• Alcaldía: villavicencio.gov.co. Sisbén: Dirección del Sisbén (Secretaría de Planeación). Programas sociales: Secretaría de Gestión Social y Participación Ciudadana.\n• Sisbén: la encuesta es gratis y sin intermediarios. El país está pasando del Sisbén IV al Registro Universal de Ingresos (RUI): consulta las fechas en sisben.gov.co.",
+        "en": "• Transport: urban buses; in 2026 the urban fare is COP 3,300 (higher fares to places such as the airport or Unillanos).\n• Pico y placa (Decree 015 of 2026, until 22 December): Monday to Friday 6:30 to 9:30 and 17:00 to 20:00, except holidays. Motorbikes are exempt. Fine: 15 daily minimum wages.\n• Mayor's office: villavicencio.gov.co. Sisbén: Dirección del Sisbén (Planning Department). Social programmes: Secretaría de Gestión Social y Participación Ciudadana.\n• Sisbén: the survey is free and needs no middlemen. The country is moving from Sisbén IV to the Universal Income Register (RUI): check the dates at sisben.gov.co."
+      },
+      "say": {
+        "es": "En Villavicencio el pasaje urbano cuesta tres mil trescientos pesos. El pico y placa es por la mañana y por la tarde, entre semana, y las motos están exentas.",
+        "en": "In Villavicencio the urban fare is COP 3,300. Pico y placa runs in the morning and evening on weekdays, and motorbikes are exempt."
+      },
+      "link": {
+        "label": {
+          "es": "Alcaldía de Villavicencio",
+          "en": "Villavicencio mayor's office"
+        },
+        "url": "https://www.villavicencio.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Pasaje urbano: 3.300 $",
+      "en": "Urban fare: COP 3,300"
+    },
+    {
+      "es": "Pico y placa: mañana y tarde",
+      "en": "Pico y placa: morning and evening"
+    },
+    {
+      "es": "Motos exentas",
+      "en": "Motorbikes exempt"
+    },
+    {
+      "es": "Sisbén: Planeación",
+      "en": "Sisbén: Planning"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Cuánto es al aeropuerto?",
+      "en": "How much is it to the airport?"
+    },
+    {
+      "es": "¿Este bus va a Unillanos?",
+      "en": "Does this bus go to Unillanos?"
+    },
+    {
+      "es": "¿A qué hora empieza el pico y placa?",
+      "en": "What time does pico y placa start?"
+    },
+    {
+      "es": "Quiero inscribirme en un programa social.",
+      "en": "I want to sign up for a social programme."
+    },
+    {
+      "es": "¿Dónde queda la alcaldía?",
+      "en": "Where is the mayor's office?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿A qué horas es el pico y placa en Villavicencio?",
+        "en": "When is pico y placa in Villavicencio?"
+      },
+      "options": [
+        {
+          "es": "6:30-9:30 y 17:00-20:00",
+          "en": "6:30-9:30 and 17:00-20:00"
+        },
+        {
+          "es": "Todo el día",
+          "en": "All day"
+        },
+        {
+          "es": "Solo los domingos",
+          "en": "Only on Sundays"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánto cuesta el pasaje urbano en 2026?",
+        "en": "How much is the urban fare in 2026?"
+      },
+      "options": [
+        {
+          "es": "3.300 $",
+          "en": "COP 3,300"
+        },
+        {
+          "es": "11.300 $",
+          "en": "COP 11,300"
+        },
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el paradero",
+      "en": "At the bus stop"
+    },
+    "scene": {
+      "es": "Vas a la universidad.",
+      "en": "You're going to the university."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Este bus va a Unillanos?",
+          "en": "Does this bus go to Unillanos?"
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Sí, señor.",
+          "en": "Yes, sir."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuánto es?",
+          "en": "How much is it?"
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Tres mil cuatrocientos hasta Unillanos.",
+          "en": "Three thousand four hundred to Unillanos."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Listo, gracias.",
+          "en": "All right, thanks."
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "id": "cucuta",
+  "order": 9,
+  "icon": "🌉",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Cúcuta",
+    "en": "Cúcuta"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Cúcuta: transporte y alcaldía",
+        "en": "Cúcuta: transport and the mayor's office"
+      },
+      "body": {
+        "es": "• Transporte: buses urbanos del Área Metropolitana (Cúcuta, Los Patios y Villa del Rosario); el pasaje subió en marzo de 2026. Consulta la tarifa vigente en la Alcaldía.\n• Pico y placa: rota cada día laborable por el último dígito de la placa; los carros con placa nacional o extranjera tienen restricción más larga (7:00 a 20:00). Las motos no están exentas.\n• Alcaldía: cucuta.gov.co. La Secretaría de Bienestar Social atiende a personas mayores y habitantes de calle.\n• Frontera con Venezuela: consulta el estado del paso por el puente Simón Bolívar antes de viajar. Si eres migrante venezolano con PPT, puedes pedir la encuesta del Sisbén.\n• Sisbén: la encuesta es gratis y sin intermediarios. El país está pasando del Sisbén IV al Registro Universal de Ingresos (RUI): consulta las fechas en sisben.gov.co.",
+        "en": "• Transport: metropolitan-area urban buses (Cúcuta, Los Patios and Villa del Rosario); the fare rose in March 2026. Check the current fare with the mayor's office.\n• Pico y placa: rotates each weekday by the plate's last digit; cars with national or foreign plates have a longer restriction (7:00 to 20:00). Motorbikes are not exempt.\n• Mayor's office: cucuta.gov.co. The Secretaría de Bienestar Social supports older people and people living on the street.\n• Border with Venezuela: check the status of the Simón Bolívar bridge crossing before travelling. If you're a Venezuelan migrant with a PPT, you can request the Sisbén survey.\n• Sisbén: the survey is free and needs no middlemen. The country is moving from Sisbén IV to the Universal Income Register (RUI): check the dates at sisben.gov.co."
+      },
+      "say": {
+        "es": "En Cúcuta el pico y placa cambia cada día por el último número de la placa, y las motos no están exentas. Si tienes PPT, puedes pedir el Sisbén. Y antes de cruzar la frontera, consulta cómo está el paso.",
+        "en": "In Cúcuta pico y placa changes daily by the plate's last digit, and motorbikes aren't exempt. If you have a PPT, you can request Sisbén. And before crossing the border, check the crossing status."
+      },
+      "link": {
+        "label": {
+          "es": "Alcaldía de Cúcuta",
+          "en": "Cúcuta mayor's office"
+        },
+        "url": "https://cucuta.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Pico y placa diario",
+      "en": "Daily pico y placa"
+    },
+    {
+      "es": "Motos: no exentas",
+      "en": "Motorbikes: not exempt"
+    },
+    {
+      "es": "Con PPT: pide el Sisbén",
+      "en": "With a PPT: request Sisbén"
+    },
+    {
+      "es": "Frontera: consulta antes",
+      "en": "Border: check first"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Hoy tengo pico y placa?",
+      "en": "Do I have pico y placa today?"
+    },
+    {
+      "es": "Tengo el PPT.",
+      "en": "I have a PPT."
+    },
+    {
+      "es": "Quiero pedir la encuesta del Sisbén.",
+      "en": "I want to request the Sisbén survey."
+    },
+    {
+      "es": "¿Está abierto el puente?",
+      "en": "Is the bridge open?"
+    },
+    {
+      "es": "¿Cuánto es el pasaje?",
+      "en": "How much is the fare?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Están exentas las motos del pico y placa en Cúcuta?",
+        "en": "Are motorbikes exempt from pico y placa in Cúcuta?"
+      },
+      "options": [
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "Solo los lunes",
+          "en": "Only on Mondays"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Con el PPT, ¿puedes pedir el Sisbén?",
+        "en": "With a PPT, can you request Sisbén?"
+      },
+      "options": [
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Solo si pagas",
+          "en": "Only if you pay"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la oficina del Sisbén",
+      "en": "At the Sisbén office"
+    },
+    "scene": {
+      "es": "Pides la encuesta con tu PPT.",
+      "en": "You request the survey with your PPT."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero pedir la encuesta del Sisbén.",
+          "en": "I want to request the Sisbén survey."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Qué documento tiene?",
+          "en": "Which document do you have?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Tengo el PPT.",
+          "en": "I have a PPT."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Con eso puede. Es gratis.",
+          "en": "That's fine. It's free."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuándo vienen a mi casa?",
+          "en": "When will you visit my home?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Le avisamos por teléfono.",
+          "en": "We'll let you know by phone."
+        }
+      }
+    ]
+  }
+}

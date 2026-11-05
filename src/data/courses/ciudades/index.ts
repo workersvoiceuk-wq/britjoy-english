@@ -17,7 +17,7 @@ export const UK_CITY_LEVELS = countryLevels(
     targets: ['en'],
     english: {
       name: 'Ciudades del Reino Unido',
-      description: 'Transporte, vivienda, servicios sociales y lo que debes saber en Londres, Mánchester, Birmingham, Liverpool, Leeds, Bristol, Glasgow, Edimburgo, Cardiff y Belfast.',
+      description: 'Transporte, vivienda, servicios sociales y lo que debes saber en 14 ciudades: Londres, Birmingham, Mánchester, Glasgow, Liverpool, Leeds, Sheffield, Bristol, Edimburgo, Newcastle, Nottingham, Leicester, Cardiff y Belfast.',
       accent: '#1D2D5C',
       accentDark: '#141F40',
       accentLight: '#E3E8F5',

@@ -151,7 +151,7 @@ export const CATALOG: CatalogCourse[] = [
     (level): CatalogCourse => ({
       id: 'tu-council',
       title: 'Tu council y tu ciudad en el Reino Unido',
-      subtitle: 'Escribe tu código postal y llega a los servicios de TU council (vivienda, council tax, servicios sociales, colegios), más guías de transporte de 10 ciudades.',
+      subtitle: 'Escribe tu código postal y llega a los servicios de TU council (vivienda, council tax, servicios sociales, colegios), más guías de transporte y servicios de las 14 ciudades principales.',
       category: 'vida',
       level: 'Todos los niveles',
       emoji: '🏙️',
@@ -161,7 +161,7 @@ export const CATALOG: CatalogCourse[] = [
         'Encontrar tu council con tu código postal',
         'Pedir vivienda social y ayuda si te quedas sin casa',
         'Servicios sociales, colegios y comida escolar gratis',
-        'Transporte y descuentos en Londres, Mánchester, Birmingham y más',
+        'Transporte y descuentos en Londres, Birmingham, Mánchester, Glasgow y 10 ciudades más',
         'Escocia, Gales e Irlanda del Norte: lo que cambia',
       ],
       levels: [level],

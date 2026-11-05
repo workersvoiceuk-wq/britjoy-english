@@ -1,0 +1,186 @@
+{
+  "id": "las-palmas",
+  "order": 11,
+  "icon": "🌋",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Las Palmas de Gran Canaria",
+    "en": "Las Palmas de Gran Canaria"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Las Palmas de Gran Canaria: transporte y ayuntamiento",
+        "en": "Las Palmas de Gran Canaria: transport and the town hall"
+      },
+      "body": {
+        "es": "• Transporte: Guaguas Municipales (autobuses de la ciudad) y Global (autobuses de la isla). En 2026 los bonos y abonos tienen un 100 % de descuento en Canarias: el Bono Residente Canario da viajes ilimitados durante 30 días en Guaguas y Global (cuesta 5 € emitir la tarjeta). La gratuidad no está garantizada desde el 1 de enero de 2027. App: GuaguasLPA.\n• Ayuntamiento: laspalmasgc.es. El padrón se pide con cita en la sede electrónica; ha habido retrasos, así que pídela con tiempo. Los servicios sociales comunitarios atienden con cita.\n• La ciudad todavía no tiene Zona de Bajas Emisiones en vigor.",
+        "en": "• Transport: Guaguas Municipales (city buses) and Global (island buses). In 2026 passes and multi-trip tickets are 100% discounted in the Canary Islands: the Bono Residente Canario gives unlimited travel for 30 days on Guaguas and Global (the card costs €5 to issue). Free travel isn't guaranteed from 1 January 2027. App: GuaguasLPA.\n• Town hall: laspalmasgc.es. Padrón appointments are booked on the online office; there have been delays, so book early. Community social services work by appointment.\n• The city doesn't yet have a Low Emission Zone in force."
+      },
+      "say": {
+        "es": "En Las Palmas, en dos mil veintiséis, el Bono Residente Canario da viajes ilimitados en guagua durante treinta días. Y pide pronto la cita del padrón, porque hay retrasos.",
+        "en": "In Las Palmas, in 2026, the Bono Residente Canario gives unlimited bus trips for thirty days. And book your padrón appointment early, because there are delays."
+      },
+      "link": {
+        "label": {
+          "es": "Guaguas Municipales: tarifas",
+          "en": "Guaguas Municipales: fares"
+        },
+        "url": "https://www.guaguas.com/tarifas-carnets"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Bono Residente: 30 días",
+      "en": "Resident pass: 30 days"
+    },
+    {
+      "es": "2026: abonos gratis",
+      "en": "2026: free passes"
+    },
+    {
+      "es": "Padrón: cita con tiempo",
+      "en": "Padrón: book early"
+    },
+    {
+      "es": "App GuaguasLPA",
+      "en": "GuaguasLPA app"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Dónde saco el Bono Residente?",
+      "en": "Where do I get the resident pass?"
+    },
+    {
+      "es": "¿Esta guagua va a Las Canteras?",
+      "en": "Does this bus go to Las Canteras?"
+    },
+    {
+      "es": "Vivo en Gran Canaria.",
+      "en": "I live in Gran Canaria."
+    },
+    {
+      "es": "No encuentro cita para el padrón.",
+      "en": "I can't find a padrón appointment."
+    },
+    {
+      "es": "¿Cuánto cuesta la tarjeta?",
+      "en": "How much is the card?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué te da el Bono Residente Canario?",
+        "en": "What does the Bono Residente Canario give you?"
+      },
+      "options": [
+        {
+          "es": "Viajes ilimitados 30 días en Guaguas y Global",
+          "en": "Unlimited trips for 30 days on Guaguas and Global"
+        },
+        {
+          "es": "Un vuelo gratis",
+          "en": "A free flight"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Está garantizada la gratuidad del transporte en Canarias en 2027?",
+        "en": "Is free transport in the Canaries guaranteed in 2027?"
+      },
+      "options": [
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "Solo en verano",
+          "en": "Only in summer"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la oficina de Guaguas",
+      "en": "At the Guaguas office"
+    },
+    "scene": {
+      "es": "Pides tu bono.",
+      "en": "You ask for your pass."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Vivo en Gran Canaria. ¿Dónde saco el Bono Residente?",
+          "en": "I live in Gran Canaria. Where do I get the resident pass?"
+        }
+      },
+      {
+        "who": {
+          "es": "Empleada",
+          "en": "Staff"
+        },
+        "text": {
+          "es": "Aquí mismo. ¿Me da su documento?",
+          "en": "Right here. Can I have your ID?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuánto cuesta la tarjeta?",
+          "en": "How much is the card?"
+        }
+      },
+      {
+        "who": {
+          "es": "Empleada",
+          "en": "Staff"
+        },
+        "text": {
+          "es": "Cinco euros. Los viajes, este año, gratis.",
+          "en": "Five euros. The trips, this year, are free."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¡Genial, gracias!",
+          "en": "Great, thanks!"
+        }
+      }
+    ]
+  }
+}

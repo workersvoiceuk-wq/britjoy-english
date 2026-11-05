@@ -1,0 +1,185 @@
+{
+  "id": "sheffield",
+  "order": 11,
+  "icon": "🔪",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Sheffield",
+    "en": "Sheffield"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Sheffield: transporte, vivienda y servicios",
+        "en": "Sheffield: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: Travel South Yorkshire (autobuses y tranvía Supertram, que ahora es público). En 2026 las tarifas del tranvía están congeladas y el billete sencillo de niño cuesta 1 £ en bus y tranvía. Los autobuses pasarán a ser públicos desde septiembre de 2027.\n• Autobús en Inglaterra (fuera de Londres): sencillo de como máximo 3 £ hasta finales de 2026; de enero a diciembre de 2027 el máximo será 2 £ en los servicios que participen.\n• Council: Sheffield City Council. Vivienda social: lista abierta desde los 16 años y pujas (hasta 3 a la semana). Sinhogarismo (Housing Solutions): 0114 273 6306, de lunes a viernes de 8:30 a 17:00; fuera de horario 0800 731 1689. Servicios sociales de adultos (First Contact): 0114 273 4908.\n• La zona de aire limpio NO cobra a los coches particulares (sí a furgonetas, taxis, autobuses y camiones que contaminan).",
+        "en": "• Transport: Travel South Yorkshire (buses and the Supertram, now publicly run). In 2026 tram fares are frozen and a child single costs £1 on bus and tram. Buses will become publicly run from September 2027.\n• Buses in England (outside London): singles at most £3 until the end of 2026; from January to December 2027 the maximum will be £2 on participating services.\n• Council: Sheffield City Council. Social housing: open register from age 16 and bidding (up to 3 bids a week). Homelessness (Housing Solutions): 0114 273 6306, Monday to Friday 8:30 to 17:00; out of hours 0800 731 1689. Adult social care (First Contact): 0114 273 4908.\n• The Clean Air Zone does NOT charge private cars (it does charge polluting vans, taxis, buses and lorries)."
+      },
+      "say": {
+        "es": "En Sheffield el tranvía es público y sus tarifas están congeladas en dos mil veintiséis. Para vivienda social puedes apuntarte desde los dieciséis años. Y la zona de aire limpio no cobra a los coches particulares.",
+        "en": "In Sheffield the tram is publicly run and its fares are frozen in 2026. You can join the housing register from 16. And the Clean Air Zone doesn't charge private cars."
+      },
+      "link": {
+        "label": {
+          "es": "Sheffield City Council: pedir vivienda",
+          "en": "Sheffield City Council: bidding for a council home"
+        },
+        "url": "https://www.sheffield.gov.uk/housing/housing-options/getting-council-home/bidding-council-home/eligibility-how-bid"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Supertram: tarifas congeladas",
+      "en": "Supertram: fares frozen"
+    },
+    {
+      "es": "Niños: 1 £",
+      "en": "Children: £1"
+    },
+    {
+      "es": "Vivienda: desde los 16",
+      "en": "Housing: from age 16"
+    },
+    {
+      "es": "Aire limpio: coches no pagan",
+      "en": "Clean Air: cars don't pay"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Dónde para el tranvía?",
+      "en": "Where does the tram stop?"
+    },
+    {
+      "es": "Un billete sencillo de niño, por favor.",
+      "en": "A child single, please."
+    },
+    {
+      "es": "Tengo dieciséis años.",
+      "en": "I am sixteen."
+    },
+    {
+      "es": "¿Puedo apuntarme a la lista de vivienda?",
+      "en": "Can I join the housing register?"
+    },
+    {
+      "es": "¿Pago la tasa de aire limpio?",
+      "en": "Do I pay the Clean Air charge?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Pagan los coches particulares en la zona de aire limpio de Sheffield?",
+        "en": "Do private cars pay in Sheffield's Clean Air Zone?"
+      },
+      "options": [
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Sí, 10 £",
+          "en": "Yes, £10"
+        },
+        {
+          "es": "Sí, 50 £",
+          "en": "Yes, £50"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Desde qué edad puedes apuntarte a la lista de vivienda en Sheffield?",
+        "en": "From what age can you join Sheffield's housing register?"
+      },
+      "options": [
+        {
+          "es": "16 años",
+          "en": "16"
+        },
+        {
+          "es": "25 años",
+          "en": "25"
+        },
+        {
+          "es": "40 años",
+          "en": "40"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el tranvía",
+      "en": "On the tram"
+    },
+    "scene": {
+      "es": "El revisor te pide el billete.",
+      "en": "The conductor asks for your ticket."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Revisora",
+          "en": "Conductor"
+        },
+        "text": {
+          "es": "Billetes, por favor.",
+          "en": "Tickets, please."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Un sencillo para mí y uno de niño, por favor.",
+          "en": "A single for me and a child single, please."
+        }
+      },
+      {
+        "who": {
+          "es": "Revisora",
+          "en": "Conductor"
+        },
+        "text": {
+          "es": "El de niño es una libra.",
+          "en": "The child's is one pound."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Puedo pagar con tarjeta?",
+          "en": "Can I pay by card?"
+        }
+      },
+      {
+        "who": {
+          "es": "Revisora",
+          "en": "Conductor"
+        },
+        "text": {
+          "es": "Claro, acérquela aquí.",
+          "en": "Of course, tap it here."
+        }
+      }
+    ]
+  }
+}

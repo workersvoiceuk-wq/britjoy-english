@@ -1,0 +1,185 @@
+{
+  "id": "leicester",
+  "order": 14,
+  "icon": "🦊",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Leicester",
+    "en": "Leicester"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Leicester: transporte, vivienda y servicios",
+        "en": "Leicester: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: Leicester Buses (First, Arriva, Stagecoach, Centrebus y Kinchbus). Desde el 29 de marzo de 2026 los billetes de día y de periodo son los «Flexi», hasta un 20 % más baratos, y su precio es también el tope diario y semanal si pagas con contactless tocando al subir y al bajar (en First, Arriva y Centrebus).\n• Autobús en Inglaterra (fuera de Londres): sencillo de como máximo 3 £ hasta finales de 2026; de enero a diciembre de 2027 el máximo será 2 £ en los servicios que participen.\n• Council: Leicester City Council. Vivienda social: comprueba si puedes, solicita en línea y puja en Leicester HomeChoice (desde los 18 años). Sinhogarismo (Housing Options): 0116 454 1008, de lunes a viernes de 8:00 a 18:00. Servicios sociales de adultos: 0116 454 1004.",
+        "en": "• Transport: Leicester Buses (First, Arriva, Stagecoach, Centrebus and Kinchbus). Since 29 March 2026 day and period tickets are 'Flexi', up to 20% cheaper, and their price is also the daily and weekly cap if you pay contactless tapping on and off (on First, Arriva and Centrebus).\n• Buses in England (outside London): singles at most £3 until the end of 2026; from January to December 2027 the maximum will be £2 on participating services.\n• Council: Leicester City Council. Social housing: check eligibility, apply online and bid on Leicester HomeChoice (from age 18). Homelessness (Housing Options): 0116 454 1008, Monday to Friday 8:00 to 18:00. Adult social care: 0116 454 1004."
+      },
+      "say": {
+        "es": "En Leicester los billetes Flexi son más baratos desde marzo de dos mil veintiséis, y con contactless nunca pagas más que su precio. La vivienda social se pide en Leicester HomeChoice.",
+        "en": "In Leicester Flexi tickets are cheaper since March 2026, and with contactless you never pay more than their price. Social housing is through Leicester HomeChoice."
+      },
+      "link": {
+        "label": {
+          "es": "Leicester City Council: pedir vivienda",
+          "en": "Leicester City Council: applying for housing"
+        },
+        "url": "https://leicester.gov.uk/your-community/housing/apply-for-housing/applying-for-housing-and-other-housing-options"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Billetes Flexi",
+      "en": "Flexi tickets"
+    },
+    {
+      "es": "Toca al subir y al bajar",
+      "en": "Tap on and tap off"
+    },
+    {
+      "es": "Vivienda: HomeChoice (18+)",
+      "en": "Housing: HomeChoice (18+)"
+    },
+    {
+      "es": "Sin casa: 0116 454 1008",
+      "en": "Homeless: 0116 454 1008"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Paso la tarjeta al bajar?",
+      "en": "Do I tap off when I get off?"
+    },
+    {
+      "es": "¿Este es un billete Flexi?",
+      "en": "Is this a Flexi ticket?"
+    },
+    {
+      "es": "Quiero pujar por un piso.",
+      "en": "I want to bid for a flat."
+    },
+    {
+      "es": "Mi madre necesita un cuidador.",
+      "en": "My mother needs a carer."
+    },
+    {
+      "es": "¿Qué autobús va al hospital?",
+      "en": "Which bus goes to the hospital?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cómo se llaman los billetes de día de Leicester desde 2026?",
+        "en": "What are Leicester's day tickets called since 2026?"
+      },
+      "options": [
+        {
+          "es": "Flexi",
+          "en": "Flexi"
+        },
+        {
+          "es": "Oyster",
+          "en": "Oyster"
+        },
+        {
+          "es": "Pop",
+          "en": "Pop"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Dónde pujas por una vivienda social en Leicester?",
+        "en": "Where do you bid for social housing in Leicester?"
+      },
+      "options": [
+        {
+          "es": "Leicester HomeChoice",
+          "en": "Leicester HomeChoice"
+        },
+        {
+          "es": "En el autobús",
+          "en": "On the bus"
+        },
+        {
+          "es": "En el hospital",
+          "en": "At the hospital"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Llamada a servicios sociales",
+      "en": "Calling adult social care"
+    },
+    "scene": {
+      "es": "Pides ayuda para tu madre.",
+      "en": "You ask for help for your mother."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Servicios sociales de adultos, ¿dígame?",
+          "en": "Adult social care, how can I help?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Mi madre necesita un cuidador.",
+          "en": "My mother needs a carer."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Le haremos una valoración de necesidades.",
+          "en": "We'll do a needs assessment."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuánto tarda?",
+          "en": "How long does it take?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "La llamamos esta semana para la cita.",
+          "en": "We'll call her this week to book it."
+        }
+      }
+    ]
+  }
+}

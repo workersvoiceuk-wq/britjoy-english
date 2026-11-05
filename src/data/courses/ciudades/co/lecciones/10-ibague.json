@@ -1,0 +1,186 @@
+{
+  "id": "ibague",
+  "order": 10,
+  "icon": "🎶",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Ibagué",
+    "en": "Ibagué"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Ibagué: transporte y alcaldía",
+        "en": "Ibagué: transport and the mayor's office"
+      },
+      "body": {
+        "es": "• Transporte: busetas urbanas; desde el 1 de enero de 2026 el pasaje es de 3.300 $ entre semana y 3.400 $ domingos y festivos (el aumento está en discusión). El sistema estratégico de transporte (SETP) sigue en transición.\n• Pico y placa (segundo semestre de 2026): lunes a viernes de 6:00 a 21:00; lunes 6-7, martes 8-9, miércoles 0-1, jueves 2-3, viernes 4-5. Las motos están exentas. Multa: 15 salarios mínimos diarios.\n• Alcaldía: ibague.gov.co. Sisbén: Dirección del Sisbén (Secretaría de Planeación), gratis y sin intermediarios.\n• Sisbén: la encuesta es gratis y sin intermediarios. El país está pasando del Sisbén IV al Registro Universal de Ingresos (RUI): consulta las fechas en sisben.gov.co.",
+        "en": "• Transport: urban minibuses; from 1 January 2026 the fare is COP 3,300 on weekdays and COP 3,400 on Sundays and holidays (the rise is being disputed). The strategic transport system (SETP) is still in transition.\n• Pico y placa (second half of 2026): Monday to Friday 6:00 to 21:00; Mon 6-7, Tue 8-9, Wed 0-1, Thu 2-3, Fri 4-5. Motorbikes are exempt. Fine: 15 daily minimum wages.\n• Mayor's office: ibague.gov.co. Sisbén: Dirección del Sisbén (Planning Department), free and without middlemen.\n• Sisbén: the survey is free and needs no middlemen. The country is moving from Sisbén IV to the Universal Income Register (RUI): check the dates at sisben.gov.co."
+      },
+      "say": {
+        "es": "En Ibagué el pasaje cuesta tres mil trescientos pesos entre semana. El pico y placa es de seis de la mañana a nueve de la noche, y las motos están exentas.",
+        "en": "In Ibagué the fare is COP 3,300 on weekdays. Pico y placa runs from 6 am to 9 pm, and motorbikes are exempt."
+      },
+      "link": {
+        "label": {
+          "es": "Alcaldía de Ibagué",
+          "en": "Ibagué mayor's office"
+        },
+        "url": "https://www.ibague.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Pasaje: 3.300 $",
+      "en": "Fare: COP 3,300"
+    },
+    {
+      "es": "Domingos: 3.400 $",
+      "en": "Sundays: COP 3,400"
+    },
+    {
+      "es": "Pico y placa 6:00-21:00",
+      "en": "Pico y placa 6:00-21:00"
+    },
+    {
+      "es": "Motos exentas",
+      "en": "Motorbikes exempt"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Cuánto es el pasaje hoy?",
+      "en": "How much is the fare today?"
+    },
+    {
+      "es": "Hoy es domingo.",
+      "en": "Today is Sunday."
+    },
+    {
+      "es": "Mi placa termina en siete.",
+      "en": "My plate ends in seven."
+    },
+    {
+      "es": "¿Puedo sacar el carro hoy?",
+      "en": "Can I drive my car today?"
+    },
+    {
+      "es": "¿Esta buseta va al centro?",
+      "en": "Does this minibus go downtown?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta el pasaje en Ibagué un domingo en 2026?",
+        "en": "How much is the fare in Ibagué on a Sunday in 2026?"
+      },
+      "options": [
+        {
+          "es": "3.400 $",
+          "en": "COP 3,400"
+        },
+        {
+          "es": "1.000 $",
+          "en": "COP 1,000"
+        },
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Tienen pico y placa las motos en Ibagué?",
+        "en": "Do motorbikes have pico y placa in Ibagué?"
+      },
+      "options": [
+        {
+          "es": "No, están exentas",
+          "en": "No, they're exempt"
+        },
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "Solo de noche",
+          "en": "Only at night"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la buseta",
+      "en": "On the minibus"
+    },
+    "scene": {
+      "es": "Es domingo y vas al centro.",
+      "en": "It's Sunday and you're going downtown."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Esta buseta va al centro?",
+          "en": "Does this minibus go downtown?"
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Sí, suba.",
+          "en": "Yes, get on."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuánto es el pasaje hoy?",
+          "en": "How much is the fare today?"
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Hoy es domingo: tres mil cuatrocientos.",
+          "en": "It's Sunday: three thousand four hundred."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Aquí tiene, gracias.",
+          "en": "Here you are, thanks."
+        }
+      }
+    ]
+  }
+}
