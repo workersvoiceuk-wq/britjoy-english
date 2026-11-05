@@ -1,0 +1,151 @@
+{
+  "level": "UK",
+  "unit": "Emergencias",
+  "title": "Policía y emergencias",
+  "icon": "🚓",
+  "checked": "2026-11-05",
+  "lessons": [
+    {
+      "id": "uk-emergencias-l1",
+      "title": "999, 101 y si no puedes hablar",
+      "icon": "🚓",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "A quién llamar",
+          "body": "• 999: emergencia. Un delito que está pasando ahora o alguien en peligro inmediato. También para ambulancia o bomberos.\n• 101: policía, cuando no es urgente (denunciar algo que ya pasó, dar información, preguntar).\n• 111: salud urgente que no pone en peligro la vida.\n• Si llamas al 999 desde un móvil y no puedes hablar sin ponerte en peligro, quédate en la línea; cuando te lo pidan, marca 55 para que sepan que es una emergencia real.\n• Violencia doméstica: National Domestic Abuse Helpline, 0808 2000 247, gratis y las 24 horas.\n• Puedes pedir un intérprete: di el nombre de tu idioma en inglés («Spanish, please»).",
+          "say": "Nueve, nueve, nueve, para emergencias. Uno, cero, uno, para la policía cuando no es urgente. Si llamas al nueve, nueve, nueve y no puedes hablar, marca cinco, cinco cuando te lo pidan. Y puedes pedir un intérprete: Spanish, please.",
+          "phrases": [
+            {
+              "en": "I need the police.",
+              "es": "Necesito a la policía."
+            },
+            {
+              "en": "Someone is breaking into my house.",
+              "es": "Alguien está entrando a la fuerza en mi casa."
+            },
+            {
+              "en": "I want to report a crime.",
+              "es": "Quiero denunciar un delito."
+            },
+            {
+              "en": "Spanish, please. I need an interpreter.",
+              "es": "Español, por favor. Necesito un intérprete."
+            },
+            {
+              "en": "My address is…",
+              "es": "Mi dirección es…"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: contactar con la policía",
+            "url": "https://www.gov.uk/contact-police"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Alguien intenta entrar en tu casa ahora mismo. ¿A qué número llamas?",
+          "options": [
+            "999",
+            "101",
+            "111"
+          ],
+          "answer": "999"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Te robaron la bici ayer y quieres denunciarlo. ¿A qué número llamas?",
+          "options": [
+            "101",
+            "999",
+            "7726"
+          ],
+          "answer": "101"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Llamas al 999 desde el móvil y no puedes hablar. ¿Qué marcas cuando te lo pidan?",
+          "options": [
+            "55",
+            "00",
+            "999 otra vez"
+          ],
+          "answer": "55"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada frase",
+          "pairs": [
+            {
+              "en": "I need the police.",
+              "es": "Necesito a la policía."
+            },
+            {
+              "en": "report a crime",
+              "es": "denunciar un delito"
+            },
+            {
+              "en": "interpreter",
+              "es": "intérprete"
+            },
+            {
+              "en": "in danger",
+              "es": "en peligro"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Quiero denunciar un delito.",
+          "words": [
+            "I",
+            "want",
+            "to",
+            "report",
+            "a",
+            "crime.",
+            "crimes",
+            "repair",
+            "need"
+          ],
+          "answer": "I want to report a crime."
+        },
+        {
+          "type": "listening",
+          "text": "Someone is breaking into my house.",
+          "options": [
+            "Someone is breaking into my house.",
+            "Someone is baking in my house.",
+            "Someone is waiting in my house."
+          ],
+          "answer": "Someone is breaking into my house."
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "I need an ___, please.",
+          "hint": "intérprete",
+          "options": [
+            "interpreter",
+            "internet",
+            "instructor"
+          ],
+          "answer": "interpreter"
+        },
+        {
+          "type": "typing",
+          "prompt": "Escribe en inglés: «Necesito a la policía.»",
+          "answer": "I need the police",
+          "alternatives": [
+            "I need police",
+            "I need the police please"
+          ]
+        },
+        {
+          "type": "speak",
+          "text": "Spanish, please. I need an interpreter.",
+          "hint": "Español, por favor. Necesito un intérprete."
+        }
+      ]
+    }
+  ]
+}

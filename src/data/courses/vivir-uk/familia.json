@@ -1,0 +1,250 @@
+{
+  "level": "UK",
+  "unit": "Familia",
+  "title": "Familia y niños",
+  "icon": "👪",
+  "checked": "2026-11-05",
+  "lessons": [
+    {
+      "id": "uk-familia-l1",
+      "title": "Child Benefit y guardería",
+      "icon": "👶",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Ayudas para tus hijos",
+          "body": "• Child Benefit: £27.05 a la semana por el hijo mayor o único y £17.90 por cada hijo más. Depende de tu situación migratoria: compruébalo antes de pedirlo.\n• Si uno de los padres gana más de £60,000 al año, devuelve parte con impuestos; por encima de £80,000, todo.\n• Guardería gratis para familias que trabajan (Inglaterra): hasta 30 horas a la semana, 38 semanas al año, para niños de 9 meses a 4 años. Cada padre debe ganar un mínimo (por ejemplo, unas £203 a la semana si tiene 21 años o más) y hay que renovar cada 3 meses.\n• Tax-Free Childcare: por cada £8 que pagas, el gobierno pone £2, hasta £2,000 al año por niño (£4,000 si tiene discapacidad).\n• Para pedir la guardería gratis necesitas número de National Insurance y un estatus que te dé acceso (por ejemplo settled o pre-settled status).",
+          "say": "Child Benefit son veintisiete libras con cinco a la semana por el primer hijo. Si trabajas, puedes tener hasta treinta horas de guardería gratis desde los nueve meses. Y con Tax-Free Childcare, por cada ocho libras que pagas, el gobierno pone dos.",
+          "phrases": [
+            {
+              "en": "I'd like to apply for Child Benefit.",
+              "es": "Quisiera solicitar el Child Benefit."
+            },
+            {
+              "en": "Is my child eligible for free childcare?",
+              "es": "¿Mi hijo tiene derecho a guardería gratis?"
+            },
+            {
+              "en": "We both work full time.",
+              "es": "Los dos trabajamos a jornada completa."
+            },
+            {
+              "en": "Do you have a nursery place?",
+              "es": "¿Tienen plaza en la guardería?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: 30 horas de guardería gratis",
+            "url": "https://www.gov.uk/30-hours-free-childcare"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Desde qué edad puede tener tu hijo hasta 30 horas de guardería gratis (si trabajas)?",
+          "options": [
+            "Desde los 9 meses",
+            "Desde los 5 años",
+            "Desde que nace"
+          ],
+          "answer": "Desde los 9 meses"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Con Tax-Free Childcare, pagas £8. ¿Cuánto pone el gobierno?",
+          "options": [
+            "£2",
+            "£8",
+            "£20"
+          ],
+          "answer": "£2"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cada cuánto hay que confirmar los datos de la guardería gratis?",
+          "options": [
+            "Cada 3 meses",
+            "Cada 5 años",
+            "Nunca"
+          ],
+          "answer": "Cada 3 meses"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra",
+          "pairs": [
+            {
+              "en": "nursery",
+              "es": "guardería"
+            },
+            {
+              "en": "childcare",
+              "es": "cuidado de niños"
+            },
+            {
+              "en": "eligible",
+              "es": "con derecho"
+            },
+            {
+              "en": "full time",
+              "es": "jornada completa"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿Mi hijo tiene derecho a guardería gratis?",
+          "words": [
+            "Is",
+            "my",
+            "child",
+            "eligible",
+            "for",
+            "free",
+            "childcare?",
+            "free.",
+            "Are",
+            "kid"
+          ],
+          "answer": "Is my child eligible for free childcare?"
+        },
+        {
+          "type": "listening",
+          "text": "Do you have a nursery place?",
+          "options": [
+            "Do you have a nursery place?",
+            "Do you have a nurse in place?",
+            "Do you have a nice place?"
+          ],
+          "answer": "Do you have a nursery place?"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "We both work full ___.",
+          "hint": "jornada (tiempo)",
+          "options": [
+            "time",
+            "team",
+            "tame"
+          ],
+          "answer": "time"
+        },
+        {
+          "type": "speak",
+          "text": "I'd like to apply for Child Benefit.",
+          "hint": "Quisiera solicitar el Child Benefit."
+        }
+      ]
+    },
+    {
+      "id": "uk-familia-l2",
+      "title": "Registrar un nacimiento",
+      "icon": "🍼",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Cuando nace tu bebé",
+          "body": "• En Inglaterra, Gales e Irlanda del Norte hay que registrar el nacimiento en 42 días, en la oficina de registro (register office) de tu zona. Normalmente se pide cita.\n• Si los padres no están casados y uno va solo, puede que necesite una prueba de paternidad del otro para poner sus datos.\n• Después podrás pedir el Child Benefit y avisar a tu GP para registrar al bebé.\n• Si quieres el pasaporte de tu país para el bebé, pregunta en tu consulado qué certificado necesitan.",
+          "say": "Hay que registrar el nacimiento en cuarenta y dos días, en la oficina de registro de tu zona. Pide cita. Después podrás pedir el Child Benefit y registrar al bebé en el GP.",
+          "phrases": [
+            {
+              "en": "I need to register a birth.",
+              "es": "Necesito registrar un nacimiento."
+            },
+            {
+              "en": "Can I book an appointment?",
+              "es": "¿Puedo pedir cita?"
+            },
+            {
+              "en": "We're not married.",
+              "es": "No estamos casados."
+            },
+            {
+              "en": "Our baby was born last week.",
+              "es": "Nuestro bebé nació la semana pasada."
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: registrar un nacimiento",
+            "url": "https://www.gov.uk/register-birth"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cuánto tiempo tienes para registrar un nacimiento en Inglaterra?",
+          "options": [
+            "42 días",
+            "1 año",
+            "7 días"
+          ],
+          "answer": "42 días"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Dónde se registra el nacimiento?",
+          "options": [
+            "En la register office de tu zona",
+            "En el colegio",
+            "En el banco"
+          ],
+          "answer": "En la register office de tu zona"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué puedes hacer después de registrarlo?",
+          "options": [
+            "Pedir el Child Benefit",
+            "Pedir la TV Licence",
+            "Nada más"
+          ],
+          "answer": "Pedir el Child Benefit"
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Necesito registrar un nacimiento.",
+          "words": [
+            "I",
+            "need",
+            "to",
+            "register",
+            "a",
+            "birth.",
+            "birthday",
+            "want",
+            "the"
+          ],
+          "answer": "I need to register a birth."
+        },
+        {
+          "type": "listening",
+          "text": "Our baby was born last week.",
+          "options": [
+            "Our baby was born last week.",
+            "Our baby was born last year.",
+            "Our baby will be born next week."
+          ],
+          "answer": "Our baby was born last week."
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "We're not ___.",
+          "hint": "casados",
+          "options": [
+            "married",
+            "marred",
+            "marked"
+          ],
+          "answer": "married"
+        },
+        {
+          "type": "typing",
+          "prompt": "Escribe en inglés: «¿Puedo pedir cita?»",
+          "answer": "Can I book an appointment?",
+          "alternatives": [
+            "Can I make an appointment?",
+            "Could I book an appointment?"
+          ]
+        }
+      ]
+    }
+  ]
+}

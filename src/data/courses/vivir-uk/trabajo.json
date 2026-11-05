@@ -3,7 +3,7 @@
   "unit": "Trabajo",
   "title": "Tus derechos en el trabajo",
   "icon": "💼",
-  "checked": "2026-11-04",
+  "checked": "2026-11-05",
   "lessons": [
     {
       "id": "uk-trabajo-l1",
@@ -112,6 +112,143 @@
               "es": "sueldo neto"
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "uk-trabajo-l2",
+      "title": "Baja por enfermedad y vacaciones",
+      "icon": "🤒",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Si te pones enfermo o quieres vacaciones",
+          "body": "• Statutory Sick Pay (SSP): si eres empleado y estás enfermo al menos un día laborable completo, tu empresa te paga hasta £123.25 a la semana, durante un máximo de 28 semanas. Tu contrato puede darte más.\n• Avisa a tu empresa cuanto antes, como diga tu contrato. Si estás de baja más de 7 días seguidos, normalmente te pedirán un «fit note» del GP.\n• Vacaciones: si trabajas 5 días a la semana, tienes al menos 28 días pagados al año (5,6 semanas). La empresa puede incluir en ellos los festivos (bank holidays).\n• Si trabajas menos días, te corresponde la parte proporcional.\n• Si no te pagan lo que te toca, Acas te asesora gratis.",
+          "say": "Si estás de baja, tu empresa te paga el Statutory Sick Pay, hasta ciento veintitrés libras con veinticinco a la semana. Y si trabajas cinco días a la semana, tienes al menos veintiocho días de vacaciones pagadas al año.",
+          "phrases": [
+            {
+              "en": "I'm off sick today.",
+              "es": "Hoy estoy de baja (enfermo)."
+            },
+            {
+              "en": "Will I get sick pay?",
+              "es": "¿Cobraré la baja por enfermedad?"
+            },
+            {
+              "en": "I'd like to book some holiday.",
+              "es": "Quisiera pedir unos días de vacaciones."
+            },
+            {
+              "en": "How many days of holiday do I have left?",
+              "es": "¿Cuántos días de vacaciones me quedan?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: Statutory Sick Pay",
+            "url": "https://www.gov.uk/statutory-sick-pay"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Trabajas 5 días a la semana. ¿Cuántos días de vacaciones pagadas tienes como mínimo al año?",
+          "options": [
+            "28 días",
+            "10 días",
+            "40 días"
+          ],
+          "answer": "28 días"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cuánto tiempo como máximo te pagan el Statutory Sick Pay?",
+          "options": [
+            "28 semanas",
+            "1 semana",
+            "Para siempre"
+          ],
+          "answer": "28 semanas"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Llevas más de 7 días seguidos de baja. ¿Qué te suelen pedir?",
+          "options": [
+            "Un fit note del GP",
+            "El P60",
+            "Una carta del banco"
+          ],
+          "answer": "Un fit note del GP"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada frase",
+          "pairs": [
+            {
+              "en": "sick pay",
+              "es": "baja pagada por enfermedad"
+            },
+            {
+              "en": "holiday",
+              "es": "vacaciones"
+            },
+            {
+              "en": "bank holiday",
+              "es": "festivo"
+            },
+            {
+              "en": "fit note",
+              "es": "parte médico"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿Cobraré la baja por enfermedad?",
+          "words": [
+            "Will",
+            "I",
+            "get",
+            "sick",
+            "pay?",
+            "pay.",
+            "Do",
+            "ill"
+          ],
+          "answer": "Will I get sick pay?"
+        },
+        {
+          "type": "listening",
+          "text": "I'd like to book some holiday.",
+          "options": [
+            "I'd like to book some holiday.",
+            "I'd like to cook some holiday.",
+            "I'd like to book a hotel."
+          ],
+          "answer": "I'd like to book some holiday."
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "I'm off ___ today.",
+          "hint": "enfermo",
+          "options": [
+            "sick",
+            "six",
+            "seek"
+          ],
+          "answer": "sick"
+        },
+        {
+          "type": "typing",
+          "prompt": "Escribe en inglés: «¿Cuántos días de vacaciones me quedan?»",
+          "answer": "How many days of holiday do I have left?",
+          "alternatives": [
+            "How many holiday days do I have left?",
+            "How many days holiday do I have left?"
+          ]
+        },
+        {
+          "type": "speak",
+          "text": "I'm off sick today.",
+          "hint": "Hoy estoy de baja (enfermo)."
         }
       ]
     }

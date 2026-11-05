@@ -1,0 +1,137 @@
+{
+  "level": "UK",
+  "unit": "Barrio",
+  "title": "Tu barrio: votar, basura y vecinos",
+  "icon": "🏘️",
+  "checked": "2026-11-05",
+  "lessons": [
+    {
+      "id": "uk-barrio-l1",
+      "title": "Censo, basura y ruido",
+      "icon": "🏘️",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Vivir en comunidad",
+          "body": "• Registrarte en el censo electoral (electoral register) se hace en GOV.UK en unos minutos. Te pedirán tu número de National Insurance (si lo tienes).\n• Pueden registrarse, en Inglaterra, ciudadanos británicos, irlandeses y de la Commonwealth con permiso de residencia, y ciudadanos de España, Portugal, Polonia, Dinamarca y Luxemburgo; otros ciudadanos de la UE, si ya residían legalmente antes de 2021. En Escocia y Gales, cualquier residente con permiso.\n• Estar en el censo ayuda a tu historial de crédito (para alquilar o pedir un móvil a plazos).\n• Basura: cada council tiene sus días de recogida y sus cubos (general, reciclaje, comida, jardín). Búscalo en la web de tu council con tu código postal.\n• Ruido de vecinos: primero habla con educación; si sigue, el council puede intervenir.",
+          "say": "Regístrate en el censo electoral: te lleva unos minutos y ayuda a tu historial de crédito. Mira en la web de tu council qué días recogen cada cubo. Y si un vecino hace mucho ruido, habla primero con educación.",
+          "phrases": [
+            {
+              "en": "Which day is bin collection?",
+              "es": "¿Qué día recogen la basura?"
+            },
+            {
+              "en": "Which bin is for recycling?",
+              "es": "¿Qué cubo es para reciclar?"
+            },
+            {
+              "en": "Could you keep the noise down, please?",
+              "es": "¿Podría hacer menos ruido, por favor?"
+            },
+            {
+              "en": "I'd like to register to vote.",
+              "es": "Quisiera registrarme para votar."
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: registrarte para votar",
+            "url": "https://www.gov.uk/register-to-vote"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Eres español y vives en Inglaterra con permiso de residencia. ¿Puedes registrarte en el censo?",
+          "options": [
+            "Sí",
+            "No, nunca",
+            "Solo si tienes coche"
+          ],
+          "answer": "Sí"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Dónde miras qué día recogen la basura?",
+          "options": [
+            "En la web de mi council",
+            "En el banco",
+            "En la TV Licence"
+          ],
+          "answer": "En la web de mi council"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "El vecino pone música muy alta cada noche. ¿Qué haces primero?",
+          "options": [
+            "Hablar con él con educación",
+            "Llamar al 999",
+            "Romper su puerta"
+          ],
+          "answer": "Hablar con él con educación"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra",
+          "pairs": [
+            {
+              "en": "bin",
+              "es": "cubo de basura"
+            },
+            {
+              "en": "recycling",
+              "es": "reciclaje"
+            },
+            {
+              "en": "neighbour",
+              "es": "vecino"
+            },
+            {
+              "en": "noise",
+              "es": "ruido"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿Qué día recogen la basura?",
+          "words": [
+            "Which",
+            "day",
+            "is",
+            "bin",
+            "collection?",
+            "When",
+            "rubbish",
+            "bins"
+          ],
+          "answer": "Which day is bin collection?"
+        },
+        {
+          "type": "listening",
+          "text": "Could you keep the noise down, please?",
+          "options": [
+            "Could you keep the noise down, please?",
+            "Could you keep the nose down, please?",
+            "Could you keep the house down, please?"
+          ],
+          "answer": "Could you keep the noise down, please?"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "I'd like to register to ___.",
+          "hint": "votar",
+          "options": [
+            "vote",
+            "boat",
+            "note"
+          ],
+          "answer": "vote"
+        },
+        {
+          "type": "speak",
+          "text": "Which bin is for recycling?",
+          "hint": "¿Qué cubo es para reciclar?"
+        }
+      ]
+    }
+  ]
+}

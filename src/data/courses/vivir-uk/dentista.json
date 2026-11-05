@@ -1,0 +1,138 @@
+{
+  "level": "UK",
+  "unit": "Dentista",
+  "title": "Dentista y óptica",
+  "icon": "🦷",
+  "checked": "2026-11-05",
+  "lessons": [
+    {
+      "id": "uk-dentista-l1",
+      "title": "Dentista del NHS",
+      "icon": "🦷",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Ir al dentista",
+          "body": "• Los dentistas no se asignan como el GP: busca una clínica que acepte pacientes del NHS en tu zona (en la web del NHS) y pregunta si tienen plazas.\n• El tratamiento del NHS tiene precios fijos por bandas (Band 1: revisión; Band 2: empastes; Band 3: coronas y dentaduras). Consulta las cifras actuales en la web del NHS.\n• Es gratis, por ejemplo, para menores de 18 años, embarazadas y madres del último año, y algunas personas con ciertas ayudas (como Universal Credit, según tus ingresos).\n• Dolor fuerte por la noche o el fin de semana: llama al 111.\n• La revisión de la vista (eye test) en una óptica es gratis para algunos grupos, como menores de 16 años.",
+          "say": "Busca un dentista que acepte pacientes del NHS en tu zona. Los precios van por bandas. Es gratis para menores de dieciocho años y embarazadas, entre otros. Si tienes mucho dolor fuera de horario, llama al uno, uno, uno.",
+          "phrases": [
+            {
+              "en": "Are you taking on NHS patients?",
+              "es": "¿Están aceptando pacientes del NHS?"
+            },
+            {
+              "en": "I have toothache.",
+              "es": "Me duele una muela."
+            },
+            {
+              "en": "I've lost a filling.",
+              "es": "Se me ha caído un empaste."
+            },
+            {
+              "en": "How much will it cost?",
+              "es": "¿Cuánto me va a costar?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: ayuda con los costes de salud",
+            "url": "https://www.gov.uk/help-nhs-costs"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Tienes un dolor de muelas muy fuerte un domingo por la noche. ¿Qué haces?",
+          "options": [
+            "Llamo al 111",
+            "Espero al lunes sin decir nada",
+            "Llamo al 101"
+          ],
+          "answer": "Llamo al 111"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cómo encuentras dentista del NHS?",
+          "options": [
+            "Busco una clínica que acepte pacientes del NHS",
+            "Me lo asigna el council",
+            "Voy al GP"
+          ],
+          "answer": "Busco una clínica que acepte pacientes del NHS"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Quién tiene, por ejemplo, el dentista del NHS gratis?",
+          "options": [
+            "Los menores de 18 años",
+            "Nadie",
+            "Solo los turistas"
+          ],
+          "answer": "Los menores de 18 años"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra",
+          "pairs": [
+            {
+              "en": "toothache",
+              "es": "dolor de muelas"
+            },
+            {
+              "en": "filling",
+              "es": "empaste"
+            },
+            {
+              "en": "check-up",
+              "es": "revisión"
+            },
+            {
+              "en": "eye test",
+              "es": "revisión de la vista"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿Están aceptando pacientes del NHS?",
+          "words": [
+            "Are",
+            "you",
+            "taking",
+            "on",
+            "NHS",
+            "patients?",
+            "Do",
+            "patient",
+            "take"
+          ],
+          "answer": "Are you taking on NHS patients?"
+        },
+        {
+          "type": "listening",
+          "text": "I've lost a filling.",
+          "options": [
+            "I've lost a filling.",
+            "I've lost my feeling.",
+            "I've lost a shilling."
+          ],
+          "answer": "I've lost a filling."
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "How much will it ___?",
+          "hint": "costar",
+          "options": [
+            "cost",
+            "coast",
+            "cast"
+          ],
+          "answer": "cost"
+        },
+        {
+          "type": "speak",
+          "text": "I have toothache.",
+          "hint": "Me duele una muela."
+        }
+      ]
+    }
+  ]
+}

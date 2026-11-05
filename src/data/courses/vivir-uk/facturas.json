@@ -1,0 +1,150 @@
+{
+  "level": "UK",
+  "unit": "Facturas",
+  "title": "Facturas de casa",
+  "icon": "💡",
+  "checked": "2026-11-05",
+  "lessons": [
+    {
+      "id": "uk-facturas-l1",
+      "title": "Luz, gas, agua e internet",
+      "icon": "💡",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Lo que pagas cada mes",
+          "body": "• Al mudarte, mira el contador (meter) el primer día y envía la lectura (meter reading) a tu compañía de luz y gas: así solo pagas lo tuyo.\n• Muchas facturas se pagan por domiciliación (direct debit). Revisa que la cuota mensual cuadra con lo que gastas.\n• El agua se paga aparte, a la compañía de agua de tu zona.\n• TV Licence: la necesitas si ves o grabas televisión en directo, en cualquier canal, o si usas BBC iPlayer. Cuesta £180 al año.\n• Ayudas: Warm Home Discount (£150 de descuento en la luz con ciertas ayudas o ingresos bajos), y muchas compañías de internet y móvil tienen «social tariffs» más baratas si cobras Universal Credit.\n• Si te cuesta pagar, habla con la compañía antes de atrasarte: deben ofrecerte un plan de pago.",
+          "say": "Al mudarte, envía la lectura del contador el primer día. Si ves la tele en directo o usas BBC iPlayer, necesitas la TV Licence, de ciento ochenta libras al año. Y si te cuesta pagar, habla con la compañía antes de atrasarte.",
+          "phrases": [
+            {
+              "en": "I'd like to give a meter reading.",
+              "es": "Quisiera dar una lectura del contador."
+            },
+            {
+              "en": "I've just moved in.",
+              "es": "Acabo de mudarme aquí."
+            },
+            {
+              "en": "My bill is too high.",
+              "es": "Mi factura es demasiado alta."
+            },
+            {
+              "en": "Can I set up a payment plan?",
+              "es": "¿Puedo organizar un plan de pagos?"
+            },
+            {
+              "en": "Do you have a social tariff?",
+              "es": "¿Tienen una tarifa social?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: ayudas con las facturas de energía",
+            "url": "https://www.gov.uk/get-help-energy-bills"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Te mudas a un piso nuevo. ¿Qué haces el primer día con el contador?",
+          "options": [
+            "Envío la lectura a mi compañía",
+            "Nada, ya lo harán",
+            "Lo apago"
+          ],
+          "answer": "Envío la lectura a mi compañía"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Solo ves Netflix y YouTube, nunca TV en directo ni BBC iPlayer. ¿Necesitas TV Licence?",
+          "options": [
+            "No",
+            "Sí, siempre",
+            "Solo en invierno"
+          ],
+          "answer": "No"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "No puedes pagar la factura de la luz este mes. ¿Qué es mejor?",
+          "options": [
+            "Llamar a la compañía y pedir un plan de pagos",
+            "Esperar a que corten",
+            "Cambiar de casa"
+          ],
+          "answer": "Llamar a la compañía y pedir un plan de pagos"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra de las facturas",
+          "pairs": [
+            {
+              "en": "meter",
+              "es": "contador"
+            },
+            {
+              "en": "bill",
+              "es": "factura"
+            },
+            {
+              "en": "direct debit",
+              "es": "domiciliación"
+            },
+            {
+              "en": "supplier",
+              "es": "compañía proveedora"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Mi factura es demasiado alta.",
+          "words": [
+            "My",
+            "bill",
+            "is",
+            "too",
+            "high.",
+            "very",
+            "tall",
+            "big"
+          ],
+          "answer": "My bill is too high."
+        },
+        {
+          "type": "listening",
+          "text": "I'd like to give a meter reading.",
+          "options": [
+            "I'd like to give a meter reading.",
+            "I'd like to read a meter book.",
+            "I'd like to give a better reading."
+          ],
+          "answer": "I'd like to give a meter reading."
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Can I set up a payment ___?",
+          "hint": "plan",
+          "options": [
+            "plan",
+            "plant",
+            "plane"
+          ],
+          "answer": "plan"
+        },
+        {
+          "type": "typing",
+          "prompt": "Escribe en inglés: «Acabo de mudarme aquí.»",
+          "answer": "I've just moved in",
+          "alternatives": [
+            "I have just moved in",
+            "I just moved in"
+          ]
+        },
+        {
+          "type": "speak",
+          "text": "Can I set up a payment plan?",
+          "hint": "¿Puedo organizar un plan de pagos?"
+        }
+      ]
+    }
+  ]
+}

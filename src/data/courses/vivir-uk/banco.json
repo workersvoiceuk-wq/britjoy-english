@@ -1,0 +1,262 @@
+{
+  "level": "UK",
+  "unit": "Banco",
+  "title": "Banco, dinero y estafas",
+  "icon": "🏦",
+  "checked": "2026-11-05",
+  "lessons": [
+    {
+      "id": "uk-banco-l1",
+      "title": "Abrir una cuenta",
+      "icon": "🏦",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Tu primera cuenta en el Reino Unido",
+          "body": "• Casi todo se paga con tarjeta o transferencia: el sueldo, el alquiler y las ayudas llegan a una cuenta bancaria.\n• Para abrirla te pedirán un documento de identidad (pasaporte o tu eVisa) y, a menudo, una prueba de dirección (una carta del council, una factura o el contrato de alquiler).\n• Si un banco te dice que no, pregunta por una «basic bank account»: una cuenta sencilla, sin descubierto, pensada para quien no tiene historial en el país.\n• Los bancos solo digitales (con app) suelen pedir menos papeles.\n• Para enviar dinero a tu país, compara la comisión y el tipo de cambio antes de mandar.",
+          "say": "Para cobrar el sueldo o las ayudas necesitas una cuenta. Te pedirán tu documento y una prueba de dirección. Si te dicen que no, pide una basic bank account, una cuenta sencilla para quien acaba de llegar.",
+          "phrases": [
+            {
+              "en": "I'd like to open a bank account.",
+              "es": "Quisiera abrir una cuenta bancaria."
+            },
+            {
+              "en": "What documents do I need?",
+              "es": "¿Qué documentos necesito?"
+            },
+            {
+              "en": "Do you offer a basic bank account?",
+              "es": "¿Ofrecen una cuenta básica?"
+            },
+            {
+              "en": "I've just moved to the UK.",
+              "es": "Acabo de mudarme al Reino Unido."
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: tu eVisa para demostrar tus derechos",
+            "url": "https://www.gov.uk/view-prove-immigration-status"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Un banco te pide una «proof of address». ¿Qué puedes llevar?",
+          "options": [
+            "Una carta del council o tu contrato de alquiler",
+            "Una foto de tu casa",
+            "Tu tarjeta del gimnasio"
+          ],
+          "answer": "Una carta del council o tu contrato de alquiler"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "No tienes historial en el país y un banco te dice que no. ¿Qué pides?",
+          "options": [
+            "Una basic bank account",
+            "Un préstamo",
+            "Una tarjeta de crédito"
+          ],
+          "answer": "Una basic bank account"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra del banco",
+          "pairs": [
+            {
+              "en": "account",
+              "es": "cuenta"
+            },
+            {
+              "en": "statement",
+              "es": "extracto"
+            },
+            {
+              "en": "direct debit",
+              "es": "domiciliación"
+            },
+            {
+              "en": "sort code",
+              "es": "código de la sucursal"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿Qué documentos necesito?",
+          "words": [
+            "What",
+            "documents",
+            "do",
+            "I",
+            "need?",
+            "need.",
+            "Which",
+            "papers"
+          ],
+          "answer": "What documents do I need?"
+        },
+        {
+          "type": "listening",
+          "text": "I'd like to open a bank account.",
+          "options": [
+            "I'd like to open a bank account.",
+            "I'd like to close my bank account.",
+            "I'd like to open a bag, please."
+          ],
+          "answer": "I'd like to open a bank account."
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Do you offer a basic bank ___?",
+          "hint": "cuenta",
+          "options": [
+            "account",
+            "count",
+            "card"
+          ],
+          "answer": "account"
+        },
+        {
+          "type": "typing",
+          "prompt": "Escribe en inglés: «Acabo de mudarme al Reino Unido.»",
+          "answer": "I've just moved to the UK",
+          "alternatives": [
+            "I have just moved to the UK",
+            "I just moved to the UK"
+          ]
+        },
+        {
+          "type": "speak",
+          "text": "I'd like to open a bank account.",
+          "hint": "Quisiera abrir una cuenta bancaria."
+        }
+      ]
+    },
+    {
+      "id": "uk-banco-l2",
+      "title": "Estafas: cómo protegerte",
+      "icon": "🛡️",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Las estafas más comunes",
+          "body": "• Mensajes que dicen ser de HMRC, del banco, del servicio de correos (Royal Mail) o de una empresa de paquetería, con un enlace y prisa: «tu cuenta será bloqueada», «paga una tasa».\n• Tu banco nunca te pedirá tu PIN ni tu contraseña completa, ni que muevas dinero a una «cuenta segura».\n• Reenvía los SMS sospechosos gratis al 7726 y los emails a report@phishing.gov.uk.\n• Si te llaman diciendo ser tu banco, cuelga y marca el 159: te conecta con tu banco de forma segura.\n• Si has perdido dinero en Inglaterra o Gales, llama a tu banco enseguida y denúncialo en Report Fraud (0300 123 2040). En Escocia, a Police Scotland.",
+          "say": "Desconfía de los mensajes con prisa y con enlaces. Tu banco nunca te pedirá tu PIN. Reenvía los SMS sospechosos al siete, siete, dos, seis. Y si has perdido dinero, llama a tu banco y denúncialo en Report Fraud.",
+          "phrases": [
+            {
+              "en": "I didn't make this payment.",
+              "es": "Yo no hice este pago."
+            },
+            {
+              "en": "I think I've been scammed.",
+              "es": "Creo que me han estafado."
+            },
+            {
+              "en": "Please block my card.",
+              "es": "Por favor, bloqueen mi tarjeta."
+            },
+            {
+              "en": "I'll call you back on the official number.",
+              "es": "Le devolveré la llamada al número oficial."
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: denunciar mensajes y webs sospechosas",
+            "url": "https://www.gov.uk/report-suspicious-emails-websites-phishing"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Te llega un SMS: «HMRC: tienes un reembolso, entra aquí». ¿Qué haces?",
+          "options": [
+            "No pulso el enlace y lo reenvío al 7726",
+            "Pulso el enlace rápido",
+            "Respondo con mis datos"
+          ],
+          "answer": "No pulso el enlace y lo reenvío al 7726"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Alguien que dice ser tu banco te pide tu PIN por teléfono. ¿Qué haces?",
+          "options": [
+            "Cuelgo y llamo al 159",
+            "Le doy el PIN",
+            "Le doy solo la mitad"
+          ],
+          "answer": "Cuelgo y llamo al 159"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Has perdido dinero por una estafa en Inglaterra. ¿Dónde lo denuncias, además de a tu banco?",
+          "options": [
+            "En Report Fraud",
+            "En el GP",
+            "En el council"
+          ],
+          "answer": "En Report Fraud"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada frase con su significado",
+          "pairs": [
+            {
+              "en": "scam",
+              "es": "estafa"
+            },
+            {
+              "en": "block my card",
+              "es": "bloquear mi tarjeta"
+            },
+            {
+              "en": "suspicious",
+              "es": "sospechoso"
+            },
+            {
+              "en": "refund",
+              "es": "reembolso"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Yo no hice este pago.",
+          "words": [
+            "I",
+            "didn't",
+            "make",
+            "this",
+            "payment.",
+            "do",
+            "pay",
+            "made"
+          ],
+          "answer": "I didn't make this payment."
+        },
+        {
+          "type": "listening",
+          "text": "I think I've been scammed.",
+          "options": [
+            "I think I've been scammed.",
+            "I think I've been scanned.",
+            "I think I've been charged."
+          ],
+          "answer": "I think I've been scammed."
+        },
+        {
+          "type": "typing",
+          "prompt": "Escribe en inglés: «Por favor, bloqueen mi tarjeta.»",
+          "answer": "Please block my card",
+          "alternatives": [
+            "Please, block my card",
+            "Can you block my card please"
+          ]
+        },
+        {
+          "type": "speak",
+          "text": "I didn't make this payment.",
+          "hint": "Yo no hice este pago."
+        }
+      ]
+    }
+  ]
+}

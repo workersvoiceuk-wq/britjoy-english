@@ -1,0 +1,265 @@
+{
+  "level": "UK",
+  "unit": "Impuestos",
+  "title": "Impuestos y HMRC",
+  "icon": "📑",
+  "checked": "2026-11-05",
+  "lessons": [
+    {
+      "id": "uk-impuestos-l1",
+      "title": "Tu nómina y tu código fiscal",
+      "icon": "📑",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Cómo pagas impuestos si trabajas para una empresa",
+          "body": "• Si eres empleado, tu empresa te descuenta el impuesto sobre la renta y la seguridad social (National Insurance) de cada nómina: es el sistema PAYE.\n• Año fiscal actual: del 6 de abril de 2026 al 5 de abril de 2027.\n• Los primeros £12,570 al año no pagan impuesto (Personal Allowance). De £12,571 a £50,270 se paga el 20 %; de £50,271 a £125,140, el 40 %; por encima, el 45 % (en Escocia los tramos son distintos).\n• Tu código fiscal (tax code) aparece en la nómina. El más común es 1257L. Si te ponen un código de emergencia, pagarás de más hasta que se corrija.\n• Al cambiar de trabajo te dan el P45; cada abril, el P60 con lo que ganaste y pagaste. Guárdalos.\n• Con la app de HMRC o tu cuenta en GOV.UK puedes ver tu código fiscal y lo que has pagado.",
+          "say": "Si trabajas para una empresa, el impuesto se descuenta solo de tu nómina. Las primeras doce mil quinientas setenta libras al año no pagan. Revisa tu código fiscal: el más común es mil doscientos cincuenta y siete L.",
+          "phrases": [
+            {
+              "en": "I think my tax code is wrong.",
+              "es": "Creo que mi código fiscal está mal."
+            },
+            {
+              "en": "Can you send me my P60?",
+              "es": "¿Me pueden enviar mi P60?"
+            },
+            {
+              "en": "I've been put on an emergency tax code.",
+              "es": "Me han puesto un código fiscal de emergencia."
+            },
+            {
+              "en": "How much tax have I paid this year?",
+              "es": "¿Cuánto impuesto he pagado este año?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: tramos del impuesto sobre la renta",
+            "url": "https://www.gov.uk/income-tax-rates"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cuánto puedes ganar al año sin pagar impuesto sobre la renta (Personal Allowance)?",
+          "options": [
+            "£12,570",
+            "£50,270",
+            "£5,000"
+          ],
+          "answer": "£12,570"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Ganas £30,000 al año en Inglaterra. ¿A qué tipo pagas la parte que pasa de £12,570?",
+          "options": [
+            "20 %",
+            "40 %",
+            "45 %"
+          ],
+          "answer": "20 %"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Cambias de trabajo. ¿Qué documento te da tu empresa anterior?",
+          "options": [
+            "El P45",
+            "El P60",
+            "La TV Licence"
+          ],
+          "answer": "El P45"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada término",
+          "pairs": [
+            {
+              "en": "payslip",
+              "es": "nómina"
+            },
+            {
+              "en": "tax code",
+              "es": "código fiscal"
+            },
+            {
+              "en": "tax year",
+              "es": "año fiscal"
+            },
+            {
+              "en": "employer",
+              "es": "empresa / empleador"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Creo que mi código fiscal está mal.",
+          "words": [
+            "I",
+            "think",
+            "my",
+            "tax",
+            "code",
+            "is",
+            "wrong.",
+            "bad",
+            "taxi",
+            "right"
+          ],
+          "answer": "I think my tax code is wrong."
+        },
+        {
+          "type": "listening",
+          "text": "How much tax have I paid this year?",
+          "options": [
+            "How much tax have I paid this year?",
+            "How much taxi have I paid this year?",
+            "How much tax will I pay next year?"
+          ],
+          "answer": "How much tax have I paid this year?"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "I've been put on an ___ tax code.",
+          "hint": "de emergencia",
+          "options": [
+            "emergency",
+            "energy",
+            "empty"
+          ],
+          "answer": "emergency"
+        },
+        {
+          "type": "speak",
+          "text": "I think my tax code is wrong.",
+          "hint": "Creo que mi código fiscal está mal."
+        }
+      ]
+    },
+    {
+      "id": "uk-impuestos-l2",
+      "title": "Autónomo: Self Assessment",
+      "icon": "📅",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Si trabajas por tu cuenta",
+          "body": "• Si eres autónomo (self-employed), por ejemplo en limpieza, reparto o construcción, declaras tú mismo tus ingresos con la Self Assessment.\n• Fechas del año fiscal 2025-2026:\n  – Darte de alta: antes del 5 de octubre de 2026, si es tu primera declaración.\n  – Declaración en papel: hasta el 31 de octubre de 2026.\n  – Declaración por internet: hasta el 31 de enero de 2027.\n  – Pagar: hasta el 31 de enero de 2027.\n• Guarda facturas y gastos del trabajo todo el año. Si te retrasas, hay multas.\n• HMRC nunca te pedirá datos bancarios por SMS: desconfía de los mensajes de «reembolso».",
+          "say": "Si trabajas por tu cuenta, haces tú la declaración. Date de alta antes del cinco de octubre. La declaración por internet y el pago son hasta el treinta y uno de enero. Guarda tus facturas todo el año.",
+          "phrases": [
+            {
+              "en": "I'm self-employed.",
+              "es": "Soy autónomo."
+            },
+            {
+              "en": "I need to register for Self Assessment.",
+              "es": "Necesito darme de alta en la Self Assessment."
+            },
+            {
+              "en": "When is the deadline?",
+              "es": "¿Cuál es el plazo?"
+            },
+            {
+              "en": "I keep all my receipts.",
+              "es": "Guardo todos mis recibos."
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: plazos de la Self Assessment",
+            "url": "https://www.gov.uk/self-assessment-tax-returns/deadlines"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Empezaste como autónomo en 2025-2026. ¿Hasta cuándo puedes darte de alta?",
+          "options": [
+            "5 de octubre de 2026",
+            "31 de enero de 2027",
+            "1 de enero de 2026"
+          ],
+          "answer": "5 de octubre de 2026"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Hasta cuándo puedes enviar la declaración por internet del año 2025-2026?",
+          "options": [
+            "31 de enero de 2027",
+            "31 de octubre de 2026",
+            "5 de abril de 2026"
+          ],
+          "answer": "31 de enero de 2027"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué conviene guardar todo el año?",
+          "options": [
+            "Facturas y gastos del trabajo",
+            "Solo las nóminas",
+            "Nada"
+          ],
+          "answer": "Facturas y gastos del trabajo"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra",
+          "pairs": [
+            {
+              "en": "self-employed",
+              "es": "autónomo"
+            },
+            {
+              "en": "deadline",
+              "es": "plazo"
+            },
+            {
+              "en": "receipt",
+              "es": "recibo"
+            },
+            {
+              "en": "penalty",
+              "es": "multa"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿Cuál es el plazo?",
+          "words": [
+            "When",
+            "is",
+            "the",
+            "deadline?",
+            "What",
+            "dead",
+            "time"
+          ],
+          "answer": "When is the deadline?"
+        },
+        {
+          "type": "listening",
+          "text": "I need to register for Self Assessment.",
+          "options": [
+            "I need to register for Self Assessment.",
+            "I need to resist the self assessment.",
+            "I need to register for a self service."
+          ],
+          "answer": "I need to register for Self Assessment."
+        },
+        {
+          "type": "typing",
+          "prompt": "Escribe en inglés: «Soy autónomo.»",
+          "answer": "I'm self-employed",
+          "alternatives": [
+            "I am self-employed",
+            "I'm self employed",
+            "I am self employed"
+          ]
+        },
+        {
+          "type": "speak",
+          "text": "I'm self-employed.",
+          "hint": "Soy autónomo."
+        }
+      ]
+    }
+  ]
+}

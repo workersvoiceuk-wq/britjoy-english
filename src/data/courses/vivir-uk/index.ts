@@ -18,6 +18,14 @@ import alquiler from './alquiler.json';
 import trabajo from './trabajo.json';
 import colegios from './colegios.json';
 import consumo from './consumo.json';
+import banco from './banco.json';
+import facturas from './facturas.json';
+import impuestos from './impuestos.json';
+import familia from './familia.json';
+import emergencias from './emergencias.json';
+import conducir from './conducir.json';
+import dentista from './dentista.json';
+import barrio from './barrio.json';
 
 const unit = (data: unknown) => data as Unit;
 
@@ -30,6 +38,10 @@ export const LIFE_LEVEL: LevelDefinition = {
   accentDark: '#111B3A',
   accentLight: '#E3E8F5',
   instructionLanguage: 'es',
-  units: [unit(transporte), unit(salud), unit(universalCredit), unit(councilTax), unit(alquiler), unit(trabajo), unit(colegios), unit(consumo), unit(vidaUk), unit(espana)],
+  units: [
+    unit(transporte), unit(salud), unit(emergencias), unit(dentista), unit(universalCredit), unit(councilTax),
+    unit(alquiler), unit(facturas), unit(banco), unit(trabajo), unit(impuestos), unit(familia), unit(colegios),
+    unit(consumo), unit(conducir), unit(barrio), unit(vidaUk), unit(espana),
+  ],
 };
 

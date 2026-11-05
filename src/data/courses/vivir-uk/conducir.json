@@ -1,0 +1,138 @@
+{
+  "level": "UK",
+  "unit": "Conducir",
+  "title": "Conducir en el Reino Unido",
+  "icon": "🚗",
+  "checked": "2026-11-05",
+  "lessons": [
+    {
+      "id": "uk-conducir-l1",
+      "title": "Tu carné y el coche",
+      "icon": "🚗",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Antes de ponerte al volante",
+          "body": "• Se conduce por la izquierda y las distancias van en millas (mph).\n• Carné de un país del Espacio Económico Europeo (como España): normalmente puedes conducir mientras sea válido.\n• Carné de otros países (por ejemplo Colombia o Venezuela): puedes conducir 12 meses desde que pasas a vivir aquí; después debes canjearlo, si tu país está en la lista, o aprobar el examen británico.\n• Compruébalo siempre con la herramienta oficial de GOV.UK, porque depende del país y del tipo de carné.\n• Para usar un coche necesitas seguro (insurance), el impuesto del vehículo (vehicle tax) y, si tiene más de 3 años, la ITV británica (MOT).\n• En Londres hay zonas con cargo diario (ULEZ, Congestion Charge): mira antes de entrar.",
+          "say": "Aquí se conduce por la izquierda. Con carné europeo, normalmente puedes conducir mientras sea válido. Con carné de otros países, doce meses, y luego lo canjeas o haces el examen. Y siempre necesitas seguro.",
+          "phrases": [
+            {
+              "en": "Can I drive with my licence?",
+              "es": "¿Puedo conducir con mi carné?"
+            },
+            {
+              "en": "I'd like to exchange my driving licence.",
+              "es": "Quisiera canjear mi carné de conducir."
+            },
+            {
+              "en": "Is the car insured?",
+              "es": "¿El coche tiene seguro?"
+            },
+            {
+              "en": "When is the MOT due?",
+              "es": "¿Cuándo toca la ITV (MOT)?"
+            }
+          ],
+          "link": {
+            "label": "GOV.UK: conducir con un carné de otro país",
+            "url": "https://www.gov.uk/driving-nongb-licence"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Tienes carné de Colombia y vives aquí desde hace 6 meses. ¿Qué dice la norma general?",
+          "options": [
+            "Puedes conducir hasta los 12 meses; luego canjear o examen",
+            "Nunca puedes conducir",
+            "Puedes conducir siempre"
+          ],
+          "answer": "Puedes conducir hasta los 12 meses; luego canjear o examen"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué necesita siempre el coche para circular?",
+          "options": [
+            "Seguro",
+            "Pegatina de la ciudad",
+            "Nada"
+          ],
+          "answer": "Seguro"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Por qué lado se conduce en el Reino Unido?",
+          "options": [
+            "Por la izquierda",
+            "Por la derecha",
+            "Por el centro"
+          ],
+          "answer": "Por la izquierda"
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada palabra",
+          "pairs": [
+            {
+              "en": "driving licence",
+              "es": "carné de conducir"
+            },
+            {
+              "en": "insurance",
+              "es": "seguro"
+            },
+            {
+              "en": "speed limit",
+              "es": "límite de velocidad"
+            },
+            {
+              "en": "roundabout",
+              "es": "rotonda"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "¿Puedo conducir con mi carné?",
+          "words": [
+            "Can",
+            "I",
+            "drive",
+            "with",
+            "my",
+            "licence?",
+            "license.",
+            "car",
+            "Do"
+          ],
+          "answer": "Can I drive with my licence?"
+        },
+        {
+          "type": "listening",
+          "text": "Is the car insured?",
+          "options": [
+            "Is the car insured?",
+            "Is the car inside?",
+            "Is the card insured?"
+          ],
+          "answer": "Is the car insured?"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "I'd like to ___ my driving licence.",
+          "hint": "canjear",
+          "options": [
+            "exchange",
+            "explain",
+            "expand"
+          ],
+          "answer": "exchange"
+        },
+        {
+          "type": "speak",
+          "text": "Can I drive with my licence?",
+          "hint": "¿Puedo conducir con mi carné?"
+        }
+      ]
+    }
+  ]
+}
