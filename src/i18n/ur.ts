@@ -205,4 +205,5 @@ export const ur: Messages = {
   "review.words": "{n} الفاظ اور جملے",
   "review.listen": "سنیں",
   "cat.espana": "اسپین میں رہنا",
+  "cat.colombia": "کولمبیا میں رہنا",
 };

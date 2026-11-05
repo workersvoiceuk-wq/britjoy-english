@@ -52,7 +52,7 @@ export function isLevelUnlocked(
  */
 export function isLessonUnlocked(level: LevelDefinition, lessonId: string, completed: CompletedLessons): boolean {
   // Survival topics (UK and Spain) are needed on demand (e.g. Council Tax today), so they are all open.
-  if (level.track === 'life' || level.track === 'spain') return level.units.some((u) => u.lessons.some((l) => l.id === lessonId));
+  if (level.track === 'life' || level.track === 'spain' || level.track === 'colombia') return level.units.some((u) => u.lessons.some((l) => l.id === lessonId));
   const ordered = level.units.flatMap((u) => u.lessons);
   const index = ordered.findIndex((l) => l.id === lessonId);
   if (index < 0) return false;

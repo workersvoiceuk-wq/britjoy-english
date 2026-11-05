@@ -205,4 +205,5 @@ export const ro: Messages = {
   "review.words": "{n} cuvinte și expresii",
   "review.listen": "Ascultă",
   "cat.espana": "Viața în Spania",
+  "cat.colombia": "Viața în Columbia",
 };

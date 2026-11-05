@@ -205,4 +205,5 @@ export const it: Messages = {
   "review.words": "{n} parole e frasi",
   "review.listen": "Ascolta",
   "cat.espana": "Vivere in Spagna",
+  "cat.colombia": "Vivere in Colombia",
 };

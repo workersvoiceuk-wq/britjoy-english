@@ -1,12 +1,13 @@
-"""Short explainer video for each "Vivir en España" lesson, in each explanation language.
+"""Short explainer video for each country-course lesson ("Vivir en España", "Vivir en
+Colombia"…), in each explanation language.
 
-Reads src/data/courses/espana/lecciones/*.json (bilingual) and writes
-public/videos/espana/<id>-<lang>.mp4 and .jpg (poster): Britjoy (official avatar,
+Reads src/data/courses/<country>/lecciones/*.json (bilingual) and writes
+public/videos/<country>/<id>-<lang>.mp4 and .jpg (poster): Britjoy (official avatar,
 never redrawn) presents the title and then the key steps (`steps` in the source),
 one by one, with the Voz Unida Mundo close. 640x360, 24 fps, silent (the lesson
 reads the explanation aloud).
 
-    python3 scripts/espana_videos.py --font /path/Nunito-Black.ttf --font-regular /path/Nunito.ttf
+    python3 scripts/espana_videos.py [--country colombia] --font /path/Nunito-Black.ttf --font-regular /path/Nunito.ttf
 """
 import argparse, glob, json, os, subprocess, tempfile, math
 from PIL import Image, ImageDraw, ImageFont
@@ -15,6 +16,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument('--font', required=True)
 ap.add_argument('--font-regular', required=True)
 ap.add_argument('--only', default='')
+ap.add_argument('--country', default='espana', choices=['espana', 'colombia'])
 args = ap.parse_args()
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,7 +42,7 @@ def frame(src, lang, t, total, steps, n):
     d = ImageDraw.Draw(im)
     d.rectangle([0, 0, W, 54], fill=NAVY)
     d.rectangle([0, 54, W, 58], fill=RED)
-    label = 'Vivir en España' if lang == 'es' else 'Living in Spain'
+    label = {'espana': ('Vivir en España', 'Living in Spain'), 'colombia': ('Vivir en Colombia', 'Living in Colombia')}[args.country][0 if lang == 'es' else 1]
     d.text((18, 14), f"{src['icon']}  {label} · {n}", font=B(22), fill=WHITE)
     # Britjoy: gentle bob, never redrawn
     size = 190
@@ -72,14 +74,14 @@ def frame(src, lang, t, total, steps, n):
         d.text((24, 160), 'Tu voz cuenta', font=B(30), fill=RED)
     return im
 
-os.makedirs(os.path.join(ROOT, 'public/videos/espana'), exist_ok=True)
-srcs = sorted((json.load(open(f)) for f in glob.glob(os.path.join(ROOT, 'src/data/courses/espana/lecciones/*.json'))), key=lambda s: s['order'])
+os.makedirs(os.path.join(ROOT, f'public/videos/{args.country}'), exist_ok=True)
+srcs = sorted((json.load(open(f)) for f in glob.glob(os.path.join(ROOT, f'src/data/courses/{args.country}/lecciones/*.json'))), key=lambda s: s['order'])
 for n, src in enumerate(srcs, 1):
     if args.only and src['id'] != args.only: continue
     for lang in ('es', 'en'):
         steps = src['steps']
         total = 2.6 + 2.4 + 2.6 * len(steps)
-        out = os.path.join(ROOT, f"public/videos/espana/{src['id']}-{lang}")
+        out = os.path.join(ROOT, f"public/videos/{args.country}/{src['id']}-{lang}")
         with tempfile.TemporaryDirectory() as tmp:
             for i in range(int(total * FPS)):
                 frame(src, lang, i / FPS, total, steps, f'{n}/{len(srcs)}').save(f'{tmp}/f{i:04d}.png')

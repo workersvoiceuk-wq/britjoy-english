@@ -205,4 +205,5 @@ export const pl: Messages = {
   "review.words": "{n} słów i zwrotów",
   "review.listen": "Posłuchaj",
   "cat.espana": "Życie w Hiszpanii",
+  "cat.colombia": "Życie w Kolumbii",
 };

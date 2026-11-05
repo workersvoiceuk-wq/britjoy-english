@@ -205,4 +205,5 @@ export const ar: Messages = {
   "review.words": "{n} كلمات وعبارات",
   "review.listen": "استمع",
   "cat.espana": "العيش في إسبانيا",
+  "cat.colombia": "العيش في كولومبيا",
 };

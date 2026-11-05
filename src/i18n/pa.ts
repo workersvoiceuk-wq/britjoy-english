@@ -205,4 +205,5 @@ export const pa: Messages = {
   "review.words": "{n} ਸ਼ਬਦ ਅਤੇ ਵਾਕ",
   "review.listen": "ਸੁਣੋ",
   "cat.espana": "ਸਪੇਨ ਵਿੱਚ ਰਹਿਣਾ",
+  "cat.colombia": "ਕੋਲੰਬੀਆ ਵਿੱਚ ਰਹਿਣਾ",
 };

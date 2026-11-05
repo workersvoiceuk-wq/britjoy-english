@@ -7,9 +7,10 @@ import { LEVELS } from './courses/en-es';
 import { AI_LEVEL, DAILY_LEVEL, TOURIST_LEVEL } from './courses/situaciones';
 import { LIFE_LEVEL } from './courses/vivir-uk';
 import { SPAIN_LEVELS } from './courses/espana';
+import { COLOMBIA_LEVELS } from './courses/colombia';
 import type { LevelDefinition } from '../types';
 
-export type Category = 'ingles' | 'situaciones' | 'vida' | 'espana' | 'ia';
+export type Category = 'ingles' | 'situaciones' | 'vida' | 'espana' | 'colombia' | 'ia';
 
 export interface CatalogCourse {
   id: string;
@@ -33,8 +34,28 @@ export const CATEGORIES: { id: Category | 'todos'; label: string }[] = [
   { id: 'situaciones', label: 'Situaciones reales' },
   { id: 'vida', label: 'Vivir en UK' },
   { id: 'espana', label: 'Vivir en España' },
+  { id: 'colombia', label: 'Vivir en Colombia' },
   { id: 'ia', label: 'Inteligencia artificial' },
 ];
+
+const LEARN_CO = {
+  es: [
+    'Cédula, registro civil y documentos',
+    'Acción de tutela y derecho de petición, sin abogado',
+    'Salud: EPS, SISBÉN, urgencias y cómo reclamar',
+    'Trabajo, pensión e impuestos (DIAN)',
+    'Tránsito: licencia, SOAT, técnico-mecánica y comparendos',
+    'Servicios públicos, arriendo, consumidor y líneas de emergencia',
+  ],
+  en: [
+    'ID card (cédula), civil registry and documents',
+    'Tutela and right of petition, without a lawyer',
+    'Healthcare: EPS, SISBÉN, emergencies and complaints',
+    'Work, pensions and tax (DIAN)',
+    'Traffic: licence, SOAT, vehicle inspection and fines',
+    'Utilities, renting, consumer rights and emergency numbers',
+  ],
+};
 
 export const CATALOG: CatalogCourse[] = [
   {
@@ -161,6 +182,36 @@ export const CATALOG: CatalogCourse[] = [
               'Seguridad Social, colegio y carné de conducir',
               'Teléfonos de emergencia: 112, 091, 062 y 016',
             ],
+            levels: [level],
+            open: { tab: 'english', level: level.id },
+          },
+  ),
+  ...COLOMBIA_LEVELS.map(
+    (level): CatalogCourse =>
+      level.targetLanguage === 'es'
+        ? {
+            id: 'colombia-espanol',
+            title: 'Living in Colombia · learn Spanish',
+            subtitle: 'Your rights and every procedure in Colombia explained in English (ID card, tutela, healthcare, work, traffic…), while you learn the Spanish you need.',
+            category: 'colombia',
+            level: 'A1 → B1',
+            emoji: '🇨🇴',
+            color: level.accent,
+            badges: ['Learn Spanish', 'With video'],
+            learn: LEARN_CO.en,
+            levels: [level],
+            open: { tab: 'english', level: level.id },
+          }
+        : {
+            id: 'colombia-ingles',
+            title: 'Vivir en Colombia · aprende inglés',
+            subtitle: 'Tus derechos y todos los trámites de Colombia, claros y paso a paso (cédula, tutela, salud, trabajo, tránsito…), mientras aprendes a decirlos en inglés.',
+            category: 'colombia',
+            level: 'A1 → B1',
+            emoji: '🇨🇴',
+            color: level.accent,
+            badges: ['Tus derechos', 'Con vídeo'],
+            learn: LEARN_CO.es,
             levels: [level],
             open: { tab: 'english', level: level.id },
           },
