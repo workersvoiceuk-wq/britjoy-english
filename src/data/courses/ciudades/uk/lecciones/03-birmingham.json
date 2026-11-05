@@ -1,0 +1,185 @@
+{
+  "id": "birmingham",
+  "order": 3,
+  "icon": "🏭",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Birmingham",
+    "en": "Birmingham"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Birmingham: transporte, vivienda y servicios",
+        "en": "Birmingham: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: Transport for West Midlands (TfWM): autobuses (sobre todo National Express West Midlands) y el tranvía West Midlands Metro. La tarjeta es Swift. El billete de un día «nbus» para todos los autobuses cuesta 5,50 £ desde el 28 de junio de 2026.\n• Autobús fuera de Londres (Inglaterra): un billete sencillo cuesta como máximo 3 £ hasta finales de 2026; el Gobierno ha anunciado un máximo de 2 £ desde enero de 2027.\n• Council: Birmingham City Council. Vivienda social: Birmingham Choice (0121 303 7410, opción 1). Sinhogarismo: misma línea, opción 3; los menores de 25 sin hijos pueden acudir a St Basils (0300 303 0099). Servicios sociales para adultos: 0121 303 1234.\n• Coche: zona de aire limpio (Clean Air Zone) dentro de la ronda A4540: 8 £ al día para coches que contaminan.",
+        "en": "• Transport: Transport for West Midlands (TfWM): buses (mainly National Express West Midlands) and the West Midlands Metro tram. The card is Swift. The 'nbus' day ticket for all buses costs £5.50 from 28 June 2026.\n• Buses outside London (England): a single costs at most £3 until the end of 2026; the government has announced a £2 maximum from January 2027.\n• Council: Birmingham City Council. Social housing: Birmingham Choice (0121 303 7410, option 1). Homelessness: same line, option 3; under-25s without children can go to St Basils (0300 303 0099). Adult social care: 0121 303 1234.\n• Driving: Clean Air Zone inside the A4540 ring road: £8 a day for polluting cars."
+      },
+      "say": {
+        "es": "En Birmingham el billete de un día para todos los autobuses cuesta cinco libras cincuenta. La vivienda social se pide en Birmingham Choice. Y si conduces, cuidado con la zona de aire limpio.",
+        "en": "In Birmingham a day ticket for all buses costs £5.50. You apply for social housing through Birmingham Choice. And if you drive, watch out for the Clean Air Zone."
+      },
+      "link": {
+        "label": {
+          "es": "Transport for West Midlands",
+          "en": "Transport for West Midlands"
+        },
+        "url": "https://www.tfwm.org.uk/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Tarjeta Swift",
+      "en": "Swift card"
+    },
+    {
+      "es": "Día nbus: 5,50 £",
+      "en": "nbus day: £5.50"
+    },
+    {
+      "es": "Vivienda: Birmingham Choice",
+      "en": "Housing: Birmingham Choice"
+    },
+    {
+      "es": "Aire limpio: 8 £/día",
+      "en": "Clean Air Zone: £8/day"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Un billete de un día, por favor.",
+      "en": "A day ticket, please."
+    },
+    {
+      "es": "¿Este tranvía va a Grand Central?",
+      "en": "Does this tram go to Grand Central?"
+    },
+    {
+      "es": "Esta noche no tengo dónde dormir.",
+      "en": "I am homeless tonight."
+    },
+    {
+      "es": "¿Me puede ayudar a encontrar un albergue?",
+      "en": "Can you help me find a hostel?"
+    },
+    {
+      "es": "¿Cuál es mi número de referencia?",
+      "en": "What is my reference number?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta el billete de un día nbus desde junio de 2026?",
+        "en": "How much is the nbus day ticket from June 2026?"
+      },
+      "options": [
+        {
+          "es": "5,50 £",
+          "en": "£5.50"
+        },
+        {
+          "es": "1 £",
+          "en": "£1"
+        },
+        {
+          "es": "20 £",
+          "en": "£20"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Dónde pides vivienda social en Birmingham?",
+        "en": "Where do you apply for social housing in Birmingham?"
+      },
+      "options": [
+        {
+          "es": "Birmingham Choice",
+          "en": "Birmingham Choice"
+        },
+        {
+          "es": "En la estación de tren",
+          "en": "At the train station"
+        },
+        {
+          "es": "En el hospital",
+          "en": "At the hospital"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Llamada al council",
+      "en": "Calling the council"
+    },
+    "scene": {
+      "es": "Te has quedado sin casa.",
+      "en": "You've become homeless."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Birmingham City Council, ¿en qué le ayudo?",
+          "en": "Birmingham City Council, how can I help?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Esta noche no tengo dónde dormir.",
+          "en": "I am homeless tonight."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Lo siento. Vamos a buscarle un sitio hoy.",
+          "en": "I'm sorry. We'll find you somewhere today."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuál es mi número de referencia?",
+          "en": "What is my reference number?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Se lo envío por mensaje ahora mismo.",
+          "en": "I'll text it to you right now."
+        }
+      }
+    ]
+  }
+}

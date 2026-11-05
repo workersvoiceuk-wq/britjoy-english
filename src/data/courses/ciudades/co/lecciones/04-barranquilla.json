@@ -1,0 +1,195 @@
+{
+  "id": "barranquilla",
+  "order": 4,
+  "icon": "🎭",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Barranquilla",
+    "en": "Barranquilla"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Barranquilla: transporte y alcaldía",
+        "en": "Barranquilla: transport and the mayor's office"
+      },
+      "body": {
+        "es": "• Transporte: Transmetro y buses del área metropolitana. El pasaje subió 400 $ en enero de 2026. Puedes recargar la tarjeta del Transmetro desde la app Nequi.\n• No hay pico y placa permanente para carros particulares; hay restricciones temporales en fechas como el Carnaval.\n• Alcaldía: barranquilla.gov.co. Línea 195, las 24 horas ((605) 401 0205 desde fuera de la ciudad). El Sisbén se pide en línea en barranquilla.gov.co/sisben o en las sedes de atención. Programas sociales: Secretaría de Gestión Social.\n• Durante el Carnaval cambian la atención presencial y el tráfico: planifica tus trámites antes.\n• Sisbén: la encuesta es gratis y sin intermediarios. El Sisbén IV sigue valiendo durante la transición al Registro Universal de Ingresos (RUI), ampliada hasta el 31 de diciembre de 2027.",
+        "en": "• Transport: Transmetro and metropolitan buses. The fare rose by COP 400 in January 2026. You can top up the Transmetro card from the Nequi app.\n• There's no permanent pico y placa for private cars; there are temporary restrictions on dates such as Carnival.\n• Mayor's office: barranquilla.gov.co. Line 195, 24 hours ((605) 401 0205 from outside the city). Request Sisbén online at barranquilla.gov.co/sisben or at service offices. Social programmes: Secretaría de Gestión Social.\n• During Carnival in-person services and traffic change: plan your procedures beforehand.\n• Sisbén: the survey is free and needs no middlemen. Sisbén IV remains valid during the transition to the Universal Income Register (RUI), extended to 31 December 2027."
+      },
+      "say": {
+        "es": "En Barranquilla puedes recargar el Transmetro desde Nequi. Para trámites, línea ciento noventa y cinco, las veinticuatro horas. Y en Carnaval, planifica antes.",
+        "en": "In Barranquilla you can top up the Transmetro from Nequi. For procedures, line 195, 24 hours. And at Carnival, plan ahead."
+      },
+      "link": {
+        "label": {
+          "es": "Alcaldía de Barranquilla: Sisbén",
+          "en": "Barranquilla: Sisbén"
+        },
+        "url": "https://www.barranquilla.gov.co/sisben"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Transmetro: recarga con Nequi",
+      "en": "Transmetro: top up with Nequi"
+    },
+    {
+      "es": "Sin pico y placa fijo",
+      "en": "No permanent pico y placa"
+    },
+    {
+      "es": "Línea 195, 24 horas",
+      "en": "Line 195, 24 hours"
+    },
+    {
+      "es": "Sisbén en línea",
+      "en": "Sisbén online"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Cómo recargo la tarjeta con Nequi?",
+      "en": "How do I top up the card with Nequi?"
+    },
+    {
+      "es": "¿Hay pico y placa hoy?",
+      "en": "Is there pico y placa today?"
+    },
+    {
+      "es": "Quiero pedir el Sisbén en línea.",
+      "en": "I want to request Sisbén online."
+    },
+    {
+      "es": "¿Atienden durante el Carnaval?",
+      "en": "Are you open during Carnival?"
+    },
+    {
+      "es": "¿Dónde queda la estación?",
+      "en": "Where is the station?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Desde qué app puedes recargar el Transmetro?",
+        "en": "Which app can top up the Transmetro?"
+      },
+      "options": [
+        {
+          "es": "Nequi",
+          "en": "Nequi"
+        },
+        {
+          "es": "Cívica",
+          "en": "Cívica"
+        },
+        {
+          "es": "TfL Go",
+          "en": "TfL Go"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Hay pico y placa permanente para carros particulares en Barranquilla?",
+        "en": "Is there permanent pico y placa for private cars in Barranquilla?"
+      },
+      "options": [
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Sí, todos los días",
+          "en": "Yes, every day"
+        },
+        {
+          "es": "Solo los domingos",
+          "en": "Only on Sundays"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Llamada a la Línea 195",
+      "en": "Calling Line 195"
+    },
+    "scene": {
+      "es": "Preguntas por la atención en Carnaval.",
+      "en": "You ask about service during Carnival."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Línea 195, ¿en qué le ayudo?",
+          "en": "Line 195, how can I help?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Atienden durante el Carnaval?",
+          "en": "Are you open during Carnival?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "La atención presencial cierra esos días.",
+          "en": "In-person service closes those days."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Pero puede hacer muchos trámites en línea.",
+          "en": "But you can do many procedures online."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero pedir el Sisbén en línea.",
+          "en": "I want to request Sisbén online."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Entre a barranquilla.gov.co/sisben.",
+          "en": "Go to barranquilla.gov.co/sisben."
+        }
+      }
+    ]
+  }
+}

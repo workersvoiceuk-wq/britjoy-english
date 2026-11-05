@@ -1,0 +1,186 @@
+{
+  "id": "liverpool",
+  "order": 4,
+  "icon": "⚓",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Liverpool",
+    "en": "Liverpool"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Liverpool: transporte, vivienda y servicios",
+        "en": "Liverpool: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: Merseytravel coordina los autobuses (Arriva, Stagecoach…) y los trenes Merseyrail. El billete sencillo de autobús tuvo un máximo de 2 £ en toda la región; si ese límite cambia, sigue valiendo el máximo nacional de 3 £ hasta finales de 2026.\n• Council: Liverpool City Council. La vivienda social se pide en Property Pool Plus (compartida con Knowsley, Sefton, Wirral y Halton). Si te quedas sin casa, rellena el formulario de sinhogarismo en la web del council.\n• Consulta los teléfonos actuales de servicios sociales en liverpool.gov.uk antes de llamar.",
+        "en": "• Transport: Merseytravel coordinates buses (Arriva, Stagecoach…) and Merseyrail trains. Bus singles have been capped at £2 across the region; if that cap changes, the national £3 maximum still applies until the end of 2026.\n• Council: Liverpool City Council. You apply for social housing through Property Pool Plus (shared with Knowsley, Sefton, Wirral and Halton). If you're homeless, fill in the homelessness form on the council's website.\n• Check the current social services numbers on liverpool.gov.uk before you call."
+      },
+      "say": {
+        "es": "En Liverpool la vivienda social se pide en Property Pool Plus. Y el autobús tiene un precio máximo por billete.",
+        "en": "In Liverpool you apply for social housing through Property Pool Plus. And buses have a maximum fare per single."
+      },
+      "link": {
+        "label": {
+          "es": "Liverpool City Council: lista de vivienda",
+          "en": "Liverpool City Council: housing register"
+        },
+        "url": "https://liverpool.gov.uk/housing/housing-associations/join-the-housing-register/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Merseytravel y Merseyrail",
+      "en": "Merseytravel and Merseyrail"
+    },
+    {
+      "es": "Bus: precio máximo",
+      "en": "Bus: fare cap"
+    },
+    {
+      "es": "Vivienda: Property Pool Plus",
+      "en": "Housing: Property Pool Plus"
+    },
+    {
+      "es": "Sinhogarismo: formulario web",
+      "en": "Homelessness: online form"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Qué tren va a Southport?",
+      "en": "Which train goes to Southport?"
+    },
+    {
+      "es": "¿Cuánto cuesta un billete sencillo?",
+      "en": "How much is a single?"
+    },
+    {
+      "es": "Quiero pedir un piso social.",
+      "en": "I want to apply for a council flat."
+    },
+    {
+      "es": "¿Cuánto tiempo es la lista de espera?",
+      "en": "How long is the waiting list?"
+    },
+    {
+      "es": "¿Puedo pujar por este piso?",
+      "en": "Can I bid for this flat?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Dónde pides vivienda social en Liverpool?",
+        "en": "Where do you apply for social housing in Liverpool?"
+      },
+      "options": [
+        {
+          "es": "Property Pool Plus",
+          "en": "Property Pool Plus"
+        },
+        {
+          "es": "Merseyrail",
+          "en": "Merseyrail"
+        },
+        {
+          "es": "En el banco",
+          "en": "At the bank"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué trenes recorren la zona de Liverpool?",
+        "en": "Which trains run around Liverpool?"
+      },
+      "options": [
+        {
+          "es": "Merseyrail",
+          "en": "Merseyrail"
+        },
+        {
+          "es": "Metrolink",
+          "en": "Metrolink"
+        },
+        {
+          "es": "Elizabeth line",
+          "en": "Elizabeth line"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la oficina de vivienda",
+      "en": "At the housing office"
+    },
+    "scene": {
+      "es": "Preguntas por la lista de espera.",
+      "en": "You ask about the waiting list."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero pedir un piso social.",
+          "en": "I want to apply for a council flat."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Regístrese en Property Pool Plus.",
+          "en": "Register on Property Pool Plus."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuánto tiempo es la lista de espera?",
+          "en": "How long is the waiting list?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Depende de su situación y de la zona.",
+          "en": "It depends on your situation and the area."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Puedo pujar por este piso?",
+          "en": "Can I bid for this flat?"
+        }
+      }
+    ]
+  }
+}

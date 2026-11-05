@@ -1,0 +1,186 @@
+{
+  "id": "belfast",
+  "order": 10,
+  "icon": "🚢",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Belfast",
+    "en": "Belfast"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Belfast: transporte, vivienda y servicios",
+        "en": "Belfast: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: Translink Metro (autobuses y Glider). Con contactless tocas al subir y el sistema te cobra como máximo 4 £ al día. Usa la app mLink.\n• Mayores: la 60+ SmartPass (60 a 64 años) y la Senior SmartPass (65+) dan viajes gratis; piden 3 meses viviendo en Irlanda del Norte.\n• En Irlanda del Norte la vivienda y los servicios sociales NO los lleva el council: la vivienda social y el sinhogarismo son del Northern Ireland Housing Executive (NIHE), 03448 920 900. Los servicios sociales son del Belfast Health and Social Care Trust: infancia 028 9050 7000; adultos 028 9504 1744; urgencias fuera de horario 028 9504 9999.\n• No hay council tax: pagas «rates», que cobra Land and Property Services.",
+        "en": "• Transport: Translink Metro (buses and Glider). With contactless you tap on and are charged at most £4 a day. Use the mLink app.\n• Older people: the 60+ SmartPass (ages 60 to 64) and the Senior SmartPass (65+) give free travel; you need 3 months living in Northern Ireland.\n• In Northern Ireland housing and social services are NOT run by the council: social housing and homelessness are handled by the Northern Ireland Housing Executive (NIHE), 03448 920 900. Social services are run by the Belfast Health and Social Care Trust: children 028 9050 7000; adults 028 9504 1744; out-of-hours emergencies 028 9504 9999.\n• There is no council tax: you pay 'rates', collected by Land and Property Services."
+      },
+      "say": {
+        "es": "En Belfast la vivienda social es del Housing Executive, no del council. Los servicios sociales son del Belfast Trust. Y en lugar de council tax pagas rates.",
+        "en": "In Belfast social housing is run by the Housing Executive, not the council. Social services are run by the Belfast Trust. And instead of council tax you pay rates."
+      },
+      "link": {
+        "label": {
+          "es": "NIHE: pedir vivienda",
+          "en": "NIHE: apply for a home"
+        },
+        "url": "https://www.nihe.gov.uk/housing-help/apply-for-a-home"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Contactless: tope 4 £/día",
+      "en": "Contactless: £4 daily cap"
+    },
+    {
+      "es": "Vivienda: Housing Executive",
+      "en": "Housing: Housing Executive"
+    },
+    {
+      "es": "Social: Belfast Trust",
+      "en": "Social care: Belfast Trust"
+    },
+    {
+      "es": "Pagas rates, no council tax",
+      "en": "You pay rates, not council tax"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Dónde pido una casa?",
+      "en": "Where do I apply for a house?"
+    },
+    {
+      "es": "¿Es el council o el Housing Executive?",
+      "en": "Is it the council or the Housing Executive?"
+    },
+    {
+      "es": "Tengo que pagar mis rates.",
+      "en": "I need to pay my rates."
+    },
+    {
+      "es": "¿Para aquí el Glider?",
+      "en": "Does the Glider stop here?"
+    },
+    {
+      "es": "Llevo seis meses viviendo aquí.",
+      "en": "I have lived here for six months."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Quién gestiona la vivienda social en Belfast?",
+        "en": "Who runs social housing in Belfast?"
+      },
+      "options": [
+        {
+          "es": "El Housing Executive (NIHE)",
+          "en": "The Housing Executive (NIHE)"
+        },
+        {
+          "es": "Belfast City Council",
+          "en": "Belfast City Council"
+        },
+        {
+          "es": "Translink",
+          "en": "Translink"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué pagas en Irlanda del Norte en lugar del council tax?",
+        "en": "What do you pay in Northern Ireland instead of council tax?"
+      },
+      "options": [
+        {
+          "es": "Rates",
+          "en": "Rates"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        },
+        {
+          "es": "ULEZ",
+          "en": "ULEZ"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En Belfast City Hall",
+      "en": "At Belfast City Hall"
+    },
+    "scene": {
+      "es": "Buscas dónde pedir vivienda.",
+      "en": "You look for where to apply for housing."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Dónde pido una casa?",
+          "en": "Where do I apply for a house?"
+        }
+      },
+      {
+        "who": {
+          "es": "Recepcionista",
+          "en": "Receptionist"
+        },
+        "text": {
+          "es": "Aquí no: es el Housing Executive.",
+          "en": "Not here: it's the Housing Executive."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Es el council o el Housing Executive?",
+          "en": "Is it the council or the Housing Executive?"
+        }
+      },
+      {
+        "who": {
+          "es": "Recepcionista",
+          "en": "Receptionist"
+        },
+        "text": {
+          "es": "El Housing Executive. Le doy su teléfono.",
+          "en": "The Housing Executive. I'll give you their number."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Muchas gracias.",
+          "en": "Thank you very much."
+        }
+      }
+    ]
+  }
+}

@@ -206,4 +206,6 @@ export const ar: Messages = {
   "review.listen": "استمع",
   "cat.espana": "العيش في إسبانيا",
   "cat.colombia": "العيش في كولومبيا",
+  "local.title": "مدينتك ومجلسك المحلي",
+  "local.cardText": "مجلسك المحلي والمواصلات والسكن والخدمات الاجتماعية، مدينة بمدينة.",
 };

@@ -1,0 +1,186 @@
+{
+  "id": "manchester",
+  "order": 2,
+  "icon": "🐝",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Mánchester",
+    "en": "Manchester"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Mánchester: transporte, vivienda y servicios",
+        "en": "Manchester: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: la Bee Network (autobuses y tranvía Metrolink). El autobús cuesta 2 £ el billete sencillo (válido 1 hora) y 1 £ para niños; las tarifas están congeladas en 2026. En el autobús solo tocas al subir; en el tranvía, al subir y al bajar. Planifica con la app o la web de la Bee Network.\n• Desde marzo de 2026 los pases de autobús de mayores y personas con discapacidad valen también antes de las 9:30.\n• Council: el Gran Mánchester tiene 10 councils (Manchester, Salford, Trafford, Stockport…). En Manchester City Council, la vivienda social se pide en Manchester Move y, si te quedas sin casa, en Housing Solutions. Servicios sociales (adultos y niños): 0161 234 5001, las 24 horas.\n• No hay zona de aire limpio con peaje.",
+        "en": "• Transport: the Bee Network (buses and Metrolink trams). A bus single costs £2 (valid 1 hour) and £1 for children; fares are frozen in 2026. On buses you only tap on; on trams, tap on and off. Plan with the Bee Network app or website.\n• Since March 2026 older and disabled people's bus passes also work before 9:30 am.\n• Council: Greater Manchester has 10 councils (Manchester, Salford, Trafford, Stockport…). At Manchester City Council you apply for social housing through Manchester Move and, if you're homeless, through Housing Solutions. Social services (adults and children): 0161 234 5001, 24 hours.\n• There is no charging Clean Air Zone."
+      },
+      "say": {
+        "es": "En Mánchester el autobús cuesta dos libras. En el tranvía toca la tarjeta al subir y al bajar. Y los servicios sociales atienden las veinticuatro horas en el cero uno seis uno, dos tres cuatro, cinco cero cero uno.",
+        "en": "In Manchester the bus costs two pounds. On the tram, tap your card on and off. And social services answer 24 hours a day on 0161 234 5001."
+      },
+      "link": {
+        "label": {
+          "es": "Bee Network",
+          "en": "Bee Network"
+        },
+        "url": "https://tfgm.com/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Bus: 2 £ el sencillo",
+      "en": "Bus: £2 single"
+    },
+    {
+      "es": "Tranvía: toca al subir y bajar",
+      "en": "Tram: tap on and off"
+    },
+    {
+      "es": "Vivienda: Manchester Move",
+      "en": "Housing: Manchester Move"
+    },
+    {
+      "es": "Social: 0161 234 5001",
+      "en": "Social care: 0161 234 5001"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Un billete sencillo a Piccadilly, por favor.",
+      "en": "A single to Piccadilly, please."
+    },
+    {
+      "es": "¿Toco la tarjeta al bajar del tranvía?",
+      "en": "Do I tap off on the tram?"
+    },
+    {
+      "es": "¿Qué parada es la del hospital?",
+      "en": "Which stop is for the hospital?"
+    },
+    {
+      "es": "Quiero apuntarme a la lista de vivienda.",
+      "en": "I want to join the housing register."
+    },
+    {
+      "es": "¿Es este el autobús de la Bee Network?",
+      "en": "Is this the Bee Network bus?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta un billete sencillo de autobús en Mánchester en 2026?",
+        "en": "How much is a bus single in Manchester in 2026?"
+      },
+      "options": [
+        {
+          "es": "2 £",
+          "en": "£2"
+        },
+        {
+          "es": "5 £",
+          "en": "£5"
+        },
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "En el Metrolink, ¿cuándo tocas la tarjeta?",
+        "en": "On Metrolink, when do you tap your card?"
+      },
+      "options": [
+        {
+          "es": "Al subir y al bajar",
+          "en": "On and off"
+        },
+        {
+          "es": "Solo al subir",
+          "en": "Only on"
+        },
+        {
+          "es": "Nunca",
+          "en": "Never"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la parada del tranvía",
+      "en": "At the tram stop"
+    },
+    "scene": {
+      "es": "Vas al centro en Metrolink.",
+      "en": "You go into town on Metrolink."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Toco la tarjeta al bajar del tranvía?",
+          "en": "Do I tap off on the tram?"
+        }
+      },
+      {
+        "who": {
+          "es": "Señor",
+          "en": "Man"
+        },
+        "text": {
+          "es": "Sí, siempre al subir y al bajar.",
+          "en": "Yes, always on and off."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Qué parada es la del hospital?",
+          "en": "Which stop is for the hospital?"
+        }
+      },
+      {
+        "who": {
+          "es": "Señor",
+          "en": "Man"
+        },
+        "text": {
+          "es": "La tercera. Yo también bajo allí.",
+          "en": "The third one. I'm getting off there too."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¡Gracias!",
+          "en": "Thanks!"
+        }
+      }
+    ]
+  }
+}

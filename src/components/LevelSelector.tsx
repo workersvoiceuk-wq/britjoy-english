@@ -4,6 +4,7 @@ import { SPAIN_LEVELS } from '../data/courses/espana';
 import { COLOMBIA_LEVELS } from '../data/courses/colombia';
 import { CONSULATE_LEVELS } from '../data/courses/consulados';
 import { MIGRATE_UK_LEVELS } from '../data/courses/migrar-uk';
+import { CITY_LEVELS } from '../data/courses/ciudades';
 import { sfx } from '../lib/sound';
 import { isLevelUnlocked, unitCompletionRatio } from '../logic/unlock';
 import { completedByLevel, useProgressStore } from '../store/useProgressStore';
@@ -93,7 +94,7 @@ export function LevelSelector({ onClose }: Props) {
 
         <h3 className="mb-2 mt-6 text-sm font-black uppercase tracking-wider text-royal">{t('levels.topics')}</h3>
         <ul className="space-y-3">
-          {[...SITUATION_LEVELS, ...MIGRATE_UK_LEVELS, ...CONSULATE_LEVELS, ...SPAIN_LEVELS, ...COLOMBIA_LEVELS].map((course) => {
+          {[...SITUATION_LEVELS, ...MIGRATE_UK_LEVELS, ...CONSULATE_LEVELS, ...SPAIN_LEVELS, ...COLOMBIA_LEVELS, ...CITY_LEVELS].map((course) => {
             const lessons = course.units.flatMap((u) => u.lessons);
             const done = lessons.filter((l) => l.id in (completed[course.id] ?? {})).length;
             const active = course.id === currentLevel;

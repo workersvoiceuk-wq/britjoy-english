@@ -227,7 +227,7 @@ export function AcademyScreen() {
   const start = (course: CatalogCourse) => {
     sfx.tap();
     setOpen(null);
-    if (course.open.tab === 'life') return setTab('life');
+    if (course.open.tab !== 'english') return setTab(course.open.tab);
     // English ladder: keep the learner's current level if they are already on it.
     const target = course.id === 'ingles-a1-c2' && /^[ABC][12]$/.test(currentLevel) ? currentLevel : course.open.level;
     setCurrentLevel(target);
@@ -314,6 +314,16 @@ export function AcademyScreen() {
           <span>
             <span className="block text-lg font-black text-navy">{t('academy.aiCardTitle')}</span>
             <span className="block text-sm font-semibold text-ink-soft">{t('academy.aiCardText')}</span>
+          </span>
+        </button>
+        <button
+          onClick={() => setTab('local')}
+          className="press flex items-center gap-4 rounded-3xl border-2 border-b-4 border-navy/10 bg-white p-5 text-left"
+        >
+          <span className="text-4xl" aria-hidden>🏙️</span>
+          <span>
+            <span className="block text-lg font-black text-navy">{t('local.title')}</span>
+            <span className="block text-sm font-semibold text-ink-soft">{t('local.cardText')}</span>
           </span>
         </button>
         <button

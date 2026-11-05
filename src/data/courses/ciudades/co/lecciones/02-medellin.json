@@ -1,0 +1,196 @@
+{
+  "id": "medellin",
+  "order": 2,
+  "icon": "🚡",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Medellín",
+    "en": "Medellín"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Medellín: transporte y alcaldía",
+        "en": "Medellín: transport and the mayor's office"
+      },
+      "body": {
+        "es": "• Transporte: Metro, tranvía, Metrocable y Metroplús, con la tarjeta Cívica. Pasaje 2026 según tu perfil: frecuente 3.820 $; adulto mayor 3.330 $; persona con discapacidad 2.720 $ (regístrate en un Punto Cívica); estudiante 1.600 $. La app Cívica sirve para planear viajes, entrar con QR y recargar.\n• «Cultura Metro»: respeta las normas del metro; las ventas y la mendicidad dentro van contra el reglamento.\n• Pico y placa: lunes a viernes de 5:00 a 20:00 (carros por el último dígito, motos por el primero). Consulta los dígitos de cada semestre en la Secretaría de Movilidad.\n• Alcaldía: medellin.gov.co. Sisbén: Línea Única 604 44 44 144 o en las sedes de atención. Programas sociales: Secretaría de Inclusión Social. Vivienda: ISVIMED (subsidios, «Mejora tu Vivienda»).\n• Sisbén: la encuesta es gratis y sin intermediarios. El Sisbén IV sigue valiendo durante la transición al Registro Universal de Ingresos (RUI), ampliada hasta el 31 de diciembre de 2027.",
+        "en": "• Transport: Metro, tram, Metrocable and Metroplús, with the Cívica card. 2026 fare by profile: frequent COP 3,820; older adult COP 3,330; person with a disability COP 2,720 (register at a Punto Cívica); student COP 1,600. The Cívica app plans trips, lets you enter with a QR code and tops up.\n• 'Cultura Metro': respect the metro's rules; selling and begging inside go against the regulations.\n• Pico y placa: Monday to Friday 5:00 to 20:00 (cars by last digit, motorbikes by first). Check each half-year's digits with the Secretaría de Movilidad.\n• Mayor's office: medellin.gov.co. Sisbén: Línea Única 604 44 44 144 or at service offices. Social programmes: Secretaría de Inclusión Social. Housing: ISVIMED (subsidies, 'Mejora tu Vivienda').\n• Sisbén: the survey is free and needs no middlemen. Sisbén IV remains valid during the transition to the Universal Income Register (RUI), extended to 31 December 2027."
+      },
+      "say": {
+        "es": "En Medellín el pasaje depende de tu perfil en la tarjeta Cívica: estudiantes, adultos mayores y personas con discapacidad pagan menos. Y respeta la cultura metro.",
+        "en": "In Medellín the fare depends on your Cívica profile: students, older adults and people with disabilities pay less. And respect 'Cultura Metro'."
+      },
+      "link": {
+        "label": {
+          "es": "Metro de Medellín",
+          "en": "Medellín Metro"
+        },
+        "url": "https://www.metrodemedellin.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Tarjeta Cívica por perfil",
+      "en": "Cívica card by profile"
+    },
+    {
+      "es": "Estudiante: 1.600 $",
+      "en": "Student: COP 1,600"
+    },
+    {
+      "es": "Cultura Metro",
+      "en": "Metro culture"
+    },
+    {
+      "es": "Vivienda: ISVIMED",
+      "en": "Housing: ISVIMED"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero personalizar mi Cívica.",
+      "en": "I want to personalise my Cívica."
+    },
+    {
+      "es": "Soy estudiante.",
+      "en": "I'm a student."
+    },
+    {
+      "es": "¿Dónde queda el Punto Cívica?",
+      "en": "Where is the Cívica point?"
+    },
+    {
+      "es": "¿Qué línea va a San Antonio?",
+      "en": "Which line goes to San Antonio?"
+    },
+    {
+      "es": "¿Puedo recargar con el celular?",
+      "en": "Can I top up with my phone?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto paga un estudiante en el Metro de Medellín en 2026?",
+        "en": "How much does a student pay on the Medellín Metro in 2026?"
+      },
+      "options": [
+        {
+          "es": "1.600 $",
+          "en": "COP 1,600"
+        },
+        {
+          "es": "3.820 $",
+          "en": "COP 3,820"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Quién gestiona la vivienda social en Medellín?",
+        "en": "Who handles social housing in Medellín?"
+      },
+      "options": [
+        {
+          "es": "ISVIMED",
+          "en": "ISVIMED"
+        },
+        {
+          "es": "El Metro",
+          "en": "The Metro"
+        },
+        {
+          "es": "La DIAN",
+          "en": "The DIAN"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el Punto Cívica",
+      "en": "At the Cívica point"
+    },
+    "scene": {
+      "es": "Personalizas tu tarjeta.",
+      "en": "You personalise your card."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero personalizar mi Cívica.",
+          "en": "I want to personalise my Cívica."
+        }
+      },
+      {
+        "who": {
+          "es": "Asesor",
+          "en": "Adviser"
+        },
+        "text": {
+          "es": "¿Con qué perfil?",
+          "en": "Which profile?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Soy estudiante.",
+          "en": "I'm a student."
+        }
+      },
+      {
+        "who": {
+          "es": "Asesor",
+          "en": "Adviser"
+        },
+        "text": {
+          "es": "Traiga el certificado de estudio y su cédula.",
+          "en": "Bring your study certificate and your ID card."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Puedo recargar con el celular?",
+          "en": "Can I top up with my phone?"
+        }
+      },
+      {
+        "who": {
+          "es": "Asesor",
+          "en": "Adviser"
+        },
+        "text": {
+          "es": "Sí, con la app Cívica.",
+          "en": "Yes, with the Cívica app."
+        }
+      }
+    ]
+  }
+}

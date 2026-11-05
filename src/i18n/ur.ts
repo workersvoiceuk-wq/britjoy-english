@@ -206,4 +206,6 @@ export const ur: Messages = {
   "review.listen": "سنیں",
   "cat.espana": "اسپین میں رہنا",
   "cat.colombia": "کولمبیا میں رہنا",
+  "local.title": "آپ کا شہر اور کونسل",
+  "local.cardText": "آپ کی کونسل، ٹرانسپورٹ، رہائش اور سماجی خدمات، ہر شہر کے لیے۔",
 };

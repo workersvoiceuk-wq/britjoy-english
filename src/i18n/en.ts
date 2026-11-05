@@ -206,4 +206,6 @@ export const en: Messages = {
   "review.listen": "Listen",
   "cat.espana": "Living in Spain",
   "cat.colombia": "Living in Colombia",
+  "local.title": "Your city and council",
+  "local.cardText": "Your council, transport, housing and social services, city by city.",
 };

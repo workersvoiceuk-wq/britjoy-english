@@ -192,3 +192,19 @@ test('study plan and smart review (Busuu-style tools)', async ({ page }) => {
   expect(saved.state.plan.goal).toBe('work');
   expect(Object.keys(saved.state.review).length).toBe(1);
 });
+
+test('Tu ciudad: council finder (GOV.UK fallback without backend), countries and city guides', async ({ page }) => {
+  await start(page);
+  await page.getByText('Empezar desde cero (A1)').click();
+  await page.getByRole('button', { name: 'Más', exact: true }).click();
+  await page.getByRole('button', { name: /Tu ciudad y tu council/ }).click();
+  await expect(page.getByRole('heading', { name: 'Tu council', exact: true })).toBeVisible();
+  // Test builds have no backend: the app points to GOV.UK's own council finder.
+  await expect(page.getByRole('link', { name: /Busca tu council en GOV\.UK/ })).toHaveAttribute('href', 'https://www.gov.uk/find-local-council');
+  await expect(page.getByRole('button', { name: /Londres/ })).toBeVisible();
+  await page.getByRole('tab', { name: /Colombia/ }).click();
+  await expect(page.getByRole('heading', { name: 'Tu alcaldía en Colombia', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: /Bogotá/ }).click();
+  await expect(page.getByText(/Bogotá/).first()).toBeVisible();
+  await expect(page.getByRole('button', { name: /Bogotá \(disponible\)/ })).toBeVisible();
+});

@@ -1,0 +1,186 @@
+{
+  "id": "valencia",
+  "order": 3,
+  "icon": "🍊",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "València",
+    "en": "Valencia"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "València: transporte y ayuntamiento",
+        "en": "Valencia: transport and the town hall"
+      },
+      "body": {
+        "es": "• Transporte: EMT València (autobús), Metrovalencia (metro y tranvía) y Cercanías, con las tarjetas SUMA, Mòbilis y EMT. En 2026: SUMA Mensual Jove (15 a 30 años, con Carnet Jove) 14,90 € para metro, tranvía, EMT y Cercanías; EMT Jove 12,50 € al mes; menores de 14 años, gratis.\n• Ojo: València no tiene Zona de Bajas Emisiones en vigor y por eso no recibe la ayuda estatal al transporte urbano. Comprueba los precios antes de comprar.\n• Ayuntamiento: valencia.es. Oficina del Padrón en la plaza del Ayuntamiento 1 (entrada por la calle Periodista Azzati), de lunes a viernes de 8:30 a 14:00: el alta y el cambio de domicilio se hacen sin cita. Teléfono 010 (963 100 010). Vivienda pública asequible: AUMSA.",
+        "en": "• Transport: EMT València (buses), Metrovalencia (metro and tram) and Cercanías, with SUMA, Mòbilis and EMT cards. In 2026: SUMA Mensual Jove (ages 15 to 30, with Carnet Jove) €14.90 for metro, tram, EMT and Cercanías; EMT Jove €12.50 a month; under-14s free.\n• Note: València has no Low Emission Zone in force, so it doesn't receive state urban transport aid. Check prices before you buy.\n• Town hall: valencia.es. Padrón Office at Plaza del Ayuntamiento 1 (entrance on Calle Periodista Azzati), Monday to Friday 8:30 to 14:00: registration and change of address need no appointment. Phone 010 (963 100 010). Affordable public housing: AUMSA."
+      },
+      "say": {
+        "es": "En València los jóvenes de quince a treinta años tienen un abono de catorce euros con noventa. Y en la Oficina del Padrón te empadronas sin cita, por las mañanas.",
+        "en": "In València young people aged fifteen to thirty have a pass for €14.90. And at the Padrón Office you can register without an appointment, in the mornings."
+      },
+      "link": {
+        "label": {
+          "es": "Ayuntamiento de València: Oficina del Padrón",
+          "en": "València City Council: Padrón Office"
+        },
+        "url": "https://www.valencia.es/cas/oficina-del-padron-municipal"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "SUMA Jove: 14,90 €",
+      "en": "SUMA Jove: €14.90"
+    },
+    {
+      "es": "Menores de 14: gratis",
+      "en": "Under-14s: free"
+    },
+    {
+      "es": "Padrón: sin cita para el alta",
+      "en": "Padrón: no appointment to register"
+    },
+    {
+      "es": "Vivienda: AUMSA",
+      "en": "Housing: AUMSA"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Vengo a empadronarme.",
+      "en": "I've come to register on the padrón."
+    },
+    {
+      "es": "¿Necesito cita?",
+      "en": "Do I need an appointment?"
+    },
+    {
+      "es": "Tengo el Carnet Jove.",
+      "en": "I have the Carnet Jove."
+    },
+    {
+      "es": "¿Este tranvía va a la playa?",
+      "en": "Does this tram go to the beach?"
+    },
+    {
+      "es": "¿A qué hora cierran?",
+      "en": "What time do you close?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Necesitas cita para darte de alta en el padrón en la oficina central de València?",
+        "en": "Do you need an appointment to register at València's central padrón office?"
+      },
+      "options": [
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Sí, siempre",
+          "en": "Yes, always"
+        },
+        {
+          "es": "Solo en agosto",
+          "en": "Only in August"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánto cuesta el SUMA Mensual Jove?",
+        "en": "How much is the SUMA Mensual Jove?"
+      },
+      "options": [
+        {
+          "es": "14,90 €",
+          "en": "€14.90"
+        },
+        {
+          "es": "60 €",
+          "en": "€60"
+        },
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la Oficina del Padrón",
+      "en": "At the Padrón Office"
+    },
+    "scene": {
+      "es": "Llegas a las once de la mañana.",
+      "en": "You arrive at eleven in the morning."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Vengo a empadronarme.",
+          "en": "I've come to register on the padrón."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Necesito cita?",
+          "en": "Do I need an appointment?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Para el alta, no. Coja número.",
+          "en": "Not to register. Take a number."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿A qué hora cierran?",
+          "en": "What time do you close?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "A las dos de la tarde.",
+          "en": "At two in the afternoon."
+        }
+      }
+    ]
+  }
+}

@@ -213,6 +213,8 @@ export const es = {
   "review.listen": "Escuchar",
   "cat.espana": "Vivir en España",
   "cat.colombia": "Vivir en Colombia",
+  "local.title": "Tu ciudad y tu council",
+  "local.cardText": "Tu council o ayuntamiento, transporte, vivienda y servicios sociales, ciudad por ciudad.",
 } as const;
 
 export type MessageKey = keyof typeof es;

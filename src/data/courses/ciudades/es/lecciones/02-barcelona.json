@@ -1,0 +1,196 @@
+{
+  "id": "barcelona",
+  "order": 2,
+  "icon": "🏖️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Barcelona",
+    "en": "Barcelona"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Barcelona: transporte y ayuntamiento",
+        "en": "Barcelona: transport and the town hall"
+      },
+      "body": {
+        "es": "• Transporte: TMB (metro y bus), Rodalies, FGC y TRAM, con la tarjeta T-mobilitat. En 2026 (zona 1): T-usual 22,80 € al mes; T-casual 13 € (10 viajes); T-jove 45,50 € por 90 días para menores de 30. Los niños de 4 a 16 años viajan gratis con la T-16.\n• En toda España, en 2026: el Abono Único estatal (60 € al mes, 30 € para menores de 26) vale para Cercanías, Media Distancia y autobuses estatales. Los descuentos al transporte están garantizados hasta el 31 de diciembre de 2026.\n• Ayuntamiento: ajuntament.barcelona.cat. Padrón con cita en una Oficina de Atención Ciudadana (ajuntament.barcelona.cat/cita o el 010). Servicios sociales: el Centre de Serveis Socials de tu barrio, con cita. Vivienda protegida: inscríbete en el Registre de sol·licitants y consulta las Oficines d'Habitatge.\n• Coche: si tu matrícula es extranjera, inscríbela en el registro de la ZBE del AMB antes de entrar (puede tardar hasta 15 días; multa desde 200 €).",
+        "en": "• Transport: TMB (metro and buses), Rodalies, FGC and TRAM, with the T-mobilitat card. In 2026 (zone 1): T-usual €22.80 a month; T-casual €13 (10 trips); T-jove €45.50 for 90 days for under-30s. Children aged 4 to 16 travel free with the T-16.\n• Across Spain in 2026: the state Abono Único (€60 a month, €30 for under-26s) covers Cercanías, Media Distancia and state coaches. Transport discounts are guaranteed until 31 December 2026.\n• Town hall: ajuntament.barcelona.cat. Padrón with an appointment at a Citizen Service Office (ajuntament.barcelona.cat/cita or 010). Social services: your neighbourhood Centre de Serveis Socials, by appointment. Protected housing: join the applicants' register and visit the Oficines d'Habitatge.\n• Driving: if your plates are foreign, register them in the AMB low emission zone register before entering (it can take up to 15 days; fines from €200)."
+      },
+      "say": {
+        "es": "En Barcelona la T-usual cuesta veintidós euros con ochenta al mes y los niños de cuatro a dieciséis años viajan gratis. El padrón se pide con cita. Y si tu coche tiene matrícula extranjera, regístralo antes de entrar en la zona de bajas emisiones.",
+        "en": "In Barcelona the T-usual costs €22.80 a month and children aged four to sixteen travel free. Padrón needs an appointment. And if your car has foreign plates, register it before entering the low emission zone."
+      },
+      "link": {
+        "label": {
+          "es": "ATM: tarifas 2026",
+          "en": "ATM: 2026 fares"
+        },
+        "url": "https://www.atm.cat/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Tarjeta T-mobilitat",
+      "en": "T-mobilitat card"
+    },
+    {
+      "es": "T-usual: 22,80 €/mes",
+      "en": "T-usual: €22.80/month"
+    },
+    {
+      "es": "Niños 4-16: T-16 gratis",
+      "en": "Kids 4-16: free T-16"
+    },
+    {
+      "es": "ZBE: registra tu matrícula",
+      "en": "LEZ: register your plates"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Cuánto cuesta la T-usual?",
+      "en": "How much is the T-usual?"
+    },
+    {
+      "es": "Quiero la tarjeta T-16 para mi hija.",
+      "en": "I want the T-16 card for my daughter."
+    },
+    {
+      "es": "¿Dónde está la oficina de vivienda?",
+      "en": "Where is the housing office?"
+    },
+    {
+      "es": "Mi coche tiene matrícula extranjera.",
+      "en": "My car has foreign plates."
+    },
+    {
+      "es": "¿Tengo que pedir cita?",
+      "en": "Do I need an appointment?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Quién viaja gratis con la T-16?",
+        "en": "Who travels free with the T-16?"
+      },
+      "options": [
+        {
+          "es": "Niños de 4 a 16 años",
+          "en": "Children aged 4 to 16"
+        },
+        {
+          "es": "Mayores de 65",
+          "en": "Over-65s"
+        },
+        {
+          "es": "Turistas",
+          "en": "Tourists"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Tu coche tiene matrícula extranjera. ¿Qué haces antes de entrar en la ZBE?",
+        "en": "Your car has foreign plates. What do you do before entering the LEZ?"
+      },
+      "options": [
+        {
+          "es": "Inscribirlo en el registro del AMB",
+          "en": "Register it with the AMB"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        },
+        {
+          "es": "Pagar en el peaje",
+          "en": "Pay at a toll"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la oficina de atención ciudadana",
+      "en": "At the citizen service office"
+    },
+    "scene": {
+      "es": "Pides la tarjeta de tu hija.",
+      "en": "You ask for your daughter's card."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero la tarjeta T-16 para mi hija.",
+          "en": "I want the T-16 card for my daughter."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Cuántos años tiene?",
+          "en": "How old is she?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Tiene nueve años.",
+          "en": "She is nine."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Puede pedirla en línea. La primera es gratis.",
+          "en": "You can apply online. The first one is free."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Tengo que pedir cita?",
+          "en": "Do I need an appointment?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "No, en línea no hace falta.",
+          "en": "No, not online."
+        }
+      }
+    ]
+  }
+}

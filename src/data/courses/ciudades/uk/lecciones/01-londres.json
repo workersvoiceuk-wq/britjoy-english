@@ -1,0 +1,207 @@
+{
+  "id": "londres",
+  "order": 1,
+  "icon": "🎡",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Londres",
+    "en": "London"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Londres: transporte, vivienda y servicios",
+        "en": "London: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: TfL (metro, autobuses, DLR, Overground, Elizabeth line y tranvía). Paga con tarjeta contactless, Oyster o el móvil: el sistema te cobra como máximo un tope diario. El autobús cuesta 1,85 £ desde el 1 de noviembre de 2026 e incluye el «Hopper»: viajes ilimitados en bus y tranvía durante 1 hora. Planifica con la app TfL Go.\n• Descuentos: con 60 años o más, la 60+ London Oyster photocard (gratis en Londres). Los niños de 11 a 15 viajan gratis en bus con la Zip Oyster.\n• Council: Londres tiene 32 boroughs más la City of London. La vivienda social, el sinhogarismo, los servicios sociales y el council tax van por TU borough: búscalo con tu código postal en «Tu council».\n• Coche: la ULEZ cobra 12,50 £ al día a los coches que contaminan, en todo Londres; el peaje del centro (Congestion Charge) es de 18 £ al día.",
+        "en": "• Transport: TfL (Tube, buses, DLR, Overground, Elizabeth line and trams). Pay by contactless card, Oyster or phone: you are charged at most a daily cap. The bus costs £1.85 from 1 November 2026 and includes the 'Hopper': unlimited bus and tram trips within 1 hour. Plan with the TfL Go app.\n• Discounts: at 60 or over, the 60+ London Oyster photocard (free travel in London). Children aged 11 to 15 travel free on buses with a Zip Oyster.\n• Council: London has 32 boroughs plus the City of London. Social housing, homelessness, social services and council tax all go through YOUR borough: find it with your postcode in 'Your council'.\n• Driving: ULEZ charges £12.50 a day for polluting cars across London; the central Congestion Charge is £18 a day."
+      },
+      "say": {
+        "es": "En Londres pagas con contactless u Oyster, y el autobús incluye una hora de transbordos. La vivienda y los servicios sociales los lleva tu borough. Y cuidado con la ULEZ si tienes coche.",
+        "en": "In London you pay by contactless or Oyster, and the bus includes an hour of transfers. Housing and social services are run by your borough. And watch out for ULEZ if you drive."
+      },
+      "link": {
+        "label": {
+          "es": "TfL: tarifas y billetes",
+          "en": "TfL: fares and tickets"
+        },
+        "url": "https://tfl.gov.uk/fares"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Paga con contactless u Oyster",
+      "en": "Pay by contactless or Oyster"
+    },
+    {
+      "es": "Bus: 1,85 £ con Hopper",
+      "en": "Bus: £1.85 with Hopper"
+    },
+    {
+      "es": "Vivienda: tu borough",
+      "en": "Housing: your borough"
+    },
+    {
+      "es": "ULEZ: 12,50 £ al día",
+      "en": "ULEZ: £12.50 a day"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Este autobús va a Camden?",
+      "en": "Does this bus go to Camden?"
+    },
+    {
+      "es": "Pago con tarjeta.",
+      "en": "I'll pay by card."
+    },
+    {
+      "es": "¿Qué andén es para la Central line?",
+      "en": "Which platform for the Central line?"
+    },
+    {
+      "es": "¿Hay ascensor en esta estación?",
+      "en": "Is there a lift at this station?"
+    },
+    {
+      "es": "Tengo que recargar mi Oyster.",
+      "en": "I need to top up my Oyster."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué es el «Hopper» de Londres?",
+        "en": "What is London's Hopper?"
+      },
+      "options": [
+        {
+          "es": "Viajes ilimitados en bus y tranvía durante 1 hora",
+          "en": "Unlimited bus and tram trips within 1 hour"
+        },
+        {
+          "es": "Un tren nocturno",
+          "en": "A night train"
+        },
+        {
+          "es": "Una multa",
+          "en": "A fine"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Quién gestiona la vivienda social en Londres?",
+        "en": "Who runs social housing in London?"
+      },
+      "options": [
+        {
+          "es": "Tu borough (council)",
+          "en": "Your borough (council)"
+        },
+        {
+          "es": "TfL",
+          "en": "TfL"
+        },
+        {
+          "es": "El alcalde de Londres",
+          "en": "The Mayor of London"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánto cobra la ULEZ al día a un coche que contamina?",
+        "en": "How much does ULEZ charge a polluting car per day?"
+      },
+      "options": [
+        {
+          "es": "12,50 £",
+          "en": "£12.50"
+        },
+        {
+          "es": "1,85 £",
+          "en": "£1.85"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el autobús",
+      "en": "On the bus"
+    },
+    "scene": {
+      "es": "Subes a un autobús rojo.",
+      "en": "You get on a red bus."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Este autobús va a Camden?",
+          "en": "Does this bus go to Camden?"
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Sí, toque su tarjeta aquí.",
+          "en": "Yes, touch your card here."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Pago con tarjeta.",
+          "en": "I'll pay by card."
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Si cambia de bus en una hora, no paga otra vez.",
+          "en": "If you change buses within an hour, you don't pay again."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¡Genial, gracias!",
+          "en": "Great, thanks!"
+        }
+      }
+    ]
+  }
+}

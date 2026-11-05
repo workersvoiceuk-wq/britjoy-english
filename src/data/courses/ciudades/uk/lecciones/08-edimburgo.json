@@ -1,0 +1,186 @@
+{
+  "id": "edimburgo",
+  "order": 8,
+  "icon": "🏰",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Edimburgo",
+    "en": "Edinburgh"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Edimburgo: transporte, vivienda y servicios",
+        "en": "Edinburgh: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: Lothian Buses y el tranvía (Edinburgh Trams), ambos del council. Desde el 22 de febrero de 2026, el sencillo de adulto cuesta 2,40 £ y el de niño 1,20 £; el billete de día para bus y tranvía (sin el aeropuerto) cuesta 6 £.\n• Como en toda Escocia, el bus es gratis para menores de 22 y mayores de 60 con la National Entitlement Card.\n• Council: City of Edinburgh Council. Vivienda: regístrate en EdIndex (antes haz el «Housing Options Tool»); las casas se anuncian cada semana en Key to Choice y puedes pujar por 3 a la semana. Servicios sociales: Social Care Direct, 0131 200 2324 (fuera de horario 0800 731 6969). Protección de la infancia: 0131 200 2327.\n• Coche: zona de bajas emisiones desde junio de 2024 (multa inicial de 60 £).",
+        "en": "• Transport: Lothian Buses and Edinburgh Trams, both owned by the council. From 22 February 2026, an adult single costs £2.40 and a child £1.20; a bus and tram day ticket (excluding the airport) is £6.\n• As in all of Scotland, buses are free for under-22s and over-60s with the National Entitlement Card.\n• Council: City of Edinburgh Council. Housing: register on EdIndex (do the Housing Options Tool first); homes are advertised weekly on Key to Choice and you can bid for 3 a week. Social care: Social Care Direct, 0131 200 2324 (out of hours 0800 731 6969). Child protection: 0131 200 2327.\n• Driving: Low Emission Zone since June 2024 (£60 initial penalty)."
+      },
+      "say": {
+        "es": "En Edimburgo el sencillo cuesta dos libras cuarenta. Para vivienda te registras en EdIndex y pujas cada semana en Key to Choice. Y los servicios sociales están en Social Care Direct.",
+        "en": "In Edinburgh a single costs £2.40. For housing you register on EdIndex and bid each week on Key to Choice. And social care is through Social Care Direct."
+      },
+      "link": {
+        "label": {
+          "es": "Edimburgo: encontrar vivienda",
+          "en": "Edinburgh: find a home"
+        },
+        "url": "https://www.edinburgh.gov.uk/council-housing-association-homes/find-home"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Sencillo: 2,40 £",
+      "en": "Single: £2.40"
+    },
+    {
+      "es": "Día bus+tranvía: 6 £",
+      "en": "Bus+tram day: £6"
+    },
+    {
+      "es": "Vivienda: EdIndex",
+      "en": "Housing: EdIndex"
+    },
+    {
+      "es": "Pujas: Key to Choice",
+      "en": "Bids: Key to Choice"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Un billete de día para el tranvía, por favor.",
+      "en": "A day ticket for the tram, please."
+    },
+    {
+      "es": "¿Va al aeropuerto?",
+      "en": "Does it go to the airport?"
+    },
+    {
+      "es": "¿Cómo pujo por un piso?",
+      "en": "How do I bid for a flat?"
+    },
+    {
+      "es": "Me registré en EdIndex.",
+      "en": "I registered on EdIndex."
+    },
+    {
+      "es": "Necesito ayuda con mi hijo.",
+      "en": "I need help with my child."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta un sencillo de adulto en Lothian Buses en 2026?",
+        "en": "How much is an adult single on Lothian Buses in 2026?"
+      },
+      "options": [
+        {
+          "es": "2,40 £",
+          "en": "£2.40"
+        },
+        {
+          "es": "1 £",
+          "en": "£1"
+        },
+        {
+          "es": "5 £",
+          "en": "£5"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Dónde se anuncian las viviendas sociales en Edimburgo?",
+        "en": "Where are social homes advertised in Edinburgh?"
+      },
+      "options": [
+        {
+          "es": "Key to Choice",
+          "en": "Key to Choice"
+        },
+        {
+          "es": "En el tranvía",
+          "en": "On the tram"
+        },
+        {
+          "es": "En el periódico",
+          "en": "In the newspaper"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la oficina del council",
+      "en": "At the council office"
+    },
+    "scene": {
+      "es": "Preguntas cómo conseguir piso.",
+      "en": "You ask how to get a flat."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Me registré en EdIndex.",
+          "en": "I registered on EdIndex."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cómo pujo por un piso?",
+          "en": "How do I bid for a flat?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Mire Key to Choice cada semana.",
+          "en": "Check Key to Choice every week."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Puede pujar por tres viviendas a la semana.",
+          "en": "You can bid for three homes a week."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Muy bien, gracias.",
+          "en": "Great, thank you."
+        }
+      }
+    ]
+  }
+}

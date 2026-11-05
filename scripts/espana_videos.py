@@ -17,7 +17,7 @@ ap.add_argument('--font', required=True)
 ap.add_argument('--font-regular', required=True)
 ap.add_argument('--only', default='')
 ap.add_argument('--langs', default='es,en', help='explanation languages to render, e.g. es')
-ap.add_argument('--country', default='espana', choices=['espana', 'colombia', 'consulados', 'migrar-uk'])
+ap.add_argument('--country', default='espana', choices=['espana', 'colombia', 'consulados', 'migrar-uk', 'ciudades/uk', 'ciudades/es', 'ciudades/co'])
 args = ap.parse_args()
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,7 +43,7 @@ def frame(src, lang, t, total, steps, n):
     d = ImageDraw.Draw(im)
     d.rectangle([0, 0, W, 54], fill=NAVY)
     d.rectangle([0, 54, W, 58], fill=RED)
-    label = {'espana': ('Vivir en España', 'Living in Spain'), 'colombia': ('Vivir en Colombia', 'Living in Colombia'), 'consulados': ('Tu consulado en Londres', 'Your consulate in London'), 'migrar-uk': ('Inmigración y empresa en UK', 'Immigration and business in the UK')}[args.country][0 if lang == 'es' else 1]
+    label = {'espana': ('Vivir en España', 'Living in Spain'), 'colombia': ('Vivir en Colombia', 'Living in Colombia'), 'consulados': ('Tu consulado en Londres', 'Your consulate in London'), 'migrar-uk': ('Inmigración y empresa en UK', 'Immigration and business in the UK'), 'ciudades/uk': ('Tu ciudad · Reino Unido', 'Your city · UK'), 'ciudades/es': ('Tu ciudad · España', 'Your city · Spain'), 'ciudades/co': ('Tu ciudad · Colombia', 'Your city · Colombia')}[args.country][0 if lang == 'es' else 1]
     d.text((18, 14), f"{src['icon']}  {label} · {n}", font=B(22), fill=WHITE)
     # Britjoy: gentle bob, never redrawn
     size = 190
@@ -75,14 +75,15 @@ def frame(src, lang, t, total, steps, n):
         d.text((24, 160), 'Tu voz cuenta', font=B(30), fill=RED)
     return im
 
-os.makedirs(os.path.join(ROOT, f'public/videos/{args.country}'), exist_ok=True)
+VIDEO_DIR = args.country.replace('/', '-')  # e.g. ciudades/uk -> public/videos/ciudades-uk
+os.makedirs(os.path.join(ROOT, f'public/videos/{VIDEO_DIR}'), exist_ok=True)
 srcs = sorted((json.load(open(f)) for f in glob.glob(os.path.join(ROOT, f'src/data/courses/{args.country}/lecciones/*.json'))), key=lambda s: s['order'])
 for n, src in enumerate(srcs, 1):
     if args.only and src['id'] != args.only: continue
     for lang in args.langs.split(','):
         steps = src['steps']
         total = 2.6 + 2.4 + 2.6 * len(steps)
-        out = os.path.join(ROOT, f"public/videos/{args.country}/{src['id']}-{lang}")
+        out = os.path.join(ROOT, f"public/videos/{VIDEO_DIR}/{src['id']}-{lang}")
         with tempfile.TemporaryDirectory() as tmp:
             for i in range(int(total * FPS)):
                 frame(src, lang, i / FPS, total, steps, f'{n}/{len(srcs)}').save(f'{tmp}/f{i:04d}.png')

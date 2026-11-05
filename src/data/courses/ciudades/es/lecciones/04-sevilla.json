@@ -1,0 +1,196 @@
+{
+  "id": "sevilla",
+  "order": 4,
+  "icon": "💃",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Sevilla",
+    "en": "Seville"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Sevilla: transporte y ayuntamiento",
+        "en": "Seville: transport and the town hall"
+      },
+      "body": {
+        "es": "• Transporte: TUSSAM (autobuses urbanos y MetroCentro), Metro de Sevilla y el Consorcio de Transportes del área. El billete sencillo de TUSSAM cuesta 1,40 €. La Junta añade un 20 % a la ayuda estatal en 2026 en metro y consorcio.\n• En toda España, en 2026: el Abono Único estatal (60 € al mes, 30 € para menores de 26) vale para Cercanías, Media Distancia y autobuses estatales. Los descuentos al transporte están garantizados hasta el 31 de diciembre de 2026.\n• Ayuntamiento: sevilla.org. Para empadronarte desde otro municipio o país, o cambiar de domicilio, pide cita en el 010 (955 010 010). Vivienda protegida: EMVISESA; antes de firmar debes estar inscrito en el Registro Municipal de Demandantes de Vivienda Protegida. Impuestos: Agencia Tributaria de Sevilla.",
+        "en": "• Transport: TUSSAM (city buses and MetroCentro), Metro de Sevilla and the area Transport Consortium. A TUSSAM single costs €1.40. The regional government adds 20% to state aid in 2026 on the metro and consortium.\n• Across Spain in 2026: the state Abono Único (€60 a month, €30 for under-26s) covers Cercanías, Media Distancia and state coaches. Transport discounts are guaranteed until 31 December 2026.\n• Town hall: sevilla.org. To register on the padrón from another town or country, or change address, book on 010 (955 010 010). Protected housing: EMVISESA; before signing you must be on the Municipal Register of Protected Housing Applicants. Taxes: Agencia Tributaria de Sevilla."
+      },
+      "say": {
+        "es": "En Sevilla el autobús cuesta un euro con cuarenta. Para empadronarte pide cita en el cero diez. Y para vivienda protegida, apúntate en el registro municipal de demandantes.",
+        "en": "In Seville the bus costs €1.40. To register on the padrón, book on 010. And for protected housing, join the municipal applicants' register."
+      },
+      "link": {
+        "label": {
+          "es": "Ayuntamiento de Sevilla: trámites del padrón",
+          "en": "Seville City Council: padrón procedures"
+        },
+        "url": "https://www.sevilla.org/servicios/servicio-de-estadistica/archivos/tramites"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "TUSSAM: 1,40 €",
+      "en": "TUSSAM: €1.40"
+    },
+    {
+      "es": "Padrón: cita en el 010",
+      "en": "Padrón: book on 010"
+    },
+    {
+      "es": "Vivienda: EMVISESA",
+      "en": "Housing: EMVISESA"
+    },
+    {
+      "es": "Apúntate al registro",
+      "en": "Join the register"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Un billete, por favor.",
+      "en": "A ticket, please."
+    },
+    {
+      "es": "¿Este autobús va a Triana?",
+      "en": "Does this bus go to Triana?"
+    },
+    {
+      "es": "Quiero pedir cita para el padrón.",
+      "en": "I want a padrón appointment."
+    },
+    {
+      "es": "Busco una vivienda de alquiler asequible.",
+      "en": "I'm looking for an affordable rented home."
+    },
+    {
+      "es": "¿Cómo me apunto al registro?",
+      "en": "How do I join the register?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué necesitas antes de firmar una vivienda protegida en Sevilla?",
+        "en": "What do you need before signing for protected housing in Seville?"
+      },
+      "options": [
+        {
+          "es": "Estar en el Registro de Demandantes",
+          "en": "Be on the Applicants' Register"
+        },
+        {
+          "es": "Un coche",
+          "en": "A car"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánto cuesta un billete sencillo de TUSSAM?",
+        "en": "How much is a TUSSAM single?"
+      },
+      "options": [
+        {
+          "es": "1,40 €",
+          "en": "€1.40"
+        },
+        {
+          "es": "5 €",
+          "en": "€5"
+        },
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el autobús",
+      "en": "On the bus"
+    },
+    "scene": {
+      "es": "Vas al centro de Triana.",
+      "en": "You're going to Triana."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Este autobús va a Triana?",
+          "en": "Does this bus go to Triana?"
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Sí, suba.",
+          "en": "Yes, get on."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Un billete, por favor.",
+          "en": "A ticket, please."
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Uno cuarenta.",
+          "en": "One forty."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Me avisa en la parada?",
+          "en": "Will you tell me when we get there?"
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Claro, es la cuarta.",
+          "en": "Sure, it's the fourth stop."
+        }
+      }
+    ]
+  }
+}

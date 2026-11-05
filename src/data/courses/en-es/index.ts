@@ -13,6 +13,7 @@ import { SPAIN_LEVELS } from '../espana';
 import { COLOMBIA_LEVELS } from '../colombia';
 import { CONSULATE_LEVELS } from '../consulados';
 import { MIGRATE_UK_LEVELS } from '../migrar-uk';
+import { CITY_LEVELS } from '../ciudades';
 
 import a1u1 from './a1/unit-1.json';
 import a1u2 from './a1/unit-2.json';
@@ -96,7 +97,7 @@ export const LEVELS: LevelDefinition[] = [
 export const LEVEL_IDS = LEVELS.map((l) => l.id);
 
 /** Every course: English levels, the story courses by situation and "Vivir en UK". */
-export const ALL_LEVELS: LevelDefinition[] = [...LEVELS, ...SITUATION_LEVELS, LIFE_LEVEL, ...SPAIN_LEVELS, ...COLOMBIA_LEVELS, ...MIGRATE_UK_LEVELS, ...CONSULATE_LEVELS];
+export const ALL_LEVELS: LevelDefinition[] = [...LEVELS, ...SITUATION_LEVELS, LIFE_LEVEL, ...SPAIN_LEVELS, ...COLOMBIA_LEVELS, ...MIGRATE_UK_LEVELS, ...CONSULATE_LEVELS, ...CITY_LEVELS];
 
 export function getLevel(id: string): LevelDefinition {
   return ALL_LEVELS.find((l) => l.id === id) ?? LEVELS[0];

@@ -1,0 +1,175 @@
+{
+  "id": "zaragoza",
+  "order": 7,
+  "icon": "🏛️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Zaragoza",
+    "en": "Zaragoza"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Zaragoza: transporte y ayuntamiento",
+        "en": "Zaragoza: transport and the town hall"
+      },
+      "body": {
+        "es": "• Transporte: bus urbano (Avanza) y tranvía. En 2026: billete sencillo 1,70 €; con la Tarjeta Bus o la Tarjeta Ciudadana, 0,55 € el viaje con transbordo gratis durante 1 hora; abono de 30 días 29,05 €. Menores de hasta 14 años, gratis; jóvenes de hasta 29 con Carnet Joven, 50 % de descuento. Novedad 2026: las personas con discapacidad del 33 % o más tienen los mismos descuentos que las familias numerosas.\n• Ayuntamiento: zaragoza.es/sede. Padrón en la Oficina de Relaciones con la Ciudadanía (plaza del Pilar 18) o en las Juntas Municipales y Vecinales: sin cita de 9:30 a 13:30. Teléfono 010 (976 721 100).\n• Coche: Zona de Bajas Emisiones con sanciones para coches sin etiqueta.",
+        "en": "• Transport: city buses (Avanza) and the tram. In 2026: single €1.70; with the Tarjeta Bus or Tarjeta Ciudadana, €0.55 a trip with free transfer within 1 hour; 30-day pass €29.05. Children up to 14 free; young people up to 29 with Carnet Joven, 50% off. New in 2026: people with a disability of 33% or more get the same discounts as large families.\n• Town hall: zaragoza.es/sede. Padrón at the Citizen Relations Office (Plaza del Pilar 18) or at the district boards: no appointment 9:30 to 13:30. Phone 010 (976 721 100).\n• Driving: Low Emission Zone with fines for cars without an environmental label."
+      },
+      "say": {
+        "es": "En Zaragoza, con tarjeta, el viaje cuesta cincuenta y cinco céntimos y el transbordo es gratis durante una hora. Y en las juntas municipales te empadronas sin cita por la mañana.",
+        "en": "In Zaragoza, with a card, a trip costs fifty-five cents and transfers are free within an hour. And at the district boards you can register without an appointment in the morning."
+      },
+      "link": {
+        "label": {
+          "es": "Zaragoza: tarifas de transporte 2026",
+          "en": "Zaragoza: 2026 transport fares"
+        },
+        "url": "https://zaragoza.avanzagrupo.com/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Con tarjeta: 0,55 €",
+      "en": "With a card: €0.55"
+    },
+    {
+      "es": "Transbordo gratis 1 hora",
+      "en": "Free transfer for 1 hour"
+    },
+    {
+      "es": "Carnet Joven: 50 %",
+      "en": "Youth card: 50% off"
+    },
+    {
+      "es": "Padrón sin cita: 9:30-13:30",
+      "en": "Padrón walk-in: 9:30-13:30"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Cuánto cuesta el billete?",
+      "en": "How much is the ticket?"
+    },
+    {
+      "es": "Tengo el Carnet Joven.",
+      "en": "I have the youth card."
+    },
+    {
+      "es": "¿Para aquí el tranvía?",
+      "en": "Does the tram stop here?"
+    },
+    {
+      "es": "Vengo sin cita.",
+      "en": "I don't have an appointment."
+    },
+    {
+      "es": "Quiero empadronarme.",
+      "en": "I want to register on the padrón."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta un viaje con la Tarjeta Bus en Zaragoza?",
+        "en": "How much is a trip with the Tarjeta Bus in Zaragoza?"
+      },
+      "options": [
+        {
+          "es": "0,55 €",
+          "en": "€0.55"
+        },
+        {
+          "es": "1,70 €",
+          "en": "€1.70"
+        },
+        {
+          "es": "5 €",
+          "en": "€5"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué descuento tienen los jóvenes con Carnet Joven?",
+        "en": "What discount do young people with the youth card get?"
+      },
+      "options": [
+        {
+          "es": "50 %",
+          "en": "50%"
+        },
+        {
+          "es": "10 %",
+          "en": "10%"
+        },
+        {
+          "es": "Ninguno",
+          "en": "None"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la junta municipal",
+      "en": "At the district board"
+    },
+    "scene": {
+      "es": "Llegas a las diez de la mañana.",
+      "en": "You arrive at ten in the morning."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero empadronarme. Vengo sin cita.",
+          "en": "I want to register on the padrón. I don't have an appointment."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "No pasa nada. Hasta la una y media atendemos sin cita.",
+          "en": "No problem. We see people without appointments until half past one."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Trae su pasaporte y el contrato de alquiler?",
+          "en": "Do you have your passport and rental contract?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí, aquí los tiene.",
+          "en": "Yes, here they are."
+        }
+      }
+    ]
+  }
+}

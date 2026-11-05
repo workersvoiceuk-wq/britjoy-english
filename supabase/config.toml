@@ -17,3 +17,7 @@ verify_jwt = true
 
 [functions.academy-sync]
 verify_jwt = true
+
+# "Tu council" postcode lookup: public, no account needed (it only reads GOV.UK's open data).
+[functions.council-finder]
+verify_jwt = false

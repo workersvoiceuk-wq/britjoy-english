@@ -1,0 +1,196 @@
+{
+  "id": "leeds",
+  "order": 5,
+  "icon": "🦉",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Leeds",
+    "en": "Leeds"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Leeds: transporte, vivienda y servicios",
+        "en": "Leeds: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: autobuses de West Yorkshire (marca Metro; First, Arriva y otros). La tarjeta es la MCard. Leeds no tiene tranvía. Los autobuses empezarán a ser públicos (franquiciados) desde 2027.\n• Autobús fuera de Londres (Inglaterra): un billete sencillo cuesta como máximo 3 £ hasta finales de 2026; el Gobierno ha anunciado un máximo de 2 £ desde enero de 2027.\n• Council: Leeds City Council. Vivienda social: Leeds Homes (0113 222 4413). Sinhogarismo: Leeds Housing Options (0113 222 4412). Servicios sociales de adultos: 0113 222 4401. Servicios sociales de la infancia: 0113 222 4403.\n• Leeds canceló su zona de aire limpio: no hay peaje.",
+        "en": "• Transport: West Yorkshire buses (Metro brand; First, Arriva and others). The card is MCard. Leeds has no tram. Buses will start to be publicly run (franchised) from 2027.\n• Buses outside London (England): a single costs at most £3 until the end of 2026; the government has announced a £2 maximum from January 2027.\n• Council: Leeds City Council. Social housing: Leeds Homes (0113 222 4413). Homelessness: Leeds Housing Options (0113 222 4412). Adult social care: 0113 222 4401. Children's social work: 0113 222 4403.\n• Leeds cancelled its Clean Air Zone: no charge."
+      },
+      "say": {
+        "es": "En Leeds la vivienda social se pide en Leeds Homes, y si te quedas sin casa llamas a Housing Options. La tarjeta de autobús es la MCard.",
+        "en": "In Leeds you apply for social housing through Leeds Homes, and if you're homeless you call Housing Options. The bus card is MCard."
+      },
+      "link": {
+        "label": {
+          "es": "Leeds City Council",
+          "en": "Leeds City Council"
+        },
+        "url": "https://www.leeds.gov.uk/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Tarjeta MCard",
+      "en": "MCard"
+    },
+    {
+      "es": "Vivienda: Leeds Homes",
+      "en": "Housing: Leeds Homes"
+    },
+    {
+      "es": "Sin casa: Housing Options",
+      "en": "Homeless: Housing Options"
+    },
+    {
+      "es": "Sin peaje de aire limpio",
+      "en": "No Clean Air charge"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Dónde compro una MCard?",
+      "en": "Where can I buy an MCard?"
+    },
+    {
+      "es": "Estoy preocupado por mi madre mayor.",
+      "en": "I'm worried about my elderly mother."
+    },
+    {
+      "es": "Necesita ayuda en casa.",
+      "en": "She needs help at home."
+    },
+    {
+      "es": "¿Puede alguien visitarla?",
+      "en": "Can someone visit her?"
+    },
+    {
+      "es": "Quiero apuntarme para una vivienda.",
+      "en": "I want to register for housing."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cómo se llama la tarjeta de autobús de West Yorkshire?",
+        "en": "What's West Yorkshire's bus card called?"
+      },
+      "options": [
+        {
+          "es": "MCard",
+          "en": "MCard"
+        },
+        {
+          "es": "Oyster",
+          "en": "Oyster"
+        },
+        {
+          "es": "Swift",
+          "en": "Swift"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Hay peaje de aire limpio en Leeds?",
+        "en": "Is there a Clean Air charge in Leeds?"
+      },
+      "options": [
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Sí, 12,50 £",
+          "en": "Yes, £12.50"
+        },
+        {
+          "es": "Solo en domingo",
+          "en": "Only on Sundays"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Llamada a servicios sociales",
+      "en": "Calling adult social care"
+    },
+    "scene": {
+      "es": "Pides ayuda para tu madre.",
+      "en": "You ask for help for your mother."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Servicios sociales de adultos, ¿dígame?",
+          "en": "Adult social care, how can I help?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Estoy preocupado por mi madre mayor.",
+          "en": "I'm worried about my elderly mother."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Necesita ayuda en casa.",
+          "en": "She needs help at home."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Le haremos una valoración de necesidades.",
+          "en": "We'll arrange a needs assessment."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Puede alguien visitarla?",
+          "en": "Can someone visit her?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Sí, esta semana.",
+          "en": "Yes, this week."
+        }
+      }
+    ]
+  }
+}

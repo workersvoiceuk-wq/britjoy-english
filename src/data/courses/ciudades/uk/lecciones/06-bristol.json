@@ -1,0 +1,175 @@
+{
+  "id": "bristol",
+  "order": 6,
+  "icon": "🎈",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Bristol",
+    "en": "Bristol"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Bristol: transporte, vivienda y servicios",
+        "en": "Bristol: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: autobuses de First West of England; información regional en Travelwest. Con contactless tocas al subir y al bajar («Tap On Tap Off») y el sistema te cobra como máximo el billete de día. Desde el 4 de enero de 2026, un sencillo en la zona de Bristol cuesta 2,60 £.\n• Council: Bristol City Council. Vivienda social: HomeChoice Bristol (gratis; normalmente piden 2 años viviendo en Bristol; renuévala cada año), 0117 922 2400. Servicios sociales de adultos: Care Direct, 0117 922 2700. Infancia: First Response, 0117 903 6444.\n• Coche: zona de aire limpio en el centro: 9 £ al día para coches que contaminan.",
+        "en": "• Transport: First West of England buses; regional information on Travelwest. With contactless you tap on and off ('Tap On Tap Off') and are charged at most a day ticket. From 4 January 2026, a Bristol-zone single costs £2.60.\n• Council: Bristol City Council. Social housing: HomeChoice Bristol (free; usually 2 years living in Bristol; renew yearly), 0117 922 2400. Adult social care: Care Direct, 0117 922 2700. Children: First Response, 0117 903 6444.\n• Driving: central Clean Air Zone: £9 a day for polluting cars."
+      },
+      "say": {
+        "es": "En Bristol tocas la tarjeta al subir y al bajar del autobús. La vivienda social se pide en HomeChoice Bristol. Y si conduces, cuidado con la zona de aire limpio del centro.",
+        "en": "In Bristol you tap on and off the bus. You apply for social housing through HomeChoice Bristol. And if you drive, watch out for the central Clean Air Zone."
+      },
+      "link": {
+        "label": {
+          "es": "Bristol City Council: pedir vivienda",
+          "en": "Bristol City Council: apply for housing"
+        },
+        "url": "https://www.bristol.gov.uk/residents/housing/help-with-housing/apply-for-council-and-social-housing"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Tap On Tap Off",
+      "en": "Tap On Tap Off"
+    },
+    {
+      "es": "Sencillo: 2,60 £",
+      "en": "Single: £2.60"
+    },
+    {
+      "es": "Vivienda: HomeChoice",
+      "en": "Housing: HomeChoice"
+    },
+    {
+      "es": "Aire limpio: 9 £/día",
+      "en": "Clean Air Zone: £9/day"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Toco la tarjeta al bajarme?",
+      "en": "Do I tap off when I get off?"
+    },
+    {
+      "es": "Vivo en Bristol.",
+      "en": "I live in Bristol."
+    },
+    {
+      "es": "Estoy preocupada por un niño.",
+      "en": "I'm worried about a child."
+    },
+    {
+      "es": "Tengo que renovar mi solicitud.",
+      "en": "I need to renew my application."
+    },
+    {
+      "es": "¿Mi coche puede entrar al centro?",
+      "en": "Is my car allowed in the centre?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta un sencillo en la zona de Bristol desde enero de 2026?",
+        "en": "How much is a Bristol-zone single from January 2026?"
+      },
+      "options": [
+        {
+          "es": "2,60 £",
+          "en": "£2.60"
+        },
+        {
+          "es": "10 £",
+          "en": "£10"
+        },
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿A quién llamas si te preocupa un niño en Bristol?",
+        "en": "Who do you call if you're worried about a child in Bristol?"
+      },
+      "options": [
+        {
+          "es": "First Response",
+          "en": "First Response"
+        },
+        {
+          "es": "Travelwest",
+          "en": "Travelwest"
+        },
+        {
+          "es": "HomeChoice",
+          "en": "HomeChoice"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el autobús",
+      "en": "On the bus"
+    },
+    "scene": {
+      "es": "Primer viaje con contactless.",
+      "en": "Your first trip with contactless."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Toco la tarjeta al bajarme?",
+          "en": "Do I tap off when I get off?"
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Sí, en el lector de la puerta.",
+          "en": "Yes, on the reader by the door."
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Así nunca paga más que el billete de día.",
+          "en": "That way you never pay more than a day ticket."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Perfecto, gracias.",
+          "en": "Perfect, thank you."
+        }
+      }
+    ]
+  }
+}

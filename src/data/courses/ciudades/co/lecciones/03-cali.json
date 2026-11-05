@@ -1,0 +1,186 @@
+{
+  "id": "cali",
+  "order": 3,
+  "icon": "💃",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Cali",
+    "en": "Cali"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Cali: transporte y alcaldía",
+        "en": "Cali: transport and the mayor's office"
+      },
+      "body": {
+        "es": "• Transporte: MIO, pasaje de 3.500 $ desde el 10 de enero de 2026. Pagas con la tarjeta MIO y, cada vez más, con tarjeta bancaria en el torniquete.\n• Pico y placa: lunes a viernes de 6:00 a 19:00; consulta los dígitos del semestre en la Secretaría de Movilidad.\n• Alcaldía: cali.gov.co. Sisbén: el Departamento de Planeación abrió su nueva sede principal cerca del CAM el 26 de octubre de 2026 (lunes a viernes de 7:30 a 16:30), además de otros puntos. Programas sociales: Secretaría de Bienestar Social. Vivienda: Secretaría de Vivienda Social y Hábitat («Mi Casa Bella» para mejorar tu casa). Comisarías de familia por comuna.\n• Tras el terremoto del 10 de agosto de 2026, la Alcaldía tiene medidas de apoyo para las familias afectadas: pregunta en la Secretaría de Bienestar Social.\n• Sisbén: la encuesta es gratis y sin intermediarios. El Sisbén IV sigue valiendo durante la transición al Registro Universal de Ingresos (RUI), ampliada hasta el 31 de diciembre de 2027.",
+        "en": "• Transport: MIO, fare COP 3,500 since 10 January 2026. You pay with the MIO card and, increasingly, with a bank card at the turnstile.\n• Pico y placa: Monday to Friday 6:00 to 19:00; check the half-year's digits with the Secretaría de Movilidad.\n• Mayor's office: cali.gov.co. Sisbén: the Planning Department opened its new main office near the CAM on 26 October 2026 (Monday to Friday 7:30 to 16:30), plus other points. Social programmes: Secretaría de Bienestar Social. Housing: Secretaría de Vivienda Social y Hábitat ('Mi Casa Bella' to improve your home). Family police stations by district.\n• After the 10 August 2026 earthquake, the mayor's office has support measures for affected families: ask at the Secretaría de Bienestar Social.\n• Sisbén: the survey is free and needs no middlemen. Sisbén IV remains valid during the transition to the Universal Income Register (RUI), extended to 31 December 2027."
+      },
+      "say": {
+        "es": "En Cali el MIO cuesta tres mil quinientos pesos y ya puedes pagar con tarjeta bancaria. El Sisbén tiene nueva sede cerca del CAM.",
+        "en": "In Cali the MIO costs COP 3,500 and you can now pay with a bank card. Sisbén has a new office near the CAM."
+      },
+      "link": {
+        "label": {
+          "es": "Alcaldía de Cali: pasaje del MIO 2026",
+          "en": "Cali: MIO fare 2026"
+        },
+        "url": "https://www.cali.gov.co/publicaciones/190849/es-oficial-pasaje-del-mio-sera-de-3500-pesos-en-2026-y-permitira-pagar-mas-viajes-con-el-auxilio-de-transporte/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "MIO: 3.500 $",
+      "en": "MIO: COP 3,500"
+    },
+    {
+      "es": "Paga con tarjeta bancaria",
+      "en": "Pay with a bank card"
+    },
+    {
+      "es": "Sisbén: nueva sede del CAM",
+      "en": "Sisbén: new office by the CAM"
+    },
+    {
+      "es": "Vivienda: Mi Casa Bella",
+      "en": "Housing: Mi Casa Bella"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Puedo pagar con mi tarjeta del banco?",
+      "en": "Can I pay with my bank card?"
+    },
+    {
+      "es": "¿Dónde queda la nueva sede del Sisbén?",
+      "en": "Where is the new Sisbén office?"
+    },
+    {
+      "es": "Mi casa se dañó con el terremoto.",
+      "en": "My house was damaged in the earthquake."
+    },
+    {
+      "es": "¿Qué ruta va al centro?",
+      "en": "Which route goes downtown?"
+    },
+    {
+      "es": "Necesito ayuda para arreglar mi casa.",
+      "en": "I need help to repair my home."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta el MIO en 2026?",
+        "en": "How much is the MIO in 2026?"
+      },
+      "options": [
+        {
+          "es": "3.500 $",
+          "en": "COP 3,500"
+        },
+        {
+          "es": "500 $",
+          "en": "COP 500"
+        },
+        {
+          "es": "10.000 $",
+          "en": "COP 10,000"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué programa de Cali ayuda a mejorar tu casa?",
+        "en": "Which Cali programme helps you improve your home?"
+      },
+      "options": [
+        {
+          "es": "Mi Casa Bella",
+          "en": "Mi Casa Bella"
+        },
+        {
+          "es": "TuLlave",
+          "en": "TuLlave"
+        },
+        {
+          "es": "Cívica",
+          "en": "Cívica"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la estación del MIO",
+      "en": "At the MIO station"
+    },
+    "scene": {
+      "es": "No tienes tarjeta MIO.",
+      "en": "You don't have a MIO card."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "No tengo tarjeta MIO. ¿Puedo pagar con mi tarjeta del banco?",
+          "en": "I don't have a MIO card. Can I pay with my bank card?"
+        }
+      },
+      {
+        "who": {
+          "es": "Guía",
+          "en": "Guide"
+        },
+        "text": {
+          "es": "Sí, acérquela al torniquete.",
+          "en": "Yes, hold it to the turnstile."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Qué ruta va al centro?",
+          "en": "Which route goes downtown?"
+        }
+      },
+      {
+        "who": {
+          "es": "Guía",
+          "en": "Guide"
+        },
+        "text": {
+          "es": "La E31. Mire el mapa ahí.",
+          "en": "The E31. Check the map there."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¡Gracias!",
+          "en": "Thanks!"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "id": "cardiff",
+  "order": 9,
+  "icon": "🐉",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Cardiff",
+    "en": "Cardiff"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Cardiff: transporte, vivienda y servicios",
+        "en": "Cardiff: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: Cardiff Bus y Transport for Wales (trenes y Metro). En Cardiff Bus pagas con contactless tocando al subir y al bajar, con tope diario y semanal. Planifica con Traveline Cymru.\n• En Gales, con 60 años o más (o con algunas discapacidades), el autobús es gratis con la tarjeta de Transport for Wales.\n• Council: Cardiff Council. Vivienda social: lista común en el Housing Online Portal (029 2053 7111, opción 1). Sinhogarismo: Housing Options Centre, 029 2057 0750. Servicios sociales de adultos: 029 2023 4234 (urgencias 029 2078 8570).\n• En Gales el council tax tiene bandas de la A a la I.",
+        "en": "• Transport: Cardiff Bus and Transport for Wales (trains and Metro). On Cardiff Bus you pay by contactless, tapping on and off, with daily and weekly caps. Plan with Traveline Cymru.\n• In Wales, at 60 or over (or with some disabilities), buses are free with the Transport for Wales card.\n• Council: Cardiff Council. Social housing: common waiting list on the Housing Online Portal (029 2053 7111, option 1). Homelessness: Housing Options Centre, 029 2057 0750. Adult social care: 029 2023 4234 (emergencies 029 2078 8570).\n• In Wales council tax has bands A to I."
+      },
+      "say": {
+        "es": "En Gales el autobús es gratis desde los sesenta años. En Cardiff la vivienda social se pide en el Housing Online Portal, y si te quedas sin casa vas al Housing Options Centre.",
+        "en": "In Wales buses are free from age 60. In Cardiff you apply for social housing on the Housing Online Portal, and if you're homeless you go to the Housing Options Centre."
+      },
+      "link": {
+        "label": {
+          "es": "Cardiff Council: pedir vivienda",
+          "en": "Cardiff Council: applying for housing"
+        },
+        "url": "https://www.cardiff.gov.uk/article/3038/Applying-for-housing"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Contactless: toca al subir y bajar",
+      "en": "Contactless: tap on and off"
+    },
+    {
+      "es": "Gales: bus gratis desde 60",
+      "en": "Wales: free bus from 60"
+    },
+    {
+      "es": "Vivienda: Housing Online",
+      "en": "Housing: Housing Online"
+    },
+    {
+      "es": "Sin casa: Housing Options",
+      "en": "Homeless: Housing Options"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿El autobús es gratis para mi padre?",
+      "en": "Is the bus free for my father?"
+    },
+    {
+      "es": "Tiene sesenta y dos años.",
+      "en": "He is sixty-two."
+    },
+    {
+      "es": "¿Dónde está la Central Library?",
+      "en": "Where is the Central Library?"
+    },
+    {
+      "es": "Necesito ver a un técnico de vivienda.",
+      "en": "I need to see a housing officer."
+    },
+    {
+      "es": "¡Diolch, gracias!",
+      "en": "Diolch, thank you!"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Desde qué edad es gratis el autobús en Gales?",
+        "en": "From what age is the bus free in Wales?"
+      },
+      "options": [
+        {
+          "es": "60 años",
+          "en": "60"
+        },
+        {
+          "es": "75 años",
+          "en": "75"
+        },
+        {
+          "es": "Nunca es gratis",
+          "en": "It's never free"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Dónde vas en Cardiff si te quedas sin casa?",
+        "en": "Where do you go in Cardiff if you're homeless?"
+      },
+      "options": [
+        {
+          "es": "Housing Options Centre",
+          "en": "Housing Options Centre"
+        },
+        {
+          "es": "Traveline Cymru",
+          "en": "Traveline Cymru"
+        },
+        {
+          "es": "La estación",
+          "en": "The station"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el Housing Options Centre",
+      "en": "At the Housing Options Centre"
+    },
+    "scene": {
+      "es": "Tu casero te ha dado aviso de desalojo.",
+      "en": "Your landlord has given you notice."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Necesito ver a un técnico de vivienda.",
+          "en": "I need to see a housing officer."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Qué ha pasado?",
+          "en": "What has happened?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Mi casero quiere que me vaya en dos meses.",
+          "en": "My landlord wants me out in two months."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Ha hecho bien en venir pronto. Le ayudamos.",
+          "en": "You did the right thing coming early. We'll help you."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¡Diolch, gracias!",
+          "en": "Diolch, thank you!"
+        }
+      }
+    ]
+  }
+}

@@ -206,4 +206,6 @@ export const pa: Messages = {
   "review.listen": "ਸੁਣੋ",
   "cat.espana": "ਸਪੇਨ ਵਿੱਚ ਰਹਿਣਾ",
   "cat.colombia": "ਕੋਲੰਬੀਆ ਵਿੱਚ ਰਹਿਣਾ",
+  "local.title": "ਤੁਹਾਡਾ ਸ਼ਹਿਰ ਅਤੇ ਕੌਂਸਲ",
+  "local.cardText": "ਤੁਹਾਡੀ ਕੌਂਸਲ, ਆਵਾਜਾਈ, ਰਿਹਾਇਸ਼ ਅਤੇ ਸਮਾਜਿਕ ਸੇਵਾਵਾਂ, ਹਰ ਸ਼ਹਿਰ ਲਈ।",
 };

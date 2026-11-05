@@ -1,0 +1,217 @@
+{
+  "id": "bogota",
+  "order": 1,
+  "icon": "🚌",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Bogotá",
+    "en": "Bogotá"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Bogotá: transporte y alcaldía",
+        "en": "Bogotá: transport and the mayor's office"
+      },
+      "body": {
+        "es": "• Transporte: TransMilenio, buses zonales (SITP) y TransMiCable, con un mismo pasaje: 3.550 $ desde el 14 de enero de 2026. Pagas con la tarjeta TuLlave; recárgala en la TransMiApp o en tullaveplus.gov.co y actívala en un validador. Pasajes gratis (Ingreso Mínimo Garantizado): personas de 62 años o más, con discapacidad certificada o en pobreza (Sisbén A o B); se cargan cada mes y hay que activarlos. El Metro de Bogotá (línea 1) está en pruebas: su operación comercial se prevé para marzo de 2028.\n• Pico y placa (carros particulares): lunes a viernes de 6:00 a 21:00; en fechas impares circulan las placas terminadas en 1 a 5, y en fechas pares las terminadas en 6 a 0.\n• Alcaldía: bogota.gov.co. Línea 195 para todos los trámites (opción 7: Línea Púrpura para mujeres). Encuesta del Sisbén en sisbensol.sdp.gov.co o en un SuperCADE. Programas sociales: Secretaría de Integración Social. Personería: Línea 143.\n• Sisbén: la encuesta es gratis y sin intermediarios. El Sisbén IV sigue valiendo durante la transición al Registro Universal de Ingresos (RUI), ampliada hasta el 31 de diciembre de 2027.",
+        "en": "• Transport: TransMilenio, zonal buses (SITP) and TransMiCable share one fare: COP 3,550 since 14 January 2026. You pay with the TuLlave card; top up in the TransMiApp or at tullaveplus.gov.co and activate it at a validator. Free trips (Ingreso Mínimo Garantizado): people aged 62 or over, with a certified disability or in poverty (Sisbén A or B); they're loaded monthly and must be activated. The Bogotá Metro (line 1) is in testing: commercial service is planned for March 2028.\n• Pico y placa (private cars): Monday to Friday 6:00 to 21:00; on odd dates plates ending 1 to 5 may drive, on even dates plates ending 6 to 0.\n• Mayor's office: bogota.gov.co. Line 195 for all procedures (option 7: Línea Púrpura for women). Sisbén survey at sisbensol.sdp.gov.co or a SuperCADE. Social programmes: Secretaría de Integración Social. Personería: Line 143.\n• Sisbén: the survey is free and needs no middlemen. Sisbén IV remains valid during the transition to the Universal Income Register (RUI), extended to 31 December 2027."
+      },
+      "say": {
+        "es": "En Bogotá el pasaje cuesta tres mil quinientos cincuenta pesos con la tarjeta TuLlave. Si tienes sesenta y dos años o más, o estás en Sisbén A o B, puedes tener pasajes gratis. Y para cualquier trámite, llama a la línea ciento noventa y cinco.",
+        "en": "In Bogotá the fare is COP 3,550 with the TuLlave card. If you're 62 or over, or in Sisbén A or B, you may get free trips. And for any procedure, call line 195."
+      },
+      "link": {
+        "label": {
+          "es": "Alcaldía de Bogotá: tarifa 2026",
+          "en": "Bogotá: 2026 fare"
+        },
+        "url": "https://bogota.gov.co/mi-ciudad/movilidad/tarifa-transmilenio-transmicable-y-transmizonal-2026-bogota"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Pasaje: 3.550 $ con TuLlave",
+      "en": "Fare: COP 3,550 with TuLlave"
+    },
+    {
+      "es": "Pasajes gratis: 62+, Sisbén A/B",
+      "en": "Free trips: 62+, Sisbén A/B"
+    },
+    {
+      "es": "Trámites: Línea 195",
+      "en": "Procedures: Line 195"
+    },
+    {
+      "es": "Metro: en pruebas",
+      "en": "Metro: in testing"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Dónde recargo la TuLlave?",
+      "en": "Where do I top up my TuLlave?"
+    },
+    {
+      "es": "¿Este bus va al Portal Norte?",
+      "en": "Does this bus go to Portal Norte?"
+    },
+    {
+      "es": "Tengo sesenta y cinco años.",
+      "en": "I am sixty-five years old."
+    },
+    {
+      "es": "¿Cómo activo mis pasajes gratis?",
+      "en": "How do I activate my free trips?"
+    },
+    {
+      "es": "Quiero pedir la encuesta del Sisbén.",
+      "en": "I want to request the Sisbén survey."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta el pasaje de TransMilenio en 2026?",
+        "en": "How much is the TransMilenio fare in 2026?"
+      },
+      "options": [
+        {
+          "es": "3.550 $",
+          "en": "COP 3,550"
+        },
+        {
+          "es": "1.000 $",
+          "en": "COP 1,000"
+        },
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuál es la línea de la Alcaldía de Bogotá para trámites?",
+        "en": "What's Bogotá's line for procedures?"
+      },
+      "options": [
+        {
+          "es": "195",
+          "en": "195"
+        },
+        {
+          "es": "911",
+          "en": "911"
+        },
+        {
+          "es": "999",
+          "en": "999"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuándo empieza a operar el Metro de Bogotá?",
+        "en": "When does the Bogotá Metro start service?"
+      },
+      "options": [
+        {
+          "es": "Está previsto para marzo de 2028",
+          "en": "It's planned for March 2028"
+        },
+        {
+          "es": "Ya funciona desde 2020",
+          "en": "It's run since 2020"
+        },
+        {
+          "es": "Nunca",
+          "en": "Never"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la taquilla de TransMilenio",
+      "en": "At the TransMilenio ticket office"
+    },
+    "scene": {
+      "es": "Activas tus pasajes gratis.",
+      "en": "You activate your free trips."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Tengo sesenta y cinco años.",
+          "en": "I am sixty-five years old."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cómo activo mis pasajes gratis?",
+          "en": "How do I activate my free trips?"
+        }
+      },
+      {
+        "who": {
+          "es": "Taquillero",
+          "en": "Clerk"
+        },
+        "text": {
+          "es": "Deme su TuLlave personalizada.",
+          "en": "Give me your personalised TuLlave."
+        }
+      },
+      {
+        "who": {
+          "es": "Taquillero",
+          "en": "Clerk"
+        },
+        "text": {
+          "es": "Listo, ya están cargados este mes.",
+          "en": "Done, this month's trips are loaded."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Tengo que venir cada mes?",
+          "en": "Do I have to come every month?"
+        }
+      },
+      {
+        "who": {
+          "es": "Taquillero",
+          "en": "Clerk"
+        },
+        "text": {
+          "es": "Sí, hay que activarlos cada mes.",
+          "en": "Yes, they must be activated every month."
+        }
+      }
+    ]
+  }
+}

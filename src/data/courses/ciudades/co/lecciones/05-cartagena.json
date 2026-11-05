@@ -1,0 +1,186 @@
+{
+  "id": "cartagena",
+  "order": 5,
+  "icon": "🏰",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Cartagena",
+    "en": "Cartagena"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Cartagena: transporte y alcaldía",
+        "en": "Cartagena: transport and the mayor's office"
+      },
+      "body": {
+        "es": "• Transporte: Transcaribe, solo con tarjeta prepagada (no se paga en efectivo). Estudiantes, adultos mayores y personas con discapacidad tienen una tarifa diferencial con 1.000 $ de subsidio; hay que registrarse.\n• Pico y placa (Decreto 0015 de 2026): carros particulares de lunes a viernes de 7:00 a 9:00 y de 18:00 a 20:00. Del 11 de diciembre de 2026 al 22 de enero de 2027 la restricción es de 24 horas.\n• Alcaldía: cartagena.gov.co; línea gratuita 01 8000 415393. Vivienda: Corvivienda («Mi Casa Avanza» para mejoras; «Mi Casa Va» para comprar).\n• Islas del Rosario y Barú: el único muelle autorizado para turistas es La Bodeguita; la tasa portuaria se paga aparte en el muelle.\n• Sisbén: la encuesta es gratis y sin intermediarios. El Sisbén IV sigue valiendo durante la transición al Registro Universal de Ingresos (RUI), ampliada hasta el 31 de diciembre de 2027.",
+        "en": "• Transport: Transcaribe, prepaid card only (no cash). Students, older adults and people with disabilities have a reduced fare with a COP 1,000 subsidy; you must register.\n• Pico y placa (Decree 0015 of 2026): private cars Monday to Friday 7:00 to 9:00 and 18:00 to 20:00. From 11 December 2026 to 22 January 2027 the restriction lasts 24 hours.\n• Mayor's office: cartagena.gov.co; free line 01 8000 415393. Housing: Corvivienda ('Mi Casa Avanza' for improvements; 'Mi Casa Va' to buy).\n• Rosario Islands and Barú: the only authorised pier for tourists is La Bodeguita; the port fee is paid separately at the pier.\n• Sisbén: the survey is free and needs no middlemen. Sisbén IV remains valid during the transition to the Universal Income Register (RUI), extended to 31 December 2027."
+      },
+      "say": {
+        "es": "En Cartagena el Transcaribe solo acepta tarjeta. Del once de diciembre al veintidós de enero el pico y placa es de veinticuatro horas. Y a las islas se sale solo del muelle de La Bodeguita.",
+        "en": "In Cartagena the Transcaribe only takes cards. From 11 December to 22 January pico y placa lasts 24 hours. And boats to the islands leave only from La Bodeguita pier."
+      },
+      "link": {
+        "label": {
+          "es": "Alcaldía de Cartagena",
+          "en": "Cartagena mayor's office"
+        },
+        "url": "https://www.cartagena.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Transcaribe: solo tarjeta",
+      "en": "Transcaribe: card only"
+    },
+    {
+      "es": "Tarifa diferencial: regístrate",
+      "en": "Reduced fare: register"
+    },
+    {
+      "es": "Pico y placa 24 h en temporada",
+      "en": "24 h pico y placa in high season"
+    },
+    {
+      "es": "Islas: muelle La Bodeguita",
+      "en": "Islands: La Bodeguita pier"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Puedo pagar en efectivo?",
+      "en": "Can I pay in cash?"
+    },
+    {
+      "es": "¿Dónde compro la tarjeta?",
+      "en": "Where do I buy the card?"
+    },
+    {
+      "es": "Soy adulto mayor.",
+      "en": "I'm an older adult."
+    },
+    {
+      "es": "¿De dónde salen las lanchas?",
+      "en": "Where do the boats leave from?"
+    },
+    {
+      "es": "¿Cuánto es la tasa del muelle?",
+      "en": "How much is the pier fee?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Se puede pagar el Transcaribe en efectivo?",
+        "en": "Can you pay for Transcaribe in cash?"
+      },
+      "options": [
+        {
+          "es": "No, solo con tarjeta",
+          "en": "No, card only"
+        },
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "Solo los domingos",
+          "en": "Only on Sundays"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuál es el único muelle autorizado para turistas a las islas?",
+        "en": "What's the only authorised tourist pier to the islands?"
+      },
+      "options": [
+        {
+          "es": "La Bodeguita",
+          "en": "La Bodeguita"
+        },
+        {
+          "es": "Bocagrande",
+          "en": "Bocagrande"
+        },
+        {
+          "es": "Getsemaní",
+          "en": "Getsemaní"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el muelle",
+      "en": "At the pier"
+    },
+    "scene": {
+      "es": "Vas a las islas del Rosario.",
+      "en": "You're going to the Rosario Islands."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿De dónde salen las lanchas a las islas?",
+          "en": "Where do the boats to the islands leave from?"
+        }
+      },
+      {
+        "who": {
+          "es": "Guía",
+          "en": "Guide"
+        },
+        "text": {
+          "es": "Solo del muelle de La Bodeguita.",
+          "en": "Only from La Bodeguita pier."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuánto es la tasa del muelle?",
+          "en": "How much is the pier fee?"
+        }
+      },
+      {
+        "who": {
+          "es": "Guía",
+          "en": "Guide"
+        },
+        "text": {
+          "es": "Se paga aparte, en la taquilla del muelle.",
+          "en": "It's paid separately, at the pier office."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Perfecto, gracias.",
+          "en": "Perfect, thanks."
+        }
+      }
+    ]
+  }
+}

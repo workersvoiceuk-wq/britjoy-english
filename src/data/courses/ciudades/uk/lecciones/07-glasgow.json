@@ -1,0 +1,196 @@
+{
+  "id": "glasgow",
+  "order": 7,
+  "icon": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Glasgow",
+    "en": "Glasgow"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Glasgow: transporte, vivienda y servicios",
+        "en": "Glasgow: transport, housing and services"
+      },
+      "body": {
+        "es": "• Transporte: el metro (Subway) de SPT acepta contactless desde marzo de 2026: 1,80 £ el viaje, con tope de 3,40 £ al día y 15,50 £ a la semana (usa siempre la misma tarjeta). Autobuses de First Glasgow y otros.\n• Autobús GRATIS en Escocia para menores de 22 años y mayores de 60, con la National Entitlement Card (se pide en getyournec.scot o en el council).\n• Council: Glasgow City Council no tiene viviendas propias: pide vivienda a Wheatley Homes o a una asociación de vivienda. Sinhogarismo y servicios sociales: Health and Social Care Connect, 0141 287 0555. Fuera de horario: sinhogarismo 0800 838 502; servicios sociales 0300 343 1505.\n• Coche: zona de bajas emisiones en el centro, sin peaje diario pero con multa de 60 £ (que se dobla si repites).",
+        "en": "• Transport: SPT's Subway takes contactless since March 2026: £1.80 a trip, capped at £3.40 a day and £15.50 a week (always use the same card). Buses by First Glasgow and others.\n• FREE buses in Scotland for under-22s and over-60s, with the National Entitlement Card (apply at getyournec.scot or through the council).\n• Council: Glasgow City Council owns no council homes: apply to Wheatley Homes or a housing association. Homelessness and social work: Health and Social Care Connect, 0141 287 0555. Out of hours: homelessness 0800 838 502; social work 0300 343 1505.\n• Driving: city-centre Low Emission Zone, no daily charge but a £60 penalty (doubling for repeat offences)."
+      },
+      "say": {
+        "es": "En Escocia, si tienes menos de veintidós años o más de sesenta, el autobús es gratis con la National Entitlement Card. Y en Glasgow la vivienda social se pide a Wheatley Homes o a una asociación de vivienda.",
+        "en": "In Scotland, if you're under 22 or over 60, buses are free with the National Entitlement Card. And in Glasgow you apply for social housing to Wheatley Homes or a housing association."
+      },
+      "link": {
+        "label": {
+          "es": "Escocia: bus gratis para menores de 22",
+          "en": "Scotland: free bus for under-22s"
+        },
+        "url": "https://www.transport.gov.scot/concessionary-travel/under-22s-free-bus-travel/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Subway: 1,80 £, tope 3,40 £",
+      "en": "Subway: £1.80, £3.40 cap"
+    },
+    {
+      "es": "Bus gratis: <22 y 60+",
+      "en": "Free bus: under 22 and 60+"
+    },
+    {
+      "es": "Vivienda: Wheatley Homes",
+      "en": "Housing: Wheatley Homes"
+    },
+    {
+      "es": "Social: 0141 287 0555",
+      "en": "Social care: 0141 287 0555"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Cómo consigo el pase de autobús gratis?",
+      "en": "How do I get a free bus pass?"
+    },
+    {
+      "es": "Mi hijo tiene diecisiete años.",
+      "en": "My son is seventeen."
+    },
+    {
+      "es": "¿Dónde está la estación de metro más cercana?",
+      "en": "Where is the nearest Subway station?"
+    },
+    {
+      "es": "No tenemos dónde quedarnos.",
+      "en": "We have nowhere to stay."
+    },
+    {
+      "es": "¿Puedo solicitarlo por internet?",
+      "en": "Can I apply online?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Quién viaja gratis en autobús en Escocia?",
+        "en": "Who travels free by bus in Scotland?"
+      },
+      "options": [
+        {
+          "es": "Menores de 22 y mayores de 60",
+          "en": "Under-22s and over-60s"
+        },
+        {
+          "es": "Nadie",
+          "en": "Nobody"
+        },
+        {
+          "es": "Solo turistas",
+          "en": "Only tourists"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuál es el tope diario del Subway con contactless?",
+        "en": "What's the Subway daily cap with contactless?"
+      },
+      "options": [
+        {
+          "es": "3,40 £",
+          "en": "£3.40"
+        },
+        {
+          "es": "10 £",
+          "en": "£10"
+        },
+        {
+          "es": "No hay tope",
+          "en": "No cap"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Pedir el pase gratis",
+      "en": "Getting the free pass"
+    },
+    "scene": {
+      "es": "Preguntas en la biblioteca.",
+      "en": "You ask at the library."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cómo consigo el pase de autobús gratis?",
+          "en": "How do I get a free bus pass?"
+        }
+      },
+      {
+        "who": {
+          "es": "Bibliotecaria",
+          "en": "Librarian"
+        },
+        "text": {
+          "es": "¿Para quién es?",
+          "en": "Who is it for?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Mi hijo tiene diecisiete años.",
+          "en": "My son is seventeen."
+        }
+      },
+      {
+        "who": {
+          "es": "Bibliotecaria",
+          "en": "Librarian"
+        },
+        "text": {
+          "es": "Pídalo en getyournec.scot con una foto.",
+          "en": "Apply at getyournec.scot with a photo."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Puedo solicitarlo por internet?",
+          "en": "Can I apply online?"
+        }
+      },
+      {
+        "who": {
+          "es": "Bibliotecaria",
+          "en": "Librarian"
+        },
+        "text": {
+          "es": "Sí, y llega por correo.",
+          "en": "Yes, and it comes by post."
+        }
+      }
+    ]
+  }
+}

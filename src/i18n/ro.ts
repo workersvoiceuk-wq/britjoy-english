@@ -206,4 +206,6 @@ export const ro: Messages = {
   "review.listen": "Ascultă",
   "cat.espana": "Viața în Spania",
   "cat.colombia": "Viața în Columbia",
+  "local.title": "Orașul și primăria ta",
+  "local.cardText": "Primăria ta, transportul, locuința și serviciile sociale, oraș cu oraș.",
 };

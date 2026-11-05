@@ -1,0 +1,196 @@
+{
+  "id": "bilbao",
+  "order": 6,
+  "icon": "🌉",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Bilbao",
+    "en": "Bilbao"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Bilbao: transporte y ayuntamiento",
+        "en": "Bilbao: transport and the town hall"
+      },
+      "body": {
+        "es": "• Transporte: Bilbobus, Metro Bilbao, Bizkaibus, Euskotren y Renfe, con la tarjeta Barik (anónima o personalizada). Con Barik pagas mucho menos que con billete sencillo, y la Barik personalizada tiene perfiles con descuento (por ejemplo, para jóvenes).\n• En toda España, en 2026: el Abono Único estatal (60 € al mes, 30 € para menores de 26) vale para Cercanías, Media Distancia y autobuses estatales. Los descuentos al transporte están garantizados hasta el 31 de diciembre de 2026.\n• Ayuntamiento: bilbao.eus. Padrón presencial con cita previa (010 / 944 010 010). Viviendas Municipales de Bilbao gestiona unas 4.200 viviendas; para optar debes estar inscrito en Etxebide (registro vasco de demandantes) y empadronado.\n• Coche: Zona de Bajas Emisiones en Abando e Indautxu, con cámaras de matrícula.",
+        "en": "• Transport: Bilbobus, Metro Bilbao, Bizkaibus, Euskotren and Renfe, with the Barik card (anonymous or personal). With Barik you pay much less than with a single ticket, and the personal Barik has discount profiles (for example, for young people).\n• Across Spain in 2026: the state Abono Único (€60 a month, €30 for under-26s) covers Cercanías, Media Distancia and state coaches. Transport discounts are guaranteed until 31 December 2026.\n• Town hall: bilbao.eus. Padrón in person with an appointment (010 / 944 010 010). Viviendas Municipales de Bilbao manages about 4,200 homes; to qualify you must be on Etxebide (the Basque applicants' register) and on the padrón.\n• Driving: Low Emission Zone in Abando and Indautxu, with number-plate cameras."
+      },
+      "say": {
+        "es": "En Bilbao usa la tarjeta Barik: pagas mucho menos que con billete. Y para una vivienda municipal tienes que estar en Etxebide y empadronado.",
+        "en": "In Bilbao use the Barik card: you pay much less than with a ticket. And for municipal housing you must be on Etxebide and registered on the padrón."
+      },
+      "link": {
+        "label": {
+          "es": "Consorcio de Transportes de Bizkaia: tarifas Barik",
+          "en": "Bizkaia Transport Consortium: Barik fares"
+        },
+        "url": "https://www.ctb.eus/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Tarjeta Barik",
+      "en": "Barik card"
+    },
+    {
+      "es": "Barik personalizada: descuentos",
+      "en": "Personal Barik: discounts"
+    },
+    {
+      "es": "Padrón: cita en el 010",
+      "en": "Padrón: book on 010"
+    },
+    {
+      "es": "Vivienda: Etxebide",
+      "en": "Housing: Etxebide"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero una tarjeta Barik.",
+      "en": "I want a Barik card."
+    },
+    {
+      "es": "¿Me sale más barato con Barik?",
+      "en": "Is it cheaper with Barik?"
+    },
+    {
+      "es": "¿Qué es Etxebide?",
+      "en": "What is Etxebide?"
+    },
+    {
+      "es": "Busco una vivienda pública.",
+      "en": "I'm looking for public housing."
+    },
+    {
+      "es": "¿Este metro va a Plentzia?",
+      "en": "Does this metro go to Plentzia?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cómo se llama la tarjeta de transporte de Bizkaia?",
+        "en": "What's Bizkaia's transport card called?"
+      },
+      "options": [
+        {
+          "es": "Barik",
+          "en": "Barik"
+        },
+        {
+          "es": "T-mobilitat",
+          "en": "T-mobilitat"
+        },
+        {
+          "es": "SUMA",
+          "en": "SUMA"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Dónde te inscribes para optar a vivienda pública en el País Vasco?",
+        "en": "Where do you register for public housing in the Basque Country?"
+      },
+      "options": [
+        {
+          "es": "En Etxebide",
+          "en": "On Etxebide"
+        },
+        {
+          "es": "En el metro",
+          "en": "On the metro"
+        },
+        {
+          "es": "En el banco",
+          "en": "At the bank"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la estación de metro",
+      "en": "At the metro station"
+    },
+    "scene": {
+      "es": "Compras tu primera Barik.",
+      "en": "You buy your first Barik."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero una tarjeta Barik.",
+          "en": "I want a Barik card."
+        }
+      },
+      {
+        "who": {
+          "es": "Empleado",
+          "en": "Staff"
+        },
+        "text": {
+          "es": "¿Anónima o personalizada?",
+          "en": "Anonymous or personal?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Me sale más barato con Barik?",
+          "en": "Is it cheaper with Barik?"
+        }
+      },
+      {
+        "who": {
+          "es": "Empleado",
+          "en": "Staff"
+        },
+        "text": {
+          "es": "Sí, mucho más que con billete.",
+          "en": "Yes, much cheaper than a ticket."
+        }
+      },
+      {
+        "who": {
+          "es": "Empleado",
+          "en": "Staff"
+        },
+        "text": {
+          "es": "Y si es joven, la personalizada tiene descuento.",
+          "en": "And if you're young, the personal one has a discount."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Entonces, personalizada.",
+          "en": "Personal, then."
+        }
+      }
+    ]
+  }
+}

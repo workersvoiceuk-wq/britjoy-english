@@ -206,4 +206,6 @@ export const pt: Messages = {
   "review.listen": "Ouvir",
   "cat.espana": "Viver em Espanha",
   "cat.colombia": "Viver na Colômbia",
+  "local.title": "A tua cidade e o teu município",
+  "local.cardText": "O teu município, transportes, habitação e serviços sociais, cidade a cidade.",
 };

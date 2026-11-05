@@ -1,0 +1,196 @@
+{
+  "id": "malaga",
+  "order": 5,
+  "icon": "☀️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Málaga",
+    "en": "Malaga"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Málaga: transporte y ayuntamiento",
+        "en": "Malaga: transport and the town hall"
+      },
+      "body": {
+        "es": "• Transporte: EMT Málaga, Metro de Málaga y el Consorcio de Transporte Metropolitano. La EMT mantiene descuentos del 40 % al 50 % todo 2026: con tarjeta, el viaje cuesta 0,50 € y el transbordo es gratis durante 1 hora. Los menores de hasta 14 años viajan gratis en el bus urbano en 2026.\n• Ayuntamiento: malaga.eu. Padrón con cita previa en citaprevia.malaga.eu o por teléfono. Los impuestos municipales (IBI, vehículos, plusvalía) los gestiona GESTRISAM.\n• Coche: hay Zona de Bajas Emisiones activa con cámaras y multas de 200 €.",
+        "en": "• Transport: EMT Málaga, Metro de Málaga and the Metropolitan Transport Consortium. EMT keeps 40% to 50% discounts throughout 2026: with a card a trip costs €0.50 and transfers are free within 1 hour. Children up to 14 travel free on city buses in 2026.\n• Town hall: malaga.eu. Padrón by appointment at citaprevia.malaga.eu or by phone. Municipal taxes (property, vehicles, capital gains) are handled by GESTRISAM.\n• Driving: there is an active Low Emission Zone with cameras and €200 fines."
+      },
+      "say": {
+        "es": "En Málaga, con la tarjeta de transbordo, el autobús cuesta cincuenta céntimos y el transbordo es gratis durante una hora. Y cuidado con la zona de bajas emisiones: hay cámaras.",
+        "en": "In Málaga, with the transfer card, the bus costs fifty cents and transfers are free within an hour. And watch out for the low emission zone: there are cameras."
+      },
+      "link": {
+        "label": {
+          "es": "Consorcio de Transporte Metropolitano de Málaga",
+          "en": "Málaga Metropolitan Transport Consortium"
+        },
+        "url": "https://ctmam.es/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Tarjeta: 0,50 € el viaje",
+      "en": "Card: €0.50 a trip"
+    },
+    {
+      "es": "Transbordo gratis 1 hora",
+      "en": "Free transfer for 1 hour"
+    },
+    {
+      "es": "Padrón: cita previa",
+      "en": "Padrón: appointment"
+    },
+    {
+      "es": "ZBE: multa de 200 €",
+      "en": "LEZ: €200 fine"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Dónde compro la tarjeta de transbordo?",
+      "en": "Where do I buy the transfer card?"
+    },
+    {
+      "es": "¿Puedo hacer transbordo gratis?",
+      "en": "Can I transfer for free?"
+    },
+    {
+      "es": "Mi hijo tiene diez años.",
+      "en": "My son is ten."
+    },
+    {
+      "es": "¿Puedo entrar al centro con mi coche?",
+      "en": "Can I drive into the centre?"
+    },
+    {
+      "es": "Quiero pagar el IBI.",
+      "en": "I want to pay my property tax."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta un viaje en la EMT de Málaga con tarjeta en 2026?",
+        "en": "How much is an EMT Málaga trip with a card in 2026?"
+      },
+      "options": [
+        {
+          "es": "0,50 €",
+          "en": "€0.50"
+        },
+        {
+          "es": "3 €",
+          "en": "€3"
+        },
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Quién gestiona el IBI en Málaga?",
+        "en": "Who handles property tax in Málaga?"
+      },
+      "options": [
+        {
+          "es": "GESTRISAM",
+          "en": "GESTRISAM"
+        },
+        {
+          "es": "La EMT",
+          "en": "The EMT"
+        },
+        {
+          "es": "El metro",
+          "en": "The metro"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el quiosco de la EMT",
+      "en": "At the EMT kiosk"
+    },
+    "scene": {
+      "es": "Compras la tarjeta.",
+      "en": "You buy the card."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Dónde compro la tarjeta de transbordo?",
+          "en": "Where do I buy the transfer card?"
+        }
+      },
+      {
+        "who": {
+          "es": "Vendedora",
+          "en": "Seller"
+        },
+        "text": {
+          "es": "Aquí mismo. ¿La quiere recargar?",
+          "en": "Right here. Would you like to top it up?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí, diez euros. ¿Puedo hacer transbordo gratis?",
+          "en": "Yes, ten euros. Can I transfer for free?"
+        }
+      },
+      {
+        "who": {
+          "es": "Vendedora",
+          "en": "Seller"
+        },
+        "text": {
+          "es": "Sí, durante una hora.",
+          "en": "Yes, within an hour."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Mi hijo tiene diez años.",
+          "en": "My son is ten."
+        }
+      },
+      {
+        "who": {
+          "es": "Vendedora",
+          "en": "Seller"
+        },
+        "text": {
+          "es": "Él viaja gratis en el bus urbano.",
+          "en": "He travels free on city buses."
+        }
+      }
+    ]
+  }
+}

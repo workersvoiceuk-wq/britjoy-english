@@ -20,6 +20,7 @@ const PlusScreen = lazy(() => import('./components/PlusScreen').then((m) => ({ d
 const SettingsScreen = lazy(() => import('./components/SettingsScreen').then((m) => ({ default: m.SettingsScreen })));
 const StudyPlanScreen = lazy(() => import('./components/StudyTools').then((m) => ({ default: m.StudyPlanScreen })));
 const ReviewScreen = lazy(() => import('./components/StudyTools').then((m) => ({ default: m.ReviewScreen })));
+const LocalScreen = lazy(() => import('./components/LocalScreen').then((m) => ({ default: m.LocalScreen })));
 const AiScreen = lazy(() => import('./components/AiScreen').then((m) => ({ default: m.AiScreen })));
 import { AcademyScreen } from './components/AcademyScreen';
 import { LanguagePicker } from './components/LanguagePicker';
@@ -90,7 +91,7 @@ function AppScreens() {
         if (course.open.tab === 'english') {
           st.setCurrentLevel(course.open.level);
           st.setTab('english');
-        } else st.setTab('life');
+        } else st.setTab(course.open.tab);
       }
       params.delete('curso');
       params.delete('lang');
@@ -180,7 +181,7 @@ function AppScreens() {
         level={tab === 'english' ? englishLevel : undefined}
         titleIsHeading={tab !== 'home'}
         onOpenLevels={() => setShowLevels(true)}
-        title={translate(uiLang, ({ home: 'title.home', english: 'nav.learn', life: 'nav.life', ai: 'nav.ai', resources: 'title.resources', settings: 'nav.more', plus: 'plus.title', plan: 'plan.title', review: 'review.title' } as const)[tab])}
+        title={translate(uiLang, ({ home: 'title.home', english: 'nav.learn', life: 'nav.life', ai: 'nav.ai', resources: 'title.resources', settings: 'nav.more', plus: 'plus.title', plan: 'plan.title', review: 'review.title', local: 'local.title' } as const)[tab])}
       />
       <main id="contenido">
       {(tab === 'english' || tab === 'life') && (
@@ -192,6 +193,7 @@ function AppScreens() {
       {tab === 'settings' && <SettingsScreen />}
       {tab === 'plus' && <PlusScreen checkout={checkout} />}
       {tab === 'plan' && <StudyPlanScreen />}
+      {tab === 'local' && <LocalScreen />}
       {tab === 'review' && <ReviewScreen />}
       </main>
       <BottomNav />

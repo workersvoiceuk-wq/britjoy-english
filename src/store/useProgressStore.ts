@@ -69,7 +69,7 @@ export interface ProgressState {
   answerReview: (id: string, correct: boolean, now?: number) => void;
 }
 
-export type AppTab = 'home' | 'english' | 'life' | 'ai' | 'resources' | 'settings' | 'plus' | 'plan' | 'review';
+export type AppTab = 'home' | 'english' | 'life' | 'ai' | 'resources' | 'settings' | 'plus' | 'plan' | 'review' | 'local';
 
 export const STORAGE_KEY = 'britjoy-english-progress-v1';
 

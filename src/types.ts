@@ -152,7 +152,7 @@ export interface Unit {
 }
 
 /** english = CEFR levels A1–C2 · life = Vivir en UK · daily / tourist = story courses · ai = IA con Britjoy. */
-export type TrackId = 'english' | 'life' | 'daily' | 'tourist' | 'ai' | 'spain' | 'colombia' | 'consulados' | 'migrar-uk';
+export type TrackId = 'english' | 'life' | 'daily' | 'tourist' | 'ai' | 'spain' | 'colombia' | 'consulados' | 'migrar-uk' | 'ciudades';
 
 export interface LevelDefinition {
   id: LevelId;

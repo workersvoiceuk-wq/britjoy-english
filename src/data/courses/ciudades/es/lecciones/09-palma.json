@@ -1,0 +1,196 @@
+{
+  "id": "palma",
+  "order": 9,
+  "icon": "⛵",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Palma",
+    "en": "Palma"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Palma: transporte y ayuntamiento",
+        "en": "Palma: transport and the town hall"
+      },
+      "body": {
+        "es": "• Transporte: EMT Palma (bus urbano), TIB (bus interurbano) y SFM (tren y metro). En 2026, el transporte público es GRATIS para los residentes con la Targeta Única de Transport Públic (o la antigua Intermodal). La antigua Tarjeta Ciudadana deja de servir como billete de la EMT.\n• Ayuntamiento: palma.cat y su sede electrónica. El alta en el padrón y el cambio de domicilio se hacen con cita previa; las bajas y renovaciones, sin cita.\n• Coche: Zona de Bajas Emisiones con cámaras. Desde marzo de 2026, los coches con matrícula extranjera de no residentes pueden pedir una autorización temporal si cumplen los requisitos.",
+        "en": "• Transport: EMT Palma (city buses), TIB (intercity buses) and SFM (train and metro). In 2026 public transport is FREE for residents with the Targeta Única de Transport Públic (or the old Intermodal card). The old Tarjeta Ciudadana no longer works as an EMT ticket.\n• Town hall: palma.cat and its online office. Padrón registration and change of address need an appointment; removals and renewals don't.\n• Driving: Low Emission Zone with cameras. Since March 2026, non-residents' foreign-plated cars can request a temporary authorisation if they meet the requirements."
+      },
+      "say": {
+        "es": "En Palma, en dos mil veintiséis, el transporte público es gratis para los residentes con la Targeta Única. Y para empadronarte necesitas cita previa.",
+        "en": "In Palma, in 2026, public transport is free for residents with the Targeta Única. And you need an appointment to register on the padrón."
+      },
+      "link": {
+        "label": {
+          "es": "Govern de les Illes Balears: Targeta Única",
+          "en": "Balearic Government: Targeta Única"
+        },
+        "url": "https://www.caib.es/webgoib/es/w/targeta-unica-de-transport-public-de-mallorca"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Residentes: transporte gratis",
+      "en": "Residents: free transport"
+    },
+    {
+      "es": "Targeta Única",
+      "en": "Targeta Única"
+    },
+    {
+      "es": "Padrón: alta con cita",
+      "en": "Padrón: register by appointment"
+    },
+    {
+      "es": "ZBE: autorización temporal",
+      "en": "LEZ: temporary authorisation"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Cómo consigo la tarjeta gratis?",
+      "en": "How do I get the free card?"
+    },
+    {
+      "es": "Soy residente en Mallorca.",
+      "en": "I'm a resident in Majorca."
+    },
+    {
+      "es": "¿Este autobús va al aeropuerto?",
+      "en": "Does this bus go to the airport?"
+    },
+    {
+      "es": "Necesito cita para empadronarme.",
+      "en": "I need an appointment to register."
+    },
+    {
+      "es": "Mi tarjeta antigua no funciona.",
+      "en": "My old card doesn't work."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto paga un residente por el transporte público en Mallorca en 2026?",
+        "en": "How much do residents pay for public transport in Majorca in 2026?"
+      },
+      "options": [
+        {
+          "es": "Nada, es gratis",
+          "en": "Nothing, it's free"
+        },
+        {
+          "es": "3 € por viaje",
+          "en": "€3 a trip"
+        },
+        {
+          "es": "60 € al mes",
+          "en": "€60 a month"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué tarjeta necesitas?",
+        "en": "Which card do you need?"
+      },
+      "options": [
+        {
+          "es": "La Targeta Única",
+          "en": "The Targeta Única"
+        },
+        {
+          "es": "La Barik",
+          "en": "The Barik"
+        },
+        {
+          "es": "La Oyster",
+          "en": "The Oyster"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el autobús de la EMT",
+      "en": "On the EMT bus"
+    },
+    "scene": {
+      "es": "Tu tarjeta antigua no pasa.",
+      "en": "Your old card doesn't work."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Mi tarjeta antigua no funciona.",
+          "en": "My old card doesn't work."
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Ya no vale. Necesita la Targeta Única.",
+          "en": "It's no longer valid. You need the Targeta Única."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Soy residente. ¿Cómo consigo la tarjeta gratis?",
+          "en": "I'm a resident. How do I get the free card?"
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Pídala en línea o en una oficina del Consorcio.",
+          "en": "Apply online or at a Consortium office."
+        }
+      },
+      {
+        "who": {
+          "es": "Conductor",
+          "en": "Driver"
+        },
+        "text": {
+          "es": "Hoy pague el billete, por favor.",
+          "en": "Today please pay for a ticket."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "De acuerdo, gracias.",
+          "en": "OK, thank you."
+        }
+      }
+    ]
+  }
+}

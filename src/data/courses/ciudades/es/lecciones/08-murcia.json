@@ -1,0 +1,186 @@
+{
+  "id": "murcia",
+  "order": 8,
+  "icon": "🌶️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Murcia",
+    "en": "Murcia"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Murcia: transporte y ayuntamiento",
+        "en": "Murcia: transport and the town hall"
+      },
+      "body": {
+        "es": "• Transporte: autobús urbano y tranvía de Murcia. La ciudad está aplicando una nueva ordenanza de tarifas: consulta los precios antes de comprar. La recarga tiene un 40 % de bonificación hasta el 31 de diciembre de 2026, y desde diciembre de 2026 hay un bono mensual para estudiantes.\n• En toda España, en 2026: el Abono Único estatal (60 € al mes, 30 € para menores de 26) vale para Cercanías, Media Distancia y autobuses estatales. Los descuentos al transporte están garantizados hasta el 31 de diciembre de 2026.\n• Ayuntamiento: murcia.es. El padrón se hace con cita previa por internet.\n• Pregunta en tu centro de servicios sociales municipal por las ayudas de vivienda y transporte.",
+        "en": "• Transport: city buses and the Murcia tram. The city is rolling out new fares: check prices before you buy. Top-ups have a 40% discount until 31 December 2026, and from December 2026 there is a monthly pass for students.\n• Across Spain in 2026: the state Abono Único (€60 a month, €30 for under-26s) covers Cercanías, Media Distancia and state coaches. Transport discounts are guaranteed until 31 December 2026.\n• Town hall: murcia.es. Padrón registration is by online appointment.\n• Ask at your municipal social services centre about housing and transport help."
+      },
+      "say": {
+        "es": "En Murcia las tarifas del autobús están cambiando: consulta el precio antes de comprar. Y el padrón se pide con cita por internet.",
+        "en": "In Murcia bus fares are changing: check the price before you buy. And padrón appointments are booked online."
+      },
+      "link": {
+        "label": {
+          "es": "Tranvía de Murcia",
+          "en": "Murcia tram"
+        },
+        "url": "https://tranviademurcia.es/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Tarifas nuevas: consúltalas",
+      "en": "New fares: check them"
+    },
+    {
+      "es": "Recarga con 40 % hasta fin de 2026",
+      "en": "40% top-up discount to end of 2026"
+    },
+    {
+      "es": "Bono para estudiantes",
+      "en": "Student pass"
+    },
+    {
+      "es": "Padrón: cita por internet",
+      "en": "Padrón: online appointment"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Cuánto cuesta el bono de estudiante?",
+      "en": "How much is the student pass?"
+    },
+    {
+      "es": "Soy estudiante en la universidad.",
+      "en": "I'm a university student."
+    },
+    {
+      "es": "¿Dónde para el tranvía?",
+      "en": "Where does the tram stop?"
+    },
+    {
+      "es": "Quiero pedir cita para el padrón.",
+      "en": "I want a padrón appointment."
+    },
+    {
+      "es": "¿Hay ayudas para el alquiler?",
+      "en": "Is there help with rent?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Hasta cuándo dura el 40 % de bonificación en la recarga en Murcia?",
+        "en": "Until when is the 40% top-up discount in Murcia?"
+      },
+      "options": [
+        {
+          "es": "31 de diciembre de 2026",
+          "en": "31 December 2026"
+        },
+        {
+          "es": "Para siempre",
+          "en": "Forever"
+        },
+        {
+          "es": "Ya terminó",
+          "en": "It has ended"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cómo pides cita para el padrón en Murcia?",
+        "en": "How do you book a padrón appointment in Murcia?"
+      },
+      "options": [
+        {
+          "es": "Por internet",
+          "en": "Online"
+        },
+        {
+          "es": "En el tranvía",
+          "en": "On the tram"
+        },
+        {
+          "es": "No se puede",
+          "en": "You can't"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la universidad",
+      "en": "At the university"
+    },
+    "scene": {
+      "es": "Preguntas por el bono de estudiante.",
+      "en": "You ask about the student pass."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Soy estudiante en la universidad.",
+          "en": "I'm a university student."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuánto cuesta el bono de estudiante?",
+          "en": "How much is the student pass?"
+        }
+      },
+      {
+        "who": {
+          "es": "Secretaria",
+          "en": "Secretary"
+        },
+        "text": {
+          "es": "Mírelo en la web del ayuntamiento: es nuevo este mes.",
+          "en": "Check the town hall website: it's new this month."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Dónde para el tranvía?",
+          "en": "Where does the tram stop?"
+        }
+      },
+      {
+        "who": {
+          "es": "Secretaria",
+          "en": "Secretary"
+        },
+        "text": {
+          "es": "Justo en la puerta del campus.",
+          "en": "Right at the campus gate."
+        }
+      }
+    ]
+  }
+}

@@ -10,6 +10,7 @@ import { SPAIN_LEVELS } from './courses/espana';
 import { COLOMBIA_LEVELS } from './courses/colombia';
 import { CONSULATE_LEVELS } from './courses/consulados';
 import { MIGRATE_UK_LEVELS } from './courses/migrar-uk';
+import { UK_CITY_LEVELS, ES_CITY_LEVELS, CO_CITY_LEVELS } from './courses/ciudades';
 import type { LevelDefinition } from '../types';
 
 export type Category = 'ingles' | 'situaciones' | 'vida' | 'espana' | 'colombia' | 'ia';
@@ -27,7 +28,7 @@ export interface CatalogCourse {
   /** Levels whose lessons make up this course. */
   levels: LevelDefinition[];
   /** Where "Empezar" takes the learner: an English level/course id, or the Vivir en UK tab. */
-  open: { tab: 'english'; level: string } | { tab: 'life' };
+  open: { tab: 'english'; level: string } | { tab: 'life' } | { tab: 'local' };
 }
 
 export const CATEGORIES: { id: Category | 'todos'; label: string }[] = [
@@ -146,6 +147,27 @@ export const CATALOG: CatalogCourse[] = [
     levels: [LIFE_LEVEL],
     open: { tab: 'life' },
   },
+  ...UK_CITY_LEVELS.map(
+    (level): CatalogCourse => ({
+      id: 'tu-council',
+      title: 'Tu council y tu ciudad en el Reino Unido',
+      subtitle: 'Escribe tu código postal y llega a los servicios de TU council (vivienda, council tax, servicios sociales, colegios), más guías de transporte de 10 ciudades.',
+      category: 'vida',
+      level: 'Todos los niveles',
+      emoji: '🏙️',
+      color: level.accent,
+      badges: ['Datos de GOV.UK', 'Por código postal'],
+      learn: [
+        'Encontrar tu council con tu código postal',
+        'Pedir vivienda social y ayuda si te quedas sin casa',
+        'Servicios sociales, colegios y comida escolar gratis',
+        'Transporte y descuentos en Londres, Mánchester, Birmingham y más',
+        'Escocia, Gales e Irlanda del Norte: lo que cambia',
+      ],
+      levels: [level],
+      open: { tab: 'local' },
+    }),
+  ),
   ...MIGRATE_UK_LEVELS.map(
     (level): CatalogCourse => ({
       id: 'migrar-uk',
@@ -266,6 +288,29 @@ export const CATALOG: CatalogCourse[] = [
             open: { tab: 'english', level: level.id },
           },
   ),
+  ...[...ES_CITY_LEVELS, ...CO_CITY_LEVELS].map((level): CatalogCourse => {
+    const es = level.id.startsWith('ESC');
+    const learnSpanish = level.targetLanguage === 'es';
+    return {
+      id: `ciudades-${es ? 'espana' : 'colombia'}${learnSpanish ? '-espanol' : ''}`,
+      title: level.name,
+      subtitle: level.description,
+      category: es ? 'espana' : 'colombia',
+      level: 'A1 → B1',
+      emoji: es ? '🏙️' : '🚡',
+      color: level.accent,
+      badges: learnSpanish ? ['Learn Spanish', 'With video'] : ['Por ciudades', 'Con vídeo'],
+      learn: es
+        ? learnSpanish
+          ? ['Transport cards and 2026 passes', 'Padrón appointments in each city', 'Municipal housing and social services', 'Low emission zones']
+          : ['Tarjetas y abonos de transporte 2026', 'Cita del padrón en cada ciudad', 'Vivienda municipal y servicios sociales', 'Zonas de bajas emisiones']
+        : learnSpanish
+          ? ['Transport cards and 2026 fares', 'Pico y placa in each city', 'Sisbén and social programmes', 'Housing and local help lines']
+          : ['Tarjetas y pasajes 2026', 'Pico y placa en cada ciudad', 'Sisbén y programas sociales', 'Vivienda y líneas de atención'],
+      levels: [level],
+      open: { tab: 'english', level: level.id },
+    };
+  }),
   {
     id: 'ia-con-britjoy',
     title: AI_LEVEL.name,

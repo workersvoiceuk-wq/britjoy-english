@@ -1,0 +1,196 @@
+{
+  "id": "alicante",
+  "order": 10,
+  "icon": "🏝️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Alicante",
+    "en": "Alicante"
+  },
+  "unit": {
+    "es": "Tu ciudad",
+    "en": "Your city"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Alicante: transporte y ayuntamiento",
+        "en": "Alicante: transport and the town hall"
+      },
+      "body": {
+        "es": "• Transporte: autobús urbano (Vectalia) y TRAM d'Alacant, con tarjeta Móbilis. Desde el 1 de octubre de 2026: Móbilis Mensual (30 días ilimitados en bus y TRAM) 35 €, y Móbilis Mensual Jove 29,75 €. Los menores de 14 años viajan gratis en el bus urbano hasta final de 2026, y los pensionistas tienen el Bono Oro gratis.\n• Ayuntamiento: alicante.es. Padrón en las oficinas de atención ciudadana, siempre con cita: citaprevia.alicante.es o el 010. El ayuntamiento tiene ayudas al alquiler en 2026.\n• Coche: la Zona de Bajas Emisiones solo restringe en episodios de contaminación.",
+        "en": "• Transport: city buses (Vectalia) and the TRAM d'Alacant, with the Móbilis card. From 1 October 2026: Móbilis Mensual (30 days unlimited on bus and TRAM) €35, and Móbilis Mensual Jove €29.75. Under-14s travel free on city buses until the end of 2026, and pensioners have the free Bono Oro.\n• Town hall: alicante.es. Padrón at citizen service offices, always by appointment: citaprevia.alicante.es or 010. The town hall offers rent help in 2026.\n• Driving: the Low Emission Zone only restricts traffic during pollution episodes."
+      },
+      "say": {
+        "es": "En Alicante el Móbilis Mensual cuesta treinta y cinco euros con viajes ilimitados en bus y TRAM. Los pensionistas tienen el Bono Oro gratis. Y el padrón siempre es con cita.",
+        "en": "In Alicante the Móbilis Mensual costs €35 with unlimited bus and TRAM trips. Pensioners have the free Bono Oro. And the padrón always needs an appointment."
+      },
+      "link": {
+        "label": {
+          "es": "Ayuntamiento de Alicante: padrón",
+          "en": "Alicante City Council: padrón"
+        },
+        "url": "https://www.alicante.es/es/contenidos/padron-municipal-habitantes"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Móbilis Mensual: 35 €",
+      "en": "Móbilis monthly: €35"
+    },
+    {
+      "es": "Pensionistas: Bono Oro gratis",
+      "en": "Pensioners: free Bono Oro"
+    },
+    {
+      "es": "Padrón: siempre con cita",
+      "en": "Padrón: always by appointment"
+    },
+    {
+      "es": "Ayudas al alquiler 2026",
+      "en": "Rent help 2026"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero el bono mensual.",
+      "en": "I want the monthly pass."
+    },
+    {
+      "es": "¿Vale también para el TRAM?",
+      "en": "Is it valid on the TRAM too?"
+    },
+    {
+      "es": "Mi madre es pensionista.",
+      "en": "My mother is a pensioner."
+    },
+    {
+      "es": "¿Cómo pido las ayudas al alquiler?",
+      "en": "How do I apply for rent help?"
+    },
+    {
+      "es": "Tengo cita a las doce.",
+      "en": "I have an appointment at twelve."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta el Móbilis Mensual desde octubre de 2026?",
+        "en": "How much is the Móbilis Mensual from October 2026?"
+      },
+      "options": [
+        {
+          "es": "35 €",
+          "en": "€35"
+        },
+        {
+          "es": "5 €",
+          "en": "€5"
+        },
+        {
+          "es": "100 €",
+          "en": "€100"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Necesitas cita para el padrón en Alicante?",
+        "en": "Do you need an appointment for the padrón in Alicante?"
+      },
+      "options": [
+        {
+          "es": "Sí, siempre",
+          "en": "Yes, always"
+        },
+        {
+          "es": "No, nunca",
+          "en": "No, never"
+        },
+        {
+          "es": "Solo en verano",
+          "en": "Only in summer"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la oficina de Vectalia",
+      "en": "At the Vectalia office"
+    },
+    "scene": {
+      "es": "Pides tu bono.",
+      "en": "You ask for your pass."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero el bono mensual.",
+          "en": "I want the monthly pass."
+        }
+      },
+      {
+        "who": {
+          "es": "Empleada",
+          "en": "Staff"
+        },
+        "text": {
+          "es": "Son treinta y cinco euros.",
+          "en": "It's thirty-five euros."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Vale también para el TRAM?",
+          "en": "Is it valid on the TRAM too?"
+        }
+      },
+      {
+        "who": {
+          "es": "Empleada",
+          "en": "Staff"
+        },
+        "text": {
+          "es": "Sí, bus y TRAM, viajes ilimitados.",
+          "en": "Yes, bus and TRAM, unlimited trips."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Mi madre es pensionista.",
+          "en": "My mother is a pensioner."
+        }
+      },
+      {
+        "who": {
+          "es": "Empleada",
+          "en": "Staff"
+        },
+        "text": {
+          "es": "Ella puede pedir el Bono Oro gratis.",
+          "en": "She can get the free Bono Oro."
+        }
+      }
+    ]
+  }
+}

@@ -39,6 +39,16 @@ export function SettingsScreen() {
         <span aria-hidden className="text-xl text-navy">›</span>
       </button>
       <button
+        onClick={() => setTab('local')}
+        className="press flex w-full items-center justify-between rounded-2xl border-2 border-b-4 border-navy/10 bg-white p-4 text-left"
+      >
+        <span>
+          <span className="block text-lg font-extrabold text-navy">🏙️ {t('local.title')}</span>
+          <span className="block text-sm font-semibold text-ink-soft">{t('local.cardText')}</span>
+        </span>
+        <span aria-hidden className="text-xl text-navy">›</span>
+      </button>
+      <button
         onClick={() => setTab('resources')}
         className="press flex w-full items-center justify-between rounded-2xl border-2 border-b-4 border-navy/10 bg-white p-4 text-left"
       >
