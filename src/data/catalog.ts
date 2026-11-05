@@ -6,9 +6,10 @@
 import { LEVELS } from './courses/en-es';
 import { AI_LEVEL, DAILY_LEVEL, TOURIST_LEVEL } from './courses/situaciones';
 import { LIFE_LEVEL } from './courses/vivir-uk';
+import { SPAIN_LEVELS } from './courses/espana';
 import type { LevelDefinition } from '../types';
 
-export type Category = 'ingles' | 'situaciones' | 'vida' | 'ia';
+export type Category = 'ingles' | 'situaciones' | 'vida' | 'espana' | 'ia';
 
 export interface CatalogCourse {
   id: string;
@@ -31,6 +32,7 @@ export const CATEGORIES: { id: Category | 'todos'; label: string }[] = [
   { id: 'ingles', label: 'Inglés por niveles' },
   { id: 'situaciones', label: 'Situaciones reales' },
   { id: 'vida', label: 'Vivir en UK' },
+  { id: 'espana', label: 'Vivir en España' },
   { id: 'ia', label: 'Inteligencia artificial' },
 ];
 
@@ -119,6 +121,46 @@ export const CATALOG: CatalogCourse[] = [
     levels: [LIFE_LEVEL],
     open: { tab: 'life' },
   },
+  ...SPAIN_LEVELS.map(
+    (level): CatalogCourse =>
+      level.targetLanguage === 'es'
+        ? {
+            id: 'espana-espanol',
+            title: 'Living in Spain · learn Spanish',
+            subtitle: 'Every step of settling in Spain explained in English, while you learn the Spanish you need at each office.',
+            category: 'espana',
+            level: 'A1 → B1',
+            emoji: '🇪🇸',
+            color: level.accent,
+            badges: ['Learn Spanish', 'With video'],
+            learn: [
+              'NIE, TIE and NIF: what each one is',
+              'Padrón, arraigo and asylum appointments',
+              'Health card, GP and emergencies (112)',
+              'Tax (Hacienda), work, benefits and housing',
+            ],
+            levels: [level],
+            open: { tab: 'english', level: level.id },
+          }
+        : {
+            id: 'espana-ingles',
+            title: 'Vivir en España · aprende inglés',
+            subtitle: 'Todos los trámites de España, claros y paso a paso, mientras aprendes a decirlos en inglés.',
+            category: 'espana',
+            level: 'A1 → B1',
+            emoji: '🇪🇸',
+            color: level.accent,
+            badges: ['Trámites claros', 'Con vídeo'],
+            learn: [
+              'NIE, TIE y NIF: qué es cada uno',
+              'Padrón, arraigo y cita de asilo',
+              'Tarjeta sanitaria, centro de salud y 112',
+              'Hacienda, trabajo, ayudas y vivienda',
+            ],
+            levels: [level],
+            open: { tab: 'english', level: level.id },
+          },
+  ),
   {
     id: 'ia-con-britjoy',
     title: AI_LEVEL.name,

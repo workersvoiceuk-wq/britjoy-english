@@ -204,4 +204,5 @@ export const pl: Messages = {
   "review.finished": "Powtórka zakończona: {ok} z {total} poprawnie.",
   "review.words": "{n} słów i zwrotów",
   "review.listen": "Posłuchaj",
+  "cat.espana": "Życie w Hiszpanii",
 };

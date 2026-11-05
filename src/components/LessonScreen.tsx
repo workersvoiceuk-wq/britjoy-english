@@ -7,7 +7,7 @@ import { hasPlus, usePlus } from '../lib/backend';
 import { copyFor, instructionFor } from '../lib/copy';
 import { narrationFor } from '../lib/narration';
 import { hush, narrate, useVoice } from '../lib/narrator';
-import { speak } from '../lib/speech';
+import { setTargetLanguage, speak } from '../lib/speech';
 import { sfx } from '../lib/sound';
 import { fill, pick } from '../lib/util';
 import dialogue from '../data/britjoy-dialogue.json';
@@ -34,7 +34,10 @@ interface Props {
 const wait = (ms: number) => new Promise((r) => window.setTimeout(r, ms));
 
 export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
-  const copy = copyFor(level.instructionLanguage);
+  const copy = copyFor(level.instructionLanguage, level.targetLanguage);
+  // The language being learnt sets the voice of phrases, listening and speaking exercises.
+  setTargetLanguage(level.targetLanguage === 'es' ? 'es-ES' : 'en-GB');
+  useEffect(() => () => setTargetLanguage('en-GB'), []);
   const voiceLang = level.instructionLanguage === 'es' ? 'es-ES' : 'en-GB';
   const hearts = useProgressStore((s) => s.hearts);
   const plus = usePlus();

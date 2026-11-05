@@ -47,8 +47,11 @@ const COPY = {
 export type Lang = keyof typeof COPY;
 export type Copy = (typeof COPY)[Lang];
 
-export function copyFor(lang: Lang): Copy {
-  return COPY[lang];
+/** Typing hint when the lesson practises Spanish instead of English. */
+const TYPE_SPANISH = { es: 'Escribe en español…', en: 'Type in Spanish…' } as const;
+
+export function copyFor(lang: Lang, target: 'en' | 'es' = 'en'): Copy {
+  return target === 'es' ? ({ ...COPY[lang], typeHere: TYPE_SPANISH[lang] } as unknown as Copy) : COPY[lang];
 }
 
 export function instructionFor(exercise: Exercise, copy: Copy): string {

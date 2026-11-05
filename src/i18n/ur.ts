@@ -204,4 +204,5 @@ export const ur: Messages = {
   "review.finished": "دہرائی مکمل: {total} میں سے {ok} درست۔",
   "review.words": "{n} الفاظ اور جملے",
   "review.listen": "سنیں",
+  "cat.espana": "اسپین میں رہنا",
 };

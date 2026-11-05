@@ -134,7 +134,7 @@ export interface Unit {
 }
 
 /** english = CEFR levels A1–C2 · life = Vivir en UK · daily / tourist = story courses · ai = IA con Britjoy. */
-export type TrackId = 'english' | 'life' | 'daily' | 'tourist' | 'ai';
+export type TrackId = 'english' | 'life' | 'daily' | 'tourist' | 'ai' | 'spain';
 
 export interface LevelDefinition {
   id: LevelId;
@@ -150,6 +150,8 @@ export interface LevelDefinition {
   accentLight: string;
   /** Language for UI instructions inside lessons ("es" for lower levels, "en" for higher). */
   instructionLanguage: 'es' | 'en';
+  /** Language being learnt (spoken and practised). Defaults to English. */
+  targetLanguage?: 'en' | 'es';
   units: Unit[];
 }
 

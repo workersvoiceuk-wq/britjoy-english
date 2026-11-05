@@ -9,7 +9,9 @@ import type { CheckResult, Exercise, ExerciseResponse } from '../types';
  */
 export function normalizeText(input: string): string {
   return input
-    .normalize('NFC')
+    .normalize('NFD')
+    // Accents are not marked wrong ("donde" = "dónde"), so learners of Spanish are not penalised for typing on any keyboard.
+    .replace(/[\u0300-\u036f]/g, '')
     .replace(/[‘’ʼ`´]/g, "'")
     .replace(/[“”]/g, '"')
     .replace(/[¿¡]/g, '')

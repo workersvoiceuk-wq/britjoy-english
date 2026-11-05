@@ -66,9 +66,18 @@ export function say(text: string, opts: { lang?: SpeechLang; slow?: boolean } = 
   });
 }
 
-/** Plays English audio (listening exercises, phrases). */
+/** Language being learnt in the current lesson: English by default, Spanish in "learn Spanish" courses. */
+let target: SpeechLang = 'en-GB';
+export function setTargetLanguage(lang: SpeechLang): void {
+  target = lang;
+}
+export function targetLanguage(): SpeechLang {
+  return target;
+}
+
+/** Plays audio in the language being learnt (listening exercises, phrases). */
 export function speak(text: string, slow = false): Promise<void> {
-  return say(text, { lang: 'en-GB', slow });
+  return say(text, { lang: target, slow });
 }
 
 export function stopSpeaking(): void {

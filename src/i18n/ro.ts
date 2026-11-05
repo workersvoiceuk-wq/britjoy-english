@@ -204,4 +204,5 @@ export const ro: Messages = {
   "review.finished": "Recapitulare terminată: {ok} din {total} corecte.",
   "review.words": "{n} cuvinte și expresii",
   "review.listen": "Ascultă",
+  "cat.espana": "Viața în Spania",
 };

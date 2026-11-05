@@ -204,4 +204,5 @@ export const pa: Messages = {
   "review.finished": "ਦੁਹਰਾਈ ਪੂਰੀ: {total} ਵਿੱਚੋਂ {ok} ਸਹੀ।",
   "review.words": "{n} ਸ਼ਬਦ ਅਤੇ ਵਾਕ",
   "review.listen": "ਸੁਣੋ",
+  "cat.espana": "ਸਪੇਨ ਵਿੱਚ ਰਹਿਣਾ",
 };

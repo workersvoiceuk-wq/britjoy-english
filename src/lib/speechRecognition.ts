@@ -1,4 +1,5 @@
 /** Thin wrapper over the browser's SpeechRecognition (Chrome/Edge/Safari). */
+import { targetLanguage } from './speech';
 type Recognition = {
   lang: string;
   interimResults: boolean;
@@ -20,12 +21,12 @@ export function recognitionSupported(): boolean {
   return ctor() !== null;
 }
 
-/** Listens once in British English and resolves with the transcript ('' if nothing was heard). */
+/** Listens once in the language being learnt (British English by default) and resolves with the transcript. */
 export function listenOnce(): { result: Promise<string>; stop: () => void } {
   const C = ctor();
   if (!C) return { result: Promise.reject(new Error('unsupported')), stop: () => undefined };
   const rec = new C();
-  rec.lang = 'en-GB';
+  rec.lang = targetLanguage();
   rec.interimResults = false;
   rec.maxAlternatives = 3;
   const result = new Promise<string>((resolve, reject) => {

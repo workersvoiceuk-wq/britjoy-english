@@ -204,4 +204,5 @@ export const ar: Messages = {
   "review.finished": "انتهت المراجعة: {ok} من {total} صحيحة.",
   "review.words": "{n} كلمات وعبارات",
   "review.listen": "استمع",
+  "cat.espana": "العيش في إسبانيا",
 };

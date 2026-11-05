@@ -204,4 +204,5 @@ export const en: Messages = {
   "review.finished": "Review finished: {ok} of {total} correct.",
   "review.words": "{n} words and phrases",
   "review.listen": "Listen",
+  "cat.espana": "Living in Spain",
 };

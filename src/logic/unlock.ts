@@ -51,8 +51,8 @@ export function isLevelUnlocked(
  * stay available for practice.
  */
 export function isLessonUnlocked(level: LevelDefinition, lessonId: string, completed: CompletedLessons): boolean {
-  // Survival topics are needed on demand (e.g. Council Tax today), so they are all open.
-  if (level.track === 'life') return level.units.some((u) => u.lessons.some((l) => l.id === lessonId));
+  // Survival topics (UK and Spain) are needed on demand (e.g. Council Tax today), so they are all open.
+  if (level.track === 'life' || level.track === 'spain') return level.units.some((u) => u.lessons.some((l) => l.id === lessonId));
   const ordered = level.units.flatMap((u) => u.lessons);
   const index = ordered.findIndex((l) => l.id === lessonId);
   if (index < 0) return false;

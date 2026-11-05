@@ -211,6 +211,7 @@ export const es = {
   "review.finished": "Repaso terminado: {ok} de {total} correctas.",
   "review.words": "{n} palabras y frases",
   "review.listen": "Escuchar",
+  "cat.espana": "Vivir en España",
 } as const;
 
 export type MessageKey = keyof typeof es;

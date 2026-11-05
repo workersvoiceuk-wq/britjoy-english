@@ -13,7 +13,6 @@ import salud from './salud.json';
 import universalCredit from './universal-credit.json';
 import councilTax from './council-tax.json';
 import vidaUk from './vida-uk.json';
-import espana from './espana.json';
 import alquiler from './alquiler.json';
 import trabajo from './trabajo.json';
 import colegios from './colegios.json';
@@ -41,7 +40,7 @@ export const LIFE_LEVEL: LevelDefinition = {
   units: [
     unit(transporte), unit(salud), unit(emergencias), unit(dentista), unit(universalCredit), unit(councilTax),
     unit(alquiler), unit(facturas), unit(banco), unit(trabajo), unit(impuestos), unit(familia), unit(colegios),
-    unit(consumo), unit(conducir), unit(barrio), unit(vidaUk), unit(espana),
+    unit(consumo), unit(conducir), unit(barrio), unit(vidaUk),
   ],
 };
 

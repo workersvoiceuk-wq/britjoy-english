@@ -18,7 +18,9 @@ export function useVocabulary(): ReviewItem[] {
   const levels = useProgressStore((s) => s.levels);
   return useMemo(() => {
     const done = new Set(Object.values(levels).flatMap((l) => Object.keys(l.completedLessons)));
-    const lessons = ALL_LEVELS.flatMap((lv) => lv.units.flatMap((u) => u.lessons)).filter((l) => done.has(l.id));
+    const lessons = ALL_LEVELS.filter((lv) => lv.targetLanguage !== 'es')
+      .flatMap((lv) => lv.units.flatMap((u) => u.lessons))
+      .filter((l) => done.has(l.id));
     return vocabularyOf(lessons);
   }, [levels]);
 }

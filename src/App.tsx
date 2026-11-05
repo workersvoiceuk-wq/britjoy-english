@@ -23,7 +23,9 @@ const ReviewScreen = lazy(() => import('./components/StudyTools').then((m) => ({
 const AiScreen = lazy(() => import('./components/AiScreen').then((m) => ({ default: m.AiScreen })));
 import { AcademyScreen } from './components/AcademyScreen';
 import { LanguagePicker } from './components/LanguagePicker';
-import { isRtl, translate, type UiLang } from './i18n';
+import { LANGUAGES, isRtl, translate, type UiLang } from './i18n';
+
+const isUiLang = (l: string): l is UiLang => LANGUAGES.some((x) => x.code === l);
 import { backendConfigured, getSupabase, hasPlus, refreshProfile, useAccount } from './lib/backend';
 
 type Screen =
@@ -71,6 +73,31 @@ function AppScreens() {
     document.documentElement.lang = uiLang;
     document.documentElement.dir = isRtl(uiLang) ? 'rtl' : 'ltr';
   }, [uiLang]);
+
+  // Deep links from other sites (e.g. vozunidamundo.com): ?curso=<catalogue id> opens that course
+  // straight away, skipping the placement test; ?lang=xx preselects the interface language.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const courseId = params.get('curso');
+    const lang = params.get('lang');
+    if (!courseId && !lang) return;
+    void import('./data/catalog').then(({ CATALOG }) => {
+      const st = useProgressStore.getState();
+      if (lang && !st.uiLang && isUiLang(lang)) st.setUiLang(lang);
+      const course = CATALOG.find((c) => c.id === courseId);
+      if (course) {
+        if (!st.placementDone) useProgressStore.setState({ placementDone: true });
+        if (course.open.tab === 'english') {
+          st.setCurrentLevel(course.open.level);
+          st.setTab('english');
+        } else st.setTab('life');
+      }
+      params.delete('curso');
+      params.delete('lang');
+      const rest = params.toString();
+      window.history.replaceState(null, '', window.location.pathname + (rest ? `?${rest}` : ''));
+    });
+  }, []);
 
   // Account: keep VUM Academy and AI credits in sync; after Stripe Checkout the web
   // returns with ?plus=ok|cancel, which opens the Plus screen.
