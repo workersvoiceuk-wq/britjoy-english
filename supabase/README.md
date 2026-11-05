@@ -14,6 +14,7 @@ Nunca van en la web, en las apps ni en el repositorio.
 | `functions/academy-sync` | Botón «Ya tengo VUM Academy: comprobar». Busca en Stripe, por el email verificado de la cuenta, una suscripción activa de VUM Academy y activa la app hasta el final del periodo pagado. Solo lee de Stripe. |
 | `functions/billing-webhook` | Recibe los avisos de Stripe. Suma créditos, y cuando se crea, renueva o cancela una suscripción de VUM Academy (comprada en vozunidamundo.com), actualiza la app de la cuenta con el mismo email verificado. Cada aviso se aplica una sola vez. |
 | `functions/billing-portal` | Abre el portal de Stripe para gestionar VUM Academy y descargar recibos. |
+| `functions/council-finder` | «Tu ciudad»: convierte un código postal del Reino Unido en su council con la API oficial de GOV.UK. Es pública (no hace falta cuenta), no guarda nada y no usa secretos. |
 | `functions/account-delete` | Botón «Borrar mi cuenta». Borra la cuenta de la app; **no** cancela la suscripción de VUM Academy, que es de la web. Lo exigen Google Play y la App Store. |
 | `config.toml` | `billing-webhook` va sin token de Supabase, porque Stripe no lo envía; lo protege la firma de Stripe. |
 
@@ -21,7 +22,7 @@ Nunca van en la web, en las apps ni en el repositorio.
 
 - Proyecto de Supabase **`britjoy-english`** (ref `vvpmsmalgzqqfjfrlfwg`, región Londres), creado el 4 de noviembre de 2026.
 - Base de datos aplicada: las dos migraciones de `migrations/`. La revisión de seguridad de Supabase no muestra avisos.
-- Las 6 funciones están desplegadas. Endpoint del webhook de Stripe:
+- Las 7 funciones están desplegadas (council-finder, el 5 de noviembre de 2026). Endpoint del webhook de Stripe:
   `https://vvpmsmalgzqqfjfrlfwg.supabase.co/functions/v1/billing-webhook`
 - Falta lo que solo puede hacer el dueño: los secretos (Claude y Stripe), las plantillas de email y las variables de
   GitHub (pasos 1.4–1.6, 2, 3 y 5).
@@ -68,7 +69,7 @@ Nunca van en la web, en las apps ni en el repositorio.
 ```sh
 npx supabase login
 npx supabase link --project-ref <REF>
-npx supabase functions deploy britjoy-tutor billing-checkout billing-webhook billing-portal account-delete academy-sync
+npx supabase functions deploy britjoy-tutor billing-checkout billing-webhook billing-portal account-delete academy-sync council-finder
 ```
 O pídeselo a Claude, dándole permiso para usar tu cuenta de Supabase.
 
