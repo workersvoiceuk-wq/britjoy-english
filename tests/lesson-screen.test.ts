@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { lessonProgressStep, shouldHandleLessonEnterKey } from '../src/components/LessonScreen';
+import { bindNarratorVisibilityStop, useVoice } from '../src/lib/narrator';
 
 describe('lessonProgressStep', () => {
   it('counts ungraded explain/dialogue slides just like the visual progress bar', () => {
@@ -34,5 +35,39 @@ describe('shouldHandleLessonEnterKey', () => {
     expect(shouldHandleLessonEnterKey('Enter', { tagName: 'BODY', closest: () => null } as unknown as EventTarget)).toBe(true);
     expect(shouldHandleLessonEnterKey('Enter', { tagName: 'TEXTAREA', closest: () => null } as unknown as EventTarget)).toBe(true);
     expect(shouldHandleLessonEnterKey('Enter', { tagName: 'INPUT', closest: () => null } as unknown as EventTarget)).toBe(true);
+  });
+});
+
+describe('bindNarratorVisibilityStop', () => {
+  it('stops active narration when the document becomes hidden or on pagehide', () => {
+    const docListeners: Record<string, (() => void)[]> = {};
+    const winListeners: Record<string, (() => void)[]> = {};
+    let hidden = false;
+    bindNarratorVisibilityStop({
+      document: {
+        get hidden() {
+          return hidden;
+        },
+        addEventListener: (type, fn) => {
+          (docListeners[type] ??= []).push(fn);
+        },
+      },
+      addEventListener: (type, fn) => {
+        (winListeners[type] ??= []).push(fn);
+      },
+    });
+
+    useVoice.setState({ speaking: true });
+    hidden = false;
+    docListeners.visibilitychange?.forEach((fn) => fn());
+    expect(useVoice.getState().speaking).toBe(true);
+
+    hidden = true;
+    docListeners.visibilitychange?.forEach((fn) => fn());
+    expect(useVoice.getState().speaking).toBe(false);
+
+    useVoice.setState({ speaking: true });
+    winListeners.pagehide?.forEach((fn) => fn());
+    expect(useVoice.getState().speaking).toBe(false);
   });
 });
