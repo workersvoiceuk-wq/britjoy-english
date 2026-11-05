@@ -84,6 +84,11 @@ informe de ChatGPT, con el formato del final.
   | Living in Colombia · learn Spanish (explicado en inglés) | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=colombia-espanol&lang=en` |
   | Inmigración, impuestos y empresa en el Reino Unido (11 temas) | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=migrar-uk&lang=es` |
   | Tu consulado en Londres (9 temas, 9 países) | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=consulados-londres&lang=es` |
+  | Tu council y tu ciudad en el Reino Unido (buscador por código postal + 14 ciudades) | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=tu-council&lang=es` |
+  | Ciudades de España · aprende inglés (11 ciudades) | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=ciudades-espana&lang=es` |
+  | Spanish cities · learn Spanish | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=ciudades-espana-espanol&lang=en` |
+  | Ciudades de Colombia · aprende inglés (11 ciudades) | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=ciudades-colombia&lang=es` |
+  | Colombian cities · learn Spanish | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=ciudades-colombia-espanol&lang=en` |
 
 - Datos revisados el 5 de noviembre de 2026, con enlace a la fuente oficial en cada lección.
 - **Qué hacer:** añadir una tarjeta por curso a la plataforma de cursos de vozunidamundo.com (en `/academia/` y en
