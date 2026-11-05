@@ -1,0 +1,160 @@
+{
+  "id": "nie",
+  "order": 1,
+  "icon": "🪪",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "NIE, TIE y NIF: qué es cada uno",
+    "en": "NIE, TIE and NIF: what each one is"
+  },
+  "unit": {
+    "es": "Tus documentos",
+    "en": "Your documents"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Número, tarjeta y número fiscal",
+        "en": "Number, card and tax number"
+      },
+      "body": {
+        "es": "• NIE: tu NÚMERO personal de extranjero. Es único y no cambia nunca. Tener NIE NO significa que puedas vivir o trabajar en España.\n• TIE: la TARJETA física para personas de fuera de la UE con permiso de estancia de más de 6 meses o de residencia. Lleva tu NIE impreso.\n• NIF: tu número para Hacienda. Si eres extranjero, tu NIE funciona como NIF.\n• DNI: el documento de identidad de las personas españolas.\n• Para saber si puedes trabajar, mira tu autorización y sus condiciones, no el número.",
+        "en": "• NIE: your personal foreigner's NUMBER. It is unique and never changes. Having an NIE does NOT mean you can live or work in Spain.\n• TIE: the physical CARD for non-EU people with permission to stay more than 6 months or to reside. Your NIE is printed on it.\n• NIF: your tax number. As a foreigner, your NIE works as your NIF.\n• DNI: the identity card of Spanish citizens.\n• Whether you can work depends on your permit and its conditions, not on the number."
+      },
+      "say": {
+        "es": "El NIE es un número, la TIE es una tarjeta y el NIF es tu número para Hacienda. Recuerda: tener NIE no significa que puedas trabajar. Eso lo dice tu autorización.",
+        "en": "The NIE is a number, the TIE is a card, and the NIF is your tax number. Remember: having an NIE does not mean you can work. Your permit says that."
+      },
+      "link": {
+        "label": {
+          "es": "Policía Nacional: trámites de extranjería",
+          "en": "National Police: foreigners' procedures"
+        },
+        "url": "https://sede.policia.gob.es/portalCiudadano/extranjeria/extranjeria.php"
+      }
+    },
+    {
+      "title": {
+        "es": "Cómo pedirlos",
+        "en": "How to apply"
+      },
+      "body": {
+        "es": "• NIE: formulario EX-15 y tasa modelo 790, código 012 (9,84 € en 2026). Cita previa en la sede electrónica: «Policía-Trámites (Extranjería)». También se puede pedir en un consulado de España.\n• TIE: formulario EX-17, foto, pasaporte y la tasa; te toman las huellas. Pídela en el plazo de UN MES desde que entras en España o desde que te conceden la autorización.\n• Ciudadanos de la UE: certificado de registro (EX-18) en los 3 meses siguientes a tu llegada.\n• No pagues a nadie por una cita: la cita previa es gratis.",
+        "en": "• NIE: form EX-15 and fee form 790, code 012 (€9.84 in 2026). Book on the electronic office: 'Policía-Trámites (Extranjería)'. You can also apply at a Spanish consulate.\n• TIE: form EX-17, photo, passport and the fee; your fingerprints are taken. Apply within ONE MONTH of entering Spain or of your permit being granted.\n• EU citizens: registration certificate (EX-18) within 3 months of arriving.\n• Never pay anyone for an appointment: booking is free."
+      },
+      "video": {
+        "src": "videos/espana-nie-tie.mp4",
+        "poster": "videos/espana-nie-tie.jpg",
+        "caption": {
+          "es": "Voz Unida Mundo · ¿NIE significa poder trabajar?",
+          "en": "Voz Unida Mundo · Does an NIE mean you can work? (in Spanish)"
+        }
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "NIE: tu número, no un permiso",
+      "en": "NIE: your number, not a permit"
+    },
+    {
+      "es": "TIE: la tarjeta, pídela en 1 mes",
+      "en": "TIE: the card, apply within 1 month"
+    },
+    {
+      "es": "EX-15 + tasa 790-012 + cita previa",
+      "en": "EX-15 + fee 790-012 + appointment"
+    },
+    {
+      "es": "La cita es gratis: no la pagues",
+      "en": "Appointments are free: never pay"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Necesito pedir el NIE.",
+      "en": "I need to apply for an NIE."
+    },
+    {
+      "es": "Tengo cita para las huellas.",
+      "en": "I have an appointment for my fingerprints."
+    },
+    {
+      "es": "¿Dónde pago la tasa?",
+      "en": "Where do I pay the fee?"
+    },
+    {
+      "es": "¿Cuándo puedo recoger mi tarjeta?",
+      "en": "When can I collect my card?"
+    },
+    {
+      "es": "Este es mi pasaporte.",
+      "en": "This is my passport."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué es el NIE?",
+        "en": "What is the NIE?"
+      },
+      "options": [
+        {
+          "es": "Un número personal que no cambia",
+          "en": "A personal number that never changes"
+        },
+        {
+          "es": "Un permiso de trabajo",
+          "en": "A work permit"
+        },
+        {
+          "es": "Una tarjeta sanitaria",
+          "en": "A health card"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánto tiempo tienes para pedir la TIE?",
+        "en": "How long do you have to apply for the TIE?"
+      },
+      "options": [
+        {
+          "es": "Un mes",
+          "en": "One month"
+        },
+        {
+          "es": "Un año",
+          "en": "One year"
+        },
+        {
+          "es": "No hay plazo",
+          "en": "There is no deadline"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué tasa pagas para el NIE?",
+        "en": "Which fee do you pay for the NIE?"
+      },
+      "options": [
+        {
+          "es": "Modelo 790, código 012",
+          "en": "Form 790, code 012"
+        },
+        {
+          "es": "Modelo 790, código 052",
+          "en": "Form 790, code 052"
+        },
+        {
+          "es": "Ninguna",
+          "en": "None"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

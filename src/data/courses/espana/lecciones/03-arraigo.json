@@ -1,0 +1,142 @@
+{
+  "id": "arraigo",
+  "order": 3,
+  "icon": "🌱",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Arraigo: tu camino a los papeles",
+    "en": "Arraigo: your path to residence"
+  },
+  "unit": {
+    "es": "Arraigo",
+    "en": "Arraigo"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Los cinco arraigos (Reglamento de 2025)",
+        "en": "The five types of arraigo (2025 rules)"
+      },
+      "body": {
+        "es": "• Desde el 20 de mayo de 2025 hay cinco tipos: social, sociolaboral, socioformativo, familiar y de segunda oportunidad.\n• En general necesitas 2 años de permanencia continuada en España (las ausencias, como máximo unos 90 días). El tiempo como solicitante de asilo no cuenta.\n• Sociolaboral: uno o varios contratos que sumen al menos 20 horas a la semana y paguen como mínimo el salario mínimo.\n• Socioformativo: estudiar o comprometerte a una formación; puedes trabajar mientras.\n• Familiar: para padres de un menor español o de la UE, sin tiempo mínimo.\n• La autorización dura 1 año en general (5 años en el familiar).\n• La regularización extraordinaria de 2026 fue del 16 de abril al 30 de junio de 2026 y YA ESTÁ CERRADA.",
+        "en": "• Since 20 May 2025 there are five types: social, socio-labour, socio-training, family and second chance.\n• In general you need 2 years of continuous stay in Spain (absences of about 90 days at most). Time as an asylum seeker does not count.\n• Socio-labour: one or more contracts adding up to at least 20 hours a week, paying at least the minimum wage.\n• Socio-training: studying or committing to a training course; you can work meanwhile.\n• Family: for parents of a Spanish or EU child, with no minimum time.\n• The permit usually lasts 1 year (5 years for family).\n• The 2026 extraordinary regularisation ran from 16 April to 30 June 2026 and is NOW CLOSED."
+      },
+      "say": {
+        "es": "Hay cinco tipos de arraigo. En general necesitas dos años en España. Guarda pruebas de tu tiempo aquí, como el padrón. Y la regularización extraordinaria de dos mil veintiséis ya cerró.",
+        "en": "There are five types of arraigo. In general you need two years in Spain. Keep proof of your time here, like the padrón. And the 2026 extraordinary regularisation has already closed."
+      },
+      "link": {
+        "label": {
+          "es": "Ministerio de Inclusión: información para extranjeros",
+          "en": "Ministry of Inclusion: information for foreigners"
+        },
+        "url": "https://www.inclusion.gob.es/web/migraciones"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "5 tipos de arraigo",
+      "en": "5 types of arraigo"
+    },
+    {
+      "es": "En general, 2 años en España",
+      "en": "Usually 2 years in Spain"
+    },
+    {
+      "es": "Guarda pruebas: padrón, citas, recibos",
+      "en": "Keep proof: padrón, appointments, receipts"
+    },
+    {
+      "es": "Pide ayuda a una entidad o abogado",
+      "en": "Get help from an NGO or a lawyer"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Llevo dos años en España.",
+      "en": "I have been in Spain for two years."
+    },
+    {
+      "es": "Quiero solicitar el arraigo.",
+      "en": "I want to apply for arraigo."
+    },
+    {
+      "es": "Tengo una oferta de trabajo.",
+      "en": "I have a job offer."
+    },
+    {
+      "es": "¿Me puede ayudar con los papeles?",
+      "en": "Can you help me with the paperwork?"
+    },
+    {
+      "es": "Estoy empadronado aquí.",
+      "en": "I am registered on the padrón here."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto tiempo en España piden, en general, para el arraigo?",
+        "en": "How long in Spain is usually required for arraigo?"
+      },
+      "options": [
+        {
+          "es": "2 años",
+          "en": "2 years"
+        },
+        {
+          "es": "6 meses",
+          "en": "6 months"
+        },
+        {
+          "es": "10 años",
+          "en": "10 years"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Sigue abierta la regularización extraordinaria de 2026?",
+        "en": "Is the 2026 extraordinary regularisation still open?"
+      },
+      "options": [
+        {
+          "es": "No, cerró el 30 de junio de 2026",
+          "en": "No, it closed on 30 June 2026"
+        },
+        {
+          "es": "Sí, hasta 2030",
+          "en": "Yes, until 2030"
+        },
+        {
+          "es": "Sí, todo el año",
+          "en": "Yes, all year"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué ayuda a demostrar tu tiempo en España?",
+        "en": "What helps prove your time in Spain?"
+      },
+      "options": [
+        {
+          "es": "El padrón y otros documentos con fecha",
+          "en": "The padrón and other dated documents"
+        },
+        {
+          "es": "Una foto en la playa",
+          "en": "A beach photo"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

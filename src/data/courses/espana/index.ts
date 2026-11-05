@@ -88,7 +88,7 @@ export function buildLesson(src: SpainSource, target: Lang): Lesson {
   const spoken = ph[2] ?? ph[0];
   exercises.push({ type: 'speak', text: spoken[target], hint: spoken[L] });
 
-  return { id: `${target === 'en' ? 'esen' : 'eses'}-${src.id}`, title: src.title[L], icon: src.icon, exercises };
+  return { id: `${target === 'en' ? 'es-en' : 'es-es'}-${src.id}`, title: src.title[L], icon: src.icon, exercises };
 }
 
 function buildLevel(target: Lang): LevelDefinition {

@@ -1,0 +1,142 @@
+{
+  "id": "sanidad",
+  "order": 6,
+  "icon": "🏥",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Tarjeta sanitaria y centro de salud",
+    "en": "Health card and health centre"
+  },
+  "unit": {
+    "es": "Sanidad",
+    "en": "Healthcare"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Ir al médico en España",
+        "en": "Seeing a doctor in Spain"
+      },
+      "body": {
+        "es": "• La tarjeta sanitaria individual la da tu comunidad autónoma en el centro de salud. Normalmente te piden el volante de empadronamiento actualizado.\n• Si estás en situación irregular, desde marzo de 2026 (Real Decreto 180/2026) también puedes tener asistencia: declaración de que no tienes otra cobertura, tu documento de identidad y prueba de que vives en España (mejor con padrón).\n• Emergencias: 112, gratis y las 24 horas.\n• Medicinas: si trabajas, pagas entre el 40 % y el 60 % según tus ingresos. No pagan quienes cobran el Ingreso Mínimo Vital o una pensión no contributiva.",
+        "en": "• Your regional government gives you the individual health card at your health centre. They usually ask for an up-to-date padrón certificate.\n• If you are undocumented, since March 2026 (Royal Decree 180/2026) you can also get care: a statement that you have no other cover, your ID and proof that you live in Spain (ideally the padrón).\n• Emergencies: 112, free, 24 hours.\n• Medicines: if you work, you pay 40% to 60% depending on income. People receiving the Minimum Living Income or a non-contributory pension don't pay."
+      },
+      "say": {
+        "es": "Pide tu tarjeta sanitaria en el centro de salud, con el padrón. Desde marzo de dos mil veintiséis también hay asistencia para personas en situación irregular. Y en una emergencia, llama al uno, uno, dos.",
+        "en": "Ask for your health card at the health centre, with your padrón. Since March 2026 undocumented people can also get care. And in an emergency, call one, one, two."
+      },
+      "link": {
+        "label": {
+          "es": "Ministerio de Sanidad",
+          "en": "Ministry of Health"
+        },
+        "url": "https://www.sanidad.gob.es/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Tarjeta sanitaria en tu centro de salud",
+      "en": "Health card at your health centre"
+    },
+    {
+      "es": "Lleva el volante del padrón",
+      "en": "Take your padrón certificate"
+    },
+    {
+      "es": "Situación irregular: también tienes derecho",
+      "en": "Undocumented: you're covered too"
+    },
+    {
+      "es": "Emergencias: 112",
+      "en": "Emergencies: 112"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero pedir cita con el médico.",
+      "en": "I want to book a doctor's appointment."
+    },
+    {
+      "es": "Me duele mucho la cabeza.",
+      "en": "I have a bad headache."
+    },
+    {
+      "es": "Necesito la tarjeta sanitaria.",
+      "en": "I need a health card."
+    },
+    {
+      "es": "¿Dónde está el centro de salud?",
+      "en": "Where is the health centre?"
+    },
+    {
+      "es": "Soy alérgico a la penicilina.",
+      "en": "I am allergic to penicillin."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué número llamas en una emergencia?",
+        "en": "Which number do you call in an emergency?"
+      },
+      "options": [
+        {
+          "es": "112",
+          "en": "112"
+        },
+        {
+          "es": "016",
+          "en": "016"
+        },
+        {
+          "es": "060",
+          "en": "060"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué documento suelen pedir para la tarjeta sanitaria?",
+        "en": "Which document is usually requested for the health card?"
+      },
+      "options": [
+        {
+          "es": "El volante del padrón",
+          "en": "The padrón certificate"
+        },
+        {
+          "es": "El carné de conducir",
+          "en": "Your driving licence"
+        },
+        {
+          "es": "Una nómina",
+          "en": "A payslip"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Puede tener asistencia sanitaria una persona en situación irregular?",
+        "en": "Can an undocumented person get healthcare?"
+      },
+      "options": [
+        {
+          "es": "Sí, con los requisitos del RD 180/2026",
+          "en": "Yes, under Royal Decree 180/2026"
+        },
+        {
+          "es": "No, nunca",
+          "en": "No, never"
+        },
+        {
+          "es": "Solo si paga 1.000 €",
+          "en": "Only if they pay €1,000"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

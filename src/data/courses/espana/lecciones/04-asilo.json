@@ -1,0 +1,121 @@
+{
+  "id": "asilo",
+  "order": 4,
+  "icon": "🕊️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Pedir protección internacional (asilo)",
+    "en": "Applying for international protection (asylum)"
+  },
+  "unit": {
+    "es": "Asilo",
+    "en": "Asylum"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Cómo funciona desde junio de 2026",
+        "en": "How it works since June 2026"
+      },
+      "body": {
+        "es": "• Desde el 12 de junio de 2026 se aplica el Pacto Europeo de Migración y Asilo. Hay tres pasos: pedir la protección, REGISTRARLA ante la Policía (toman datos y huellas y te dan un resguardo) y FORMALIZARLA en una cita posterior.\n• La cita se pide a la Policía Nacional y cada provincia lo organiza a su manera; puede haber espera.\n• Después recibirás el documento de solicitante («tarjeta roja»).\n• Puedes trabajar si a los 6 meses tu solicitud no está resuelta por causas que no dependen de ti; el resguardo indica la fecha.\n• Ayuda gratuita: CEAR, Accem y Cruz Roja (900 22 11 22).",
+        "en": "• Since 12 June 2026 the EU Pact on Migration and Asylum applies. There are three steps: ask for protection, REGISTER it with the Police (they take your details and fingerprints and give you a receipt), and LODGE it at a later appointment.\n• You book with the National Police; each province does it differently and there may be a wait.\n• Then you receive the applicant's document (the 'red card').\n• You can work if after 6 months your application is still undecided for reasons not caused by you; the receipt shows the date.\n• Free help: CEAR, Accem and Red Cross (900 22 11 22)."
+      },
+      "say": {
+        "es": "Desde junio de dos mil veintiséis hay tres pasos: pedir protección, registrarla y formalizarla. Puedes trabajar a los seis meses si tu solicitud sigue sin resolver. Y pide ayuda gratis a CEAR, Accem o Cruz Roja.",
+        "en": "Since June 2026 there are three steps: ask, register and lodge. You can work after six months if your case is still undecided. And get free help from CEAR, Accem or the Red Cross."
+      },
+      "link": {
+        "label": {
+          "es": "ACNUR España: pedir asilo",
+          "en": "UNHCR Spain: claiming asylum"
+        },
+        "url": "https://help.unhcr.org/spain/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Pide protección a la Policía",
+      "en": "Ask the Police for protection"
+    },
+    {
+      "es": "Registro: datos, huellas y resguardo",
+      "en": "Registration: details, fingerprints, receipt"
+    },
+    {
+      "es": "Formaliza en tu cita",
+      "en": "Lodge it at your appointment"
+    },
+    {
+      "es": "Trabajo: a los 6 meses",
+      "en": "Work: after 6 months"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero pedir asilo.",
+      "en": "I want to claim asylum."
+    },
+    {
+      "es": "Necesito un intérprete.",
+      "en": "I need an interpreter."
+    },
+    {
+      "es": "Tengo miedo de volver a mi país.",
+      "en": "I am afraid to return to my country."
+    },
+    {
+      "es": "¿Cuándo es mi cita?",
+      "en": "When is my appointment?"
+    },
+    {
+      "es": "Este es mi resguardo.",
+      "en": "This is my receipt."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Desde cuándo se aplica el Pacto Europeo de Asilo?",
+        "en": "Since when does the EU Asylum Pact apply?"
+      },
+      "options": [
+        {
+          "es": "Desde el 12 de junio de 2026",
+          "en": "Since 12 June 2026"
+        },
+        {
+          "es": "Desde 1990",
+          "en": "Since 1990"
+        },
+        {
+          "es": "Todavía no",
+          "en": "Not yet"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuándo puedes trabajar como solicitante de asilo?",
+        "en": "When can you work as an asylum seeker?"
+      },
+      "options": [
+        {
+          "es": "A los 6 meses si no está resuelta",
+          "en": "After 6 months if it is undecided"
+        },
+        {
+          "es": "Nunca",
+          "en": "Never"
+        },
+        {
+          "es": "El primer día",
+          "en": "On the first day"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

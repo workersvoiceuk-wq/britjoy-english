@@ -1,0 +1,142 @@
+{
+  "id": "padron",
+  "order": 2,
+  "icon": "🏠",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Empadronarte",
+    "en": "Registering on the padrón"
+  },
+  "unit": {
+    "es": "El padrón",
+    "en": "The padrón"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Apúntate donde vives",
+        "en": "Register where you live"
+      },
+      "body": {
+        "es": "• El padrón es la lista de vecinos de tu ayuntamiento. Te apuntas en el municipio donde vives de verdad.\n• Lo necesitas para la tarjeta sanitaria, el colegio, los servicios sociales y para demostrar cuánto tiempo llevas en España (por ejemplo, para el arraigo).\n• Lleva: la hoja de inscripción, tu pasaporte o tarjeta, y algo que demuestre dónde vives (contrato, o una autorización firmada de quien vive allí).\n• Tienes derecho a empadronarte aunque la vivienda esté en malas condiciones. Si no tienes casa, servicios sociales pueden ayudarte.\n• Si eres de fuera de la UE y no tienes residencia de larga duración, RENUEVA el padrón cada 2 años o te dan de baja.",
+        "en": "• The padrón is your town hall's list of residents. You register in the town where you really live.\n• You need it for your health card, school, social services, and to prove how long you have been in Spain (for example, for arraigo).\n• Take: the registration form, your passport or card, and proof of where you live (a contract, or a signed authorisation from someone who lives there).\n• You have the right to register even if the home is in poor condition. If you have no home, social services can help.\n• If you are from outside the EU without long-term residence, RENEW your padrón every 2 years or you will be removed."
+      },
+      "say": {
+        "es": "El padrón es la lista de vecinos de tu ayuntamiento. Lo necesitas para la tarjeta sanitaria, el colegio y para demostrar el tiempo que llevas en España. Si eres de fuera de la UE, renuévalo cada dos años.",
+        "en": "The padrón is your town hall's list of residents. You need it for your health card, school and to prove how long you have been in Spain. If you are from outside the EU, renew it every two years."
+      },
+      "link": {
+        "label": {
+          "es": "INE: el padrón municipal",
+          "en": "INE: the municipal register"
+        },
+        "url": "https://www.ine.es/ss/Satellite?L=es_ES&c=Page&cid=1259952026632&p=1259952026632&pagename=ProductosYServicios%2FPYSLayout"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Apúntate donde vives",
+      "en": "Register where you live"
+    },
+    {
+      "es": "Sirve para sanidad, colegio y arraigo",
+      "en": "It's for healthcare, school and arraigo"
+    },
+    {
+      "es": "Lleva pasaporte y prueba de domicilio",
+      "en": "Take your passport and proof of address"
+    },
+    {
+      "es": "Renuévalo cada 2 años",
+      "en": "Renew it every 2 years"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero empadronarme.",
+      "en": "I want to register on the padrón."
+    },
+    {
+      "es": "Vivo en esta dirección.",
+      "en": "I live at this address."
+    },
+    {
+      "es": "Necesito un volante de empadronamiento.",
+      "en": "I need a padrón certificate."
+    },
+    {
+      "es": "No tengo contrato de alquiler.",
+      "en": "I don't have a rental contract."
+    },
+    {
+      "es": "¿Qué documentos necesito?",
+      "en": "What documents do I need?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Para qué sirve el padrón?",
+        "en": "What is the padrón for?"
+      },
+      "options": [
+        {
+          "es": "Sanidad, colegio y demostrar tu tiempo en España",
+          "en": "Healthcare, school and proving your time in Spain"
+        },
+        {
+          "es": "Solo para votar",
+          "en": "Only for voting"
+        },
+        {
+          "es": "Para sacar el carné de conducir",
+          "en": "To get a driving licence"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Eres de fuera de la UE sin residencia de larga duración. ¿Cada cuánto renuevas el padrón?",
+        "en": "You're from outside the EU without long-term residence. How often do you renew the padrón?"
+      },
+      "options": [
+        {
+          "es": "Cada 2 años",
+          "en": "Every 2 years"
+        },
+        {
+          "es": "Cada 10 años",
+          "en": "Every 10 years"
+        },
+        {
+          "es": "Nunca",
+          "en": "Never"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Te pueden negar el padrón porque la vivienda está en malas condiciones?",
+        "en": "Can you be refused because the home is in poor condition?"
+      },
+      "options": [
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "Solo en verano",
+          "en": "Only in summer"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

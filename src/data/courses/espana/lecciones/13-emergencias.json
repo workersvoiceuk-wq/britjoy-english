@@ -1,0 +1,142 @@
+{
+  "id": "emergencias",
+  "order": 13,
+  "icon": "🚨",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Emergencias y teléfonos de ayuda",
+    "en": "Emergencies and helplines"
+  },
+  "unit": {
+    "es": "Emergencias",
+    "en": "Emergencies"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Los números que debes saber",
+        "en": "The numbers you need"
+      },
+      "body": {
+        "es": "• 112: cualquier emergencia (policía, ambulancia, bomberos). Gratis, las 24 horas, en toda la UE.\n• 091: Policía Nacional. 062: Guardia Civil.\n• 016: violencia de género. Gratis, confidencial, no aparece en la factura (sí en el historial del móvil). Atiende en 53 idiomas las 24 horas. WhatsApp: 600 000 016.\n• Asesoría gratuita: Cruz Roja (900 22 11 22), entidades como CEAR o Accem, los servicios sociales y el servicio de orientación jurídica del colegio de abogados.",
+        "en": "• 112: any emergency (police, ambulance, fire). Free, 24 hours, across the EU.\n• 091: National Police. 062: Civil Guard.\n• 016: gender-based violence. Free, confidential, not shown on the bill (it does appear in your phone's call log). Help in 53 languages, 24 hours. WhatsApp: 600 000 016.\n• Free advice: Red Cross (900 22 11 22), organisations such as CEAR or Accem, social services and the bar association's legal guidance service."
+      },
+      "say": {
+        "es": "Uno, uno, dos para cualquier emergencia. Cero, uno, seis si sufres violencia de género: es gratis y atiende en cincuenta y tres idiomas. Y pide asesoría gratis a Cruz Roja o a tu ayuntamiento.",
+        "en": "One, one, two for any emergency. Zero, one, six for gender-based violence: it is free and helps in 53 languages. And get free advice from the Red Cross or your town hall."
+      },
+      "link": {
+        "label": {
+          "es": "016: información y ayuda",
+          "en": "016: information and help"
+        },
+        "url": "https://violenciagenero.igualdad.gob.es/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "112: cualquier emergencia",
+      "en": "112: any emergency"
+    },
+    {
+      "es": "091 Policía · 062 Guardia Civil",
+      "en": "091 Police · 062 Civil Guard"
+    },
+    {
+      "es": "016: violencia de género, 53 idiomas",
+      "en": "016: gender violence, 53 languages"
+    },
+    {
+      "es": "Cruz Roja: 900 22 11 22",
+      "en": "Red Cross: 900 22 11 22"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Necesito una ambulancia.",
+      "en": "I need an ambulance."
+    },
+    {
+      "es": "Ha habido un accidente.",
+      "en": "There has been an accident."
+    },
+    {
+      "es": "Necesito ayuda, por favor.",
+      "en": "I need help, please."
+    },
+    {
+      "es": "Estoy en esta calle.",
+      "en": "I am in this street."
+    },
+    {
+      "es": "Hablo un poco de español.",
+      "en": "I speak a little Spanish."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué número sirve para cualquier emergencia?",
+        "en": "Which number works for any emergency?"
+      },
+      "options": [
+        {
+          "es": "112",
+          "en": "112"
+        },
+        {
+          "es": "016",
+          "en": "016"
+        },
+        {
+          "es": "900 22 11 22",
+          "en": "900 22 11 22"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿En cuántos idiomas atiende el 016?",
+        "en": "In how many languages does 016 help?"
+      },
+      "options": [
+        {
+          "es": "53",
+          "en": "53"
+        },
+        {
+          "es": "Solo español",
+          "en": "Only Spanish"
+        },
+        {
+          "es": "2",
+          "en": "2"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Aparece la llamada al 016 en la factura?",
+        "en": "Does a call to 016 appear on the bill?"
+      },
+      "options": [
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "Solo de noche",
+          "en": "Only at night"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

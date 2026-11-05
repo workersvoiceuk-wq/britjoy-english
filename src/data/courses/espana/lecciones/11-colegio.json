@@ -1,0 +1,121 @@
+{
+  "id": "colegio",
+  "order": 11,
+  "icon": "🏫",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "El colegio de tus hijos",
+    "en": "Your children's school"
+  },
+  "unit": {
+    "es": "Colegio",
+    "en": "School"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Todos los niños tienen derecho a ir al colegio",
+        "en": "Every child has the right to go to school"
+      },
+      "body": {
+        "es": "• La escolarización es obligatoria de 6 a 16 años, y gratuita en los colegios públicos.\n• Todos los menores tienen derecho y deber de estudiar, sea cual sea su situación administrativa.\n• No tener padrón no puede impedir la matrícula: basta con demostrar que el niño vive aquí (lo ha dicho el Defensor del Pueblo).\n• Pide plaza en tu ayuntamiento o en la consejería de educación de tu comunidad. Pregunta por las ayudas de comedor y de libros.",
+        "en": "• Schooling is compulsory from 6 to 16, and free in state schools.\n• Every child has the right and duty to study, whatever their immigration status.\n• Not having a padrón cannot prevent enrolment: proving the child lives here is enough (the Ombudsman has said so).\n• Ask for a place at your town hall or your region's education department. Ask about help with school meals and books."
+      },
+      "say": {
+        "es": "En España el colegio es obligatorio de seis a dieciséis años y es un derecho de todos los niños, sin importar sus papeles. Pregunta también por las ayudas de comedor y de libros.",
+        "en": "In Spain school is compulsory from six to sixteen and it is every child's right, whatever their papers. Ask about help with school meals and books too."
+      },
+      "link": {
+        "label": {
+          "es": "Defensor del Pueblo",
+          "en": "Spanish Ombudsman"
+        },
+        "url": "https://www.defensordelpueblo.es/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Obligatorio de 6 a 16 años",
+      "en": "Compulsory from 6 to 16"
+    },
+    {
+      "es": "Es un derecho, con o sin papeles",
+      "en": "It's a right, with or without papers"
+    },
+    {
+      "es": "Pide plaza en tu ayuntamiento",
+      "en": "Ask for a place at your town hall"
+    },
+    {
+      "es": "Ayudas de comedor y libros",
+      "en": "Help with meals and books"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero matricular a mi hijo.",
+      "en": "I want to enrol my son."
+    },
+    {
+      "es": "¿Hay plaza en este colegio?",
+      "en": "Is there a place at this school?"
+    },
+    {
+      "es": "Mi hija tiene ocho años.",
+      "en": "My daughter is eight years old."
+    },
+    {
+      "es": "¿Hay ayuda para el comedor?",
+      "en": "Is there help with school meals?"
+    },
+    {
+      "es": "No habla bien español.",
+      "en": "She doesn't speak Spanish well."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿De qué edad a qué edad es obligatorio el colegio?",
+        "en": "Between which ages is school compulsory?"
+      },
+      "options": [
+        {
+          "es": "De 6 a 16 años",
+          "en": "From 6 to 16"
+        },
+        {
+          "es": "De 3 a 10 años",
+          "en": "From 3 to 10"
+        },
+        {
+          "es": "De 10 a 18 años",
+          "en": "From 10 to 18"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Puede ir al colegio un niño sin papeles?",
+        "en": "Can a child without papers go to school?"
+      },
+      "options": [
+        {
+          "es": "Sí, es su derecho",
+          "en": "Yes, it's their right"
+        },
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Solo si paga",
+          "en": "Only if they pay"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

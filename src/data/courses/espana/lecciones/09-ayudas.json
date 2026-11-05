@@ -1,0 +1,121 @@
+{
+  "id": "ayudas",
+  "order": 9,
+  "icon": "🤝",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Ayudas: IMV y servicios sociales",
+    "en": "Benefits: IMV and social services"
+  },
+  "unit": {
+    "es": "Ayudas",
+    "en": "Benefits"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "A quién pedir ayuda",
+        "en": "Where to ask for help"
+      },
+      "body": {
+        "es": "• Servicios sociales de tu ayuntamiento: son la puerta de entrada a casi todas las ayudas. Pide cita con la trabajadora social.\n• Ingreso Mínimo Vital (IMV): para hogares con pocos ingresos. Piden 1 año de residencia legal y continuada y, en general, 23 años o más. Una persona sola recibe unos 733 € al mes en 2026. Se pide en la web de la Seguridad Social.\n• Cada comunidad autónoma tiene además su propia renta mínima.\n• Bono social eléctrico: descuento en la luz de un 42,5 % (o 57,5 % si la vulnerabilidad es severa) hasta el 31 de diciembre de 2026, con la tarifa regulada.",
+        "en": "• Your town hall's social services are the way in to almost all help. Book an appointment with a social worker.\n• Minimum Living Income (IMV): for low-income households. It requires 1 year of legal, continuous residence and, in general, being 23 or over. A single person gets about €733 a month in 2026. Apply on the Social Security website.\n• Each region also has its own minimum income.\n• Electricity social discount: 42.5% off (or 57.5% for severe vulnerability) until 31 December 2026, on the regulated tariff."
+      },
+      "say": {
+        "es": "Empieza por los servicios sociales de tu ayuntamiento. El Ingreso Mínimo Vital pide un año de residencia legal. Y pregunta por el bono social de la luz.",
+        "en": "Start with your town hall's social services. The Minimum Living Income requires one year of legal residence. And ask about the electricity social discount."
+      },
+      "link": {
+        "label": {
+          "es": "Seguridad Social: Ingreso Mínimo Vital",
+          "en": "Social Security: Minimum Living Income"
+        },
+        "url": "https://imv.seg-social.es/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Servicios sociales: la puerta de entrada",
+      "en": "Social services: the way in"
+    },
+    {
+      "es": "IMV: 1 año de residencia legal",
+      "en": "IMV: 1 year of legal residence"
+    },
+    {
+      "es": "Renta mínima de tu comunidad",
+      "en": "Your region's minimum income"
+    },
+    {
+      "es": "Bono social de la luz",
+      "en": "Electricity social discount"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Necesito ayuda para pagar el alquiler.",
+      "en": "I need help to pay the rent."
+    },
+    {
+      "es": "Quiero una cita con la trabajadora social.",
+      "en": "I want an appointment with the social worker."
+    },
+    {
+      "es": "Tengo tres hijos.",
+      "en": "I have three children."
+    },
+    {
+      "es": "No tengo ingresos.",
+      "en": "I have no income."
+    },
+    {
+      "es": "¿Puedo pedir el Ingreso Mínimo Vital?",
+      "en": "Can I apply for the Minimum Living Income?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Por dónde empiezas para pedir ayudas?",
+        "en": "Where do you start when asking for help?"
+      },
+      "options": [
+        {
+          "es": "Servicios sociales del ayuntamiento",
+          "en": "Town hall social services"
+        },
+        {
+          "es": "La comisaría",
+          "en": "The police station"
+        },
+        {
+          "es": "El banco",
+          "en": "The bank"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánta residencia legal pide el IMV?",
+        "en": "How much legal residence does the IMV require?"
+      },
+      "options": [
+        {
+          "es": "1 año",
+          "en": "1 year"
+        },
+        {
+          "es": "1 semana",
+          "en": "1 week"
+        },
+        {
+          "es": "20 años",
+          "en": "20 years"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

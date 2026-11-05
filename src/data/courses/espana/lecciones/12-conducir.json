@@ -1,0 +1,121 @@
+{
+  "id": "conducir",
+  "order": 12,
+  "icon": "🚗",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Tu carné de conducir",
+    "en": "Your driving licence"
+  },
+  "unit": {
+    "es": "Conducir",
+    "en": "Driving"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Conducir con un carné extranjero",
+        "en": "Driving with a foreign licence"
+      },
+      "body": {
+        "es": "• Carné de fuera de la UE: vale 6 meses desde que pasas a ser residente. Si tu país tiene convenio con España, puedes canjearlo sin examen (tasa de 28,87 €); si no, tienes que sacarte el carné español. Consulta la lista de países en la DGT.\n• Carné de la UE: vale mientras esté en vigor; el canje es voluntario. Si no caduca nunca o dura más de 15 años, debes renovarlo a los 2 años de residir aquí.\n• Lleva siempre el carné, el seguro y la documentación del coche.",
+        "en": "• Non-EU licence: valid for 6 months after you become resident. If your country has an agreement with Spain, you can exchange it without a test (€28.87 fee); if not, you must get a Spanish licence. Check the country list with the DGT.\n• EU licence: valid while in date; exchanging it is optional. If it never expires or lasts more than 15 years, you must renew it 2 years after becoming resident.\n• Always carry your licence, insurance and the car's documents."
+      },
+      "say": {
+        "es": "Con un carné de fuera de la Unión Europea puedes conducir seis meses. Después lo canjeas, si tu país tiene convenio, o te sacas el carné español. Consulta tu caso en la DGT.",
+        "en": "With a licence from outside the European Union you can drive for six months. Then you exchange it, if your country has an agreement, or get a Spanish licence. Check your case with the DGT."
+      },
+      "link": {
+        "label": {
+          "es": "DGT: canje de permisos extranjeros",
+          "en": "DGT: exchanging foreign licences"
+        },
+        "url": "https://www.dgt.es/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Fuera de la UE: 6 meses",
+      "en": "Non-EU: 6 months"
+    },
+    {
+      "es": "Con convenio: canje sin examen",
+      "en": "With an agreement: exchange, no test"
+    },
+    {
+      "es": "Sin convenio: examen español",
+      "en": "No agreement: Spanish test"
+    },
+    {
+      "es": "Lleva carné y seguro",
+      "en": "Carry licence and insurance"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero canjear mi carné.",
+      "en": "I want to exchange my licence."
+    },
+    {
+      "es": "¿Mi país tiene convenio?",
+      "en": "Does my country have an agreement?"
+    },
+    {
+      "es": "Aquí tiene mi carné.",
+      "en": "Here is my licence."
+    },
+    {
+      "es": "¿Dónde está la autoescuela?",
+      "en": "Where is the driving school?"
+    },
+    {
+      "es": "He tenido un accidente.",
+      "en": "I've had an accident."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto tiempo vale un carné de fuera de la UE desde que eres residente?",
+        "en": "How long is a non-EU licence valid after you become resident?"
+      },
+      "options": [
+        {
+          "es": "6 meses",
+          "en": "6 months"
+        },
+        {
+          "es": "10 años",
+          "en": "10 years"
+        },
+        {
+          "es": "1 semana",
+          "en": "1 week"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Si tu país no tiene convenio con España, ¿qué haces?",
+        "en": "If your country has no agreement with Spain, what do you do?"
+      },
+      "options": [
+        {
+          "es": "Sacarte el carné español",
+          "en": "Get a Spanish licence"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        },
+        {
+          "es": "Pagar una multa",
+          "en": "Pay a fine"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "id": "vivienda",
+  "order": 10,
+  "icon": "🔑",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Alquilar y abrir una cuenta",
+    "en": "Renting and opening a bank account"
+  },
+  "unit": {
+    "es": "Casa y banco",
+    "en": "Home and bank"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Tus derechos al alquilar",
+        "en": "Your rights when renting"
+      },
+      "body": {
+        "es": "• Un alquiler de vivienda dura como mínimo 5 años si el casero es una persona (7 si es una empresa), aunque el contrato diga menos: se prorroga año a año.\n• Fianza: 1 mes de alquiler. Garantía adicional: como máximo 2 meses más.\n• Los gastos de la inmobiliaria los paga el casero, no tú (desde 2023).\n• Cuenta de pago básica: tienes derecho a abrirla aunque no tengas domicilio fijo, si eres solicitante de asilo o si no te pueden expulsar. Cuesta como máximo 3 € al mes y es gratis si eres vulnerable.",
+        "en": "• A home rental lasts at least 5 years if the landlord is a person (7 if it is a company), even if the contract says less: it renews year by year.\n• Deposit: 1 month's rent. Extra guarantee: at most 2 more months.\n• Agency fees are paid by the landlord, not you (since 2023).\n• Basic payment account: you have the right to open one even without a fixed address, as an asylum seeker, or if you cannot be expelled. It costs at most €3 a month and is free if you are vulnerable."
+      },
+      "say": {
+        "es": "El alquiler dura como mínimo cinco años. La fianza es de un mes. Los gastos de la inmobiliaria los paga el casero. Y tienes derecho a una cuenta básica en el banco.",
+        "en": "A rental lasts at least five years. The deposit is one month. The landlord pays the agency fees. And you have the right to a basic bank account."
+      },
+      "link": {
+        "label": {
+          "es": "OCU: tus derechos como inquilino",
+          "en": "OCU: your rights as a tenant"
+        },
+        "url": "https://www.ocu.org/vivienda-y-energia/alquiler"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Alquiler: mínimo 5 años",
+      "en": "Rental: at least 5 years"
+    },
+    {
+      "es": "Fianza: 1 mes",
+      "en": "Deposit: 1 month"
+    },
+    {
+      "es": "La inmobiliaria la paga el casero",
+      "en": "The landlord pays the agency"
+    },
+    {
+      "es": "Cuenta básica: máx. 3 €/mes",
+      "en": "Basic account: max €3/month"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Cuánto es la fianza?",
+      "en": "How much is the deposit?"
+    },
+    {
+      "es": "Quiero alquilar este piso.",
+      "en": "I want to rent this flat."
+    },
+    {
+      "es": "El grifo está roto.",
+      "en": "The tap is broken."
+    },
+    {
+      "es": "Quiero abrir una cuenta básica.",
+      "en": "I want to open a basic account."
+    },
+    {
+      "es": "¿Está incluida la luz?",
+      "en": "Is electricity included?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto es la fianza legal de un alquiler de vivienda?",
+        "en": "How much is the legal deposit for a home rental?"
+      },
+      "options": [
+        {
+          "es": "1 mes",
+          "en": "1 month"
+        },
+        {
+          "es": "6 meses",
+          "en": "6 months"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Quién paga los gastos de la inmobiliaria?",
+        "en": "Who pays the agency fees?"
+      },
+      "options": [
+        {
+          "es": "El casero",
+          "en": "The landlord"
+        },
+        {
+          "es": "El inquilino",
+          "en": "The tenant"
+        },
+        {
+          "es": "El ayuntamiento",
+          "en": "The town hall"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánto cuesta como máximo una cuenta de pago básica?",
+        "en": "What is the maximum cost of a basic payment account?"
+      },
+      "options": [
+        {
+          "es": "3 € al mes",
+          "en": "€3 a month"
+        },
+        {
+          "es": "30 € al mes",
+          "en": "€30 a month"
+        },
+        {
+          "es": "100 € al año",
+          "en": "€100 a year"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

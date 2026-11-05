@@ -1,0 +1,121 @@
+{
+  "id": "trabajo",
+  "order": 8,
+  "icon": "💼",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Contrato, nómina y paro",
+    "en": "Contract, payslip and unemployment"
+  },
+  "unit": {
+    "es": "Trabajo",
+    "en": "Work"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Tus derechos al trabajar",
+        "en": "Your rights at work"
+      },
+      "body": {
+        "es": "• Salario mínimo en 2026: 1.221 € brutos al mes en 14 pagas (17.094 € al año).\n• El contrato debe ser por escrito. Tu empresa te da de alta en la Seguridad Social antes de empezar y te da una nómina cada mes.\n• Aunque trabajes sin autorización, tus derechos como trabajador (cobrar lo trabajado, por ejemplo) se mantienen.\n• Paro: si pierdes el trabajo sin quererlo y has cotizado al menos 360 días en los últimos 6 años, puedes pedir la prestación al SEPE.",
+        "en": "• Minimum wage in 2026: €1,221 gross a month in 14 payments (€17,094 a year).\n• Your contract must be in writing. Your employer registers you with Social Security before you start and gives you a payslip every month.\n• Even if you work without a permit, your rights as a worker (for example, being paid for your work) remain.\n• Unemployment: if you lose your job involuntarily and have contributed at least 360 days in the last 6 years, you can claim benefit from SEPE."
+      },
+      "say": {
+        "es": "El salario mínimo en dos mil veintiséis es de mil doscientos veintiún euros en catorce pagas. Pide siempre contrato por escrito y tu nómina. Si pierdes el trabajo, mira si puedes cobrar el paro.",
+        "en": "The minimum wage in 2026 is 1,221 euros in fourteen payments. Always ask for a written contract and your payslip. If you lose your job, check whether you can claim unemployment benefit."
+      },
+      "link": {
+        "label": {
+          "es": "SEPE: prestaciones por desempleo",
+          "en": "SEPE: unemployment benefits"
+        },
+        "url": "https://www.sepe.es/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "SMI 2026: 1.221 € x 14",
+      "en": "Minimum wage 2026: €1,221 x 14"
+    },
+    {
+      "es": "Contrato por escrito",
+      "en": "Written contract"
+    },
+    {
+      "es": "Nómina cada mes",
+      "en": "A payslip every month"
+    },
+    {
+      "es": "Paro: 360 días cotizados",
+      "en": "Benefit: 360 days contributed"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Me puede dar un contrato por escrito?",
+      "en": "Can you give me a written contract?"
+    },
+    {
+      "es": "No he recibido mi nómina.",
+      "en": "I haven't received my payslip."
+    },
+    {
+      "es": "¿Cuántas horas trabajo a la semana?",
+      "en": "How many hours do I work a week?"
+    },
+    {
+      "es": "Me han despedido.",
+      "en": "I've been dismissed."
+    },
+    {
+      "es": "Quiero pedir el paro.",
+      "en": "I want to claim unemployment benefit."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuál es el salario mínimo mensual en 2026 (14 pagas)?",
+        "en": "What is the monthly minimum wage in 2026 (14 payments)?"
+      },
+      "options": [
+        {
+          "es": "1.221 €",
+          "en": "€1,221"
+        },
+        {
+          "es": "900 €",
+          "en": "€900"
+        },
+        {
+          "es": "2.000 €",
+          "en": "€2,000"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuántos días cotizados necesitas, como mínimo, para el paro?",
+        "en": "How many contributed days do you need, at least, for unemployment benefit?"
+      },
+      "options": [
+        {
+          "es": "360 días en 6 años",
+          "en": "360 days in 6 years"
+        },
+        {
+          "es": "30 días",
+          "en": "30 days"
+        },
+        {
+          "es": "10 años",
+          "en": "10 years"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

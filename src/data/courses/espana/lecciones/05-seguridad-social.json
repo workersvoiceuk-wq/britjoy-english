@@ -1,0 +1,121 @@
+{
+  "id": "seguridad-social",
+  "order": 5,
+  "icon": "🧾",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Tu número de la Seguridad Social",
+    "en": "Your Social Security number"
+  },
+  "unit": {
+    "es": "Seguridad Social",
+    "en": "Social Security"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Para trabajar y cotizar",
+        "en": "To work and pay contributions"
+      },
+      "body": {
+        "es": "• El número de la Seguridad Social (NUSS o número de afiliación) es necesario para trabajar, cotizar y cobrar prestaciones.\n• Se pide con el modelo TA.1, por internet en Import@ss (sin certificado digital: «enviar una solicitud» adjuntando el TA.1 y tu documento) o en una oficina de la Tesorería.\n• No lo confundas con el número de tu tarjeta sanitaria: son distintos.\n• Tu empresa debe darte de alta ANTES de que empieces a trabajar.",
+        "en": "• The Social Security number (NUSS) is needed to work, pay contributions and receive benefits.\n• You apply with form TA.1, online through Import@ss (no digital certificate needed: 'send a request' attaching the TA.1 and your ID) or at a Treasury office.\n• Don't confuse it with your health card number: they are different.\n• Your employer must register you BEFORE you start working."
+      },
+      "say": {
+        "es": "Para trabajar necesitas tu número de la Seguridad Social. Se pide con el modelo TA uno, por internet en Import@ss o en una oficina. Y tu empresa te da de alta antes de empezar.",
+        "en": "To work you need your Social Security number. Apply with form TA.1, online at Import@ss or at an office. And your employer registers you before you start."
+      },
+      "link": {
+        "label": {
+          "es": "Seguridad Social: Import@ss",
+          "en": "Social Security: Import@ss"
+        },
+        "url": "https://portal.seg-social.gob.es/wps/portal/importass/importass"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Número de la Seguridad Social",
+      "en": "Social Security number"
+    },
+    {
+      "es": "Modelo TA.1",
+      "en": "Form TA.1"
+    },
+    {
+      "es": "Import@ss u oficina",
+      "en": "Import@ss or an office"
+    },
+    {
+      "es": "Alta antes de trabajar",
+      "en": "Registered before you start"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Necesito mi número de la Seguridad Social.",
+      "en": "I need my Social Security number."
+    },
+    {
+      "es": "¿Me han dado de alta?",
+      "en": "Have you registered me?"
+    },
+    {
+      "es": "Aquí está el formulario.",
+      "en": "Here is the form."
+    },
+    {
+      "es": "Empiezo a trabajar el lunes.",
+      "en": "I start work on Monday."
+    },
+    {
+      "es": "¿Dónde está la oficina?",
+      "en": "Where is the office?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Con qué modelo pides el número de la Seguridad Social?",
+        "en": "Which form do you use for the Social Security number?"
+      },
+      "options": [
+        {
+          "es": "TA.1",
+          "en": "TA.1"
+        },
+        {
+          "es": "EX-15",
+          "en": "EX-15"
+        },
+        {
+          "es": "790-012",
+          "en": "790-012"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuándo debe darte de alta tu empresa?",
+        "en": "When must your employer register you?"
+      },
+      "options": [
+        {
+          "es": "Antes de empezar a trabajar",
+          "en": "Before you start work"
+        },
+        {
+          "es": "Al mes",
+          "en": "After a month"
+        },
+        {
+          "es": "Al final del año",
+          "en": "At the end of the year"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "id": "hacienda",
+  "order": 7,
+  "icon": "📑",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Hacienda y la declaración de la renta",
+    "en": "Tax and the income tax return"
+  },
+  "unit": {
+    "es": "Hacienda",
+    "en": "Tax"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Tus impuestos en España",
+        "en": "Your taxes in Spain"
+      },
+      "body": {
+        "es": "• Ante Hacienda (Agencia Tributaria), tu NIE funciona como NIF.\n• Eres residente fiscal si pasas más de 183 días al año en España.\n• Tienes que hacer la declaración de la renta si ganas más de 22.000 € de trabajo con un solo pagador, o más de 15.876 € si tienes varios (y el segundo y siguientes suman más de 2.500 €). Quien cobra el Ingreso Mínimo Vital también debe declarar.\n• La campaña es en primavera: la de 2025 fue del 8 de abril al 30 de junio de 2026.\n• Para hacerla por internet, regístrate en Cl@ve (también por videollamada) o usa un certificado digital.",
+        "en": "• With the Tax Agency (Hacienda), your NIE works as your NIF.\n• You are tax resident if you spend more than 183 days a year in Spain.\n• You must file an income tax return if you earn more than €22,000 from work with one payer, or more than €15,876 with several (when the second and others add up to more than €2,500). People receiving the Minimum Living Income must also file.\n• The filing period is in spring: the 2025 return ran from 8 April to 30 June 2026.\n• To file online, register for Cl@ve (also by video call) or use a digital certificate."
+      },
+      "say": {
+        "es": "Tu NIE funciona como número fiscal. Si pasas más de ciento ochenta y tres días al año en España, eres residente fiscal. La declaración de la renta se hace en primavera.",
+        "en": "Your NIE works as your tax number. If you spend more than 183 days a year in Spain, you are tax resident. The income tax return is filed in spring."
+      },
+      "link": {
+        "label": {
+          "es": "Agencia Tributaria",
+          "en": "Spanish Tax Agency"
+        },
+        "url": "https://sede.agenciatributaria.gob.es/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Tu NIE es tu NIF",
+      "en": "Your NIE is your NIF"
+    },
+    {
+      "es": "+183 días = residente fiscal",
+      "en": "183+ days = tax resident"
+    },
+    {
+      "es": "Renta: en primavera",
+      "en": "Tax return: in spring"
+    },
+    {
+      "es": "Cl@ve para hacerla online",
+      "en": "Cl@ve to file online"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Tengo que hacer la declaración.",
+      "en": "I have to file my tax return."
+    },
+    {
+      "es": "¿Cuánto tengo que pagar?",
+      "en": "How much do I have to pay?"
+    },
+    {
+      "es": "Me han devuelto dinero.",
+      "en": "I've got a refund."
+    },
+    {
+      "es": "Necesito registrarme en Cl@ve.",
+      "en": "I need to register for Cl@ve."
+    },
+    {
+      "es": "Trabajo para dos empresas.",
+      "en": "I work for two companies."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuántos días al año en España te hacen residente fiscal?",
+        "en": "How many days a year in Spain make you tax resident?"
+      },
+      "options": [
+        {
+          "es": "Más de 183",
+          "en": "More than 183"
+        },
+        {
+          "es": "Más de 30",
+          "en": "More than 30"
+        },
+        {
+          "es": "365 exactos",
+          "en": "Exactly 365"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Con un solo pagador, ¿a partir de cuánto debes declarar?",
+        "en": "With one payer, above what amount must you file?"
+      },
+      "options": [
+        {
+          "es": "22.000 €",
+          "en": "€22,000"
+        },
+        {
+          "es": "5.000 €",
+          "en": "€5,000"
+        },
+        {
+          "es": "100.000 €",
+          "en": "€100,000"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuándo es la campaña de la renta?",
+        "en": "When is the tax return period?"
+      },
+      "options": [
+        {
+          "es": "En primavera (abril a junio)",
+          "en": "In spring (April to June)"
+        },
+        {
+          "es": "En agosto",
+          "en": "In August"
+        },
+        {
+          "es": "En Navidad",
+          "en": "At Christmas"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}
