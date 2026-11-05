@@ -8,6 +8,8 @@ import { AI_LEVEL, DAILY_LEVEL, TOURIST_LEVEL } from './courses/situaciones';
 import { LIFE_LEVEL } from './courses/vivir-uk';
 import { SPAIN_LEVELS } from './courses/espana';
 import { COLOMBIA_LEVELS } from './courses/colombia';
+import { CONSULATE_LEVELS } from './courses/consulados';
+import { MIGRATE_UK_LEVELS } from './courses/migrar-uk';
 import type { LevelDefinition } from '../types';
 
 export type Category = 'ingles' | 'situaciones' | 'vida' | 'espana' | 'colombia' | 'ia';
@@ -142,6 +144,50 @@ export const CATALOG: CatalogCourse[] = [
     levels: [LIFE_LEVEL],
     open: { tab: 'life' },
   },
+  ...MIGRATE_UK_LEVELS.map(
+    (level): CatalogCourse => ({
+      id: 'migrar-uk',
+      title: level.name,
+      subtitle: 'Para ciudadanos de España y Latinoamérica: visados y ETA según tu país, EU Settlement Scheme, eVisa, residencia, ciudadanía, HMRC y cómo montar tu empresa.',
+      category: 'vida',
+      level: 'A1 → B1',
+      emoji: '🛂',
+      color: level.accent,
+      badges: ['GOV.UK', 'Con vídeo'],
+      learn: [
+        'ETA o visado según tu nacionalidad',
+        'EU Settlement Scheme y eVisa (share code)',
+        'Visados de trabajo, estudios y familia',
+        'Residencia permanente y ciudadanía británica',
+        'NI number, HMRC y doble imposición',
+        'Autónomo (sole trader) o limited company',
+      ],
+      levels: [level],
+      open: { tab: 'english', level: level.id },
+    }),
+  ),
+  ...CONSULATE_LEVELS.map(
+    (level): CatalogCourse => ({
+      id: 'consulados-londres',
+      title: level.name,
+      subtitle: 'España, Colombia, México, Ecuador, Perú, Venezuela, Bolivia, Argentina y Chile: cómo pedir cita y hacer cada trámite en tu consulado en Londres.',
+      category: 'vida',
+      level: 'A1 → B1',
+      emoji: '🏛️',
+      color: level.accent,
+      badges: ['9 países', 'Con vídeo'],
+      learn: [
+        'Pedir cita (gratis) y evitar estafas',
+        'Registro consular y voto desde el Reino Unido',
+        'Pasaporte, documento de emergencia y DNI o cédula',
+        'Registrar a un bebé nacido en el Reino Unido',
+        'Poderes, fe de vida y apostilla',
+        'Qué puede y qué no puede hacer tu consulado',
+      ],
+      levels: [level],
+      open: { tab: 'english', level: level.id },
+    }),
+  ),
   ...SPAIN_LEVELS.map(
     (level): CatalogCourse =>
       level.targetLanguage === 'es'

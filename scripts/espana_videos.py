@@ -16,7 +16,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument('--font', required=True)
 ap.add_argument('--font-regular', required=True)
 ap.add_argument('--only', default='')
-ap.add_argument('--country', default='espana', choices=['espana', 'colombia'])
+ap.add_argument('--country', default='espana', choices=['espana', 'colombia', 'consulados', 'migrar-uk'])
 args = ap.parse_args()
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,7 +42,7 @@ def frame(src, lang, t, total, steps, n):
     d = ImageDraw.Draw(im)
     d.rectangle([0, 0, W, 54], fill=NAVY)
     d.rectangle([0, 54, W, 58], fill=RED)
-    label = {'espana': ('Vivir en España', 'Living in Spain'), 'colombia': ('Vivir en Colombia', 'Living in Colombia')}[args.country][0 if lang == 'es' else 1]
+    label = {'espana': ('Vivir en España', 'Living in Spain'), 'colombia': ('Vivir en Colombia', 'Living in Colombia'), 'consulados': ('Tu consulado en Londres', 'Your consulate in London'), 'migrar-uk': ('Inmigración y empresa en UK', 'Immigration and business in the UK')}[args.country][0 if lang == 'es' else 1]
     d.text((18, 14), f"{src['icon']}  {label} · {n}", font=B(22), fill=WHITE)
     # Britjoy: gentle bob, never redrawn
     size = 190
