@@ -117,5 +117,80 @@
       ],
       "answer": 0
     }
-  ]
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el colegio",
+      "en": "At the school"
+    },
+    "scene": {
+      "es": "Vas a matricular a tu hija.",
+      "en": "You are enrolling your daughter."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero matricular a mi hija.",
+          "en": "I want to enrol my daughter."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Cuántos años tiene?",
+          "en": "How old is she?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Mi hija tiene ocho años.",
+          "en": "My daughter is eight years old."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Hay plaza en tercero de primaria.",
+          "en": "There's a place in Year 3 of primary."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "No habla bien español.",
+          "en": "She doesn't speak Spanish well."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "No se preocupe, tenemos apoyo de idioma.",
+          "en": "Don't worry, we have language support."
+        }
+      }
+    ]
+  }
 }

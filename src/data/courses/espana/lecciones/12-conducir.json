@@ -117,5 +117,80 @@
       ],
       "answer": 0
     }
-  ]
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En Tráfico",
+      "en": "At the DGT"
+    },
+    "scene": {
+      "es": "Preguntas por tu carné extranjero.",
+      "en": "You ask about your foreign licence."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero canjear mi carné.",
+          "en": "I want to exchange my licence."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿De qué país es?",
+          "en": "Which country is it from?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Mi país tiene convenio?",
+          "en": "Does my country have an agreement?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Sí. Puede canjearlo sin examen.",
+          "en": "Yes. You can exchange it without a test."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuánto cuesta la tasa?",
+          "en": "How much is the fee?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Veintiocho euros con ochenta y siete.",
+          "en": "Twenty-eight euros eighty-seven."
+        }
+      }
+    ]
+  }
 }

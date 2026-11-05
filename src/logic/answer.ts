@@ -67,7 +67,8 @@ export function speechMatches(transcript: string, target: string, threshold = 0.
 export function checkAnswer(exercise: Exercise, response: ExerciseResponse): CheckResult {
   switch (exercise.type) {
     case 'explain':
-      // Info slide: nothing to get wrong.
+    case 'dialogue':
+      // Info slide or dialogue: nothing to get wrong.
       return { correct: true, correctAnswer: '' };
     case 'speak':
       // Skipping ("I can't speak right now") never costs a heart, as in Duolingo.

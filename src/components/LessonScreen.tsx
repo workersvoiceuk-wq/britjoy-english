@@ -51,7 +51,11 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
   const [mistakes, setMistakes] = useState(0);
 
   const exercise = lesson.exercises[index];
-  const isExplain = exercise.type === 'explain';
+  // Explanations and dialogues are not graded: they show "Continue" straight away.
+  const isExplain = exercise.type === 'explain' || exercise.type === 'dialogue';
+  // Busuu-style phases of the lesson (Learn → Dialogue → Check → Practise → Speak), when the content names them.
+  const sections = lesson.exercises.reduce<string[]>((acc, e) => (e.section && acc[acc.length - 1] !== e.section ? [...acc, e.section] : acc), []);
+  const currentSection = sections.lastIndexOf(exercise.section ?? '');
   const total = lesson.exercises.length;
   const progress = ((index + (result || isExplain ? 1 : 0)) / total) * 100;
   const expression: BritjoyExpression = result ? (result.correct ? 'celebrating' : 'sad') : 'neutral';
@@ -187,12 +191,28 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
       <div className="bunting" aria-hidden />
 
       <main className="mx-auto w-full max-w-2xl flex-1 px-4 pb-52 pt-4">
+        {sections.length > 1 && (
+          <ol className="mb-3 flex flex-wrap gap-1.5" aria-label="Fases de la lección">
+            {sections.map((s, i) => (
+              <li
+                key={s}
+                aria-current={i === currentSection ? 'step' : undefined}
+                className={`rounded-full px-3 py-1 text-xs font-black uppercase tracking-wider ${
+                  i === currentSection ? 'bg-navy text-white' : i < currentSection ? 'bg-brand-light text-brand-dark' : 'bg-navy/5 text-navy/70'
+                }`}
+              >
+                {i < currentSection ? '✓ ' : ''}
+                {s}
+              </li>
+            ))}
+          </ol>
+        )}
         <div className="mb-4 flex items-end gap-2">
           <button onClick={repeat} aria-label="Repetir la explicación de Britjoy" className="shrink-0">
             <Britjoy expression={expression} speaking={speaking} size={104} />
           </button>
           <SpeechBubble className="mb-3 flex-1">
-            <span className="text-lg font-black">{isExplain ? 'Te lo explico' : instructionFor(exercise, copy)}</span>
+            <span className="text-lg font-black">{exercise.type === 'explain' ? copy.explainTitle : instructionFor(exercise, copy)}</span>
             <button onClick={repeat} className="ml-2 align-middle text-sm font-extrabold text-royal" aria-label="Escuchar otra vez">
               🔊
             </button>

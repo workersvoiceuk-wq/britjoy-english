@@ -138,5 +138,80 @@
       ],
       "answer": 0
     }
-  ]
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Llamada al 112",
+      "en": "Calling 112"
+    },
+    "scene": {
+      "es": "Ha habido un accidente en tu calle.",
+      "en": "There has been an accident in your street."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Emergencias, ¿dígame?",
+          "en": "Emergency services, how can I help?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Ha habido un accidente.",
+          "en": "There has been an accident."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Dónde está?",
+          "en": "Where are you?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Estoy en esta calle, delante del mercado.",
+          "en": "I'm in this street, in front of the market."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Necesito una ambulancia.",
+          "en": "I need an ambulance."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Ya va para allá. No cuelgue.",
+          "en": "It's on its way. Don't hang up."
+        }
+      }
+    ]
+  }
 }

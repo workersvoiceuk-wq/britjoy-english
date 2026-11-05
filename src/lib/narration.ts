@@ -7,6 +7,8 @@ export function narrationFor(exercise: Exercise, copy: Copy): string {
   switch (exercise.type) {
     case 'explain':
       return `${exercise.title}. ${exercise.body}`;
+    case 'dialogue':
+      return `${exercise.title}. ${exercise.scene ?? ''}`;
     case 'multipleChoice':
     case 'typing':
       return `${instructionFor(exercise, copy)}. ${exercise.prompt}`;

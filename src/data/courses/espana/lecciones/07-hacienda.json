@@ -138,5 +138,80 @@
       ],
       "answer": 0
     }
-  ]
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la Agencia Tributaria",
+      "en": "At the Tax Agency"
+    },
+    "scene": {
+      "es": "Preguntas por la declaración de la renta.",
+      "en": "You ask about your tax return."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Tengo que hacer la declaración.",
+          "en": "I have to file my tax return."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Cuántos pagadores ha tenido este año?",
+          "en": "How many payers did you have this year?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Trabajo para dos empresas.",
+          "en": "I work for two companies."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Entonces revise los límites. ¿Tiene Cl@ve?",
+          "en": "Then check the limits. Do you have Cl@ve?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "No, necesito registrarme en Cl@ve.",
+          "en": "No, I need to register for Cl@ve."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Puede hacerlo por videollamada.",
+          "en": "You can do it by video call."
+        }
+      }
+    ]
+  }
 }

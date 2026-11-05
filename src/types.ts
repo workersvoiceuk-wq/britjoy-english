@@ -100,8 +100,23 @@ export interface SpeakExercise {
   hint?: string;
 }
 
-export type Exercise =
+/**
+ * Busuu-style dialogue (not graded): a short real-life conversation in the language being
+ * learnt. Tap a line to hear it; the translation can be shown or hidden.
+ */
+export interface DialogueExercise {
+  say?: string;
+  type: 'dialogue';
+  title: string;
+  /** Where it happens, in the explanation language. */
+  scene?: string;
+  /** `text` in the language being learnt, `meaning` in the explanation language; `me` = the learner's lines. */
+  lines: { who: string; text: string; meaning: string; me?: boolean }[];
+}
+
+type AnyExercise =
   | ExplainExercise
+  | DialogueExercise
   | SpeakExercise
   | MultipleChoiceExercise
   | WordBankExercise
@@ -109,6 +124,9 @@ export type Exercise =
   | MatchingExercise
   | TypingExercise
   | FillBlankExercise;
+
+/** Every exercise can name its Busuu-style lesson phase (e.g. "Aprende", "Diálogo", "Practica"). */
+export type Exercise = AnyExercise & { section?: string };
 
 export type ExerciseType = Exercise['type'];
 

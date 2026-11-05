@@ -156,5 +156,80 @@
       ],
       "answer": 0
     }
-  ]
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la comisaría",
+      "en": "At the police station"
+    },
+    "scene": {
+      "es": "Tienes cita para pedir el NIE.",
+      "en": "You have an appointment to apply for your NIE."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Buenos días. ¿Qué trámite viene a hacer?",
+          "en": "Good morning. What are you here for?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Necesito pedir el NIE.",
+          "en": "I need to apply for an NIE."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Tiene el formulario EX-15 y la tasa pagada?",
+          "en": "Do you have form EX-15 and the paid fee?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí, aquí están, con mi pasaporte.",
+          "en": "Yes, here they are, with my passport."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Perfecto. Recuerde: el NIE no es un permiso de trabajo.",
+          "en": "Perfect. Remember: the NIE is not a work permit."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Entendido. Muchas gracias.",
+          "en": "Understood. Thank you very much."
+        }
+      }
+    ]
+  }
 }

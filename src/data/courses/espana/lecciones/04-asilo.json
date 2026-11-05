@@ -117,5 +117,80 @@
       ],
       "answer": 0
     }
-  ]
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Pedir protección",
+      "en": "Asking for protection"
+    },
+    "scene": {
+      "es": "En la oficina de la Policía Nacional.",
+      "en": "At the National Police office."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero pedir asilo.",
+          "en": "I want to claim asylum."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "De acuerdo. ¿Necesita intérprete?",
+          "en": "All right. Do you need an interpreter?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí, necesito un intérprete, por favor.",
+          "en": "Yes, I need an interpreter, please."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Vamos a registrar su solicitud y tomarle las huellas.",
+          "en": "We'll register your application and take your fingerprints."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Este es su resguardo. Guárdelo bien.",
+          "en": "This is your receipt. Keep it safe."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuándo es mi próxima cita?",
+          "en": "When is my next appointment?"
+        }
+      }
+    ]
+  }
 }

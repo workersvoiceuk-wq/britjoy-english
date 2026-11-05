@@ -138,5 +138,80 @@
       ],
       "answer": 0
     }
-  ]
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el centro de salud",
+      "en": "At the health centre"
+    },
+    "scene": {
+      "es": "Pides la tarjeta sanitaria y una cita.",
+      "en": "You ask for a health card and an appointment."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Hola, necesito la tarjeta sanitaria.",
+          "en": "Hello, I need a health card."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Tiene el volante de empadronamiento?",
+          "en": "Do you have your padrón certificate?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí, aquí lo tiene.",
+          "en": "Yes, here it is."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Perfecto. ¿Quiere pedir cita con el médico?",
+          "en": "Perfect. Would you like a doctor's appointment?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí, me duele mucho la cabeza.",
+          "en": "Yes, I have a bad headache."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Tiene cita mañana a las diez.",
+          "en": "You have an appointment tomorrow at ten."
+        }
+      }
+    ]
+  }
 }

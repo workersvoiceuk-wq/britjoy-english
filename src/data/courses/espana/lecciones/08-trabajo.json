@@ -117,5 +117,80 @@
       ],
       "answer": 0
     }
-  ]
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Con tu jefe",
+      "en": "With your boss"
+    },
+    "scene": {
+      "es": "Hablas de tu contrato.",
+      "en": "You talk about your contract."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Me puede dar un contrato por escrito?",
+          "en": "Can you give me a written contract?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Sí, lo firmamos mañana.",
+          "en": "Yes, we'll sign it tomorrow."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuántas horas trabajo a la semana?",
+          "en": "How many hours do I work a week?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Cuarenta horas, de lunes a viernes.",
+          "en": "Forty hours, Monday to Friday."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Tampoco he recibido mi nómina.",
+          "en": "I haven't received my payslip either."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Se la envío hoy por correo.",
+          "en": "I'll email it to you today."
+        }
+      }
+    ]
+  }
 }

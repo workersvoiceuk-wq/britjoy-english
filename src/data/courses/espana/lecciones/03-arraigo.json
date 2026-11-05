@@ -138,5 +138,80 @@
       ],
       "answer": 0
     }
-  ]
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En una asociación",
+      "en": "At an advice centre"
+    },
+    "scene": {
+      "es": "Preguntas cómo pedir el arraigo.",
+      "en": "You ask how to apply for arraigo."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Llevo dos años en España. ¿Puedo pedir el arraigo?",
+          "en": "I've been in Spain for two years. Can I apply for arraigo?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Depende del tipo. ¿Tiene una oferta de trabajo?",
+          "en": "It depends on the type. Do you have a job offer?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí, de veinte horas a la semana.",
+          "en": "Yes, twenty hours a week."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Puede ser arraigo sociolaboral. Traiga su padrón y el contrato.",
+          "en": "It could be socio-labour arraigo. Bring your padrón and the contract."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Me puede ayudar con los papeles?",
+          "en": "Can you help me with the paperwork?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Claro, pida cita con nuestra abogada.",
+          "en": "Of course, book an appointment with our lawyer."
+        }
+      }
+    ]
+  }
 }

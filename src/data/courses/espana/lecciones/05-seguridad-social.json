@@ -117,5 +117,80 @@
       ],
       "answer": 0
     }
-  ]
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la Tesorería",
+      "en": "At the Social Security office"
+    },
+    "scene": {
+      "es": "Pides tu número de la Seguridad Social.",
+      "en": "You ask for your Social Security number."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Necesito mi número de la Seguridad Social.",
+          "en": "I need my Social Security number."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Trae el modelo TA.1 relleno?",
+          "en": "Have you brought form TA.1 filled in?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí, aquí está el formulario.",
+          "en": "Yes, here is the form."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Muy bien. Se lo damos ahora mismo.",
+          "en": "Very good. We'll give it to you right now."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Empiezo a trabajar el lunes.",
+          "en": "I start work on Monday."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Entonces su empresa le dará de alta antes.",
+          "en": "Then your employer will register you before that."
+        }
+      }
+    ]
+  }
 }

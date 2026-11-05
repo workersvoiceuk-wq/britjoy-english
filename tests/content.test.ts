@@ -13,6 +13,7 @@ function perfectResponse(ex: Exercise): ExerciseResponse {
     case 'matching':
       return { kind: 'matching', mismatches: 0 };
     case 'explain':
+    case 'dialogue':
       return { kind: 'text', value: 'ok' };
     case 'speak':
       return { kind: 'speech', transcript: ex.text };
@@ -21,7 +22,7 @@ function perfectResponse(ex: Exercise): ExerciseResponse {
   }
 }
 
-const VALID_TYPES = ['explain', 'speak', 'multipleChoice', 'wordBank', 'listening', 'matching', 'typing', 'fillBlank'];
+const VALID_TYPES = ['explain', 'dialogue', 'speak', 'multipleChoice', 'wordBank', 'listening', 'matching', 'typing', 'fillBlank'];
 
 describe('course content', () => {
   const lessons = ALL_LEVELS.flatMap((level) => level.units.flatMap((u) => u.lessons.map((lesson) => ({ level, unit: u, lesson }))));
@@ -124,6 +125,10 @@ describe('course content', () => {
           }
         }
         if (ex.type === 'matching') expect(ex.pairs.length, where).toBeGreaterThanOrEqual(3);
+        if (ex.type === 'dialogue') {
+          expect(ex.lines.length, where).toBeGreaterThanOrEqual(3);
+          for (const line of ex.lines) expect(line.text && line.meaning && line.who, where).toBeTruthy();
+        }
         expect(checkAnswer(ex, perfectResponse(ex)).correct, where).toBe(true);
       });
     });

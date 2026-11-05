@@ -25,7 +25,17 @@ export interface CountrySource {
   /** Key phrases to practise (4–6), short enough to build word by word. */
   phrases: Bi[];
   quiz: { q: Bi; options: Bi[]; answer: number }[];
+  /** Busuu-style dialogue at the office or on the phone (4–8 lines); `me` marks the learner's lines. */
+  dialogue?: { title: Bi; scene: Bi; lines: { who: Bi; me?: boolean; text: Bi }[] };
 }
+
+const SECTION = {
+  learn: { es: 'Aprende', en: 'Learn' },
+  dialogue: { es: 'Diálogo', en: 'Dialogue' },
+  check: { es: 'Comprueba', en: 'Check' },
+  practise: { es: 'Practica', en: 'Practise' },
+  speak: { es: 'Habla', en: 'Speak' },
+};
 
 type Lang = 'es' | 'en';
 const other = (l: Lang): Lang => (l === 'es' ? 'en' : 'es');
@@ -39,6 +49,8 @@ export interface CountryConfig {
   videoDir: string;
   english: { name: string; description: string; accent: string; accentDark: string; accentLight: string };
   spanish: { name: string; description: string; accent: string; accentDark: string; accentLight: string };
+  /** Which courses to build (default: both). */
+  targets?: Lang[];
 }
 
 /** Lesson exercises for learners of `target`, explained in the other language. */
@@ -48,9 +60,11 @@ export function buildLesson(cfg: CountryConfig, src: CountrySource, target: Lang
   const pair = (p: Bi) => ({ en: p[target], es: p[L] }); // "en" = phrase being learnt, "es" = meaning
   const words = (s: string) => s.split(' ');
   const exercises: Exercise[] = [];
+  const sec = (k: keyof typeof SECTION) => SECTION[k][L];
 
   src.cards.forEach((c, i) =>
     exercises.push({
+      section: sec('learn'),
       type: 'explain',
       title: c.title[L],
       body: c.body[L],
@@ -70,10 +84,20 @@ export function buildLesson(cfg: CountryConfig, src: CountrySource, target: Lang
       ...(c.video ? { video: { src: c.video.src, poster: c.video.poster, caption: c.video.caption?.[L] } } : {}),
     }),
   );
+  if (src.dialogue) {
+    exercises.push({
+      section: sec('dialogue'),
+      type: 'dialogue',
+      title: src.dialogue.title[L],
+      scene: src.dialogue.scene[L],
+      lines: src.dialogue.lines.map((l) => ({ who: l.who[L], text: l.text[target], meaning: l.text[L], ...(l.me ? { me: true } : {}) })),
+    });
+  }
   for (const q of src.quiz) {
-    exercises.push({ type: 'multipleChoice', prompt: q.q[L], options: q.options.map((o) => o[L]), answer: q.options[q.answer][L] });
+    exercises.push({ section: sec('check'), type: 'multipleChoice', prompt: q.q[L], options: q.options.map((o) => o[L]), answer: q.options[q.answer][L] });
   }
   exercises.push({
+    section: sec('practise'),
     type: 'matching',
     prompt: L === 'es' ? 'Une cada frase con su significado' : 'Match each phrase with its meaning',
     pairs: ph.slice(0, 4).map(pair),
@@ -82,18 +106,19 @@ export function buildLesson(cfg: CountryConfig, src: CountrySource, target: Lang
   const build = ph[1] ?? ph[0];
   const answerWords = words(build[target]);
   const extra = words((ph[2] ?? ph[0])[target]).filter((w) => !answerWords.includes(w)).slice(0, 3);
-  exercises.push({ type: 'wordBank', prompt: build[L], words: [...answerWords, ...(extra.length ? extra : ['please'])], answer: build[target] });
+  exercises.push({ section: sec('practise'), type: 'wordBank', prompt: build[L], words: [...answerWords, ...(extra.length ? extra : ['please'])], answer: build[target] });
   const heard = ph[0];
   const others = ph.filter((p) => p !== heard).slice(0, 2).map((p) => p[target]);
-  exercises.push({ type: 'listening', text: heard[target], options: [heard[target], ...others], answer: heard[target] });
+  exercises.push({ section: sec('practise'), type: 'listening', text: heard[target], options: [heard[target], ...others], answer: heard[target] });
   const typed = ph[3] ?? ph[ph.length - 1];
   exercises.push({
+    section: sec('practise'),
     type: 'typing',
     prompt: L === 'es' ? `Escribe en inglés: «${typed.es}»` : `Write in Spanish: "${typed.en}"`,
     answer: typed[target],
   });
   const spoken = ph[2] ?? ph[0];
-  exercises.push({ type: 'speak', text: spoken[target], hint: spoken[L] });
+  exercises.push({ section: sec('speak'), type: 'speak', text: spoken[target], hint: spoken[L] });
 
   const code = cfg.code.toLowerCase();
   return { id: `${code}-${target === 'en' ? 'en' : 'es'}-${src.id}`, title: src.title[L], icon: src.icon, exercises };
@@ -121,8 +146,8 @@ function buildLevel(cfg: CountryConfig, sources: CountrySource[], target: Lang):
   };
 }
 
-/** Both courses for a country: learn English (index 0) and learn Spanish (index 1). */
+/** The courses for a country: learn English and (unless `targets` says otherwise) learn Spanish. */
 export function countryLevels(cfg: CountryConfig, modules: Record<string, CountrySource>): LevelDefinition[] {
   const sources = Object.values(modules).sort((a, b) => a.order - b.order);
-  return sources.length ? [buildLevel(cfg, sources, 'en'), buildLevel(cfg, sources, 'es')] : [];
+  return sources.length ? (cfg.targets ?? ['en', 'es']).map((t) => buildLevel(cfg, sources, t)) : [];
 }

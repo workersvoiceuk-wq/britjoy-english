@@ -21,6 +21,10 @@ const COPY = {
     noAudio: 'Tu navegador no puede reproducir audio.',
     showText: 'Mostrar texto',
     speak: 'Dilo en voz alta',
+    explainTitle: 'Te lo explico',
+    showTranslation: 'Ver traducción',
+    hideTranslation: 'Ocultar traducción',
+    playAll: 'Escuchar todo el diálogo',
   },
   en: {
     multipleChoice: 'Choose the correct answer',
@@ -41,6 +45,10 @@ const COPY = {
     noAudio: 'Your browser cannot play audio.',
     showText: 'Show text',
     speak: 'Say it out loud',
+    explainTitle: 'Let me explain',
+    showTranslation: 'Show translation',
+    hideTranslation: 'Hide translation',
+    playAll: 'Play the whole dialogue',
   },
 } as const;
 
@@ -57,6 +65,7 @@ export function copyFor(lang: Lang, target: 'en' | 'es' = 'en'): Copy {
 export function instructionFor(exercise: Exercise, copy: Copy): string {
   switch (exercise.type) {
     case 'explain':
+    case 'dialogue':
       return exercise.title;
     case 'speak':
       return copy.speak;

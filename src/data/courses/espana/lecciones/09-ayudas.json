@@ -117,5 +117,80 @@
       ],
       "answer": 0
     }
-  ]
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Con la trabajadora social",
+      "en": "With the social worker"
+    },
+    "scene": {
+      "es": "En los servicios sociales de tu ayuntamiento.",
+      "en": "At your town hall's social services."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Necesito ayuda para pagar el alquiler.",
+          "en": "I need help to pay the rent."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Cuántas personas viven en casa?",
+          "en": "How many people live at home?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Tengo tres hijos y no tengo ingresos.",
+          "en": "I have three children and no income."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Vamos a ver la renta mínima y el bono social de la luz.",
+          "en": "We'll look at the minimum income and the electricity discount."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Puedo pedir el Ingreso Mínimo Vital?",
+          "en": "Can I apply for the Minimum Living Income?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Si lleva un año de residencia legal, sí.",
+          "en": "If you've had legal residence for a year, yes."
+        }
+      }
+    ]
+  }
 }

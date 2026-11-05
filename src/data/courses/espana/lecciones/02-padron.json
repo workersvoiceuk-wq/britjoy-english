@@ -138,5 +138,80 @@
       ],
       "answer": 0
     }
-  ]
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el ayuntamiento",
+      "en": "At the town hall"
+    },
+    "scene": {
+      "es": "Vas a empadronarte.",
+      "en": "You are registering on the padrón."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Hola, quiero empadronarme.",
+          "en": "Hello, I want to register on the padrón."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Me enseña su pasaporte y el contrato de alquiler?",
+          "en": "Can you show me your passport and rental contract?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "No tengo contrato, pero el titular me ha firmado una autorización.",
+          "en": "I don't have a contract, but the tenant has signed an authorisation."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Vale, con eso es suficiente. Le doy el volante.",
+          "en": "OK, that's enough. Here is your certificate."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cada cuánto tengo que renovarlo?",
+          "en": "How often do I have to renew it?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Si no es de la UE, cada dos años.",
+          "en": "If you're not from the EU, every two years."
+        }
+      }
+    ]
+  }
 }

@@ -138,5 +138,80 @@
       ],
       "answer": 0
     }
-  ]
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Alquilar un piso",
+      "en": "Renting a flat"
+    },
+    "scene": {
+      "es": "Hablas con el casero.",
+      "en": "You talk to the landlord."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero alquilar este piso.",
+          "en": "I want to rent this flat."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Son setecientos euros al mes.",
+          "en": "It's seven hundred euros a month."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuánto es la fianza?",
+          "en": "How much is the deposit?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Un mes, como dice la ley.",
+          "en": "One month, as the law says."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Está incluida la luz?",
+          "en": "Is electricity included?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "No, la luz la paga usted.",
+          "en": "No, you pay for electricity."
+        }
+      }
+    ]
+  }
 }
