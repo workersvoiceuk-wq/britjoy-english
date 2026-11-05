@@ -8,6 +8,8 @@ import {
   toDateKey,
 } from '../logic/gamification';
 import { hasPlus } from '../lib/backend';
+import { grade, type ReviewState } from '../logic/review';
+import type { StudyPlan } from '../logic/plan';
 
 export interface LessonRecord {
   stars: 1 | 2 | 3;
@@ -46,6 +48,10 @@ export interface ProgressState {
   xpByDay: Record<string, number>;
   /** Name printed on course certificates. */
   learnerName: string;
+  /** Study plan (goal, days, minutes a day); null until the learner creates one. */
+  plan: StudyPlan | null;
+  /** Smart review: spaced-repetition state of each word or phrase. */
+  review: Record<string, ReviewState>;
 
   completePlacement: (level: LevelId | null) => void;
   setCurrentLevel: (level: LevelId) => void;
@@ -59,9 +65,11 @@ export interface ProgressState {
   setUiLang: (lang: string) => void;
   setDailyGoal: (xp: number) => void;
   setLearnerName: (name: string) => void;
+  setPlan: (plan: StudyPlan | null) => void;
+  answerReview: (id: string, correct: boolean, now?: number) => void;
 }
 
-export type AppTab = 'home' | 'english' | 'life' | 'ai' | 'resources' | 'settings' | 'plus';
+export type AppTab = 'home' | 'english' | 'life' | 'ai' | 'resources' | 'settings' | 'plus' | 'plan' | 'review';
 
 export const STORAGE_KEY = 'britjoy-english-progress-v1';
 
@@ -84,6 +92,8 @@ const initialState = () => ({
   dailyGoal: 20,
   xpByDay: {} as Record<string, number>,
   learnerName: '',
+  plan: null as StudyPlan | null,
+  review: {} as Record<string, ReviewState>,
 });
 
 export const useProgressStore = create<ProgressState>()(
@@ -156,12 +166,16 @@ export const useProgressStore = create<ProgressState>()(
       setUiLang: (lang) => set({ uiLang: lang }),
       setDailyGoal: (xp) => set({ dailyGoal: xp }),
       setLearnerName: (name) => set({ learnerName: name.slice(0, 60) }),
+      setPlan: (plan) => set({ plan }),
+      answerReview: (id, correct, now = Date.now()) =>
+        set((s) => ({ review: { ...s.review, [id]: grade(s.review[id], correct, now) } })),
     }),
     {
       name: STORAGE_KEY,
-      version: 3,
+      version: 4,
       // v1 → v2 added voice/sound settings and the open tab; v2 → v3 adds the interface
-      // language (existing learners keep Spanish), daily goal, daily XP and name.
+      // language (existing learners keep Spanish), daily goal, daily XP and name;
+      // v3 → v4 adds the study plan and smart review.
       migrate: (persisted, version) => {
         const p = (persisted ?? {}) as Partial<ProgressState>;
         return {
@@ -171,6 +185,8 @@ export const useProgressStore = create<ProgressState>()(
           dailyGoal: 20,
           xpByDay: {},
           learnerName: '',
+          plan: null,
+          review: {},
           ...p,
           uiLang: p.uiLang ?? (version < 3 && p.placementDone ? 'es' : null),
         } as ProgressState;
@@ -193,6 +209,8 @@ export const useProgressStore = create<ProgressState>()(
         dailyGoal: s.dailyGoal,
         xpByDay: s.xpByDay,
         learnerName: s.learnerName,
+        plan: s.plan,
+        review: s.review,
       }),
     },
   ),

@@ -8,7 +8,7 @@ export default {
       },
       colors: {
         brand: { DEFAULT: '#398401', dark: '#2C6701', light: '#D7FFB8' },
-        bad: { DEFAULT: '#FF4B4B', dark: '#EA2B2B', light: '#FFDFE0' },
+        bad: { DEFAULT: '#FF4B4B', dark: '#B3261E', light: '#FFDFE0' },
         ink: { DEFAULT: '#3C3C3C', soft: '#636363', line: '#E5E5E5' },
         accent: { DEFAULT: 'var(--accent)', dark: 'var(--accent-dark)', light: 'var(--accent-light)' },
         // British palette

@@ -161,3 +161,34 @@ test('VUM Academy: compares Free and Academy, links to vozunidamundo.com and wai
   await expect(page.getByText('Las cuentas todavía no están activadas. ¡Muy pronto!')).toBeVisible();
   for (const button of await page.getByRole('button', { name: 'Elegir' }).all()) await expect(button).toBeDisabled();
 });
+
+test('study plan and smart review (Busuu-style tools)', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem(
+      'britjoy-english-progress-v1',
+      JSON.stringify({
+        state: {
+          uiLang: 'es', voiceOn: false, soundOn: false, placementDone: true, tab: 'home', currentLevel: 'A1',
+          levels: { A1: { xp: 15, completedLessons: { 'a1-u1-l1': { stars: 3, bestXp: 15, completedAt: 1 } } } },
+        },
+        version: 4,
+      }),
+    );
+  });
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Crear mi plan' }).click();
+  await page.getByRole('radio', { name: /Trabajo/ }).click();
+  await page.getByRole('radio', { name: '20 min' }).click();
+  await expect(page.getByRole('status')).toContainText('A este ritmo terminarás A1');
+  await page.getByRole('button', { name: 'Guardar mi plan' }).click();
+  await expect(page.getByRole('button', { name: 'Cambiar plan' })).toBeVisible();
+
+  await page.getByRole('button', { name: /Repasar ahora/ }).click();
+  await expect(page.getByText('¿Cómo se dice en inglés?')).toBeVisible();
+  await page.locator('main button.tile').first().click();
+  await expect(page.getByRole('status')).toBeVisible();
+  await page.getByRole('button', { name: 'Siguiente' }).click();
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('britjoy-english-progress-v1')!));
+  expect(saved.state.plan.goal).toBe('work');
+  expect(Object.keys(saved.state.review).length).toBe(1);
+});

@@ -18,6 +18,8 @@ import { BottomNav } from './components/BottomNav';
 const ResourcesScreen = lazy(() => import('./components/ResourcesScreen').then((m) => ({ default: m.ResourcesScreen })));
 const PlusScreen = lazy(() => import('./components/PlusScreen').then((m) => ({ default: m.PlusScreen })));
 const SettingsScreen = lazy(() => import('./components/SettingsScreen').then((m) => ({ default: m.SettingsScreen })));
+const StudyPlanScreen = lazy(() => import('./components/StudyTools').then((m) => ({ default: m.StudyPlanScreen })));
+const ReviewScreen = lazy(() => import('./components/StudyTools').then((m) => ({ default: m.ReviewScreen })));
 const AiScreen = lazy(() => import('./components/AiScreen').then((m) => ({ default: m.AiScreen })));
 import { AcademyScreen } from './components/AcademyScreen';
 import { LanguagePicker } from './components/LanguagePicker';
@@ -151,7 +153,7 @@ function AppScreens() {
         level={tab === 'english' ? englishLevel : undefined}
         titleIsHeading={tab !== 'home'}
         onOpenLevels={() => setShowLevels(true)}
-        title={translate(uiLang, ({ home: 'title.home', english: 'nav.learn', life: 'nav.life', ai: 'nav.ai', resources: 'title.resources', settings: 'nav.more', plus: 'plus.title' } as const)[tab])}
+        title={translate(uiLang, ({ home: 'title.home', english: 'nav.learn', life: 'nav.life', ai: 'nav.ai', resources: 'title.resources', settings: 'nav.more', plus: 'plus.title', plan: 'plan.title', review: 'review.title' } as const)[tab])}
       />
       <main id="contenido">
       {(tab === 'english' || tab === 'life') && (
@@ -162,6 +164,8 @@ function AppScreens() {
       {tab === 'resources' && <ResourcesScreen />}
       {tab === 'settings' && <SettingsScreen />}
       {tab === 'plus' && <PlusScreen checkout={checkout} />}
+      {tab === 'plan' && <StudyPlanScreen />}
+      {tab === 'review' && <ReviewScreen />}
       </main>
       <BottomNav />
       {showLevels && <LevelSelector onClose={() => setShowLevels(false)} />}

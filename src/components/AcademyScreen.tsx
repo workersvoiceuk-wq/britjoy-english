@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Capacitor } from '@capacitor/core';
 import { CATALOG, CATEGORIES, DOWNLOADS, courseStats, type CatalogCourse, type Category } from '../data/catalog';
 import { completedByLevel, useProgressStore } from '../store/useProgressStore';
+import { StudyToolsCards } from './StudyTools';
 import { sfx } from '../lib/sound';
 import { Britjoy } from './Britjoy';
 import { Button } from './Button';
@@ -251,6 +252,7 @@ export function AcademyScreen() {
       </section>
 
       <ProgressPanel />
+      <StudyToolsCards />
 
       {inProgress.length > 0 && (
         <section className="mt-6">
