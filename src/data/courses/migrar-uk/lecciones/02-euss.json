@@ -1,0 +1,196 @@
+{
+  "id": "euss",
+  "order": 2,
+  "icon": "🇪🇺",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "EU Settlement Scheme (españoles)",
+    "en": "EU Settlement Scheme (Spanish citizens)"
+  },
+  "unit": {
+    "es": "Españoles en el Reino Unido",
+    "en": "Spaniards in the UK"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Settled y pre-settled status",
+        "en": "Settled and pre-settled status"
+      },
+      "body": {
+        "es": "• Los españoles que vivían en el Reino Unido antes del 31 de diciembre de 2020 tenían que pedir el EU Settlement Scheme. El plazo general acabó el 30 de junio de 2021, pero aún puedes pedirlo si tienes «motivos razonables» para el retraso.\n• Familiares que vienen a reunirse: en general, 90 días desde su llegada.\n• Pre-settled status: se prorroga sola 5 años antes de caducar, y puede pasar automáticamente a settled status. También puedes pedir el settled status tú mismo, gratis, cuando cumplas 5 años seguidos.\n• Mientras esperas la decisión, tu certificate of application protege tus derechos (trabajo, NHS, alquiler).\n• Tu estatus es digital: un eVisa en tu cuenta UKVI.",
+        "en": "• Spaniards living in the UK before 31 December 2020 had to apply to the EU Settlement Scheme. The general deadline was 30 June 2021, but you can still apply if you have 'reasonable grounds' for being late.\n• Joining family members: usually 90 days from arrival.\n• Pre-settled status is extended automatically by 5 years before it expires, and may be converted automatically to settled status. You can also apply for settled status yourself, free, once you have 5 continuous years.\n• While you wait for a decision, your certificate of application protects your rights (work, NHS, renting).\n• Your status is digital: an eVisa in your UKVI account."
+      },
+      "say": {
+        "es": "Si llegaste antes de dos mil veintiuno y no lo pediste, aún puedes con motivos razonables. El pre-settled se prorroga solo, y a los cinco años puedes pedir el settled gratis.",
+        "en": "If you arrived before 2021 and didn't apply, you still can with reasonable grounds. Pre-settled status extends automatically, and after five years you can apply for settled status for free."
+      },
+      "link": {
+        "label": {
+          "es": "GOV.UK: EU Settlement Scheme",
+          "en": "GOV.UK: EU Settlement Scheme"
+        },
+        "url": "https://www.gov.uk/settled-status-eu-citizens-families"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Llegaste antes de 2021",
+      "en": "Arrived before 2021"
+    },
+    {
+      "es": "Tarde: motivos razonables",
+      "en": "Late: reasonable grounds"
+    },
+    {
+      "es": "Pre-settled → settled",
+      "en": "Pre-settled → settled"
+    },
+    {
+      "es": "Todo en tu eVisa",
+      "en": "All in your eVisa"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Tengo pre-settled status.",
+      "en": "I have pre-settled status."
+    },
+    {
+      "es": "Lo pedí tarde porque estaba enfermo.",
+      "en": "I applied late because I was ill."
+    },
+    {
+      "es": "Llevo cinco años viviendo aquí.",
+      "en": "I have lived here for five years."
+    },
+    {
+      "es": "Aquí está mi certificado de solicitud.",
+      "en": "Here is my certificate of application."
+    },
+    {
+      "es": "Mi mujer viene a reunirse conmigo.",
+      "en": "My wife is joining me."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta pasar de pre-settled a settled status?",
+        "en": "How much does it cost to go from pre-settled to settled status?"
+      },
+      "options": [
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        },
+        {
+          "es": "1.000 £",
+          "en": "£1,000"
+        },
+        {
+          "es": "50 £",
+          "en": "£50"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué protege tus derechos mientras esperas la decisión?",
+        "en": "What protects your rights while you wait?"
+      },
+      "options": [
+        {
+          "es": "El certificate of application",
+          "en": "The certificate of application"
+        },
+        {
+          "es": "Tu billete de avión",
+          "en": "Your plane ticket"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Con tu nuevo jefe",
+      "en": "With your new employer"
+    },
+    "scene": {
+      "es": "Te piden demostrar que puedes trabajar.",
+      "en": "They ask you to prove you can work."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Jefa",
+          "en": "Employer"
+        },
+        "text": {
+          "es": "Necesito comprobar su derecho a trabajar.",
+          "en": "I need to check your right to work."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Tengo pre-settled status.",
+          "en": "I have pre-settled status."
+        }
+      },
+      {
+        "who": {
+          "es": "Jefa",
+          "en": "Employer"
+        },
+        "text": {
+          "es": "¿Me da un share code?",
+          "en": "Can you give me a share code?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí, se lo envío ahora.",
+          "en": "Yes, I'll send it now."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Llevo cinco años viviendo aquí.",
+          "en": "I have lived here for five years."
+        }
+      },
+      {
+        "who": {
+          "es": "Jefa",
+          "en": "Employer"
+        },
+        "text": {
+          "es": "Entonces ya puede pedir el settled status.",
+          "en": "Then you can apply for settled status."
+        }
+      }
+    ]
+  }
+}

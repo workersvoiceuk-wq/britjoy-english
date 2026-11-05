@@ -1,0 +1,196 @@
+{
+  "id": "otros-paises",
+  "order": 7,
+  "icon": "🌎",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "México, Perú, Argentina, Chile y más",
+    "en": "Mexico, Peru, Argentina, Chile and more"
+  },
+  "unit": {
+    "es": "Otros consulados",
+    "en": "Other consulates"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Dónde está tu consulado",
+        "en": "Where your consulate is"
+      },
+      "body": {
+        "es": "• México: Sección Consular, 16A St George Street, W1S 1FD. Lunes a viernes de 9 a 13 h. Citas gratis en MiConsulado (citas.sre.gob.mx); nadie debe venderte una cita. La credencial del INE para votar se pide gratis en el consulado y te la envían a casa.\n• Perú: Consulado General, 52 Sloane Street, SW1X 9SP (nueva sede desde 2025).\n• Argentina: Consulado General, 27 Three Kings Yard, W1K 4DF. Todo con cita y sin intermediarios.\n• Chile: Consulado General, 37–41 Old Queen Street, SW1H 9JA.\n• Ecuador, Bolivia y Venezuela: consulta la dirección, las citas y las tasas en la web oficial de tu cancillería antes de ir (los datos cambian y no los hemos podido confirmar). Venezuela: el pasaporte se pide y se paga en línea en el SAIME.",
+        "en": "• Mexico: Consular Section, 16A St George Street, W1S 1FD. Monday to Friday, 9 am to 1 pm. Free appointments on MiConsulado (citas.sre.gob.mx); nobody should sell you one. The INE voter card is requested free at the consulate and posted to your home.\n• Peru: Consulate General, 52 Sloane Street, SW1X 9SP (new premises since 2025).\n• Argentina: Consulate General, 27 Three Kings Yard, W1K 4DF. Everything by appointment, no middlemen.\n• Chile: Consulate General, 37–41 Old Queen Street, SW1H 9JA.\n• Ecuador, Bolivia and Venezuela: check the address, appointments and fees on your foreign ministry's official website before you go (details change and we could not confirm them). Venezuela: passports are requested and paid online through SAIME."
+      },
+      "say": {
+        "es": "México, Perú, Argentina y Chile tienen consulado en el centro de Londres. Si eres de Ecuador, Bolivia o Venezuela, consulta la web oficial de tu cancillería antes de ir. Y recuerda: las citas son gratis.",
+        "en": "Mexico, Peru, Argentina and Chile have consulates in central London. If you're from Ecuador, Bolivia or Venezuela, check your foreign ministry's official website before you go. And remember: appointments are free."
+      },
+      "link": {
+        "label": {
+          "es": "México: MiConsulado (citas)",
+          "en": "Mexico: MiConsulado (appointments)"
+        },
+        "url": "https://citas.sre.gob.mx/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "México: MiConsulado, gratis",
+      "en": "Mexico: MiConsulado, free"
+    },
+    {
+      "es": "Perú: 52 Sloane Street",
+      "en": "Peru: 52 Sloane Street"
+    },
+    {
+      "es": "Argentina y Chile: con cita",
+      "en": "Argentina and Chile: by appointment"
+    },
+    {
+      "es": "Otros: mira la web oficial",
+      "en": "Others: check the official site"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Qué autobús va a Sloane Street?",
+      "en": "Which bus goes to Sloane Street?"
+    },
+    {
+      "es": "Soy de México.",
+      "en": "I am from Mexico."
+    },
+    {
+      "es": "Necesito votar desde el extranjero.",
+      "en": "I need to vote from abroad."
+    },
+    {
+      "es": "¿Abre el sábado?",
+      "en": "Is it open on Saturday?"
+    },
+    {
+      "es": "¿Me puede escribir la dirección?",
+      "en": "Can you write down the address?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Dónde piden cita los mexicanos?",
+        "en": "Where do Mexicans book appointments?"
+      },
+      "options": [
+        {
+          "es": "En MiConsulado, gratis",
+          "en": "On MiConsulado, free"
+        },
+        {
+          "es": "Con un gestor",
+          "en": "Through an agent"
+        },
+        {
+          "es": "En la calle",
+          "en": "In the street"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánto cuesta la credencial del INE en el consulado?",
+        "en": "How much is the INE voter card at the consulate?"
+      },
+      "options": [
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        },
+        {
+          "es": "50 £",
+          "en": "£50"
+        },
+        {
+          "es": "100 dólares",
+          "en": "$100"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Por teléfono",
+      "en": "On the phone"
+    },
+    "scene": {
+      "es": "Llamas para preguntar el horario.",
+      "en": "You call to ask about opening hours."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Hola. ¿Abre el sábado?",
+          "en": "Hello. Is it open on Saturday?"
+        }
+      },
+      {
+        "who": {
+          "es": "Recepción",
+          "en": "Reception"
+        },
+        "text": {
+          "es": "No, solo de lunes a viernes.",
+          "en": "No, only Monday to Friday."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Necesito cita?",
+          "en": "Do I need an appointment?"
+        }
+      },
+      {
+        "who": {
+          "es": "Recepción",
+          "en": "Reception"
+        },
+        "text": {
+          "es": "Sí, pídala en nuestra web. Es gratis.",
+          "en": "Yes, book it on our website. It's free."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Me puede escribir la dirección?",
+          "en": "Can you write down the address?"
+        }
+      },
+      {
+        "who": {
+          "es": "Recepción",
+          "en": "Reception"
+        },
+        "text": {
+          "es": "Se la envío por email.",
+          "en": "I'll email it to you."
+        }
+      }
+    ]
+  }
+}

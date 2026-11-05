@@ -1,0 +1,217 @@
+{
+  "id": "cedula",
+  "order": 1,
+  "icon": "🪪",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Tu cédula y el registro civil",
+    "en": "Your ID card and civil registry"
+  },
+  "unit": {
+    "es": "Identificación",
+    "en": "Identity"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Tus documentos de identidad",
+        "en": "Your identity documents"
+      },
+      "body": {
+        "es": "• El registro civil de nacimiento es el primer documento: prueba quién eres y quiénes son tus padres. Lo hace la Registraduría o una notaría.\n• La tarjeta de identidad es para menores; la cédula de ciudadanía, desde los 18 años.\n• La cédula amarilla con hologramas SIGUE VALIENDO y no caduca. La cédula digital es opcional. Desconfía de mensajes que digan que tu cédula amarilla «vence»: son estafas.\n• Si pierdes la cédula: pide el duplicado en la Registraduría. El duplicado de la cédula digital cuesta 76.100 pesos desde marzo de 2026 y se tramita en persona, sin cita.",
+        "en": "• The birth civil registration is your first document: it proves who you are and who your parents are. It is done at the Registraduría or a notary.\n• The identity card (tarjeta de identidad) is for minors; the citizenship card (cédula), from age 18.\n• The yellow cédula with holograms IS STILL VALID and does not expire. The digital cédula is optional. Distrust messages saying your yellow cédula 'expires': they are scams.\n• If you lose your cédula: ask the Registraduría for a duplicate. A duplicate digital cédula costs COP 76,100 since March 2026 and is done in person, without an appointment."
+      },
+      "say": {
+        "es": "La cédula amarilla sigue valiendo y no vence. La digital es opcional. Y si pierdes la cédula, pide el duplicado en la Registraduría.",
+        "en": "The yellow cédula is still valid and does not expire. The digital one is optional. And if you lose it, ask the Registraduría for a duplicate."
+      },
+      "link": {
+        "label": {
+          "es": "Registraduría Nacional",
+          "en": "National Civil Registry"
+        },
+        "url": "https://www.registraduria.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Registro civil: tu primer documento",
+      "en": "Civil registry: your first document"
+    },
+    {
+      "es": "Cédula amarilla: sigue valiendo",
+      "en": "Yellow cédula: still valid"
+    },
+    {
+      "es": "La digital es opcional",
+      "en": "The digital one is optional"
+    },
+    {
+      "es": "Duplicado: en la Registraduría",
+      "en": "Duplicate: at the Registraduría"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Perdí mi cédula.",
+      "en": "I lost my ID card."
+    },
+    {
+      "es": "Necesito un duplicado de la cédula.",
+      "en": "I need a duplicate ID card."
+    },
+    {
+      "es": "¿Cuánto cuesta el trámite?",
+      "en": "How much does it cost?"
+    },
+    {
+      "es": "Aquí está mi registro civil.",
+      "en": "Here is my birth certificate."
+    },
+    {
+      "es": "¿Necesito cita?",
+      "en": "Do I need an appointment?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿La cédula amarilla con hologramas sigue siendo válida?",
+        "en": "Is the yellow cédula with holograms still valid?"
+      },
+      "options": [
+        {
+          "es": "Sí, no vence",
+          "en": "Yes, it doesn't expire"
+        },
+        {
+          "es": "No, venció en 2025",
+          "en": "No, it expired in 2025"
+        },
+        {
+          "es": "Solo para votar",
+          "en": "Only for voting"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿La cédula digital es obligatoria?",
+        "en": "Is the digital cédula compulsory?"
+      },
+      "options": [
+        {
+          "es": "No, es opcional",
+          "en": "No, it's optional"
+        },
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "Solo para mayores de 60",
+          "en": "Only for over-60s"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Dónde pides el duplicado de la cédula?",
+        "en": "Where do you get a duplicate cédula?"
+      },
+      "options": [
+        {
+          "es": "En la Registraduría",
+          "en": "At the Registraduría"
+        },
+        {
+          "es": "En la DIAN",
+          "en": "At the DIAN"
+        },
+        {
+          "es": "En el banco",
+          "en": "At the bank"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la Registraduría",
+      "en": "At the Registraduría"
+    },
+    "scene": {
+      "es": "Pides el duplicado de tu cédula.",
+      "en": "You ask for a duplicate ID card."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Buenos días. Perdí mi cédula.",
+          "en": "Good morning. I lost my ID card."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Quiere la cédula digital?",
+          "en": "Would you like the digital ID card?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí. ¿Necesito cita?",
+          "en": "Yes. Do I need an appointment?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "No, la atendemos ahora.",
+          "en": "No, we can see you now."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuánto cuesta el trámite?",
+          "en": "How much does it cost?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Setenta y seis mil cien pesos.",
+          "en": "Seventy-six thousand one hundred pesos."
+        }
+      }
+    ]
+  }
+}

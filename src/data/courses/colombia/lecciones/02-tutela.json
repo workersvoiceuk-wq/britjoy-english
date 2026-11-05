@@ -1,0 +1,217 @@
+{
+  "id": "tutela",
+  "order": 2,
+  "icon": "⚖️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "La acción de tutela",
+    "en": "The tutela action"
+  },
+  "unit": {
+    "es": "Tus derechos",
+    "en": "Your rights"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Defiende tus derechos fundamentales",
+        "en": "Defend your fundamental rights"
+      },
+      "body": {
+        "es": "• La tutela (artículo 86 de la Constitución) protege tus derechos fundamentales —salud, vida, debido proceso, petición…— cuando una autoridad, y en algunos casos un particular como una EPS, los viola o amenaza.\n• No necesitas abogado: la puedes escribir tú, en lenguaje sencillo, y presentarla ante cualquier juez.\n• Cuenta qué pasó, qué derecho se viola, contra quién, qué pides, y adjunta pruebas.\n• El juez debe decidir en máximo 10 días.\n• Si no estás de acuerdo con el fallo, puedes impugnarlo en los 3 días siguientes a la notificación.\n• Si no cumplen el fallo, puedes pedir al juez un incidente de desacato.",
+        "en": "• The tutela (article 86 of the Constitution) protects your fundamental rights—health, life, due process, petition…—when an authority, and in some cases a private party such as a health insurer (EPS), violates or threatens them.\n• You don't need a lawyer: you can write it yourself, in plain words, and file it with any judge.\n• Say what happened, which right is violated, by whom, what you ask for, and attach evidence.\n• The judge must decide within 10 days at most.\n• If you disagree with the ruling, you can challenge it within 3 days of being notified.\n• If the ruling is not obeyed, you can ask the judge for contempt proceedings (desacato)."
+      },
+      "say": {
+        "es": "La tutela protege tus derechos fundamentales. No necesitas abogado. El juez decide en máximo diez días, y puedes impugnar en tres días.",
+        "en": "The tutela protects your fundamental rights. You don't need a lawyer. The judge decides within ten days, and you can challenge it within three days."
+      },
+      "link": {
+        "label": {
+          "es": "Corte Constitucional",
+          "en": "Constitutional Court"
+        },
+        "url": "https://www.corteconstitucional.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Protege derechos fundamentales",
+      "en": "Protects fundamental rights"
+    },
+    {
+      "es": "Sin abogado, ante cualquier juez",
+      "en": "No lawyer, any judge"
+    },
+    {
+      "es": "Fallo en 10 días",
+      "en": "Ruling within 10 days"
+    },
+    {
+      "es": "Impugna en 3 días",
+      "en": "Challenge within 3 days"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero presentar una tutela.",
+      "en": "I want to file a tutela."
+    },
+    {
+      "es": "La EPS no me autoriza la cirugía.",
+      "en": "My health insurer won't authorise the surgery."
+    },
+    {
+      "es": "Necesito ayuda para escribirla.",
+      "en": "I need help writing it."
+    },
+    {
+      "es": "Aquí están mis pruebas.",
+      "en": "Here is my evidence."
+    },
+    {
+      "es": "¿Cuándo decide el juez?",
+      "en": "When will the judge decide?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Necesitas abogado para presentar una tutela?",
+        "en": "Do you need a lawyer to file a tutela?"
+      },
+      "options": [
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Sí, siempre",
+          "en": "Yes, always"
+        },
+        {
+          "es": "Solo en Bogotá",
+          "en": "Only in Bogotá"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿En cuánto tiempo debe decidir el juez?",
+        "en": "How long does the judge have to decide?"
+      },
+      "options": [
+        {
+          "es": "Máximo 10 días",
+          "en": "10 days at most"
+        },
+        {
+          "es": "Un año",
+          "en": "One year"
+        },
+        {
+          "es": "Seis meses",
+          "en": "Six months"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánto tiempo tienes para impugnar el fallo?",
+        "en": "How long do you have to challenge the ruling?"
+      },
+      "options": [
+        {
+          "es": "3 días",
+          "en": "3 days"
+        },
+        {
+          "es": "30 días",
+          "en": "30 days"
+        },
+        {
+          "es": "No se puede",
+          "en": "You can't"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el consultorio jurídico",
+      "en": "At the legal aid clinic"
+    },
+    "scene": {
+      "es": "Pides ayuda para tu tutela contra la EPS.",
+      "en": "You ask for help with your tutela against your EPS."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "La EPS no me autoriza la cirugía.",
+          "en": "My health insurer won't authorise the surgery."
+        }
+      },
+      {
+        "who": {
+          "es": "Estudiante de Derecho",
+          "en": "Law student"
+        },
+        "text": {
+          "es": "¿Tiene la orden del médico?",
+          "en": "Do you have the doctor's order?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí, aquí están mis pruebas.",
+          "en": "Yes, here is my evidence."
+        }
+      },
+      {
+        "who": {
+          "es": "Estudiante de Derecho",
+          "en": "Law student"
+        },
+        "text": {
+          "es": "Presentamos una tutela hoy mismo.",
+          "en": "We'll file a tutela today."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuándo decide el juez?",
+          "en": "When will the judge decide?"
+        }
+      },
+      {
+        "who": {
+          "es": "Estudiante de Derecho",
+          "en": "Law student"
+        },
+        "text": {
+          "es": "En máximo diez días.",
+          "en": "Within ten days at most."
+        }
+      }
+    ]
+  }
+}

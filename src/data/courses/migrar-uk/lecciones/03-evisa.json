@@ -1,0 +1,186 @@
+{
+  "id": "evisa",
+  "order": 3,
+  "icon": "📱",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "eVisa y share code",
+    "en": "eVisa and share code"
+  },
+  "unit": {
+    "es": "Tu estatus digital",
+    "en": "Your digital status"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Demuestra tu estatus en línea",
+        "en": "Prove your status online"
+      },
+      "body": {
+        "es": "• Los documentos físicos (como la BRP) han sido sustituidos por el eVisa: tu estatus migratorio en línea.\n• Lo ves en tu cuenta UKVI, que es gratis. Puedes entrar aunque tu BRP esté caducada.\n• Para demostrar tu derecho a trabajar o a alquilar, generas un share code: vale 90 días, se puede usar varias veces, y quien lo comprueba también necesita tu fecha de nacimiento.\n• Añade a tu cuenta el pasaporte con el que viajas: si cambias de pasaporte, actualízalo antes de viajar.",
+        "en": "• Physical documents (like the BRP) have been replaced by the eVisa: your immigration status online.\n• You see it in your UKVI account, which is free. You can sign in even if your BRP has expired.\n• To prove your right to work or rent, you generate a share code: it lasts 90 days, can be used many times, and the person checking also needs your date of birth.\n• Add the passport you travel with to your account: if you get a new passport, update it before you travel."
+      },
+      "say": {
+        "es": "Tu estatus es un eVisa en tu cuenta UKVI. Para trabajar o alquilar, das un share code que vale noventa días. Y actualiza tu pasaporte antes de viajar.",
+        "en": "Your status is an eVisa in your UKVI account. To work or rent, you give a share code that lasts ninety days. And update your passport before travelling."
+      },
+      "link": {
+        "label": {
+          "es": "GOV.UK: ver y demostrar tu estatus",
+          "en": "GOV.UK: view and prove your status"
+        },
+        "url": "https://www.gov.uk/view-prove-immigration-status"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "eVisa en tu cuenta UKVI",
+      "en": "eVisa in your UKVI account"
+    },
+    {
+      "es": "Share code: 90 días",
+      "en": "Share code: 90 days"
+    },
+    {
+      "es": "Para trabajar y alquilar",
+      "en": "To work and rent"
+    },
+    {
+      "es": "Actualiza tu pasaporte",
+      "en": "Update your passport"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Aquí está mi share code.",
+      "en": "Here is my share code."
+    },
+    {
+      "es": "También necesita mi fecha de nacimiento.",
+      "en": "You also need my date of birth."
+    },
+    {
+      "es": "Tengo un pasaporte nuevo.",
+      "en": "I have a new passport."
+    },
+    {
+      "es": "No puedo entrar en mi cuenta.",
+      "en": "I can't log in to my account."
+    },
+    {
+      "es": "¿El código sigue siendo válido?",
+      "en": "Is the code still valid?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto dura un share code?",
+        "en": "How long does a share code last?"
+      },
+      "options": [
+        {
+          "es": "90 días",
+          "en": "90 days"
+        },
+        {
+          "es": "1 día",
+          "en": "1 day"
+        },
+        {
+          "es": "10 años",
+          "en": "10 years"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué más necesita quien comprueba tu share code?",
+        "en": "What else does the checker need?"
+      },
+      "options": [
+        {
+          "es": "Tu fecha de nacimiento",
+          "en": "Your date of birth"
+        },
+        {
+          "es": "Tu contraseña",
+          "en": "Your password"
+        },
+        {
+          "es": "Tu número de banco",
+          "en": "Your bank number"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Con la agencia de alquiler",
+      "en": "With the letting agent"
+    },
+    "scene": {
+      "es": "Comprueban tu derecho a alquilar.",
+      "en": "They check your right to rent."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Agente",
+          "en": "Agent"
+        },
+        "text": {
+          "es": "Necesitamos comprobar su derecho a alquilar.",
+          "en": "We need to check your right to rent."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Aquí está mi share code.",
+          "en": "Here is my share code."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "También necesita mi fecha de nacimiento.",
+          "en": "You also need my date of birth."
+        }
+      },
+      {
+        "who": {
+          "es": "Agente",
+          "en": "Agent"
+        },
+        "text": {
+          "es": "Perfecto. ¿El código sigue siendo válido?",
+          "en": "Perfect. Is the code still valid?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí, lo generé ayer.",
+          "en": "Yes, I generated it yesterday."
+        }
+      }
+    ]
+  }
+}

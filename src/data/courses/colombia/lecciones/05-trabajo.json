@@ -1,0 +1,218 @@
+{
+  "id": "trabajo",
+  "order": 5,
+  "icon": "💼",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Trabajo: salario, jornada y prestaciones",
+    "en": "Work: wages, hours and benefits"
+  },
+  "unit": {
+    "es": "Trabajo",
+    "en": "Work"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Tus derechos laborales en 2026",
+        "en": "Your employment rights in 2026"
+      },
+      "body": {
+        "es": "• Salario mínimo 2026: 1.750.905 pesos al mes, más 249.095 de auxilio de transporte (para quien gana hasta 2 salarios mínimos). El Consejo de Estado suspendió el decreto inicial, pero un decreto transitorio mantiene ese mismo valor mientras hay sentencia.\n• Jornada máxima: 42 horas a la semana desde el 15 de julio de 2026, sin bajar el salario.\n• Reforma laboral (Ley 2466 de 2025): el trabajo nocturno empieza a las 7 de la noche (recargo del 35 %). El recargo por domingo o festivo es del 90 % desde el 1 de julio de 2026 (100 % en 2027).\n• Cesantías: tu empresa las consigna en tu fondo antes del 14 de febrero, y te paga los intereses (12 %) antes del 31 de enero.\n• También tienes prima de servicios y vacaciones pagadas. Si no te pagan, acude a la Inspección del Trabajo.",
+        "en": "• Minimum wage 2026: COP 1,750,905 a month, plus COP 249,095 transport allowance (for people earning up to 2 minimum wages). The Council of State suspended the original decree, but a transitional decree keeps the same amount until there is a ruling.\n• Maximum working week: 42 hours since 15 July 2026, with no pay cut.\n• Labour reform (Law 2466 of 2025): night work starts at 7 pm (35% premium). The Sunday or public-holiday premium is 90% since 1 July 2026 (100% in 2027).\n• Severance (cesantías): your employer pays it into your fund before 14 February, and pays you the 12% interest before 31 January.\n• You also have a service bonus (prima) and paid holidays. If you're not paid, go to the Labour Inspectorate."
+      },
+      "say": {
+        "es": "En dos mil veintiséis el salario mínimo es de un millón setecientos cincuenta mil novecientos cinco pesos, más el auxilio de transporte. La jornada máxima es de cuarenta y dos horas. Y el trabajo nocturno empieza a las siete de la noche.",
+        "en": "In 2026 the minimum wage is COP 1,750,905, plus the transport allowance. The maximum week is 42 hours. And night work starts at 7 pm."
+      },
+      "link": {
+        "label": {
+          "es": "Ministerio del Trabajo",
+          "en": "Ministry of Labour"
+        },
+        "url": "https://www.mintrabajo.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "SMMLV 2026: 1.750.905 $",
+      "en": "Minimum wage 2026: COP 1,750,905"
+    },
+    {
+      "es": "42 horas a la semana",
+      "en": "42 hours a week"
+    },
+    {
+      "es": "Nocturno desde las 7 p. m.",
+      "en": "Night work from 7 pm"
+    },
+    {
+      "es": "Cesantías antes del 14-feb",
+      "en": "Severance by 14 Feb"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Cuánto es el salario mínimo?",
+      "en": "How much is the minimum wage?"
+    },
+    {
+      "es": "Trabajo cuarenta y dos horas a la semana.",
+      "en": "I work forty-two hours a week."
+    },
+    {
+      "es": "No me pagaron las horas extra.",
+      "en": "I wasn't paid for overtime."
+    },
+    {
+      "es": "¿Me pagan el recargo nocturno?",
+      "en": "Do I get the night premium?"
+    },
+    {
+      "es": "¿Dónde están mis cesantías?",
+      "en": "Where is my severance pay?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuál es la jornada máxima semanal desde el 15 de julio de 2026?",
+        "en": "What's the maximum working week since 15 July 2026?"
+      },
+      "options": [
+        {
+          "es": "42 horas",
+          "en": "42 hours"
+        },
+        {
+          "es": "48 horas",
+          "en": "48 hours"
+        },
+        {
+          "es": "36 horas",
+          "en": "36 hours"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿A qué hora empieza el trabajo nocturno?",
+        "en": "When does night work start?"
+      },
+      "options": [
+        {
+          "es": "A las 7 de la noche",
+          "en": "At 7 pm"
+        },
+        {
+          "es": "A las 10 de la noche",
+          "en": "At 10 pm"
+        },
+        {
+          "es": "A medianoche",
+          "en": "At midnight"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuál es el recargo por trabajar un domingo desde julio de 2026?",
+        "en": "What is the Sunday premium since July 2026?"
+      },
+      "options": [
+        {
+          "es": "90 %",
+          "en": "90%"
+        },
+        {
+          "es": "10 %",
+          "en": "10%"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Con tu jefe",
+      "en": "With your boss"
+    },
+    "scene": {
+      "es": "Revisas tu nómina.",
+      "en": "You check your payslip."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "No me pagaron las horas extra.",
+          "en": "I wasn't paid for overtime."
+        }
+      },
+      {
+        "who": {
+          "es": "Jefe",
+          "en": "Boss"
+        },
+        "text": {
+          "es": "¿Qué días trabajó de más?",
+          "en": "Which days did you work extra?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "El domingo y dos noches.",
+          "en": "On Sunday and two nights."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Me pagan el recargo nocturno?",
+          "en": "Do I get the night premium?"
+        }
+      },
+      {
+        "who": {
+          "es": "Jefe",
+          "en": "Boss"
+        },
+        "text": {
+          "es": "Sí, lo revisamos y se lo pagamos.",
+          "en": "Yes, we'll check and pay you."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Gracias. ¿Dónde están mis cesantías?",
+          "en": "Thanks. Where is my severance pay?"
+        }
+      }
+    ]
+  }
+}

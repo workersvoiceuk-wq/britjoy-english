@@ -1,0 +1,207 @@
+{
+  "id": "espana-bebe-voto",
+  "order": 4,
+  "icon": "👶",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "España: tu bebé, tu voto y la nacionalidad",
+    "en": "Spain: your baby, your vote and nationality"
+  },
+  "unit": {
+    "es": "Consulado de España",
+    "en": "Spanish consulate"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Registrar a tu bebé y votar desde aquí",
+        "en": "Registering your baby and voting from here"
+      },
+      "body": {
+        "es": "• Bebé nacido en el Reino Unido: el hijo de padre o madre española es español de origen. Inscríbelo en el Registro Civil del consulado ANTES de pedir su pasaporte. Se puede enviar por correo, sin cita.\n• Pide el certificado de nacimiento británico COMPLETO (full, no el corto), expedido hace menos de 6 meses.\n• Voto: si estás inscrito en el CERA (censo de españoles en el extranjero), desde 2022 ya no hay voto rogado: te llega la documentación para votar sin pedirla. Puedes votar por correo o en el consulado.\n• Hay elecciones generales el 29 de noviembre de 2026: revisa ya tu inscripción.\n• «Ley de nietos» (Memoria Democrática): el plazo para pedirla terminó el 22 de octubre de 2025.",
+        "en": "• Baby born in the UK: a child of a Spanish father or mother is Spanish by origin. Register them in the consulate's Civil Registry BEFORE applying for their passport. You can do it by post, without an appointment.\n• Get the FULL British birth certificate (not the short one), issued less than 6 months ago.\n• Voting: if you are registered in the CERA (register of Spaniards abroad), since 2022 there is no more 'voto rogado': your voting papers arrive without asking. You can vote by post or at the consulate.\n• There is a general election on 29 November 2026: check your registration now.\n• 'Grandchildren's law' (Democratic Memory): the deadline to apply ended on 22 October 2025."
+      },
+      "say": {
+        "es": "Inscribe a tu bebé en el registro civil del consulado antes de pedir su pasaporte, con el certificado británico completo. Y si estás en el CERA, la documentación para votar te llega sola. Hay elecciones generales el veintinueve de noviembre.",
+        "en": "Register your baby at the consulate's civil registry before applying for their passport, with the full British certificate. And if you're in the CERA, your voting papers come automatically. There's a general election on 29 November."
+      },
+      "link": {
+        "label": {
+          "es": "Consulado: Registro Civil (preguntas frecuentes)",
+          "en": "Consulate: Civil Registry FAQ"
+        },
+        "url": "https://www.exteriores.gob.es/DocumentosAuxiliaresSC/Reino%20Unido/LONDRES%20(C)/FAQ%20Registro%20Civil%20(DEF).pdf"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Bebé: registro civil primero",
+      "en": "Baby: civil registry first"
+    },
+    {
+      "es": "Certificado británico completo",
+      "en": "Full British certificate"
+    },
+    {
+      "es": "CERA: el voto llega solo",
+      "en": "CERA: your vote arrives by itself"
+    },
+    {
+      "es": "Elecciones: 29-11-2026",
+      "en": "Election: 29-11-2026"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Necesito un certificado de nacimiento completo.",
+      "en": "I need a full birth certificate."
+    },
+    {
+      "es": "Mi bebé nació en Londres.",
+      "en": "My baby was born in London."
+    },
+    {
+      "es": "Quiero registrar el nacimiento.",
+      "en": "I want to register the birth."
+    },
+    {
+      "es": "¿Cuánto tarda?",
+      "en": "How long does it take?"
+    },
+    {
+      "es": "¿Puedo enviarlo por correo?",
+      "en": "Can I send it by post?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué haces primero con tu bebé nacido en el Reino Unido?",
+        "en": "What do you do first for your baby born in the UK?"
+      },
+      "options": [
+        {
+          "es": "Inscribirlo en el registro civil del consulado",
+          "en": "Register them at the consulate's civil registry"
+        },
+        {
+          "es": "Pedir su pasaporte",
+          "en": "Apply for their passport"
+        },
+        {
+          "es": "Pedir su DNI en Londres",
+          "en": "Get their DNI in London"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué certificado británico necesitas?",
+        "en": "Which British certificate do you need?"
+      },
+      "options": [
+        {
+          "es": "El completo (full), de menos de 6 meses",
+          "en": "The full one, less than 6 months old"
+        },
+        {
+          "es": "El corto",
+          "en": "The short one"
+        },
+        {
+          "es": "Una foto del certificado",
+          "en": "A photo of it"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Sigue existiendo el voto rogado?",
+        "en": "Does 'voto rogado' still exist?"
+      },
+      "options": [
+        {
+          "es": "No, se eliminó en 2022",
+          "en": "No, it was abolished in 2022"
+        },
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "Solo en Londres",
+          "en": "Only in London"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el registro civil británico",
+      "en": "At the British register office"
+    },
+    "scene": {
+      "es": "Pides el certificado de nacimiento de tu bebé.",
+      "en": "You order your baby's birth certificate."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Necesito un certificado de nacimiento completo.",
+          "en": "I need a full birth certificate."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Registrar"
+        },
+        "text": {
+          "es": "¿Para qué lo necesita?",
+          "en": "What do you need it for?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Para registrar a mi bebé en el consulado de España.",
+          "en": "To register my baby at the Spanish consulate."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionaria",
+          "en": "Registrar"
+        },
+        "text": {
+          "es": "Muy bien. ¿Cuántas copias quiere?",
+          "en": "Very good. How many copies would you like?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Dos, por favor. ¿Cuánto tarda?",
+          "en": "Two, please. How long does it take?"
+        }
+      }
+    ]
+  }
+}

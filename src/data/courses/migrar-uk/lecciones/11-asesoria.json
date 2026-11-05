@@ -1,0 +1,186 @@
+{
+  "id": "asesoria",
+  "order": 11,
+  "icon": "🛡️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Asesoría de inmigración y estafas",
+    "en": "Immigration advice and scams"
+  },
+  "unit": {
+    "es": "Protégete",
+    "en": "Protect yourself"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Quién puede asesorarte",
+        "en": "Who can advise you"
+      },
+      "body": {
+        "es": "• Solo pueden darte asesoría de inmigración los asesores registrados en la Immigration Advice Authority (IAA, antes OISC) o los abogados colegiados (solicitors, barristers).\n• Comprueba al asesor en el buscador oficial de la IAA y en la lista de asesores sancionados.\n• Si el asesor no está regulado, NO podrás recuperar tu dinero.\n• Desconfía de quien te «garantiza» un visado, te pide pagar en efectivo o te ofrece documentos falsos.\n• Las solicitudes y la ETA se hacen solo en GOV.UK: otras webs cobran de más.",
+        "en": "• Only advisers registered with the Immigration Advice Authority (IAA, formerly OISC) or qualified lawyers (solicitors, barristers) may give immigration advice.\n• Check the adviser on the IAA's official finder and the list of banned advisers.\n• If the adviser isn't regulated, you will NOT get your money back.\n• Distrust anyone who 'guarantees' a visa, asks for cash or offers fake documents.\n• Applications and the ETA are done only on GOV.UK: other websites overcharge."
+      },
+      "say": {
+        "es": "Antes de pagar a un asesor de inmigración, comprueba que está registrado en la IAA. Si no lo está, no recuperarás tu dinero. Y nadie puede garantizarte un visado.",
+        "en": "Before paying an immigration adviser, check they're registered with the IAA. If not, you won't get your money back. And nobody can guarantee you a visa."
+      },
+      "link": {
+        "label": {
+          "es": "GOV.UK: encontrar un asesor de inmigración",
+          "en": "GOV.UK: find an immigration adviser"
+        },
+        "url": "https://www.gov.uk/find-an-immigration-adviser"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Asesor registrado en la IAA",
+      "en": "Adviser registered with the IAA"
+    },
+    {
+      "es": "Comprueba la lista oficial",
+      "en": "Check the official list"
+    },
+    {
+      "es": "Nadie garantiza un visado",
+      "en": "Nobody guarantees a visa"
+    },
+    {
+      "es": "Solo GOV.UK",
+      "en": "Only GOV.UK"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Está registrado en la IAA?",
+      "en": "Are you registered with the IAA?"
+    },
+    {
+      "es": "¿Puedo ver su número de registro?",
+      "en": "Can I see your registration number?"
+    },
+    {
+      "es": "Lo comprobaré en línea.",
+      "en": "I will check it online."
+    },
+    {
+      "es": "Nadie puede garantizar un visado.",
+      "en": "Nobody can guarantee a visa."
+    },
+    {
+      "es": "No quiero pagar en efectivo.",
+      "en": "I don't want to pay in cash."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Dónde compruebas si un asesor de inmigración está regulado?",
+        "en": "Where do you check if an immigration adviser is regulated?"
+      },
+      "options": [
+        {
+          "es": "En el buscador oficial de la IAA",
+          "en": "On the IAA's official finder"
+        },
+        {
+          "es": "En sus redes sociales",
+          "en": "On their social media"
+        },
+        {
+          "es": "Preguntando a un amigo",
+          "en": "By asking a friend"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Un asesor te «garantiza» el visado si pagas en efectivo. ¿Qué haces?",
+        "en": "An adviser 'guarantees' your visa for cash. What do you do?"
+      },
+      "options": [
+        {
+          "es": "Desconfío y compruebo su registro",
+          "en": "Distrust them and check their registration"
+        },
+        {
+          "es": "Pago enseguida",
+          "en": "Pay right away"
+        },
+        {
+          "es": "Le doy mi pasaporte",
+          "en": "Give them my passport"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Con un asesor",
+      "en": "With an adviser"
+    },
+    "scene": {
+      "es": "Alguien te ofrece ayuda con tu visado.",
+      "en": "Someone offers help with your visa."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Asesor",
+          "en": "Adviser"
+        },
+        "text": {
+          "es": "Le garantizo el visado por dos mil libras.",
+          "en": "I guarantee your visa for two thousand pounds."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Nadie puede garantizar un visado.",
+          "en": "Nobody can guarantee a visa."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Está registrado en la IAA?",
+          "en": "Are you registered with the IAA?"
+        }
+      },
+      {
+        "who": {
+          "es": "Asesor",
+          "en": "Adviser"
+        },
+        "text": {
+          "es": "Eso no hace falta.",
+          "en": "That's not necessary."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "No quiero pagar en efectivo. Lo comprobaré en línea.",
+          "en": "I don't want to pay in cash. I will check it online."
+        }
+      }
+    ]
+  }
+}

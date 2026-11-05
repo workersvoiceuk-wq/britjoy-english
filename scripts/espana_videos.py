@@ -16,6 +16,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument('--font', required=True)
 ap.add_argument('--font-regular', required=True)
 ap.add_argument('--only', default='')
+ap.add_argument('--langs', default='es,en', help='explanation languages to render, e.g. es')
 ap.add_argument('--country', default='espana', choices=['espana', 'colombia', 'consulados', 'migrar-uk'])
 args = ap.parse_args()
 
@@ -78,7 +79,7 @@ os.makedirs(os.path.join(ROOT, f'public/videos/{args.country}'), exist_ok=True)
 srcs = sorted((json.load(open(f)) for f in glob.glob(os.path.join(ROOT, f'src/data/courses/{args.country}/lecciones/*.json'))), key=lambda s: s['order'])
 for n, src in enumerate(srcs, 1):
     if args.only and src['id'] != args.only: continue
-    for lang in ('es', 'en'):
+    for lang in args.langs.split(','):
         steps = src['steps']
         total = 2.6 + 2.4 + 2.6 * len(steps)
         out = os.path.join(ROOT, f"public/videos/{args.country}/{src['id']}-{lang}")

@@ -1,0 +1,196 @@
+{
+  "id": "espana-pasaporte",
+  "order": 3,
+  "icon": "🛂",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "España: pasaporte, DNI y salvoconducto",
+    "en": "Spain: passport, DNI and emergency document"
+  },
+  "unit": {
+    "es": "Consulado de España",
+    "en": "Spanish consulate"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Tus documentos españoles desde Londres",
+        "en": "Your Spanish documents from London"
+      },
+      "body": {
+        "es": "• Pasaporte: en persona, con cita y estando inscrito en la matrícula consular. La tasa la publica el consulado cada año (lista de precios desde el 1 de enero de 2026).\n• DNI: NO se hace en el consulado de Londres. Se tramita en España, en la Policía Nacional (cita en citapreviadnie.es o en el 060). El consulado te da el certificado de residencia que te piden.\n• Si pierdes el pasaporte o te lo roban: denúncialo a la policía británica y pide cita en el consulado. Para volver a España rápido existe el salvoconducto: llevas foto, la declaración de pérdida y tu billete. Solo sirve para viajar a España.",
+        "en": "• Passport: in person, with an appointment, and you must be registered at the consulate. The consulate publishes the fee every year (price list from 1 January 2026).\n• DNI (Spanish ID card): NOT issued at the London consulate. It is done in Spain, at the National Police (book at citapreviadnie.es or call 060). The consulate gives you the certificate of residence you need.\n• If your passport is lost or stolen: report it to the British police and book at the consulate. To return to Spain quickly there is the 'salvoconducto' (emergency travel document): take a photo, the loss declaration and your ticket. It is only valid to travel to Spain."
+      },
+      "say": {
+        "es": "El pasaporte se renueva en el consulado con cita. El DNI no: se hace en España. Y si pierdes el pasaporte, denúncialo a la policía y pide un salvoconducto para volver a España.",
+        "en": "You renew your passport at the consulate with an appointment. Not the DNI: that's done in Spain. And if you lose your passport, report it to the police and ask for an emergency document to return to Spain."
+      },
+      "link": {
+        "label": {
+          "es": "Tasas consulares en Londres",
+          "en": "Consular fees in London"
+        },
+        "url": "https://www.exteriores.gob.es/Consulados/londres/es/Comunicacion/Noticias/Paginas/Articulos/Tasas-Consulares.aspx"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Pasaporte: con cita y matrícula",
+      "en": "Passport: appointment + registration"
+    },
+    {
+      "es": "DNI: solo en España",
+      "en": "DNI: only in Spain"
+    },
+    {
+      "es": "Pérdida: denuncia a la policía",
+      "en": "Lost: report it to police"
+    },
+    {
+      "es": "Salvoconducto: solo a España",
+      "en": "Emergency doc: only to Spain"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "He perdido mi pasaporte.",
+      "en": "I have lost my passport."
+    },
+    {
+      "es": "Me robaron el pasaporte ayer.",
+      "en": "My passport was stolen yesterday."
+    },
+    {
+      "es": "Quiero denunciarlo.",
+      "en": "I want to report it."
+    },
+    {
+      "es": "Necesito un número de denuncia.",
+      "en": "I need a crime reference number."
+    },
+    {
+      "es": "Mi vuelo es el viernes.",
+      "en": "My flight is on Friday."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Dónde se renueva el DNI español?",
+        "en": "Where do you renew a Spanish DNI?"
+      },
+      "options": [
+        {
+          "es": "En España, en la Policía Nacional",
+          "en": "In Spain, at the National Police"
+        },
+        {
+          "es": "En el consulado de Londres",
+          "en": "At the London consulate"
+        },
+        {
+          "es": "En Correos",
+          "en": "At the post office"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Para qué sirve el salvoconducto?",
+        "en": "What is the emergency travel document for?"
+      },
+      "options": [
+        {
+          "es": "Para viajar solo a España",
+          "en": "To travel only to Spain"
+        },
+        {
+          "es": "Para viajar a cualquier país",
+          "en": "To travel anywhere"
+        },
+        {
+          "es": "Para trabajar",
+          "en": "To work"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la comisaría británica",
+      "en": "At a British police station"
+    },
+    "scene": {
+      "es": "Denuncias el robo de tu pasaporte.",
+      "en": "You report your stolen passport."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Me robaron el pasaporte ayer.",
+          "en": "My passport was stolen yesterday."
+        }
+      },
+      {
+        "who": {
+          "es": "Policía",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Lo siento. ¿Dónde pasó?",
+          "en": "I'm sorry. Where did it happen?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "En el autobús, cerca de Oxford Street.",
+          "en": "On the bus, near Oxford Street."
+        }
+      },
+      {
+        "who": {
+          "es": "Policía",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Aquí tiene su número de denuncia.",
+          "en": "Here is your crime reference number."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Gracias. Mi vuelo es el viernes.",
+          "en": "Thank you. My flight is on Friday."
+        }
+      },
+      {
+        "who": {
+          "es": "Policía",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Entonces vaya hoy mismo a su consulado.",
+          "en": "Then go to your consulate today."
+        }
+      }
+    ]
+  }
+}

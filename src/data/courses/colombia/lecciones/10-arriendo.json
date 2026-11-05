@@ -1,0 +1,186 @@
+{
+  "id": "arriendo",
+  "order": 10,
+  "icon": "🔑",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Arrendar vivienda",
+    "en": "Renting a home"
+  },
+  "unit": {
+    "es": "Vivienda",
+    "en": "Housing"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Tus derechos como arrendatario",
+        "en": "Your rights as a tenant"
+      },
+      "body": {
+        "es": "• El arriendo de vivienda se rige por la Ley 820 de 2003.\n• El canon solo puede subir cada 12 meses y como máximo el IPC del año anterior. Para los contratos que se renuevan en 2026, el tope es 5,10 %.\n• Pide siempre el contrato por escrito y recibos de cada pago.\n• Subsidios: Mi Casa Ya no tendrá nuevas asignaciones en 2026 por falta de recursos (solo atiende a hogares ya preasignados). Pregunta en tu caja de compensación por sus subsidios de vivienda.",
+        "en": "• Home rentals are governed by Law 820 of 2003.\n• The rent can only rise every 12 months and at most by the previous year's inflation (IPC). For contracts renewing in 2026, the cap is 5.10%.\n• Always ask for a written contract and a receipt for each payment.\n• Subsidies: Mi Casa Ya will make no new awards in 2026 for lack of funds (only households already pre-approved). Ask your family compensation fund (caja de compensación) about its housing subsidies."
+      },
+      "say": {
+        "es": "El arriendo solo puede subir cada doce meses y como máximo el IPC: en dos mil veintiséis, el cinco coma diez por ciento. Pide contrato y recibos.",
+        "en": "Rent can only go up every twelve months and at most by inflation: in 2026, 5.10%. Ask for a contract and receipts."
+      },
+      "link": {
+        "label": {
+          "es": "Ministerio de Vivienda",
+          "en": "Ministry of Housing"
+        },
+        "url": "https://www.minvivienda.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Sube cada 12 meses",
+      "en": "Rises every 12 months"
+    },
+    {
+      "es": "Tope 2026: 5,10 %",
+      "en": "2026 cap: 5.10%"
+    },
+    {
+      "es": "Contrato y recibos",
+      "en": "Contract and receipts"
+    },
+    {
+      "es": "Subsidio: caja de compensación",
+      "en": "Subsidy: compensation fund"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Cuánto es el arriendo?",
+      "en": "How much is the rent?"
+    },
+    {
+      "es": "Quiero un contrato por escrito.",
+      "en": "I want a written contract."
+    },
+    {
+      "es": "El arriendo no puede subir tanto.",
+      "en": "The rent can't go up that much."
+    },
+    {
+      "es": "¿Me da el recibo?",
+      "en": "Can I have the receipt?"
+    },
+    {
+      "es": "La ducha no funciona.",
+      "en": "The shower doesn't work."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto puede subir como máximo el arriendo en 2026?",
+        "en": "What's the maximum rent increase in 2026?"
+      },
+      "options": [
+        {
+          "es": "5,10 % (el IPC)",
+          "en": "5.10% (inflation)"
+        },
+        {
+          "es": "20 %",
+          "en": "20%"
+        },
+        {
+          "es": "Lo que diga el dueño",
+          "en": "Whatever the owner says"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cada cuánto puede subir el arriendo?",
+        "en": "How often can the rent go up?"
+      },
+      "options": [
+        {
+          "es": "Cada 12 meses",
+          "en": "Every 12 months"
+        },
+        {
+          "es": "Cada mes",
+          "en": "Every month"
+        },
+        {
+          "es": "Cada semana",
+          "en": "Every week"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Con el dueño del apartamento",
+      "en": "With the landlord"
+    },
+    "scene": {
+      "es": "Te quieren subir el arriendo.",
+      "en": "The landlord wants to raise your rent."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Dueño",
+          "en": "Landlord"
+        },
+        "text": {
+          "es": "Desde enero el arriendo sube un quince por ciento.",
+          "en": "From January the rent goes up fifteen per cent."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "El arriendo no puede subir tanto.",
+          "en": "The rent can't go up that much."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Por ley, como máximo el IPC.",
+          "en": "By law, by inflation at most."
+        }
+      },
+      {
+        "who": {
+          "es": "Dueño",
+          "en": "Landlord"
+        },
+        "text": {
+          "es": "Tiene razón. Será el cinco coma diez.",
+          "en": "You're right. It'll be five point one."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Gracias. ¿Me da el recibo?",
+          "en": "Thank you. Can I have the receipt?"
+        }
+      }
+    ]
+  }
+}

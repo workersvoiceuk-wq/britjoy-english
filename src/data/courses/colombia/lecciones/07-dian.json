@@ -1,0 +1,217 @@
+{
+  "id": "dian",
+  "order": 7,
+  "icon": "🧾",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Impuestos: RUT y declaración de renta",
+    "en": "Tax: RUT and income tax return"
+  },
+  "unit": {
+    "es": "DIAN",
+    "en": "Tax (DIAN)"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "La DIAN y tu declaración",
+        "en": "The DIAN and your tax return"
+      },
+      "body": {
+        "es": "• El RUT (Registro Único Tributario) te identifica ante la DIAN. Es gratis.\n• La UVT (unidad para calcular impuestos) vale 52.374 pesos en 2026.\n• Debes declarar renta si cumples al menos uno de estos topes del año anterior: patrimonio bruto de 4.500 UVT o más, o ingresos, consumos con tarjeta, compras o consignaciones de 1.400 UVT o más.\n• Las fechas dependen de los dos últimos dígitos de tu NIT. En 2026 fueron del 12 de agosto al 26 de octubre (ya pasaron).\n• Declarar no siempre significa pagar: a veces el resultado es cero o un saldo a favor.",
+        "en": "• The RUT (Single Tax Register) identifies you to the DIAN (tax agency). It is free.\n• The UVT (unit used to calculate taxes) is worth COP 52,374 in 2026.\n• You must file an income tax return if you meet at least one of these limits for the previous year: gross assets of 4,500 UVT or more, or income, card spending, purchases or deposits of 1,400 UVT or more.\n• Deadlines depend on the last two digits of your tax ID (NIT). In 2026 they ran from 12 August to 26 October (now passed).\n• Filing doesn't always mean paying: sometimes the result is zero or a refund."
+      },
+      "say": {
+        "es": "El RUT es gratis. La UVT vale cincuenta y dos mil trescientos setenta y cuatro pesos en dos mil veintiséis. Y declarar no siempre significa pagar.",
+        "en": "The RUT is free. The UVT is worth COP 52,374 in 2026. And filing doesn't always mean paying."
+      },
+      "link": {
+        "label": {
+          "es": "DIAN",
+          "en": "DIAN (tax agency)"
+        },
+        "url": "https://www.dian.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "RUT: gratis",
+      "en": "RUT: free"
+    },
+    {
+      "es": "UVT 2026: 52.374 $",
+      "en": "UVT 2026: COP 52,374"
+    },
+    {
+      "es": "Topes: 1.400 / 4.500 UVT",
+      "en": "Limits: 1,400 / 4,500 UVT"
+    },
+    {
+      "es": "Fechas según tu NIT",
+      "en": "Dates by your NIT"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Tengo que declarar renta.",
+      "en": "I have to file an income tax return."
+    },
+    {
+      "es": "Necesito sacar el RUT.",
+      "en": "I need to register for the RUT."
+    },
+    {
+      "es": "¿Cuál es mi fecha límite?",
+      "en": "What is my deadline?"
+    },
+    {
+      "es": "Tengo saldo a favor.",
+      "en": "I have a refund due."
+    },
+    {
+      "es": "Trabajo como independiente.",
+      "en": "I am self-employed."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta sacar el RUT?",
+        "en": "How much does the RUT cost?"
+      },
+      "options": [
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        },
+        {
+          "es": "Un salario mínimo",
+          "en": "One minimum wage"
+        },
+        {
+          "es": "100 UVT",
+          "en": "100 UVT"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánto vale la UVT en 2026?",
+        "en": "What is the UVT worth in 2026?"
+      },
+      "options": [
+        {
+          "es": "52.374 pesos",
+          "en": "COP 52,374"
+        },
+        {
+          "es": "1.000 pesos",
+          "en": "COP 1,000"
+        },
+        {
+          "es": "1.750.905 pesos",
+          "en": "COP 1,750,905"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿De qué depende tu fecha para declarar?",
+        "en": "What does your filing date depend on?"
+      },
+      "options": [
+        {
+          "es": "De los dos últimos dígitos de tu NIT",
+          "en": "The last two digits of your NIT"
+        },
+        {
+          "es": "De tu edad",
+          "en": "Your age"
+        },
+        {
+          "es": "De tu ciudad",
+          "en": "Your city"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Con tu contadora",
+      "en": "With your accountant"
+    },
+    "scene": {
+      "es": "Preguntas si tienes que declarar.",
+      "en": "You ask whether you must file."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Tengo que declarar renta?",
+          "en": "Do I have to file an income tax return?"
+        }
+      },
+      {
+        "who": {
+          "es": "Contadora",
+          "en": "Accountant"
+        },
+        "text": {
+          "es": "¿Cuánto ganó el año pasado?",
+          "en": "How much did you earn last year?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Trabajo como independiente.",
+          "en": "I am self-employed."
+        }
+      },
+      {
+        "who": {
+          "es": "Contadora",
+          "en": "Accountant"
+        },
+        "text": {
+          "es": "Entonces revisemos sus ingresos y su RUT.",
+          "en": "Then let's check your income and your RUT."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuál es mi fecha límite?",
+          "en": "What is my deadline?"
+        }
+      },
+      {
+        "who": {
+          "es": "Contadora",
+          "en": "Accountant"
+        },
+        "text": {
+          "es": "Depende de los dos últimos dígitos de su NIT.",
+          "en": "It depends on the last two digits of your NIT."
+        }
+      }
+    ]
+  }
+}

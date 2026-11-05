@@ -1,0 +1,197 @@
+{
+  "id": "servicios-publicos",
+  "order": 9,
+  "icon": "💡",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Agua, luz y gas: reclamar la factura",
+    "en": "Water, power and gas: disputing a bill"
+  },
+  "unit": {
+    "es": "Servicios públicos",
+    "en": "Utilities"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Si la factura está mal",
+        "en": "If your bill is wrong"
+      },
+      "body": {
+        "es": "• Tu vivienda tiene un estrato (1 a 6). Los estratos 1, 2 y 3 reciben subsidios en los servicios; los 5 y 6 pagan una contribución.\n• Si la factura está mal, reclama primero a la empresa. No te pueden exigir que pagues la parte reclamada para atenderte.\n• La empresa tiene 15 días hábiles para responder. Si no responde, se entiende que tienes razón (silencio administrativo positivo).\n• Si no estás de acuerdo con la respuesta, presenta los recursos de reposición y apelación; la apelación la resuelve la Superintendencia de Servicios Públicos (Superservicios).",
+        "en": "• Your home has a socio-economic stratum (1 to 6). Strata 1, 2 and 3 get subsidised utilities; 5 and 6 pay a contribution.\n• If your bill is wrong, complain to the company first. They can't make you pay the disputed part before dealing with it.\n• The company has 15 working days to answer. If it doesn't, you are taken to be right ('positive administrative silence').\n• If you disagree with the answer, file a reconsideration and an appeal; the appeal is decided by the Public Utilities Superintendency (Superservicios)."
+      },
+      "say": {
+        "es": "Si la factura está mal, reclama a la empresa. Tiene quince días hábiles para responder. Si no responde, se entiende que tienes razón.",
+        "en": "If your bill is wrong, complain to the company. It has fifteen working days to answer. If it doesn't, you are taken to be right."
+      },
+      "link": {
+        "label": {
+          "es": "Superservicios",
+          "en": "Public Utilities Superintendency"
+        },
+        "url": "https://www.superservicios.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Estratos 1-3: subsidio",
+      "en": "Strata 1-3: subsidy"
+    },
+    {
+      "es": "Reclama a la empresa",
+      "en": "Complain to the company"
+    },
+    {
+      "es": "15 días hábiles o tienes razón",
+      "en": "15 working days or you're right"
+    },
+    {
+      "es": "Apelación: Superservicios",
+      "en": "Appeal: Superservicios"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "La factura de la luz está muy alta.",
+      "en": "The electricity bill is very high."
+    },
+    {
+      "es": "Quiero presentar un reclamo.",
+      "en": "I want to file a complaint."
+    },
+    {
+      "es": "No he gastado tanta agua.",
+      "en": "I haven't used that much water."
+    },
+    {
+      "es": "¿Me da el número del reclamo?",
+      "en": "Can you give me the complaint number?"
+    },
+    {
+      "es": "Vivo en estrato dos.",
+      "en": "I live in stratum two."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuántos días tiene la empresa para responder tu reclamo?",
+        "en": "How many days does the company have to answer?"
+      },
+      "options": [
+        {
+          "es": "15 días hábiles",
+          "en": "15 working days"
+        },
+        {
+          "es": "Un año",
+          "en": "One year"
+        },
+        {
+          "es": "No tiene plazo",
+          "en": "No deadline"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "La empresa no responde a tiempo. ¿Qué pasa?",
+        "en": "The company doesn't answer in time. What happens?"
+      },
+      "options": [
+        {
+          "es": "Se entiende que tienes razón",
+          "en": "You are taken to be right"
+        },
+        {
+          "es": "Pierdes el reclamo",
+          "en": "You lose the complaint"
+        },
+        {
+          "es": "Te cortan el servicio",
+          "en": "They cut off the service"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la empresa de energía",
+      "en": "At the electricity company"
+    },
+    "scene": {
+      "es": "Reclamas una factura muy alta.",
+      "en": "You dispute a very high bill."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "La factura de la luz está muy alta.",
+          "en": "The electricity bill is very high."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero presentar un reclamo.",
+          "en": "I want to file a complaint."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Con gusto. ¿Tiene la factura?",
+          "en": "Sure. Do you have the bill?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí. ¿Tengo que pagarla antes?",
+          "en": "Yes. Do I have to pay it first?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "No, la parte reclamada no.",
+          "en": "No, not the disputed part."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Me da el número del reclamo?",
+          "en": "Can you give me the complaint number?"
+        }
+      }
+    ]
+  }
+}

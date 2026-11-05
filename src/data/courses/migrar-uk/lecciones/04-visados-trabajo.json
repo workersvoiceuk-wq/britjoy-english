@@ -1,0 +1,217 @@
+{
+  "id": "visados-trabajo",
+  "order": 4,
+  "icon": "💼",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Visados de trabajo",
+    "en": "Work visas"
+  },
+  "unit": {
+    "es": "Trabajar",
+    "en": "Working"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Las vías para trabajar",
+        "en": "Routes to work"
+      },
+      "body": {
+        "es": "• Skilled Worker: necesitas oferta de una empresa autorizada (sponsor), un empleo de nivel de grado universitario (RQF 6) y, en general, un salario de 41.700 £ o el de referencia del puesto. Desde el 8 de enero de 2026, inglés nivel B2. Tasa desde fuera: 819 £ (hasta 3 años), más el recargo sanitario (IHS) de 1.035 £ al año.\n• Health and Care Worker: los cuidadores (care workers) ya no pueden pedirlo desde fuera del Reino Unido.\n• Graduate: tras estudiar aquí, 2 años si lo pides hasta el 31 de diciembre de 2026; 18 meses si lo pides desde el 1 de enero de 2027.\n• Youth Mobility: ninguno de estos países (España tampoco) participa.\n• UK Ancestry es solo para la Commonwealth: no aplica a estos países.",
+        "en": "• Skilled Worker: you need an offer from a licensed employer (sponsor), a degree-level job (RQF 6) and generally a salary of £41,700 or the job's going rate. From 8 January 2026, B2 English. Fee from outside the UK: £819 (up to 3 years), plus the Immigration Health Surcharge (IHS) of £1,035 a year.\n• Health and Care Worker: care workers can no longer apply from outside the UK.\n• Graduate: after studying here, 2 years if you apply by 31 December 2026; 18 months if you apply from 1 January 2027.\n• Youth Mobility: none of these countries (Spain included) takes part.\n• UK Ancestry is only for the Commonwealth: it does not apply to these countries."
+      },
+      "say": {
+        "es": "Para el Skilled Worker necesitas una empresa sponsor, un empleo de nivel universitario, en general cuarenta y un mil setecientas libras, e inglés B2. El Graduate dura dos años si lo pides antes de que acabe dos mil veintiséis.",
+        "en": "For the Skilled Worker visa you need a sponsor, a degree-level job, generally £41,700, and B2 English. The Graduate visa lasts two years if you apply before the end of 2026."
+      },
+      "link": {
+        "label": {
+          "es": "GOV.UK: Skilled Worker visa",
+          "en": "GOV.UK: Skilled Worker visa"
+        },
+        "url": "https://www.gov.uk/skilled-worker-visa"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Skilled Worker: sponsor + RQF 6",
+      "en": "Skilled Worker: sponsor + RQF 6"
+    },
+    {
+      "es": "41.700 £ e inglés B2",
+      "en": "£41,700 and B2 English"
+    },
+    {
+      "es": "Graduate: 2 años hasta fin de 2026",
+      "en": "Graduate: 2 years until end of 2026"
+    },
+    {
+      "es": "IHS: 1.035 £ al año",
+      "en": "IHS: £1,035 a year"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Son una empresa autorizada como sponsor?",
+      "en": "Are you a licensed sponsor?"
+    },
+    {
+      "es": "Tengo un título de ingeniería.",
+      "en": "I have a degree in engineering."
+    },
+    {
+      "es": "¿Cuál es el salario?",
+      "en": "What is the salary?"
+    },
+    {
+      "es": "Aprobé mi examen de inglés.",
+      "en": "I passed my English test."
+    },
+    {
+      "es": "¿Cuándo puedo empezar?",
+      "en": "When can I start?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué nivel de inglés pide el Skilled Worker desde enero de 2026?",
+        "en": "What English level does Skilled Worker require since January 2026?"
+      },
+      "options": [
+        {
+          "es": "B2",
+          "en": "B2"
+        },
+        {
+          "es": "A1",
+          "en": "A1"
+        },
+        {
+          "es": "Ninguno",
+          "en": "None"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánto dura el Graduate si lo pides el 1 de febrero de 2027?",
+        "en": "How long is the Graduate visa if you apply on 1 February 2027?"
+      },
+      "options": [
+        {
+          "es": "18 meses",
+          "en": "18 months"
+        },
+        {
+          "es": "2 años",
+          "en": "2 years"
+        },
+        {
+          "es": "5 años",
+          "en": "5 years"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Pueden los españoles usar el Youth Mobility Scheme?",
+        "en": "Can Spaniards use the Youth Mobility Scheme?"
+      },
+      "options": [
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "Solo menores de 18",
+          "en": "Only under-18s"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Entrevista de trabajo",
+      "en": "Job interview"
+    },
+    "scene": {
+      "es": "Hablas con una empresa de Londres.",
+      "en": "You talk to a London company."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Entrevistadora",
+          "en": "Interviewer"
+        },
+        "text": {
+          "es": "Háblenos de su experiencia.",
+          "en": "Tell us about your experience."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Tengo un título de ingeniería.",
+          "en": "I have a degree in engineering."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Son una empresa autorizada como sponsor?",
+          "en": "Are you a licensed sponsor?"
+        }
+      },
+      {
+        "who": {
+          "es": "Entrevistadora",
+          "en": "Interviewer"
+        },
+        "text": {
+          "es": "Sí, podemos patrocinar su visado.",
+          "en": "Yes, we can sponsor your visa."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuál es el salario?",
+          "en": "What is the salary?"
+        }
+      },
+      {
+        "who": {
+          "es": "Entrevistadora",
+          "en": "Interviewer"
+        },
+        "text": {
+          "es": "Cuarenta y cinco mil libras al año.",
+          "en": "Forty-five thousand pounds a year."
+        }
+      }
+    ]
+  }
+}

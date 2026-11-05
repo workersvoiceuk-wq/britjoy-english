@@ -48,6 +48,7 @@ const LEARN_CO = {
     'Trabajo, pensión e impuestos (DIAN)',
     'Tránsito: licencia, SOAT, técnico-mecánica y comparendos',
     'Servicios públicos, arriendo, consumidor y líneas de emergencia',
+    'Crear tu empresa (SAS) o trabajar como independiente',
   ],
   en: [
     'ID card (cédula), civil registry and documents',
@@ -56,6 +57,7 @@ const LEARN_CO = {
     'Work, pensions and tax (DIAN)',
     'Traffic: licence, SOAT, vehicle inspection and fines',
     'Utilities, renting, consumer rights and emergency numbers',
+    'Starting a company (SAS) or working as self-employed',
   ],
 };
 
@@ -194,7 +196,7 @@ export const CATALOG: CatalogCourse[] = [
         ? {
             id: 'espana-espanol',
             title: 'Living in Spain · learn Spanish',
-            subtitle: '13 topics: every step of settling in Spain explained in English (NIE, padrón, healthcare, tax…), while you learn the Spanish you need.',
+            subtitle: '14 topics: every step of settling in Spain explained in English (NIE, padrón, healthcare, tax…), while you learn the Spanish you need.',
             category: 'espana',
             level: 'A1 → B1',
             emoji: '🇪🇸',
@@ -207,6 +209,7 @@ export const CATALOG: CatalogCourse[] = [
               'Tax (Hacienda), work, benefits and housing',
               'Social Security number, school and driving licence',
               'Emergency numbers: 112, 091, 062 and 016',
+              'Becoming self-employed or setting up a company',
             ],
             levels: [level],
             open: { tab: 'english', level: level.id },
@@ -214,7 +217,7 @@ export const CATALOG: CatalogCourse[] = [
         : {
             id: 'espana-ingles',
             title: 'Vivir en España · aprende inglés',
-            subtitle: '13 temas: los trámites de España claros y paso a paso (NIE, padrón, sanidad, Hacienda…), mientras aprendes a decirlos en inglés.',
+            subtitle: '14 temas: los trámites de España claros y paso a paso (NIE, padrón, sanidad, Hacienda…), mientras aprendes a decirlos en inglés.',
             category: 'espana',
             level: 'A1 → B1',
             emoji: '🇪🇸',
@@ -227,6 +230,7 @@ export const CATALOG: CatalogCourse[] = [
               'Hacienda, trabajo, ayudas y vivienda',
               'Seguridad Social, colegio y carné de conducir',
               'Teléfonos de emergencia: 112, 091, 062 y 016',
+              'Hacerte autónomo o crear una empresa',
             ],
             levels: [level],
             open: { tab: 'english', level: level.id },

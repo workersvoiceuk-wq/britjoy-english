@@ -1,0 +1,186 @@
+{
+  "id": "estudiar-familia",
+  "order": 5,
+  "icon": "🎓",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Visado de estudiante y de pareja",
+    "en": "Student and partner visas"
+  },
+  "unit": {
+    "es": "Estudiar y familia",
+    "en": "Study and family"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Estudiar o venir con tu pareja",
+        "en": "Studying or joining your partner"
+      },
+      "body": {
+        "es": "• Student: tasa de 558 £ y recargo sanitario de 776 £ al año. Debes demostrar dinero para vivir: 1.529 £ al mes en Londres (1.171 £ fuera de Londres), hasta 9 meses. Con este visado no puedes trabajar por cuenta propia.\n• Visado de pareja (family visa): ingresos mínimos de 29.000 £ al año entre los dos. Inglés: A1 para la primera solicitud, A2 para renovar y B1 para la residencia.\n• Tasa del visado de pareja: 2.064 £ desde fuera; más el recargo sanitario (2.587,50 £ por 2,5 años).",
+        "en": "• Student: £558 fee and £776 a year health surcharge. You must show money to live on: £1,529 a month in London (£1,171 outside London), for up to 9 months. You cannot be self-employed on this visa.\n• Partner visa (family visa): minimum income of £29,000 a year combined. English: A1 for the first application, A2 to extend and B1 for settlement.\n• Partner visa fee: £2,064 from outside the UK; plus the health surcharge (£2,587.50 for 2.5 years)."
+      },
+      "say": {
+        "es": "Para el visado de estudiante necesitas demostrar mil quinientas veintinueve libras al mes si estudias en Londres. Para el de pareja, ingresos de veintinueve mil libras al año.",
+        "en": "For a student visa you must show £1,529 a month if you study in London. For a partner visa, an income of £29,000 a year."
+      },
+      "link": {
+        "label": {
+          "es": "GOV.UK: visado de familia",
+          "en": "GOV.UK: family visa"
+        },
+        "url": "https://www.gov.uk/uk-family-visa"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Student: 558 £ + IHS",
+      "en": "Student: £558 + IHS"
+    },
+    {
+      "es": "Londres: 1.529 £ al mes",
+      "en": "London: £1,529 a month"
+    },
+    {
+      "es": "Pareja: 29.000 £ al año",
+      "en": "Partner: £29,000 a year"
+    },
+    {
+      "es": "Inglés A1 → A2 → B1",
+      "en": "English A1 → A2 → B1"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Me han aceptado en un curso.",
+      "en": "I have been accepted on a course."
+    },
+    {
+      "es": "Aquí están mis extractos bancarios.",
+      "en": "Here are my bank statements."
+    },
+    {
+      "es": "Mi pareja es británica.",
+      "en": "My partner is British."
+    },
+    {
+      "es": "Llevamos dos años viviendo juntos.",
+      "en": "We have lived together for two years."
+    },
+    {
+      "es": "Tengo que reservar un examen de inglés.",
+      "en": "I need to book an English test."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto dinero al mes debe demostrar un estudiante en Londres?",
+        "en": "How much a month must a student in London show?"
+      },
+      "options": [
+        {
+          "es": "1.529 £",
+          "en": "£1,529"
+        },
+        {
+          "es": "500 £",
+          "en": "£500"
+        },
+        {
+          "es": "5.000 £",
+          "en": "£5,000"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué ingresos mínimos pide el visado de pareja?",
+        "en": "What minimum income does the partner visa require?"
+      },
+      "options": [
+        {
+          "es": "29.000 £ al año",
+          "en": "£29,000 a year"
+        },
+        {
+          "es": "10.000 £ al año",
+          "en": "£10,000 a year"
+        },
+        {
+          "es": "Ninguno",
+          "en": "None"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el banco",
+      "en": "At the bank"
+    },
+    "scene": {
+      "es": "Pides extractos para tu visado.",
+      "en": "You ask for statements for your visa."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Necesito mis extractos bancarios.",
+          "en": "I need my bank statements."
+        }
+      },
+      {
+        "who": {
+          "es": "Cajero",
+          "en": "Bank clerk"
+        },
+        "text": {
+          "es": "¿De cuántos meses?",
+          "en": "For how many months?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "De los últimos seis meses, por favor.",
+          "en": "For the last six months, please."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Son para mi visado de estudiante.",
+          "en": "They're for my student visa."
+        }
+      },
+      {
+        "who": {
+          "es": "Cajero",
+          "en": "Bank clerk"
+        },
+        "text": {
+          "es": "Se los sello ahora mismo.",
+          "en": "I'll stamp them for you right now."
+        }
+      }
+    ]
+  }
+}

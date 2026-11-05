@@ -1,0 +1,196 @@
+{
+  "id": "migrantes",
+  "order": 13,
+  "icon": "🌎",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Migrantes en Colombia",
+    "en": "Migrants in Colombia"
+  },
+  "unit": {
+    "es": "Migrantes",
+    "en": "Migrants"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "PPT, salud y tus hijos",
+        "en": "PPT, healthcare and your children"
+      },
+      "body": {
+        "es": "• El Permiso por Protección Temporal (PPT) es el documento de identidad de los migrantes venezolanos acogidos al Estatuto Temporal de Protección. Lo expide Migración Colombia.\n• Con el PPT puedes trabajar, estudiar, abrir cuenta en el banco y afiliarte a salud (contributivo o subsidiado).\n• Urgencias: te atienden sin autorización, tengas o no documentos.\n• Los niños tienen derecho a estudiar en colegio público. Pregunta en Migración Colombia por la situación de tus hijos y por el registro de nacimiento de los nacidos en Colombia.\n• Los trámites de Migración Colombia se hacen en su web oficial: nunca pagues a intermediarios.",
+        "en": "• The Temporary Protection Permit (PPT) is the identity document of Venezuelan migrants under the Temporary Protection Statute. Migración Colombia issues it.\n• With a PPT you can work, study, open a bank account and join the health system (contributory or subsidised).\n• Emergencies: you are treated without authorisation, with or without documents.\n• Children have the right to study at state schools. Ask Migración Colombia about your children's situation and about birth registration for children born in Colombia.\n• Migración Colombia procedures are done on its official website: never pay middlemen."
+      },
+      "say": {
+        "es": "Con el PPT puedes trabajar, estudiar y afiliarte a salud. En urgencias te atienden siempre. Y los trámites de Migración Colombia se hacen en su web oficial, sin intermediarios.",
+        "en": "With a PPT you can work, study and join the health system. In an emergency you are always treated. And Migración Colombia procedures are on its official website, without middlemen."
+      },
+      "link": {
+        "label": {
+          "es": "Migración Colombia",
+          "en": "Migración Colombia"
+        },
+        "url": "https://www.migracioncolombia.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "PPT: tu documento",
+      "en": "PPT: your document"
+    },
+    {
+      "es": "Trabajo, estudio y salud",
+      "en": "Work, study and health"
+    },
+    {
+      "es": "Urgencias: siempre",
+      "en": "Emergencies: always"
+    },
+    {
+      "es": "Sin intermediarios",
+      "en": "No middlemen"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Tengo el PPT.",
+      "en": "I have a PPT."
+    },
+    {
+      "es": "Quiero afiliarme a una EPS.",
+      "en": "I want to join an EPS."
+    },
+    {
+      "es": "Mi hijo nació en Colombia.",
+      "en": "My son was born in Colombia."
+    },
+    {
+      "es": "¿Puedo trabajar con este permiso?",
+      "en": "Can I work with this permit?"
+    },
+    {
+      "es": "Busco cupo en un colegio.",
+      "en": "I'm looking for a school place."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué puedes hacer con el PPT?",
+        "en": "What can you do with a PPT?"
+      },
+      "options": [
+        {
+          "es": "Trabajar, estudiar y afiliarte a salud",
+          "en": "Work, study and join the health system"
+        },
+        {
+          "es": "Solo viajar",
+          "en": "Only travel"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Te atienden en urgencias sin documentos?",
+        "en": "Will A&E treat you without documents?"
+      },
+      "options": [
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Solo si pagas",
+          "en": "Only if you pay"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la EPS",
+      "en": "At the EPS"
+    },
+    "scene": {
+      "es": "Te afilias con tu PPT.",
+      "en": "You join with your PPT."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero afiliarme a una EPS.",
+          "en": "I want to join an EPS."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Qué documento tiene?",
+          "en": "Which document do you have?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Tengo el PPT.",
+          "en": "I have a PPT."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Perfecto, con eso puede afiliarse.",
+          "en": "Perfect, you can join with that."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Mi hija también?",
+          "en": "My daughter too?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Sí, tráigala con su documento.",
+          "en": "Yes, bring her with her document."
+        }
+      }
+    ]
+  }
+}

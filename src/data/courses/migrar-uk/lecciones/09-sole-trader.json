@@ -1,0 +1,185 @@
+{
+  "id": "sole-trader",
+  "order": 9,
+  "icon": "🧑‍🔧",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Trabajar como autónomo (sole trader)",
+    "en": "Working as a sole trader"
+  },
+  "unit": {
+    "es": "Tu negocio",
+    "en": "Your business"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Darte de alta como autónomo",
+        "en": "Registering as self-employed"
+      },
+      "body": {
+        "es": "• Regístrate en Self Assessment como máximo el 5 de octubre después del año fiscal en que empezaste (para 2025-26, el 5 de octubre de 2026).\n• Seguridad social (National Insurance): Class 4, un 6 % de los beneficios entre 12.570 y 50.270 £ y un 2 % por encima. Si ganas 7.105 £ o más, la Class 2 se considera pagada sin coste.\n• Making Tax Digital: desde el 6 de abril de 2026 es obligatorio si tus ingresos superaron 50.000 £; desde abril de 2027, si superan 30.000 £. Llevas registros digitales y envías resúmenes trimestrales.\n• ¿Puedes ser autónomo? Con settled o pre-settled status, sí. Con el visado Graduate, sí. Con el de estudiante, no. Con el Skilled Worker, en general solo puedes hacer el trabajo patrocinado.",
+        "en": "• Register for Self Assessment by 5 October after the tax year you started in (for 2025-26, by 5 October 2026).\n• National Insurance: Class 4 is 6% of profits between £12,570 and £50,270 and 2% above. If you earn £7,105 or more, Class 2 is treated as paid at no cost.\n• Making Tax Digital: since 6 April 2026 it's compulsory if your income was over £50,000; from April 2027, if over £30,000. You keep digital records and send quarterly updates.\n• Can you be self-employed? With settled or pre-settled status, yes. With a Graduate visa, yes. With a Student visa, no. On a Skilled Worker visa, generally only your sponsored job."
+      },
+      "say": {
+        "es": "Regístrate en Self Assessment antes del cinco de octubre. Si ganas más de cincuenta mil libras, ya usas Making Tax Digital. Y comprueba si tu visado te deja ser autónomo.",
+        "en": "Register for Self Assessment by the fifth of October. If you earn over fifty thousand pounds, you now use Making Tax Digital. And check whether your visa lets you be self-employed."
+      },
+      "link": {
+        "label": {
+          "es": "GOV.UK: trabajar por cuenta propia",
+          "en": "GOV.UK: working for yourself"
+        },
+        "url": "https://www.gov.uk/working-for-yourself"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Self Assessment: 5 de octubre",
+      "en": "Self Assessment: 5 October"
+    },
+    {
+      "es": "Class 4: 6 % y 2 %",
+      "en": "Class 4: 6% and 2%"
+    },
+    {
+      "es": "MTD: más de 50.000 £",
+      "en": "MTD: over £50,000"
+    },
+    {
+      "es": "Revisa tu visado",
+      "en": "Check your visa"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero trabajar por mi cuenta.",
+      "en": "I want to work for myself."
+    },
+    {
+      "es": "Soy limpiadora autónoma.",
+      "en": "I am a self-employed cleaner."
+    },
+    {
+      "es": "Tengo que registrarme en HMRC.",
+      "en": "I need to register with HMRC."
+    },
+    {
+      "es": "¿Le puedo enviar una factura?",
+      "en": "Can I send you an invoice?"
+    },
+    {
+      "es": "Guardo mis recibos.",
+      "en": "I keep my receipts."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Hasta cuándo te registras en Self Assessment si empezaste en el año 2025-26?",
+        "en": "By when do you register for Self Assessment if you started in 2025-26?"
+      },
+      "options": [
+        {
+          "es": "5 de octubre de 2026",
+          "en": "5 October 2026"
+        },
+        {
+          "es": "31 de diciembre de 2025",
+          "en": "31 December 2025"
+        },
+        {
+          "es": "No hace falta",
+          "en": "No need"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Puedes trabajar como autónomo con visado de estudiante?",
+        "en": "Can you be self-employed on a Student visa?"
+      },
+      "options": [
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "Solo los fines de semana",
+          "en": "Only at weekends"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Con un cliente",
+      "en": "With a client"
+    },
+    "scene": {
+      "es": "Empiezas a trabajar por tu cuenta.",
+      "en": "You start working for yourself."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Cliente",
+          "en": "Client"
+        },
+        "text": {
+          "es": "¿Trabaja para una empresa?",
+          "en": "Do you work for a company?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "No, trabajo por mi cuenta.",
+          "en": "No, I work for myself."
+        }
+      },
+      {
+        "who": {
+          "es": "Cliente",
+          "en": "Client"
+        },
+        "text": {
+          "es": "¿Está registrada en HMRC?",
+          "en": "Are you registered with HMRC?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí. ¿Le puedo enviar una factura?",
+          "en": "Yes. Can I send you an invoice?"
+        }
+      },
+      {
+        "who": {
+          "es": "Cliente",
+          "en": "Client"
+        },
+        "text": {
+          "es": "Claro, envíela por email.",
+          "en": "Of course, email it to me."
+        }
+      }
+    ]
+  }
+}

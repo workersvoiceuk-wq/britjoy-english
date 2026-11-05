@@ -1,0 +1,186 @@
+{
+  "id": "residencia",
+  "order": 6,
+  "icon": "🏡",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Residencia permanente y ciudadanía",
+    "en": "Settlement and citizenship"
+  },
+  "unit": {
+    "es": "Quedarte para siempre",
+    "en": "Staying for good"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "ILR y pasaporte británico",
+        "en": "ILR and British citizenship"
+      },
+      "body": {
+        "es": "• Residencia permanente (ILR): hoy, en general, tras 5 años (3 en Global Talent e Innovator Founder; 10 por residencia larga). Tasa: 3.226 £.\n• «Earned settlement»: el Gobierno propuso subir la base a 10 años (respuesta publicada el 2 de noviembre de 2026), pero NO está en vigor y no tiene fecha. Habrá protección para quien ya esté aquí.\n• Desde marzo de 2027 se pedirá inglés B2 para la residencia.\n• Ciudadanía británica: 5 años de residencia y 12 meses con ILR o settled status, inglés y el examen Life in the UK (50 £, 24 preguntas en 45 minutos). Tasa: 1.839 £ (incluye la ceremonia).",
+        "en": "• Indefinite leave to remain (ILR): today, generally after 5 years (3 for Global Talent and Innovator Founder; 10 for long residence). Fee: £3,226.\n• 'Earned settlement': the government proposed raising the baseline to 10 years (response published 2 November 2026), but it is NOT in force and has no start date. People already here will be protected.\n• From March 2027, B2 English will be required for settlement.\n• British citizenship: 5 years' residence and 12 months with ILR or settled status, English and the Life in the UK test (£50, 24 questions in 45 minutes). Fee: £1,839 (includes the ceremony)."
+      },
+      "say": {
+        "es": "Hoy la residencia permanente se pide en general a los cinco años. La propuesta de diez años todavía no está en vigor. Y para la ciudadanía necesitas el examen Life in the UK.",
+        "en": "Today settlement is generally after five years. The ten-year proposal is not in force yet. And for citizenship you need the Life in the UK test."
+      },
+      "link": {
+        "label": {
+          "es": "GOV.UK: indefinite leave to remain",
+          "en": "GOV.UK: indefinite leave to remain"
+        },
+        "url": "https://www.gov.uk/indefinite-leave-to-remain"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "ILR: en general 5 años",
+      "en": "ILR: generally 5 years"
+    },
+    {
+      "es": "10 años: solo propuesta",
+      "en": "10 years: proposal only"
+    },
+    {
+      "es": "B2 desde marzo de 2027",
+      "en": "B2 from March 2027"
+    },
+    {
+      "es": "Ciudadanía: Life in the UK",
+      "en": "Citizenship: Life in the UK"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero pedir la residencia permanente.",
+      "en": "I want to apply for settlement."
+    },
+    {
+      "es": "Aprobé el examen Life in the UK.",
+      "en": "I passed the Life in the UK test."
+    },
+    {
+      "es": "¿Cuándo es mi ceremonia de ciudadanía?",
+      "en": "When is my citizenship ceremony?"
+    },
+    {
+      "es": "Llevo seis años viviendo aquí.",
+      "en": "I have lived here for six years."
+    },
+    {
+      "es": "¿Cuánto es la tasa?",
+      "en": "How much is the fee?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Está en vigor la residencia a los 10 años («earned settlement»)?",
+        "en": "Is 10-year 'earned settlement' in force?"
+      },
+      "options": [
+        {
+          "es": "No, es una propuesta",
+          "en": "No, it's a proposal"
+        },
+        {
+          "es": "Sí, desde 2025",
+          "en": "Yes, since 2025"
+        },
+        {
+          "es": "Sí, desde 2020",
+          "en": "Yes, since 2020"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuántas preguntas tiene el examen Life in the UK?",
+        "en": "How many questions does the Life in the UK test have?"
+      },
+      "options": [
+        {
+          "es": "24",
+          "en": "24"
+        },
+        {
+          "es": "100",
+          "en": "100"
+        },
+        {
+          "es": "5",
+          "en": "5"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Reservar el examen",
+      "en": "Booking the test"
+    },
+    "scene": {
+      "es": "Llamas para preguntar por el examen.",
+      "en": "You call to ask about the test."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero pedir la ciudadanía británica.",
+          "en": "I want to apply for British citizenship."
+        }
+      },
+      {
+        "who": {
+          "es": "Asesor",
+          "en": "Adviser"
+        },
+        "text": {
+          "es": "¿Ha aprobado el examen Life in the UK?",
+          "en": "Have you passed the Life in the UK test?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Todavía no. ¿Cuánto cuesta?",
+          "en": "Not yet. How much is it?"
+        }
+      },
+      {
+        "who": {
+          "es": "Asesor",
+          "en": "Adviser"
+        },
+        "text": {
+          "es": "Cincuenta libras. Resérvelo con tres días de antelación.",
+          "en": "Fifty pounds. Book it at least three days ahead."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Llevo seis años viviendo aquí.",
+          "en": "I have lived here for six years."
+        }
+      }
+    ]
+  }
+}

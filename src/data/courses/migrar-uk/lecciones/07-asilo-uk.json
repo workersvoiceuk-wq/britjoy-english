@@ -1,0 +1,196 @@
+{
+  "id": "asilo-uk",
+  "order": 7,
+  "icon": "🕊️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Pedir asilo en el Reino Unido",
+    "en": "Claiming asylum in the UK"
+  },
+  "unit": {
+    "es": "Asilo",
+    "en": "Asylum"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Protección en el Reino Unido",
+        "en": "Protection in the UK"
+      },
+      "body": {
+        "es": "• Pide asilo al llegar o en cuanto sea inseguro volver a tu país: retrasarlo hace más probable que te lo denieguen.\n• Pasos: entrevista de selección (screening) y después entrevista de asilo. Dar información falsa es delito.\n• En general no puedes trabajar. Tras 12 meses esperando sin culpa tuya, puedes pedir permiso para trabajar; desde el 26 de marzo de 2026, solo en empleos de nivel de grado (RQF 6 o más) de la lista oficial.\n• Ayuda económica: 49,18 £ por persona a la semana en la tarjeta ASPEN si cocinas tú.\n• Busca asesoría gratuita y regulada: nunca pagues a «gestores» sin registro.",
+        "en": "• Claim asylum on arrival or as soon as it becomes unsafe to return: delay makes refusal more likely.\n• Steps: screening interview, then an asylum interview. Giving false information is a crime.\n• You usually can't work. After 12 months waiting through no fault of your own, you can ask for permission to work; from 26 March 2026, only in degree-level jobs (RQF 6 or above) on the official list.\n• Financial support: £49.18 per person per week on the ASPEN card if you cook for yourself.\n• Get free, regulated advice: never pay unregistered 'agents'."
+      },
+      "say": {
+        "es": "Pide asilo cuanto antes. Puedes pedir permiso para trabajar tras doce meses esperando. Y busca siempre asesoría regulada.",
+        "en": "Claim asylum as soon as possible. You can ask for permission to work after twelve months waiting. And always get regulated advice."
+      },
+      "link": {
+        "label": {
+          "es": "GOV.UK: pedir asilo",
+          "en": "GOV.UK: claim asylum"
+        },
+        "url": "https://www.gov.uk/claim-asylum"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Pídelo cuanto antes",
+      "en": "Claim as soon as possible"
+    },
+    {
+      "es": "Screening y entrevista",
+      "en": "Screening and interview"
+    },
+    {
+      "es": "Trabajo: tras 12 meses",
+      "en": "Work: after 12 months"
+    },
+    {
+      "es": "ASPEN: 49,18 £/semana",
+      "en": "ASPEN: £49.18/week"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero pedir asilo.",
+      "en": "I want to claim asylum."
+    },
+    {
+      "es": "Tengo miedo de volver.",
+      "en": "I am afraid to go back."
+    },
+    {
+      "es": "Necesito un intérprete.",
+      "en": "I need an interpreter."
+    },
+    {
+      "es": "¿Cuándo es mi entrevista?",
+      "en": "When is my interview?"
+    },
+    {
+      "es": "No tengo dinero para comida.",
+      "en": "I have no money for food."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuándo puedes pedir permiso para trabajar como solicitante de asilo?",
+        "en": "When can an asylum seeker ask for permission to work?"
+      },
+      "options": [
+        {
+          "es": "Tras 12 meses esperando",
+          "en": "After 12 months waiting"
+        },
+        {
+          "es": "El primer día",
+          "en": "On day one"
+        },
+        {
+          "es": "Nunca",
+          "en": "Never"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Por qué conviene pedir asilo cuanto antes?",
+        "en": "Why claim asylum as soon as possible?"
+      },
+      "options": [
+        {
+          "es": "Retrasarlo puede llevar a la denegación",
+          "en": "Delay can lead to refusal"
+        },
+        {
+          "es": "Es más barato",
+          "en": "It's cheaper"
+        },
+        {
+          "es": "No importa",
+          "en": "It doesn't matter"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Entrevista de selección",
+      "en": "Screening interview"
+    },
+    "scene": {
+      "es": "Tu primera cita con el Home Office.",
+      "en": "Your first Home Office appointment."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Por qué pide asilo?",
+          "en": "Why are you claiming asylum?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Tengo miedo de volver.",
+          "en": "I am afraid to go back."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Necesito un intérprete.",
+          "en": "I need an interpreter."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Le buscamos uno ahora.",
+          "en": "We'll find one for you now."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuándo es mi entrevista?",
+          "en": "When is my interview?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Le enviaremos una carta.",
+          "en": "We'll send you a letter."
+        }
+      }
+    ]
+  }
+}

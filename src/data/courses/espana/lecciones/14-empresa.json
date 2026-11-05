@@ -1,0 +1,217 @@
+{
+  "id": "empresa",
+  "order": 14,
+  "icon": "🚀",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Autónomo o empresa en España",
+    "en": "Self-employed or a company in Spain"
+  },
+  "unit": {
+    "es": "Emprender",
+    "en": "Business"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Montar tu negocio",
+        "en": "Starting your business"
+      },
+      "body": {
+        "es": "• Autónomo: te das de alta en Hacienda con el modelo 036 (el 037 desapareció en febrero de 2025) y en la Seguridad Social (RETA). La cuota depende de tus rendimientos reales, por tramos; al empezar suele haber una cuota reducida («tarifa plana»). Consulta la cifra exacta en la Seguridad Social.\n• Sociedad Limitada (SL): desde la Ley Crea y Crece (2022) se puede crear con 1 € de capital. Mientras el capital sea menor de 3.000 €, hay obligaciones de reservas y, si se liquida, los socios responden hasta 3.000 €. Se puede iniciar en línea con un PAE y el sistema CIRCE, y luego notaría y Registro Mercantil.\n• Factura con software: el sistema Verifactu se aplazó a 2027 (sociedades desde el 1 de enero; autónomos desde el 1 de julio).\n• Extranjeros: los ciudadanos de la UE pueden ser autónomos sin permiso (con su NIE). Si eres de fuera de la UE necesitas una autorización de residencia y trabajo por cuenta propia.",
+        "en": "• Self-employed (autónomo): register with the Tax Agency using form 036 (form 037 was abolished in February 2025) and with Social Security (RETA). Your contribution depends on your real earnings, in bands; when you start there is usually a reduced rate ('tarifa plana'). Check the exact figure with Social Security.\n• Limited company (SL): since the 'Crea y Crece' law (2022) it can be set up with €1 of capital. While capital is under €3,000 there are reserve obligations and, if it is wound up, partners are liable up to €3,000. You can start online through a PAE and the CIRCE system, then a notary and the Mercantile Register.\n• Invoicing software: the Verifactu system has been postponed to 2027 (companies from 1 January; self-employed from 1 July).\n• Foreigners: EU citizens can be self-employed without a permit (with their NIE). If you're from outside the EU you need a residence and self-employment permit."
+      },
+      "say": {
+        "es": "Como autónomo te das de alta con el modelo cero treinta y seis y en el RETA. Una sociedad limitada se puede crear con un euro. Y si eres de fuera de la Unión Europea, necesitas una autorización para trabajar por cuenta propia.",
+        "en": "As a self-employed worker you register with form 036 and with RETA. A limited company can be set up with one euro. And if you're from outside the EU, you need a self-employment permit."
+      },
+      "link": {
+        "label": {
+          "es": "Agencia Tributaria: modelo 036",
+          "en": "Tax Agency: form 036"
+        },
+        "url": "https://sede.agenciatributaria.gob.es/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Autónomo: modelo 036 + RETA",
+      "en": "Self-employed: form 036 + RETA"
+    },
+    {
+      "es": "Cuota según rendimientos",
+      "en": "Contribution by earnings"
+    },
+    {
+      "es": "SL: desde 1 € de capital",
+      "en": "SL: from €1 capital"
+    },
+    {
+      "es": "Fuera de la UE: permiso propio",
+      "en": "Non-EU: self-employment permit"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero darme de alta como autónomo.",
+      "en": "I want to register as self-employed."
+    },
+    {
+      "es": "Voy a abrir una tienda.",
+      "en": "I am going to open a shop."
+    },
+    {
+      "es": "¿Cuánto pago de cuota?",
+      "en": "How much is my contribution?"
+    },
+    {
+      "es": "Necesito hacer facturas.",
+      "en": "I need to make invoices."
+    },
+    {
+      "es": "Quiero crear una sociedad limitada.",
+      "en": "I want to set up a limited company."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué modelo usas para darte de alta en Hacienda en 2026?",
+        "en": "Which form do you use to register with the Tax Agency in 2026?"
+      },
+      "options": [
+        {
+          "es": "El 036",
+          "en": "Form 036"
+        },
+        {
+          "es": "El 037",
+          "en": "Form 037"
+        },
+        {
+          "es": "El EX-15",
+          "en": "Form EX-15"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Con cuánto capital mínimo se puede crear una SL?",
+        "en": "What is the minimum capital for an SL?"
+      },
+      "options": [
+        {
+          "es": "1 €",
+          "en": "€1"
+        },
+        {
+          "es": "3.000 €",
+          "en": "€3,000"
+        },
+        {
+          "es": "60.000 €",
+          "en": "€60,000"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Eres de Colombia y quieres ser autónomo en España. ¿Qué necesitas?",
+        "en": "You're Colombian and want to be self-employed in Spain. What do you need?"
+      },
+      "options": [
+        {
+          "es": "Una autorización de residencia y trabajo por cuenta propia",
+          "en": "A residence and self-employment permit"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        },
+        {
+          "es": "Solo el pasaporte",
+          "en": "Just your passport"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la gestoría",
+      "en": "At the business adviser's"
+    },
+    "scene": {
+      "es": "Vas a empezar tu negocio.",
+      "en": "You're about to start your business."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero darme de alta como autónomo.",
+          "en": "I want to register as self-employed."
+        }
+      },
+      {
+        "who": {
+          "es": "Asesora",
+          "en": "Adviser"
+        },
+        "text": {
+          "es": "¿A qué se va a dedicar?",
+          "en": "What will you do?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Voy a abrir una tienda.",
+          "en": "I am going to open a shop."
+        }
+      },
+      {
+        "who": {
+          "es": "Asesora",
+          "en": "Adviser"
+        },
+        "text": {
+          "es": "Presentamos el modelo 036 y el alta en el RETA.",
+          "en": "We'll file form 036 and register you with RETA."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuánto pago de cuota?",
+          "en": "How much is my contribution?"
+        }
+      },
+      {
+        "who": {
+          "es": "Asesora",
+          "en": "Adviser"
+        },
+        "text": {
+          "es": "Depende de lo que gane. Al principio, menos.",
+          "en": "It depends on what you earn. Less at the start."
+        }
+      }
+    ]
+  }
+}

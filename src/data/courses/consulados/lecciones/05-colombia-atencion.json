@@ -1,0 +1,217 @@
+{
+  "id": "colombia-atencion",
+  "order": 5,
+  "icon": "🇨🇴",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Colombia: cómo te atienden en Londres",
+    "en": "Colombia: how the London consulate works"
+  },
+  "unit": {
+    "es": "Consulado de Colombia",
+    "en": "Colombian consulate"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Consulado de Colombia en Londres",
+        "en": "Colombian Consulate in London"
+      },
+      "body": {
+        "es": "• Dirección: Westcott House, 35 Portland Place, Londres W1B 1AE (planta baja y 3.ª).\n• Teléfono gratuito en el Reino Unido: 0808 234 2176. Email: clondres@cancilleria.gov.co.\n• Atiende la mayoría de trámites SIN cita: pasaporte, cédula, registro de matrimonio y defunción. A veces abre en «sábados consulares».\n• El registro de nacimiento por primera vez SÍ necesita cita: las citas de la semana siguiente se abren los viernes a las 4 de la tarde en el sistema del consulado.\n• Si vives en Irlanda, te atiende el consulado de Colombia en Dublín.\n• Haz el registro consular (gratis, en línea en la web de la Cancillería): así el país sabe que vives aquí. No es lo mismo que inscribir la cédula para votar.",
+        "en": "• Address: Westcott House, 35 Portland Place, London W1B 1AE (ground and 3rd floor).\n• Free UK phone line: 0808 234 2176. Email: clondres@cancilleria.gov.co.\n• Most procedures need NO appointment: passport, cédula (ID card), marriage and death registration. It sometimes opens on 'consular Saturdays'.\n• First-time birth registration DOES need an appointment: next week's slots open on Fridays at 4 pm in the consulate's booking system.\n• If you live in Ireland, the Colombian consulate in Dublin serves you.\n• Do the consular registration (free, online on the Foreign Ministry website): it lets Colombia know you live here. It is not the same as registering your cédula to vote."
+      },
+      "say": {
+        "es": "En el consulado de Colombia casi todo se hace sin cita. Solo el registro de nacimiento necesita cita, y se abren los viernes a las cuatro. Y haz tu registro consular: es gratis y en línea.",
+        "en": "At the Colombian consulate almost everything is done without an appointment. Only birth registration needs one, released on Fridays at four. And do your consular registration: it's free and online."
+      },
+      "link": {
+        "label": {
+          "es": "Consulado de Colombia en Londres",
+          "en": "Colombian Consulate in London"
+        },
+        "url": "https://londres.consulado.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "35 Portland Place, W1B",
+      "en": "35 Portland Place, W1B"
+    },
+    {
+      "es": "Casi todo sin cita",
+      "en": "Mostly no appointment"
+    },
+    {
+      "es": "Nacimiento: cita los viernes 4 p. m.",
+      "en": "Birth: book Fridays 4 pm"
+    },
+    {
+      "es": "Registro consular gratis",
+      "en": "Free consular registration"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "¿Necesito cita?",
+      "en": "Do I need an appointment?"
+    },
+    {
+      "es": "¿A qué hora abren?",
+      "en": "What time do you open?"
+    },
+    {
+      "es": "¿Hay un teléfono gratuito?",
+      "en": "Is there a free phone number?"
+    },
+    {
+      "es": "Quiero registrarme en línea.",
+      "en": "I want to register online."
+    },
+    {
+      "es": "¿Dónde está Portland Place?",
+      "en": "Where is Portland Place?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué trámite necesita cita en el consulado de Colombia en Londres?",
+        "en": "Which procedure needs an appointment at the Colombian consulate in London?"
+      },
+      "options": [
+        {
+          "es": "El registro de nacimiento por primera vez",
+          "en": "First-time birth registration"
+        },
+        {
+          "es": "El pasaporte",
+          "en": "The passport"
+        },
+        {
+          "es": "Todos",
+          "en": "All of them"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánto cuesta el registro consular?",
+        "en": "How much is consular registration?"
+      },
+      "options": [
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        },
+        {
+          "es": "10 libras",
+          "en": "£10"
+        },
+        {
+          "es": "50 libras",
+          "en": "£50"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuándo se abren las citas para registrar nacimientos?",
+        "en": "When do birth-registration slots open?"
+      },
+      "options": [
+        {
+          "es": "Los viernes a las 4 p. m.",
+          "en": "Fridays at 4 pm"
+        },
+        {
+          "es": "Los lunes a las 9",
+          "en": "Mondays at 9"
+        },
+        {
+          "es": "Nunca",
+          "en": "Never"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Cómo llegar",
+      "en": "Getting there"
+    },
+    "scene": {
+      "es": "Preguntas por el camino en Oxford Circus.",
+      "en": "You ask for directions at Oxford Circus."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Perdone, ¿dónde está Portland Place?",
+          "en": "Excuse me, where is Portland Place?"
+        }
+      },
+      {
+        "who": {
+          "es": "Señora",
+          "en": "Woman"
+        },
+        "text": {
+          "es": "Siga recto por Regent Street.",
+          "en": "Go straight up Regent Street."
+        }
+      },
+      {
+        "who": {
+          "es": "Señora",
+          "en": "Woman"
+        },
+        "text": {
+          "es": "Está a unos diez minutos andando.",
+          "en": "It's about ten minutes on foot."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Hay una estación de metro cerca?",
+          "en": "Is there a Tube station nearby?"
+        }
+      },
+      {
+        "who": {
+          "es": "Señora",
+          "en": "Woman"
+        },
+        "text": {
+          "es": "Sí, Great Portland Street o Regent's Park.",
+          "en": "Yes, Great Portland Street or Regent's Park."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Muchas gracias.",
+          "en": "Thank you very much."
+        }
+      }
+    ]
+  }
+}

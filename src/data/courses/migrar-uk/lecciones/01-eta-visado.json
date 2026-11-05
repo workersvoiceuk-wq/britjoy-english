@@ -1,0 +1,217 @@
+{
+  "id": "eta-visado",
+  "order": 1,
+  "icon": "✈️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "¿ETA o visado? Según tu país",
+    "en": "ETA or visa? It depends on your country"
+  },
+  "unit": {
+    "es": "Viajar al Reino Unido",
+    "en": "Travelling to the UK"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Antes de viajar",
+        "en": "Before you travel"
+      },
+      "body": {
+        "es": "• Necesitan VISADO de visitante (Standard Visitor): Colombia, Ecuador, Bolivia y Venezuela. Para 6 meses cuesta 135 £. (Colombia volvió a necesitar visado desde finales de 2024.)\n• Necesitan ETA (autorización electrónica): España, México, Chile, Argentina y Perú.\n• La ETA cuesta 20 £, vale 2 años (o hasta que caduque el pasaporte) y permite viajes de hasta 6 meses. Se pide en la app oficial «UK ETA» o en GOV.UK, y suele resolverse en 1 día (máximo 3 días hábiles).\n• Cada persona necesita su propia ETA, también los bebés.\n• Cuidado con webs que imitan al Gobierno y cobran más: usa solo GOV.UK.\n• Con visado o ETA de visitante NO puedes trabajar.",
+        "en": "• Need a VISIT VISA (Standard Visitor): Colombia, Ecuador, Bolivia and Venezuela. 6 months costs £135. (Colombia has needed a visa again since late 2024.)\n• Need an ETA (Electronic Travel Authorisation): Spain, Mexico, Chile, Argentina and Peru.\n• The ETA costs £20, lasts 2 years (or until your passport expires) and allows trips of up to 6 months. Apply in the official 'UK ETA' app or on GOV.UK; it usually takes 1 day (at most 3 working days).\n• Everyone needs their own ETA, babies too.\n• Beware of websites that imitate the government and charge more: use GOV.UK only.\n• A visitor visa or ETA does NOT let you work."
+      },
+      "say": {
+        "es": "Colombia, Ecuador, Bolivia y Venezuela necesitan visado. España, México, Chile, Argentina y Perú necesitan la ETA, que cuesta veinte libras. Pídela solo en la app oficial o en GOV.UK.",
+        "en": "Colombia, Ecuador, Bolivia and Venezuela need a visa. Spain, Mexico, Chile, Argentina and Peru need an ETA, which costs twenty pounds. Apply only in the official app or on GOV.UK."
+      },
+      "link": {
+        "label": {
+          "es": "GOV.UK: ETA",
+          "en": "GOV.UK: ETA"
+        },
+        "url": "https://www.gov.uk/eta"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Visado: CO, EC, BO, VE",
+      "en": "Visa: CO, EC, BO, VE"
+    },
+    {
+      "es": "ETA: ES, MX, CL, AR, PE",
+      "en": "ETA: ES, MX, CL, AR, PE"
+    },
+    {
+      "es": "ETA: 20 £, 2 años",
+      "en": "ETA: £20, 2 years"
+    },
+    {
+      "es": "Solo GOV.UK o la app",
+      "en": "Only GOV.UK or the app"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Estoy aquí de vacaciones.",
+      "en": "I am here on holiday."
+    },
+    {
+      "es": "Me quedaré dos semanas.",
+      "en": "I will stay for two weeks."
+    },
+    {
+      "es": "Aquí está mi billete de vuelta.",
+      "en": "Here is my return ticket."
+    },
+    {
+      "es": "Tengo una ETA.",
+      "en": "I have an ETA."
+    },
+    {
+      "es": "Me quedo en casa de mi hermana.",
+      "en": "I am staying with my sister."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "Eres de Perú. ¿Qué necesitas para visitar el Reino Unido?",
+        "en": "You're from Peru. What do you need to visit the UK?"
+      },
+      "options": [
+        {
+          "es": "Una ETA",
+          "en": "An ETA"
+        },
+        {
+          "es": "Un visado de visitante",
+          "en": "A visit visa"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Eres de Colombia. ¿Qué necesitas?",
+        "en": "You're from Colombia. What do you need?"
+      },
+      "options": [
+        {
+          "es": "Un visado de visitante",
+          "en": "A visit visa"
+        },
+        {
+          "es": "Una ETA",
+          "en": "An ETA"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánto cuesta la ETA?",
+        "en": "How much is the ETA?"
+      },
+      "options": [
+        {
+          "es": "20 £",
+          "en": "£20"
+        },
+        {
+          "es": "135 £",
+          "en": "£135"
+        },
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el control de fronteras",
+      "en": "At border control"
+    },
+    "scene": {
+      "es": "Llegas al aeropuerto de Heathrow.",
+      "en": "You land at Heathrow."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Agente",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Cuál es el motivo de su viaje?",
+          "en": "What is the purpose of your trip?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Estoy aquí de vacaciones.",
+          "en": "I am here on holiday."
+        }
+      },
+      {
+        "who": {
+          "es": "Agente",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Cuánto tiempo se queda?",
+          "en": "How long are you staying?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Me quedaré dos semanas.",
+          "en": "I will stay for two weeks."
+        }
+      },
+      {
+        "who": {
+          "es": "Agente",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Dónde se aloja?",
+          "en": "Where are you staying?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Me quedo en casa de mi hermana.",
+          "en": "I am staying with my sister."
+        }
+      }
+    ]
+  }
+}

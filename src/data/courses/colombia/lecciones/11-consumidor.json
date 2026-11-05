@@ -1,0 +1,196 @@
+{
+  "id": "consumidor",
+  "order": 11,
+  "icon": "🛍️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Tus derechos como consumidor",
+    "en": "Your consumer rights"
+  },
+  "unit": {
+    "es": "Consumidor",
+    "en": "Consumer"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Garantía, retracto y reversión",
+        "en": "Guarantee, withdrawal and payment reversal"
+      },
+      "body": {
+        "es": "• Estatuto del Consumidor (Ley 1480 de 2011).\n• Garantía: todo producto tiene garantía legal. Si sale defectuoso, el vendedor debe repararlo, cambiarlo o devolverte el dinero.\n• Derecho de retracto: si compras por internet, por teléfono o fuera del local, tienes 5 días hábiles para arrepentirte y devolverlo.\n• Reversión del pago: si pagaste con tarjeta o medio electrónico y hubo fraude, no te llegó el producto o no era lo que pediste, pide la reversión en 5 días hábiles al vendedor y al banco.\n• Si no te cumplen, queja ante la Superintendencia de Industria y Comercio (SIC).",
+        "en": "• Consumer Statute (Law 1480 of 2011).\n• Guarantee: every product has a legal guarantee. If it's faulty, the seller must repair it, replace it or refund you.\n• Right of withdrawal: if you buy online, by phone or off-premises, you have 5 working days to change your mind and return it.\n• Payment reversal: if you paid by card or electronically and there was fraud, the product didn't arrive or wasn't what you ordered, ask the seller and your bank for a reversal within 5 working days.\n• If they don't comply, complain to the Superintendency of Industry and Commerce (SIC)."
+      },
+      "say": {
+        "es": "Si compras por internet, tienes cinco días hábiles para retractarte. Si pagaste con tarjeta y hubo un problema, pide la reversión del pago. Y si no te cumplen, quéjate ante la SIC.",
+        "en": "If you buy online, you have five working days to change your mind. If you paid by card and there was a problem, ask for a payment reversal. And if they don't comply, complain to the SIC."
+      },
+      "link": {
+        "label": {
+          "es": "Superintendencia de Industria y Comercio",
+          "en": "Superintendency of Industry and Commerce"
+        },
+        "url": "https://www.sic.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Garantía legal siempre",
+      "en": "Legal guarantee always"
+    },
+    {
+      "es": "Retracto: 5 días hábiles",
+      "en": "Withdrawal: 5 working days"
+    },
+    {
+      "es": "Reversión del pago: 5 días",
+      "en": "Payment reversal: 5 days"
+    },
+    {
+      "es": "Queja: SIC",
+      "en": "Complaint: SIC"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero devolver este producto.",
+      "en": "I want to return this product."
+    },
+    {
+      "es": "Lo compré por internet.",
+      "en": "I bought it online."
+    },
+    {
+      "es": "El celular llegó dañado.",
+      "en": "The phone arrived broken."
+    },
+    {
+      "es": "Quiero hacer valer la garantía.",
+      "en": "I want to claim the guarantee."
+    },
+    {
+      "es": "Quiero la reversión del pago.",
+      "en": "I want a payment reversal."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuántos días tienes para retractarte de una compra por internet?",
+        "en": "How many days do you have to withdraw from an online purchase?"
+      },
+      "options": [
+        {
+          "es": "5 días hábiles",
+          "en": "5 working days"
+        },
+        {
+          "es": "1 día",
+          "en": "1 day"
+        },
+        {
+          "es": "No se puede",
+          "en": "You can't"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Ante quién te quejas si una tienda no cumple la garantía?",
+        "en": "Who do you complain to if a shop won't honour the guarantee?"
+      },
+      "options": [
+        {
+          "es": "La SIC",
+          "en": "The SIC"
+        },
+        {
+          "es": "La DIAN",
+          "en": "The DIAN"
+        },
+        {
+          "es": "La Registraduría",
+          "en": "The Registraduría"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la tienda",
+      "en": "At the shop"
+    },
+    "scene": {
+      "es": "Devuelves un celular que llegó dañado.",
+      "en": "You return a phone that arrived broken."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "El celular llegó dañado.",
+          "en": "The phone arrived broken."
+        }
+      },
+      {
+        "who": {
+          "es": "Vendedor",
+          "en": "Shop assistant"
+        },
+        "text": {
+          "es": "¿Cuándo lo compró?",
+          "en": "When did you buy it?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Hace tres días. Lo compré por internet.",
+          "en": "Three days ago. I bought it online."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero devolver este producto.",
+          "en": "I want to return this product."
+        }
+      },
+      {
+        "who": {
+          "es": "Vendedor",
+          "en": "Shop assistant"
+        },
+        "text": {
+          "es": "Claro, tiene derecho al retracto.",
+          "en": "Of course, you have the right to withdraw."
+        }
+      },
+      {
+        "who": {
+          "es": "Vendedor",
+          "en": "Shop assistant"
+        },
+        "text": {
+          "es": "Le devolvemos el dinero.",
+          "en": "We'll refund you."
+        }
+      }
+    ]
+  }
+}

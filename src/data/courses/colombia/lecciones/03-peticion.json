@@ -1,0 +1,217 @@
+{
+  "id": "peticion",
+  "order": 3,
+  "icon": "✉️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Derecho de petición y habeas data",
+    "en": "Right of petition and habeas data"
+  },
+  "unit": {
+    "es": "Tus derechos",
+    "en": "Your rights"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Pregunta, reclama y corrige tus datos",
+        "en": "Ask, complain and correct your data"
+      },
+      "body": {
+        "es": "• Derecho de petición (Ley 1755 de 2015): cualquier persona puede pedir algo a una entidad pública, y en muchos casos a empresas privadas. Gratis y sin abogado, por escrito o verbal.\n• Plazos para responder: 15 días hábiles en general; 10 días si pides documentos o información; 30 días si es una consulta. Si se demoran, deben avisarte, y nunca pueden pasar del doble.\n• Si no te responden a tiempo, puedes presentar una tutela por violación del derecho de petición.\n• Habeas data: tienes derecho a conocer y corregir tus datos. Un reporte negativo en centrales de riesgo dura el doble del tiempo que estuviste en mora, con un máximo de 4 años desde que pagas. Antes de reportarte, deben avisarte.",
+        "en": "• Right of petition (Law 1755 of 2015): anyone can ask a public body, and in many cases a private company, for something. Free and without a lawyer, in writing or verbally.\n• Response deadlines: 15 working days in general; 10 days for documents or information; 30 days for a consultation. If they need longer, they must tell you, and never more than double.\n• If they don't answer on time, you can file a tutela for violation of the right of petition.\n• Habeas data: you have the right to see and correct your data. A negative credit report lasts twice as long as you were in arrears, up to 4 years after you pay. They must warn you before reporting you."
+      },
+      "say": {
+        "es": "Con el derecho de petición te deben responder en quince días hábiles en general. Y con el habeas data puedes corregir tus datos: un reporte negativo dura como máximo cuatro años después de pagar.",
+        "en": "With the right of petition they must answer you within fifteen working days in general. And with habeas data you can correct your data: a negative report lasts at most four years after you pay."
+      },
+      "link": {
+        "label": {
+          "es": "Superintendencia de Industria y Comercio",
+          "en": "Superintendency of Industry and Commerce"
+        },
+        "url": "https://www.sic.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Petición: gratis y sin abogado",
+      "en": "Petition: free, no lawyer"
+    },
+    {
+      "es": "15 días hábiles en general",
+      "en": "15 working days in general"
+    },
+    {
+      "es": "Sin respuesta: tutela",
+      "en": "No answer: tutela"
+    },
+    {
+      "es": "Reporte negativo: máx. 4 años",
+      "en": "Negative report: max 4 years"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Presento un derecho de petición.",
+      "en": "I am submitting a petition."
+    },
+    {
+      "es": "Solicito copia de mi historia clínica.",
+      "en": "I request a copy of my medical record."
+    },
+    {
+      "es": "No me han respondido.",
+      "en": "They haven't answered me."
+    },
+    {
+      "es": "Ya pagué la deuda.",
+      "en": "I have already paid the debt."
+    },
+    {
+      "es": "Quiero corregir mis datos.",
+      "en": "I want to correct my data."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuál es el plazo general para responder una petición?",
+        "en": "What's the general deadline to answer a petition?"
+      },
+      "options": [
+        {
+          "es": "15 días hábiles",
+          "en": "15 working days"
+        },
+        {
+          "es": "6 meses",
+          "en": "6 months"
+        },
+        {
+          "es": "2 días",
+          "en": "2 days"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Pides una copia de un documento. ¿Cuál es el plazo?",
+        "en": "You ask for a copy of a document. What's the deadline?"
+      },
+      "options": [
+        {
+          "es": "10 días hábiles",
+          "en": "10 working days"
+        },
+        {
+          "es": "30 días hábiles",
+          "en": "30 working days"
+        },
+        {
+          "es": "Un año",
+          "en": "One year"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Pagaste una deuda. ¿Cuánto dura como máximo el reporte negativo?",
+        "en": "You paid a debt. How long can the negative report last at most?"
+      },
+      "options": [
+        {
+          "es": "4 años",
+          "en": "4 years"
+        },
+        {
+          "es": "20 años",
+          "en": "20 years"
+        },
+        {
+          "es": "Para siempre",
+          "en": "Forever"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la ventanilla de la entidad",
+      "en": "At the public office counter"
+    },
+    "scene": {
+      "es": "Radicas un derecho de petición.",
+      "en": "You file a petition."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Presento un derecho de petición.",
+          "en": "I am submitting a petition."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Qué solicita?",
+          "en": "What are you requesting?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Solicito copia de mi historia clínica.",
+          "en": "I request a copy of my medical record."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Le damos su número de radicado.",
+          "en": "Here is your filing number."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuándo me responden?",
+          "en": "When will you answer?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "En máximo diez días hábiles.",
+          "en": "Within ten working days at most."
+        }
+      }
+    ]
+  }
+}

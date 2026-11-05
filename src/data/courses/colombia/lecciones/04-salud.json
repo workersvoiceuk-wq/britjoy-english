@@ -1,0 +1,217 @@
+{
+  "id": "salud",
+  "order": 4,
+  "icon": "🏥",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Salud: EPS, Sisbén y urgencias",
+    "en": "Healthcare: EPS, Sisbén and emergencies"
+  },
+  "unit": {
+    "es": "Salud",
+    "en": "Healthcare"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Cómo funciona la salud en Colombia",
+        "en": "How healthcare works in Colombia"
+      },
+      "body": {
+        "es": "• Te afilias a una EPS. Si trabajas o tienes ingresos, estás en el régimen contributivo. Si no puedes pagar, en el subsidiado, según tu grupo del Sisbén.\n• Sisbén IV: A = pobreza extrema, B = pobreza moderada, C = vulnerable, D = ni pobre ni vulnerable. Al subsidiado se accede, en general, de A1 a C18.\n• Urgencias: la atención inicial NO necesita autorización de la EPS. No te la pueden negar.\n• En el contributivo pagas cuotas moderadoras y copagos según tus ingresos.\n• Si la EPS no cumple: primero reclama a la EPS; si no responde, queja ante la Superintendencia de Salud (Supersalud). Si hay riesgo para tu vida o salud, puedes presentar una tutela.\n• En 2026 no hay ninguna reforma a la salud aprobada: el sistema sigue funcionando con EPS.",
+        "en": "• You join an EPS (health insurer). If you work or have an income, you are in the contributory scheme. If you can't pay, in the subsidised scheme, depending on your Sisbén group.\n• Sisbén IV: A = extreme poverty, B = moderate poverty, C = vulnerable, D = neither poor nor vulnerable. The subsidised scheme generally covers A1 to C18.\n• Emergencies: initial emergency care does NOT need EPS authorisation. They cannot refuse you.\n• In the contributory scheme you pay moderating fees and co-payments according to income.\n• If your EPS fails you: complain to the EPS first; if it doesn't answer, complain to the Health Superintendency (Supersalud). If your life or health is at risk, you can file a tutela.\n• In 2026 no health reform has been passed: the system still works through EPS."
+      },
+      "say": {
+        "es": "En urgencias no necesitas autorización de la EPS. Si la EPS no cumple, reclama primero a la EPS y luego a la Supersalud. Y si tu salud corre riesgo, presenta una tutela.",
+        "en": "In an emergency you don't need EPS authorisation. If your EPS fails you, complain to it first and then to Supersalud. And if your health is at risk, file a tutela."
+      },
+      "link": {
+        "label": {
+          "es": "Superintendencia Nacional de Salud",
+          "en": "National Health Superintendency"
+        },
+        "url": "https://www.supersalud.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Afíliate a una EPS",
+      "en": "Join an EPS"
+    },
+    {
+      "es": "Sisbén: A, B, C y D",
+      "en": "Sisbén: A, B, C and D"
+    },
+    {
+      "es": "Urgencias: sin autorización",
+      "en": "Emergencies: no authorisation"
+    },
+    {
+      "es": "Queja: EPS y luego Supersalud",
+      "en": "Complaint: EPS, then Supersalud"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Necesito una cita con medicina general.",
+      "en": "I need a GP appointment."
+    },
+    {
+      "es": "Es una urgencia.",
+      "en": "It's an emergency."
+    },
+    {
+      "es": "Me duele mucho el pecho.",
+      "en": "I have a bad chest pain."
+    },
+    {
+      "es": "¿Cuál es mi EPS?",
+      "en": "Which is my EPS?"
+    },
+    {
+      "es": "Quiero poner una queja.",
+      "en": "I want to make a complaint."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Necesitas autorización de la EPS para la atención inicial de urgencias?",
+        "en": "Do you need EPS authorisation for initial emergency care?"
+      },
+      "options": [
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "Solo de noche",
+          "en": "Only at night"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué grupo del Sisbén es pobreza extrema?",
+        "en": "Which Sisbén group is extreme poverty?"
+      },
+      "options": [
+        {
+          "es": "A",
+          "en": "A"
+        },
+        {
+          "es": "D",
+          "en": "D"
+        },
+        {
+          "es": "C",
+          "en": "C"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "La EPS no responde a tu reclamo. ¿Dónde te quejas?",
+        "en": "Your EPS ignores your complaint. Where do you complain?"
+      },
+      "options": [
+        {
+          "es": "En la Supersalud",
+          "en": "To Supersalud"
+        },
+        {
+          "es": "En la DIAN",
+          "en": "To the DIAN"
+        },
+        {
+          "es": "En el RUNT",
+          "en": "To the RUNT"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En urgencias",
+      "en": "At A&E"
+    },
+    "scene": {
+      "es": "Llegas al hospital con dolor en el pecho.",
+      "en": "You arrive at hospital with chest pain."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Es una urgencia. Me duele mucho el pecho.",
+          "en": "It's an emergency. I have a bad chest pain."
+        }
+      },
+      {
+        "who": {
+          "es": "Enfermera",
+          "en": "Nurse"
+        },
+        "text": {
+          "es": "Siéntese, lo atendemos ya.",
+          "en": "Sit down, we'll see you now."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Necesito la autorización de la EPS?",
+          "en": "Do I need my EPS's authorisation?"
+        }
+      },
+      {
+        "who": {
+          "es": "Enfermera",
+          "en": "Nurse"
+        },
+        "text": {
+          "es": "No, en urgencias no hace falta.",
+          "en": "No, not for emergencies."
+        }
+      },
+      {
+        "who": {
+          "es": "Enfermera",
+          "en": "Nurse"
+        },
+        "text": {
+          "es": "¿Cuál es su EPS?",
+          "en": "Which is your EPS?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Aquí tiene mi cédula.",
+          "en": "Here is my ID card."
+        }
+      }
+    ]
+  }
+}

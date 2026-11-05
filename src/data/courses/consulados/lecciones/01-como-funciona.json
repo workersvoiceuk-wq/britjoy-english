@@ -1,0 +1,217 @@
+{
+  "id": "como-funciona",
+  "order": 1,
+  "icon": "🏛️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Cómo funciona tu consulado",
+    "en": "How your consulate works"
+  },
+  "unit": {
+    "es": "Lo básico",
+    "en": "The basics"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Tu consulado, paso a paso",
+        "en": "Your consulate, step by step"
+      },
+      "body": {
+        "es": "• El consulado de tu país en Londres hace los trámites que harías en tu país: pasaporte, registro civil, poderes, voto, certificados.\n• La cita es GRATIS y solo se pide en la web oficial del consulado o de tu cancillería. Nadie tiene que venderte una cita ni hacer de intermediario.\n• Cada consulado atiende una zona. Por ejemplo, España tiene consulados en Londres, Manchester y Edimburgo; si vives en Irlanda, te atiende la embajada de tu país en Dublín.\n• Antes de ir, revisa en la web oficial los requisitos y la tasa: cambian a menudo.",
+        "en": "• Your country's consulate in London does the procedures you would do at home: passport, civil registry, powers of attorney, voting, certificates.\n• Appointments are FREE and only booked on the official website of the consulate or your foreign ministry. Nobody needs to sell you an appointment or act as a middleman.\n• Each consulate covers an area. Spain, for example, has consulates in London, Manchester and Edinburgh; if you live in Ireland, your embassy in Dublin serves you.\n• Before you go, check the requirements and fee on the official website: they change often."
+      },
+      "say": {
+        "es": "La cita en tu consulado es gratis y se pide solo en la web oficial. Comprueba qué consulado te corresponde según dónde vives, y revisa los requisitos antes de ir.",
+        "en": "Consulate appointments are free and only booked on the official website. Check which consulate covers where you live, and check the requirements before you go."
+      }
+    },
+    {
+      "title": {
+        "es": "Lo que tu consulado NO puede hacer",
+        "en": "What your consulate CANNOT do"
+      },
+      "body": {
+        "es": "• No puede hacer de abogado, intérprete ni trabajador social.\n• No puede pagar tus multas, prestarte dinero ni pagarte el vuelo a casa.\n• No puede buscarte trabajo ni sacarte de la cárcel.\n• Si te detienen, pide a la policía que avise a tu consulado: puede avisar a tu familia, visitarte y darte una lista de abogados.\n• Para consejo legal gratuito en el Reino Unido: Citizens Advice.",
+        "en": "• It cannot act as your lawyer, interpreter or social worker.\n• It cannot pay your fines, lend you money or pay your flight home.\n• It cannot find you a job or get you out of prison.\n• If you are arrested, ask the police to tell your consulate: it can tell your family, visit you and give you a list of lawyers.\n• For free legal advice in the UK: Citizens Advice."
+      },
+      "link": {
+        "label": {
+          "es": "Citizens Advice: consejo gratuito",
+          "en": "Citizens Advice: free advice"
+        },
+        "url": "https://www.citizensadvice.org.uk/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "La cita es gratis",
+      "en": "Appointments are free"
+    },
+    {
+      "es": "Solo en la web oficial",
+      "en": "Only on the official website"
+    },
+    {
+      "es": "Mira qué consulado te toca",
+      "en": "Check which consulate covers you"
+    },
+    {
+      "es": "Revisa requisitos y tasa",
+      "en": "Check requirements and fee"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero pedir una cita.",
+      "en": "I would like to book an appointment."
+    },
+    {
+      "es": "¿La cita es gratis?",
+      "en": "Is the appointment free?"
+    },
+    {
+      "es": "Ahora vivo en Mánchester.",
+      "en": "I live in Manchester now."
+    },
+    {
+      "es": "¿Dónde está el consulado?",
+      "en": "Where is the consulate?"
+    },
+    {
+      "es": "Necesito asesoría legal gratuita.",
+      "en": "I need free legal advice."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta pedir una cita en tu consulado?",
+        "en": "How much does it cost to book a consulate appointment?"
+      },
+      "options": [
+        {
+          "es": "Nada: es gratis",
+          "en": "Nothing: it's free"
+        },
+        {
+          "es": "20 libras",
+          "en": "£20"
+        },
+        {
+          "es": "Depende del gestor",
+          "en": "It depends on the agent"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué NO puede hacer tu consulado?",
+        "en": "What CAN'T your consulate do?"
+      },
+      "options": [
+        {
+          "es": "Pagar tus multas",
+          "en": "Pay your fines"
+        },
+        {
+          "es": "Renovar tu pasaporte",
+          "en": "Renew your passport"
+        },
+        {
+          "es": "Registrar a tu bebé",
+          "en": "Register your baby"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Vives en Irlanda. ¿Quién te atiende?",
+        "en": "You live in Ireland. Who serves you?"
+      },
+      "options": [
+        {
+          "es": "La embajada de tu país en Dublín",
+          "en": "Your country's embassy in Dublin"
+        },
+        {
+          "es": "El consulado de Londres",
+          "en": "The London consulate"
+        },
+        {
+          "es": "Nadie",
+          "en": "Nobody"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Una oferta sospechosa",
+      "en": "A suspicious offer"
+    },
+    "scene": {
+      "es": "Un hombre te ofrece una cita en la calle.",
+      "en": "A man offers you an appointment in the street."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Hombre",
+          "en": "Man"
+        },
+        "text": {
+          "es": "Te vendo una cita para el consulado por cincuenta libras.",
+          "en": "I can sell you a consulate appointment for fifty pounds."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "No, gracias. La cita es gratis.",
+          "en": "No, thanks. The appointment is free."
+        }
+      },
+      {
+        "who": {
+          "es": "Hombre",
+          "en": "Man"
+        },
+        "text": {
+          "es": "Pero no hay citas en la web.",
+          "en": "But there are no appointments on the website."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Volveré a mirar en la web oficial.",
+          "en": "I'll check the official website again."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Y voy a avisar al consulado.",
+          "en": "And I'm going to tell the consulate."
+        }
+      }
+    ]
+  }
+}

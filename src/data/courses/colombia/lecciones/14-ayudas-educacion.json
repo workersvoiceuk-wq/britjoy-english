@@ -1,0 +1,196 @@
+{
+  "id": "ayudas-educacion",
+  "order": 14,
+  "icon": "🎓",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Ayudas sociales y estudio",
+    "en": "Social support and education"
+  },
+  "unit": {
+    "es": "Ayudas y educación",
+    "en": "Support and education"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Ayudas y estudio gratis",
+        "en": "Support and free education"
+      },
+      "body": {
+        "es": "• El Sisbén IV es la puerta a las ayudas: si no estás encuestado, pídelo en tu alcaldía.\n• Prosperidad Social paga programas como Renta Ciudadana, Colombia Mayor (personas mayores) y la Devolución del IVA a hogares en pobreza. Los montos y calendarios cambian: consúltalos solo en la web oficial de Prosperidad Social.\n• Nadie te puede cobrar por inscribirte en una ayuda. Desconfía de mensajes que pidan dinero o claves.\n• Estudio: la educación pública básica es gratuita. El SENA ofrece formación gratis. Las universidades públicas tienen programas de gratuidad en la matrícula de pregrado.",
+        "en": "• Sisbén IV is the door to support: if you haven't been surveyed, ask at your town hall (alcaldía).\n• Prosperidad Social pays programmes such as Renta Ciudadana, Colombia Mayor (older people) and the VAT refund to low-income households. Amounts and calendars change: check them only on Prosperidad Social's official website.\n• Nobody can charge you to sign up for support. Distrust messages asking for money or passwords.\n• Education: basic state education is free. SENA offers free training. Public universities have tuition-free programmes for undergraduate degrees."
+      },
+      "say": {
+        "es": "Para las ayudas necesitas el Sisbén. Consulta los pagos solo en la web de Prosperidad Social, y nunca pagues por inscribirte. Y el SENA ofrece formación gratis.",
+        "en": "For support you need Sisbén. Check payments only on Prosperidad Social's website, and never pay to sign up. And SENA offers free training."
+      },
+      "link": {
+        "label": {
+          "es": "Prosperidad Social",
+          "en": "Prosperidad Social"
+        },
+        "url": "https://prosperidadsocial.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Sisbén: la puerta de entrada",
+      "en": "Sisbén: the way in"
+    },
+    {
+      "es": "Consulta en Prosperidad Social",
+      "en": "Check with Prosperidad Social"
+    },
+    {
+      "es": "Nunca pagues por una ayuda",
+      "en": "Never pay for support"
+    },
+    {
+      "es": "SENA: formación gratis",
+      "en": "SENA: free training"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero la encuesta del Sisbén.",
+      "en": "I want the Sisbén survey."
+    },
+    {
+      "es": "¿Cómo consulto mi grupo?",
+      "en": "How do I check my group?"
+    },
+    {
+      "es": "Quiero estudiar en el SENA.",
+      "en": "I want to study at SENA."
+    },
+    {
+      "es": "Me pidieron dinero por una ayuda.",
+      "en": "They asked me for money for a benefit."
+    },
+    {
+      "es": "¿Cuándo es el próximo pago?",
+      "en": "When is the next payment?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué necesitas para acceder a la mayoría de ayudas sociales?",
+        "en": "What do you need for most social support?"
+      },
+      "options": [
+        {
+          "es": "Estar en el Sisbén",
+          "en": "Being on Sisbén"
+        },
+        {
+          "es": "Tener carro",
+          "en": "Owning a car"
+        },
+        {
+          "es": "Pagar una inscripción",
+          "en": "Paying a sign-up fee"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Alguien te cobra por inscribirte en Renta Ciudadana. ¿Qué es?",
+        "en": "Someone charges you to sign up for Renta Ciudadana. What is it?"
+      },
+      "options": [
+        {
+          "es": "Una estafa",
+          "en": "A scam"
+        },
+        {
+          "es": "Normal",
+          "en": "Normal"
+        },
+        {
+          "es": "Un impuesto",
+          "en": "A tax"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la alcaldía",
+      "en": "At the town hall"
+    },
+    "scene": {
+      "es": "Pides la encuesta del Sisbén.",
+      "en": "You ask for the Sisbén survey."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero la encuesta del Sisbén.",
+          "en": "I want the Sisbén survey."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Claro. ¿Ya tiene dirección fija?",
+          "en": "Sure. Do you have a fixed address?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí, vivo en el barrio La Esperanza.",
+          "en": "Yes, I live in La Esperanza."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Le asignamos una visita.",
+          "en": "We'll schedule a visit."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cómo consulto mi grupo?",
+          "en": "How do I check my group?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "En la web oficial del Sisbén.",
+          "en": "On the official Sisbén website."
+        }
+      }
+    ]
+  }
+}

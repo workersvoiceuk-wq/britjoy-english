@@ -1,0 +1,217 @@
+{
+  "id": "colombia-tramites",
+  "order": 6,
+  "icon": "📘",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Colombia: pasaporte, cédula, voto y apostilla",
+    "en": "Colombia: passport, cédula, vote and apostille"
+  },
+  "unit": {
+    "es": "Consulado de Colombia",
+    "en": "Colombian consulate"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Tus trámites colombianos",
+        "en": "Your Colombian procedures"
+      },
+      "body": {
+        "es": "• Pasaporte ordinario: 59,85 £ (53,86 £ con el descuento del 10 % por haber votado). De emergencia: 85,50 £. Ejecutivo: 119,70 £. Se paga con tarjeta y tarda unos 20 días naturales (tarifas de abril de 2026).\n• Los adultos necesitan su cédula; los menores o nacidos fuera, el registro civil de nacimiento colombiano primero.\n• Cédula por primera vez: gratis. Antes, envía tu registro civil al email del consulado para que lo comprueben. El duplicado se puede pedir en línea en la Registraduría.\n• Registrar a tu bebé en el registro civil colombiano es gratis. Consulta en la web del consulado la lista exacta de documentos.\n• Para votar en Londres tienes que haber inscrito tu cédula en el consulado antes de cada elección.\n• Apostilla de documentos colombianos: en línea en la web de la Cancillería, desde cualquier país.",
+        "en": "• Ordinary passport: £59.85 (£53.86 with the 10% discount for having voted). Emergency: £85.50. Executive: £119.70. Paid by card; it takes about 20 calendar days (April 2026 fees).\n• Adults need their cédula; minors or people born abroad need the Colombian birth registration first.\n• First-time cédula: free. First, email your civil registration to the consulate so they can check it. A duplicate can be requested online from the Registraduría.\n• Registering your baby in the Colombian civil registry is free. Check the exact document list on the consulate's website.\n• To vote in London you must register your cédula at the consulate before each election.\n• Apostille of Colombian documents: online on the Foreign Ministry website, from any country."
+      },
+      "say": {
+        "es": "El pasaporte ordinario cuesta cincuenta y nueve libras con ochenta y cinco. La cédula por primera vez es gratis. Para votar, inscribe tu cédula antes de cada elección. Y la apostilla colombiana se hace en línea.",
+        "en": "The ordinary passport costs £59.85. The first cédula is free. To vote, register your cédula before each election. And Colombian apostilles are done online."
+      },
+      "link": {
+        "label": {
+          "es": "Consulado: tarifas 2026 en libras",
+          "en": "Consulate: 2026 fees in pounds"
+        },
+        "url": "https://londres.consulado.gov.co/sala-de-prensa/noticias/tarifas-de-tramites-y-servicios-actualizadas-en-libras-esterlinas-en-2026"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Pasaporte: 59,85 £",
+      "en": "Passport: £59.85"
+    },
+    {
+      "es": "Primera cédula: gratis",
+      "en": "First cédula: free"
+    },
+    {
+      "es": "Votar: inscribe tu cédula",
+      "en": "Vote: register your cédula"
+    },
+    {
+      "es": "Apostilla: en línea",
+      "en": "Apostille: online"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero renovar mi pasaporte.",
+      "en": "I want to renew my passport."
+    },
+    {
+      "es": "¿Puedo pagar con tarjeta?",
+      "en": "Can I pay by card?"
+    },
+    {
+      "es": "¿Cuánto cuesta?",
+      "en": "How much does it cost?"
+    },
+    {
+      "es": "¿Cuándo estará listo?",
+      "en": "When will it be ready?"
+    },
+    {
+      "es": "Voté en las últimas elecciones.",
+      "en": "I voted in the last election."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta el pasaporte ordinario colombiano en Londres en 2026?",
+        "en": "How much is the ordinary Colombian passport in London in 2026?"
+      },
+      "options": [
+        {
+          "es": "59,85 £",
+          "en": "£59.85"
+        },
+        {
+          "es": "10 £",
+          "en": "£10"
+        },
+        {
+          "es": "200 £",
+          "en": "£200"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuánto cuesta la cédula por primera vez?",
+        "en": "How much is your first cédula?"
+      },
+      "options": [
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        },
+        {
+          "es": "53,86 £",
+          "en": "£53.86"
+        },
+        {
+          "es": "85,50 £",
+          "en": "£85.50"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué necesitas para votar en Londres?",
+        "en": "What do you need to vote in London?"
+      },
+      "options": [
+        {
+          "es": "Inscribir tu cédula en el consulado antes",
+          "en": "Register your cédula at the consulate beforehand"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        },
+        {
+          "es": "Un visado",
+          "en": "A visa"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la ventanilla",
+      "en": "At the counter"
+    },
+    "scene": {
+      "es": "Renuevas tu pasaporte en el consulado.",
+      "en": "You renew your passport at the consulate."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero renovar mi pasaporte.",
+          "en": "I want to renew my passport."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Trae su cédula?",
+          "en": "Do you have your cédula?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí. ¿Puedo pagar con tarjeta?",
+          "en": "Yes. Can I pay by card?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Sí, solo con tarjeta.",
+          "en": "Yes, card only."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuándo estará listo?",
+          "en": "When will it be ready?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "En unos veinte días.",
+          "en": "In about twenty days."
+        }
+      }
+    ]
+  }
+}

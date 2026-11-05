@@ -1,0 +1,196 @@
+{
+  "id": "pension",
+  "order": 6,
+  "icon": "👵",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Tu pensión",
+    "en": "Your pension"
+  },
+  "unit": {
+    "es": "Pensión",
+    "en": "Pensions"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Pensión: lo que rige en 2026",
+        "en": "Pensions: the rules in 2026"
+      },
+      "body": {
+        "es": "• En 2026 sigue rigiendo la Ley 100 de 1993: puedes cotizar en Colpensiones (régimen público) o en un fondo privado.\n• Edad de pensión: 57 años las mujeres y 62 los hombres.\n• Semanas: las mujeres en Colpensiones necesitan 1.250 semanas en 2026; el requisito baja cada año hasta 1.000 en 2036.\n• La reforma pensional (Ley 2381 de 2024) fue avalada en su mayor parte por la Corte Constitucional en agosto de 2026, pero ENTRA EN VIGOR EL 1 DE ABRIL DE 2027.\n• Revisa tu historia laboral cada año en tu fondo o en Colpensiones: si faltan semanas, reclama.",
+        "en": "• In 2026 Law 100 of 1993 still applies: you can contribute to Colpensiones (public scheme) or to a private fund.\n• Pension age: 57 for women and 62 for men.\n• Weeks: women in Colpensiones need 1,250 weeks in 2026; the requirement falls each year to 1,000 in 2036.\n• The pension reform (Law 2381 of 2024) was mostly upheld by the Constitutional Court in August 2026, but it COMES INTO FORCE ON 1 APRIL 2027.\n• Check your work history every year with your fund or Colpensiones: if weeks are missing, complain."
+      },
+      "say": {
+        "es": "En dos mil veintiséis la pensión sigue con la Ley cien. La edad es cincuenta y siete años para mujeres y sesenta y dos para hombres. Y la reforma pensional entra en vigor el uno de abril de dos mil veintisiete.",
+        "en": "In 2026 pensions still follow Law 100. The age is 57 for women and 62 for men. And the pension reform comes into force on 1 April 2027."
+      },
+      "link": {
+        "label": {
+          "es": "Colpensiones",
+          "en": "Colpensiones"
+        },
+        "url": "https://www.colpensiones.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "2026: rige la Ley 100",
+      "en": "2026: Law 100 applies"
+    },
+    {
+      "es": "57 mujeres · 62 hombres",
+      "en": "57 women · 62 men"
+    },
+    {
+      "es": "Reforma: desde 1-abr-2027",
+      "en": "Reform: from 1 Apr 2027"
+    },
+    {
+      "es": "Revisa tu historia laboral",
+      "en": "Check your work history"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero ver mi historia laboral.",
+      "en": "I want to see my work history."
+    },
+    {
+      "es": "Me faltan semanas cotizadas.",
+      "en": "Some contribution weeks are missing."
+    },
+    {
+      "es": "¿Cuántas semanas tengo?",
+      "en": "How many weeks do I have?"
+    },
+    {
+      "es": "Tengo cincuenta y siete años.",
+      "en": "I am fifty-seven years old."
+    },
+    {
+      "es": "¿Cuándo me puedo pensionar?",
+      "en": "When can I retire?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿A qué edad se pensionan los hombres en 2026?",
+        "en": "At what age do men retire in 2026?"
+      },
+      "options": [
+        {
+          "es": "62 años",
+          "en": "62"
+        },
+        {
+          "es": "57 años",
+          "en": "57"
+        },
+        {
+          "es": "70 años",
+          "en": "70"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuándo entra en vigor la reforma pensional?",
+        "en": "When does the pension reform come into force?"
+      },
+      "options": [
+        {
+          "es": "El 1 de abril de 2027",
+          "en": "On 1 April 2027"
+        },
+        {
+          "es": "Ya está vigente desde 2024",
+          "en": "It's been in force since 2024"
+        },
+        {
+          "es": "Nunca",
+          "en": "Never"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En Colpensiones",
+      "en": "At Colpensiones"
+    },
+    "scene": {
+      "es": "Revisas tus semanas cotizadas.",
+      "en": "You check your contribution weeks."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero ver mi historia laboral.",
+          "en": "I want to see my work history."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Con gusto. ¿Me da su cédula?",
+          "en": "Of course. Can I have your ID card?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Aquí tiene. ¿Cuántas semanas tengo?",
+          "en": "Here you are. How many weeks do I have?"
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Tiene mil cien semanas.",
+          "en": "You have one thousand one hundred weeks."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Me faltan semanas cotizadas de 2019.",
+          "en": "Some contribution weeks from 2019 are missing."
+        }
+      },
+      {
+        "who": {
+          "es": "Funcionario",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Puede pedir una corrección.",
+          "en": "You can request a correction."
+        }
+      }
+    ]
+  }
+}

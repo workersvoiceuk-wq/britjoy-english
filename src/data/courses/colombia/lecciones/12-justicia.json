@@ -1,0 +1,197 @@
+{
+  "id": "justicia",
+  "order": 12,
+  "icon": "🏛️",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Ayuda legal gratis",
+    "en": "Free legal help"
+  },
+  "unit": {
+    "es": "Justicia cercana",
+    "en": "Local justice"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "A dónde ir sin pagar abogado",
+        "en": "Where to go without paying a lawyer"
+      },
+      "body": {
+        "es": "• Consultorios jurídicos de las universidades: estudiantes de Derecho, supervisados, te asesoran y representan gratis en muchos casos (en lo civil, hasta 50 salarios mínimos).\n• Conciliación: un conciliador ayuda a llegar a un acuerdo sin juicio. Es gratis en los centros públicos y en los consultorios jurídicos.\n• Comisarías de familia: violencia dentro de la familia, medidas de protección.\n• Defensoría del Pueblo y Personería de tu municipio: defienden tus derechos ante las entidades.\n• Casas de Justicia: reúnen varios de estos servicios en un mismo lugar.",
+        "en": "• University legal aid clinics (consultorios jurídicos): supervised law students advise and represent you free in many cases (civil cases up to 50 minimum wages).\n• Conciliation: a conciliator helps you reach an agreement without a trial. It is free at public centres and legal aid clinics.\n• Family police stations (comisarías de familia): domestic violence, protection orders.\n• The Ombudsman's Office (Defensoría del Pueblo) and your town's Personería: defend your rights against public bodies.\n• Casas de Justicia bring several of these services together in one place."
+      },
+      "say": {
+        "es": "Si no puedes pagar un abogado, ve a un consultorio jurídico de una universidad, a una casa de justicia o a la personería. La conciliación en centros públicos es gratis.",
+        "en": "If you can't pay a lawyer, go to a university legal aid clinic, a Casa de Justicia or the Personería. Conciliation at public centres is free."
+      },
+      "link": {
+        "label": {
+          "es": "Defensoría del Pueblo",
+          "en": "Ombudsman's Office"
+        },
+        "url": "https://www.defensoria.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Consultorio jurídico: gratis",
+      "en": "Legal aid clinic: free"
+    },
+    {
+      "es": "Conciliación sin juicio",
+      "en": "Conciliation, no trial"
+    },
+    {
+      "es": "Comisaría de familia",
+      "en": "Family police station"
+    },
+    {
+      "es": "Defensoría y Personería",
+      "en": "Ombudsman and Personería"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "No puedo pagar un abogado.",
+      "en": "I can't afford a lawyer."
+    },
+    {
+      "es": "Necesito asesoría gratuita.",
+      "en": "I need free advice."
+    },
+    {
+      "es": "Queremos llegar a un acuerdo.",
+      "en": "We want to reach an agreement."
+    },
+    {
+      "es": "¿Dónde está la casa de justicia?",
+      "en": "Where is the Casa de Justicia?"
+    },
+    {
+      "es": "Mi vecino no me paga.",
+      "en": "My neighbour won't pay me."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Dónde te asesoran gratis estudiantes de Derecho?",
+        "en": "Where do law students advise you for free?"
+      },
+      "options": [
+        {
+          "es": "En un consultorio jurídico",
+          "en": "At a legal aid clinic"
+        },
+        {
+          "es": "En la DIAN",
+          "en": "At the DIAN"
+        },
+        {
+          "es": "En el banco",
+          "en": "At the bank"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué es la conciliación?",
+        "en": "What is conciliation?"
+      },
+      "options": [
+        {
+          "es": "Llegar a un acuerdo sin juicio",
+          "en": "Reaching an agreement without a trial"
+        },
+        {
+          "es": "Un impuesto",
+          "en": "A tax"
+        },
+        {
+          "es": "Una multa",
+          "en": "A fine"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En el consultorio jurídico",
+      "en": "At the legal aid clinic"
+    },
+    "scene": {
+      "es": "Un vecino te debe dinero.",
+      "en": "A neighbour owes you money."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Mi vecino no me paga.",
+          "en": "My neighbour won't pay me."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "No puedo pagar un abogado.",
+          "en": "I can't afford a lawyer."
+        }
+      },
+      {
+        "who": {
+          "es": "Estudiante de Derecho",
+          "en": "Law student"
+        },
+        "text": {
+          "es": "Podemos citarlo a una conciliación.",
+          "en": "We can invite him to conciliation."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuánto cuesta?",
+          "en": "How much does it cost?"
+        }
+      },
+      {
+        "who": {
+          "es": "Estudiante de Derecho",
+          "en": "Law student"
+        },
+        "text": {
+          "es": "Aquí es gratis.",
+          "en": "Here it's free."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Queremos llegar a un acuerdo.",
+          "en": "We want to reach an agreement."
+        }
+      }
+    ]
+  }
+}

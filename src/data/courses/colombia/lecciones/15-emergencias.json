@@ -1,0 +1,196 @@
+{
+  "id": "emergencias",
+  "order": 15,
+  "icon": "🚨",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Líneas de emergencia",
+    "en": "Emergency numbers"
+  },
+  "unit": {
+    "es": "Emergencias",
+    "en": "Emergencies"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Los números que debes saber",
+        "en": "The numbers you need"
+      },
+      "body": {
+        "es": "• 123: línea única de emergencias (policía, ambulancia, bomberos).\n• 155: orientación a mujeres víctimas de violencia, gratis, las 24 horas.\n• 141: ICBF, para proteger a niños, niñas y adolescentes, gratis y las 24 horas.\n• Guarda también el teléfono de tu EPS y de la comisaría de familia más cercana.",
+        "en": "• 123: single emergency number (police, ambulance, fire).\n• 155: guidance for women victims of violence, free, 24 hours.\n• 141: ICBF, to protect children and teenagers, free, 24 hours.\n• Also save your EPS's number and the nearest family police station (comisaría de familia)."
+      },
+      "say": {
+        "es": "Uno, dos, tres para cualquier emergencia. Uno, cinco, cinco para mujeres víctimas de violencia. Y uno, cuatro, uno para proteger a los niños.",
+        "en": "One, two, three for any emergency. One, five, five for women facing violence. And one, four, one to protect children."
+      },
+      "link": {
+        "label": {
+          "es": "ICBF: Línea 141",
+          "en": "ICBF: 141 helpline"
+        },
+        "url": "https://www.icbf.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "123: emergencias",
+      "en": "123: emergencies"
+    },
+    {
+      "es": "155: mujeres",
+      "en": "155: women"
+    },
+    {
+      "es": "141: niños (ICBF)",
+      "en": "141: children (ICBF)"
+    },
+    {
+      "es": "Guarda el número de tu EPS",
+      "en": "Save your EPS's number"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Necesito una ambulancia.",
+      "en": "I need an ambulance."
+    },
+    {
+      "es": "Hubo un accidente.",
+      "en": "There's been an accident."
+    },
+    {
+      "es": "Estoy en la carrera siete con calle diez.",
+      "en": "I'm at Carrera 7 and Calle 10."
+    },
+    {
+      "es": "Necesito ayuda, por favor.",
+      "en": "I need help, please."
+    },
+    {
+      "es": "Hay un niño en peligro.",
+      "en": "A child is in danger."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué número llamas para cualquier emergencia en Colombia?",
+        "en": "Which number do you call for any emergency in Colombia?"
+      },
+      "options": [
+        {
+          "es": "123",
+          "en": "123"
+        },
+        {
+          "es": "911",
+          "en": "911"
+        },
+        {
+          "es": "999",
+          "en": "999"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Para qué es la línea 141?",
+        "en": "What is the 141 line for?"
+      },
+      "options": [
+        {
+          "es": "Proteger a niños y adolescentes",
+          "en": "Protecting children and teenagers"
+        },
+        {
+          "es": "Pedir un taxi",
+          "en": "Calling a taxi"
+        },
+        {
+          "es": "Pagar impuestos",
+          "en": "Paying taxes"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Llamada al 123",
+      "en": "Calling 123"
+    },
+    "scene": {
+      "es": "Ves un accidente en la calle.",
+      "en": "You see an accident in the street."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Operadora",
+          "en": "Operator"
+        },
+        "text": {
+          "es": "Línea de emergencias, ¿qué pasó?",
+          "en": "Emergency line, what happened?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Hubo un accidente.",
+          "en": "There's been an accident."
+        }
+      },
+      {
+        "who": {
+          "es": "Operadora",
+          "en": "Operator"
+        },
+        "text": {
+          "es": "¿Dónde está?",
+          "en": "Where are you?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Estoy en la carrera siete con calle diez.",
+          "en": "I'm at Carrera 7 and Calle 10."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Necesito una ambulancia.",
+          "en": "I need an ambulance."
+        }
+      },
+      {
+        "who": {
+          "es": "Operadora",
+          "en": "Operator"
+        },
+        "text": {
+          "es": "Ya va en camino. No cuelgue.",
+          "en": "It's on its way. Don't hang up."
+        }
+      }
+    ]
+  }
+}

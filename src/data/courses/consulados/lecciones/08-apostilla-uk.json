@@ -1,0 +1,217 @@
+{
+  "id": "apostilla-uk",
+  "order": 8,
+  "icon": "📜",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Apostillar documentos británicos",
+    "en": "Getting UK documents apostilled"
+  },
+  "unit": {
+    "es": "Apostilla",
+    "en": "Apostille"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "La apostilla del FCDO",
+        "en": "The FCDO apostille"
+      },
+      "body": {
+        "es": "• Para que un documento británico (por ejemplo, el certificado de nacimiento de tu bebé) valga en tu país, a menudo hay que apostillarlo en el Foreign Office (FCDO).\n• Precio por documento: 45 £ en papel (hasta unos 25 días hábiles, más el envío), o 35 £ la e-Apostille (unos 2 días hábiles).\n• La e-Apostille NO sirve para certificados de nacimiento, matrimonio o defunción del registro (GRO): para esos, papel.\n• Certificados del registro, documentos judiciales y oficiales se apostillan directamente. Poderes, contratos, títulos o copias de pasaporte necesitan antes la firma de un notario o solicitor británico.\n• Se pide en línea en GOV.UK y no se devuelve el dinero.",
+        "en": "• For a British document (for example, your baby's birth certificate) to be valid in your country, it often needs an apostille from the Foreign Office (FCDO).\n• Price per document: £45 on paper (up to about 25 working days, plus delivery), or £35 for an e-Apostille (about 2 working days).\n• The e-Apostille is NOT available for register office (GRO) birth, marriage or death certificates: those must be on paper.\n• Register certificates, court and government documents are apostilled directly. Powers of attorney, contracts, degrees or passport copies first need a UK notary or solicitor to certify them.\n• Apply online on GOV.UK; fees are not refunded."
+      },
+      "say": {
+        "es": "La apostilla del Foreign Office cuesta cuarenta y cinco libras en papel o treinta y cinco la electrónica. Pero los certificados de nacimiento van siempre en papel. Y algunos documentos necesitan antes un notario.",
+        "en": "The Foreign Office apostille costs £45 on paper or £35 electronically. But birth certificates always go on paper. And some documents need a notary first."
+      },
+      "link": {
+        "label": {
+          "es": "GOV.UK: legalizar un documento",
+          "en": "GOV.UK: get a document legalised"
+        },
+        "url": "https://www.gov.uk/get-document-legalised"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Apostilla del FCDO",
+      "en": "FCDO apostille"
+    },
+    {
+      "es": "Papel: 45 £ · e-Apostille: 35 £",
+      "en": "Paper: £45 · e-Apostille: £35"
+    },
+    {
+      "es": "Certificados GRO: solo papel",
+      "en": "GRO certificates: paper only"
+    },
+    {
+      "es": "Poderes: notario primero",
+      "en": "Powers of attorney: notary first"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Necesito una apostilla.",
+      "en": "I need an apostille."
+    },
+    {
+      "es": "Este documento es para España.",
+      "en": "This document is for Spain."
+    },
+    {
+      "es": "¿Puede certificarlo un notario?",
+      "en": "Can a notary certify it?"
+    },
+    {
+      "es": "¿Cuánto es la tasa?",
+      "en": "How much is the fee?"
+    },
+    {
+      "es": "Lo pediré en línea.",
+      "en": "I will apply online."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuánto cuesta una apostilla en papel del FCDO?",
+        "en": "How much is a paper FCDO apostille?"
+      },
+      "options": [
+        {
+          "es": "45 £",
+          "en": "£45"
+        },
+        {
+          "es": "5 £",
+          "en": "£5"
+        },
+        {
+          "es": "Es gratis",
+          "en": "It's free"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Puedes pedir e-Apostille para un certificado de nacimiento del GRO?",
+        "en": "Can you get an e-Apostille for a GRO birth certificate?"
+      },
+      "options": [
+        {
+          "es": "No, va en papel",
+          "en": "No, it must be on paper"
+        },
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "Solo los lunes",
+          "en": "Only on Mondays"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Qué necesita un poder antes de apostillarse?",
+        "en": "What does a power of attorney need before the apostille?"
+      },
+      "options": [
+        {
+          "es": "La firma de un notario o solicitor",
+          "en": "A notary's or solicitor's certification"
+        },
+        {
+          "es": "Nada",
+          "en": "Nothing"
+        },
+        {
+          "es": "Un sello del banco",
+          "en": "A bank stamp"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la notaría",
+      "en": "At the notary"
+    },
+    "scene": {
+      "es": "Necesitas certificar un poder para tu país.",
+      "en": "You need to certify a power of attorney for your country."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Necesito una apostilla para este poder.",
+          "en": "I need an apostille for this power of attorney."
+        }
+      },
+      {
+        "who": {
+          "es": "Notario",
+          "en": "Notary"
+        },
+        "text": {
+          "es": "Primero tengo que certificarlo yo.",
+          "en": "First I have to certify it."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuánto es la tasa?",
+          "en": "How much is the fee?"
+        }
+      },
+      {
+        "who": {
+          "es": "Notario",
+          "en": "Notary"
+        },
+        "text": {
+          "es": "Mi tarifa, más la apostilla del FCDO.",
+          "en": "My fee, plus the FCDO apostille."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Lo pido yo en línea?",
+          "en": "Do I apply online myself?"
+        }
+      },
+      {
+        "who": {
+          "es": "Notario",
+          "en": "Notary"
+        },
+        "text": {
+          "es": "Sí, o lo hacemos nosotros por usted.",
+          "en": "Yes, or we can do it for you."
+        }
+      }
+    ]
+  }
+}

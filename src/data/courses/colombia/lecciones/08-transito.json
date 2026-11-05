@@ -1,0 +1,217 @@
+{
+  "id": "transito",
+  "order": 8,
+  "icon": "🚗",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Tránsito: licencia, SOAT y comparendos",
+    "en": "Driving: licence, SOAT and fines"
+  },
+  "unit": {
+    "es": "Tránsito",
+    "en": "Driving"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Al volante en Colombia",
+        "en": "Behind the wheel in Colombia"
+      },
+      "body": {
+        "es": "• Licencia de conducción: inscríbete en el RUNT, haz el examen médico en un CRC y el curso en una escuela de conducción.\n• SOAT: seguro obligatorio para todo vehículo. Sin SOAT te pueden inmovilizar el vehículo.\n• Revisión técnico-mecánica: los carros particulares nuevos matriculados desde el 19 de mayo de 2023 hacen la primera al 5.º año; las motos y los vehículos de servicio público, a los 2 años.\n• Comparendos (ejemplo de Bogotá): si haces el curso y pagas en los 5 días hábiles siguientes, tienes un 50 % de descuento; entre los días 6 y 20, un 25 %. Si no estás de acuerdo, no pagues y pide audiencia para impugnarlo dentro de esos plazos.\n• Consulta tus multas en el SIMIT. El pico y placa lo decide cada ciudad.",
+        "en": "• Driving licence: register on the RUNT, take the medical test at a CRC and the course at a driving school.\n• SOAT: compulsory insurance for every vehicle. Without SOAT your vehicle can be impounded.\n• Vehicle inspection (técnico-mecánica): new private cars registered since 19 May 2023 have their first one in year 5; motorbikes and public-service vehicles, after 2 years.\n• Traffic fines (Bogotá example): if you take the course and pay within 5 working days, you get 50% off; between days 6 and 20, 25% off. If you disagree, don't pay and ask for a hearing to challenge it within those deadlines.\n• Check your fines on SIMIT. Each city decides its 'pico y placa' (number-plate restrictions)."
+      },
+      "say": {
+        "es": "Necesitas licencia, SOAT y revisión técnico-mecánica. Si te ponen un comparendo, con el curso y pagando rápido tienes descuento. Y si no estás de acuerdo, pide audiencia.",
+        "en": "You need a licence, SOAT and the vehicle inspection. If you get a fine, taking the course and paying quickly gives you a discount. And if you disagree, ask for a hearing."
+      },
+      "link": {
+        "label": {
+          "es": "RUNT",
+          "en": "RUNT (national transport register)"
+        },
+        "url": "https://www.runt.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Licencia: RUNT + CRC + curso",
+      "en": "Licence: RUNT + medical + course"
+    },
+    {
+      "es": "SOAT obligatorio",
+      "en": "SOAT is compulsory"
+    },
+    {
+      "es": "Comparendo: 50 % en 5 días",
+      "en": "Fine: 50% off within 5 days"
+    },
+    {
+      "es": "¿No estás de acuerdo? Audiencia",
+      "en": "Disagree? Ask for a hearing"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Aquí tiene mi licencia.",
+      "en": "Here is my driving licence."
+    },
+    {
+      "es": "El SOAT está vigente.",
+      "en": "My SOAT insurance is valid."
+    },
+    {
+      "es": "No estoy de acuerdo con el comparendo.",
+      "en": "I don't agree with the fine."
+    },
+    {
+      "es": "Quiero pedir una audiencia.",
+      "en": "I want to request a hearing."
+    },
+    {
+      "es": "¿Dónde hago el curso?",
+      "en": "Where do I take the course?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Qué descuento tienes si haces el curso y pagas en 5 días hábiles (Bogotá)?",
+        "en": "What discount do you get for the course and paying within 5 working days (Bogotá)?"
+      },
+      "options": [
+        {
+          "es": "50 %",
+          "en": "50%"
+        },
+        {
+          "es": "10 %",
+          "en": "10%"
+        },
+        {
+          "es": "Ninguno",
+          "en": "None"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Carro particular nuevo matriculado en 2024. ¿Cuándo es su primera revisión técnico-mecánica?",
+        "en": "New private car registered in 2024. When is its first inspection?"
+      },
+      "options": [
+        {
+          "es": "Al 5.º año",
+          "en": "In year 5"
+        },
+        {
+          "es": "Al 1.er año",
+          "en": "In year 1"
+        },
+        {
+          "es": "Nunca",
+          "en": "Never"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Dónde consultas tus multas de tránsito?",
+        "en": "Where do you check your traffic fines?"
+      },
+      "options": [
+        {
+          "es": "En el SIMIT",
+          "en": "On SIMIT"
+        },
+        {
+          "es": "En la DIAN",
+          "en": "At the DIAN"
+        },
+        {
+          "es": "En la EPS",
+          "en": "At your EPS"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Un control de tránsito",
+      "en": "A traffic stop"
+    },
+    "scene": {
+      "es": "Un agente te para en la vía.",
+      "en": "An officer stops you on the road."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Agente",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Buenas tardes. Licencia y SOAT, por favor.",
+          "en": "Good afternoon. Licence and SOAT, please."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Aquí tiene mi licencia. El SOAT está vigente.",
+          "en": "Here is my licence. My SOAT is valid."
+        }
+      },
+      {
+        "who": {
+          "es": "Agente",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Iba a exceso de velocidad. Le hago un comparendo.",
+          "en": "You were speeding. I'm issuing a fine."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "No estoy de acuerdo con el comparendo.",
+          "en": "I don't agree with the fine."
+        }
+      },
+      {
+        "who": {
+          "es": "Agente",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Puede pedir una audiencia en la secretaría de movilidad.",
+          "en": "You can request a hearing at the transport office."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero pedir una audiencia.",
+          "en": "I want to request a hearing."
+        }
+      }
+    ]
+  }
+}

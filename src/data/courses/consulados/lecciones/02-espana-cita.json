@@ -1,0 +1,206 @@
+{
+  "id": "espana-cita",
+  "order": 2,
+  "icon": "🇪🇸",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "España: cita y registro consular",
+    "en": "Spain: appointments and consular registration"
+  },
+  "unit": {
+    "es": "Consulado de España",
+    "en": "Spanish consulate"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Consulado General de España en Londres",
+        "en": "Consulate General of Spain in London"
+      },
+      "body": {
+        "es": "• Dirección: 20 Draycott Place, Londres SW3 2RZ.\n• Atiende Londres y el sur y el este de Inglaterra. El consulado de Mánchester atiende Gales, el noroeste, Yorkshire y las Midlands; el de Edimburgo, Escocia y el noreste.\n• Todos los trámites en persona necesitan cita previa, que se pide solo por la web del consulado (no por teléfono ni por email).\n• Desde el 30 de marzo de 2026 ya no hay citas solo para información: te informan sin cita en horario de atención.\n• Inscríbete en el Registro de Matrícula Consular (alta como residente): lo necesitas para renovar el pasaporte y para trámites de menores. Al darte de alta te envían un certificado de residencia por email.",
+        "en": "• Address: 20 Draycott Place, London SW3 2RZ.\n• It covers London and the south and east of England. The Manchester consulate covers Wales, the North West, Yorkshire and the Midlands; Edinburgh covers Scotland and the North East.\n• Every in-person procedure needs an appointment, booked only on the consulate's website (not by phone or email).\n• Since 30 March 2026 there are no information-only appointments: you can get information without one during opening hours.\n• Register in the Registro de Matrícula Consular (as a resident): you need it to renew your passport and for procedures for children. You get a certificate of residence by email."
+      },
+      "say": {
+        "es": "El consulado de España está en veinte Draycott Place. La cita se pide solo en su web. Y date de alta en el registro de matrícula: lo necesitas para renovar el pasaporte.",
+        "en": "The Spanish consulate is at 20 Draycott Place. Book only on its website. And register as a resident: you need it to renew your passport."
+      },
+      "link": {
+        "label": {
+          "es": "Consulado de España en Londres",
+          "en": "Spanish Consulate in London"
+        },
+        "url": "https://www.exteriores.gob.es/Consulados/londres/es/Paginas/inicio.aspx"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "20 Draycott Place, SW3",
+      "en": "20 Draycott Place, SW3"
+    },
+    {
+      "es": "Cita solo por la web",
+      "en": "Book only online"
+    },
+    {
+      "es": "Información: sin cita",
+      "en": "Information: no appointment"
+    },
+    {
+      "es": "Alta en la matrícula consular",
+      "en": "Register as a resident"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Vivo en Londres.",
+      "en": "I live in London."
+    },
+    {
+      "es": "Necesito un certificado de residencia.",
+      "en": "I need a certificate of residence."
+    },
+    {
+      "es": "¿Puedo pedir cita por internet?",
+      "en": "Can I book online?"
+    },
+    {
+      "es": "Tengo cita a las diez.",
+      "en": "I have an appointment at ten."
+    },
+    {
+      "es": "Aquí tiene mi pasaporte.",
+      "en": "Here is my passport."
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cómo se pide cita en el consulado de España en Londres?",
+        "en": "How do you book at the Spanish consulate in London?"
+      },
+      "options": [
+        {
+          "es": "Solo en su web oficial",
+          "en": "Only on its official website"
+        },
+        {
+          "es": "Por teléfono",
+          "en": "By phone"
+        },
+        {
+          "es": "Por email",
+          "en": "By email"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Para qué necesitas el alta en la matrícula consular?",
+        "en": "Why do you need to register at the consulate?"
+      },
+      "options": [
+        {
+          "es": "Para renovar el pasaporte",
+          "en": "To renew your passport"
+        },
+        {
+          "es": "Para abrir una cuenta en el banco",
+          "en": "To open a bank account"
+        },
+        {
+          "es": "Para ir al GP",
+          "en": "To see a GP"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Vives en Leeds (Yorkshire). ¿Qué consulado te corresponde?",
+        "en": "You live in Leeds (Yorkshire). Which consulate covers you?"
+      },
+      "options": [
+        {
+          "es": "Mánchester",
+          "en": "Manchester"
+        },
+        {
+          "es": "Londres",
+          "en": "London"
+        },
+        {
+          "es": "Dublín",
+          "en": "Dublin"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Pedir información",
+      "en": "Asking for information"
+    },
+    "scene": {
+      "es": "Llamas a una amiga que ya se ha dado de alta.",
+      "en": "You call a friend who has already registered."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cómo te diste de alta en el consulado?",
+          "en": "How did you register at the consulate?"
+        }
+      },
+      {
+        "who": {
+          "es": "Amiga",
+          "en": "Friend"
+        },
+        "text": {
+          "es": "Pedí cita en la web oficial.",
+          "en": "I booked an appointment on the official website."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Qué documentos llevaste?",
+          "en": "What documents did you take?"
+        }
+      },
+      {
+        "who": {
+          "es": "Amiga",
+          "en": "Friend"
+        },
+        "text": {
+          "es": "Mi pasaporte y una factura con mi dirección.",
+          "en": "My passport and a bill with my address."
+        }
+      },
+      {
+        "who": {
+          "es": "Amiga",
+          "en": "Friend"
+        },
+        "text": {
+          "es": "Luego me enviaron el certificado por email.",
+          "en": "Then they emailed me the certificate."
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "id": "empresa",
+  "order": 16,
+  "icon": "🚀",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Crear tu empresa",
+    "en": "Starting your business"
+  },
+  "unit": {
+    "es": "Emprender",
+    "en": "Business"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "De la idea a tu empresa",
+        "en": "From idea to business"
+      },
+      "body": {
+        "es": "• Puedes trabajar como persona natural comerciante (respondes con todo tu patrimonio) o crear una SAS (Ley 1258 de 2008): puede tener un solo accionista y cada socio responde solo hasta lo que aportó.\n• La SAS se crea con un documento privado inscrito en la Cámara de Comercio. Se puede hacer totalmente en línea en la Ventanilla Única Empresarial (VUE).\n• Orden: pre-RUT → matrícula mercantil en la Cámara → RUT definitivo y NIT de la DIAN.\n• Renueva la matrícula mercantil cada año hasta el 31 de marzo.\n• Régimen Simple de Tributación: para negocios con ingresos del año anterior por debajo de 100.000 UVT; los nuevos lo pueden elegir al inscribirse en el RUT.\n• Si eres independiente, cotizas salud (12,5 %) y pensión (16 %) sobre el 40 % de tus ingresos, como mínimo sobre un salario mínimo.",
+        "en": "• You can trade as an individual merchant (you're liable with all your assets) or set up an SAS (Law 1258 of 2008): it can have a single shareholder and each partner is only liable up to what they put in.\n• An SAS is created with a private document registered at the Chamber of Commerce. It can be done fully online through the Ventanilla Única Empresarial (VUE).\n• Order: pre-RUT → commercial registration at the Chamber → final RUT and NIT from the DIAN.\n• Renew your commercial registration every year by 31 March.\n• Simple Tax Regime (Régimen Simple): for businesses with previous-year income under 100,000 UVT; new businesses can choose it when registering for the RUT.\n• If you're self-employed, you pay health (12.5%) and pension (16%) contributions on 40% of your income, at least on one minimum wage."
+      },
+      "say": {
+        "es": "Una SAS puede tener un solo socio y se crea en línea en la Ventanilla Única Empresarial. Renueva la matrícula antes del treinta y uno de marzo. Y como independiente cotizas sobre el cuarenta por ciento de tus ingresos.",
+        "en": "An SAS can have one shareholder and is set up online through the VUE. Renew your registration before 31 March. And as a self-employed person you contribute on 40% of your income."
+      },
+      "link": {
+        "label": {
+          "es": "Ventanilla Única Empresarial",
+          "en": "Single Business Window (VUE)"
+        },
+        "url": "https://www.vue.gov.co/"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "SAS: puede ser de 1 socio",
+      "en": "SAS: can have 1 shareholder"
+    },
+    {
+      "es": "En línea en la VUE",
+      "en": "Online through the VUE"
+    },
+    {
+      "es": "Renueva antes del 31-mar",
+      "en": "Renew by 31 March"
+    },
+    {
+      "es": "Independiente: 40 % del ingreso",
+      "en": "Self-employed: 40% of income"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero crear una empresa.",
+      "en": "I want to start a company."
+    },
+    {
+      "es": "Voy a ser el único socio.",
+      "en": "I'll be the only shareholder."
+    },
+    {
+      "es": "¿Cuánto cuesta la matrícula?",
+      "en": "How much is the registration?"
+    },
+    {
+      "es": "Necesito facturar a mis clientes.",
+      "en": "I need to invoice my clients."
+    },
+    {
+      "es": "¿Cuándo renuevo la matrícula?",
+      "en": "When do I renew the registration?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Cuántos accionistas necesita como mínimo una SAS?",
+        "en": "How many shareholders does an SAS need at least?"
+      },
+      "options": [
+        {
+          "es": "Uno",
+          "en": "One"
+        },
+        {
+          "es": "Dos",
+          "en": "Two"
+        },
+        {
+          "es": "Cinco",
+          "en": "Five"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Hasta cuándo renuevas la matrícula mercantil cada año?",
+        "en": "By when do you renew your commercial registration each year?"
+      },
+      "options": [
+        {
+          "es": "El 31 de marzo",
+          "en": "31 March"
+        },
+        {
+          "es": "El 31 de diciembre",
+          "en": "31 December"
+        },
+        {
+          "es": "No se renueva",
+          "en": "It isn't renewed"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "Como independiente, ¿sobre qué parte de tus ingresos cotizas?",
+        "en": "As self-employed, on what part of your income do you contribute?"
+      },
+      "options": [
+        {
+          "es": "El 40 %",
+          "en": "40%"
+        },
+        {
+          "es": "El 100 %",
+          "en": "100%"
+        },
+        {
+          "es": "El 5 %",
+          "en": "5%"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la Cámara de Comercio",
+      "en": "At the Chamber of Commerce"
+    },
+    "scene": {
+      "es": "Quieres crear tu SAS.",
+      "en": "You want to set up your SAS."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Quiero crear una empresa.",
+          "en": "I want to start a company."
+        }
+      },
+      {
+        "who": {
+          "es": "Asesora",
+          "en": "Adviser"
+        },
+        "text": {
+          "es": "¿Una SAS? ¿Cuántos socios?",
+          "en": "An SAS? How many shareholders?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Voy a ser el único socio.",
+          "en": "I'll be the only shareholder."
+        }
+      },
+      {
+        "who": {
+          "es": "Asesora",
+          "en": "Adviser"
+        },
+        "text": {
+          "es": "Perfecto. Puede hacerlo en línea en la VUE.",
+          "en": "Perfect. You can do it online through the VUE."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Cuándo renuevo la matrícula?",
+          "en": "When do I renew the registration?"
+        }
+      },
+      {
+        "who": {
+          "es": "Asesora",
+          "en": "Adviser"
+        },
+        "text": {
+          "es": "Cada año, antes del treinta y uno de marzo.",
+          "en": "Every year, by the thirty-first of March."
+        }
+      }
+    ]
+  }
+}

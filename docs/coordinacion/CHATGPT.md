@@ -72,6 +72,26 @@ informe de ChatGPT, con el formato del final.
 - Avisar de algo importante: `academy-plan.js` rechaza cualquier respuesta que no sea exactamente 599, GBP y mensual.
   Si un día cambia el precio, hay que actualizar ese archivo a la vez.
 
+### C6 · Añadir los cursos de trámites al catálogo de VUM (Sites)
+- Claude ha creado en la app BritJoy estos cursos, estilo Duolingo y Busuu (fases, diálogo en la ventanilla, práctica y vídeo).
+  Cada enlace abre el curso directamente en la app:
+
+  | Curso | Enlace |
+  |---|---|
+  | Vivir en España · aprende inglés (14 temas, explicado en español) | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=espana-ingles&lang=es` |
+  | Living in Spain · learn Spanish (explicado en inglés) | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=espana-espanol&lang=en` |
+  | Vivir en Colombia · aprende inglés (16 temas, explicado en español) | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=colombia-ingles&lang=es` |
+  | Living in Colombia · learn Spanish (explicado en inglés) | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=colombia-espanol&lang=en` |
+  | Inmigración, impuestos y empresa en el Reino Unido (11 temas) | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=migrar-uk&lang=es` |
+  | Tu consulado en Londres (9 temas, 9 países) | `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=consulados-londres&lang=es` |
+
+- Datos revisados el 5 de noviembre de 2026, con enlace a la fuente oficial en cada lección.
+- **Qué hacer:** añadir una tarjeta por curso a la plataforma de cursos de vozunidamundo.com (en `/academia/` y en
+  `/en/academy/`) que abra su enlace en una pestaña nueva, con el mismo estilo que las demás. **No cambiar** los 7 cursos
+  actuales ni sus IDs. No hace falta copiar el contenido: está y se actualiza en la app.
+- **Cómo comprobarlo:** abrir cada tarjeta en el móvil y ver que entra directamente en la ruta del curso, en el idioma
+  correcto.
+
 ## Tareas de Claude cuando llegue el informe
 
 - **K1:** con los `price_…` de C2 y el resultado de C4, comprobar en los registros de Supabase que `billing-webhook`
@@ -90,21 +110,7 @@ C2 precios: modo prueba price_… (Academy) · modo real price_… (Academy) · 
 C3 enlaces: 400 = … · 401 = … · 402 = … · 404 = … · portal 14AbJ3… es: … · propuesta: …
 C4 webhooks: aviso a Supabase existe sí/no · eventos: … · test event: 200/400/503 · avisos de la web VUM: …
 C5 modo prueba: cómo activarlo: … · verificación por firma: sí/no/no se pudo comprobar
-C6 España: tarjetas añadidas sí/no · publicado sí/no · comprobado en: …
+C6 cursos de trámites: tarjetas añadidas (cuáles) · publicado sí/no · comprobado en: …
 Pendiente de autorización de Oscar: …
 No se pudo comprobar: …
 ```
-
-### C6 · Añadir «Vivir en España» al catálogo de cursos de VUM (Sites)
-- Claude ha creado en la app BritJoy dos cursos nuevos, de 13 lecciones cada uno, estilo Duolingo y con vídeo:
-  - **Vivir en España · aprende inglés** (explicado en español):
-    `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=espana-ingles&lang=es`
-  - **Living in Spain · learn Spanish** (explicado en inglés):
-    `https://workersvoiceuk-wq.github.io/britjoy-english/?curso=espana-espanol&lang=en`
-- Temas: NIE/TIE/NIF, padrón, arraigo, asilo, Seguridad Social, sanidad, Hacienda, trabajo, ayudas, vivienda y banco,
-  colegio, carné de conducir y emergencias. Datos revisados el 5 de noviembre de 2026.
-- **Qué hacer:** añadir dos tarjetas a la plataforma de cursos de vozunidamundo.com (en `/academia/` y en `/en/academy/`)
-  que abran esos enlaces en una pestaña nueva, con el mismo estilo que las demás. **No cambiar** los 7 cursos actuales
-  ni sus IDs. No hace falta copiar el contenido: está y se actualiza en la app.
-- **Cómo comprobarlo:** abrir cada tarjeta en el móvil y ver que entra directamente en la ruta del curso, en el idioma
-  correcto (con «🇪🇸 EN» o «🇪🇸 ES» arriba).

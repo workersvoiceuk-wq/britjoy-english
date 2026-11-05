@@ -1,0 +1,196 @@
+{
+  "id": "ni-impuestos",
+  "order": 8,
+  "icon": "🧾",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "NI number y doble imposición",
+    "en": "NI number and double taxation"
+  },
+  "unit": {
+    "es": "HMRC",
+    "en": "HMRC"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Impuestos si vienes de fuera",
+        "en": "Tax if you come from abroad"
+      },
+      "body": {
+        "es": "• National Insurance number: se pide en línea en GOV.UK si tienes derecho a trabajar; tarda hasta 4 semanas. Puedes empezar a trabajar antes si demuestras tu derecho a trabajar. Puede que ya lo tengas en tu eVisa.\n• Residencia fiscal: eres residente si pasas 183 días o más en el Reino Unido en el año fiscal (6 de abril a 5 de abril), y en otros casos.\n• Convenios para no pagar dos veces: el Reino Unido tiene convenio con los 9 países (España, México, Chile, Argentina, Colombia, Venezuela, Bolivia, Ecuador y Perú). El de Perú es nuevo y se aplica desde 2026.\n• Desde el 6 de abril de 2025 ya no existe el «remittance basis»: hay un régimen de 4 años para ingresos extranjeros de quien llega tras 10 años fuera.",
+        "en": "• National Insurance number: apply online on GOV.UK if you have the right to work; it takes up to 4 weeks. You can start work before it arrives if you prove your right to work. You may already have one on your eVisa.\n• Tax residence: you are resident if you spend 183 days or more in the UK in the tax year (6 April to 5 April), and in other cases.\n• Agreements to avoid double tax: the UK has a treaty with all 9 countries (Spain, Mexico, Chile, Argentina, Colombia, Venezuela, Bolivia, Ecuador and Peru). Peru's is new and applies from 2026.\n• Since 6 April 2025 the 'remittance basis' no longer exists: there is a 4-year regime for foreign income for people arriving after 10 years abroad."
+      },
+      "say": {
+        "es": "Pide tu National Insurance number en línea. Si pasas ciento ochenta y tres días aquí, eres residente fiscal. Y el Reino Unido tiene convenio con los nueve países para que no pagues dos veces.",
+        "en": "Apply for your National Insurance number online. If you spend 183 days here, you're tax resident. And the UK has treaties with all nine countries so you don't pay twice."
+      },
+      "link": {
+        "label": {
+          "es": "GOV.UK: pedir el NI number",
+          "en": "GOV.UK: apply for an NI number"
+        },
+        "url": "https://www.gov.uk/apply-national-insurance-number"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "NI number: en línea, 4 semanas",
+      "en": "NI number: online, 4 weeks"
+    },
+    {
+      "es": "183 días = residente",
+      "en": "183 days = resident"
+    },
+    {
+      "es": "Convenio con los 9 países",
+      "en": "Treaties with all 9 countries"
+    },
+    {
+      "es": "Año fiscal: 6 de abril",
+      "en": "Tax year: 6 April"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Necesito un número de la Seguridad Social británica.",
+      "en": "I need a National Insurance number."
+    },
+    {
+      "es": "Pagué impuestos en España.",
+      "en": "I paid tax in Spain."
+    },
+    {
+      "es": "¿Pago impuestos dos veces?",
+      "en": "Do I pay tax twice?"
+    },
+    {
+      "es": "Llegué en abril.",
+      "en": "I arrived in April."
+    },
+    {
+      "es": "¿Cuál es mi código fiscal?",
+      "en": "What is my tax code?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "¿Con cuántos de estos 9 países tiene convenio de doble imposición el Reino Unido?",
+        "en": "With how many of these 9 countries does the UK have a tax treaty?"
+      },
+      "options": [
+        {
+          "es": "Con los 9",
+          "en": "All 9"
+        },
+        {
+          "es": "Solo con España",
+          "en": "Only Spain"
+        },
+        {
+          "es": "Con ninguno",
+          "en": "None"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Cuándo empieza el año fiscal británico?",
+        "en": "When does the UK tax year start?"
+      },
+      "options": [
+        {
+          "es": "El 6 de abril",
+          "en": "6 April"
+        },
+        {
+          "es": "El 1 de enero",
+          "en": "1 January"
+        },
+        {
+          "es": "El 1 de septiembre",
+          "en": "1 September"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "Llamada a HMRC",
+      "en": "Calling HMRC"
+    },
+    "scene": {
+      "es": "Preguntas por tus impuestos en dos países.",
+      "en": "You ask about tax in two countries."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "HMRC",
+          "en": "HMRC"
+        },
+        "text": {
+          "es": "¿En qué puedo ayudarle?",
+          "en": "How can I help?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Pagué impuestos en España.",
+          "en": "I paid tax in Spain."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "¿Pago impuestos dos veces?",
+          "en": "Do I pay tax twice?"
+        }
+      },
+      {
+        "who": {
+          "es": "HMRC",
+          "en": "HMRC"
+        },
+        "text": {
+          "es": "No. Hay un convenio entre los dos países.",
+          "en": "No. There's a treaty between the two countries."
+        }
+      },
+      {
+        "who": {
+          "es": "HMRC",
+          "en": "HMRC"
+        },
+        "text": {
+          "es": "¿Cuándo llegó al Reino Unido?",
+          "en": "When did you arrive in the UK?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Llegué en abril.",
+          "en": "I arrived in April."
+        }
+      }
+    ]
+  }
+}

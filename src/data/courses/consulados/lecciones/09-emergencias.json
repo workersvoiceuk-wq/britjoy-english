@@ -1,0 +1,196 @@
+{
+  "id": "emergencias",
+  "order": 9,
+  "icon": "🆘",
+  "checked": "2026-11-05",
+  "title": {
+    "es": "Si te detienen o pierdes todo",
+    "en": "If you're arrested or lose everything"
+  },
+  "unit": {
+    "es": "Emergencias",
+    "en": "Emergencies"
+  },
+  "cards": [
+    {
+      "title": {
+        "es": "Qué hacer en una emergencia",
+        "en": "What to do in an emergency"
+      },
+      "body": {
+        "es": "• Pérdida o robo de documentos: denúncialo a la policía británica (101, o 999 si es una emergencia) y guarda el número de denuncia. Luego ve a tu consulado.\n• Si te detienen: tienes derecho a que la policía avise a tu consulado y a un abogado gratis en comisaría (duty solicitor). Pide un intérprete si no entiendes.\n• Tu consulado puede avisar a tu familia, visitarte y darte una lista de abogados, pero no puede sacarte de la cárcel ni pagar tus gastos.\n• Guarda en el móvil la dirección y el teléfono de tu consulado.",
+        "en": "• Lost or stolen documents: report it to the British police (101, or 999 in an emergency) and keep the crime reference number. Then go to your consulate.\n• If you are arrested: you have the right for the police to tell your consulate and to a free lawyer at the police station (duty solicitor). Ask for an interpreter if you don't understand.\n• Your consulate can tell your family, visit you and give you a list of lawyers, but it cannot get you out of prison or pay your costs.\n• Save your consulate's address and phone number on your phone."
+      },
+      "say": {
+        "es": "Si te detienen, pide un abogado gratis, un intérprete y que avisen a tu consulado. Y si pierdes tus documentos, denúncialo a la policía antes de ir al consulado.",
+        "en": "If you're arrested, ask for a free lawyer, an interpreter and for your consulate to be told. And if you lose your documents, report it to the police before going to the consulate."
+      },
+      "link": {
+        "label": {
+          "es": "GOV.UK: tus derechos si te detienen",
+          "en": "GOV.UK: your rights if arrested"
+        },
+        "url": "https://www.gov.uk/arrested-your-rights"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "es": "Denuncia: 101 o 999",
+      "en": "Report: 101 or 999"
+    },
+    {
+      "es": "Abogado gratis en comisaría",
+      "en": "Free lawyer at the station"
+    },
+    {
+      "es": "Pide intérprete",
+      "en": "Ask for an interpreter"
+    },
+    {
+      "es": "Que avisen a tu consulado",
+      "en": "Ask them to tell your consulate"
+    }
+  ],
+  "phrases": [
+    {
+      "es": "Quiero hablar con un abogado.",
+      "en": "I want to speak to a lawyer."
+    },
+    {
+      "es": "Por favor, avisen a mi consulado.",
+      "en": "Please contact my consulate."
+    },
+    {
+      "es": "Necesito un intérprete.",
+      "en": "I need an interpreter."
+    },
+    {
+      "es": "No entiendo.",
+      "en": "I don't understand."
+    },
+    {
+      "es": "¿Puedo llamar a mi familia?",
+      "en": "Can I call my family?"
+    }
+  ],
+  "quiz": [
+    {
+      "q": {
+        "es": "Te detienen. ¿A qué tienes derecho?",
+        "en": "You're arrested. What are you entitled to?"
+      },
+      "options": [
+        {
+          "es": "Abogado gratis, intérprete y avisar al consulado",
+          "en": "A free lawyer, an interpreter and to tell your consulate"
+        },
+        {
+          "es": "A salir sin más",
+          "en": "To just leave"
+        },
+        {
+          "es": "A nada",
+          "en": "Nothing"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "q": {
+        "es": "¿Puede tu consulado sacarte de la cárcel?",
+        "en": "Can your consulate get you out of prison?"
+      },
+      "options": [
+        {
+          "es": "No",
+          "en": "No"
+        },
+        {
+          "es": "Sí",
+          "en": "Yes"
+        },
+        {
+          "es": "Si pagas",
+          "en": "If you pay"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "dialogue": {
+    "title": {
+      "es": "En la comisaría",
+      "en": "At the police station"
+    },
+    "scene": {
+      "es": "Te han detenido por un malentendido.",
+      "en": "You've been arrested over a misunderstanding."
+    },
+    "lines": [
+      {
+        "who": {
+          "es": "Policía",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "¿Entiende por qué está aquí?",
+          "en": "Do you understand why you are here?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "No entiendo. Necesito un intérprete.",
+          "en": "I don't understand. I need an interpreter."
+        }
+      },
+      {
+        "who": {
+          "es": "Policía",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "De acuerdo. ¿Quiere un abogado?",
+          "en": "All right. Do you want a lawyer?"
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Sí, quiero hablar con un abogado.",
+          "en": "Yes, I want to speak to a lawyer."
+        }
+      },
+      {
+        "who": {
+          "es": "Tú",
+          "en": "You"
+        },
+        "me": true,
+        "text": {
+          "es": "Por favor, avisen a mi consulado.",
+          "en": "Please contact my consulate."
+        }
+      },
+      {
+        "who": {
+          "es": "Policía",
+          "en": "Officer"
+        },
+        "text": {
+          "es": "Lo haremos ahora mismo.",
+          "en": "We'll do it right away."
+        }
+      }
+    ]
+  }
+}
