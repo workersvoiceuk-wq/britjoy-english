@@ -1,0 +1,489 @@
+{
+ "schemaVersion": 1,
+ "adapter": "1.0.0",
+ "courses": [
+  {
+   "id": "ingles-a1-c2",
+   "title": "Inglés general: del A1 al C2",
+   "level": "A1 → C2",
+   "category": "ingles",
+   "levels": [
+    {
+     "id": "A1",
+     "name": "Principiante",
+     "lessons": [
+      "a1-u1-l1",
+      "a1-u1-l2",
+      "a1-u1-l3",
+      "a1-u1-l4",
+      "a1-u1-l5",
+      "a1-u2-l1",
+      "a1-u2-l2",
+      "a1-u2-l3",
+      "a1-u2-l4",
+      "a1-u2-l5"
+     ]
+    },
+    {
+     "id": "A2",
+     "name": "Elemental",
+     "lessons": [
+      "a2-u1-l1",
+      "a2-u1-l2"
+     ]
+    },
+    {
+     "id": "B1",
+     "name": "Intermedio",
+     "lessons": [
+      "b1-u1-l1",
+      "b1-u1-l2"
+     ]
+    },
+    {
+     "id": "B2",
+     "name": "Intermedio alto",
+     "lessons": [
+      "b2-u1-l1",
+      "b2-u1-l2"
+     ]
+    },
+    {
+     "id": "C1",
+     "name": "Avanzado",
+     "lessons": [
+      "c1-u1-l1",
+      "c1-u1-l2"
+     ]
+    },
+    {
+     "id": "C2",
+     "name": "Maestría",
+     "lessons": [
+      "c2-u1-l1",
+      "c2-u1-l2"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dia-a-dia",
+   "title": "Inglés para el día a día",
+   "level": "A1 → B1",
+   "category": "situaciones",
+   "levels": [
+    {
+     "id": "DIA",
+     "name": "Inglés para el día a día",
+     "lessons": [
+      "dia-01-presentaciones",
+      "dia-02-compras",
+      "dia-03-transporte",
+      "dia-04-vivienda",
+      "dia-05-salud",
+      "dia-06-empleo",
+      "dia-07-trabajo",
+      "dia-08-llamadas",
+      "dia-09-colegio",
+      "dia-10-servicios",
+      "dia-11-social",
+      "dia-12-opiniones"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "turistas",
+   "title": "Inglés para turistas: tus primeros días en Inglaterra",
+   "level": "A1 → B1",
+   "category": "situaciones",
+   "levels": [
+    {
+     "id": "TUR",
+     "name": "Inglés para turistas",
+     "lessons": [
+      "tur-01-antes-de-viajar",
+      "tur-02-aeropuerto",
+      "tur-03-frontera",
+      "tur-04-al-hotel",
+      "tur-05-metro",
+      "tur-06-alojamiento",
+      "tur-07-restaurantes",
+      "tur-08-compras",
+      "tur-09a-museos",
+      "tur-09b-entradas",
+      "tur-10-salud",
+      "tur-11-costumbres",
+      "tur-12-regreso"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vivir-en-uk",
+   "title": "Vivir en el Reino Unido",
+   "level": "Todos los niveles",
+   "category": "vida",
+   "levels": [
+    {
+     "id": "UK",
+     "name": "Vivir en UK",
+     "lessons": [
+      "uk-transporte-l1",
+      "uk-transporte-l2",
+      "uk-transporte-l3",
+      "uk-salud-l1",
+      "uk-salud-l2",
+      "uk-salud-l3",
+      "uk-salud-l4",
+      "uk-emergencias-l1",
+      "uk-dentista-l1",
+      "uk-uc-l1",
+      "uk-uc-l2",
+      "uk-uc-l3",
+      "uk-ct-l1",
+      "uk-ct-l2",
+      "uk-ct-l3",
+      "uk-alquiler-l1",
+      "uk-alquiler-l2",
+      "uk-facturas-l1",
+      "uk-banco-l1",
+      "uk-banco-l2",
+      "uk-trabajo-l1",
+      "uk-trabajo-l2",
+      "uk-impuestos-l1",
+      "uk-impuestos-l2",
+      "uk-familia-l1",
+      "uk-familia-l2",
+      "uk-colegios-l1",
+      "uk-consumo-l1",
+      "uk-conducir-l1",
+      "uk-barrio-l1",
+      "uk-vida-l1",
+      "uk-vida-l2",
+      "uk-vida-l3",
+      "uk-vida-l4"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tu-council",
+   "title": "Tu council y tu ciudad en el Reino Unido",
+   "level": "Todos los niveles",
+   "category": "vida",
+   "levels": [
+    {
+     "id": "UKC-EN",
+     "name": "Ciudades del Reino Unido",
+     "lessons": [
+      "ukc-en-londres",
+      "ukc-en-manchester",
+      "ukc-en-birmingham",
+      "ukc-en-liverpool",
+      "ukc-en-leeds",
+      "ukc-en-bristol",
+      "ukc-en-glasgow",
+      "ukc-en-edimburgo",
+      "ukc-en-cardiff",
+      "ukc-en-belfast",
+      "ukc-en-sheffield",
+      "ukc-en-newcastle",
+      "ukc-en-nottingham",
+      "ukc-en-leicester"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "migrar-uk",
+   "title": "Inmigración, impuestos y empresa en el Reino Unido",
+   "level": "A1 → B1",
+   "category": "vida",
+   "levels": [
+    {
+     "id": "MUK-EN",
+     "name": "Inmigración, impuestos y empresa en el Reino Unido",
+     "lessons": [
+      "muk-en-eta-visado",
+      "muk-en-euss",
+      "muk-en-evisa",
+      "muk-en-visados-trabajo",
+      "muk-en-estudiar-familia",
+      "muk-en-residencia",
+      "muk-en-asilo-uk",
+      "muk-en-ni-impuestos",
+      "muk-en-sole-trader",
+      "muk-en-limited-company",
+      "muk-en-asesoria"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "consulados-londres",
+   "title": "Tu consulado en Londres",
+   "level": "A1 → B1",
+   "category": "vida",
+   "levels": [
+    {
+     "id": "CON-EN",
+     "name": "Tu consulado en Londres",
+     "lessons": [
+      "con-en-como-funciona",
+      "con-en-espana-cita",
+      "con-en-espana-pasaporte",
+      "con-en-espana-bebe-voto",
+      "con-en-colombia-atencion",
+      "con-en-colombia-tramites",
+      "con-en-otros-paises",
+      "con-en-apostilla-uk",
+      "con-en-emergencias"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "espana-ingles",
+   "title": "Vivir en España · aprende inglés",
+   "level": "A1 → B1",
+   "category": "espana",
+   "levels": [
+    {
+     "id": "ES-EN",
+     "name": "Vivir en España · aprende inglés",
+     "lessons": [
+      "es-en-nie",
+      "es-en-padron",
+      "es-en-arraigo",
+      "es-en-asilo",
+      "es-en-seguridad-social",
+      "es-en-sanidad",
+      "es-en-hacienda",
+      "es-en-trabajo",
+      "es-en-ayudas",
+      "es-en-vivienda",
+      "es-en-colegio",
+      "es-en-conducir",
+      "es-en-emergencias",
+      "es-en-empresa"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "espana-espanol",
+   "title": "Living in Spain · learn Spanish",
+   "level": "A1 → B1",
+   "category": "espana",
+   "levels": [
+    {
+     "id": "ES-ES",
+     "name": "Living in Spain · learn Spanish",
+     "lessons": [
+      "es-es-nie",
+      "es-es-padron",
+      "es-es-arraigo",
+      "es-es-asilo",
+      "es-es-seguridad-social",
+      "es-es-sanidad",
+      "es-es-hacienda",
+      "es-es-trabajo",
+      "es-es-ayudas",
+      "es-es-vivienda",
+      "es-es-colegio",
+      "es-es-conducir",
+      "es-es-emergencias",
+      "es-es-empresa"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "colombia-ingles",
+   "title": "Vivir en Colombia · aprende inglés",
+   "level": "A1 → B1",
+   "category": "colombia",
+   "levels": [
+    {
+     "id": "CO-EN",
+     "name": "Vivir en Colombia · aprende inglés",
+     "lessons": [
+      "co-en-cedula",
+      "co-en-tutela",
+      "co-en-peticion",
+      "co-en-salud",
+      "co-en-trabajo",
+      "co-en-pension",
+      "co-en-dian",
+      "co-en-transito",
+      "co-en-servicios-publicos",
+      "co-en-arriendo",
+      "co-en-consumidor",
+      "co-en-justicia",
+      "co-en-migrantes",
+      "co-en-ayudas-educacion",
+      "co-en-emergencias",
+      "co-en-empresa"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "colombia-espanol",
+   "title": "Living in Colombia · learn Spanish",
+   "level": "A1 → B1",
+   "category": "colombia",
+   "levels": [
+    {
+     "id": "CO-ES",
+     "name": "Living in Colombia · learn Spanish",
+     "lessons": [
+      "co-es-cedula",
+      "co-es-tutela",
+      "co-es-peticion",
+      "co-es-salud",
+      "co-es-trabajo",
+      "co-es-pension",
+      "co-es-dian",
+      "co-es-transito",
+      "co-es-servicios-publicos",
+      "co-es-arriendo",
+      "co-es-consumidor",
+      "co-es-justicia",
+      "co-es-migrantes",
+      "co-es-ayudas-educacion",
+      "co-es-emergencias",
+      "co-es-empresa"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ciudades-espana",
+   "title": "Ciudades de España · aprende inglés",
+   "level": "A1 → B1",
+   "category": "espana",
+   "levels": [
+    {
+     "id": "ESC-EN",
+     "name": "Ciudades de España · aprende inglés",
+     "lessons": [
+      "esc-en-madrid",
+      "esc-en-barcelona",
+      "esc-en-valencia",
+      "esc-en-sevilla",
+      "esc-en-malaga",
+      "esc-en-bilbao",
+      "esc-en-zaragoza",
+      "esc-en-murcia",
+      "esc-en-palma",
+      "esc-en-alicante",
+      "esc-en-las-palmas"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ciudades-espana-espanol",
+   "title": "Spanish cities · learn Spanish",
+   "level": "A1 → B1",
+   "category": "espana",
+   "levels": [
+    {
+     "id": "ESC-ES",
+     "name": "Spanish cities · learn Spanish",
+     "lessons": [
+      "esc-es-madrid",
+      "esc-es-barcelona",
+      "esc-es-valencia",
+      "esc-es-sevilla",
+      "esc-es-malaga",
+      "esc-es-bilbao",
+      "esc-es-zaragoza",
+      "esc-es-murcia",
+      "esc-es-palma",
+      "esc-es-alicante",
+      "esc-es-las-palmas"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ciudades-colombia",
+   "title": "Ciudades de Colombia · aprende inglés",
+   "level": "A1 → B1",
+   "category": "colombia",
+   "levels": [
+    {
+     "id": "COC-EN",
+     "name": "Ciudades de Colombia · aprende inglés",
+     "lessons": [
+      "coc-en-bogota",
+      "coc-en-medellin",
+      "coc-en-cali",
+      "coc-en-barranquilla",
+      "coc-en-cartagena",
+      "coc-en-bucaramanga",
+      "coc-en-pereira",
+      "coc-en-santa-marta",
+      "coc-en-cucuta",
+      "coc-en-ibague",
+      "coc-en-villavicencio"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ciudades-colombia-espanol",
+   "title": "Colombian cities · learn Spanish",
+   "level": "A1 → B1",
+   "category": "colombia",
+   "levels": [
+    {
+     "id": "COC-ES",
+     "name": "Colombian cities · learn Spanish",
+     "lessons": [
+      "coc-es-bogota",
+      "coc-es-medellin",
+      "coc-es-cali",
+      "coc-es-barranquilla",
+      "coc-es-cartagena",
+      "coc-es-bucaramanga",
+      "coc-es-pereira",
+      "coc-es-santa-marta",
+      "coc-es-cucuta",
+      "coc-es-ibague",
+      "coc-es-villavicencio"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ia-con-britjoy",
+   "title": "IA con Britjoy",
+   "level": "Principiante",
+   "category": "ia",
+   "levels": [
+    {
+     "id": "IA",
+     "name": "IA con Britjoy",
+     "lessons": [
+      "ia-01-patterns",
+      "ia-02-train",
+      "ia-03-neuron",
+      "ia-04-validation",
+      "ia-05-bias",
+      "ia-06-language",
+      "ia-07-modo-ia"
+     ]
+    }
+   ]
+  }
+ ],
+ "demo": {
+  "conceptId": "ingles-morning-greeting",
+  "status": "draft",
+  "playable": false
+ }
+}
