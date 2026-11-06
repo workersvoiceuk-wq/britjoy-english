@@ -59,7 +59,7 @@ test('a full A1 lesson can be completed and progress is saved', async ({ page })
   await expect(page.getByRole('heading', { name: '¿Qué cambió en tu idea?', exact: true })).toBeVisible();
   await expect(page.getByText(prediction, { exact: true })).toBeVisible();
   const beforeReflection = await page.evaluate(() => JSON.parse(localStorage.getItem('britjoy-english-progress-v1')!));
-  expect(beforeReflection.state.levels.A1.completedLessons['a1-u1-l1']).toBeUndefined();
+  expect(beforeReflection.state.levels.A1?.completedLessons?.['a1-u1-l1']).toBeUndefined();
   await page.locator('#lesson-reflection').fill('En otra tienda también respondería al saludo.');
   await page.locator('#lesson-reflection').press('Enter');
   await expect(page.getByRole('button', { name: 'Terminar y ver resultado', exact: true })).toBeVisible();
