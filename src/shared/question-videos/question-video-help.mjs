@@ -1107,11 +1107,16 @@ export const QUESTION_VIDEO_MANIFEST = Object.freeze({
   ]),
 });
 
-function countryMatches(mappingCountry, conceptCountry, queryCountry) {
+// Existing UK-specific courses keep their remit when no explicit country is selected.
+// The explanation language and the avatar do not select a jurisdiction.
+const DEFAULT_CONTENT_COUNTRY = Object.freeze({conduccion: 'GB', britjoy: 'GB'});
+
+function countryMatches(mappingCountry, conceptCountry, queryCountry, courseId = '') {
   const requiredCountry =
     (typeof mappingCountry === 'string' && mappingCountry.trim() ? mappingCountry.trim().toUpperCase() : null) ||
     (typeof conceptCountry === 'string' && conceptCountry.trim() ? conceptCountry.trim().toUpperCase() : null);
-  const qCountry = typeof queryCountry === 'string' && queryCountry.trim() ? queryCountry.trim().toUpperCase() : null;
+  const qCountry = (typeof queryCountry === 'string' && queryCountry.trim() ? queryCountry.trim().toUpperCase() : null)
+    || DEFAULT_CONTENT_COUNTRY[courseId] || null;
   if (requiredCountry && qCountry) return requiredCountry === qCountry;
   return true;
 }
@@ -1138,7 +1143,7 @@ export function resolveQuestionVideoHelp(query = {}, manifest = QUESTION_VIDEO_M
         if (
           mapping.courseId === effectiveCourseId &&
           mapping.questionId === qId &&
-          countryMatches(mapping.country, concept.country, query.country)
+          countryMatches(mapping.country, concept.country, query.country, effectiveCourseId)
         ) {
           matchedConcept = concept;
           matchedMapping = mapping;
@@ -1158,7 +1163,7 @@ export function resolveQuestionVideoHelp(query = {}, manifest = QUESTION_VIDEO_M
         if (
           mapping.courseId === effectiveCourseId &&
           mapping.lessonId === lId &&
-          countryMatches(mapping.country, concept.country, query.country)
+          countryMatches(mapping.country, concept.country, query.country, effectiveCourseId)
         ) {
           matchedConcept = concept;
           matchedMapping = mapping;
