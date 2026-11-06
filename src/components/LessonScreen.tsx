@@ -33,6 +33,28 @@ interface Props {
 
 const wait = (ms: number) => new Promise((r) => window.setTimeout(r, ms));
 
+const NATIVE_ENTER_TAGS = new Set(['BUTTON', 'A', 'SUMMARY', 'SELECT', 'VIDEO', 'AUDIO']);
+
+export function lessonProgressStep(index: number, hasResult: boolean, isExplain: boolean): number {
+  return index + (hasResult || isExplain ? 1 : 0);
+}
+
+export function shouldHandleLessonEnterKey(key: string, target: EventTarget | null): boolean {
+  if (key !== 'Enter') return false;
+  if (!target || typeof target !== 'object') return true;
+  const el = target as {
+    tagName?: unknown;
+    closest?: (selector: string) => unknown;
+  };
+  if (typeof el.tagName === 'string' && NATIVE_ENTER_TAGS.has(el.tagName.toUpperCase())) {
+    return false;
+  }
+  if (typeof el.closest === 'function' && el.closest('button, a, summary, select, video, audio')) {
+    return false;
+  }
+  return true;
+}
+
 export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
   const copy = copyFor(level.instructionLanguage, level.targetLanguage);
   // The language being learnt sets the voice of phrases, listening and speaking exercises.
@@ -57,7 +79,8 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
   const sections = lesson.exercises.reduce<string[]>((acc, e) => (e.section && acc[acc.length - 1] !== e.section ? [...acc, e.section] : acc), []);
   const currentSection = sections.lastIndexOf(exercise.section ?? '');
   const total = lesson.exercises.length;
-  const progress = ((index + (result || isExplain ? 1 : 0)) / total) * 100;
+  const completedSteps = lessonProgressStep(index, Boolean(result), isExplain);
+  const progress = (completedSteps / total) * 100;
   const expression: BritjoyExpression = result ? (result.correct ? 'celebrating' : 'sad') : 'neutral';
 
   // Britjoy introduces the lesson and explains each activity aloud.
@@ -141,9 +164,8 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
   // Enter = check / continue.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Enter') return;
-      // A focused button already handles Enter as a click.
-      if (e.target instanceof HTMLElement && e.target.tagName === 'BUTTON') return;
+      // Focused buttons, links and media controls already handle Enter themselves.
+      if (!shouldHandleLessonEnterKey(e.key, e.target)) return;
       if (result || isExplain) next();
       else check();
     };
@@ -178,7 +200,7 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
             aria-label={lesson.title}
             aria-valuemin={0}
             aria-valuemax={total}
-            aria-valuenow={index + (result ? 1 : 0)}
+            aria-valuenow={completedSteps}
           >
             <div className="h-full rounded-full bg-accent transition-all duration-300" style={{ width: `${progress}%` }} />
           </div>

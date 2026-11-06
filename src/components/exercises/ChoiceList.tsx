@@ -29,6 +29,7 @@ export function ChoiceList({ options, answer, locked, onChoose, compact }: Props
           <button
             key={option}
             disabled={locked}
+            aria-pressed={isSelected}
             onClick={() => {
               setSelected(option);
               onChoose(option);
@@ -41,6 +42,11 @@ export function ChoiceList({ options, answer, locked, onChoose, compact }: Props
               </span>
             )}
             <span>{option}</span>
+            {locked && (isAnswer || isSelected) && (
+              <span aria-hidden className="ms-auto font-black">
+                {isAnswer ? '✓' : '✗'}
+              </span>
+            )}
           </button>
         );
       })}

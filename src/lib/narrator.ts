@@ -31,3 +31,23 @@ export function hush(): void {
   stopSpeaking();
   useVoice.setState({ speaking: false });
 }
+
+export interface VisibilityTarget {
+  document?: {
+    hidden?: boolean;
+    addEventListener?: (type: string, listener: () => void) => void;
+  };
+  addEventListener?: (type: string, listener: () => void) => void;
+}
+
+export function bindNarratorVisibilityStop(win: VisibilityTarget | undefined): void {
+  if (!win) return;
+  win.document?.addEventListener?.('visibilitychange', () => {
+    if (win.document?.hidden) hush();
+  });
+  win.addEventListener?.('pagehide', () => hush());
+}
+
+if (typeof window !== 'undefined') {
+  bindNarratorVisibilityStop(window);
+}

@@ -3,12 +3,12 @@
  * design): a weekly plan with an estimated finishing date, and spaced-repetition
  * review of the words from completed lessons.
  */
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ALL_LEVELS, getLevel } from '../data/courses/en-es';
 import { useProgressStore } from '../store/useProgressStore';
 import { dueItems, question, strengthOf, vocabularyOf, type ReviewItem } from '../logic/review';
 import { estimateFinish, weekStatus, type PlanGoal, type StudyPlan } from '../logic/plan';
-import { speak } from '../lib/speech';
+import { speak, stopSpeaking } from '../lib/speech';
 import { sfx } from '../lib/sound';
 import { useT } from '../i18n';
 import { Britjoy } from './Britjoy';
@@ -225,6 +225,7 @@ export function ReviewScreen() {
   const [picked, setPicked] = useState<string | null>(null);
   const [ok, setOk] = useState(0);
   const q = useMemo(() => (session[index] ? question(session[index], vocab) : null), [session, index, vocab]);
+  useEffect(() => () => stopSpeaking(), []);
 
   if (!q) {
     return (
@@ -233,7 +234,13 @@ export function ReviewScreen() {
         <p className="text-xl font-black text-navy">
           {session.length ? t('review.finished', { ok, total: session.length }) : vocab.length ? t('review.allDone') : t('review.none')}
         </p>
-        <button onClick={() => setTab('home')} className="press w-full rounded-2xl border-b-4 border-navy-dark bg-navy py-3 font-black text-white">
+        <button
+          onClick={() => {
+            stopSpeaking();
+            setTab('home');
+          }}
+          className="press w-full rounded-2xl border-b-4 border-navy-dark bg-navy py-3 font-black text-white"
+        >
           {t('review.next')}
         </button>
       </div>
@@ -241,10 +248,18 @@ export function ReviewScreen() {
   }
 
   const correct = picked === q.answer;
+  const completedSteps = index + (picked !== null ? 1 : 0);
   return (
     <div className="mx-auto max-w-xl px-4 pb-32 pt-5">
-      <div className="mb-4 h-3 overflow-hidden rounded-full bg-ink-line" role="progressbar" aria-label={t('review.title')} aria-valuemin={0} aria-valuemax={session.length} aria-valuenow={index}>
-        <div className="h-full rounded-full bg-navy transition-all" style={{ width: `${(index / session.length) * 100}%` }} />
+      <div
+        className="mb-4 h-3 overflow-hidden rounded-full bg-ink-line"
+        role="progressbar"
+        aria-label={t('review.title')}
+        aria-valuemin={0}
+        aria-valuemax={session.length}
+        aria-valuenow={completedSteps}
+      >
+        <div className="h-full rounded-full bg-navy transition-all" style={{ width: `${(completedSteps / session.length) * 100}%` }} />
       </div>
       <p className="text-sm font-black uppercase tracking-wide text-royal">{t('review.question')}</p>
       <h2 className="mt-1 text-2xl font-black text-ink">{q.prompt}</h2>
@@ -253,6 +268,7 @@ export function ReviewScreen() {
           <button
             key={o}
             disabled={picked !== null}
+            aria-pressed={picked === o}
             onClick={() => {
               setPicked(o);
               const right = o === q.answer;
@@ -263,10 +279,15 @@ export function ReviewScreen() {
               answerReview(session[index].id, right);
               void speak(q.answer);
             }}
-            className={`tile w-full ${picked === null ? '' : o === q.answer ? 'tile-correct' : o === picked ? 'tile-wrong' : 'opacity-60'}`}
+            className={`tile flex w-full items-center justify-between gap-2 ${picked === null ? '' : o === q.answer ? 'tile-correct' : o === picked ? 'tile-wrong' : 'opacity-60'}`}
             lang="en"
           >
-            {o}
+            <span>{o}</span>
+            {picked !== null && (o === q.answer || o === picked) && (
+              <span aria-hidden className="font-black">
+                {o === q.answer ? '✓' : '✗'}
+              </span>
+            )}
           </button>
         ))}
       </div>
@@ -279,6 +300,7 @@ export function ReviewScreen() {
             </button>
             <button
               onClick={() => {
+                stopSpeaking();
                 setPicked(null);
                 setIndex((i) => i + 1);
               }}
