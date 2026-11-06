@@ -16,6 +16,14 @@ import { Button } from './Button';
 import { ExerciseView } from './exercises';
 import { QuestionVideoHelp } from './QuestionVideoHelp';
 
+/**
+ * Practice first: a question's explanation can contain its answer, so it is offered on explain/dialogue
+ * cards (learning content) and on exercises only once they have been checked.
+ */
+export function shouldOfferQuestionHelp(isExplain: boolean, answered: boolean): boolean {
+  return isExplain || answered;
+}
+
 export interface LessonOutcome {
   passed: boolean;
   xp: number;
@@ -249,15 +257,16 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
           copy={copy}
           onResponse={setResponse}
         />
-        <QuestionVideoHelp
-          key={`${lesson.id}-${index}`}
+        {shouldOfferQuestionHelp(isExplain, result !== null) && <QuestionVideoHelp
+          // Own key: sharing ExerciseView's key made React leave stale exercises in the DOM.
+          key={`qvh-${lesson.id}-${index}`}
           lessonId={lesson.id}
           questionId={isExplain ? undefined : `${lesson.id}:${index}`}
           locale={level.instructionLanguage}
           targetLanguage={level.targetLanguage || 'en'}
           track={level.track}
           onStopAudio={hush}
-        />
+        />}
       </main>
 
       <footer

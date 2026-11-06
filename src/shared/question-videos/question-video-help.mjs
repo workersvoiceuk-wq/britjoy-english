@@ -102,17 +102,18 @@ const UI_TEXT = Object.freeze({
     fr: 'Micro-leçon BritJoy · Guide pas à pas',
     it: 'Micro-lezione BritJoy · Guida passo passo',
   },
+  // Learner-facing: no internal workflow words («editorial», «ready»). Non-ES/EN wording needs native review.
   statusPendingNote: {
-    es: 'Explicación textual y ejemplo visual activos. El vídeo MP4 se mostrará automáticamente cuando su estado editorial pase a aprobado (ready).',
-    en: 'Text explanation and visual example are active. The MP4 video will appear automatically once its editorial status is marked ready.',
-    pl: 'Wyjaśnienie tekstowe i przykład wizualny są aktywne. Wideo MP4 pojawi się po zatwierdzeniu (ready).',
-    ro: 'Explicația textuală și exemplul vizual sunt active. Videoclipul MP4 va apărea când statutul editorial devine aprobat (ready).',
-    pt: 'Explicação textual e exemplo visual ativos. O vídeo MP4 será exibido quando o estado editorial passar a aprovado (ready).',
-    ar: 'الشرح النصي والمثال المرئي متاحان. سيظهر الفيديو عند اعتماد حالته التحريرية (ready).',
-    ur: 'متنی وضاحت اور بصری مثال فعال ہیں۔ ویڈیو منظوری (ready) کے بعد ظاہر ہوگی۔',
-    'pa-Guru': 'ਲਿਖਤੀ ਵਿਆਖਿਆ ਅਤੇ ਵਿਜ਼ੂਅਲ ਉਦਾਹਰਨ ਸਰਗਰਮ ਹਨ। ਵੀਡੀਓ ਮਨਜ਼ੂਰੀ (ready) ਤੋਂ ਬਾਅਦ ਦਿਖਾਈ ਦੇਵੇਗੀ।',
-    fr: 'Explication textuelle et exemple visuel actifs. La vidéo MP4 s’affichera dès que son statut éditorial passera à prêt (ready).',
-    it: 'Spiegazione testuale ed esempio visivo attivi. Il video MP4 verrà mostrato quando lo stato editoriale sarà approvato (ready).',
+    es: 'Vídeo en preparación. Mientras tanto, tienes la explicación escrita y el ejemplo visual.',
+    en: 'Video in preparation. Meanwhile, here are the written explanation and the visual example.',
+    pl: 'Wideo jest w przygotowaniu. Tymczasem masz wyjaśnienie tekstowe i przykład wizualny.',
+    ro: 'Videoclipul este în pregătire. Între timp, ai explicația textuală și exemplul vizual.',
+    pt: 'Vídeo em preparação. Entretanto, tens a explicação escrita e o exemplo visual.',
+    ar: 'الفيديو قيد الإعداد. في الأثناء، يتوفر لك الشرح النصي والمثال المرئي.',
+    ur: 'ویڈیو تیاری میں ہے۔ اس دوران متنی وضاحت اور بصری مثال دستیاب ہیں۔',
+    'pa-Guru': 'ਵੀਡੀਓ ਤਿਆਰ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ। ਇਸ ਦੌਰਾਨ ਲਿਖਤੀ ਵਿਆਖਿਆ ਅਤੇ ਵਿਜ਼ੂਅਲ ਉਦਾਹਰਨ ਉਪਲਬਧ ਹਨ।',
+    fr: 'Vidéo en préparation. En attendant, voici l’explication écrite et l’exemple visuel.',
+    it: 'Video in preparazione. Nel frattempo, hai la spiegazione scritta e l’esempio visivo.',
   },
   videoFallbackNote: {
     es: 'El archivo de vídeo no está disponible sin conexión o no pudo cargarse. Conservamos la explicación textual, el ejemplo visual y la transcripción completa.',
@@ -264,13 +265,16 @@ export function inferCourseIdFromLesson({ courseId, lessonId, track, targetLangu
   if (lid === 'uk-facturas-l1' || lid.startsWith('electricidad')) return 'electricidad';
   if (lid.startsWith('ia-') || track === 'ai') return 'ia';
   if (lid.startsWith('uk-vida') || track === 'life' || track === 'migrar-uk' || track === 'ciudades') return 'britjoy';
+  // A known target language wins over ID/track prefixes: BritJoy «dia-…» lessons teach ENGLISH to
+  // Spanish speakers and must not be treated as the Spanish course.
   if (
     targetLanguage === 'es' ||
-    track === 'spain' ||
-    track === 'colombia' ||
-    track === 'consulados' ||
-    lid.startsWith('dia-') ||
-    lid.startsWith('es-')
+    (targetLanguage !== 'en' &&
+      (track === 'spain' ||
+        track === 'colombia' ||
+        track === 'consulados' ||
+        lid.startsWith('dia-') ||
+        lid.startsWith('es-')))
   ) {
     return 'espanol';
   }
@@ -389,18 +393,6 @@ export const QUESTION_VIDEO_MANIFEST = Object.freeze({
           lessonId: 'hello',
           questionId: 'hello',
           note: 'Primary mapping: ingles/hello (Empieza el día con un saludo natural / Good morning, my name is Ana).',
-        },
-        {
-          courseId: 'ingles',
-          lessonId: 'a1-u1-l1',
-          questionId: 'a1-u1-l1',
-          note: 'BritJoy English A1 Unit 1 Lesson 1 (Hola y adiós / Good morning).',
-        },
-        {
-          courseId: 'ingles',
-          lessonId: 'a1-u1-l1',
-          questionId: 'a1-u1-l1:0',
-          note: 'BritJoy English A1 Unit 1 Lesson 1 explain slide.',
         },
         {
           courseId: 'ingles',
@@ -531,27 +523,9 @@ export const QUESTION_VIDEO_MANIFEST = Object.freeze({
         },
         {
           courseId: 'espanol',
-          lessonId: 'name',
-          questionId: 'name',
-          note: 'Guided lesson mapping: espanol/name (Así te llamas / Me llamo... Soy...).',
-        },
-        {
-          courseId: 'espanol',
           lessonId: 'origin',
           questionId: 'origin',
           note: 'Guided lesson mapping: espanol/origin (Cuenta de dónde eres / Soy de...).',
-        },
-        {
-          courseId: 'espanol',
-          lessonId: 'a1-u1-l3',
-          questionId: 'a1-u1-l3',
-          note: 'BritJoy Spanish track lesson: Me llamo… / Soy…',
-        },
-        {
-          courseId: 'espanol',
-          lessonId: 'dia-01-presentaciones',
-          questionId: 'dia-01-presentaciones',
-          note: 'BritJoy daily Spanish story lesson: Hola, soy Ana.',
         },
       ],
     },
@@ -661,39 +635,15 @@ export const QUESTION_VIDEO_MANIFEST = Object.freeze({
         },
         {
           courseId: 'britjoy',
-          questionId: 'own-values-02',
-          country: 'GB',
-          note: 'Related fundamental principles question: Which of these is a fundamental principle of British life?',
-        },
-        {
-          courseId: 'britjoy',
           questionId: 'own-values-06',
           country: 'GB',
           note: 'Related values question on freedom of speech and respecting rights within the law.',
         },
         {
           courseId: 'britjoy',
-          questionId: 'own-values-07',
-          country: 'GB',
-          note: 'Related values question on tolerance of different faiths and beliefs.',
-        },
-        {
-          courseId: 'britjoy',
           questionId: 'own-values-08',
           country: 'GB',
           note: 'Related values question on how the rule of law applies.',
-        },
-        {
-          courseId: 'britjoy',
-          questionId: 'own-expanded-094',
-          country: 'GB',
-          note: 'Related expanded bank question on fundamental principles of British life.',
-        },
-        {
-          courseId: 'britjoy',
-          questionId: 'own-expanded-100',
-          country: 'GB',
-          note: 'Related expanded bank question on freedom to hold a faith or no faith.',
         },
         {
           courseId: 'britjoy',
@@ -708,13 +658,6 @@ export const QUESTION_VIDEO_MANIFEST = Object.freeze({
           questionId: 'values-05',
           country: 'GB',
           note: 'Guided lesson mapping: britjoy/values-05 (Aplicar los valores).',
-        },
-        {
-          courseId: 'britjoy',
-          lessonId: 'uk-vida-l1',
-          questionId: 'uk-vida-l1',
-          country: 'GB',
-          note: 'BritJoy Vivir en UK lesson: El examen Life in the UK.',
         },
       ],
     },
@@ -831,24 +774,6 @@ export const QUESTION_VIDEO_MANIFEST = Object.freeze({
           questionId: 'vum-ia-008',
           note: 'Related instruction design question: ¿Qué conviene definir al pedir una tarea a un agente?',
         },
-        {
-          courseId: 'ia',
-          lessonId: 'language',
-          questionId: 'language',
-          note: 'Guided lesson mapping: ia/language (Una continuación no es una certeza).',
-        },
-        {
-          courseId: 'ia',
-          lessonId: 'ia-06-language',
-          questionId: 'ia-06-language',
-          note: 'BritJoy AI track lesson: Modelos de lenguaje y prompts.',
-        },
-        {
-          courseId: 'ia',
-          lessonId: 'ia-07-modo-ia',
-          questionId: 'ia-07-modo-ia',
-          note: 'BritJoy AI track lesson: Cómo preguntar y verificar en modo IA.',
-        },
       ],
     },
     {
@@ -954,27 +879,6 @@ export const QUESTION_VIDEO_MANIFEST = Object.freeze({
           questionId: 'vum-conduccion-001',
           country: 'GB',
           note: 'Primary mapping: conduccion/vum-conduccion-001 (En Gran Bretaña, ¿qué haces ante un semáforo rojo que regula tu paso? -> Detenerte antes de invadir el cruce).',
-        },
-        {
-          courseId: 'conduccion',
-          lessonId: 'rules',
-          questionId: 'rules',
-          country: 'GB',
-          note: 'Guided lesson mapping: conduccion/rules (Prioridad y espacio seguro).',
-        },
-        {
-          courseId: 'conduccion',
-          lessonId: 'signs',
-          questionId: 'signs',
-          country: 'GB',
-          note: 'Guided lesson mapping: conduccion/signs (Señales y marcas viales).',
-        },
-        {
-          courseId: 'conduccion',
-          lessonId: 'uk-conducir-l1',
-          questionId: 'uk-conducir-l1',
-          country: 'GB',
-          note: 'BritJoy Vivir en UK driving lesson: Tu carné y el coche en el Reino Unido.',
         },
       ],
     },
@@ -1087,24 +991,6 @@ export const QUESTION_VIDEO_MANIFEST = Object.freeze({
           questionId: 'permissions',
           note: 'Guided lesson mapping: ciberseguridad/permissions (Comparte solo lo necesario).',
         },
-        {
-          courseId: 'ciberseguridad',
-          lessonId: 'transfer',
-          questionId: 'transfer',
-          note: 'Guided lesson mapping: ciberseguridad/transfer (Conserva tus códigos).',
-        },
-        {
-          courseId: 'ciberseguridad',
-          lessonId: 'inspect',
-          questionId: 'inspect',
-          note: 'Guided lesson mapping: ciberseguridad/inspect (Comprueba antes de confiar).',
-        },
-        {
-          courseId: 'ciberseguridad',
-          lessonId: 'uk-banco-l2',
-          questionId: 'uk-banco-l2',
-          note: 'BritJoy Vivir en UK security lesson: Estafas: cómo protegerte.',
-        },
       ],
     },
     {
@@ -1212,25 +1098,9 @@ export const QUESTION_VIDEO_MANIFEST = Object.freeze({
         },
         {
           courseId: 'electricidad',
-          questionId: 'vum-electricidad-005',
-          note: 'Related Ohm’s Law formula question: ¿Qué relación expresa la ley de Ohm básica? -> V = I × R.',
-        },
-        {
-          courseId: 'electricidad',
-          questionId: 'vum-electricidad-006',
-          note: 'Related ampere calculation question: Si V = 12 V y R = 6 Ω, ¿cuál es la corriente I? -> 2 A.',
-        },
-        {
-          courseId: 'electricidad',
           lessonId: 'units',
           questionId: 'units',
           note: 'Guided lesson mapping: electricidad/units (Distingue las unidades: 0,05 A = 50 mA).',
-        },
-        {
-          courseId: 'electricidad',
-          lessonId: 'predict',
-          questionId: 'predict',
-          note: 'Guided lesson mapping: electricidad/predict (Predice antes de cambiar: tensión, resistencia y corriente).',
         },
       ],
     },
