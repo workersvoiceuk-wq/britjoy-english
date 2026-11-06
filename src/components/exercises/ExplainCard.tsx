@@ -1,34 +1,45 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import type { ExplainExercise } from '../../types';
 import type { ExerciseProps } from './types';
 import { speak } from '../../lib/speech';
 import { sfx } from '../../lib/sound';
-import { hush } from '../../lib/narrator';
+import { hush, narrate } from '../../lib/narrator';
+import { explanationSegments } from '../../logic/lessonStory';
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
 
 /** Info slide: Britjoy explains; nothing to answer. */
-export function ExplainCard({ exercise, onResponse }: ExerciseProps<ExplainExercise>) {
+export function ExplainCard({ exercise, onResponse, copy }: ExerciseProps<ExplainExercise>) {
   // Nothing to answer: the lesson can continue straight away.
   useEffect(() => onResponse({ kind: 'text', value: 'ok' }), [onResponse]);
 
-  const paragraphs = exercise.body.split('\n').filter((l) => l.trim());
+  const paragraphs = explanationSegments(exercise.body);
+  const [segment, setSegment] = useState(0);
+  const es = copy.continue === 'Continuar';
+  const line = paragraphs[segment] || '';
+  useEffect(() => () => hush(), [segment]);
 
   return (
     <article className="rounded-3xl border-2 border-navy/10 bg-white p-5 shadow-[0_4px_0_rgba(29,45,92,0.10)]">
       <h2 className="text-2xl font-black text-navy">{exercise.title}</h2>
-      <div className="mt-3 space-y-2 text-[17px] font-semibold leading-relaxed text-ink">
-        {paragraphs.map((line, i) =>
+      <p className="mt-3 text-xs font-black uppercase tracking-wider text-royal">{es ? '2 · Una idea cada vez' : '2 · One idea at a time'} · {segment + 1}/{Math.max(1, paragraphs.length)}</p>
+      <div className="mt-3 space-y-2 text-[17px] font-semibold leading-relaxed text-ink" aria-live="polite" aria-atomic="true">
+        {
           line.startsWith('• ') ? (
-            <p key={i} className="flex gap-2">
+            <p className="flex gap-2">
               <span className="text-royal" aria-hidden>●</span>
               <span>{line.slice(2)}</span>
             </p>
           ) : (
-            <p key={i}>{line}</p>
-          ),
-        )}
+            <p>{line}</p>
+          )}
       </div>
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        <button type="button" disabled={segment === 0} onClick={() => setSegment((n) => n - 1)} className="rounded-xl border-2 border-navy/15 px-3 py-2 font-bold disabled:opacity-40">{es ? 'Anterior' : 'Previous'}</button>
+        <button type="button" onClick={() => { hush(); void narrate(line, es ? 'es-ES' : 'en-GB'); }} className="rounded-xl bg-navy/5 px-3 py-2 font-bold">{es ? '🔊 Escuchar esta idea' : '🔊 Listen to this idea'}</button>
+        <button type="button" disabled={segment >= paragraphs.length - 1} onClick={() => setSegment((n) => n + 1)} className="rounded-xl border-2 border-navy/15 px-3 py-2 font-bold disabled:opacity-40">{es ? 'Siguiente idea' : 'Next idea'}</button>
+      </div>
+      {exercise.say && <button type="button" onClick={() => { hush(); void narrate(exercise.say!, es ? 'es-ES' : 'en-GB'); }} className="mt-3 text-sm font-bold text-royal underline">{es ? 'Escuchar el resumen original' : 'Listen to the original summary'}</button>}
 
       {exercise.video && (
         <figure className="mx-auto mt-4 max-w-[320px]">

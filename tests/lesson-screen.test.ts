@@ -36,6 +36,15 @@ describe('shouldHandleLessonEnterKey', () => {
     expect(shouldHandleLessonEnterKey('Enter', { tagName: 'TEXTAREA', closest: () => null } as unknown as EventTarget)).toBe(true);
     expect(shouldHandleLessonEnterKey('Enter', { tagName: 'INPUT', closest: () => null } as unknown as EventTarget)).toBe(true);
   });
+
+  it('never grades or advances while prediction or reflection is active', () => {
+    for (const tagName of ['TEXTAREA', 'INPUT', 'DIV', 'BODY']) {
+      const target = { tagName, closest: () => null } as unknown as EventTarget;
+      expect(shouldHandleLessonEnterKey('Enter', target, false)).toBe(false);
+      expect(shouldHandleLessonEnterKey('Enter', target, true)).toBe(true);
+    }
+    expect(shouldHandleLessonEnterKey('Enter', null, false)).toBe(false);
+  });
 });
 
 describe('bindNarratorVisibilityStop', () => {
