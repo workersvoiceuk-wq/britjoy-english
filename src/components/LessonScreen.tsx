@@ -14,6 +14,7 @@ import dialogue from '../data/britjoy-dialogue.json';
 import { Britjoy, SpeechBubble, type BritjoyExpression } from './Britjoy';
 import { Button } from './Button';
 import { ExerciseView } from './exercises';
+import { QuestionVideoHelp } from './QuestionVideoHelp';
 
 export interface LessonOutcome {
   passed: boolean;
@@ -247,6 +248,15 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
           correct={result?.correct ?? null}
           copy={copy}
           onResponse={setResponse}
+        />
+        <QuestionVideoHelp
+          key={`${lesson.id}-${index}`}
+          lessonId={lesson.id}
+          questionId={isExplain ? undefined : `${lesson.id}:${index}`}
+          locale={level.instructionLanguage}
+          targetLanguage={level.targetLanguage || 'en'}
+          track={level.track}
+          onStopAudio={hush}
         />
       </main>
 
