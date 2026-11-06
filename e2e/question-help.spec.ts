@@ -15,6 +15,7 @@ test('exercise explanation only after checking; opening it writes nothing', asyn
   await page.goto('/');
   await page.getByText('Empezar desde cero (A1)').click();
   await page.getByRole('button', { name: /Hola \(disponible\)/ }).click();
+  await page.getByRole('button', { name: 'Explorar la lección', exact: true }).click();
   const help = page.locator('[data-question-video-help] button.qvh-trigger:visible');
   let offeredAfter = 0;
   for (const ex of unit1.lessons[0].exercises as any[]) {
@@ -53,4 +54,5 @@ test('exercise explanation only after checking; opening it writes nothing', asyn
     await page.getByRole('button', { name: 'Continuar' }).click();
   }
   expect(offeredAfter).toBeGreaterThan(0);
+  await expect(page.getByRole('heading', { name: '¿Qué cambió en tu idea?', exact: true })).toBeVisible();
 });
