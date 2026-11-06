@@ -177,17 +177,42 @@ function hasDialogueText(text) {
 }
 
 function auditCaptionFile(text, format, reference, duration, findings) {
-  const blocks = text.replace(/^\uFEFF/, '').split(/\r?\n\s*\r?\n/);
+  const findingStart = findings.length;
+  const content = text.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
+  const lines = content.split('\n');
+  let cueContent = content;
+  if (format === 'vtt') {
+    if (!/^WEBVTT(?:[ \t].*)?$/.test(lines[0] ?? '')) {
+      addFinding(findings, reference, 'malformed-header', null);
+    } else {
+      cueContent = lines.slice(1).join('\n');
+    }
+  }
+  const blocks = cueContent.split(/\n[ \t]*\n/).filter((block) => block.trim().length > 0);
   const cues = [];
   let cueIndex = 0;
   for (const block of blocks) {
-    const lines = block.split(/\r?\n/);
-    if (/^\s*(WEBVTT|NOTE|STYLE|REGION)\b/.test(lines[0] ?? '')) continue;
-    const timingLineIndex = lines.findIndex((line) => line.includes('-->'));
-    if (timingLineIndex === -1) continue;
+    const cueLines = block.split('\n');
+    if (format === 'vtt' && /^\s*(NOTE|STYLE|REGION)(?:\s|$)/.test(cueLines[0] ?? '')) continue;
+    const timingLines = cueLines
+      .map((line, index) => ({ line, index }))
+      .filter(({ line }) => line.includes('-->'));
+    if (timingLines.length === 0) {
+      addFinding(findings, reference, 'malformed-cue', null, { content: block.slice(0, 80) });
+      continue;
+    }
 
     cueIndex += 1;
-    const [startText, endAndSettings] = lines[timingLineIndex].split('-->');
+    const { line: timingLine, index: timingLineIndex } = timingLines[0];
+    if (
+      timingLines.length !== 1
+      || (timingLineIndex !== 0 && timingLineIndex !== 1)
+      || (format === 'srt' && timingLineIndex === 1 && !/^\d+$/.test(cueLines[0].trim()))
+    ) {
+      addFinding(findings, reference, 'malformed-cue', cueIndex);
+      continue;
+    }
+    const [startText, endAndSettings] = timingLine.split('-->');
     const endText = endAndSettings?.trim().split(/\s+/, 1)[0] ?? '';
     const start = parseTimestamp(startText?.trim() ?? '', format);
     const end = parseTimestamp(endText, format);
@@ -202,17 +227,41 @@ function auditCaptionFile(text, format, reference, duration, findings) {
       addFinding(findings, reference, 'reversed-cue', cueIndex, { start, end });
       continue;
     }
-
-    const dialogue = lines.slice(timingLineIndex + 1).join(' ');
-    if (!hasDialogueText(dialogue)) addFinding(findings, reference, 'empty-dialogue', cueIndex);
-    if (duration !== null && end > duration) {
-      addFinding(findings, reference, 'beyond-duration', cueIndex, { end, duration });
+    if (end === start) {
+      addFinding(findings, reference, 'non-positive-cue-duration', cueIndex, { start, end });
+      continue;
     }
+
+    const dialogue = cueLines.slice(timingLineIndex + 1).join(' ');
+    if (!hasDialogueText(dialogue)) addFinding(findings, reference, 'empty-dialogue', cueIndex);
     cues.push({ cueIndex, start, end });
+  }
+
+  if (cueIndex === 0) addFinding(findings, reference, 'empty-track', null);
+
+  const durationCheckEligible = !findings.slice(findingStart).some(({ code }) => [
+    'malformed-header',
+    'malformed-cue',
+    'malformed-timestamp',
+    'reversed-cue',
+    'non-positive-cue-duration',
+    'empty-track',
+  ].includes(code));
+  if (duration !== null && durationCheckEligible) {
+    for (const cue of cues) {
+      if (cue.end > duration) {
+        addFinding(findings, reference, 'beyond-duration', cue.cueIndex, { end: cue.end, duration });
+      }
+    }
   }
 
   for (let index = 0; index < cues.length; index += 1) {
     const cue = cues[index];
+    if (index > 0 && cue.start < cues[index - 1].start) {
+      addFinding(findings, reference, 'out-of-order-cue', cue.cueIndex, {
+        followsCueIndex: cues[index - 1].cueIndex,
+      });
+    }
     const overlapping = cues.slice(0, index).find((previous) => cue.start < previous.end && previous.start < cue.end);
     if (overlapping) {
       addFinding(findings, reference, 'overlapping-cue', cue.cueIndex, {
@@ -220,7 +269,7 @@ function auditCaptionFile(text, format, reference, duration, findings) {
       });
     }
   }
-  return cueIndex;
+  return { cueCount: cueIndex, durationCheckEligible };
 }
 
 export function auditCaptions({
@@ -259,19 +308,24 @@ export function auditCaptions({
     const duration = reference.mediaPath && Object.hasOwn(durations, reference.mediaPath)
       ? durations[reference.mediaPath]
       : null;
-    const durationChecked = captionPresent && sourceMediaPresent && duration !== null;
+    let durationChecked = false;
     let cueCount = null;
+    let validationStatus = 'not checked';
     let status = mediaRootPresent ? (captionPresent ? 'present' : 'missing') : 'not checked';
 
     if (captionPresent) {
       const format = path.extname(captionPath).toLowerCase().slice(1);
-      cueCount = auditCaptionFile(
+      const parserFindingStart = findings.length;
+      const result = auditCaptionFile(
         readFileSync(captionPath, 'utf8'),
         format,
         reference,
-        durationChecked ? duration : null,
+        captionPresent && sourceMediaPresent && duration !== null ? duration : null,
         findings,
       );
+      cueCount = result.cueCount;
+      durationChecked = captionPresent && sourceMediaPresent && duration !== null && result.durationCheckEligible;
+      validationStatus = findings.slice(parserFindingStart).length > 0 ? 'invalid' : 'valid';
     }
     if (mediaRootPresent && !captionPresent) {
       addFinding(findings, reference, 'missing-caption-file', null);
@@ -287,6 +341,7 @@ export function auditCaptions({
       captionPath: reference.captionPath,
       mediaPath: reference.mediaPath,
       status,
+      validationStatus,
       cueCount,
       durationStatus: durationChecked ? 'checked' : 'not checked',
       durationSeconds: durationChecked ? duration : null,
@@ -301,6 +356,7 @@ export function auditCaptions({
       presentCaptionCount: declarations.filter(({ status }) => status === 'present').length,
       missingCaptionCount: declarations.filter(({ status }) => status === 'missing').length,
       notCheckedCaptionCount: declarations.filter(({ status }) => status === 'not checked').length,
+      invalidCaptionCount: declarations.filter(({ validationStatus }) => validationStatus === 'invalid').length,
       durationCheckedCount: declarations.length - notCheckedDurationCount,
       durationNotCheckedCount: notCheckedDurationCount,
       cueCount: declarations.reduce((total, { cueCount }) => total + (cueCount ?? 0), 0),
@@ -320,6 +376,7 @@ export function renderSummary(audit) {
     `Caption files present: ${summary.presentCaptionCount}`,
     `Caption files missing: ${summary.missingCaptionCount}`,
     `Caption files not checked: ${summary.notCheckedCaptionCount}`,
+    `Caption files invalid: ${summary.invalidCaptionCount}`,
     `Cues parsed: ${summary.cueCount}`,
     `Duration checks: ${summary.durationCheckedCount} checked; ${summary.durationNotCheckedCount} not checked`,
   ];
@@ -328,7 +385,7 @@ export function renderSummary(audit) {
     const lesson = declaration.lessonId
       ? `${declaration.courseId ?? 'unknown-course'}/${declaration.lessonId}`
       : `${declaration.courseId ?? 'unknown-course'}/${declaration.conceptId ?? 'unmapped concept'}`;
-    lines.push(`${declaration.status.toUpperCase()} ${declaration.captionPath} — ${lesson}${declaration.locale ? ` (${declaration.locale})` : ''}; duration ${declaration.durationStatus}`);
+    lines.push(`${declaration.status.toUpperCase()}${declaration.validationStatus === 'invalid' ? ' / INVALID' : ''} ${declaration.captionPath} — ${lesson}${declaration.locale ? ` (${declaration.locale})` : ''}; validation ${declaration.validationStatus}; duration ${declaration.durationStatus}`);
   }
   for (const finding of findings) {
     const lesson = finding.lessonId
@@ -338,6 +395,10 @@ export function renderSummary(audit) {
   }
   lines.push('Playback, language accuracy, lip sync, permissions, and educational quality are not assessed.');
   return lines.join('\n');
+}
+
+export function auditExitCode(audit) {
+  return audit.findings.length > 0 ? 1 : 0;
 }
 
 async function loadLessonRegistry() {
@@ -390,6 +451,7 @@ async function main(args) {
   console.log(options.json
     ? JSON.stringify({ ...audit, humanSummary: renderSummary(audit) }, null, 2)
     : renderSummary(audit));
+  process.exitCode = auditExitCode(audit);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

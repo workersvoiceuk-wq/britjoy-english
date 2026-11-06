@@ -3,7 +3,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { QUESTION_VIDEO_MANIFEST } from '../src/shared/question-videos/question-video-help.mjs';
-import { assertSafeCaptionPath, auditCaptions, renderSummary } from '../scripts/audit-lesson-captions.mjs';
+import { assertSafeCaptionPath, auditCaptions, auditExitCode, renderSummary } from '../scripts/audit-lesson-captions.mjs';
 
 const temporaryDirectories: string[] = [];
 
@@ -61,6 +61,39 @@ describe('lesson caption audit', () => {
       ['co-en-cedula', 'en'],
       ['co-en-cedula', 'es'],
     ]);
+    expect(auditExitCode(audit)).toBe(0);
+  });
+
+  it.each([
+    ['empty SRT', 'srt', '', 'empty-track', 'not checked'],
+    ['garbage SRT', 'srt', 'plain garbage', 'malformed-cue', 'not checked'],
+    ['malformed SRT timestamp', 'srt', '1\n00:00:xx,000 --> 00:00:02,000\nText', 'malformed-timestamp', 'not checked'],
+    ['malformed SRT arrow', 'srt', '1\n00:00:00,000 - > 00:00:02,000\nText', 'malformed-cue', 'not checked'],
+    ['WebVTT without header', 'vtt', '00:00.000 --> 00:02.000\nText', 'malformed-header', 'not checked'],
+    ['zero-length WebVTT cue', 'vtt', 'WEBVTT\n\n00:00.000 --> 00:00.000\nText', 'non-positive-cue-duration', 'not checked'],
+    ['out-of-order WebVTT cues', 'vtt', 'WEBVTT\n\n00:04.000 --> 00:05.000\nLater\n\n00:02.000 --> 00:03.000\nEarlier', 'out-of-order-cue', 'checked'],
+  ])('marks %s invalid instead of clean', (_name, extension, content, expectedFinding, durationStatus) => {
+    const mediaRoot = makeMediaRoot();
+    writeFileSync(path.join(mediaRoot, 'videos', 'lesson.mp4'), 'local fixture');
+    const captionPath = `videos/invalid.${extension}`;
+    writeFileSync(path.join(mediaRoot, captionPath), content);
+
+    const audit = auditCaptions({
+      levels: levelsWithCaptions({ en: captionPath }),
+      mediaManifest: { concepts: [] },
+      mediaRoot,
+      durations: { 'videos/lesson.mp4': 10 },
+    });
+
+    expect(audit.findings.map(({ code }) => code)).toContain(expectedFinding);
+    expect(audit.declarations[0]).toMatchObject({
+      status: 'present',
+      validationStatus: 'invalid',
+      durationStatus,
+    });
+    expect(audit.summary.invalidCaptionCount).toBe(1);
+    expect(auditExitCode(audit)).toBe(1);
+    expect(renderSummary(audit)).toContain('PRESENT / INVALID');
   });
 
   it('reports malformed timestamps, overlaps, reversed cues, and empty dialogue', () => {

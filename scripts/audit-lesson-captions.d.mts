@@ -20,6 +20,7 @@ export interface CaptionReference {
   captionPath: string;
   mediaPath: string | null;
   status: 'present' | 'missing' | 'not checked';
+  validationStatus: 'valid' | 'invalid' | 'not checked';
   cueCount: number | null;
   durationStatus: 'checked' | 'not checked';
   durationSeconds: number | null;
@@ -43,6 +44,7 @@ export interface CaptionAudit {
     presentCaptionCount: number;
     missingCaptionCount: number;
     notCheckedCaptionCount: number;
+    invalidCaptionCount: number;
     durationCheckedCount: number;
     durationNotCheckedCount: number;
     cueCount: number;
@@ -70,4 +72,5 @@ export function auditCaptions(options: {
   mediaRoot: string;
   durations?: Record<string, number>;
 }): CaptionAudit;
+export function auditExitCode(audit: CaptionAudit): 0 | 1;
 export function renderSummary(audit: CaptionAudit): string;
