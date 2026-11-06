@@ -151,6 +151,31 @@ function addFinding(findings, reference, code, cueIndex, details = {}) {
   });
 }
 
+function hasDialogueText(text) {
+  for (let index = 0; index < text.length;) {
+    if (text[index] === '<') {
+      const tag = /^<\/?[A-Za-z][^<>]*>/.exec(text.slice(index));
+      if (tag) {
+        index += tag[0].length;
+        continue;
+      }
+    }
+    if (/\s/.test(text[index])) {
+      index += 1;
+      continue;
+    }
+    if (text[index] === '&') {
+      const whitespaceEntity = /^(?:&nbsp;|&#160;|&#x0*a0;)/i.exec(text.slice(index));
+      if (whitespaceEntity) {
+        index += whitespaceEntity[0].length;
+        continue;
+      }
+    }
+    return true;
+  }
+  return false;
+}
+
 function auditCaptionFile(text, format, reference, duration, findings) {
   const blocks = text.replace(/^\uFEFF/, '').split(/\r?\n\s*\r?\n/);
   const cues = [];
@@ -178,11 +203,8 @@ function auditCaptionFile(text, format, reference, duration, findings) {
       continue;
     }
 
-    const dialogue = lines.slice(timingLineIndex + 1).join(' ')
-      .replace(/<[^>]*>/g, '')
-      .replace(/&(?:nbsp|#160);/gi, ' ')
-      .trim();
-    if (!dialogue) addFinding(findings, reference, 'empty-dialogue', cueIndex);
+    const dialogue = lines.slice(timingLineIndex + 1).join(' ');
+    if (!hasDialogueText(dialogue)) addFinding(findings, reference, 'empty-dialogue', cueIndex);
     if (duration !== null && end > duration) {
       addFinding(findings, reference, 'beyond-duration', cueIndex, { end, duration });
     }
