@@ -1,0 +1,225 @@
+{
+  "level": "IA",
+  "unit": "Bloque 3 · Instrucciones eficaces",
+  "title": "Pedir bien, dar contexto e iterar",
+  "icon": "🧭",
+  "checked": "2026-11-06",
+  "lessons": [
+    {
+      "id": "ia-10-estructura",
+      "title": "Tarea, contexto, formato y límites",
+      "icon": "🧱",
+      "tip": "Una instrucción clara indica qué hacer, con qué datos reales, en qué formato y qué está prohibido inventar.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Bloque 3 · Tarea, contexto, formato y límites",
+          "body": "Cuando pides «arréglame esto», el modelo rellena los huecos con suposiciones estadísticas. Una instrucción eficaz nombra cuatro piezas: tarea concreta, contexto real aportado por ti, formato de salida (por ejemplo, tres viñetas breves) y restricciones claras («no añadas empresas ni fechas que no estén en mis notas»).\n• Objetivo: Construir una instrucción completa sin huecos que inviten a inventar.",
+          "say": "Bloque 3: Tarea, contexto, formato y límites. Una instrucción eficaz nombra tarea concreta, contexto real, formato de salida y restricciones claras para que el modelo no rellene huecos inventando.",
+          "phrases": [
+            {
+              "en": "Do not add dates or employers that are not in my notes.",
+              "es": "No añadas fechas ni empresas que no estén en mis notas."
+            },
+            {
+              "en": "Write three short bullet points in British English.",
+              "es": "Escribe tres viñetas breves en inglés británico."
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "Compara dos pedidos: «Hazme un buen CV para Londres» frente a una instrucción con tus datos reales y límites explícitos.\n• Tu tarea: Elige la instrucción que reduce las invenciones y da un formato útil.\n• Pista: Cuanto menos contexto real das, más rellena el modelo por su cuenta.",
+          "say": "El reto: Compara un pedido vago con una instrucción que incluye tus datos reales, formato y límites explícitos."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué cuatro elementos hacen mucho más fiable una instrucción («prompt»)?",
+          "options": [
+            "Tarea concreta, contexto real, formato de salida y restricciones claras",
+            "Halagos al sistema, signos de exclamación, prisa y pocas palabras"
+          ],
+          "answer": "Tarea concreta, contexto real, formato de salida y restricciones claras"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Cuál de estas instrucciones protege mejor tu veracidad?",
+          "options": [
+            "«Traduce al inglés británico estas 3 tareas reales de almacén en 3 viñetas; no añadas cargos, títulos ni fechas que no aparezcan aquí».",
+            "«Escríbeme el mejor currículum de logística del Reino Unido para que me contraten mañana»."
+          ],
+          "answer": "«Traduce al inglés británico estas 3 tareas reales de almacén en 3 viñetas; no añadas cargos, títulos ni fechas que no aparezcan aquí»."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada parte de una instrucción en inglés",
+          "pairs": [
+            {
+              "en": "context",
+              "es": "contexto"
+            },
+            {
+              "en": "output format",
+              "es": "formato de salida"
+            },
+            {
+              "en": "constraint",
+              "es": "restricción o límite"
+            },
+            {
+              "en": "bullet points",
+              "es": "viñetas"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Escribe tres viñetas breves en inglés británico.",
+          "words": [
+            "Write",
+            "three",
+            "short",
+            "bullet",
+            "points",
+            "in",
+            "British",
+            "English.",
+            "invent",
+            "dates"
+          ],
+          "answer": "Write three short bullet points in British English."
+        },
+        {
+          "type": "listening",
+          "text": "Do not add dates that are not in my notes",
+          "options": [
+            "Do not add dates that are not in my notes",
+            "Do please add dates that sound good in my notes",
+            "Do not ask questions about my old notes"
+          ],
+          "answer": "Do not add dates that are not in my notes"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "A clear ___ tells the model what it must not invent.",
+          "hint": "restricción",
+          "options": [
+            "constraint",
+            "compliment",
+            "greeting"
+          ],
+          "answer": "constraint"
+        }
+      ]
+    },
+    {
+      "id": "ia-11-iteracion",
+      "title": "Ejemplos de referencia e iteración",
+      "icon": "🔁",
+      "tip": "Si el primer resultado no encaja, muestra un ejemplo de tono («few-shot») y afina en una segunda vuelta.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Bloque 3 · Ejemplos de referencia e iteración",
+          "body": "Rara vez sale el texto ideal al primer intento. Dos técnicas sencillas mejoran mucho el resultado: incluir uno o dos ejemplos breves del estilo que buscas (sin datos privados de terceros) e iterar pidiendo ajustes concretos («acorta a 60 palabras», «usa tono cortés pero directo», «señala qué datos te faltan antes de redactar»).\n• Objetivo: Mejorar un borrador mediocre mediante ejemplos propios y repreguntas concretas.",
+          "say": "Bloque 3: Ejemplos de referencia e iteración. Incluir un ejemplo breve del estilo que buscas y pedir ajustes concretos en una segunda vuelta mejora el borrador sin empezar de cero.",
+          "phrases": [
+            {
+              "en": "Make it shorter and keep a polite tone.",
+              "es": "Hazlo más breve y mantén un tono cortés."
+            },
+            {
+              "en": "Here is an example of the style I want.",
+              "es": "Aquí tienes un ejemplo del estilo que quiero."
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "La IA te devuelve un correo de reclamación de alquiler de 400 palabras que suena a novela victoriana.\n• Tu tarea: Decide cómo iterar para obtener un mensaje claro y útil.\n• Pista: No hace falta abrir otro chat y enfadarse; indica longitud, tono y un ejemplo breve.",
+          "say": "El reto: La IA devuelve un correo de cuatrocientas palabras demasiado pomposo. Decide cómo pedir una segunda versión breve y clara."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Para qué sirve incluir un ejemplo breve en tu instrucción?",
+          "options": [
+            "Para mostrar el tono, la longitud y la estructura que esperas sin explicarlo en abstracto",
+            "Para entrenar permanentemente los servidores mundiales de la empresa"
+          ],
+          "answer": "Para mostrar el tono, la longitud y la estructura que esperas sin explicarlo en abstracto"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Qué repregunta mejora mejor ese correo de 400 palabras?",
+          "options": [
+            "«Redúcelo a 90 palabras, mantén solo la fecha de la avería y el plazo de respuesta, y usa un tono cordial y directo como en este ejemplo».",
+            "«Hazlo otra vez mejor»."
+          ],
+          "answer": "«Redúcelo a 90 palabras, mantén solo la fecha de la avería y el plazo de respuesta, y usa un tono cordial y directo como en este ejemplo»."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada término de iteración en inglés",
+          "pairs": [
+            {
+              "en": "example",
+              "es": "ejemplo"
+            },
+            {
+              "en": "polite tone",
+              "es": "tono cortés"
+            },
+            {
+              "en": "shorter version",
+              "es": "versión más breve"
+            },
+            {
+              "en": "follow-up prompt",
+              "es": "instrucción de ajuste"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Hazlo más breve y mantén un tono cortés.",
+          "words": [
+            "Make",
+            "it",
+            "shorter",
+            "and",
+            "keep",
+            "a",
+            "polite",
+            "tone.",
+            "longer",
+            "rude"
+          ],
+          "answer": "Make it shorter and keep a polite tone."
+        },
+        {
+          "type": "listening",
+          "text": "Here is an example of the style I want",
+          "options": [
+            "Here is an example of the style I want",
+            "Here is an excuse for the file I lost",
+            "There is a sample of the smile I want"
+          ],
+          "answer": "Here is an example of the style I want"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Give a short ___ to show the tone and structure you expect.",
+          "hint": "ejemplo",
+          "options": [
+            "example",
+            "password",
+            "rumour"
+          ],
+          "answer": "example"
+        }
+      ]
+    }
+  ]
+}

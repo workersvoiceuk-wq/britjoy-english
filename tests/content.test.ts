@@ -79,15 +79,24 @@ describe('course content', () => {
     }
   });
 
-  it('IA course: 7 lessons, each opening with an idea and a challenge', () => {
+  it('IA course: 5 practical blocks and 15 original lessons, each opening with an idea and a challenge without claiming external certification', () => {
     const ia = ALL_LEVELS.find((l) => l.id === 'IA')!;
+    expect(ia.units.map((u) => u.unit)).toEqual([
+      'Bloque 1 · Fundamentos',
+      'Bloque 2 · Productividad',
+      'Bloque 3 · Instrucciones eficaces',
+      'Bloque 4 · Uso responsable',
+      'Bloque 5 · Mantenerse al día',
+    ]);
     const ls = ia.units.flatMap((u) => u.lessons);
-    expect(ls).toHaveLength(7);
+    expect(ls).toHaveLength(15);
     for (const lesson of ls) {
       expect(lesson.exercises[0].type, lesson.id).toBe('explain');
       expect(lesson.exercises.some((e) => e.type === 'explain' && e.title.includes('Reto')), lesson.id).toBe(true);
       expect(lesson.exercises.filter((e) => e.type !== 'explain').length, lesson.id).toBeGreaterThanOrEqual(5);
     }
+    const serialized = JSON.stringify(ia.units).toLowerCase();
+    expect(serialized).not.toMatch(/certificado de google|google certificate|avalado por google|endorsed by google/);
   });
 
   it('every unit of Vivir en UK records when its facts were checked', () => {

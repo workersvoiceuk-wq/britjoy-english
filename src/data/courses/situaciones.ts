@@ -44,7 +44,7 @@ export const AI_LEVEL: LevelDefinition = {
   track: 'ai',
   short: '🤖 IA',
   name: 'IA con Britjoy',
-  description: 'Cómo aprende una IA y cómo usarla con cabeza, con el vocabulario en inglés (basado en el curso de IA de Voz Unida Mundo).',
+  description: 'Fundamentos, productividad con revisión humana, instrucciones eficaces, uso responsable y actualización, con vocabulario en inglés (curso original de Voz Unida Mundo).',
   accent: '#6D4585',
   accentDark: '#4E2F61',
   accentLight: '#EFE5F5',

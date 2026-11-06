@@ -1,9 +1,9 @@
 {
   "level": "IA",
-  "unit": "Laboratorio",
-  "title": "IA: aprender experimentando",
+  "unit": "Bloque 1 · Fundamentos",
+  "title": "Cómo aprende un modelo (y qué no sabe)",
   "icon": "🤖",
-  "checked": "2026-11-04",
+  "checked": "2026-11-06",
   "lessons": [
     {
       "id": "ia-01-patterns",
