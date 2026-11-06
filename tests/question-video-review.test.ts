@@ -1,5 +1,6 @@
 import {describe,it,expect} from 'vitest';
 import {QUESTION_VIDEO_MANIFEST,resolveQuestionVideoHelp} from '../src/shared/question-videos/question-video-help.mjs';
+import {shouldOfferQuestionHelp} from '../src/components/LessonScreen';
 
 describe('question-specific examples',()=>{
   it('offers the English greeting help only on its mapped exercises',()=>{
@@ -13,5 +14,10 @@ describe('question-specific examples',()=>{
   });
   it('does not present electricity units as an explanation of a utilities bill',()=>{
     expect(resolveQuestionVideoHelp({lessonId:'uk-facturas-l1',questionId:'uk-facturas-l1:0',track:'life'})).toBeNull();
+  });
+  it('offers an exercise explanation only after the answer is checked (practice first)',()=>{
+    expect(shouldOfferQuestionHelp(false,false)).toBe(false);
+    expect(shouldOfferQuestionHelp(false,true)).toBe(true);
+    expect(shouldOfferQuestionHelp(true,false)).toBe(true);
   });
 });
