@@ -14,6 +14,16 @@ import dialogue from '../data/britjoy-dialogue.json';
 import { Britjoy, SpeechBubble, type BritjoyExpression } from './Britjoy';
 import { Button } from './Button';
 import { ExerciseView } from './exercises';
+import { QuestionVideoHelp } from './QuestionVideoHelp';
+import { LessonPrelude, LessonReflection } from './LessonStory';
+
+/**
+ * Practice first: a question's explanation can contain its answer, so it is offered on explain/dialogue
+ * cards (learning content) and on exercises only once they have been checked.
+ */
+export function shouldOfferQuestionHelp(isExplain: boolean, answered: boolean): boolean {
+  return isExplain || answered;
+}
 
 export interface LessonOutcome {
   passed: boolean;
@@ -39,8 +49,8 @@ export function lessonProgressStep(index: number, hasResult: boolean, isExplain:
   return index + (hasResult || isExplain ? 1 : 0);
 }
 
-export function shouldHandleLessonEnterKey(key: string, target: EventTarget | null): boolean {
-  if (key !== 'Enter') return false;
+export function shouldHandleLessonEnterKey(key: string, target: EventTarget | null, practiceActive = true): boolean {
+  if (!practiceActive || key !== 'Enter') return false;
   if (!target || typeof target !== 'object') return true;
   const el = target as {
     tagName?: unknown;
@@ -71,6 +81,10 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
   const [result, setResult] = useState<(CheckResult & { message: string }) | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
   const [mistakes, setMistakes] = useState(0);
+  const [storyReady, setStoryReady] = useState(false);
+  const [prediction, setPrediction] = useState('');
+  const [pendingOutcome, setPendingOutcome] = useState<LessonOutcome | null>(null);
+  const practiceActive = storyReady && pendingOutcome === null;
 
   const exercise = lesson.exercises[index];
   // Explanations and dialogues are not graded: they show "Continue" straight away.
@@ -85,6 +99,7 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
 
   // Britjoy introduces the lesson and explains each activity aloud.
   useEffect(() => {
+    if (!practiceActive) return;
     let cancelled = false;
     (async () => {
       if (index === 0) {
@@ -94,7 +109,8 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
         await narrate(fill(dialogue.lessonIntro, { title: lesson.title }), voiceLang);
       }
       if (cancelled) return;
-      await narrate(narrationFor(exercise, copy), voiceLang);
+      // ExplainCard offers the original text one idea at a time, with its own listen control.
+      await narrate(exercise.type === 'explain' ? exercise.title : narrationFor(exercise, copy), voiceLang);
       if (!cancelled && exercise.type === 'listening') await speak(exercise.text);
     })();
     return () => {
@@ -103,12 +119,12 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
     };
     // Re-run only when the exercise changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index]);
+  }, [index, practiceActive]);
 
   const advance = useCallback(() => {
     hush();
     if (index + 1 >= total) {
-      onFinish({
+      setPendingOutcome({
         passed: true,
         xp: lessonXp(correctCount, mistakes),
         stars: lessonStars(mistakes),
@@ -121,10 +137,10 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
     setIndex(index + 1);
     setResponse(null);
     setResult(null);
-  }, [index, total, correctCount, mistakes, onFinish]);
+  }, [index, total, correctCount, mistakes]);
 
   const check = useCallback(() => {
-    if (!response || result || isExplain) return;
+    if (!practiceActive || !response || result || isExplain) return;
     hush();
     // "I can't speak right now": skip the speaking exercise without scoring it.
     if (response.kind === 'speech' && response.skipped) {
@@ -147,10 +163,11 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
         if (exercise.type !== 'matching' && useProgressStore.getState().voiceOn) return speak(r.correctAnswer);
       });
     }
-  }, [exercise, response, result, isExplain, loseHeart, voiceLang, advance]);
+  }, [practiceActive, exercise, response, result, isExplain, loseHeart, voiceLang, advance]);
 
 
   const next = useCallback(() => {
+    if (!practiceActive) return;
     if (isExplain) return advance();
     if (!result) return;
     if (!result.correct && useProgressStore.getState().hearts <= 0 && !hasPlus()) {
@@ -159,19 +176,19 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
       return;
     }
     advance();
-  }, [isExplain, result, advance, correctCount, mistakes, total, onFinish]);
+  }, [practiceActive, isExplain, result, advance, correctCount, mistakes, total, onFinish]);
 
   // Enter = check / continue.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       // Focused buttons, links and media controls already handle Enter themselves.
-      if (!shouldHandleLessonEnterKey(e.key, e.target)) return;
+      if (!shouldHandleLessonEnterKey(e.key, e.target, practiceActive)) return;
       if (result || isExplain) next();
       else check();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [check, next, result, isExplain]);
+  }, [check, next, result, isExplain, practiceActive]);
 
   const exit = () => {
     if (index === 0 && !result) {
@@ -184,7 +201,10 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
     }
   };
 
-  const repeat = () => void narrate(narrationFor(exercise, copy), voiceLang);
+  const repeat = () => void narrate(exercise.type === 'explain' ? exercise.title : narrationFor(exercise, copy), voiceLang);
+
+  if (!storyReady) return <LessonPrelude lesson={lesson} courseName={level.name} locale={level.instructionLanguage} onExit={exit} onContinue={(text) => { setPrediction(text); setStoryReady(true); }} />;
+  if (pendingOutcome) return <LessonReflection lesson={lesson} courseName={level.name} locale={level.instructionLanguage} prediction={prediction} onExit={exit} onFinish={() => onFinish(pendingOutcome)} />;
 
   return (
     <div className="paper flex min-h-screen flex-col">
@@ -248,6 +268,16 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
           copy={copy}
           onResponse={setResponse}
         />
+        {shouldOfferQuestionHelp(isExplain, result !== null) && <QuestionVideoHelp
+          // Own key: sharing ExerciseView's key made React leave stale exercises in the DOM.
+          key={`qvh-${lesson.id}-${index}`}
+          lessonId={lesson.id}
+          questionId={isExplain ? undefined : `${lesson.id}:${index}`}
+          locale={level.instructionLanguage}
+          targetLanguage={level.targetLanguage || 'en'}
+          track={level.track}
+          onStopAudio={hush}
+        />}
       </main>
 
       <footer
