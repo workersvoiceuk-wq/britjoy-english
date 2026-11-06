@@ -19,6 +19,38 @@ afterEach(() => {
 });
 
 describe('lesson video audit', () => {
+  it('reports all declared files missing when the public root is absent', () => {
+    const root = mkdtempSync(path.join(os.tmpdir(), 'lesson-video-audit-'));
+    temporaryDirectories.push(root);
+    const publicRoot = path.join(root, 'public');
+    const levels = [{
+      id: 'CO-EN',
+      name: 'Vivir en Colombia · aprende inglés',
+      track: 'colombia',
+      targetLanguage: 'en',
+      units: [{
+        unit: 'Cédula',
+        lessons: [{
+          id: 'co-en-cedula',
+          exercises: [{
+            type: 'explain',
+            video: { src: 'videos/course/lesson.mp4', poster: 'videos/course/lesson.jpg' },
+          }],
+        }],
+      }],
+    }];
+
+    const audit = auditLevels(levels, { publicRoot });
+
+    expect(audit.summary.publicRootPresent).toBe(false);
+    expect(audit.summary.declarationCount).toBe(2);
+    expect(audit.summary.presentFileCount).toBe(0);
+    expect(audit.summary.missingFileCount).toBe(2);
+    expect(audit.missingFiles).toEqual(['videos/course/lesson.jpg', 'videos/course/lesson.mp4']);
+    expect(renderSummary(audit)).toContain('Media root public/: absent');
+    expect(renderSummary(audit)).toContain('MISSING videos/course/lesson.mp4');
+  });
+
   it('reports declared videos and posters, missing media, and unreferenced public media', () => {
     const publicRoot = makePublicDirectory();
     writeFileSync(path.join(publicRoot, 'videos', 'course', 'present.mp4'), 'video');
@@ -44,6 +76,7 @@ describe('lesson video audit', () => {
 
     expect(audit.summary).toEqual({
       lessonCount: 1,
+      publicRootPresent: true,
       declarationCount: 2,
       uniqueDeclaredFileCount: 2,
       presentFileCount: 1,

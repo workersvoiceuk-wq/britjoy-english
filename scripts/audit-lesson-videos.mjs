@@ -34,12 +34,13 @@ export function assertSafeMediaPath(publicRoot, mediaPath) {
     throw new Error(`Unsafe media path: ${mediaPath}`);
   }
 
-  const publicRealPath = realpathSync(publicRoot);
   const resolvedPath = path.resolve(publicRoot, mediaPath);
   if (!isWithin(publicRoot, resolvedPath)) {
     throw new Error(`Unsafe media path: ${mediaPath}`);
   }
+  if (!existsSync(publicRoot)) return resolvedPath;
 
+  const publicRealPath = realpathSync(publicRoot);
   let existingPath = resolvedPath;
   while (!existsSync(existingPath) && existingPath !== publicRoot) {
     existingPath = path.dirname(existingPath);
@@ -73,6 +74,12 @@ function listPublicMedia(publicRoot) {
 export function auditLevels(levels, { publicRoot = path.join(ROOT, 'public') } = {}) {
   const lessonIds = new Set();
   const declarations = [];
+  let publicRootPresent = false;
+  try {
+    publicRootPresent = statSync(publicRoot).isDirectory();
+  } catch (error) {
+    if (error.code !== 'ENOENT' && error.code !== 'ENOTDIR') throw error;
+  }
 
   for (const level of levels) {
     for (const unit of level.units ?? []) {
@@ -116,6 +123,7 @@ export function auditLevels(levels, { publicRoot = path.join(ROOT, 'public') } =
   return {
     summary: {
       lessonCount: lessonIds.size,
+      publicRootPresent,
       declarationCount: declarations.length,
       uniqueDeclaredFileCount: declaredFiles.length,
       presentFileCount: presentFiles.length,
@@ -133,6 +141,7 @@ export function renderSummary(audit) {
   const { summary, declarations, missingFiles, unreferencedFiles } = audit;
   const lines = [
     'Lesson video audit (file inventory only; playback and quality are not assessed)',
+    `Media root public/: ${summary.publicRootPresent ? 'present' : 'absent'}`,
     `Lessons scanned: ${summary.lessonCount}`,
     `Media declarations: ${summary.declarationCount} (${summary.uniqueDeclaredFileCount} unique files)`,
     `Declared files present under public/: ${summary.presentFileCount}`,

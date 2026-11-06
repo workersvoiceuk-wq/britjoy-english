@@ -15,6 +15,7 @@ export interface AuditLevel {
 export interface LessonVideoAudit {
   summary: {
     lessonCount: number;
+    publicRootPresent: boolean;
     declarationCount: number;
     uniqueDeclaredFileCount: number;
     presentFileCount: number;
