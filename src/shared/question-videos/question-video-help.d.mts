@@ -33,7 +33,7 @@ export const QUESTION_VIDEO_MANIFEST: {
     mappings: ReadonlyArray<QuestionVideoQuery>;
   }>;
 };
-export function mountQuestionVideoHelp(options: QuestionVideoQuery & {onStopAudio?: () => void}): MountedQuestionVideoHelp;
+export function mountQuestionVideoHelp(options: QuestionVideoQuery & {onStopAudio?: () => void; manifest?: typeof QUESTION_VIDEO_MANIFEST}): MountedQuestionVideoHelp;
 export function isValidRelativeMediaPath(path: unknown): boolean;
 export function isConceptPlayable(concept: unknown): boolean;
 export function resolveQuestionVideoHelp(query: QuestionVideoQuery, manifest?: unknown): null | {conceptId: string; courseId: string; status: string; playable: boolean};

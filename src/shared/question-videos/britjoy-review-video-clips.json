@@ -1,0 +1,226 @@
+[
+  {
+    "id": "britjoy-trabajo-capitulo",
+    "lessonId": "a2-u2-l1",
+    "questionId": null,
+    "duration": 19,
+    "title": [
+      "Describe una experiencia laboral",
+      "Describe work experience"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "En una entrevista, prepara el puesto y cuánto tiempo lo desempeñaste.",
+          "In an interview, prepare the role and how long you held it."
+        ],
+        "title": [
+          "Describe una experiencia laboral",
+          "Describe work experience"
+        ],
+        "detail": "Puesto · Duración"
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "text": [
+          "«I worked as a cleaner» dice el puesto. «For six months» dice la duración.",
+          "“I worked as a cleaner” names the role. “For six months” gives the duration."
+        ],
+        "title": [
+          "Usa un ejemplo de práctica",
+          "Use a practice example"
+        ],
+        "detail": "I worked as… · for six months"
+      },
+      {
+        "start": 12,
+        "end": 19,
+        "text": [
+          "«I worked as a cleaner for six months». Ahora cambia el puesto y la duración por los tuyos.",
+          "“I worked as a cleaner for six months.” Now swap in your own role and duration."
+        ],
+        "title": [
+          "Une las dos partes",
+          "Join both parts"
+        ],
+        "detail": "I worked as a cleaner · for six months"
+      }
+    ],
+    "source": {
+      "title": "Tiger Lily · Pexels",
+      "url": "https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/",
+      "kind": "media"
+    }
+  },
+  {
+    "id": "britjoy-trabajo-pregunta",
+    "lessonId": "a2-u2-l1",
+    "questionId": "a2-u2-l1:1",
+    "duration": 18,
+    "title": [
+      "Trabajé como operario de almacén",
+      "I worked as a warehouse operative"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "«Worked as» enlaza un empleo pasado con el nombre del puesto.",
+          "“Worked as” links a past job to the job title."
+        ],
+        "title": [
+          "Trabajé como operario de almacén",
+          "I worked as a warehouse operative"
+        ],
+        "detail": "I worked as… · a warehouse operative"
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "text": [
+          "Usa «for» con una duración. «Since» se combina con un punto de inicio, como 2022.",
+          "Use “for” with a duration. “Since” goes with a starting point, such as 2022."
+        ],
+        "title": [
+          "Añade los dos años",
+          "Add the two years"
+        ],
+        "detail": "for two years · since 2022"
+      },
+      {
+        "start": 12,
+        "end": 18,
+        "text": [
+          "Lee en voz alta «I worked as a warehouse operative for two years».",
+          "Read “I worked as a warehouse operative for two years” aloud."
+        ],
+        "title": [
+          "Di la frase completa",
+          "Say the full sentence"
+        ],
+        "detail": "warehouse operative · for two years"
+      }
+    ],
+    "source": {
+      "title": "Tiger Lily · Pexels",
+      "url": "https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/",
+      "kind": "media"
+    }
+  },
+  {
+    "id": "britjoy-gp-capitulo",
+    "lessonId": "a2-u2-l2",
+    "questionId": null,
+    "duration": 20,
+    "title": [
+      "Prepara una llamada a recepción",
+      "Prepare a call to reception"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 7,
+        "text": [
+          "En una llamada de práctica, prepara el motivo de la cita y cuándo te viene bien.",
+          "In a practice call, prepare your reason for the appointment and when you are available."
+        ],
+        "title": [
+          "Prepara una llamada a recepción",
+          "Prepare a call to reception"
+        ],
+        "detail": "Motivo breve · Horario disponible"
+      },
+      {
+        "start": 7,
+        "end": 14,
+        "text": [
+          "Si te ofrecen el martes a las diez, confirma la fecha y el horario en voz alta.",
+          "If you are offered Tuesday at ten, confirm the day and time aloud."
+        ],
+        "title": [
+          "Responde con una hora concreta",
+          "Reply with a specific time"
+        ],
+        "detail": "Tuesday · 10:00"
+      },
+      {
+        "start": 14,
+        "end": 20,
+        "text": [
+          "«Tuesday at ten. Thank you.» Si necesitas otra hora, pregunta si hay otra opción.",
+          "“Tuesday at ten. Thank you.” If you need another time, ask if there is another option."
+        ],
+        "title": [
+          "Cierra con una confirmación",
+          "Finish by confirming"
+        ],
+        "detail": "Confirmar ✓ · Pedir otro horario"
+      }
+    ],
+    "source": {
+      "title": "Kaboompics · Pexels",
+      "url": "https://www.pexels.com/video/woman-using-smartphone-6631689/",
+      "kind": "media"
+    }
+  },
+  {
+    "id": "britjoy-gp-pregunta",
+    "lessonId": "a2-u2-l2",
+    "questionId": "a2-u2-l2:1",
+    "duration": 19,
+    "title": [
+      "Pide una cita con el GP",
+      "Ask for a GP appointment"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "Al llamar a recepción, «appointment» es la palabra para una cita médica.",
+          "When calling reception, “appointment” is the word for a medical appointment."
+        ],
+        "title": [
+          "Pide una cita con el GP",
+          "Ask for a GP appointment"
+        ],
+        "detail": "GP reception · appointment"
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "text": [
+          "«Hello, I'd like to book an appointment with the GP, please.»",
+          "“Hello, I'd like to book an appointment with the GP, please.”"
+        ],
+        "title": [
+          "Usa la fórmula de cortesía",
+          "Use the polite formula"
+        ],
+        "detail": "I'd like to book… · …an appointment"
+      },
+      {
+        "start": 12,
+        "end": 19,
+        "text": [
+          "En este contexto se usa «appointment». «Date» puede sonar social y «medical hour» no es idiomático.",
+          "Use “appointment” here. “Date” can sound social, and “medical hour” is not idiomatic."
+        ],
+        "title": [
+          "Evita traducir palabra por palabra",
+          "Avoid translating word for word"
+        ],
+        "detail": "appointment ✓ · date / medical hour ✕"
+      }
+    ],
+    "source": {
+      "title": "Kaboompics · Pexels",
+      "url": "https://www.pexels.com/video/woman-using-smartphone-6631689/",
+      "kind": "media"
+    }
+  }
+]
