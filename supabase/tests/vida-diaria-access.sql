@@ -4,6 +4,7 @@
 insert into auth.users (id, email, email_confirmed_at) values
  ('00000000-0000-4000-8000-00000000000a','a@example.com',now()),('00000000-0000-4000-8000-00000000000b','b@example.com',now());
 insert into public.profiles (id) values ('00000000-0000-4000-8000-00000000000a'),('00000000-0000-4000-8000-00000000000b') on conflict do nothing;
+update public.profiles set stripe_customer_id = 'cus_academy' where id = '00000000-0000-4000-8000-00000000000a';
 set role service_role;
 do $$ begin
   assert public.apply_course_access('evt_1', 100, '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'active', now() + interval '30 days', false, 'sub_1', 'cus_1'), 'compra';
@@ -12,7 +13,7 @@ do $$ begin
   assert not public.apply_course_access('evt_0', 50, '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'canceled', null, false, 'sub_1', null), 'antiguo tarde';
   assert not public.apply_course_access('evt_x', 300, '00000000-0000-4000-8000-0000000000ff', 'vida_diaria_monthly', 'active', now(), false, 'sub_x', null), 'usuario inexistente';
   assert (select status = 'active' and cancel_at_period_end and access_until > now() and stripe_customer_id = 'cus_1' and last_event_created = 200 from public.course_access), 'fila A';
-  assert (select plus_until is null from public.profiles where id = '00000000-0000-4000-8000-00000000000a'), 'VUM Academy sin tocar';
+  assert (select plus_until is null and stripe_customer_id = 'cus_academy' from public.profiles where id = '00000000-0000-4000-8000-00000000000a'), 'VUM Academy conserva su cliente';
 end $$;
 -- invoice.paid: paid_until avanza, no retrocede, una vez por evento.
 do $$ begin
@@ -22,6 +23,7 @@ do $$ begin
   assert (select paid_until > now() + interval '29 days' from public.course_access where user_id = '00000000-0000-4000-8000-00000000000a'), 'paid_until no retrocede';
   -- pago antes que la suscripción (otro alumno): fila pendiente
   assert public.apply_course_payment('evt_pb', '00000000-0000-4000-8000-00000000000b', 'vida_diaria_monthly', now() + interval '30 days', 'sub_b'), 'pago B';
+  assert (select stripe_customer_id is null from public.profiles where id = '00000000-0000-4000-8000-00000000000b'), 'Vida Diaria no asigna el cliente al perfil general';
   assert (select status = 'incomplete' and access_until is null from public.course_access where user_id = '00000000-0000-4000-8000-00000000000b'), 'B pendiente';
 end $$;
 -- Checkout: una sesión por alumno; mismo intento hasta registrar; reutilizar; recuperar al caducar.

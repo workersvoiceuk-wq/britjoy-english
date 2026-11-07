@@ -90,7 +90,7 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
 
       No hay que añadir estos eventos a los destinos de Academy ni de membresías.
    3. Copiar el secreto de firma de ese destino (`whsec_…`) en el secreto `STRIPE_WEBHOOK_SECRET_VIDA_DIARIA` de Supabase. Es distinto del secreto `STRIPE_WEBHOOK_SECRET` de `billing-webhook`.
-   4. Habilitar el historial de facturas y la cancelación al final del periodo en el portal de clientes del sandbox. El portal se abre con el cliente Stripe de la suscripción del curso.
+   4. Habilitar el historial de facturas y la cancelación al final del periodo en el portal de clientes del sandbox. Vida Diaria usa un cliente Stripe separado por alumno. El portal abre ese cliente y sus facturas.
    5. IVA: dejar `VIDA_DIARIA_AUTOMATIC_TAX` desactivado mientras no corresponda cobrar IVA. Activarlo únicamente cuando exista un registro fiscal activo y se haya confirmado el tratamiento aplicable.
 4. **Secretos opcionales:** `VIDA_DIARIA_URL`, la URL de vuelta tras el pago (por defecto `https://vozunidamundo.com/britjoy-english/vida-diaria/`).
 5. **Prueba completa en el sandbox:**

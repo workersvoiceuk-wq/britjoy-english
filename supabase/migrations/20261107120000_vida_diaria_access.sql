@@ -87,8 +87,6 @@ begin
     stripe_customer_id = coalesce(excluded.stripe_customer_id, a.stripe_customer_id),
     last_event_created = excluded.last_event_created,
     updated_at = now();
-  -- El mismo cliente de Stripe sirve para el portal (cancelar, recibos), sin tocar plus_until.
-  update public.profiles set stripe_customer_id = coalesce(stripe_customer_id, p_customer) where id = p_user;
   return true;
 end;
 $$;

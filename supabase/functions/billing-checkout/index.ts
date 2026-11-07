@@ -37,9 +37,8 @@ Deno.serve(async (req: Request) => {
     if (planError || !plan) return json({ error: "retry" }, 503, headers);
     const step = plan as { action: string; attempt: number; url: string | null };
     if (step.action === "reuse" && step.url) return json({ url: step.url, reused: true }, 200, headers);
-    const { data: profile } = await db.from("profiles").select("stripe_customer_id").eq("id", user.id).maybeSingle();
     const params = checkoutParams({
-      price, user: user.id, email: user.email, customer: (access as CourseAccessRow | null)?.stripe_customer_id ?? profile?.stripe_customer_id ?? null,
+      price, user: user.id, email: user.email, customer: (access as CourseAccessRow | null)?.stripe_customer_id ?? null,
       returnUrl: VIDA_DIARIA_URL,
       // Stripe Tax solo cuando el dueño confirme el tratamiento del IVA: VIDA_DIARIA_AUTOMATIC_TAX=on.
       automaticTax: automaticTaxEnabled(Deno.env.get("VIDA_DIARIA_AUTOMATIC_TAX")),
