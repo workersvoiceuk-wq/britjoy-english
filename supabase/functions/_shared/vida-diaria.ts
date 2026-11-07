@@ -111,6 +111,22 @@ export function accessChangeFromEvent(
   };
 }
 
+/**
+ * Any Stripe event about this course (subscription, invoice or checkout), whatever its price. They belong to the
+ * course's own webhook destination (vida-diaria-webhook); billing-webhook (VUM Academy, credits) ignores them.
+ */
+export function isVidaDiariaEvent(event: { type: string; data: { object: unknown } }): boolean {
+  const o = event.data.object as {
+    metadata?: Record<string, string> | null;
+    subscription_details?: { metadata?: Record<string, string> | null } | null;
+    parent?: { subscription_details?: { metadata?: Record<string, string> | null } | null } | null;
+  };
+  return [o?.metadata, o?.subscription_details?.metadata, o?.parent?.subscription_details?.metadata].some((m) => m?.product === VD_PRODUCT);
+}
+
+/** Events the course's webhook destination must send (exactly what vida-diaria-webhook uses). */
+export const VD_WEBHOOK_EVENTS = ['customer.subscription.created', 'customer.subscription.updated', 'customer.subscription.deleted', 'invoice.paid'] as const;
+
 /** Checkout sessions of this course grant nothing by themselves (the subscription events do). */
 export function isVidaDiariaCheckout(session: { metadata?: Record<string, string> | null }): boolean {
   return session.metadata?.product === VD_PRODUCT;

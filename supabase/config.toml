@@ -26,3 +26,7 @@ verify_jwt = false
 [functions.vida-diaria]
 verify_jwt = true
 # El contenido de pago se lee del bucket privado «vida-diaria-premium» (Storage), nunca del repositorio.
+
+# «Inglés para el día a día»: destino de webhook propio en Stripe (firma con STRIPE_WEBHOOK_SECRET_VIDA_DIARIA).
+[functions.vida-diaria-webhook]
+verify_jwt = false

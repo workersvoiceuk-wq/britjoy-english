@@ -7,7 +7,7 @@ import { admin } from "../_shared/http.ts";
 import { PRODUCTS, isProduct } from "../_shared/products.ts";
 import { Stripe, periodEnd, stripe } from "../_shared/stripe.ts";
 import { isAcademySubscription } from "../_shared/academy.ts";
-import { accessChangeFromEvent, isVidaDiariaCheckout, paymentFromEvent, vdPriceIds } from "../_shared/vida-diaria.ts";
+import { isVidaDiariaEvent } from "../_shared/vida-diaria.ts";
 
 const cryptoProvider = Stripe.createSubtleCryptoProvider();
 const ok = () => new Response("ok", { status: 200 });
@@ -49,35 +49,12 @@ Deno.serve(async (req: Request) => {
   };
 
   try {
-    // «Inglés para el día a día»: producto aparte. Sus suscripciones solo escriben course_access (nunca plus_until
-    // ni créditos) y su checkout no concede nada por sí mismo: el acceso llega con customer.subscription.*.
-    const vdPrices = vdPriceIds(Deno.env.get("STRIPE_PRICE_VIDA_DIARIA"));
-    // Pago efectivo de una factura del curso: fija hasta cuándo está pagado (el acceso no pasa de ahí).
-    const paid = paymentFromEvent(event, vdPrices);
-    if (paid) {
-      const { error } = await db.rpc("apply_course_payment", {
-        p_event: paid.event, p_user: paid.user, p_product: paid.product, p_paid_until: paid.paidUntil, p_subscription: paid.subscription,
-      });
-      if (error) throw error;
-      return ok();
-    }
-    const vd = accessChangeFromEvent(event, vdPrices);
-    if (vd) {
-      const { error } = await db.rpc("apply_course_access", {
-        p_event: vd.event, p_event_created: vd.eventCreated, p_user: vd.user, p_product: vd.product, p_status: vd.status,
-        p_access_until: vd.accessUntil, p_cancel: vd.cancelAtPeriodEnd, p_subscription: vd.subscription, p_customer: vd.customer,
-      });
-      if (error) throw error;
-      return ok();
-    }
-    if (event.type.startsWith("customer.subscription.") &&
-        (event.data.object as Stripe.Subscription).metadata?.product === "vida_diaria_monthly") {
-      return ok(); // metadata del curso con otro precio: no abre nada (ni el curso ni VUM Academy)
-    }
+    // «Inglés para el día a día» tiene su propio destino de webhook (vida-diaria-webhook, con su propio secreto).
+    // Aquí sus eventos se ignoran: nunca conceden VUM Academy (plus_until) ni créditos.
+    if (isVidaDiariaEvent(event)) return ok();
     switch (event.type) {
       case "checkout.session.completed": {
         const s = event.data.object as Stripe.Checkout.Session;
-        if (isVidaDiariaCheckout(s)) break;
         const user = s.client_reference_id ?? s.metadata?.user_id;
         const product = s.metadata?.product;
         if (!user || !isProduct(product) || s.payment_status === "unpaid") break;

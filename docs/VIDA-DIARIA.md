@@ -44,7 +44,8 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
 | `supabase/functions/_shared/vida-diaria.ts` | Contrato puro: precio, módulos, decisión de acceso y aplicación de eventos (una vez cada uno y nunca uno antiguo sobre uno nuevo). |
 | `supabase/functions/vida-diaria` | Responde a `POST {action:"status"\|"module"\|"media"}` con sesión. Devuelve **401** sin sesión, **402** sin pago y **404** si el módulo no existe. |
 | `billing-checkout` (`product: "vida_diaria_monthly"`) | Checkout de suscripción con `subscription_data.metadata` (`user_id` y `product`). Solo admite altas nuevas: con acceso activo responde 409. **Una sesión abierta por alumno:** `begin_course_checkout` decide con un bloqueo por alumno si se reutiliza la sesión abierta (le quedan más de 5 minutos) o se crea otra. La sesión se crea con una clave de idempotencia de Stripe estable por (alumno, intento), de modo que peticiones simultáneas reciben la misma. Al caducar, se abre un intento nuevo. **IVA:** `automatic_tax` (con dirección de facturación obligatoria) solo se activa con `VIDA_DIARIA_AUTOMATIC_TAX=on`, cuando el tratamiento fiscal esté confirmado. **Cobros reales apagados** salvo con clave `sk_test_`, o si el dueño pone `VIDA_DIARIA_LIVE=on`. |
-| `billing-webhook` | Aplica al curso los eventos que cumplen todo esto: firmados por Stripe, `customer.subscription.*` o `invoice.paid`, precio `STRIPE_PRICE_VIDA_DIARIA` y `metadata.product` del curso. El acceso se escribe en `course_access`; nunca toca `plus_until` (Academy) ni los créditos. `invoice.paid` fija `paid_until`, la fecha efectivamente pagada, que solo avanza. |
+| `vida-diaria-webhook` (**destino propio en Stripe**) | Webhook exclusivo del curso, sin JWT y firmado con su **propio** secreto, `STRIPE_WEBHOOK_SECRET_VIDA_DIARIA`. Aplica los eventos `customer.subscription.*` e `invoice.paid` con el precio `STRIPE_PRICE_VIDA_DIARIA` y `metadata.product` del curso. El acceso se escribe en `course_access`; nunca toca `plus_until` (Academy) ni los créditos. `invoice.paid` fija `paid_until`, la fecha efectivamente pagada, que solo avanza. |
+| `billing-webhook` (créditos) | **Ignora** cualquier evento del curso (`isVidaDiariaEvent`), así que un evento del curso nunca concede VUM Academy ni créditos. En lo demás no cambia. |
 | Migración `20261107120000_vida_diaria_access.sql` | Crea `course_access`, `course_access_events`, `apply_course_access` (solo service role), RLS de «lee solo tu fila» y el bucket privado. No modifica ninguna tabla existente. |
 
 **Reglas de acceso:**
@@ -62,28 +63,49 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
 2. **Compilar** con `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`. La clave pública ya la usa la app; no es secreta.
 3. **Endpoints**, en `https://<ref>.supabase.co/functions/v1/…`:
    - `vida-diaria` y `billing-checkout`, con la sesión del alumno;
-   - `billing-webhook`, firmado por Stripe.
+   - `vida-diaria-webhook`, firmado por Stripe desde el destino propio del curso.
 4. **CORS:** se han añadido `https://vozunidamundo.com` y `https://www.vozunidamundo.com`, sin comodines.
 5. **El enlace antiguo `?curso=dia-a-dia`** redirige a `vida-diaria/`, y la ficha del catálogo general abre la página del curso.
 
 ## Activación (requiere credenciales o configuración del dueño; nada se hace desde Claude)
 
-1. **Supabase:** aplicar la migración `20261107120000_vida_diaria_access.sql` y desplegar `vida-diaria`, `billing-checkout` y `billing-webhook`.
+> **Estado de Stripe comprobado por Óscar en la cuenta real de VUM (7 nov 2026):**
+> - destinos activos: `/api/academy/webhook` y `/api/membership/webhook`;
+> - `/api/britjoy/webhook`: desactivado;
+> - no hay ningún destino de Supabase activo.
+>
+> **No hay que modificar ni reactivar ninguno de ellos.** El curso necesita **un destino nuevo y separado** que apunte a la función `vida-diaria-webhook`. Primero en el **sandbox**; producción, solo después.
+
+1. **Supabase, en un entorno de pruebas:**
+   - aplicar la migración `20261107120000_vida_diaria_access.sql`;
+   - desplegar `vida-diaria`, `vida-diaria-webhook` y `billing-checkout`.
+
+   No hace falta volver a desplegar `billing-webhook` para el curso: su cambio solo hace que ignore los eventos del curso.
 2. **Paquete privado:** subirlo con `scripts/upload-premium.mjs`, usando `SUPABASE_URL` y `SUPABASE_SERVICE_ROLE_KEY` del entorno del dueño.
-3. **Stripe, en modo de prueba:**
-   - crear el producto «Inglés para el día a día» con un precio recurrente mensual en GBP de £19.99;
-   - configurar el IVA de Reino Unido según decidan Óscar y ChatGPT;
-   - poner el ID del precio en el secreto `STRIPE_PRICE_VIDA_DIARIA`;
-   - comprobar que el webhook existente recibe `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted` e **`invoice.paid`**.
-   - Cuando se confirme el IVA: activar Stripe Tax en la cuenta y poner `VIDA_DIARIA_AUTOMATIC_TAX=on`.
+3. **Stripe, en el sandbox (modo de prueba):**
+   1. Crear el producto «Inglés para el día a día» con un precio recurrente mensual en GBP de £19.99. Poner su ID en el secreto `STRIPE_PRICE_VIDA_DIARIA`.
+   2. **Añadir un destino de webhook NUEVO**, solo para el curso:
+      - URL: `https://<ref>.supabase.co/functions/v1/vida-diaria-webhook`;
+      - eventos: **exactamente** los que usa el código (`VD_WEBHOOK_EVENTS`): `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted` e `invoice.paid`.
+
+      No hay que añadir estos eventos a los destinos de Academy ni de membresías.
+   3. Copiar el secreto de firma de ese destino (`whsec_…`) en el secreto `STRIPE_WEBHOOK_SECRET_VIDA_DIARIA` de Supabase. Es distinto del secreto `STRIPE_WEBHOOK_SECRET` de `billing-webhook`.
+   4. IVA: cuando se confirme, activar Stripe Tax y poner `VIDA_DIARIA_AUTOMATIC_TAX=on`. Hasta entonces, el checkout no calcula impuestos.
 4. **Secretos opcionales:** `VIDA_DIARIA_URL`, la URL de vuelta tras el pago (por defecto `https://vozunidamundo.com/britjoy-english/vida-diaria/`).
-5. **Prueba real en modo de prueba:**
-   - una compra con tarjeta de prueba;
+5. **Prueba completa en el sandbox:**
+   - una compra con tarjeta de prueba: en el destino nuevo llegan `invoice.paid` y `customer.subscription.created` con respuesta 200;
    - acceso a los módulos 2 a 12;
+   - dos clics seguidos en «Suscribirme»: una sola sesión;
    - cancelar desde el portal: el acceso se mantiene hasta la fecha;
+   - una renovación con tarjeta que falla (por ejemplo, con un *test clock*): el acceso no pasa de la fecha pagada;
    - otra cuenta: sin acceso;
    - una petición sin sesión: 401.
-6. **Producción:** solo tras esa verificación y la confirmación del IVA. Cambiar a la clave `sk_live_` y poner `VIDA_DIARIA_LIVE=on`.
+
+   Comprobar también en Stripe que los destinos de Academy y de membresías **no** han recibido nada nuevo del curso.
+6. **Producción:** solo tras esa verificación y la confirmación del IVA.
+   - Crear el mismo destino separado en el modo real, con su propio `whsec_`, y el precio real.
+   - Cambiar a la clave `sk_live_` y poner `VIDA_DIARIA_LIVE=on`.
+   - Lo decide y lo hace el dueño, sin tocar los webhooks existentes.
 
 ## Pruebas
 

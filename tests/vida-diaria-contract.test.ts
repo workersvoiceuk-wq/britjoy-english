@@ -7,7 +7,8 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
   CHECKOUT_REUSE_MARGIN_MS, VD_PRODUCT, accessChangeFromEvent, accessStatus, applyAccessChange, applyPayment, automaticTaxEnabled,
-  canStartCheckout, checkoutParams, decideModule, isVidaDiariaCheckout, liveChargesAllowed, paymentFromEvent, planCheckout,
+  VD_WEBHOOK_EVENTS, canStartCheckout, checkoutParams, decideModule, isVidaDiariaCheckout, isVidaDiariaEvent, liveChargesAllowed,
+  paymentFromEvent, planCheckout,
   vdPriceIds, type CheckoutState, type CourseAccessRow,
 } from '../supabase/functions/_shared/vida-diaria';
 
@@ -281,21 +282,43 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
     expect(liveChargesAllowed('sk_live_x', 'on')).toBe(true);
   });
 
-  it('el webhook y el checkout del curso no tocan el camino de VUM Academy ni de los créditos', () => {
+  it('destino de webhook propio: vida-diaria-webhook con su secreto; billing-webhook ignora el curso y nunca concede Academy', () => {
     const root = path.resolve(__dirname, '..');
-    const webhook = fs.readFileSync(path.join(root, 'supabase/functions/billing-webhook/index.ts'), 'utf8');
-    // La rama del curso va antes del switch general y termina con return: nunca llega a apply_purchase (plus_until).
-    const vd = webhook.indexOf('accessChangeFromEvent(event');
-    expect(vd).toBeGreaterThan(0);
-    expect(vd).toBeLessThan(webhook.indexOf('switch (event.type)'));
-    expect(webhook.slice(vd, webhook.indexOf('switch (event.type)'))).not.toContain('apply_purchase');
-    expect(webhook).toContain('if (isVidaDiariaCheckout(s)) break;');
+    const own = fs.readFileSync(path.join(root, 'supabase/functions/vida-diaria-webhook/index.ts'), 'utf8');
+    expect(own).toContain('Deno.env.get("STRIPE_WEBHOOK_SECRET_VIDA_DIARIA")');
+    expect(own).toContain('constructEventAsync(');
+    expect(own).toContain('db.rpc("apply_course_payment"');
+    expect(own).toContain('db.rpc("apply_course_access"');
+    const code = own.split('\n').filter((l) => !l.trim().startsWith('//')).join('\n'); // code only, not the comments
+    expect(code).not.toMatch(/apply_purchase|plus_until|STRIPE_WEBHOOK_SECRET"/);
+    const config = fs.readFileSync(path.join(root, 'supabase/config.toml'), 'utf8');
+    expect(config).toMatch(/\[functions\.vida-diaria-webhook\]\nverify_jwt = false/);
+    const shared = fs.readFileSync(path.join(root, 'supabase/functions/billing-webhook/index.ts'), 'utf8');
+    // The course check comes before the general switch and returns: course events never reach apply_purchase.
+    const guard = shared.indexOf('if (isVidaDiariaEvent(event)) return ok();');
+    expect(guard).toBeGreaterThan(0);
+    expect(guard).toBeLessThan(shared.indexOf('switch (event.type)'));
+    expect(shared).not.toMatch(/apply_course_(access|payment)/);
+    // The events the destination must send are exactly the ones the code handles.
+    expect([...VD_WEBHOOK_EVENTS]).toEqual(['customer.subscription.created', 'customer.subscription.updated', 'customer.subscription.deleted', 'invoice.paid']);
+    for (const type of VD_WEBHOOK_EVENTS) {
+      const ev = type === 'invoice.paid' ? paidEvent(T0, T0 + 30 * DAY) : subEvent(type, T0, {});
+      expect(isVidaDiariaEvent(ev)).toBe(true);
+      expect(Boolean(paymentFromEvent(ev, prices) ?? accessChangeFromEvent(ev, prices))).toBe(true);
+    }
+    expect(isVidaDiariaEvent(paidEvent(T0, T0 + DAY, { legacy: true }))).toBe(true);
+    expect(isVidaDiariaEvent({ type: 'checkout.session.completed', data: { object: { metadata: { product: VD_PRODUCT } } } })).toBe(true);
+    // An Academy subscription is not a course event: billing-webhook keeps handling it as before.
+    expect(isVidaDiariaEvent(subEvent('customer.subscription.updated', T0, { product: 'vum_academy', price: ACADEMY_PRICE }))).toBe(false);
+  });
+
+  it('el checkout del curso no toca el camino de VUM Academy ni de los créditos', () => {
+    const root = path.resolve(__dirname, '..');
     const checkout = fs.readFileSync(path.join(root, 'supabase/functions/billing-checkout/index.ts'), 'utf8');
     expect(checkout).toContain('liveChargesAllowed(');
     expect(checkout).toContain('db.rpc("begin_course_checkout"');
     expect(checkout).toContain('idempotencyKey: checkoutIdempotencyKey(user.id, step.attempt)');
     expect(checkout).toContain('automaticTaxEnabled(Deno.env.get("VIDA_DIARIA_AUTOMATIC_TAX"))');
-    expect(webhook.indexOf('paymentFromEvent(event')).toBeLessThan(webhook.indexOf('switch (event.type)'));
     const sql = fs.readFileSync(path.join(root, 'supabase/migrations/20261107120000_vida_diaria_access.sql'), 'utf8');
     expect(sql).not.toMatch(/plus_until\s*=/);
     expect(sql).not.toMatch(/alter table public\.(profiles|purchases)/);
