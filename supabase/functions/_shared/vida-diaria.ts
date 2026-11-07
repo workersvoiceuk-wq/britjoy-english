@@ -254,7 +254,7 @@ export function canStartCheckout(row: CourseAccessRow | null | undefined, now = 
 /** Real charges stay off until the owner switches them on after verifying access in test mode. */
 export function liveChargesAllowed(secretKey: string | undefined, liveFlag: string | undefined): boolean {
   if (!secretKey) return false;
-  if (secretKey.startsWith('sk_test_') || secretKey.startsWith('rk_test_')) return true;
+  if (secretKey.startsWith('sk_test_') || secretKey.startsWith('rk_test_') || secretKey.startsWith('rkcs_test_')) return true;
   return liveFlag === 'on';
 }
 

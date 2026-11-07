@@ -315,6 +315,8 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
   it('cobros reales apagados salvo clave de prueba o VIDA_DIARIA_LIVE=on', () => {
     expect(liveChargesAllowed(undefined, undefined)).toBe(false);
     expect(liveChargesAllowed('sk_test_x', undefined)).toBe(true);
+    expect(liveChargesAllowed('rk_test_x', undefined)).toBe(true);
+    expect(liveChargesAllowed('rkcs_test_x', undefined)).toBe(true);
     expect(liveChargesAllowed('sk_live_x', undefined)).toBe(false);
     expect(liveChargesAllowed('sk_live_x', 'on')).toBe(true);
   });
