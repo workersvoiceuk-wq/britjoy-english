@@ -1,6 +1,9 @@
 import { QUESTION_VIDEO_MANIFEST } from './question-video-help.mjs';
 import clips from './britjoy-review-video-clips.json';
 
+// Each clip may declare its folder (videos/ingles-a1, …); the A2 clips predate the field.
+const folderOf = (clip: object) => (clip as { folder?: string }).folder ?? 'videos/ingles-a2';
+
 const reviewConcepts = clips.map((clip) => ({
   conceptId: clip.id,
   courseId: 'ingles',
@@ -24,11 +27,11 @@ const reviewConcepts = clips.map((clip) => ({
   captions: clip.cues,
   sources: [clip.source],
   video: {
-    src: `videos/ingles-a2/${clip.id}.mp4`,
+    src: `${folderOf(clip)}/${clip.id}.mp4`,
     narration: 'pending-original-voice',
     captions: {
-      es: `videos/ingles-a2/${clip.id}.es.vtt`,
-      en: `videos/ingles-a2/${clip.id}.en.vtt`,
+      es: `${folderOf(clip)}/${clip.id}.es.vtt`,
+      en: `${folderOf(clip)}/${clip.id}.en.vtt`,
     },
   },
   mappings: [{ courseId: 'ingles', lessonId: clip.lessonId, questionId: clip.questionId || undefined }],
