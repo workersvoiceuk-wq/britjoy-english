@@ -1,0 +1,873 @@
+{
+ "ruta": "/britjoy-english/repaso-a2/",
+ "origen": "britjoy-english, rama ccr-2adf0366-90z793",
+ "generado": "2026-11-07T12:27:33.532Z",
+ "progreso": "Solo local en este navegador, clave britjoy-repaso-a2-v1. No lee ni escribe el progreso de la app vigente (lumi-v8-guest, /britjoy-english/api/*), ni cuentas, cuotas, proveedores o constancias.",
+ "voz": "Sin locución: la locución original de Óscar está pendiente; los vídeos llevan texto y subtítulos ES/EN.",
+ "clips": [
+  {
+   "id": "a2-u1-l1-p0",
+   "lessonId": "a2-u1-l1",
+   "questionId": "a2-u1-l1:0",
+   "tipo": "pregunta",
+   "duracion": 26,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l1-p0.mp4",
+     "bytes": 286038,
+     "sha256": "f7b622bd980b8c8901930186df1608b80605f0c01bbd230932c03f0b5ce8bd97"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p0.es.vtt",
+     "bytes": 366,
+     "sha256": "5a2e71047e5dbe9972f4855ddc992b3924101a024e7dc96bdb6b43c722a4d3d7"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p0.en.vtt",
+     "bytes": 390,
+     "sha256": "4aaa5e770b0087a9f7ff4f578bef4b705ece1c234a5ddf6942737efde60729f4"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l1-p1",
+   "lessonId": "a2-u1-l1",
+   "questionId": "a2-u1-l1:1",
+   "tipo": "pregunta",
+   "duracion": 30,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l1-p1.mp4",
+     "bytes": 288635,
+     "sha256": "6c4aa18d687814228e9c7a00d09b047fad2d37558abaade050a90ef960fcbe2e"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p1.es.vtt",
+     "bytes": 412,
+     "sha256": "7d80c537a311fb239cd171d4b4d0ebc152c78a5e2c877582395b1a185c89eee3"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p1.en.vtt",
+     "bytes": 416,
+     "sha256": "c058a7eea7dceb93999560e10a1b2066e8137fcae350e83ed0b9df343fa41ee1"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l1-p2",
+   "lessonId": "a2-u1-l1",
+   "questionId": "a2-u1-l1:2",
+   "tipo": "pregunta",
+   "duracion": 22,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l1-p2.mp4",
+     "bytes": 208201,
+     "sha256": "4bcf3deecb36bded509eb85eddf3eaaabb7eb06742443092f6f127586e1b8030"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p2.es.vtt",
+     "bytes": 315,
+     "sha256": "ab711d2dfac055ef6136a8371e0cd7c280642d9543b30f68261e6df89a24be19"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p2.en.vtt",
+     "bytes": 329,
+     "sha256": "aa74427ebbc6bc22d5792cbe14f888224eff36a14c79e34fc738048cf3b4764d"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l1-p3",
+   "lessonId": "a2-u1-l1",
+   "questionId": "a2-u1-l1:3",
+   "tipo": "pregunta",
+   "duracion": 24,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l1-p3.mp4",
+     "bytes": 202000,
+     "sha256": "e91ebf7e6ad7a3656242dc05c45fb19c5b6c47ab5666994ab8f4ff99f4cd8d2d"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p3.es.vtt",
+     "bytes": 355,
+     "sha256": "44485ac546bebdd4e220fd8ac82e33ea9c69aab935f338f44611616b49c2950c"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p3.en.vtt",
+     "bytes": 351,
+     "sha256": "6d7d62026d377b2f2ac5a129fb078cb1d5997ea5cc3bee448beeb1b813683862"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l1-p4",
+   "lessonId": "a2-u1-l1",
+   "questionId": "a2-u1-l1:4",
+   "tipo": "pregunta",
+   "duracion": 24,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l1-p4.mp4",
+     "bytes": 232124,
+     "sha256": "51e4e3f2e4bc52a21c371a2cff641d2b46ecbeefdd4190010db11766eb282e2c"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p4.es.vtt",
+     "bytes": 340,
+     "sha256": "7d37475286870356e0c430301f560f6c65ca9c77f17a57327a9d37d73ae813ea"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p4.en.vtt",
+     "bytes": 367,
+     "sha256": "b5760fb2af6f47a89a5c6967419514c45f7b674ac5021be0f3d976ceb71234f1"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l1-p5",
+   "lessonId": "a2-u1-l1",
+   "questionId": "a2-u1-l1:5",
+   "tipo": "pregunta",
+   "duracion": 25,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l1-p5.mp4",
+     "bytes": 191681,
+     "sha256": "404a40426c296bd1a2a3a32217aa91a01df2fd75d09f7009d86e2d17f061a984"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p5.es.vtt",
+     "bytes": 379,
+     "sha256": "9c523d7b37909f1a95b76aa4dd9acead9ad5b86ce9b7d199ca07730a94928a55"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p5.en.vtt",
+     "bytes": 413,
+     "sha256": "dec2d05e773ebf30a758ee1fffec8cc2ca4322280bcfcbd75db8110bc74e51e9"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l1-p6",
+   "lessonId": "a2-u1-l1",
+   "questionId": "a2-u1-l1:6",
+   "tipo": "pregunta",
+   "duracion": 20,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l1-p6.mp4",
+     "bytes": 216946,
+     "sha256": "62b310f3be7311254356ab7ec869420824cdd59769b2e5084621a7b13af0b0fb"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p6.es.vtt",
+     "bytes": 295,
+     "sha256": "cccdf69ce12408a44ec449c6e14c828c14b6a60e98ab3969121107d726afcd62"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p6.en.vtt",
+     "bytes": 287,
+     "sha256": "9d24f371e6069dd9dda83a19f2aefa1c4012c9b9ad29af8272ab76caa72a596a"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l1-p7",
+   "lessonId": "a2-u1-l1",
+   "questionId": "a2-u1-l1:7",
+   "tipo": "pregunta",
+   "duracion": 22,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l1-p7.mp4",
+     "bytes": 185649,
+     "sha256": "90591ebbfe3110cf3d8bac38218cb600827aca22fda07acaf2c387e300ea3849"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p7.es.vtt",
+     "bytes": 324,
+     "sha256": "a4a3b4339ec64df74c7da23fbef6c000e2451a4db269e0c0f5792d1385b3a0f6"
+    },
+    {
+     "ruta": "media/a2-u1-l1-p7.en.vtt",
+     "bytes": 338,
+     "sha256": "b27fcc62b2322af2171e22b5772f025d4c7416da3c16cafe74e134743bd1db3e"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l1-capitulo",
+   "lessonId": "a2-u1-l1",
+   "questionId": null,
+   "tipo": "capitulo",
+   "duracion": 44,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l1-capitulo.mp4",
+     "bytes": 388478,
+     "sha256": "2d68c448146a1d7232dc6d92df75d315c410ecac8385514d38aa4ecc0be38a8a"
+    },
+    {
+     "ruta": "media/a2-u1-l1-capitulo.es.vtt",
+     "bytes": 591,
+     "sha256": "de7661d64498cfb9f2e5bedee3b4f1f07e8bfa657a7dc7e12f2000ef0a95b7e2"
+    },
+    {
+     "ruta": "media/a2-u1-l1-capitulo.en.vtt",
+     "bytes": 579,
+     "sha256": "258278705b7ff41a84ce1815009713a3e7200ecab0f7356d639d1448523723ff"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l2-p0",
+   "lessonId": "a2-u1-l2",
+   "questionId": "a2-u1-l2:0",
+   "tipo": "pregunta",
+   "duracion": 20,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l2-p0.mp4",
+     "bytes": 190154,
+     "sha256": "9b74641498bc766f2084305a72bdb87d1d588f5b7a363a47ee65bb96769abf76"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p0.es.vtt",
+     "bytes": 314,
+     "sha256": "beb4e51355f55e4a1e8897be05acc69a68fb6b77ef6618dc93c91de2f2173b2f"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p0.en.vtt",
+     "bytes": 325,
+     "sha256": "1be2327747ca701598eabb572bb0da5be8dd3267958f63fa295544a9c28af64a"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l2-p1",
+   "lessonId": "a2-u1-l2",
+   "questionId": "a2-u1-l2:1",
+   "tipo": "pregunta",
+   "duracion": 22,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l2-p1.mp4",
+     "bytes": 183362,
+     "sha256": "2fefc522508fed7be61d82880c47956c372282132e939793f7e9230422a93c82"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p1.es.vtt",
+     "bytes": 332,
+     "sha256": "970e46a020bafa1c4f85d77feaa10c7c54e904bd64b9499ffffa6dbf8053044e"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p1.en.vtt",
+     "bytes": 317,
+     "sha256": "1ffcbb8a8d60a6b5681b24f4406db232542095d11ffecdc8f0cf0bf4df2cbc95"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l2-p2",
+   "lessonId": "a2-u1-l2",
+   "questionId": "a2-u1-l2:2",
+   "tipo": "pregunta",
+   "duracion": 19,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l2-p2.mp4",
+     "bytes": 200105,
+     "sha256": "3e90470bd7443894626d6f28d22fd65ba4b6cd8ae992b80cd859949ae368bcce"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p2.es.vtt",
+     "bytes": 296,
+     "sha256": "ac148d73b36d0fc9a112ca8b31aa0fbf735fc8aff8cbc0927d59aa4bd681ab16"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p2.en.vtt",
+     "bytes": 306,
+     "sha256": "1b84d8559fb6cf6bcc5faf756c3f5eed13a27077075d53aef460a99cb266104a"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l2-p3",
+   "lessonId": "a2-u1-l2",
+   "questionId": "a2-u1-l2:3",
+   "tipo": "pregunta",
+   "duracion": 20,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l2-p3.mp4",
+     "bytes": 193582,
+     "sha256": "738a17ecad059312e1e387578a805658872cd73314d36548d4f537857e712d2d"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p3.es.vtt",
+     "bytes": 305,
+     "sha256": "0f06faa92b6e8822cfff1e66ed0f775b484c53ad875ffe6c86c7b98471dd3058"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p3.en.vtt",
+     "bytes": 309,
+     "sha256": "8f23f4d0ff80abfea26cbbc08870b08a246babf45ae14beb0daaad76010ddc46"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l2-p4",
+   "lessonId": "a2-u1-l2",
+   "questionId": "a2-u1-l2:4",
+   "tipo": "pregunta",
+   "duracion": 18,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l2-p4.mp4",
+     "bytes": 235894,
+     "sha256": "cda44f6e463b45c07b0d85fdb1a407ce040b44cd05d76e3882e07aa595f1b70b"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p4.es.vtt",
+     "bytes": 301,
+     "sha256": "78fc88af3944a6b3dbfe78143be7426c09989a3d8e690ac6c4e6250b6f69055b"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p4.en.vtt",
+     "bytes": 308,
+     "sha256": "831f84399c715310ee65390a6d2a8c8c156f2882f8393a80ae3872eb9fce2f60"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l2-p5",
+   "lessonId": "a2-u1-l2",
+   "questionId": "a2-u1-l2:5",
+   "tipo": "pregunta",
+   "duracion": 21,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l2-p5.mp4",
+     "bytes": 224406,
+     "sha256": "9d1733f2a2c5d00dbff2bcd958ea88fa2cc4e388dfe434f14867e70f23394a85"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p5.es.vtt",
+     "bytes": 304,
+     "sha256": "a2047fd4fecbb9346ddeaeb7c2288ed5f252efb0b45de0864b81542371906f7c"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p5.en.vtt",
+     "bytes": 298,
+     "sha256": "cf5cd817480afdf13025b53fadbb5192ebd5f39685faa1f90e91120cfefd6f0a"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l2-p6",
+   "lessonId": "a2-u1-l2",
+   "questionId": "a2-u1-l2:6",
+   "tipo": "pregunta",
+   "duracion": 20,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l2-p6.mp4",
+     "bytes": 179836,
+     "sha256": "ef881bd17bbbc4b18ac13432ed783532a60a563e8be64d6c81cface16de1bf83"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p6.es.vtt",
+     "bytes": 322,
+     "sha256": "415433081cb787026b21c0bc9854912f2aac298845274d80b9366b593e0dadf1"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p6.en.vtt",
+     "bytes": 326,
+     "sha256": "4a91a8e12b4ede2b3d2bc0e3d9386109df1fc5b1bdc52fe44c238b2332a457b8"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l2-p7",
+   "lessonId": "a2-u1-l2",
+   "questionId": "a2-u1-l2:7",
+   "tipo": "pregunta",
+   "duracion": 18,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l2-p7.mp4",
+     "bytes": 177056,
+     "sha256": "427808224bbbd87f66132ec6967cc8bb6757c5891f59c59f93302afccb426a4a"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p7.es.vtt",
+     "bytes": 297,
+     "sha256": "4fdc2a9f2ba0cf067ae5a28785e81802ba683d0725c3c251e08c15b4d50007f1"
+    },
+    {
+     "ruta": "media/a2-u1-l2-p7.en.vtt",
+     "bytes": 289,
+     "sha256": "4eb8d03bbf6c00bb8443d43304f833135a78246e3f3f9d15f4e616c0547f5e1d"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "a2-u1-l2-capitulo",
+   "lessonId": "a2-u1-l2",
+   "questionId": null,
+   "tipo": "capitulo",
+   "duracion": 40,
+   "archivos": [
+    {
+     "ruta": "media/a2-u1-l2-capitulo.mp4",
+     "bytes": 380203,
+     "sha256": "f26d656df2f9390d73c38e42e9b38f75e39bf846cfb761a2b2cc1c01324f137c"
+    },
+    {
+     "ruta": "media/a2-u1-l2-capitulo.es.vtt",
+     "bytes": 579,
+     "sha256": "b95b987f6128e6ffc9a9d23463e4a655fe9d8a683926c851f1492028a4e9dbb1"
+    },
+    {
+     "ruta": "media/a2-u1-l2-capitulo.en.vtt",
+     "bytes": 560,
+     "sha256": "3c019da191c4b0c94feaa857c56e572e80b8d106288b9244a1c4fea568f06b97"
+    }
+   ],
+   "permisos": "Producción original de Voz Unida Mundo (animación + captura de la app BritJoy). Uso en vozunidamundo.com."
+  },
+  {
+   "id": "britjoy-trabajo-pregunta",
+   "lessonId": "a2-u2-l1",
+   "questionId": "a2-u2-l1:1",
+   "tipo": "pregunta",
+   "duracion": 18,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-trabajo-pregunta.mp4",
+     "bytes": 496677,
+     "sha256": "737c7351ecdf6148dd599a2acc1c87b1e30ce92b6f7a731c70e6adb108012427"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta.es.vtt",
+     "bytes": 320,
+     "sha256": "729697893df31306b6646c8544f2aa7c81e1769e7e22beee517e320219ccdabc"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta.en.vtt",
+     "bytes": 302,
+     "sha256": "c934663a3df653611a38c0ebf9be4e8855ea1c9ff6f82e082145ba048bc59ac5"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Tiger Lily · Pexels (https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-trabajo-pregunta-2",
+   "lessonId": "a2-u2-l1",
+   "questionId": "a2-u2-l1:2",
+   "tipo": "pregunta",
+   "duracion": 19,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-2.mp4",
+     "bytes": 523570,
+     "sha256": "9d66d7bc6adf58c60eb9117f8f7143ed02b77edb85a14a3aae5df757c10fd6fb"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-2.es.vtt",
+     "bytes": 381,
+     "sha256": "cb86b33e648fb568f7666d3724c07afc8b02103e1c5fd3d9599d8515945fcac5"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-2.en.vtt",
+     "bytes": 353,
+     "sha256": "c2f255edfb7318609bd234f88d3f87b9c4fbc730bb75034402c969e7746be636"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Tiger Lily · Pexels (https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-trabajo-pregunta-3",
+   "lessonId": "a2-u2-l1",
+   "questionId": "a2-u2-l1:3",
+   "tipo": "pregunta",
+   "duracion": 19,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-3.mp4",
+     "bytes": 513688,
+     "sha256": "8bd8836325acba39bb878f4db518bb7132ce77ee0ed54273b4714956d48366eb"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-3.es.vtt",
+     "bytes": 386,
+     "sha256": "444aabe3217324452de4b9e0149cc17d1a124004b07ebe4da471776997d42ebf"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-3.en.vtt",
+     "bytes": 386,
+     "sha256": "e8ee8adaf3a1c7134dae49228c826b37cda2ce3029ff67ca2dcb4dfa17f4d364"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Tiger Lily · Pexels (https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-trabajo-pregunta-4",
+   "lessonId": "a2-u2-l1",
+   "questionId": "a2-u2-l1:4",
+   "tipo": "pregunta",
+   "duracion": 18,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-4.mp4",
+     "bytes": 498962,
+     "sha256": "478f849c203ef7c7cc1086584559f43ad07026c2b0ae0bd757b35bf48611bad9"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-4.es.vtt",
+     "bytes": 404,
+     "sha256": "755af28a7bc6e0fa1c49a2ecdb2169a587e14d46b29464f437c68a9b83d887c1"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-4.en.vtt",
+     "bytes": 392,
+     "sha256": "b1542bd6b54467c631175fdc215176ba62dde8d3a504e7c8c2544a3639bf4e0a"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Tiger Lily · Pexels (https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-trabajo-pregunta-5",
+   "lessonId": "a2-u2-l1",
+   "questionId": "a2-u2-l1:5",
+   "tipo": "pregunta",
+   "duracion": 18,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-5.mp4",
+     "bytes": 495976,
+     "sha256": "39ca808f225eecd3691555f9ce6f444226b5bf1da9372c39f1eb3fee4f1d8b5a"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-5.es.vtt",
+     "bytes": 395,
+     "sha256": "6017c5f0edb6bd0efe6457b003fe1880e89331173311e25e7711656792c54097"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-5.en.vtt",
+     "bytes": 398,
+     "sha256": "b6af5bc78862fb4e52e0b50709e99e22f0758676750b3bdab90f8afead325d99"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Tiger Lily · Pexels (https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-trabajo-pregunta-6",
+   "lessonId": "a2-u2-l1",
+   "questionId": "a2-u2-l1:6",
+   "tipo": "pregunta",
+   "duracion": 19,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-6.mp4",
+     "bytes": 521417,
+     "sha256": "8e7bef27f6a3131bfaffd946747d68245a4b8d827e64058c359379b340b9b111"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-6.es.vtt",
+     "bytes": 377,
+     "sha256": "6ca5ca8224b691996196c57ab863e9213bbdcc59c5a71a07816e208ccc975da4"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-6.en.vtt",
+     "bytes": 384,
+     "sha256": "e6c35fb37937c8685805680dee5f43b8956204cc4964af18b50bf7ca20a79fc3"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Tiger Lily · Pexels (https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-trabajo-pregunta-7",
+   "lessonId": "a2-u2-l1",
+   "questionId": "a2-u2-l1:7",
+   "tipo": "pregunta",
+   "duracion": 18,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-7.mp4",
+     "bytes": 499456,
+     "sha256": "57dc12bf5f1d7246dcc093e30c2250c353bf8f6852f05db6022f0335770edcf5"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-7.es.vtt",
+     "bytes": 373,
+     "sha256": "91eaa6bf70ab47957fadd07e62fca60a42a4ca603154ee3b747ec8a95c9a2120"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-pregunta-7.en.vtt",
+     "bytes": 358,
+     "sha256": "3b235e1dd817ec7f712e85eb3f5d348484ede57bec645ddf640575a9acb0274d"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Tiger Lily · Pexels (https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-trabajo-capitulo",
+   "lessonId": "a2-u2-l1",
+   "questionId": null,
+   "tipo": "capitulo",
+   "duracion": 19,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-trabajo-capitulo.mp4",
+     "bytes": 517174,
+     "sha256": "cbbf2ac2c2487f69eef72994b8f5535a119f143b8eb4b52c515ee754ceac1e3f"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-capitulo.es.vtt",
+     "bytes": 347,
+     "sha256": "a0c999a2340278dc0319a3da518873b5212d472ac9569b2f2a62f69046c15fea"
+    },
+    {
+     "ruta": "media/britjoy-trabajo-capitulo.en.vtt",
+     "bytes": 329,
+     "sha256": "33635ac5c37f8ccb08ea06abae87a8d9edb99cde4199381d58008a8cba14ecea"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Tiger Lily · Pexels (https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-gp-pregunta",
+   "lessonId": "a2-u2-l2",
+   "questionId": "a2-u2-l2:1",
+   "tipo": "pregunta",
+   "duracion": 19,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-gp-pregunta.mp4",
+     "bytes": 292722,
+     "sha256": "254426c2886e8ec38c1380f503449f00adf067d99dafeea741492bfe80e675cd"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta.es.vtt",
+     "bytes": 348,
+     "sha256": "3fa6c8cada9664e45cbf72a2cbdcc7e280b864063cdbbe3a639f2e71de90265c"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta.en.vtt",
+     "bytes": 345,
+     "sha256": "0c56c4df4dd91a750d75fc6288738807e19fc081a40e45b29becf23bc1fb5288"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Kaboompics · Pexels (https://www.pexels.com/video/woman-using-smartphone-6631689/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-gp-pregunta-2",
+   "lessonId": "a2-u2-l2",
+   "questionId": "a2-u2-l2:2",
+   "tipo": "pregunta",
+   "duracion": 18,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-gp-pregunta-2.mp4",
+     "bytes": 295408,
+     "sha256": "35ce7a3d70e822218f079e4356057597bce448ec774b65d5456e3fa926c1fa18"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta-2.es.vtt",
+     "bytes": 389,
+     "sha256": "08ef0de1cd2c85ef1debf6bdbcc6762261b246ce5b1d48008a9df3b11e1fbfa9"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta-2.en.vtt",
+     "bytes": 411,
+     "sha256": "55c8566716980cef14e2d373d6ac542eebe6d48622eaa8980a715d3d8eb7bde8"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Kaboompics · Pexels (https://www.pexels.com/video/woman-using-smartphone-6631689/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-gp-pregunta-3",
+   "lessonId": "a2-u2-l2",
+   "questionId": "a2-u2-l2:3",
+   "tipo": "pregunta",
+   "duracion": 18,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-gp-pregunta-3.mp4",
+     "bytes": 288325,
+     "sha256": "f7f8c4f2c4e9c0549318d3051587a9e112dfff5f293975693ebb8eb0533bccb4"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta-3.es.vtt",
+     "bytes": 379,
+     "sha256": "a17889f2fb3d599766b8b06bf051ca215ce7b15b96e89be8f8dd73c318816814"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta-3.en.vtt",
+     "bytes": 374,
+     "sha256": "d1130eb2942b32a38b91dfeb3046b79568acde5156c969104e51baaf47207a48"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Kaboompics · Pexels (https://www.pexels.com/video/woman-using-smartphone-6631689/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-gp-pregunta-4",
+   "lessonId": "a2-u2-l2",
+   "questionId": "a2-u2-l2:4",
+   "tipo": "pregunta",
+   "duracion": 19,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-gp-pregunta-4.mp4",
+     "bytes": 294665,
+     "sha256": "6d885a421e5f623c19d63cca3c2b43cfd41682d40a4015f28ce4a72feb8317c5"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta-4.es.vtt",
+     "bytes": 388,
+     "sha256": "6f48e2000289ac491d17dfeb98df2fcc4714b850cdbb3f3893b717fff93e45af"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta-4.en.vtt",
+     "bytes": 387,
+     "sha256": "025b614533ba8835ac6f36a8f38a13351bbee8e72c91d6dc7c33a60128afd7e1"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Kaboompics · Pexels (https://www.pexels.com/video/woman-using-smartphone-6631689/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-gp-pregunta-5",
+   "lessonId": "a2-u2-l2",
+   "questionId": "a2-u2-l2:5",
+   "tipo": "pregunta",
+   "duracion": 19,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-gp-pregunta-5.mp4",
+     "bytes": 302451,
+     "sha256": "f0df9319e71c766a91b843040436d452e46e0af5de5216d00d56586d3684d239"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta-5.es.vtt",
+     "bytes": 408,
+     "sha256": "20ea85d244c4e06555827c4b972ef9da5cf7fb31e9a9f3c8e24587cb6fcff2bd"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta-5.en.vtt",
+     "bytes": 387,
+     "sha256": "9064d19735e8b6fe90b929a0504d4364b03411c58b5030ef394d9fae5e9fbda9"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Kaboompics · Pexels (https://www.pexels.com/video/woman-using-smartphone-6631689/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-gp-pregunta-6",
+   "lessonId": "a2-u2-l2",
+   "questionId": "a2-u2-l2:6",
+   "tipo": "pregunta",
+   "duracion": 20,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-gp-pregunta-6.mp4",
+     "bytes": 309072,
+     "sha256": "087a9df1dc49477a9f6ed04cada9f6d83202f32a98730d8afefd0917023a857b"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta-6.es.vtt",
+     "bytes": 385,
+     "sha256": "20498c00f405ef2241b7e71e354763d5aae2704354123adf11982f4736e63dca"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta-6.en.vtt",
+     "bytes": 381,
+     "sha256": "b627c34521a51ad5393471890c95bc08fbf7ccac7081b418b4352f7e5c94c446"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Kaboompics · Pexels (https://www.pexels.com/video/woman-using-smartphone-6631689/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-gp-pregunta-7",
+   "lessonId": "a2-u2-l2",
+   "questionId": "a2-u2-l2:7",
+   "tipo": "pregunta",
+   "duracion": 19,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-gp-pregunta-7.mp4",
+     "bytes": 295026,
+     "sha256": "dfa78441dad94569b449ca6247f250a97e6844f47af1a2c39dfb691cfa070921"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta-7.es.vtt",
+     "bytes": 361,
+     "sha256": "626a4dc0f5c665b6656ff281366a27e9d6dbd4da8671b5026818c7fbdae26ef1"
+    },
+    {
+     "ruta": "media/britjoy-gp-pregunta-7.en.vtt",
+     "bytes": 363,
+     "sha256": "765a8a8202bcfae843bdb892e4713514295a888d500ccc57b7e0bb4d54959a86"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Kaboompics · Pexels (https://www.pexels.com/video/woman-using-smartphone-6631689/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  },
+  {
+   "id": "britjoy-gp-capitulo",
+   "lessonId": "a2-u2-l2",
+   "questionId": null,
+   "tipo": "capitulo",
+   "duracion": 20,
+   "archivos": [
+    {
+     "ruta": "media/britjoy-gp-capitulo.mp4",
+     "bytes": 307971,
+     "sha256": "ec07913642154fb1b1752af47df241e8921ec973e4b134a36a172f285252a8d3"
+    },
+    {
+     "ruta": "media/britjoy-gp-capitulo.es.vtt",
+     "bytes": 348,
+     "sha256": "e22449dbc84ff8b981db34481ffc2118070836ba7cccfb43c8def58280567208"
+    },
+    {
+     "ruta": "media/britjoy-gp-capitulo.en.vtt",
+     "bytes": 346,
+     "sha256": "fd324c007b240ada778c10b0a035b1c72dbcd293017ac3e88983b20c2d522c7f"
+    }
+   ],
+   "permisos": "Metraje de terceros declarado por la entrega de Antigravity: Kaboompics · Pexels (https://www.pexels.com/video/woman-using-smartphone-6631689/), licencia de Pexels. No verificado por Claude (Pexels no accesible desde su entorno)."
+  }
+ ],
+ "paginas": [
+  {
+   "ruta": "index.html",
+   "sha256": "cf1bcd0d8a4a96c2d4eed8863a309fdc32a8010e5c49afd84094030bf766cfc8"
+  },
+  {
+   "ruta": "app.js",
+   "sha256": "8be2ce38956888ec7bd5df4359a9f3f248944624c2391dab72cad57c20a74c0e"
+  },
+  {
+   "ruta": "data.json",
+   "sha256": "e8631b741b1f67113b4a3ad224e1b939ae174b1d0f0e66026984dbf6106a746f"
+  }
+ ]
+}
