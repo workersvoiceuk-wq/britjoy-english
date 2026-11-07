@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:16.000
+Goal: avoid credential stuffing and tell forwardable SMS codes apart from passkeys tied to the real domain. If you reuse the same password in a shop and in your email, someone else's breach hands over your main email account.
+
+2
+00:00:16.000 --> 00:00:26.600
+A passkey (WebAuthn/FIDO2) cryptographically checks the exact domain: if the page is a fake copy (e.g. «g0v-uk-refund.example»), the browser refuses to sign.
+
+3
+00:00:26.600 --> 00:00:33.800
+Now do the lesson exercises. If you are unsure, watch this video again.

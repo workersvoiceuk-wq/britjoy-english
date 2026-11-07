@@ -3,10 +3,13 @@ import clips from './britjoy-review-video-clips.json';
 
 // Each clip may declare its folder (videos/ingles-a1, …); the A2 clips predate the field.
 const folderOf = (clip: object) => (clip as { folder?: string }).folder ?? 'videos/ingles-a2';
+// Each clip may declare its VUM course (Vivir en UK → britjoy, IA → ia…), as the player infers it from the lesson;
+// the A2 clips predate the field and are English.
+const courseOf = (clip: object) => (clip as { courseId?: string }).courseId ?? 'ingles';
 
 const reviewConcepts = clips.map((clip) => ({
   conceptId: clip.id,
-  courseId: 'ingles',
+  courseId: courseOf(clip),
   avatarId: 'britjoy-ingles',
   avatarArt: null,
   status: 'ready',
@@ -34,7 +37,7 @@ const reviewConcepts = clips.map((clip) => ({
       en: `${folderOf(clip)}/${clip.id}.en.vtt`,
     },
   },
-  mappings: [{ courseId: 'ingles', lessonId: clip.lessonId, questionId: clip.questionId || undefined }],
+  mappings: [{ courseId: courseOf(clip), lessonId: clip.lessonId, questionId: clip.questionId || undefined }],
 }));
 
 // The isolated review build keeps all existing question-help entries and adds these four exact mappings.

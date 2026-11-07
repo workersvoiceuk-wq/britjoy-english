@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:16.000
+The model sees the measurements and the Luna/Sol labels. Training changes its internal numbers to reduce the error. A weight is one of those numbers: it sets how much a measurement counts. We are not calling a chat service.
+
+2
+00:00:16.000 --> 00:00:22.000
+Goal: connect the demonstration with training your small model.
+
+3
+00:00:22.000 --> 00:00:38.000
+In the fictional lab, the model makes a mistake and adjusts a weight after seeing an example. Your task: explain what changed and which known fact made the comparison possible. Hint: separate internal numbers from the examples' labels.
+
+4
+00:00:38.000 --> 00:00:45.200
+Now do the lesson exercises. If you are unsure, watch this video again.

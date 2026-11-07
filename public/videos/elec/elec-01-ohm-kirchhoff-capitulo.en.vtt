@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:10.300
+Goal: calculate voltage (V), current (I), resistance (R) and power (P = V × I) in a low-voltage virtual circuit.
+
+2
+00:00:10.300 --> 00:00:24.000
+Ohm's law: V = I × R. In series the current is the same and voltages add up (KVL: the algebraic sum of the voltages around a closed loop is zero).
+
+3
+00:00:24.000 --> 00:00:40.000
+In parallel the voltage is shared and currents add up at the node (KCL: the current entering a node equals the current leaving it). Inspired by MIT OCW 6.002 (CC BY-NC-SA 4.0), not endorsed by MIT.
+
+4
+00:00:40.000 --> 00:00:47.200
+Now do the lesson exercises. If you are unsure, watch this video again.

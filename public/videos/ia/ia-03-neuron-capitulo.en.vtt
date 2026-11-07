@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:16.000
+Each weight sets how much a measurement counts. The bias is a number added to the calculation that shifts the decision. The output is a number from the model; a high figure alone does not prove a real prediction is reliable.
+
+2
+00:00:16.000 --> 00:00:22.800
+Goal: after the introduction, explore the weights of a neuron in the lab.
+
+3
+00:00:22.800 --> 00:00:38.100
+In a virtual neuron, you keep the measurements and change only the bias. Your task: predict whether the decision can change even though the flower is the same. Hint: the bias shifts the model's decision.
+
+4
+00:00:38.100 --> 00:00:45.300
+Now do the lesson exercises. If you are unsure, watch this video again.

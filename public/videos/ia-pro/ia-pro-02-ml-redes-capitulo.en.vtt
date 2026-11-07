@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:13.700
+Goal: tell classification from regression, diagnose overfitting and understand what limits an LLM. Classification predicts discrete labels (spam / not spam); regression predicts continuous values (electricity demand in kWh).
+
+2
+00:00:13.700 --> 00:00:26.300
+If the training error drops almost to 0% but the validation error rises, the model is memorising noise (overfitting): use more varied data, cross-validation and regularisation.
+
+3
+00:00:26.300 --> 00:00:33.500
+Now do the lesson exercises. If you are unsure, watch this video again.

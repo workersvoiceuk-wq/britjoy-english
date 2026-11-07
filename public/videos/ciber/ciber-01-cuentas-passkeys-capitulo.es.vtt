@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:16.000
+Objetivo: evitar el relleno de credenciales (credential stuffing) y distinguir códigos SMS reenviables de passkeys vinculadas al dominio real. Si reutilizas la misma clave en una tienda y en tu correo, una brecha ajena entrega tu correo principal.
+
+2
+00:00:16.000 --> 00:00:26.600
+Una passkey (WebAuthn/FIDO2) comprueba criptográficamente el dominio exacto: si la página es una copia falsa (ej. «g0v-uk-refund.example»), el navegador se niega a firmar.
+
+3
+00:00:26.600 --> 00:00:33.800
+Ahora haz los ejercicios de la lección. Si dudas, vuelve a ver este vídeo.

@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:11.000
+Goal: understand τ = R × C, the RMS value of alternating current, the conceptual role of the MOSFET and the mandatory legal boundary.
+
+2
+00:00:11.000 --> 00:00:27.000
+A capacitor in series with R charges with time constant τ = R × C; in sinusoidal AC, V_peak = V_rms × √2 (e.g. 230 V RMS peaks at about 325 V, and in Colombia 120 V RMS reaches about 170 V peak).
+
+3
+00:00:27.000 --> 00:00:43.000
+LEGAL LIMIT: no online lesson authorises you to open consumer units or install wiring. Official qualification required: GB (BS 7671 / Part P / NVQ3 + AM2 / ECS), Spain (REBT / authorised installer), Colombia (RETIE / CONTE registration).
+
+4
+00:00:43.000 --> 00:00:50.200
+Now do the lesson exercises. If you are unsure, watch this video again.

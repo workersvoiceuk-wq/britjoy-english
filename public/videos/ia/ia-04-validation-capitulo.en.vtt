@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:15.600
+The new flowers include different combinations of length and width. Using two measurements can help where one alone falls short. Generalising means applying what was learned to new examples. The result only describes this small set.
+
+2
+00:00:15.600 --> 00:00:22.400
+Goal: use the idea of classifying and check what happens with new data.
+
+3
+00:00:22.400 --> 00:00:36.900
+The model recognises its training flowers, but it receives a new flower. Your task: explain why it is worth checking that new example too. Hint: remembering seen examples and generalising are different tests.
+
+4
+00:00:36.900 --> 00:00:44.100
+Now do the lesson exercises. If you are unsure, watch this video again.

@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:16.000
+Each dot is a flower. Its position shows petal length and width. The colour shows the species we already know. Here you choose a rule; in the next lab the model will learn from examples. Goal: see how data and labels let you set up a classification.
+
+2
+00:00:16.000 --> 00:00:32.000
+Two fictional flowers show petal measurements and species labels. Your task: tell apart the input data and the labels. Hint: measuring a flower is not the same as knowing its species.
+
+3
+00:00:32.000 --> 00:00:39.200
+Now do the lesson exercises. If you are unsure, watch this video again.

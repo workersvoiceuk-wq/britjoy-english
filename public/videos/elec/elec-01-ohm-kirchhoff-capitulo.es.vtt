@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:10.300
+Objetivo: calcular tensión (V), corriente (I), resistencia (R) y potencia (P = V × I) en un circuito virtual de baja tensión.
+
+2
+00:00:10.300 --> 00:00:24.000
+Ley de Ohm: V = I × R. En serie la corriente es la misma y se suman tensiones (LVK: la suma algebraica de tensiones en un lazo cerrado es cero).
+
+3
+00:00:24.000 --> 00:00:40.000
+En paralelo la tensión es común y se suman corrientes en el nodo (LCK: la corriente que entra a un nodo iguala a la que sale). Inspirado en MIT OCW 6.002 (CC BY-NC-SA 4.0), sin aval del MIT.
+
+4
+00:00:40.000 --> 00:00:47.200
+Ahora haz los ejercicios de la lección. Si dudas, vuelve a ver este vídeo.

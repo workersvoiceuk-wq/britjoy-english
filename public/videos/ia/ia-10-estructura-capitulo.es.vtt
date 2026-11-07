@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:07.600
+Cuando pides «arréglame esto», el modelo rellena los huecos con suposiciones estadísticas.
+
+2
+00:00:07.600 --> 00:00:23.600
+Una instrucción eficaz nombra cuatro piezas: tarea concreta, contexto real aportado por ti, formato de salida (por ejemplo, tres viñetas breves) y restricciones claras («no añadas empresas ni fechas que no estén en mis notas»).
+
+3
+00:00:23.600 --> 00:00:29.600
+Objetivo: Construir una instrucción completa sin huecos que inviten a inventar.
+
+4
+00:00:29.600 --> 00:00:44.500
+Compara dos pedidos: «Hazme un buen CV para Londres» frente a una instrucción con tus datos reales y límites explícitos. Tu tarea: Elige la instrucción que reduce las invenciones y da un formato útil.
+
+5
+00:00:44.500 --> 00:00:52.500
+Pista: Cuanto menos contexto real das, más rellena el modelo por su cuenta.
+
+6
+00:00:52.500 --> 00:00:59.700
+Ahora haz los ejercicios de la lección. Si dudas, vuelve a ver este vídeo.
