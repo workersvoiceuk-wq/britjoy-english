@@ -88,23 +88,102 @@ const pilots: Record<string, LessonStory> = {
     prediction: 'Cuando una herramienta ofrece ejecutar pagos o envíos por su cuenta, ¿qué límite humano debe mantenerse siempre?',
     transfer: '¿Qué hábito sencillo usarás este año para distinguir una mejora útil del puro bombo publicitario?',
   },
+  'a2-u1-l1': {
+    scene: 'Jorge cuenta su rutina mezclando ayer, hoy y el siglo pasado en la misma frase. Britjoy apunta en la pizarra: «Para lo que haces cada martes no necesitas viajar en el tiempo».',
+    prediction: '¿Qué pistas de una frase en inglés indican que hablas de un hábito diario y no de algo puntual?',
+    transfer: 'Cuenta en dos frases tu mañana habitual de trabajo o estudio y comprueba los verbos antes de leerla en voz alta.',
+  },
+  'b1-u1-l1': {
+    scene: 'En una reunión, Jorge suelta «You are wrong!» para dar su opinión. Britjoy carraspea: «En inglés puedes discrepar con firmeza sin lanzar una silla verbal».',
+    prediction: '¿Cómo introducirías tu punto de vista en inglés para sonar claro y respetuoso a la vez?',
+    transfer: 'Elige un cambio que propondrías en tu barrio o trabajo: expresa tu opinión y comprueba que incluyes una razón concreta.',
+  },
+  'dia-01-presentaciones': {
+    scene: 'La familia García llega a su nueva calle y Jorge ensaya una presentación digna de discurso real. Britjoy sonríe: «El vecino solo quiere saber tu nombre y de qué piso vienes».',
+    prediction: 'En tu primer encuentro con un vecino en el Reino Unido, ¿qué tres datos sencillos te ayudarán a romper el hielo?',
+    transfer: 'Imagina que te presentas mañana en el colegio o en el trabajo: ¿qué dirías y qué preguntarías para confirmar que os entendisteis?',
+  },
+  'tur-01-antes-de-viajar': {
+    scene: 'Sofía mete el paraguas en la maleta pero deja para el taxi comprobar pasaporte y autorización electrónica (ETA). Britjoy frena el cierre: «El paraguas no pasa el control fronterizo por ti».',
+    prediction: 'Antes de volar al Reino Unido, ¿qué documentos y requisitos oficiales debes comprobar con antelación?',
+    transfer: 'Prepara tu propia lista previa a un viaje internacional y comprueba en GOV.UK si tu nacionalidad requiere ETA o visado.',
+  },
+  'uk-vida-l1': {
+    scene: 'Un vídeo viral promete «aprobar Life in the UK leyendo cinco trucos secretos». Britjoy abre el manual oficial: «Veinticuatro preguntas, cuarenta y cinco minutos y GOV.UK: cero magia, cien por cien comprobable».',
+    prediction: '¿Qué formato real y qué fuente oficial debes consultar antes de preparar o reservar el examen Life in the UK?',
+    transfer: 'Explica a un amigo cómo reservar el examen sin caer en webs intermediarias con recargo y qué comprobar en GOV.UK.',
+  },
+  'uk-salud-l1': {
+    scene: 'Jorge espera a tener gripe para averiguar dónde queda su centro de salud británico. Britjoy le tiende la ficha: «Registrarse en el GP se hace con calma, no con termómetro en la boca».',
+    prediction: '¿Qué pasos y qué diferencia entre GP, 111 y 999 conviene conocer en el sistema NHS del Reino Unido?',
+    transfer: 'Si un familiar recién llegado necesita médico no urgente el fin de semana en el Reino Unido, ¿qué comprobarías en nhs.uk?',
+  },
+  'uk-conducir-l1': {
+    scene: 'Jorge arranca pensando que su carné y las rotondas funcionan igual en todas partes. Britjoy señala la izquierda: «Aquí manda el Highway Code, la DVLA y el MOT: comprueba antes de girar».',
+    prediction: '¿Qué documentos y normas británicas debes verificar antes de conducir un coche en el Reino Unido?',
+    transfer: 'Revisa el caso de alguien que trae permiso extranjero al Reino Unido: ¿qué comprobarías en GOV.UK y en la DVLA?',
+  },
+  'es-en-nie': {
+    scene: 'En Madrid, Jorge usa «NIE» y «TIE» como si fueran el mismo plástico. Britjoy saca dos carpetas: «Uno es tu número para toda la vida administrativa en España; la otra es la tarjeta física».',
+    prediction: 'Al empezar tus trámites en España, ¿por qué importa distinguir el número NIE de la tarjeta TIE y del NIF?',
+    transfer: 'Vas a rellenar un formulario en España y a explicarlo en inglés: ¿qué dato revisas en sede electrónica oficial antes de pedir cita?',
+  },
+  'es-en-padron': {
+    scene: 'Jorge se muda a Valencia y deja el empadronamiento «para cuando tenga tiempo». Britjoy señala el ayuntamiento: «Sin padrón municipal, medio mapa de trámites locales ni te abre la puerta».',
+    prediction: '¿Para qué sirve empadronarse en tu ayuntamiento en España y qué documentos suelen pedirte?',
+    transfer: 'Explica a alguien recién llegado a tu municipio en España cómo comprobar los requisitos del padrón en la web de su ayuntamiento.',
+  },
+  'co-en-cedula': {
+    scene: 'En Bogotá, Jorge guarda el registro civil y la cédula pensando que cualquier carné sirve para todo trámite. Britjoy ordena la carpeta: «En Colombia, la Registraduría no acepta aproximaciones».',
+    prediction: '¿Qué papel cumple la cédula frente al registro civil en Colombia y cuándo te exigen cada documento?',
+    transfer: 'Si necesitas actualizar o pedir un duplicado de identificación en Colombia, ¿qué comprobarías primero en la Registraduría Nacional?',
+  },
+  'co-en-tutela': {
+    scene: 'Un vecino en Medellín cree que sin abogado caro no puede defender un derecho fundamental urgente. Britjoy abre la Constitución: «En Colombia existe la acción de tutela; conozcamos cuándo procede».',
+    prediction: '¿Qué diferencia en Colombia una acción de tutela de un derecho de petición ordinario?',
+    transfer: 'Ante una demora urgente de salud en Colombia, explica qué hechos reunirías y qué verificarías en fuentes oficiales antes de presentar el escrito.',
+  },
+};
+
+const pilotsEn: Record<string, LessonStory> = {
+  'es-es-nie': {
+    scene: 'In Madrid, Sam treats “NIE” and “TIE” as the exact same card. Britjoy opens two folders: “One is your administrative number in Spain; the other is the physical residence card.”',
+    prediction: 'When settling in Spain, why does it matter to distinguish your NIE number from a TIE card and NIF?',
+    transfer: 'Imagine booking an appointment at an office in Spain: how would you ask in Spanish and what would you verify on the official government portal first?',
+  },
+  'es-es-padron': {
+    scene: 'Sam moves to Seville and puts off town-hall registration “until next month”. Britjoy points to the ayuntamiento: “In Spain, the padrón is the key to local public services.”',
+    prediction: 'What does registering on the municipal padrón in Spain unlock, and what proof of address will you need?',
+    transfer: 'Write or say in Spanish how you would ask for a padrón appointment at your local ayuntamiento and check its official checklist.',
+  },
+  'co-es-cedula': {
+    scene: 'In Bogotá, Sam mixes up the civil registry record with the Colombian ID card (cédula). Britjoy straightens the file: “In Colombia, the Registraduría gives each document a distinct legal job.”',
+    prediction: 'How do the cédula and civil registry differ in Colombia, and where do you verify official requirements?',
+    transfer: 'Practise asking in Spanish about a document procedure in Colombia and note what you would verify on the official Registraduría site.',
+  },
+  'co-es-tutela': {
+    scene: 'In Cali, a neighbour assumes defending an urgent fundamental right requires an expensive lawyer. Britjoy opens the guide: “In Colombia, learn how tutela and right of petition each work.”',
+    prediction: 'In Colombia, when is an acción de tutela used compared with a standard derecho de petición?',
+    transfer: 'Explain in Spanish what facts you would state clearly in a petition in Colombia and which official source you would check.',
+  },
 };
 
 export function storyForLesson(lesson: Lesson, locale: 'es' | 'en'): LessonStory {
   if (locale === 'es' && pilots[lesson.id]) return pilots[lesson.id];
+  if (locale === 'en' && pilotsEn[lesson.id]) return pilotsEn[lesson.id];
   // Use only a scene explicitly authored as a scene, never an answer or explanation body.
   const dialogue = lesson.exercises.find((exercise) => exercise.type === 'dialogue' && exercise.scene);
   const scene = dialogue?.type === 'dialogue' ? dialogue.scene : undefined;
   return locale === 'es'
     ? {
         scene: scene || `Britjoy abre el capítulo «${lesson.title}»: «He ensayado delante del espejo. El espejo ha pedido otra opinión». Ahora te toca resolver la situación.`,
-        prediction: `Antes de empezar «${lesson.title}», ¿qué crees que necesitarás saber hacer?`,
-        transfer: 'Inventa una situación nueva donde usarías lo aprendido. ¿Qué harías y por qué?',
+        prediction: `Antes de empezar «${lesson.title}», ¿qué crees que necesitarás saber hacer y comprobar?`,
+        transfer: 'Aplica lo aprendido a un caso nuevo: ¿qué harías, qué error evitarías y dónde lo comprobarías?',
       }
     : {
         scene: scene || `Britjoy opens “${lesson.title}”: “I rehearsed in front of the mirror. The mirror asked for a second opinion.” Your turn to solve the situation.`,
-        prediction: `Before starting “${lesson.title}”, what do you think you will need to do?`,
-        transfer: 'Imagine a new situation where you could use this lesson. What would you do, and why?',
+        prediction: `Before starting “${lesson.title}”, what do you think you will need to do and check?`,
+        transfer: 'Apply this lesson to a new case: what would you do, what mistake would you avoid, and where would you check it?',
       };
 }
 
