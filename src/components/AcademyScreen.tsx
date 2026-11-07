@@ -10,6 +10,8 @@ import { useT } from '../i18n';
 import { achievements } from '../logic/achievements';
 import { toDateKey, visibleStreak } from '../logic/gamification';
 import { Certificate } from './Certificate';
+import { CoursePathwayBox } from './CoursePathwayBox';
+import { pathwayForCatalogCourseId } from '../data/coursePathways';
 
 
 function ProgressBar({ value, color }: { value: number; color: string }) {
@@ -65,6 +67,10 @@ function CourseCard({ course, onOpen }: { course: CatalogCourse; onOpen: () => v
 function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onClose: () => void; onStart: () => void }) {
   const [cert, setCert] = useState(false);
   const levels = useProgressStore((s) => s.levels);
+  const priorEnglishCertificate = useProgressStore((s) => s.legacyEnglishCertificate);
+  const uiLang = useProgressStore((s) => s.uiLang) ?? 'es';
+  const locale: 'es' | 'en' = uiLang.toLowerCase().startsWith('en') ? 'en' : 'es';
+  const pathway = pathwayForCatalogCourseId(course.id, course.levels);
   const completed = completedByLevel(levels);
   const stats = courseStats(course, completed);
   const t = useT();
@@ -95,7 +101,7 @@ function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onC
           <Button variant="primary" block onClick={onStart}>
             {stats.done ? t('academy.resume') : t('academy.start')}
           </Button>
-          {stats.lessons > 0 && stats.done === stats.lessons && (
+          {((stats.lessons > 0 && stats.done === stats.lessons) || (course.id === 'ingles-a1-c2' && priorEnglishCertificate)) && (
             <Button variant="outline" block onClick={() => setCert(true)}>
               🎓 {t('cert.button')}
             </Button>
@@ -112,6 +118,8 @@ function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onC
               ))}
             </ul>
           </section>
+
+          <CoursePathwayBox pathway={pathway} locale={locale} />
 
           <section>
             <h3 className="mb-2 text-lg font-black text-navy">{t('academy.syllabus')}</h3>

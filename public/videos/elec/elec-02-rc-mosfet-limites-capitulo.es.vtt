@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:11.000
+Objetivo: comprender τ = R × C, el valor eficaz RMS en corriente alterna, la función conceptual del MOSFET y la frontera legal obligatoria.
+
+2
+00:00:11.000 --> 00:00:27.000
+Un condensador en serie con R se carga con constante de tiempo τ = R × C; en CA sinusoidal, V_pico = V_rms × √2 (p. ej., 230 V RMS tienen picos de ~325 V, y en Colombia 120 V RMS alcanzan ~170 V pico).
+
+3
+00:00:27.000 --> 00:00:43.000
+LÍMITE LEGAL: ninguna lección online autoriza abrir cuadros ni instalar cableado. Habilitación oficial exigida: GB (BS 7671 / Part P / NVQ3 + AM2 / ECS), España (REBT / instalador autorizado), Colombia (RETIE / matrícula CONTE).
+
+4
+00:00:43.000 --> 00:00:50.200
+Ahora haz los ejercicios de la lección. Si dudas, vuelve a ver este vídeo.

@@ -14,12 +14,15 @@ import { COLOMBIA_LEVELS } from '../colombia';
 import { CONSULATE_LEVELS } from '../consulados';
 import { MIGRATE_UK_LEVELS } from '../migrar-uk';
 import { CITY_LEVELS } from '../ciudades';
+import { AMPLIACION_LEVELS } from '../ampliacion';
 
 import a1u1 from './a1/unit-1.json';
 import a1u2 from './a1/unit-2.json';
 import a2u1 from './a2/unit-1.json';
+import a2u2 from './a2/unit-2.json';
 import b1u1 from './b1/unit-1.json';
 import b2u1 from './b2/unit-1.json';
+import b2u2 from './b2/unit-2.json';
 import c1u1 from './c1/unit-1.json';
 import c2u1 from './c2/unit-1.json';
 
@@ -41,12 +44,12 @@ export const LEVELS: LevelDefinition[] = [
     id: 'A2',
     track: 'english',
     name: 'Elemental',
-    description: 'Rutinas diarias y el pasado.',
+    description: 'Rutinas diarias, el pasado, trabajo, salud y trámites.',
     accent: '#137CAE',
     accentDark: '#0F6188',
     accentLight: '#DDF4FF',
     instructionLanguage: 'es',
-    units: [unit(a2u1)],
+    units: [unit(a2u1), unit(a2u2)],
   },
   {
     id: 'B1',
@@ -63,12 +66,12 @@ export const LEVELS: LevelDefinition[] = [
     id: 'B2',
     track: 'english',
     name: 'Intermedio alto',
-    description: 'Temas abstractos y condicionales.',
+    description: 'Temas abstractos, condicionales, inglés académico y presentaciones.',
     accent: '#AA6400',
     accentDark: '#854E00',
     accentLight: '#FFF0D9',
     instructionLanguage: 'en',
-    units: [unit(b2u1)],
+    units: [unit(b2u1), unit(b2u2)],
   },
   {
     id: 'C1',
@@ -96,8 +99,18 @@ export const LEVELS: LevelDefinition[] = [
 
 export const LEVEL_IDS = LEVELS.map((l) => l.id);
 
-/** Every course: English levels, the story courses by situation and "Vivir en UK". */
-export const ALL_LEVELS: LevelDefinition[] = [...LEVELS, ...SITUATION_LEVELS, LIFE_LEVEL, ...SPAIN_LEVELS, ...COLOMBIA_LEVELS, ...MIGRATE_UK_LEVELS, ...CONSULATE_LEVELS, ...CITY_LEVELS];
+/** Every course: English levels, story courses, UK/ES/CO civic paths, and progressive curriculum tracks. */
+export const ALL_LEVELS: LevelDefinition[] = [
+  ...LEVELS,
+  ...SITUATION_LEVELS,
+  LIFE_LEVEL,
+  ...SPAIN_LEVELS,
+  ...COLOMBIA_LEVELS,
+  ...MIGRATE_UK_LEVELS,
+  ...CONSULATE_LEVELS,
+  ...CITY_LEVELS,
+  ...AMPLIACION_LEVELS,
+];
 
 export function getLevel(id: string): LevelDefinition {
   return ALL_LEVELS.find((l) => l.id === id) ?? LEVELS[0];

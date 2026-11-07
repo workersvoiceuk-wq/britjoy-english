@@ -1,0 +1,31 @@
+WEBVTT
+Kind: subtitles
+Language: es
+
+1
+00:00:00.000 --> 00:00:08.000
+Pegas «ayudé dos meses en una tienda» y pides que suene impresionante; el asistente devuelve «Director Global por 8 años».
+
+2
+00:00:08.000 --> 00:00:15.000
+Antes de seguir: ¿por qué aparecieron cargos y años inexistentes? ¿Consultó tu historial o completó patrones frecuentes?
+
+3
+00:00:15.000 --> 00:00:25.000
+El usuario aporta un texto breve y una orden ambigua; el modelo encadena palabras probables de CVs sin verificar tu vida real.
+
+4
+00:00:25.000 --> 00:00:35.000
+Una persona debe comprobar fechas exactas, puesto real, funciones demostrables y que no aparezca ningún título inventado.
+
+5
+00:00:35.000 --> 00:00:43.000
+Práctica: ¿pides exagerar sin leer, pides traducción fiel marcando dudas y revisas cada línea, o asumes que verificó tus títulos?
+
+6
+00:00:43.000 --> 00:00:50.000
+La opción B es correcta: acotar el prompt reduce invenciones, pero siempre debes contrastar cada dato con tu documento original.
+
+7
+00:00:50.000 --> 00:00:56.000
+Lleva las tres columnas —qué aportas, qué genera y qué compruebas— a cartas, citas médicas o resúmenes antes de enviarlos.

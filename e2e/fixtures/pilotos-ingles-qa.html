@@ -1,0 +1,188 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><title>BritJoy QA · pilotos Inglés A2</title>
+<h1>BritJoy · pilotos de Inglés A2</h1><button id="run">Ejecutar</button><button id="touch">Preparar prueba manual a 390 px</button><pre id="out"></pre><iframe id="app" title="BritJoy prueba"></iframe>
+<script type="module">
+const f = document.querySelector('#app'), out=document.querySelector('#out');
+const key='britjoy-english-progress-v1';
+const qs=s=>f.contentDocument.querySelector(s);
+const qsa=s=>[...f.contentDocument.querySelectorAll(s)];
+const assert=(ok,msg)=>{if(!ok)throw Error(msg)};
+async function wait(fn,name){for(let n=0;n<100;n++){const v=fn();if(v)return v;await new Promise(r=>setTimeout(r,35));}throw Error(name);}
+async function click(s, text){
+  const el=await wait(()=>qsa(s).find(x=>!x.disabled&&x.getClientRects().length&&(!text||text.test(x.getAttribute('aria-label')||x.textContent.trim()))),'No disponible '+s+' '+text);
+  if (s.includes('qvh-')) {
+    el.scrollIntoView({block:'center',behavior:'instant'});
+    await wait(()=>{
+      const box=el.getBoundingClientRect();
+      const hit=f.contentDocument.elementFromPoint(box.x+box.width/2,box.y+box.height/2);
+      return hit && el.contains(hit);
+    },'El pie u otro control tapa '+s);
+  }
+  el.click();
+  await new Promise(r=>setTimeout(r,35));
+}
+async function load(){await new Promise(r=>{f.onload=r;f.src='./britjoy/';});}
+const stamps=Date.UTC(2025,8,19,12);
+const complete=(ids)=>Object.fromEntries(ids.map(id=>[id,{stars:3,bestXp:20,completedAt:stamps}]));
+const numbered=(prefix,n)=>Array.from({length:n},(_,i)=>prefix+(i+1));
+const previous=Object.fromEntries(['A1','A2','B1','B2','C1','C2'].map(level=>{
+ const pref=level.toLowerCase();
+ const ids=[...numbered(pref+'-u1-l',level==='A1'?5:2),...(level==='A1'?numbered('a1-u2-l',5):[])];
+ return [level,{xp:ids.length*20,completedLessons:complete(ids)}];
+}));
+function seed(currentLevel,tab,openedA2=false){
+ const levels=structuredClone(previous);
+ if(openedA2)Object.assign(levels.A2.completedLessons,complete(['a2-u2-l1']));
+ localStorage.setItem(key,JSON.stringify({version:4,state:{levels,currentLevel,tab,placementDone:true,placementLevel:null,uiLang:'es',voiceOn:false,soundOn:false,hearts:5,heartsSince:Date.now(),learnerName:'Perfil de prueba'}}));
+}
+async function choose(pattern){await click('main button.tile',pattern);}
+async function check(){await click('footer button',/^Comprobar$/);}
+async function next(){await click('footer button',/^Continuar$/);}
+async function correct(pattern, concept){assertHidden(concept);await choose(pattern);await check();await reviewCorrect(concept);}
+async function pairList(pairs, concept){assertHidden(concept);for(const [a,b] of pairs){await choose(a);await choose(b);}await check();await reviewCorrect(concept);}
+async function words(values, concept){
+ assertHidden(concept);
+ for(const value of values) await choose(new RegExp('^'+value.replace(/[.]/g,'\\.')+'$'));
+ await check();await reviewCorrect(concept);
+}
+async function finish(level,id){
+ await click('button',/^Terminar y ver resultado$/);
+ const saved=JSON.parse(localStorage.getItem(key));
+ assert(saved.state.levels[level].completedLessons[id]?.completedAt > stamps,'No guardó la lección nueva');
+ await load();
+ const reloaded=JSON.parse(localStorage.getItem(key));
+ assert(reloaded.state.levels[level].completedLessons[id]?.completedAt===saved.state.levels[level].completedLessons[id].completedAt,'No conservó la lección al recargar');
+ assert(reloaded.state.levels.B2.completedLessons['b2-u1-l2'].completedAt===stamps,'Se perdió el historial de B2');
+}
+async function certificate(){
+ seed('A2','home');await load();
+ await click('button[aria-label^="Inglés general: del A1 al C2"]');
+ await click('[role=dialog] button',/constancia|certificado/i);
+ const date=await wait(()=>qs('[data-cert-completion-date]'),'No se abrió constancia histórica');
+ assert(date.textContent.includes('2025'),'Fecha histórica incorrecta');
+ const saved=JSON.parse(localStorage.getItem(key));
+ assert(saved.version===5&&saved.state.legacyEnglishCertificate&&saved.state.legacyEnglishLevels.includes('A2')&&saved.state.legacyEnglishLevels.includes('B2'),'Migración incompleta');
+ assert(saved.state.levels.B2.completedLessons['b2-u1-l2'].completedAt===stamps,'Se perdió historial B2');
+ assert(!saved.state.levels.B2.completedLessons['b2-u2-l1'],'Se marcó lección nueva como completada');
+ await load();
+ await click('button[aria-label^="Inglés general: del A1 al C2"]');await click('[role=dialog] button',/constancia|certificado/i);
+ assert(qs('[data-cert-completion-date]')?.textContent.includes('2025'),'No se conservó la constancia al recargar');
+}
+const clipLog = [];
+function assertHidden(concept){
+ assert(!qs('[data-qvh-concept="'+concept+'"]'),'Se mostró '+concept+' antes de responder');
+}
+async function reviewCorrect(concept){
+ assert(qs('[data-feedback-state=right]'),'Falta estado verde en '+concept);
+ await video(concept);
+ await next();
+ assertHidden(concept);
+}
+async function video(concept) {
+ const root = '[data-qvh-concept="'+concept+'"]';
+ await click(root+' .qvh-trigger');
+ const player = await wait(()=>qs(root+' video'),'Falta reproductor '+concept);
+ await wait(()=>player.readyState>=2,'Falla carga del MP4 '+concept);
+ const spanish=player.querySelector('track[srclang=es]');
+ const english=player.querySelector('track[srclang=en]');
+ const selector=qs(root+' select[aria-label="Subtítulos"]');
+ assert(selector?.options.length===3,'Falta selector de subtítulos '+concept);
+ assert(selector.value==='es','Falta selección inicial en español '+concept);
+ await wait(()=>spanish.readyState===2 && spanish.track.cues?.length===3,'No cargaron los subtítulos ES '+concept);
+ selector.value='en';
+ selector.dispatchEvent(new f.contentWindow.Event('change',{bubbles:true}));
+ await wait(()=>english.readyState===2 && english.track.cues?.length===3
+   && english.track.mode==='showing' && spanish.track.mode==='disabled','No se activaron los subtítulos EN '+concept);
+ assert(player.getBoundingClientRect().width <= f.contentWindow.innerWidth, 'El vídeo desborda el ancho');
+ assert(player.duration >= 18 && player.duration <= 31,'Duración inválida '+concept);
+ player.muted=true;
+ player.playbackRate=8;
+ const ended = new Promise((resolve,reject)=>{
+   const timer=setTimeout(()=>reject(Error('El clip no llegó al final '+concept)),9000);
+   player.addEventListener('ended',()=>{clearTimeout(timer);resolve()},{once:true});
+   player.addEventListener('error',()=>{clearTimeout(timer);reject(Error('Error de vídeo '+concept))},{once:true});
+ });
+ await click(root+' .qvh-play-toggle');
+ await ended;
+ assert(player.ended && player.currentTime>=player.duration-.15,'No llegó al final '+concept);
+ selector.value='es';
+ selector.dispatchEvent(new f.contentWindow.Event('change',{bubbles:true}));
+ assert(spanish.track.mode==='showing' && english.track.mode==='disabled','No se recuperó la pista ES '+concept);
+ clipLog.push(concept+' '+Math.round(player.duration)+'s');
+ await click(root+' .qvh-close');
+}
+async function enterWithVideo(title, prefix) {
+ await click('button',title);
+ await click('button',/^Explorar la lección$/);
+ await video(prefix+'-capitulo');
+ await next();
+ assert(!qs('[data-qvh-concept="'+prefix+'-pregunta"]'),'El repaso aparece antes de responder');
+}
+async function answerWithVideo(prefix, wrong, right) {
+ const spoiler='[data-qvh-concept="'+prefix+'-pregunta"]';
+ await choose(wrong); await check();
+ assert(qs('[data-feedback-state=wrong]'),'Falta estado rojo');
+ assert(!qs('main .tile-correct')&&!qs('[data-revealed-answer]')&&!qs(spoiler),'El primer fallo adelantó la solución');
+ assert(qs('[data-feedback-explanation]')?.textContent.trim(),'Falta explicación del primer fallo');
+ await click('[data-retry-exercise]');
+ await choose(wrong); await check();
+ assert(qs('[data-revealed-answer]'),'Falta solución en segundo fallo');
+ await video(prefix+'-pregunta');
+ await click('[data-retry-exercise]');
+ assert(!qs(spoiler),'El repaso sigue visible durante el reintento');
+ await choose(right); await check();
+ assert(qs('[data-feedback-state=right]'),'Falta estado verde');
+ assert(qs(spoiler),'Falta repaso tras el acierto');
+ await next();
+ assert(!qs(spoiler),'El repaso de la primera pregunta pasó al siguiente ejercicio');
+}
+async function typeCorrect(text, concept) {
+ assertHidden(concept);
+ const box=await wait(()=>qs('main textarea,main input[type=text]'),'Campo de traducción ausente');
+ const proto=box.tagName==='TEXTAREA'?f.contentWindow.HTMLTextAreaElement.prototype:f.contentWindow.HTMLInputElement.prototype;
+ Object.getOwnPropertyDescriptor(proto,'value').set.call(box,text);
+ box.dispatchEvent(new f.contentWindow.Event('input',{bubbles:true}));
+ await check();await reviewCorrect(concept);
+}
+async function work(){
+ seed('A2','english');await load();
+ await enterWithVideo(/^Turnos y entrevistas de trabajo/,'britjoy-trabajo');
+ await answerWithVideo('britjoy-trabajo',/worked like warehouse operative/,/worked as a warehouse operative/);
+ await pairList([[/^payslip$/,/^nómina$/],[/^night shift$/,/^turno de noche$/],[/^part-time$/,/^media jornada$/],[/^job interview$/,/^entrevista de trabajo$/]],'britjoy-trabajo-pregunta-2');
+ await words(["I'm",'available','to','start','on','Monday.'],'britjoy-trabajo-pregunta-3');
+ await correct(/^repeat$/,'britjoy-trabajo-pregunta-4');
+ await correct(/I can work the morning shift/,'britjoy-trabajo-pregunta-5');
+ await correct(/could you speak a bit more slowly/,'britjoy-trabajo-pregunta-6');
+ await typeCorrect('I have experience in customer service','britjoy-trabajo-pregunta-7');
+ await finish('A2','a2-u2-l1');
+}
+async function gp(){
+ seed('A2','english',true);await load();
+ await enterWithVideo(/^Salud, farmacia y gestiones/,'britjoy-gp');
+ await answerWithVideo('britjoy-gp',/one date with the doctor/,/book an appointment/);
+ await pairList([[/^sore throat$/,/^dolor de garganta$/],[/^high temperature$/,/^fiebre$/],[/^pharmacy \/ chemist.s$/,/^farmacia$/],[/^proof of address$/,/^comprobante de domicilio$/]],'britjoy-gp-pregunta-2');
+ await correct(/^since$/,'britjoy-gp-pregunta-3');
+ await words(['I','need','to','pick','up','my','prescription.'],'britjoy-gp-pregunta-4');
+ await correct(/Take one tablet twice a day after meals/,'britjoy-gp-pregunta-5');
+ await correct(/A recent utility bill/,'britjoy-gp-pregunta-6');
+ await typeCorrect('I have a sore throat','britjoy-gp-pregunta-7');
+ await finish('A2','a2-u2-l2');
+}
+document.querySelector('#touch').onclick=async()=>{
+ if(location.hostname!=='127.0.0.1')throw Error('Solo entorno local');
+ f.style.width='390px';f.style.height='844px';
+ seed('A2','english');await load();
+};
+document.querySelector('#run').onclick=async()=>{
+ if(location.hostname!=='127.0.0.1')throw Error('Solo entorno local');
+ document.querySelector('#run').disabled=true;let count=0;
+ for(const width of [1280,390]){
+  f.style.width=width+'px';f.style.height='844px';
+  for(const [name,fn] of [['constancia A2/B2',certificate],['a2-u2-l1',work],['a2-u2-l2',gp]]){
+   const start=clipLog.length;
+   try{await fn();assert(f.contentWindow.innerWidth===width,'Ancho incorrecto');out.textContent+='PASS '+name+' @'+width+' '+clipLog.slice(start).join(', ')+'\n';count++;}
+   catch(e){out.textContent+='FAIL '+name+' @'+width+' · '+e.message+' · '+qsa('main h2, main h3').slice(0,4).map(x=>x.textContent.trim()).join('/')+'\n';}
+  }
+ }
+ out.textContent+='TOTAL '+count+'/6; reproducciones hasta ended '+clipLog.length+'/32';out.dataset.done='true';
+};
+</script>

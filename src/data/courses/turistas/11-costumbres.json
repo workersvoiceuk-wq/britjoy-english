@@ -37,7 +37,18 @@
               "en": "Cheers!",
               "es": "¡Gracias! (informal)"
             }
-          ]
+          ],
+          "video": {
+            "src": "videos/demos/ingles-coffee-demo-v1.mp4",
+            "aspect": "16/9",
+            "narrationPending": true,
+            "countryCode": "GB",
+            "caption": "Demostración visual (Reino Unido) · pedir con Could I / Could you… please?; subtítulos ES/EN en móvil y narración pendiente",
+            "tracks": [
+              { "srclang": "es", "label": "Español", "src": "videos/demos/ingles-coffee-demo-v1.es.vtt", "default": true },
+              { "srclang": "en", "label": "English", "src": "videos/demos/ingles-coffee-demo-v1.en.vtt" }
+            ]
+          }
         },
         {
           "type": "explain",

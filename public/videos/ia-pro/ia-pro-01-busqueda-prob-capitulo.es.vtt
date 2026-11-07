@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:15.600
+Objetivo: distinguir un problema de búsqueda exacta (estados, acciones, coste) de un problema bajo incertidumbre (probabilidad condicional). En búsqueda (BFS, DFS, A*), el agente explora estados desde un inicio hasta una meta minimizando coste sin adivinar.
+
+2
+00:00:15.600 --> 00:00:28.200
+Con incertidumbre (ruido o sensores incompletos), actualizar creencias exige combinar la tasa base real con la nueva evidencia (regla de Bayes). Contenido original VUM sin aval de Harvard.
+
+3
+00:00:28.200 --> 00:00:35.400
+Ahora haz los ejercicios de la lección. Si dudas, vuelve a ver este vídeo.

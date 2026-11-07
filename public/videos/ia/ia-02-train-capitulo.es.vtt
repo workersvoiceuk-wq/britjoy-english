@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:16.000
+El modelo ve las medidas y las etiquetas Luna/Sol. Entrenar cambia sus números internos para reducir el error. Un peso es uno de esos números: regula cuánto influye una medida. No estamos llamando a un servicio de chat.
+
+2
+00:00:16.000 --> 00:00:22.000
+Objetivo: Conecta la demostración con el entrenamiento de tu modelo pequeño.
+
+3
+00:00:22.000 --> 00:00:38.000
+En el laboratorio ficticio, el modelo falla y ajusta un peso tras ver un ejemplo. Tu tarea: Explica qué cambió y qué dato conocido permitió comparar. Pista: Separa números internos de etiquetas de los ejemplos.
+
+4
+00:00:38.000 --> 00:00:45.200
+Ahora haz los ejercicios de la lección. Si dudas, vuelve a ver este vídeo.

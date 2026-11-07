@@ -1,0 +1,31 @@
+WEBVTT
+Kind: subtitles
+Language: en
+
+1
+00:00:00.000 --> 00:00:08.000
+You paste “I helped in a shop for two months” and ask to sound impressive; the assistant outputs “Global Director for 8 years”.
+
+2
+00:00:08.000 --> 00:00:15.000
+Before continuing: why did non-existent roles and years appear? Did it check your record or complete frequent patterns?
+
+3
+00:00:15.000 --> 00:00:25.000
+The user supplies brief text and a vague prompt; the model chains probable CV wording without verifying your real history.
+
+4
+00:00:25.000 --> 00:00:35.000
+A person must verify exact dates, real job title, demonstrable duties, and zero invented qualifications or employers.
+
+5
+00:00:35.000 --> 00:00:43.000
+Practice: ask to exaggerate unread, request faithful translation marking doubts and check every line, or assume it verified degrees?
+
+6
+00:00:43.000 --> 00:00:50.000
+Option B is right: constraining the prompt reduces inventions, and you still cross-check every fact against your original CV.
+
+7
+00:00:50.000 --> 00:00:56.000
+Apply the three columns—what you provide, what it generates, and what you check—to cover letters, GP notes, or summaries.

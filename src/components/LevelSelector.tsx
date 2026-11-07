@@ -17,7 +17,7 @@ interface Props {
 }
 
 export function LevelSelector({ onClose }: Props) {
-  const { levels, currentLevel, placementLevel, setCurrentLevel } = useProgressStore();
+  const { levels, currentLevel, placementLevel, legacyEnglishLevels, setCurrentLevel } = useProgressStore();
   const completed = completedByLevel(levels);
   const t = useT();
 
@@ -39,7 +39,7 @@ export function LevelSelector({ onClose }: Props) {
         <h3 className="mb-2 text-sm font-black uppercase tracking-wider text-royal">{t('levels.byLevel')}</h3>
         <ul className="space-y-3">
           {LEVELS.map((level, i) => {
-            const unlocked = isLevelUnlocked(LEVELS, level.id, completed, placementLevel);
+            const unlocked = isLevelUnlocked(LEVELS, level.id, completed, placementLevel, legacyEnglishLevels);
             const lessons = level.units.flatMap((u) => u.lessons);
             const done = lessons.filter((l) => l.id in (completed[level.id] ?? {})).length;
             const unitPct = Math.round(unitCompletionRatio(level, completed[level.id] ?? {}) * 100);

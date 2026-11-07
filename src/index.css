@@ -242,3 +242,22 @@ body::before {
   #certificate, #certificate * { visibility: visible; }
   #certificate { position: absolute; inset: 0; margin: 0 auto; }
 }
+
+/* Mobile-legible WebVTT subtitles & synchronized caption bar (Phase 1 VUM Guided Learning). */
+[data-demo-video] video::cue {
+  background-color: rgba(20, 36, 58, 0.92);
+  color: #ffffff;
+  font-size: clamp(15px, 4.1vw, 19px);
+  font-weight: 700;
+  line-height: 1.38;
+}
+.mobile-caption-line {
+  font-size: clamp(15px, 4vw, 18px);
+}
+@media (max-width: 420px) {
+  .mobile-caption-line {
+    font-size: 16px;
+    line-height: 1.42;
+  }
+}
+

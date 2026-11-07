@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:15.600
+Goal: tell an exact search problem (states, actions, cost) from a problem under uncertainty (conditional probability). In search (BFS, DFS, A*), the agent explores states from a start to a goal, minimising cost without guessing.
+
+2
+00:00:15.600 --> 00:00:28.200
+Under uncertainty (noise or incomplete sensors), updating beliefs means combining the real base rate with the new evidence (Bayes' rule). Original VUM content, not endorsed by Harvard.
+
+3
+00:00:28.200 --> 00:00:35.400
+Now do the lesson exercises. If you are unsure, watch this video again.

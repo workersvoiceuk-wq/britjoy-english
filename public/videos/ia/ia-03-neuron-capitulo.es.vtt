@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:16.000
+Cada peso regula cuánto influye una medida. El sesgo es un número que se añade al cálculo y desplaza la decisión. La salida es un número del modelo; una cifra alta no prueba por sí sola que una predicción real sea fiable.
+
+2
+00:00:16.000 --> 00:00:22.800
+Objetivo: Después de la introducción, explora los pesos de una neurona del laboratorio.
+
+3
+00:00:22.800 --> 00:00:38.100
+En una neurona virtual, mantienes las medidas y cambias solo el sesgo. Tu tarea: Predice si puede cambiar la decisión aunque la flor sea la misma. Pista: El sesgo desplaza la decisión del modelo.
+
+4
+00:00:38.100 --> 00:00:45.300
+Ahora haz los ejercicios de la lección. Si dudas, vuelve a ver este vídeo.

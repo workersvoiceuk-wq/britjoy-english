@@ -71,9 +71,40 @@ function listPublicMedia(publicRoot) {
   return files.sort();
 }
 
-export function auditLevels(levels, { publicRoot = path.join(ROOT, 'public') } = {}) {
+export function auditLevels(levels, { publicRoot = path.join(ROOT, 'public'), questionVideos = [] } = {}) {
   const lessonIds = new Set();
   const declarations = [];
+  const questionVideosByLesson = new Map();
+  for (const { video, mappings } of questionVideos) {
+    if (!video?.src) continue;
+    for (const { lessonId } of mappings ?? []) {
+      if (!lessonId) continue;
+      const paths = questionVideosByLesson.get(lessonId) ?? new Set();
+      paths.add(video.src);
+      questionVideosByLesson.set(lessonId, paths);
+    }
+  }
+
+  function declareMedia(level, unit, lesson, kind, mediaPath) {
+    const fullPath = assertSafeMediaPath(publicRoot, mediaPath);
+    let present = false;
+    try {
+      present = statSync(fullPath).isFile();
+    } catch (error) {
+      if (error.code !== 'ENOENT' && error.code !== 'ENOTDIR') throw error;
+    }
+    declarations.push({
+      courseId: level.id,
+      courseName: level.name,
+      track: level.track,
+      targetLanguage: level.targetLanguage ?? null,
+      unit: unit.unit,
+      lessonId: lesson.id,
+      kind,
+      path: mediaPath,
+      status: present ? 'present' : 'missing',
+    });
+  }
   let publicRootPresent = false;
   try {
     publicRootPresent = statSync(publicRoot).isDirectory();
@@ -90,25 +121,11 @@ export function auditLevels(levels, { publicRoot = path.join(ROOT, 'public') } =
 
           for (const [kind, mediaPath] of [['video', exercise.video.src], ['poster', exercise.video.poster]]) {
             if (mediaPath === undefined) continue;
-            const fullPath = assertSafeMediaPath(publicRoot, mediaPath);
-            let present = false;
-            try {
-              present = statSync(fullPath).isFile();
-            } catch (error) {
-              if (error.code !== 'ENOENT' && error.code !== 'ENOTDIR') throw error;
-            }
-            declarations.push({
-              courseId: level.id,
-              courseName: level.name,
-              track: level.track,
-              targetLanguage: level.targetLanguage ?? null,
-              unit: unit.unit,
-              lessonId: lesson.id,
-              kind,
-              path: mediaPath,
-              status: present ? 'present' : 'missing',
-            });
+            declareMedia(level, unit, lesson, kind, mediaPath);
           }
+        }
+        for (const mediaPath of questionVideosByLesson.get(lesson.id) ?? []) {
+          declareMedia(level, unit, lesson, 'video', mediaPath);
         }
       }
     }
@@ -168,7 +185,10 @@ async function loadLessonRegistry() {
   });
   try {
     const { ALL_LEVELS } = await server.ssrLoadModule('/src/data/courses/en-es/index.ts');
-    return ALL_LEVELS;
+    const { BRITJOY_REVIEW_VIDEO_MANIFEST } = await server.ssrLoadModule(
+      '/src/shared/question-videos/britjoy-review-videos.ts',
+    );
+    return { levels: ALL_LEVELS, questionVideos: BRITJOY_REVIEW_VIDEO_MANIFEST.concepts };
   } finally {
     await server.close();
   }
@@ -181,7 +201,8 @@ async function main(args) {
   }
   if (args.some((arg) => arg !== '--json')) throw new Error('Unknown option. Use --help for usage.');
 
-  const audit = auditLevels(await loadLessonRegistry());
+  const { levels, questionVideos } = await loadLessonRegistry();
+  const audit = auditLevels(levels, { questionVideos });
   console.log(args.includes('--json')
     ? JSON.stringify({ ...audit, humanSummary: renderSummary(audit) }, null, 2)
     : renderSummary(audit));

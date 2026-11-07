@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:16.000
+In the fictional notes, Luna opens at night and Sol by day. The small model counts the words that follow the two previous ones. It can mix sentences up. Generating text and checking a fact are different tasks.
+
+2
+00:00:16.000 --> 00:00:24.000
+Goal: tell the classification in the video apart from the text prediction in the last challenge.
+
+3
+00:00:24.000 --> 00:00:40.000
+The fictional model completes a sentence with a claim that was not in the notes. Your task: explain how to tell a fluent continuation from a checked fact. Hint: generating a sentence and verifying it are different tasks.
+
+4
+00:00:40.000 --> 00:00:47.200
+Now do the lesson exercises. If you are unsure, watch this video again.

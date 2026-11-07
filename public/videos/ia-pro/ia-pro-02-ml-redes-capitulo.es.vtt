@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:13.700
+Objetivo: diferenciar clasificación vs regresión, diagnosticar sobreajuste (overfitting) y entender qué limita a un LLM. Clasificación predice etiquetas discretas (spam / no spam); regresión predice valores continuos (demanda eléctrica en kWh).
+
+2
+00:00:13.700 --> 00:00:26.300
+Si el error de entrenamiento baja casi a 0 % pero el de validación sube, el modelo memoriza ruido (sobreajuste): usa más datos variados, validación cruzada y regularización.
+
+3
+00:00:26.300 --> 00:00:33.500
+Ahora haz los ejercicios de la lección. Si dudas, vuelve a ver este vídeo.

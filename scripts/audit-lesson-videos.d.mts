@@ -39,5 +39,11 @@ export interface LessonVideoAudit {
 }
 
 export function assertSafeMediaPath(publicRoot: string, mediaPath: string): string;
-export function auditLevels(levels: AuditLevel[], options?: { publicRoot?: string }): LessonVideoAudit;
+export function auditLevels(levels: AuditLevel[], options?: {
+  publicRoot?: string;
+  questionVideos?: ReadonlyArray<{
+    video?: { src: string | null };
+    mappings?: ReadonlyArray<{ lessonId?: string }>;
+  }>;
+}): LessonVideoAudit;
 export function renderSummary(audit: LessonVideoAudit): string;

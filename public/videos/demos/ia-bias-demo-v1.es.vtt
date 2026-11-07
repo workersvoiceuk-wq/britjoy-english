@@ -1,0 +1,27 @@
+WEBVTT
+Kind: subtitles
+Language: es
+
+1
+00:00:00.000 --> 00:00:06.000
+Jorge celebra un 75 por ciento global, pero Valentina descubre 80 de 100 en el grupo A y solo 10 de 20 en el B.
+
+2
+00:00:06.000 --> 00:00:12.000
+Antes de calcular: con cien casos en A y veinte en B, ¿por qué la media global esconde el fallo del grupo menor?
+
+3
+00:00:12.000 --> 00:00:20.000
+Grupo A logra 80 por ciento y grupo B cae a 50; el total de 90 sobre 120 da 75 y oculta el peor resultado.
+
+4
+00:00:20.000 --> 00:00:25.000
+Práctica: si la media es 90 por ciento pero un grupo cae al 50, ¿aceptas la media, auditas ese grupo o lo borras?
+
+5
+00:00:25.000 --> 00:00:30.000
+La opción B es correcta: medir por grupos revela dónde falla el modelo y orienta la mejora de datos.
+
+6
+00:00:30.000 --> 00:00:36.000
+Aplica la misma regla a un sistema de voz: comprueba aciertos por acento de Londres, Madrid o Bogotá, no solo la media.

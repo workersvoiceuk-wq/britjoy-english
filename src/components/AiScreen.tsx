@@ -39,6 +39,23 @@ export function AiScreen() {
   const endRef = useRef<HTMLDivElement>(null);
   const ready = aiConfigured();
   const t = useT();
+  const [lessonCtx] = useState<{
+    courseId: string;
+    courseName: string;
+    lessonTitle: string;
+    question: string;
+    chosenOption?: string | null;
+    attempted?: boolean;
+    locale?: 'es' | 'en';
+  } | null>(() => {
+    try {
+      if (typeof sessionStorage === 'undefined') return null;
+      const raw = sessionStorage.getItem('vum.aiTutorContext.v1');
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  });
 
   useEffect(() => endRef.current?.scrollIntoView({ behavior: 'smooth' }), [turns, busy]);
 
@@ -76,6 +93,26 @@ export function AiScreen() {
           {ready ? WELCOME : t('ai.notActive')}
         </div>
       </div>
+
+      {lessonCtx && (
+        <section
+          data-ai-screen-lesson-context="true"
+          className="mb-4 rounded-2xl border-2 border-navy/12 bg-cream/90 px-4 py-3 text-xs font-semibold text-navy"
+        >
+          <p className="font-black uppercase tracking-wide text-royal">
+            {lessonCtx.locale === 'en' ? 'Optional lesson context' : 'Contexto opcional de tu última tarea'}
+          </p>
+          <p className="mt-0.5 font-bold">
+            {lessonCtx.courseName} · {lessonCtx.lessonTitle} — «{lessonCtx.question}»
+            {lessonCtx.chosenOption ? ` (${lessonCtx.chosenOption})` : ''}
+          </p>
+          <p className="mt-0.5 text-ink-soft">
+            {lessonCtx.locale === 'en'
+              ? 'Voluntary AI Mode: asks for a non-spoiler hint before solving, subject to your account consent and daily quota.'
+              : 'Modo IA voluntario: pide una pista gradual sin resolver el ejercicio antes de intentarlo, respetando tu cuenta y límite diario.'}
+          </p>
+        </section>
+      )}
 
       {ready && !email && (
         <section className="rounded-2xl border-2 border-navy/10 bg-white p-4">

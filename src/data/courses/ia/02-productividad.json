@@ -1,0 +1,237 @@
+{
+  "level": "IA",
+  "unit": "Bloque 2 · Productividad",
+  "title": "Ahorrar tiempo con criterio humano",
+  "icon": "⚡",
+  "checked": "2026-11-06",
+  "lessons": [
+    {
+      "id": "ia-08-tareas",
+      "title": "Qué delegar y qué decidir tú",
+      "icon": "🗂️",
+      "tip": "Usa la IA para borradores, esquemas o resúmenes de tus propios datos; reserva los hechos y la decisión final a la persona.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Bloque 2 · Qué delegar y qué decidir tú",
+          "body": "Una herramienta generativa acelera borradores, esquemas, tablas comparativas o traducciones iniciales cuando tú le das la materia prima real. No sustituye tu memoria laboral, ni decide un diagnóstico médico, legal o financiero.\n• Objetivo: Separar las tareas mecánicas de redacción de las decisiones y hechos que solo conoce la persona.",
+          "say": "Bloque 2: Qué delegar y qué decidir tú. Una herramienta generativa acelera borradores, esquemas o traducciones iniciales cuando tú le das los datos reales. No sustituye tu experiencia real ni firma por ti.",
+          "phrases": [
+            {
+              "en": "Use AI for the first draft, not the final decision.",
+              "es": "Usa la IA para el primer borrador, no para la decisión final."
+            },
+            {
+              "en": "Only you know your real work experience.",
+              "es": "Solo tú conoces tu experiencia laboral real."
+            }
+          ],
+          "link": {
+            "label": "Fuente: NIST · AI Risk Management Framework",
+            "url": "https://www.nist.gov/itl/ai-risk-management-framework"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "Jorge quiere adaptar su hoja de vida al inglés en diez minutos y tiene tres tareas encima de la mesa.\n• Tu tarea: Decide qué parte puede acelerar la IA y qué parte debe escribir o confirmar Jorge.\n• Pista: La herramienta ordena palabras; no estuvo en tu turno de almacén.",
+          "say": "El reto: Jorge quiere adaptar su hoja de vida al inglés. Decide qué parte puede acelerar la IA y qué parte debe confirmar Jorge."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿En cuál de estas tareas aporta más valor práctico una herramienta de IA?",
+          "options": [
+            "Proponer un primer borrador claro a partir de notas reales que tú le entregas",
+            "Recordar por ti las fechas exactas en que trabajaste en una empresa"
+          ],
+          "answer": "Proponer un primer borrador claro a partir de notas reales que tú le entregas"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Cómo reparte Jorge el trabajo con cabeza?",
+          "options": [
+            "Jorge escribe sus puestos y fechas reales; la IA pule el inglés y Jorge comprueba cada línea antes de enviar.",
+            "Jorge pide un currículum ganador desde cero y lo manda sin leer para ahorrar tiempo."
+          ],
+          "answer": "Jorge escribe sus puestos y fechas reales; la IA pule el inglés y Jorge comprueba cada línea antes de enviar."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada término de productividad con IA en inglés",
+          "pairs": [
+            {
+              "en": "first draft",
+              "es": "primer borrador"
+            },
+            {
+              "en": "summary",
+              "es": "resumen"
+            },
+            {
+              "en": "outline",
+              "es": "esquema"
+            },
+            {
+              "en": "final decision",
+              "es": "decisión final"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Usa la IA para el primer borrador.",
+          "words": [
+            "Use",
+            "AI",
+            "for",
+            "the",
+            "first",
+            "draft.",
+            "final",
+            "truth"
+          ],
+          "answer": "Use AI for the first draft."
+        },
+        {
+          "type": "listening",
+          "text": "Only you know your real work experience",
+          "options": [
+            "Only you know your real work experience",
+            "Only AI knows your real work experience",
+            "Only you need your new work reference"
+          ],
+          "answer": "Only you know your real work experience"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Use AI for the first ___, not the final decision.",
+          "hint": "borrador",
+          "options": [
+            "draft",
+            "salary",
+            "signature"
+          ],
+          "answer": "draft"
+        }
+      ]
+    },
+    {
+      "id": "ia-09-supervision",
+      "title": "Humano al mando: revisar antes de enviar",
+      "icon": "🧐",
+      "tip": "Mantén siempre revisión humana («human in the loop») antes de publicar, firmar o enviar un mensaje importante.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Bloque 2 · Humano al mando («human in the loop»)",
+          "body": "Ahorrar cinco minutos redactando sirve de poco si pierdes una entrevista por un dato inventado o un tono inadecuado. «Human in the loop» significa que una persona lee, contrasta cifras y asume la responsabilidad antes de pulsar enviar.\n• Objetivo: Aplicar una lista breve de revisión humana a cualquier texto asistido por IA.",
+          "say": "Bloque 2: Humano al mando. Human in the loop significa que una persona lee, contrasta cifras y asume la responsabilidad antes de pulsar enviar.",
+          "phrases": [
+            {
+              "en": "Check the facts before you press send.",
+              "es": "Comprueba los hechos antes de pulsar enviar."
+            },
+            {
+              "en": "A human stays in the loop.",
+              "es": "Una persona sigue al mando del proceso."
+            }
+          ],
+          "video": {
+            "src": "videos/demos/ia-cv-hoja-vida-v1.mp4",
+            "aspect": "16/9",
+            "narrationPending": true,
+            "countryCode": "GLOBAL",
+            "caption": "Demostración visual · traducción de CV con supervisión humana; subtítulos ES/EN legibles en móvil y narración pendiente",
+            "tracks": [
+              { "srclang": "es", "label": "Español", "src": "videos/demos/ia-cv-hoja-vida-v1.es.vtt", "default": true },
+              { "srclang": "en", "label": "English", "src": "videos/demos/ia-cv-hoja-vida-v1.en.vtt" }
+            ]
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "Al traducir «encargado de turno», el asistente añade «regional logistics director (2019–2024)» porque suena impresionante.\n• Tu tarea: Identifica el fallo de supervisión y cómo corregirlo antes de mandar la candidatura.\n• Pista: Si te preguntan por ese cargo en la entrevista, tendrás que responder tú, no el chat.",
+          "say": "El reto: Al traducir encargado de turno, el asistente añade director regional porque suena impresionante. Identifica cómo corregirlo antes de mandar la candidatura."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué significa mantener a una persona al mando («human in the loop»)?",
+          "options": [
+            "Revisar hechos, tono y destinatario antes de usar o enviar el resultado",
+            "Dejar que el sistema responda correos automáticamente sin leerlos"
+          ],
+          "answer": "Revisar hechos, tono y destinatario antes de usar o enviar el resultado"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Qué debe hacer la candidata con «regional logistics director»?",
+          "options": [
+            "Borrar el cargo inventado y dejar la traducción fiel de su puesto real («shift supervisor»).",
+            "Dejarlo porque en inglés todo el mundo exagera los cargos."
+          ],
+          "answer": "Borrar el cargo inventado y dejar la traducción fiel de su puesto real («shift supervisor»)."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada expresión de supervisión en inglés",
+          "pairs": [
+            {
+              "en": "human in the loop",
+              "es": "persona al mando"
+            },
+            {
+              "en": "shift supervisor",
+              "es": "encargado de turno"
+            },
+            {
+              "en": "fact check",
+              "es": "comprobación de hechos"
+            },
+            {
+              "en": "press send",
+              "es": "pulsar enviar"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Comprueba los hechos antes de pulsar enviar.",
+          "words": [
+            "Check",
+            "the",
+            "facts",
+            "before",
+            "you",
+            "press",
+            "send.",
+            "skip",
+            "guess"
+          ],
+          "answer": "Check the facts before you press send."
+        },
+        {
+          "type": "listening",
+          "text": "Check the facts before you press send",
+          "options": [
+            "Check the facts before you press send",
+            "Change the dates before you press send",
+            "Check the fonts before you pretend"
+          ],
+          "answer": "Check the facts before you press send"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "A human stays in the ___.",
+          "hint": "al mando del circuito",
+          "options": [
+            "loop",
+            "cloud",
+            "queue"
+          ],
+          "answer": "loop"
+        }
+      ]
+    }
+  ]
+}

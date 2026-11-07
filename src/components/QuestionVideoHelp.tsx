@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { mountQuestionVideoHelp } from '../shared/question-videos/question-video-help.mjs';
+import { BRITJOY_REVIEW_VIDEO_MANIFEST } from '../shared/question-videos/britjoy-review-videos';
 import '../shared/question-videos/question-video-help.css';
 
 interface Props {
@@ -21,6 +22,7 @@ export function QuestionVideoHelp({ onStopAudio, ...context }: Props) {
     const controller = mountQuestionVideoHelp({
       lessonId, questionId, locale, targetLanguage, track,
       baseUrl: import.meta.env.BASE_URL,
+      manifest: BRITJOY_REVIEW_VIDEO_MANIFEST,
       onStopAudio: () => stop.current(),
     });
     host.current.replaceChildren(controller.element);

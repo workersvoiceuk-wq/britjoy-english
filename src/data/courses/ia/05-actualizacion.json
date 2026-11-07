@@ -1,0 +1,230 @@
+{
+  "level": "IA",
+  "unit": "Bloque 5 · Mantenerse al día",
+  "title": "Evaluar herramientas nuevas sin humo",
+  "icon": "🔭",
+  "checked": "2026-11-06",
+  "lessons": [
+    {
+      "id": "ia-14-evaluar-herramientas",
+      "title": "Probar una herramienta antes de adoptarla",
+      "icon": "🧪",
+      "tip": "Antes de pagar o subir trabajo real a una app de moda, revisa privacidad, haz una prueba pequeña con casos conocidos y ten alternativa.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Bloque 5 · Cómo evaluar una herramienta nueva",
+          "body": "Cada semana aparecen decenas de aplicaciones que prometen «hacer todo tu trabajo». Mantenerse al día no consiste en instalarlas todas, sino en hacer cuatro preguntas: 1) ¿Qué problema concreto resuelve? 2) ¿Entrena con mis datos o permite desactivarlo? 3) ¿Acierta en 5 casos reales cuya respuesta ya conozco? 4) ¿Cómo exporto mi trabajo si mañana cambia de precio o cierra?\n• Objetivo: Evaluar una herramienta de IA con una prueba controlada antes de depender de ella.",
+          "say": "Bloque 5: Cómo evaluar una herramienta nueva. Antes de adoptarla, comprueba qué problema resuelve, qué hace con tus datos, pruébala con cinco casos cuya respuesta ya conozcas y revisa cómo exportar tu trabajo.",
+          "phrases": [
+            {
+              "en": "Test a new tool on a small pilot first.",
+              "es": "Prueba primero una herramienta nueva en un piloto pequeño."
+            },
+            {
+              "en": "Check whether it trains on your data.",
+              "es": "Comprueba si entrena con tus datos."
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "Un vídeo viral anuncia una app que «responde a todos tus clientes mientras duermes».\n• Tu tarea: Diseña una comprobación prudente antes de conectarla al correo de un negocio real.\n• Pista: Un anuncio de treinta segundos muestra el mejor caso, nunca los fallos.",
+          "say": "El reto: Un anuncio promete responder a todos tus clientes mientras duermes. Decide qué comprobar antes de conectarla a un negocio real."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Cuál es la forma más sensata de probar una herramienta nueva de IA?",
+          "options": [
+            "Revisar su política de datos y probarla primero con unos pocos casos ficticios cuya respuesta correcta ya conoces",
+            "Conectarla el primer día a todos los clientes reales para ver qué pasa"
+          ],
+          "answer": "Revisar su política de datos y probarla primero con unos pocos casos ficticios cuya respuesta correcta ya conoces"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Qué protege al negocio frente a una app de moda?",
+          "options": [
+            "Comprobar privacidad, medir cuántos fallos comete en preguntas reales de prueba, exigir borrador supervisado y poder exportar los datos.",
+            "Pagar la suscripción anual el primer día porque el vídeo tenía muchos comentarios."
+          ],
+          "answer": "Comprobar privacidad, medir cuántos fallos comete en preguntas reales de prueba, exigir borrador supervisado y poder exportar los datos."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada criterio de evaluación en inglés",
+          "pairs": [
+            {
+              "en": "small pilot",
+              "es": "prueba pequeña"
+            },
+            {
+              "en": "data export",
+              "es": "exportación de datos"
+            },
+            {
+              "en": "opt out",
+              "es": "excluir mis datos"
+            },
+            {
+              "en": "fallback plan",
+              "es": "plan alternativo"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Prueba primero una herramienta nueva en un piloto pequeño.",
+          "words": [
+            "Test",
+            "a",
+            "new",
+            "tool",
+            "on",
+            "a",
+            "small",
+            "pilot",
+            "first.",
+            "buy",
+            "blindly"
+          ],
+          "answer": "Test a new tool on a small pilot first."
+        },
+        {
+          "type": "listening",
+          "text": "Check whether it trains on your data",
+          "options": [
+            "Check whether it trains on your data",
+            "Check weather and trains on your date",
+            "Share whatever remains of your data"
+          ],
+          "answer": "Check whether it trains on your data"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Always keep a ___ plan in case the service changes or fails.",
+          "hint": "alternativo / de respaldo",
+          "options": [
+            "fallback",
+            "viral",
+            "secret"
+          ],
+          "answer": "fallback"
+        }
+      ]
+    },
+    {
+      "id": "ia-15-mantenerse-al-dia",
+      "title": "Criterio propio frente a la moda",
+      "icon": "🧭",
+      "tip": "Los nombres comerciales cambian cada trimestre; saber formular instrucciones, proteger datos y verificar fuentes te sirve con cualquiera.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Bloque 5 · Actualizarse sin ansiedad ni humo",
+          "body": "Los modelos incorporan voz, imagen, vídeo o agentes que ejecutan pasos encadenados. Cuantos más pasos autónomos ejecuta una herramienta, más importa poner límites de permiso y confirmación humana. Para mantenerte al día, prioriza notas de versión, guías públicas de seguridad y pruebas prácticas breves en lugar de titulares alarmistas o promesas de dinero fácil.\n• Objetivo: Distinguir mejoras reales de marketing exagerado y conservar hábitos duraderos.",
+          "say": "Bloque 5: Actualizarse sin ansiedad ni humo. Cuantos más pasos ejecuta una herramienta, más importa exigir confirmación humana. Prioriza documentación primaria y pruebas reales frente a promesas exageradas.",
+          "phrases": [
+            {
+              "en": "Read the release notes, not just the hype.",
+              "es": "Lee las notas de versión, no solo el bombo publicitario."
+            },
+            {
+              "en": "Require confirmation before any irreversible action.",
+              "es": "Exige confirmación antes de cualquier acción irreversible."
+            }
+          ],
+          "link": {
+            "label": "Fuente: UK NCSC · Seguridad e IA",
+            "url": "https://www.ncsc.gov.uk/"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "Aparece un «agente autónomo» que ofrece reservar vuelos, pagar con tu tarjeta y mandar correos en tu nombre.\n• Tu tarea: Decide qué permiso nunca deberías darle sin confirmación paso a paso.\n• Pista: Un error en un borrador se borra; un pago o un correo enviado a tu jefe no.",
+          "say": "El reto: Un agente ofrece pagar con tu tarjeta y mandar correos en tu nombre. Decide qué límite poner antes de usarlo."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Si una herramienta pasa de sugerir texto a ejecutar acciones (enviar mensajes o pagar), ¿qué regla es esencial?",
+          "options": [
+            "Exigir confirmación humana explícita antes de cualquier pago, borrado o envío externo",
+            "Darle acceso completo al banco para ahorrar dos clics"
+          ],
+          "answer": "Exigir confirmación humana explícita antes de cualquier pago, borrado o envío externo"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Qué hábito te mantiene actualizado aunque cambien las marcas de IA?",
+          "options": [
+            "Leer documentación primaria, probar en pequeño y pedir siempre confirmación humana en pagos o envíos.",
+            "Memorizar listas de cien herramientas virales cada domingo sin probar ninguna con criterio."
+          ],
+          "answer": "Leer documentación primaria, probar en pequeño y pedir siempre confirmación humana en pagos o envíos."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada término de actualización tecnológica en inglés",
+          "pairs": [
+            {
+              "en": "release notes",
+              "es": "notas de versión"
+            },
+            {
+              "en": "hype",
+              "es": "bombo exagerado"
+            },
+            {
+              "en": "irreversible action",
+              "es": "acción irreversible"
+            },
+            {
+              "en": "human confirmation",
+              "es": "confirmación humana"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Lee las notas de versión, no solo el bombo publicitario.",
+          "words": [
+            "Read",
+            "the",
+            "release",
+            "notes,",
+            "not",
+            "just",
+            "the",
+            "hype.",
+            "rumours",
+            "ads"
+          ],
+          "answer": "Read the release notes, not just the hype."
+        },
+        {
+          "type": "listening",
+          "text": "Require confirmation before any irreversible action",
+          "options": [
+            "Require confirmation before any irreversible action",
+            "Remove confirmation before every financial transaction",
+            "Require celebration before any automatic vacation"
+          ],
+          "answer": "Require confirmation before any irreversible action"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Read the ___ notes instead of trusting viral promises.",
+          "hint": "de versión / publicación",
+          "options": [
+            "release",
+            "rumour",
+            "lottery"
+          ],
+          "answer": "release"
+        }
+      ]
+    }
+  ]
+}

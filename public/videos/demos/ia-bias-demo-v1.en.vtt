@@ -1,0 +1,27 @@
+WEBVTT
+Kind: subtitles
+Language: en
+
+1
+00:00:00.000 --> 00:00:06.000
+Jorge celebrates a 75% overall rate, while Valentina uncovers 80/100 on group A and just 10/20 on group B.
+
+2
+00:00:06.000 --> 00:00:12.000
+Before calculating: with 100 cases in A and 20 in B, why does the global average hide the smaller group’s failure?
+
+3
+00:00:12.000 --> 00:00:20.000
+Group A hits 80% while group B drops to 50%; the 90/120 overall rate is 75% and masks the poorer group.
+
+4
+00:00:20.000 --> 00:00:25.000
+Practice: if average accuracy is 90% but one group gets 50%, do you trust the average, audit that group, or delete it?
+
+5
+00:00:25.000 --> 00:00:30.000
+Option B is right: per-group measurement reveals where the model fails and guides representative data fixes.
+
+6
+00:00:30.000 --> 00:00:36.000
+Apply the same check to speech tools: inspect accuracy across London, Madrid, or Bogotá accents—not just the average.

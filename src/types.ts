@@ -70,6 +70,13 @@ export interface FillBlankExercise {
   alternatives?: string[];
 }
 
+export interface SubtitleTrack {
+  srclang: 'es' | 'en';
+  label: string;
+  src: string;
+  default?: boolean;
+}
+
 /**
  * Explanation card (not graded): Britjoy explains something before practising.
  * Shown as an info slide; the lion reads `say` (or `body`) aloud.
@@ -85,8 +92,17 @@ export interface ExplainExercise {
   phrases?: { en: string; es: string }[];
   /** Official source / further reading. */
   link?: { label: string; url: string };
-  /** Optional video (file in public/videos/), e.g. a Voz Unida Mundo step-by-step guide. */
-  video?: { src: string; poster?: string; caption?: string };
+  /** Optional video (file in public/videos/), e.g. a Voz Unida Mundo step-by-step guide or concept demo. */
+  video?: {
+    src: string;
+    poster?: string;
+    caption?: string;
+    aspect?: '9/16' | '16/9';
+    narrationPending?: boolean;
+    countryCode?: string;
+    tracks?: SubtitleTrack[];
+    captionsSummary?: string[];
+  };
 }
 
 /** Speaking practice (Praktika / Duolingo style): say an English sentence out loud. */
@@ -126,7 +142,15 @@ type AnyExercise =
   | FillBlankExercise;
 
 /** Every exercise can name its Busuu-style lesson phase (e.g. "Aprende", "Diálogo", "Practica"). */
-export type Exercise = AnyExercise & { section?: string };
+export type Exercise = AnyExercise & {
+  section?: string;
+  /** Optional gradual hint before checking (never discloses the right answer). */
+  gradualHint?: string;
+  gradualHintEn?: string;
+  /** Optional per-option failure/success explanations keyed by option text. */
+  optionExplanations?: Record<string, string>;
+  optionExplanationsEn?: Record<string, string>;
+};
 
 export type ExerciseType = Exercise['type'];
 
@@ -151,8 +175,8 @@ export interface Unit {
   lessons: Lesson[];
 }
 
-/** english = CEFR levels A1–C2 · life = Vivir en UK · daily / tourist = story courses · ai = IA con Britjoy. */
-export type TrackId = 'english' | 'life' | 'daily' | 'tourist' | 'ai' | 'spain' | 'colombia' | 'consulados' | 'migrar-uk' | 'ciudades';
+/** english = CEFR levels A1–C2 · life = Vivir en UK · daily / tourist = story courses · ai = IA con Britjoy · ampliacion = progressive curriculum tracks. */
+export type TrackId = 'english' | 'life' | 'daily' | 'tourist' | 'ai' | 'spain' | 'colombia' | 'consulados' | 'migrar-uk' | 'ciudades' | 'ampliacion';
 
 export interface LevelDefinition {
   id: LevelId;

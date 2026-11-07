@@ -60,7 +60,20 @@ describe('lesson story bookends', () => {
       expect(opening).toContain(level.name);
       expect(ending).toContain(level.name);
       expect(opening).not.toMatch(/Londres|London/);
+      expect(ending).not.toMatch(/Londres|London/);
       expect(JSON.stringify(localLesson)).toBe(before);
     }
+  });
+
+  it('authors jurisdiction-faithful Britjoy scene -> prediction -> transfer across UK, Spain, Colombia and situation courses', () => {
+    const esNie = SPAIN_LEVELS.find((l) => l.instructionLanguage === 'es')!.units[0].lessons[0];
+    const esNieEn = SPAIN_LEVELS.find((l) => l.instructionLanguage === 'en')!.units[0].lessons[0];
+    const coCedula = COLOMBIA_LEVELS.find((l) => l.instructionLanguage === 'es')!.units[0].lessons[0];
+    const coCedulaEn = COLOMBIA_LEVELS.find((l) => l.instructionLanguage === 'en')!.units[0].lessons[0];
+
+    expect(storyForLesson(esNie, 'es').scene).toMatch(/NIE/);
+    expect(storyForLesson(esNieEn, 'en').scene).toMatch(/Madrid/);
+    expect(storyForLesson(coCedula, 'es').scene).toMatch(/Registraduría/);
+    expect(storyForLesson(coCedulaEn, 'en').scene).toMatch(/Registraduría/);
   });
 });

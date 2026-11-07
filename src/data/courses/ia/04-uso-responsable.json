@@ -1,0 +1,227 @@
+{
+  "level": "IA",
+  "unit": "Bloque 4 · Uso responsable",
+  "title": "Privacidad, sesgos, alucinaciones y país",
+  "icon": "🛡️",
+  "checked": "2026-11-06",
+  "lessons": [
+    {
+      "id": "ia-12-privacidad",
+      "title": "Datos sensibles y normas por país",
+      "icon": "🔒",
+      "tip": "Anonimiza nombres, documentos, salud y cuentas antes de pegar un texto en un servicio externo; respeta la ley del país.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Bloque 4 · Privacidad y normas nacionales",
+          "body": "Antes de pegar una carta del médico, una nómina o un expediente de cliente en un chat público, sustituye datos identificativos por marcadores como [NOMBRE] o [DOCUMENTO]. Además, la autoridad y la norma dependen del país: ICO y UK GDPR en Reino Unido, AEPD y RGPD en España, y Superintendencia de Industria y Comercio (SIC) con la Ley 1581 en Colombia.\n• Objetivo: Proteger datos personales y distinguir el marco de privacidad de cada país.",
+          "say": "Bloque 4: Privacidad y normas nacionales. Antes de pegar una carta médica o una nómina en un chat externo, sustituye datos personales por marcadores genéricos y respeta la autoridad de protección de datos de tu país.",
+          "phrases": [
+            {
+              "en": "Remove personal data before pasting the text.",
+              "es": "Elimina los datos personales antes de pegar el texto."
+            },
+            {
+              "en": "Never share passwords or ID numbers in a public chat.",
+              "es": "Nunca compartas contraseñas ni números de documento en un chat público."
+            }
+          ],
+          "link": {
+            "label": "Fuente (UK): Information Commissioner's Office (ICO)",
+            "url": "https://ico.org.uk/"
+          }
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "Quieres entender una carta sobre impuestos o salud y piensas copiarla entera con tu dirección, número de documento y código bancario.\n• Tu tarea: Decide qué limpiar antes de pedir un resumen en lenguaje sencillo.\n• Pista: Para explicar un párrafo administrativo, el modelo no necesita tu número de pasaporte ni tu cédula.",
+          "say": "El reto: Quieres entender una carta oficial y piensas copiarla con tu dirección y documento. Decide qué limpiar antes de pedir ayuda."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Qué debes quitar antes de pegar un documento real en un asistente público?",
+          "options": [
+            "Nombres completos, números de identificación, teléfonos, cuentas bancarias y datos médicos identificables",
+            "Los signos de puntuación y los verbos del párrafo"
+          ],
+          "answer": "Nombres completos, números de identificación, teléfonos, cuentas bancarias y datos médicos identificables"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Cómo relacionas correctamente país y protección de datos?",
+          "options": [
+            "Anonimizo el documento antes de pegarlo y recuerdo que rigen ICO (Reino Unido), AEPD (España) o SIC · Ley 1581 (Colombia) según el país.",
+            "Subo la foto completa del documento porque todos los chats tienen secreto profesional universal."
+          ],
+          "answer": "Anonimizo el documento antes de pegarlo y recuerdo que rigen ICO (Reino Unido), AEPD (España) o SIC · Ley 1581 (Colombia) según el país."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada término de privacidad en inglés",
+          "pairs": [
+            {
+              "en": "personal data",
+              "es": "datos personales"
+            },
+            {
+              "en": "placeholder",
+              "es": "marcador sustituto"
+            },
+            {
+              "en": "privacy policy",
+              "es": "política de privacidad"
+            },
+            {
+              "en": "sensitive information",
+              "es": "información sensible"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Elimina los datos personales antes de pegar el texto.",
+          "words": [
+            "Remove",
+            "personal",
+            "data",
+            "before",
+            "pasting",
+            "the",
+            "text.",
+            "share",
+            "passwords"
+          ],
+          "answer": "Remove personal data before pasting the text."
+        },
+        {
+          "type": "listening",
+          "text": "Remove personal data before pasting the text",
+          "options": [
+            "Remove personal data before pasting the text",
+            "Repeat personal dates before printing the test",
+            "Remove postal stamps before posting the box"
+          ],
+          "answer": "Remove personal data before pasting the text"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Never share passwords or ID numbers in a public ___.",
+          "hint": "chat",
+          "options": [
+            "chat",
+            "notebook",
+            "wallet"
+          ],
+          "answer": "chat"
+        }
+      ]
+    },
+    {
+      "id": "ia-13-verificacion",
+      "title": "Alucinaciones, sesgos y transparencia",
+      "icon": "🔎",
+      "tip": "Un modelo puede inventar leyes o citas con seguridad total («hallucination») y arrastrar sesgos; verifica siempre en la fuente oficial.",
+      "exercises": [
+        {
+          "type": "explain",
+          "title": "Bloque 4 · Alucinaciones, sesgos y transparencia",
+          "body": "Los modelos de lenguaje predicen texto plausible, no consultan automáticamente la verdad. Pueden citar una norma derogada, mezclar trámites de España con los del Reino Unido o tratar peor ciertos acentos y nombres si sus datos estaban desequilibrados. Uso responsable significa contrastar en la web oficial y avisar con honestidad cuando un trabajo exige declarar el uso de IA.\n• Objetivo: Detectar alucinaciones jurisdiccionales, sesgos y deberes de transparencia.",
+          "say": "Bloque 4: Alucinaciones, sesgos y transparencia. Un modelo puede citar una norma inexistente o mezclar países con tono seguro. Contrasta siempre en la fuente oficial y sé transparente cuando las normas académicas o laborales lo pidan.",
+          "phrases": [
+            {
+              "en": "Verify every legal claim on an official website.",
+              "es": "Verifica cada afirmación legal en una web oficial."
+            },
+            {
+              "en": "A confident answer can still be wrong.",
+              "es": "Una respuesta segura puede seguir siendo errónea."
+            }
+          ]
+        },
+        {
+          "type": "explain",
+          "title": "🎯 Reto",
+          "body": "Un asistente afirma muy convencido que para trabajar en Manchester necesitas «darte de alta en el padrón municipal y pedir cita en la EPS».\n• Tu tarea: Detecta qué tipo de fallo ha ocurrido y dónde comprobar el trámite real.\n• Pista: Ha mezclado instituciones de tres países distintos en una sola frase impecable.",
+          "say": "El reto: Un asistente afirma que en Manchester necesitas padrón municipal y EPS. Detecta el fallo y dónde comprobar el trámite real."
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "¿Por qué ocurre una «alucinación» en un modelo generativo?",
+          "options": [
+            "Porque combina palabras probables sin comprobar por sí mismo si el dato o la ley existen en ese país",
+            "Porque el ordenador quiere gastar una broma deliberada al usuario"
+          ],
+          "answer": "Porque combina palabras probables sin comprobar por sí mismo si el dato o la ley existen en ese país"
+        },
+        {
+          "type": "multipleChoice",
+          "prompt": "Respuesta modelo del reto. ¿Qué haces ante la mezcla de Manchester, padrón y EPS?",
+          "options": [
+            "Descarto la respuesta por mezclar España y Colombia con Reino Unido, y consulto directamente GOV.UK y NHS.",
+            "Confío en la mitad de la frase porque está bien redactada y sin faltas."
+          ],
+          "answer": "Descarto la respuesta por mezclar España y Colombia con Reino Unido, y consulto directamente GOV.UK y NHS."
+        },
+        {
+          "type": "matching",
+          "prompt": "Une cada término de uso responsable en inglés",
+          "pairs": [
+            {
+              "en": "hallucination",
+              "es": "dato inventado con soltura"
+            },
+            {
+              "en": "bias",
+              "es": "sesgo"
+            },
+            {
+              "en": "official source",
+              "es": "fuente oficial"
+            },
+            {
+              "en": "disclosure",
+              "es": "declaración de uso"
+            }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "prompt": "Una respuesta segura puede seguir siendo errónea.",
+          "words": [
+            "A",
+            "confident",
+            "answer",
+            "can",
+            "still",
+            "be",
+            "wrong.",
+            "always",
+            "true"
+          ],
+          "answer": "A confident answer can still be wrong."
+        },
+        {
+          "type": "listening",
+          "text": "Verify every legal claim on an official website",
+          "options": [
+            "Verify every legal claim on an official website",
+            "Believe every viral claim on a social website",
+            "Verify every local train on an old timetable"
+          ],
+          "answer": "Verify every legal claim on an official website"
+        },
+        {
+          "type": "fillBlank",
+          "sentence": "Always check government procedures on an ___ source.",
+          "hint": "oficial",
+          "options": [
+            "official",
+            "anonymous",
+            "invented"
+          ],
+          "answer": "official"
+        }
+      ]
+    }
+  ]
+}
