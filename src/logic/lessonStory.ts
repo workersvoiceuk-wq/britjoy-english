@@ -1,4 +1,4 @@
-import type { Lesson } from '../types';
+import type { Exercise, Lesson } from '../types';
 
 export interface LessonStory {
   scene: string;
@@ -190,3 +190,66 @@ export function storyForLesson(lesson: Lesson, locale: 'es' | 'en'): LessonStory
 export function explanationSegments(body: string): string[] {
   return body.split('\n').map((line) => line.trim()).filter(Boolean);
 }
+
+function clipText(raw: string, max = 140): string {
+  const clean = raw.replace(/\s+/g, ' ').trim();
+  return clean.length <= max ? clean : `${clean.slice(0, max - 1).trimEnd()}…`;
+}
+
+/** Clear upfront objective for a lesson without disclosing any graded answer. */
+export function objectiveForLesson(lesson: Lesson, locale: 'es' | 'en'): string {
+  const explains = lesson.exercises.filter((e): e is Extract<Exercise, { type: 'explain' }> => e.type === 'explain');
+  for (const ex of explains) {
+    for (const seg of explanationSegments(ex.body)) {
+      const m = locale === 'es' ? seg.match(/^•?\s*Objetivo:\s*(.+)$/i) : seg.match(/^•?\s*(?:Goal|Objective):\s*(.+)$/i);
+      if (m?.[1]) return clipText(m[1], 150);
+    }
+  }
+  if (locale === 'es' && lesson.tip?.trim()) return clipText(lesson.tip, 150);
+  const firstExplain = explains[0];
+  if (firstExplain?.title) {
+    return locale === 'es'
+      ? `Dominar paso a paso «${lesson.title}» (${firstExplain.title}) y comprobarlo en un caso práctico.`
+      : `Practise “${lesson.title}” (${firstExplain.title}) step by step and verify it on a practical case.`;
+  }
+  return locale === 'es'
+    ? `Practicar «${lesson.title}» paso a paso y aplicarlo a otro caso real.`
+    : `Practise “${lesson.title}” step by step and apply it to a new case.`;
+}
+
+/** Concise pedagogical explanation shown in the red/green feedback banner after checking an exercise. */
+export function explanationForExercise(lesson: Lesson, exercise: Exercise, correctAnswer: string, locale: 'es' | 'en'): string {
+  const norm = correctAnswer.trim().toLowerCase();
+  const explains = lesson.exercises.filter((e): e is Extract<Exercise, { type: 'explain' }> => e.type === 'explain');
+  if (norm) {
+    for (const ex of explains) {
+      const hit = ex.phrases?.find((p) => p.en.trim().toLowerCase() === norm || p.es.trim().toLowerCase() === norm);
+      if (hit) {
+        return locale === 'es'
+          ? `Clave: «${hit.en}» corresponde a «${hit.es}».`
+          : `Key match: “${hit.en}” means “${hit.es}”.`;
+      }
+    }
+  }
+  if (exercise.type === 'fillBlank' && exercise.hint) {
+    return locale === 'es'
+      ? `Pista («${exercise.hint}»): la forma exacta en contexto es «${correctAnswer}».`
+      : `Cue (“${exercise.hint}”): the exact form in context is “${correctAnswer}”.`;
+  }
+  const firstExplain = explains[0];
+  if (firstExplain) {
+    const firstLine = explanationSegments(firstExplain.body)
+      .map((s) => s.replace(/^•\s*/, ''))
+      .find((s) => !/^(?:Objetivo|Goal|Objective|Tu tarea|Pista):/i.test(s));
+    if (firstLine) {
+      const sentence = firstLine.split(/(?<=[.!?])\s+/)[0] || firstLine;
+      return locale === 'es'
+        ? `Mecanismo: ${clipText(sentence, 135)}`
+        : `Mechanism: ${clipText(sentence, 135)}`;
+    }
+  }
+  return locale === 'es'
+    ? 'Revisa la estructura modelo antes de continuar o volver a intentarlo.'
+    : 'Review the model pattern before continuing or trying again.';
+}
+

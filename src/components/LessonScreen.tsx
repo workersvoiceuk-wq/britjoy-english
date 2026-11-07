@@ -9,13 +9,14 @@ import { narrationFor } from '../lib/narration';
 import { hush, narrate, useVoice } from '../lib/narrator';
 import { setTargetLanguage, speak } from '../lib/speech';
 import { sfx } from '../lib/sound';
-import { fill, pick } from '../lib/util';
+import { pick } from '../lib/util';
 import dialogue from '../data/britjoy-dialogue.json';
 import { Britjoy, SpeechBubble, type BritjoyExpression } from './Britjoy';
 import { Button } from './Button';
 import { ExerciseView } from './exercises';
 import { QuestionVideoHelp } from './QuestionVideoHelp';
 import { LessonPrelude, LessonReflection } from './LessonStory';
+import { explanationForExercise } from '../logic/lessonStory';
 
 /**
  * Practice first: a question's explanation can contain its answer, so it is offered on explain/dialogue
@@ -41,8 +42,6 @@ interface Props {
   onFinish: (outcome: LessonOutcome) => void;
 }
 
-const wait = (ms: number) => new Promise((r) => window.setTimeout(r, ms));
-
 const NATIVE_ENTER_TAGS = new Set(['BUTTON', 'A', 'SUMMARY', 'SELECT', 'VIDEO', 'AUDIO']);
 
 export function lessonProgressStep(index: number, hasResult: boolean, isExplain: boolean): number {
@@ -67,18 +66,20 @@ export function shouldHandleLessonEnterKey(key: string, target: EventTarget | nu
 
 export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
   const copy = copyFor(level.instructionLanguage, level.targetLanguage);
+  const es = level.instructionLanguage === 'es';
   // The language being learnt sets the voice of phrases, listening and speaking exercises.
   setTargetLanguage(level.targetLanguage === 'es' ? 'es-ES' : 'en-GB');
   useEffect(() => () => setTargetLanguage('en-GB'), []);
-  const voiceLang = level.instructionLanguage === 'es' ? 'es-ES' : 'en-GB';
+  const voiceLang = es ? 'es-ES' : 'en-GB';
   const hearts = useProgressStore((s) => s.hearts);
   const plus = usePlus();
   const loseHeart = useProgressStore((s) => s.loseHeart);
   const speaking = useVoice((s) => s.speaking);
 
   const [index, setIndex] = useState(0);
+  const [attemptKey, setAttemptKey] = useState(0);
   const [response, setResponse] = useState<ExerciseResponse | null>(null);
-  const [result, setResult] = useState<(CheckResult & { message: string }) | null>(null);
+  const [result, setResult] = useState<(CheckResult & { message: string; explanation: string }) | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
   const [mistakes, setMistakes] = useState(0);
   const [storyReady, setStoryReady] = useState(false);
@@ -97,20 +98,12 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
   const progress = (completedSteps / total) * 100;
   const expression: BritjoyExpression = result ? (result.correct ? 'celebrating' : 'sad') : 'neutral';
 
-  // Britjoy introduces the lesson and explains each activity aloud.
+  // Play start chime on lesson start and target audio on listening exercises; BritJoy voice stays on-demand in Help / 🔊.
   useEffect(() => {
     if (!practiceActive) return;
     let cancelled = false;
     (async () => {
-      if (index === 0) {
-        sfx.start();
-        if (useProgressStore.getState().soundOn) await wait(1500);
-        if (cancelled) return;
-        await narrate(fill(dialogue.lessonIntro, { title: lesson.title }), voiceLang);
-      }
-      if (cancelled) return;
-      // ExplainCard offers the original text one idea at a time, with its own listen control.
-      await narrate(exercise.type === 'explain' ? exercise.title : narrationFor(exercise, copy), voiceLang);
+      if (index === 0) sfx.start();
       if (!cancelled && exercise.type === 'listening') await speak(exercise.text);
     })();
     return () => {
@@ -135,6 +128,7 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
       return;
     }
     setIndex(index + 1);
+    setAttemptKey(0);
     setResponse(null);
     setResult(null);
   }, [index, total, correctCount, mistakes]);
@@ -149,22 +143,27 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
     }
     const r = checkAnswer(exercise, response);
     const message = pick(r.correct ? dialogue.correct : dialogue.wrong);
-    setResult({ ...r, message });
+    const explanation = explanationForExercise(lesson, exercise, r.correctAnswer, level.instructionLanguage);
+    setResult({ ...r, message, explanation });
     if (r.correct) {
       sfx.correct();
       setCorrectCount((c) => c + 1);
-      void narrate(message, voiceLang);
     } else {
       sfx.wrong();
       setMistakes((m) => m + 1);
       loseHeart();
       window.setTimeout(() => sfx.heart(), 350);
-      void narrate(message, voiceLang).then(() => {
-        if (exercise.type !== 'matching' && useProgressStore.getState().voiceOn) return speak(r.correctAnswer);
-      });
+      if (exercise.type !== 'matching' && useProgressStore.getState().voiceOn) void speak(r.correctAnswer);
     }
-  }, [practiceActive, exercise, response, result, isExplain, loseHeart, voiceLang, advance]);
+  }, [practiceActive, lesson, exercise, response, result, isExplain, loseHeart, level.instructionLanguage, advance]);
 
+  const retry = useCallback(() => {
+    if (!practiceActive || !result || result.correct) return;
+    hush();
+    setResult(null);
+    setResponse(null);
+    setAttemptKey((k) => k + 1);
+  }, [practiceActive, result]);
 
   const next = useCallback(() => {
     if (!practiceActive) return;
@@ -202,6 +201,7 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
   };
 
   const repeat = () => void narrate(exercise.type === 'explain' ? exercise.title : narrationFor(exercise, copy), voiceLang);
+  const canRetry = Boolean(result && !result.correct && (hearts > 0 || plus));
 
   if (!storyReady) return <LessonPrelude lesson={lesson} courseName={level.name} locale={level.instructionLanguage} onExit={exit} onContinue={(text) => { setPrediction(text); setStoryReady(true); }} />;
   if (pendingOutcome) return <LessonReflection lesson={lesson} courseName={level.name} locale={level.instructionLanguage} prediction={prediction} onExit={exit} onFinish={() => onFinish(pendingOutcome)} />;
@@ -249,19 +249,45 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
             ))}
           </ol>
         )}
-        <div className="mb-4 flex items-end gap-2">
-          <button onClick={repeat} aria-label="Repetir la explicación de Britjoy" className="shrink-0">
-            <Britjoy expression={expression} speaking={speaking} size={104} />
+
+        {/* Clear task instruction upfront; BritJoy available on demand in optional Help */}
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-2xl border-2 border-navy/10 bg-white px-4 py-2.5 shadow-sm">
+          <span className="text-base font-black text-navy sm:text-lg">
+            {exercise.type === 'explain' ? copy.explainTitle : instructionFor(exercise, copy)}
+          </span>
+          <button
+            type="button"
+            onClick={repeat}
+            className="rounded-xl bg-navy/5 px-2.5 py-1 text-sm font-extrabold text-royal"
+            aria-label="Escuchar otra vez"
+          >
+            🔊
           </button>
-          <SpeechBubble className="mb-3 flex-1">
-            <span className="text-lg font-black">{exercise.type === 'explain' ? copy.explainTitle : instructionFor(exercise, copy)}</span>
-            <button onClick={repeat} className="ml-2 align-middle text-sm font-extrabold text-royal" aria-label="Escuchar otra vez">
-              🔊
-            </button>
-          </SpeechBubble>
         </div>
+
+        <details data-britjoy-help="true" className="mb-4 rounded-2xl border-2 border-dashed border-navy/20 bg-white/90 px-3.5 py-2">
+          <summary className="cursor-pointer select-none text-xs font-extrabold text-navy">
+            {es ? '🦁 Ayuda opcional con BritJoy' : '🦁 Optional help with BritJoy'}
+          </summary>
+          <div className="mt-2 flex items-end gap-2">
+            <button type="button" onClick={repeat} aria-label="Repetir la explicación de Britjoy" className="shrink-0">
+              <Britjoy expression={expression} speaking={speaking} size={84} />
+            </button>
+            <SpeechBubble className="mb-2 flex-1">
+              <p className="text-sm font-bold text-ink">
+                {result
+                  ? result.message
+                  : lesson.tip ?? (es ? 'Fíjate en el ejemplo clave antes de elegir tu respuesta.' : 'Check the key example before choosing your answer.')}
+              </p>
+              <button type="button" onClick={repeat} className="mt-1 text-xs font-extrabold text-royal underline">
+                {es ? '🔊 Escuchar instrucción (1x)' : '🔊 Listen to instruction (1x)'}
+              </button>
+            </SpeechBubble>
+          </div>
+        </details>
+
         <ExerciseView
-          key={`${lesson.id}-${index}`}
+          key={`${lesson.id}-${index}-${attemptKey}`}
           exercise={exercise}
           locked={result !== null}
           correct={result?.correct ?? null}
@@ -281,20 +307,23 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
       </main>
 
       <footer
+        data-feedback-state={result ? (result.correct ? 'right' : 'wrong') : 'idle'}
         className={`fixed inset-x-0 bottom-0 border-t-2 pb-[env(safe-area-inset-bottom)] ${
           result
             ? result.correct
-              ? 'animate-slide-up border-transparent bg-brand-light'
-              : 'animate-slide-up border-transparent bg-bad-light'
+              ? 'animate-slide-up border-brand bg-brand-light'
+              : 'animate-slide-up border-bad bg-bad-light'
             : 'border-navy/10 bg-white'
         }`}
       >
         <div className="mx-auto flex max-w-2xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
           {result && (
             <div role="status" className={result.correct ? 'text-brand-dark' : 'text-bad-dark'}>
-              <p className="text-xl font-black">{result.correct ? copy.correct : copy.wrong}</p>
-              {!result.correct && <p className="text-lg font-bold">{result.correctAnswer}</p>}
-              <p className="text-sm font-semibold opacity-90">Britjoy: {result.message}</p>
+              <p className="text-xl font-black">{result.correct ? `✓ ${copy.correct}` : `✗ ${copy.wrong}`}</p>
+              {!result.correct && <p className="text-lg font-extrabold">{result.correctAnswer}</p>}
+              <p data-feedback-explanation="true" className="mt-0.5 text-sm font-bold leading-snug">
+                {result.explanation}
+              </p>
             </div>
           )}
           {isExplain ? (
@@ -302,9 +331,16 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
               {copy.continue}
             </Button>
           ) : result ? (
-            <Button variant={result.correct ? 'primary' : 'danger'} onClick={next} className="sm:min-w-[10rem]">
-              {copy.continue}
-            </Button>
+            <div className="flex flex-wrap gap-2 sm:ml-auto sm:flex-nowrap">
+              {canRetry && (
+                <Button variant="ghost" onClick={retry} data-retry-exercise="true" className="flex-1 border-2 border-bad/40 bg-white text-bad-dark sm:flex-initial">
+                  {es ? 'Intentar de nuevo' : 'Try again'}
+                </Button>
+              )}
+              <Button variant={result.correct ? 'primary' : 'danger'} onClick={next} className="flex-1 sm:min-w-[9.5rem] sm:flex-initial">
+                {copy.continue}
+              </Button>
+            </div>
           ) : (
             <Button variant="accent" disabled={!response} onClick={check} block className="sm:ml-auto sm:w-auto sm:min-w-[10rem]">
               {copy.check}
@@ -315,3 +351,4 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
     </div>
   );
 }
+

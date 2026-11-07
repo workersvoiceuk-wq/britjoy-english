@@ -135,7 +135,18 @@
               "en": "A human stays in the loop.",
               "es": "Una persona sigue al mando del proceso."
             }
-          ]
+          ],
+          "video": {
+            "src": "videos/demos/ia-cv-hoja-vida-v1.mp4",
+            "aspect": "16/9",
+            "narrationPending": true,
+            "countryCode": "GLOBAL",
+            "caption": "Demostración visual · traducción de CV con supervisión humana; subtítulos ES/EN legibles en móvil y narración pendiente",
+            "tracks": [
+              { "srclang": "es", "label": "Español", "src": "videos/demos/ia-cv-hoja-vida-v1.es.vtt", "default": true },
+              { "srclang": "en", "label": "English", "src": "videos/demos/ia-cv-hoja-vida-v1.en.vtt" }
+            ]
+          }
         },
         {
           "type": "explain",

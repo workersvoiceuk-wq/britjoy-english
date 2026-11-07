@@ -77,11 +77,13 @@ export function buildLesson(cfg: CountryConfig, src: CountrySource, target: Lang
               src: `videos/${cfg.videoDir}/${src.id}-${L}.mp4`,
               poster: `videos/${cfg.videoDir}/${src.id}-${L}.jpg`,
               caption: L === 'es' ? 'Britjoy te lo explica paso a paso' : 'Britjoy explains it step by step',
+              countryCode: cfg.code,
+              captionsSummary: src.steps.map((s) => s[L]),
             },
           }
         : {}),
       ...(c.link ? { link: { label: c.link.label[L], url: c.link.url } } : {}),
-      ...(c.video ? { video: { src: c.video.src, poster: c.video.poster, caption: c.video.caption?.[L] } } : {}),
+      ...(c.video ? { video: { src: c.video.src, poster: c.video.poster, caption: c.video.caption?.[L], countryCode: cfg.code } } : {}),
     }),
   );
   if (src.dialogue) {

@@ -70,6 +70,13 @@ export interface FillBlankExercise {
   alternatives?: string[];
 }
 
+export interface SubtitleTrack {
+  srclang: 'es' | 'en';
+  label: string;
+  src: string;
+  default?: boolean;
+}
+
 /**
  * Explanation card (not graded): Britjoy explains something before practising.
  * Shown as an info slide; the lion reads `say` (or `body`) aloud.
@@ -85,8 +92,17 @@ export interface ExplainExercise {
   phrases?: { en: string; es: string }[];
   /** Official source / further reading. */
   link?: { label: string; url: string };
-  /** Optional video (file in public/videos/), e.g. a Voz Unida Mundo step-by-step guide. */
-  video?: { src: string; poster?: string; caption?: string };
+  /** Optional video (file in public/videos/), e.g. a Voz Unida Mundo step-by-step guide or concept demo. */
+  video?: {
+    src: string;
+    poster?: string;
+    caption?: string;
+    aspect?: '9/16' | '16/9';
+    narrationPending?: boolean;
+    countryCode?: string;
+    tracks?: SubtitleTrack[];
+    captionsSummary?: string[];
+  };
 }
 
 /** Speaking practice (Praktika / Duolingo style): say an English sentence out loud. */
