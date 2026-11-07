@@ -3,7 +3,7 @@ import clips from './britjoy-review-video-clips.json';
 
 // Each clip may declare its folder (videos/ingles-a1, …); the A2 clips predate the field.
 const folderOf = (clip: object) => (clip as { folder?: string }).folder ?? 'videos/ingles-a2';
-// Each clip may declare its VUM course (Vivir en UK → britjoy, IA → ia…), as the player infers it from the lesson;
+// Each clip may declare its VUM course (Vivir en UK → vivir-uk, IA → ia…), as the player infers it from the lesson;
 // the A2 clips predate the field and are English.
 const courseOf = (clip: object) => (clip as { courseId?: string }).courseId ?? 'ingles';
 

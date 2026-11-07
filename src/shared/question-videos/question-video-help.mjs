@@ -264,7 +264,9 @@ export function inferCourseIdFromLesson({ courseId, lessonId, track, targetLangu
   if (lid === 'uk-banco-l2' || lid.startsWith('ciberseguridad')) return 'ciberseguridad';
   if (lid === 'uk-facturas-l1' || lid.startsWith('electricidad')) return 'electricidad';
   if (lid.startsWith('ia-') || track === 'ai') return 'ia';
-  if (lid.startsWith('uk-vida') || track === 'life' || track === 'migrar-uk' || track === 'ciudades') return 'britjoy';
+  // BritJoy's «Vivir en UK» situations (GP, alquiler, council, migrar, ciudades…) are a country-situation catalogue,
+  // not the Life in the UK exam course ('britjoy', which callers name explicitly). Keep them in their own scope.
+  if (lid.startsWith('uk-vida') || track === 'life' || track === 'migrar-uk' || track === 'ciudades') return 'vivir-uk';
   // A known target language wins over ID/track prefixes: BritJoy «dia-…» lessons teach ENGLISH to
   // Spanish speakers and must not be treated as the Spanish course.
   if (
@@ -3330,7 +3332,9 @@ export const QUESTION_VIDEO_MANIFEST = Object.freeze({
 // lesson does not), national content from ANOTHER country is not offered by default: a Colombian
 // rain-margins video must not appear in a British driving unit. An explicit country (e.g. a bank question
 // tagged CO) still selects that country's content, and content without a country is unaffected.
-export const COURSE_DEFAULT_COUNTRY = Object.freeze({ conduccion: 'GB', britjoy: 'GB' });
+export const COURSE_DEFAULT_COUNTRY = Object.freeze({ conduccion: 'GB', britjoy: 'GB', 'vivir-uk': 'GB' });
+// Situation/country catalogues that are not one of the seven VUM courses (their lessons never count as a course).
+export const SITUATION_CATALOG_IDS = Object.freeze(['vivir-uk']);
 
 function countryMatches(mappingCountry, conceptCountry, queryCountry, courseId = '') {
   const requiredCountry =

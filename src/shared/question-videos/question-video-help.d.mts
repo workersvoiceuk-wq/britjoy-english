@@ -21,6 +21,8 @@ export interface MountedQuestionVideoHelp {
   getState(): QuestionVideoQuery & {isOpen: boolean; isPlaying: boolean};
 }
 export const COURSE_DEFAULT_COUNTRY: Readonly<Record<string, string>>;
+export const SITUATION_CATALOG_IDS: ReadonlyArray<string>;
+export function inferCourseIdFromLesson(query?: QuestionVideoQuery): string;
 export const QUESTION_VIDEO_MANIFEST: {
   schemaVersion: string;
   concepts: ReadonlyArray<{

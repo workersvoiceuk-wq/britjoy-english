@@ -19,8 +19,11 @@ export interface OfficialSourceLink {
   url: string;
 }
 
+/** Country-situation catalogues: not one of the seven VUM courses and never presented as exam preparation. */
+export type SituationCatalogId = 'vivir-uk';
+
 export interface CoursePathway {
-  domain: PathwayDomainId;
+  domain: PathwayDomainId | SituationCatalogId;
   checked: '2026-11-07';
   title: BilingualText;
   whatYouLearn: BilingualText[];
@@ -298,6 +301,51 @@ export const PATHWAYS_BY_DOMAIN: Record<PathwayDomainId, CoursePathway> = {
   },
 };
 
+/**
+ * «Vivir en UK» and its country situations (council, ciudades, migrar, consulados) are practical procedures, kept apart
+ * from the Life in the UK exam course: no exam syllabus, no test claims, official sources only.
+ */
+export const SITUATION_PATHWAY: CoursePathway = {
+  domain: 'vivir-uk',
+  checked: '2026-11-07',
+  title: {
+    es: 'Vivir en el Reino Unido: situaciones y trámites reales (no es el curso de examen Life in the UK)',
+    en: 'Living in the UK: real situations and procedures (not the Life in the UK test course)',
+  },
+  whatYouLearn: [
+    {
+      es: 'Situaciones prácticas con el inglés que necesitas: GP y 111, alquiler, council tax, banco, trabajo, colegios, transporte y tu barrio.',
+      en: 'Practical situations with the English you need: GP and 111, renting, council tax, banking, work, schools, transport and your area.',
+    },
+    {
+      es: 'Trámites según tu país y tu ciudad (migrar, council, consulados), contrastados con GOV.UK y NHS.',
+      en: 'Procedures by country and city (moving to the UK, your council, consulates), checked against GOV.UK and NHS.',
+    },
+  ],
+  prerequisites: {
+    es: 'Ninguno. Las normas cambian: confirma siempre tu caso en GOV.UK, NHS o tu council.',
+    en: 'None. Rules change: always confirm your own case on GOV.UK, NHS or your council.',
+  },
+  privateCertificate: VUM_PRIVATE_CERT_NOTICE,
+  externalNextStep: {
+    es: 'Si preparas el examen oficial, usa el curso Life in the UK y reserva solo en GOV.UK (https://www.gov.uk/life-in-the-uk-test).',
+    en: 'If you are preparing for the official test, use the Life in the UK course and book only on GOV.UK (https://www.gov.uk/life-in-the-uk-test).',
+  },
+  strictBoundary: {
+    es: 'Orientación práctica, no asesoría legal ni migratoria, y separada del temario del examen Life in the UK.',
+    en: 'Practical guidance, not legal or immigration advice, and separate from the Life in the UK test syllabus.',
+  },
+  sources: [
+    { label: 'GOV.UK', url: 'https://www.gov.uk/' },
+    { label: 'NHS — Health A to Z and services', url: 'https://www.nhs.uk/' },
+    { label: 'GOV.UK — Find your local council', url: 'https://www.gov.uk/find-local-council' },
+  ],
+  guideDownloadPath: 'resources/guia-7-cursos-vum-es-en.md',
+};
+
+const SITUATION_TRACKS = new Set(['life', 'migrar-uk', 'ciudades', 'consulados']);
+const SITUATION_CATALOG_COURSES = new Set(['vivir-en-uk', 'tu-council', 'migrar-uk', 'consulados-londres']);
+
 export function pathwayForLevel(level: Pick<LevelDefinition, 'id' | 'track' | 'targetLanguage'>): CoursePathway {
   const id = level.id.toUpperCase();
   if (id === 'CIBER') return PATHWAYS_BY_DOMAIN.ciberseguridad;
@@ -305,21 +353,20 @@ export function pathwayForLevel(level: Pick<LevelDefinition, 'id' | 'track' | 't
   if (id === 'COND-GB') return PATHWAYS_BY_DOMAIN['conduccion-gb'];
   if (id === 'IA' || id === 'IA-PRO' || level.track === 'ai') return PATHWAYS_BY_DOMAIN.ia;
   if (id === 'ES-MCER' || level.targetLanguage === 'es') return PATHWAYS_BY_DOMAIN.espanol;
-  if (id === 'UK-HIST' || level.track === 'life' || level.track === 'migrar-uk' || level.track === 'ciudades' || level.track === 'consulados') {
-    return PATHWAYS_BY_DOMAIN['life-uk'];
-  }
+  if (id === 'UK-HIST') return PATHWAYS_BY_DOMAIN['life-uk'];
+  if (SITUATION_TRACKS.has(level.track)) return SITUATION_PATHWAY;
   return PATHWAYS_BY_DOMAIN.ingles;
 }
 
 export function pathwayForCatalogCourseId(courseId: string, levels: LevelDefinition[]): CoursePathway {
-  if (courseId.includes('ciber')) return PATHWAYS_BY_DOMAIN.ciberseguridad;
-  if (courseId.includes('elec')) return PATHWAYS_BY_DOMAIN.electricidad;
-  if (courseId.includes('conduccion')) return PATHWAYS_BY_DOMAIN['conduccion-gb'];
-  if (courseId.includes('ia')) return PATHWAYS_BY_DOMAIN.ia;
-  if (courseId.includes('espanol')) return PATHWAYS_BY_DOMAIN.espanol;
-  if (courseId.includes('uk') || courseId === 'tu-council' || courseId === 'consulados-londres') {
-    return PATHWAYS_BY_DOMAIN['life-uk'];
-  }
+  // Whole-word prefixes only: «colombia», «historia» and «dia-a-dia» contain «ia» but are not the AI course.
+  if (courseId.startsWith('ciber')) return PATHWAYS_BY_DOMAIN.ciberseguridad;
+  if (courseId.startsWith('electricidad')) return PATHWAYS_BY_DOMAIN.electricidad;
+  if (courseId.startsWith('conduccion')) return PATHWAYS_BY_DOMAIN['conduccion-gb'];
+  if (courseId === 'ia' || courseId.startsWith('ia-')) return PATHWAYS_BY_DOMAIN.ia;
+  if (courseId.startsWith('espanol') || courseId.endsWith('-espanol')) return PATHWAYS_BY_DOMAIN.espanol;
+  if (courseId === 'uk-historia-instituciones') return PATHWAYS_BY_DOMAIN['life-uk'];
+  if (SITUATION_CATALOG_COURSES.has(courseId)) return SITUATION_PATHWAY;
   if (levels[0]) return pathwayForLevel(levels[0]);
   return PATHWAYS_BY_DOMAIN.ingles;
 }
