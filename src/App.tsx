@@ -63,7 +63,7 @@ function AppScreens() {
   // Guard: never sit on a course/level that is (no longer) unlocked.
   const completed = completedByLevel(store.levels);
   const current = getLevel(store.currentLevel);
-  const unlockedCurrent = current.track !== 'life' && isLevelUnlocked(ALL_LEVELS, store.currentLevel, completed, store.placementLevel);
+  const unlockedCurrent = current.track !== 'life' && isLevelUnlocked(ALL_LEVELS, store.currentLevel, completed, store.placementLevel, store.legacyEnglishLevels);
   const englishLevel = unlockedCurrent ? current : LEVELS[0];
 
   useEffect(() => setNotice(null), [store.hearts, store.currentLevel, store.tab]);

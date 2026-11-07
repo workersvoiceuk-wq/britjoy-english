@@ -47,10 +47,13 @@ export function Certificate({
   const setName = useProgressStore((s) => s.setLearnerName);
   const storeLevels = useProgressStore((s) => s.levels);
   const storeLang = useProgressStore((s) => s.uiLang);
+  const legacyDate = useProgressStore((s) => s.legacyEnglishCertificate ? s.legacyEnglishCertificateAt : null);
   const levels = levelsOverride ?? storeLevels;
   const lang = langOverride ?? storeLang ?? 'es';
   const isEn = lang.toLowerCase().startsWith('en');
-  const completionDate = resolveCertificateCompletionDate(course, levels);
+  const completionDate = course.id === 'ingles-a1-c2' && legacyDate && !levelsOverride
+    ? new Date(legacyDate)
+    : resolveCertificateCompletionDate(course, levels);
   const date = completionDate.toLocaleDateString(lang, { day: 'numeric', month: 'long', year: 'numeric' });
   const privateNotice = isEn
     ? 'Private local practice record issued on this device by Voz Unida Mundo (VUM). It is NOT an official or accredited qualification, university credit, or regulated professional licence, and the freely typed name does not verify legal identity.'

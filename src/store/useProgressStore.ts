@@ -10,6 +10,7 @@ import {
 import { hasPlus } from '../lib/backend';
 import { grade, type ReviewState } from '../logic/review';
 import type { StudyPlan } from '../logic/plan';
+import { preserveEnglishCompletion } from '../logic/legacyEnglish';
 
 export interface LessonRecord {
   stars: 1 | 2 | 3;
@@ -48,6 +49,9 @@ export interface ProgressState {
   xpByDay: Record<string, number>;
   /** Name printed on course certificates. */
   learnerName: string;
+  legacyEnglishLevels: LevelId[];
+  legacyEnglishCertificate: boolean;
+  legacyEnglishCertificateAt: number | null;
   /** Study plan (goal, days, minutes a day); null until the learner creates one. */
   plan: StudyPlan | null;
   /** Smart review: spaced-repetition state of each word or phrase. */
@@ -92,6 +96,7 @@ const initialState = () => ({
   dailyGoal: 20,
   xpByDay: {} as Record<string, number>,
   learnerName: '',
+  ...preserveEnglishCompletion(),
   plan: null as StudyPlan | null,
   review: {} as Record<string, ReviewState>,
 });
@@ -172,10 +177,10 @@ export const useProgressStore = create<ProgressState>()(
     }),
     {
       name: STORAGE_KEY,
-      version: 4,
+      version: 5,
       // v1 → v2 added voice/sound settings and the open tab; v2 → v3 adds the interface
       // language (existing learners keep Spanish), daily goal, daily XP and name;
-      // v3 → v4 adds the study plan and smart review.
+      // v3 → v4 adds the study plan and smart review. v4 → v5 retains earned English access.
       migrate: (persisted, version) => {
         const p = (persisted ?? {}) as Partial<ProgressState>;
         return {
@@ -188,6 +193,7 @@ export const useProgressStore = create<ProgressState>()(
           plan: null,
           review: {},
           ...p,
+          ...(version < 5 ? preserveEnglishCompletion(p.levels) : {}),
           uiLang: p.uiLang ?? (version < 3 && p.placementDone ? 'es' : null),
         } as ProgressState;
       },
@@ -209,6 +215,9 @@ export const useProgressStore = create<ProgressState>()(
         dailyGoal: s.dailyGoal,
         xpByDay: s.xpByDay,
         learnerName: s.learnerName,
+        legacyEnglishLevels: s.legacyEnglishLevels,
+        legacyEnglishCertificate: s.legacyEnglishCertificate,
+        legacyEnglishCertificateAt: s.legacyEnglishCertificateAt,
         plan: s.plan,
         review: s.review,
       }),

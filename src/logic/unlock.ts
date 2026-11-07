@@ -28,6 +28,7 @@ export function isLevelUnlocked(
   levelId: LevelId,
   completedByLevel: Record<LevelId, CompletedLessons | undefined>,
   placementLevel?: LevelId | null,
+  previouslyCompleted: readonly LevelId[] = [],
 ): boolean {
   const target = levels.find((l) => l.id === levelId);
   // Courses outside the A1–C2 ladder (Vivir en UK, día a día, turistas) are always open.
@@ -42,7 +43,7 @@ export function isLevelUnlocked(
     if (placementIndex >= index) return true;
   }
   const previous = levels[index - 1];
-  return unitCompletionRatio(previous, completedByLevel[previous.id] ?? {}) >= UNLOCK_THRESHOLD;
+  return previouslyCompleted.includes(previous.id) || unitCompletionRatio(previous, completedByLevel[previous.id] ?? {}) >= UNLOCK_THRESHOLD;
 }
 
 /**

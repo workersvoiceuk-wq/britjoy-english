@@ -53,7 +53,7 @@ for (const viewport of [
     const hintDetails = page.locator('details[data-gradual-hint="true"]');
     await expect(hintDetails).toBeVisible();
     await hintDetails.locator('summary').click();
-    await expect(hintDetails).toContainText('R_total');
+    await expect(hintDetails).toContainText('condición concreta');
 
     const helpDetails = page.locator('details[data-britjoy-help="true"]');
     await helpDetails.locator('summary').click();
@@ -68,6 +68,7 @@ for (const viewport of [
     await page.getByRole('button', { name: 'Comprobar' }).click();
     await expect(page.locator('footer[data-feedback-state="wrong"]')).toBeVisible();
     await expect(page.locator('[data-revealed-answer="true"]')).toHaveCount(0);
+    await expect(page.locator('main .tile-correct')).toHaveCount(0);
     await expect(page.locator('[data-feedback-explanation="true"]')).toContainText('V dividido entre R');
 
     await page.locator('[data-retry-exercise="true"]').click();

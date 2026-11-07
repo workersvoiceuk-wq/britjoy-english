@@ -146,8 +146,10 @@ export type Exercise = AnyExercise & {
   section?: string;
   /** Optional gradual hint before checking (never discloses the right answer). */
   gradualHint?: string;
+  gradualHintEn?: string;
   /** Optional per-option failure/success explanations keyed by option text. */
   optionExplanations?: Record<string, string>;
+  optionExplanationsEn?: Record<string, string>;
 };
 
 export type ExerciseType = Exercise['type'];

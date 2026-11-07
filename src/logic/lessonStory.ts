@@ -232,45 +232,39 @@ export function objectiveForLesson(lesson: Lesson, locale: 'es' | 'en'): string 
     : `Practise “${lesson.title}” step by step and apply it to a new case.`;
 }
 
-/** Canonical answer extractor used strictly to scrub accidental answer leaks from hints/mechanisms. */
-function canonicalSecretForExercise(exercise: Exercise): string {
-  if ('answer' in exercise && typeof exercise.answer === 'string') return exercise.answer.trim();
-  return '';
+const words = (text: string) => text.normalize('NFKD').replace(/\p{M}/gu, '')
+  .toLowerCase().replace(/['’]/g, '').match(/[\p{L}\p{N}]+/gu)?.join(' ') ?? '';
+
+export function mentionsExerciseAnswer(text: string, exercise: Exercise): boolean {
+  const answers = [
+    'answer' in exercise && typeof exercise.answer === 'string' ? exercise.answer : '',
+    ...('alternatives' in exercise && Array.isArray(exercise.alternatives) ? exercise.alternatives : []),
+  ];
+  const sentence = ` ${words(text)} `;
+  return answers.some((answer) => {
+    const needle = words(answer);
+    return needle && sentence.includes(` ${needle} `);
+  });
 }
 
-function scrubAnswerLeak(text: string, secret: string): boolean {
-  if (!secret || secret.length < 3) return false;
-  return text.toLowerCase().includes(secret.toLowerCase());
-}
-
-/** Gradual hint shown on demand BEFORE checking an exercise — never reveals the graded answer. */
-export function gradualHintForExercise(lesson: Lesson, exercise: Exercise, locale: 'es' | 'en'): string {
-  if (exercise.gradualHint?.trim()) {
-    const raw = exercise.gradualHint.trim();
-    if (/^(?:pista|gradual hint|hint)\b/i.test(raw)) return raw;
-    return locale === 'es' ? `Pista gradual: ${raw}` : `Gradual hint: ${raw}`;
-  }
-  const secret = canonicalSecretForExercise(exercise);
-  if (exercise.type === 'fillBlank' && exercise.hint && !scrubAnswerLeak(exercise.hint, secret)) {
-    return locale === 'es'
-      ? `Pista gradual: fíjate en el sentido de la frase («${exercise.hint}») y en la forma gramatical que exige el hueco.`
-      : `Gradual hint: check the sentence meaning (“${exercise.hint}”) and the grammatical form required by the gap.`;
-  }
-  if (lesson.tip && !scrubAnswerLeak(lesson.tip, secret)) {
-    return locale === 'es' ? `Pista gradual: ${clipText(lesson.tip, 160)}` : `Gradual hint: ${clipText(lesson.tip, 160)}`;
-  }
-  const firstExplain = lesson.exercises.find((e): e is Extract<Exercise, { type: 'explain' }> => e.type === 'explain');
-  if (firstExplain) {
-    const safeLine = explanationSegments(firstExplain.body)
-      .map((s) => s.replace(/^•\s*/, ''))
-      .find((s) => !scrubAnswerLeak(s, secret));
-    if (safeLine) {
-      return locale === 'es' ? `Pista gradual: ${clipText(safeLine, 160)}` : `Gradual hint: ${clipText(safeLine, 160)}`;
-    }
-  }
-  return locale === 'es'
-    ? 'Pista gradual: identifica sujeto, contexto o fuente oficial antes de descartar distractores.'
-    : 'Gradual hint: identify the subject, context, or official rule before ruling out distractors.';
+/** Use graded-exercise hints only. Lesson tips and worked examples can give the answer away. */
+export function gradualHintForExercise(_lesson: Lesson, exercise: Exercise, locale: 'es' | 'en'): string {
+  const es = locale === 'es';
+  // Only bilingual pairs edited as a unit are used here. The rest of the old
+  // hints stay in the curriculum and are replaced here by a strategy prompt.
+  const authored = exercise.gradualHintEn ? (es ? exercise.gradualHint : exercise.gradualHintEn) : undefined;
+  const strategies = {
+    fillBlank: ['Lee la frase completa y decide qué función cumple el hueco.', 'Read the full sentence and identify what the gap needs to do.'],
+    listening: ['Escucha otra vez y compara los detalles que cambian entre opciones.', 'Listen again and compare the details that differ between options.'],
+    wordBank: ['Decide el orden de las ideas antes de mover las fichas.', 'Decide the order of the ideas before moving the tiles.'],
+    typing: ['Identifica el tiempo verbal y la intención antes de escribir.', 'Identify the tense and intended meaning before writing.'],
+    matching: ['Comprueba cada par por su significado antes de revisar el conjunto.', 'Check the meaning of each pair before reviewing the full set.'],
+    multipleChoice: ['Identifica la condición concreta que plantea la pregunta y coteja cada opción.', 'Identify the condition in the question and check each option against it.'],
+  };
+  const strategy = strategies[exercise.type as keyof typeof strategies]?.[es ? 0 : 1];
+  const hint = [authored, strategy].find((line) => line?.trim() && !mentionsExerciseAnswer(line, exercise));
+  if (!hint) return '';
+  return es ? `Pista gradual: ${hint}` : `Gradual hint: ${hint}`;
 }
 
 /** Honest visual mechanism card for a single exercise, declaring real video availability without empty buttons. */
@@ -294,12 +288,12 @@ export function honestVisualMechanismForExercise(
 
   const steps: [string, string, string] = es
     ? [
-        `1. Foco: «${clipText(lesson.title, 52)}»`,
+        '1. Foco: lee el enunciado completo',
         `2. Mecanismo: ${taskLabel}`,
         '3. Comprueba → recibe explicación por opción → reintenta o transfiere',
       ]
     : [
-        `1. Focus: “${clipText(lesson.title, 52)}”`,
+        '1. Focus: read the complete prompt',
         `2. Mechanism: ${taskLabel}`,
         '3. Check → get per-option feedback → retry or transfer',
       ];
@@ -369,6 +363,23 @@ function lookupOptionExplanation(map: Record<string, string> | undefined, chosen
   return null;
 }
 
+function wrongReason(exercise: Exercise, chosen: string, locale: 'es' | 'en'): string {
+  const es = locale === 'es';
+  const authored = lookupOptionExplanation(es ? exercise.optionExplanations : exercise.optionExplanationsEn, chosen);
+  if (authored && !mentionsExerciseAnswer(authored, exercise)) return authored;
+  const value = words(chosen);
+  const reason = /\b(?:siempre|nunca|always|never|all|todas|todos)\b/.test(value)
+    ? (es ? 'La opción plantea una regla absoluta. Comprueba si el enunciado admite excepciones.' : 'The option makes an absolute claim. Check whether the scenario allows exceptions.')
+    : exercise.type === 'fillBlank'
+      ? (es ? 'La forma elegida no cumple la función que pide el hueco dentro de la frase.' : 'The chosen form does not do what the gap requires in this sentence.')
+      : exercise.type === 'listening'
+        ? (es ? 'Un detalle de la opción elegida difiere de lo que se oye. Compara las partes de la grabación.' : 'A detail in the chosen option differs from the recording. Compare the parts of the audio.')
+        : exercise.type === 'wordBank'
+          ? (es ? 'La secuencia elegida cambia el sentido o deja incompleta la estructura.' : 'The selected sequence changes the meaning or leaves the structure incomplete.')
+          : (es ? 'La respuesta elegida deja sin cumplir una condición de la tarea.' : 'The selected response leaves a requirement of the task unmet.');
+  return mentionsExerciseAnswer(reason, exercise) ? '' : reason;
+}
+
 /**
  * Attempt-aware feedback:
  * - On 1st wrong attempt (`attemptNumber === 0`), explains why the chosen option fails + gives a gradual hint
@@ -385,7 +396,7 @@ export function feedbackForAttempt(args: {
 }): { explanation: string; withholdAnswer: boolean; chosenText: string } {
   const { lesson, exercise, response, result, locale, attemptNumber } = args;
   const chosenText = extractResponseText(response);
-  const specific = lookupOptionExplanation(exercise.optionExplanations, chosenText);
+  const specific = lookupOptionExplanation(locale === 'es' ? exercise.optionExplanations : exercise.optionExplanationsEn, chosenText);
 
   if (result.correct) {
     return {
@@ -398,25 +409,8 @@ export function feedbackForAttempt(args: {
   // First wrong attempt: explain why the chosen option fails + gradual hint WITHOUT spoiling the right answer
   if (attemptNumber === 0) {
     const hint = gradualHintForExercise(lesson, exercise, locale);
-    if (specific) {
-      return {
-        explanation:
-          locale === 'es'
-            ? `${specific} · ${hint} Pulsa «Intentar de nuevo».`
-            : `${specific} · ${hint} Tap “Try again”.`,
-        withholdAnswer: true,
-        chosenText,
-      };
-    }
-    const label = chosenText ? (locale === 'es' ? `«${clipText(chosenText, 60)}»` : `“${clipText(chosenText, 60)}”`) : locale === 'es' ? 'esa respuesta' : 'that answer';
-    return {
-      explanation:
-        locale === 'es'
-          ? `Por qué no encaja ${label}: no cumple la forma o condición exacta que pide este contexto. ${hint} Pulsa «Intentar de nuevo» antes de ver la solución.`
-          : `Why ${label} fails here: it does not match the exact form or condition required in this context. ${hint} Tap “Try again” before revealing the answer.`,
-      withholdAnswer: true,
-      chosenText,
-    };
+    const explanation = [wrongReason(exercise, chosenText, locale), hint].filter(Boolean).join(' ');
+    return { explanation, withholdAnswer: true, chosenText };
   }
 
   // Second wrong attempt onwards: reveal canonical answer + full explanation
@@ -451,30 +445,23 @@ export function simulateContextualTutorReply(ctx: {
     ? 'SIMULACIÓN DE QA · No es respuesta de IA en vivo (cero gasto / sin red)'
     : 'QA SIMULATION · Not a live AI reply (zero cost / offline)';
   const hint = gradualHintForExercise(ctx.lesson, ctx.exercise, ctx.locale);
-  const chosen = (ctx.chosenOption ?? '').trim();
-  const specific = lookupOptionExplanation(ctx.exercise.optionExplanations, chosen);
+  const proposed = (ctx.chosenOption ?? '').trim();
+  const chosen = mentionsExerciseAnswer(proposed, ctx.exercise) ? '' : proposed;
+  const prompt = mentionsExerciseAnswer(ctx.prompt, ctx.exercise) ? (es ? 'la tarea actual' : 'the current task') : ctx.prompt;
+
 
   if (!ctx.attempted) {
     return {
       badge,
       reply: es
-        ? `[Curso ${ctx.courseId} · ${ctx.lessonTitle}] Veo tu pregunta actual («${clipText(ctx.prompt, 80)}»)${chosen ? ` y que estás considerando «${clipText(chosen, 45)}»` : ''}. No te doy la solución antes de que lo intentes: ${hint}`
-        : `[Course ${ctx.courseId} · ${ctx.lessonTitle}] I see your current task (“${clipText(ctx.prompt, 80)}”)${chosen ? ` and your draft choice “${clipText(chosen, 45)}”` : ''}. I won’t give away the answer before you try: ${hint}`,
+        ? `[Curso ${ctx.courseId} · ${ctx.lessonTitle}] Veo tu pregunta actual («${clipText(prompt, 80)}»)${chosen ? ` y que estás considerando «${clipText(chosen, 45)}»` : ''}. No te doy la solución antes de que lo intentes: ${hint}`
+        : `[Course ${ctx.courseId} · ${ctx.lessonTitle}] I see your current task (“${clipText(prompt, 80)}”)${chosen ? ` and your draft choice “${clipText(chosen, 45)}”` : ''}. I won’t give away the answer before you try: ${hint}`,
     };
   }
 
   if (ctx.correct === false) {
-    const why = specific
-      ? specific
-      : es
-        ? `Tu opción «${clipText(chosen || 'anterior', 45)}» no cumple la condición clave del ejercicio.`
-        : `Your choice “${clipText(chosen || 'previous', 45)}” misses the key condition of this exercise.`;
-    return {
-      badge,
-      reply: es
-        ? `[Curso ${ctx.courseId} · ${ctx.lessonTitle}] Revisemos por qué falló «${clipText(chosen || 'tu intento', 45)}»: ${why} ${hint}`
-        : `[Course ${ctx.courseId} · ${ctx.lessonTitle}] Let’s check why “${clipText(chosen || 'your try', 45)}” failed: ${why} ${hint}`,
-    };
+    const why = wrongReason(ctx.exercise, chosen, ctx.locale);
+    return { badge, reply: [why, hint].filter(Boolean).join(' ') };
   }
 
   return {

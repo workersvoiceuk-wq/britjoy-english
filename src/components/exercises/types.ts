@@ -5,6 +5,8 @@ export interface ExerciseProps<E extends Exercise = Exercise> {
   exercise: E;
   /** True once the answer has been checked: inputs freeze and show the outcome. */
   locked: boolean;
+  /** First miss freezes the input without identifying the correct option. */
+  withholdAnswer?: boolean;
   /** Result of the check (only meaningful when locked). */
   correct: boolean | null;
   copy: Copy;

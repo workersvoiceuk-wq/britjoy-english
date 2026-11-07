@@ -474,11 +474,12 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
           key={`${lesson.id}-${index}-${attemptKey}`}
           exercise={exercise}
           locked={result !== null}
+          withholdAnswer={result?.withholdAnswer}
           correct={result?.correct ?? null}
           copy={copy}
           onResponse={setResponse}
         />
-        {shouldOfferQuestionHelp(isExplain, result !== null) && (
+        {shouldOfferQuestionHelp(isExplain, result !== null && !result.withholdAnswer) && (
           <QuestionVideoHelp
             // Own key: sharing ExerciseView's key made React leave stale exercises in the DOM.
             key={`qvh-${lesson.id}-${index}`}

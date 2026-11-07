@@ -1142,11 +1142,16 @@ export const COND_GB_LEVEL: LevelDefinition = {
                 'Porque a 30 mph el coche pesa diez veces más en la báscula',
               ],
               answer: 'Porque la energía cinética crece con el cuadrado de la velocidad: (30/20)² = 1,5² = 2,25 veces más energía y mayor distancia de frenado',
-              gradualHint: 'Aplica la relación física v² entre 20 y 30.',
+              gradualHint: 'Distingue qué magnitud cambia y cuál se mantiene constante en los dos casos.',
+              gradualHintEn: 'Identify which quantity changes and which stays fixed across the two cases.',
               optionExplanations: {
                 'Porque la energía cinética crece con el cuadrado de la velocidad: (30/20)² = 1,5² = 2,25 veces más energía y mayor distancia de frenado': 'Exacto: esa física explica tanto la distancia de frenado como la reducción drástica de lesiones graves a 20 mph.',
                 'Porque los frenos dejan de existir exactamente a 21 mph': 'Los frenos funcionan, pero deben disipar más del doble de energía mientras el coche sigue avanzando.',
-                'Porque a 30 mph el coche pesa diez veces más en la báscula': 'La masa del vehículo no cambia; lo que se eleva al cuadrado es la velocidad.',
+                'Porque a 30 mph el coche pesa diez veces más en la báscula': 'La masa del coche es la misma en ambos casos. La opción atribuye el efecto a una variable que no cambió.',
+              },
+              optionExplanationsEn: {
+                'Porque los frenos dejan de existir exactamente a 21 mph': 'The brakes do not disappear at a particular speed. The option invents a threshold.',
+                'Porque a 30 mph el coche pesa diez veces más en la báscula': 'The car has the same mass in both cases. The option attributes the change to a quantity that stayed fixed.',
               },
             },
             {
@@ -1166,11 +1171,16 @@ export const COND_GB_LEVEL: LevelDefinition = {
               hint: 'Nombre en inglés de esta técnica recogida en el Highway Code (Rule 239).',
               options: ['Reach', 'Speed', 'Lane'],
               answer: 'Reach',
-              gradualHint: 'Técnica sencilla recomendada en la Regla 239 para evitar golpear ciclistas con la puerta («dooring»).',
+              gradualHint: 'Piensa en el gesto de la mano que permite girarte y mirar antes de abrir la puerta.',
+              gradualHintEn: 'Think about the hand movement that makes you turn and look before opening the door.',
               optionExplanations: {
                 Reach: 'Correcto: el «Dutch Reach» gira naturalmente hombro y mirada hacia el espejo y el ángulo muerto.',
                 Speed: 'No existe «Dutch Speed» en el Highway Code.',
-                Lane: 'Se refiere a la maniobra de alcanzar la manilla («Reach»), no a un carril.',
+                Lane: '«Lane» significa carril. La pregunta describe un movimiento de la mano al salir del coche.',
+              },
+              optionExplanationsEn: {
+                Speed: 'Speed describes how fast something moves. This technique is about how you open the door while parked.',
+                Lane: 'A lane is a strip of road. The prompt describes a hand movement when you get out of a parked car.',
               },
             },
             {

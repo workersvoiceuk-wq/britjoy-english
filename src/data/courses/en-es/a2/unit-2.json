@@ -136,11 +136,16 @@
             "Give me a medical hour today."
           ],
           "answer": "Hello, I'd like to book an appointment with the GP, please.",
-          "gradualHint": "En inglés británico una cita médica o profesional nunca es «date» (cita romántica/fecha), sino otro sustantivo específico.",
+          "gradualHint": "Piensa cómo pedirías algo con cortesía al personal de recepción, sin traducir palabra por palabra.",
           "optionExplanations": {
             "Hello, I'd like to book an appointment with the GP, please.": "Exacto: «book an appointment» con «I'd like to» es la fórmula estándar y cortés.",
             "Hello, I want one date with the doctor now.": "«Date» significa fecha o cita social/romántica, no turno médico, y «I want... now» suena exigente.",
-            "Give me a medical hour today.": "Calco literal del español («dar hora»); en inglés se reserva un «appointment»."
+            "Give me a medical hour today.": "Traduce «dar hora» palabra por palabra y usa un imperativo que suena brusco al llamar a recepción."
+          },
+          "gradualHintEn": "Think about how you would ask a receptionist politely, rather than translating a phrase word for word.",
+          "optionExplanationsEn": {
+            "Hello, I want one date with the doctor now.": "The word date suggests a calendar day or a social meeting, and the demand sounds abrupt.",
+            "Give me a medical hour today.": "Medical hour is a literal translation and the imperative sounds abrupt when calling reception."
           }
         },
         {
@@ -164,7 +169,12 @@
           "optionExplanations": {
             "since": "Correcto: con present perfect, «since» introduce el momento de inicio.",
             "for": "«For» se usa con periodos de tiempo contables («for two days»), no con un punto de inicio como «yesterday morning».",
-            "from": "Con present perfect continuo/estado que sigue abierto hasta ahora se emplea «since», no «from»."
+            "from": "«From» puede fijar el comienzo de un horario o intervalo, pero por sí solo no enlaza el síntoma pasado con el presente en esta frase."
+          },
+          "gradualHintEn": "Decide whether yesterday morning is a starting point or a length of time.",
+          "optionExplanationsEn": {
+            "for": "For introduces a duration, but yesterday morning gives a starting point.",
+            "from": "From can set the beginning of a schedule or interval. On its own it does not link the past symptom to the present in this sentence."
           }
         },
         {

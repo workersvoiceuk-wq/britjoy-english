@@ -6,13 +6,14 @@ interface Props {
   options: string[];
   answer: string;
   locked: boolean;
+  withholdAnswer?: boolean;
   onChoose: (value: string) => void;
   /** Use a compact grid of chips instead of full-width rows. */
   compact?: boolean;
 }
 
 /** Shared option picker for multiple choice, listening and fill-in-the-blank. */
-export function ChoiceList({ options, answer, locked, onChoose, compact }: Props) {
+export function ChoiceList({ options, answer, locked, withholdAnswer, onChoose, compact }: Props) {
   const shuffled = useMemo(() => shuffle(options), [options]);
   const [selected, setSelected] = useState<string | null>(null);
 
@@ -21,8 +22,9 @@ export function ChoiceList({ options, answer, locked, onChoose, compact }: Props
       {shuffled.map((option, i) => {
         const isSelected = selected === option;
         const isAnswer = normalizeText(option) === normalizeText(answer);
+        const reveal = locked && !withholdAnswer && isAnswer;
         let state = '';
-        if (locked && isAnswer) state = 'tile-correct';
+        if (reveal) state = 'tile-correct';
         else if (locked && isSelected) state = 'tile-wrong';
         else if (isSelected) state = 'tile-selected';
         return (
@@ -42,9 +44,9 @@ export function ChoiceList({ options, answer, locked, onChoose, compact }: Props
               </span>
             )}
             <span>{option}</span>
-            {locked && (isAnswer || isSelected) && (
+            {locked && (reveal || isSelected) && (
               <span aria-hidden className="ms-auto font-black">
-                {isAnswer ? '✓' : '✗'}
+                {reveal ? '✓' : '✗'}
               </span>
             )}
           </button>
