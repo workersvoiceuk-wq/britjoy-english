@@ -9,6 +9,8 @@ import { fill, pick } from '../lib/util';
 import { narrate, useVoice } from '../lib/narrator';
 import { sfx } from '../lib/sound';
 import { useT } from '../i18n';
+import { CoursePathwayBox } from './CoursePathwayBox';
+import { pathwayForLevel } from '../data/coursePathways';
 
 interface Props {
   level: LevelDefinition;
@@ -24,6 +26,7 @@ export function LearningPath({ level, completed, onStart, notice }: Props) {
   const [helpOpen, setHelpOpen] = useState(false);
   const t = useT();
   const es = level.instructionLanguage === 'es';
+  const pathway = pathwayForLevel(level);
   const isLife = level.track === 'life';
   const allLessons = level.units.flatMap((u) => u.lessons);
   const completedCount = allLessons.filter((l) => Boolean(completed[l.id])).length;
@@ -66,7 +69,7 @@ export function LearningPath({ level, completed, onStart, notice }: Props) {
             <section
               data-unit-menu="true"
               aria-label={es ? 'Menú de unidades y objetivo del curso' : 'Unit menu and course goal'}
-              className="mb-5 rounded-2xl border-2 border-navy/12 bg-white p-4 shadow-[0_3px_0_rgba(29,45,92,0.08)]"
+              className="mb-4 rounded-2xl border-2 border-navy/12 bg-white p-4 shadow-[0_3px_0_rgba(29,45,92,0.08)]"
             >
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <p className="text-xs font-black uppercase tracking-wider text-royal">
@@ -110,6 +113,10 @@ export function LearningPath({ level, completed, onStart, notice }: Props) {
                 })}
               </nav>
             </section>
+          )}
+
+          {level.units.length > 0 && (
+            <CoursePathwayBox pathway={pathway} locale={level.instructionLanguage} collapsible />
           )}
 
           {/* Departures board: the next lesson, like a station's dot-matrix display. */}

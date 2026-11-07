@@ -1,4 +1,4 @@
-import type { Exercise, Lesson } from '../types';
+import type { CheckResult, Exercise, ExerciseResponse, Lesson } from '../types';
 
 export interface LessonStory {
   scene: string;
@@ -93,6 +93,11 @@ const pilots: Record<string, LessonStory> = {
     prediction: '¿Qué pistas de una frase en inglés indican que hablas de un hábito diario y no de algo puntual?',
     transfer: 'Cuenta en dos frases tu mañana habitual de trabajo o estudio y comprueba los verbos antes de leerla en voz alta.',
   },
+  'a2-u2-l1': {
+    scene: 'En su entrevista en Mánchester, Jorge responde «I am very boss of boxes». Britjoy ajusta las gafas: «Digamos mejor qué turno llevabas y qué resolvías en el almacén».',
+    prediction: '¿Qué verbos y expresiones concretas te ayudan a explicar tu experiencia laboral en inglés con claridad?',
+    transfer: 'Prepara dos frases reales sobre tu último empleo o estudio para usarlas en una entrevista en inglés.',
+  },
   'b1-u1-l1': {
     scene: 'En una reunión, Jorge suelta «You are wrong!» para dar su opinión. Britjoy carraspea: «En inglés puedes discrepar con firmeza sin lanzar una silla verbal».',
     prediction: '¿Cómo introducirías tu punto de vista en inglés para sonar claro y respetuoso a la vez?',
@@ -146,6 +151,16 @@ const pilots: Record<string, LessonStory> = {
 };
 
 const pilotsEn: Record<string, LessonStory> = {
+  'b2-u2-l1': {
+    scene: 'In an academic seminar, Jorge writes: “Everybody knows this policy proves everything.” Britjoy raises an eyebrow: “In Oxford-style academic prose, evidence suggests — sweeping certainty gets red ink.”',
+    prediction: 'How do hedging verbs and cautious stance markers make an academic or professional claim more credible?',
+    transfer: 'Rewrite one categorical workplace claim using cautious, evidence-based English and check your reporting verb.',
+  },
+  'es-mcer-01-pragmatica': {
+    scene: 'Sam lands in Bogotá saying “¡Qué pasa, tíos, vosotros tenéis tinto!” and orders red wine at 8 a.m. Britjoy chuckles: “Same language, different pragmatic map: in Colombia, tinto is black coffee and ustedes rules.”',
+    prediction: 'Which pronoun and register shifts matter most when moving between Spain and Colombia in daily and workplace Spanish?',
+    transfer: 'Write how you would greet a client politely in Bogotá versus an informal team in Madrid.',
+  },
   'es-es-nie': {
     scene: 'In Madrid, Sam treats “NIE” and “TIE” as the exact same card. Britjoy opens two folders: “One is your administrative number in Spain; the other is the physical residence card.”',
     prediction: 'When settling in Spain, why does it matter to distinguish your NIE number from a TIE card and NIF?',
@@ -217,6 +232,89 @@ export function objectiveForLesson(lesson: Lesson, locale: 'es' | 'en'): string 
     : `Practise “${lesson.title}” step by step and apply it to a new case.`;
 }
 
+/** Canonical answer extractor used strictly to scrub accidental answer leaks from hints/mechanisms. */
+function canonicalSecretForExercise(exercise: Exercise): string {
+  if ('answer' in exercise && typeof exercise.answer === 'string') return exercise.answer.trim();
+  return '';
+}
+
+function scrubAnswerLeak(text: string, secret: string): boolean {
+  if (!secret || secret.length < 3) return false;
+  return text.toLowerCase().includes(secret.toLowerCase());
+}
+
+/** Gradual hint shown on demand BEFORE checking an exercise — never reveals the graded answer. */
+export function gradualHintForExercise(lesson: Lesson, exercise: Exercise, locale: 'es' | 'en'): string {
+  if (exercise.gradualHint?.trim()) {
+    const raw = exercise.gradualHint.trim();
+    if (/^(?:pista|gradual hint|hint)\b/i.test(raw)) return raw;
+    return locale === 'es' ? `Pista gradual: ${raw}` : `Gradual hint: ${raw}`;
+  }
+  const secret = canonicalSecretForExercise(exercise);
+  if (exercise.type === 'fillBlank' && exercise.hint && !scrubAnswerLeak(exercise.hint, secret)) {
+    return locale === 'es'
+      ? `Pista gradual: fíjate en el sentido de la frase («${exercise.hint}») y en la forma gramatical que exige el hueco.`
+      : `Gradual hint: check the sentence meaning (“${exercise.hint}”) and the grammatical form required by the gap.`;
+  }
+  if (lesson.tip && !scrubAnswerLeak(lesson.tip, secret)) {
+    return locale === 'es' ? `Pista gradual: ${clipText(lesson.tip, 160)}` : `Gradual hint: ${clipText(lesson.tip, 160)}`;
+  }
+  const firstExplain = lesson.exercises.find((e): e is Extract<Exercise, { type: 'explain' }> => e.type === 'explain');
+  if (firstExplain) {
+    const safeLine = explanationSegments(firstExplain.body)
+      .map((s) => s.replace(/^•\s*/, ''))
+      .find((s) => !scrubAnswerLeak(s, secret));
+    if (safeLine) {
+      return locale === 'es' ? `Pista gradual: ${clipText(safeLine, 160)}` : `Gradual hint: ${clipText(safeLine, 160)}`;
+    }
+  }
+  return locale === 'es'
+    ? 'Pista gradual: identifica sujeto, contexto o fuente oficial antes de descartar distractores.'
+    : 'Gradual hint: identify the subject, context, or official rule before ruling out distractors.';
+}
+
+/** Honest visual mechanism card for a single exercise, declaring real video availability without empty buttons. */
+export function honestVisualMechanismForExercise(
+  lesson: Lesson,
+  exercise: Exercise,
+  locale: 'es' | 'en',
+): { steps: [string, string, string]; mediaStatus: string; hasLessonDemoVideo: boolean } {
+  const hasLessonDemoVideo = lesson.exercises.some((e) => e.type === 'explain' && Boolean(e.video?.src));
+  const es = locale === 'es';
+  const taskLabel =
+    exercise.type === 'multipleChoice'
+      ? es ? 'Compara las opciones y descarta la que rompe la regla o jurisdicción' : 'Compare options and rule out whichever breaks the rule or jurisdiction'
+      : exercise.type === 'wordBank'
+        ? es ? 'Ordena sujeto → verbo → complemento respetando cada ficha' : 'Order subject → verb → complement using the exact tiles'
+        : exercise.type === 'matching'
+          ? es ? 'Empareja cada concepto con su equivalente exacto sin adivinar' : 'Pair each concept with its exact match rather than guessing'
+          : exercise.type === 'fillBlank'
+            ? es ? 'Observa las palabras vecinas al hueco (___) antes de completarlo' : 'Check the words around the gap (___) before filling it in'
+            : es ? 'Escucha o lee el patrón completo y verifica ortografía/estructura' : 'Listen or read the full pattern and verify spelling/structure';
+
+  const steps: [string, string, string] = es
+    ? [
+        `1. Foco: «${clipText(lesson.title, 52)}»`,
+        `2. Mecanismo: ${taskLabel}`,
+        '3. Comprueba → recibe explicación por opción → reintenta o transfiere',
+      ]
+    : [
+        `1. Focus: “${clipText(lesson.title, 52)}”`,
+        `2. Mechanism: ${taskLabel}`,
+        '3. Check → get per-option feedback → retry or transfer',
+      ];
+
+  const mediaStatus = hasLessonDemoVideo
+    ? es
+      ? '🎬 Esta lección incluye vídeo demostrativo VUM en su apertura (subtítulos ES/EN).'
+      : '🎬 This lesson includes a VUM demo video on its opening card (ES/EN captions).'
+    : es
+      ? '📐 Esquema visual VUM activo · vídeo específico de esta pregunta en producción (sin botones vacíos).'
+      : '📐 Active VUM visual diagram · dedicated clip for this question in production (no empty video buttons).';
+
+  return { steps, mediaStatus, hasLessonDemoVideo };
+}
+
 /** Concise pedagogical explanation shown in the red/green feedback banner after checking an exercise. */
 export function explanationForExercise(lesson: Lesson, exercise: Exercise, correctAnswer: string, locale: 'es' | 'en'): string {
   const norm = correctAnswer.trim().toLowerCase();
@@ -253,3 +351,136 @@ export function explanationForExercise(lesson: Lesson, exercise: Exercise, corre
     : 'Review the model pattern before continuing or trying again.';
 }
 
+export function extractResponseText(response: ExerciseResponse | null): string {
+  if (!response) return '';
+  if (response.kind === 'text') return response.value.trim();
+  if (response.kind === 'tokens') return response.value.join(' ').trim();
+  if (response.kind === 'speech') return response.transcript.trim();
+  return '';
+}
+
+function lookupOptionExplanation(map: Record<string, string> | undefined, chosen: string): string | null {
+  if (!map || !chosen) return null;
+  if (map[chosen]) return map[chosen];
+  const lower = chosen.toLowerCase();
+  for (const [k, v] of Object.entries(map)) {
+    if (k.trim().toLowerCase() === lower) return v;
+  }
+  return null;
+}
+
+/**
+ * Attempt-aware feedback:
+ * - On 1st wrong attempt (`attemptNumber === 0`), explains why the chosen option fails + gives a gradual hint
+ *   WITHOUT revealing `correctAnswer` (`withholdAnswer: true`).
+ * - On 2nd+ wrong attempt (`attemptNumber >= 1`) or right answer, reveals `correctAnswer` (`withholdAnswer: false`).
+ */
+export function feedbackForAttempt(args: {
+  lesson: Lesson;
+  exercise: Exercise;
+  response: ExerciseResponse;
+  result: CheckResult;
+  locale: 'es' | 'en';
+  attemptNumber: number;
+}): { explanation: string; withholdAnswer: boolean; chosenText: string } {
+  const { lesson, exercise, response, result, locale, attemptNumber } = args;
+  const chosenText = extractResponseText(response);
+  const specific = lookupOptionExplanation(exercise.optionExplanations, chosenText);
+
+  if (result.correct) {
+    return {
+      explanation: specific || explanationForExercise(lesson, exercise, result.correctAnswer, locale),
+      withholdAnswer: false,
+      chosenText,
+    };
+  }
+
+  // First wrong attempt: explain why the chosen option fails + gradual hint WITHOUT spoiling the right answer
+  if (attemptNumber === 0) {
+    const hint = gradualHintForExercise(lesson, exercise, locale);
+    if (specific) {
+      return {
+        explanation:
+          locale === 'es'
+            ? `${specific} · ${hint} Pulsa «Intentar de nuevo».`
+            : `${specific} · ${hint} Tap “Try again”.`,
+        withholdAnswer: true,
+        chosenText,
+      };
+    }
+    const label = chosenText ? (locale === 'es' ? `«${clipText(chosenText, 60)}»` : `“${clipText(chosenText, 60)}”`) : locale === 'es' ? 'esa respuesta' : 'that answer';
+    return {
+      explanation:
+        locale === 'es'
+          ? `Por qué no encaja ${label}: no cumple la forma o condición exacta que pide este contexto. ${hint} Pulsa «Intentar de nuevo» antes de ver la solución.`
+          : `Why ${label} fails here: it does not match the exact form or condition required in this context. ${hint} Tap “Try again” before revealing the answer.`,
+      withholdAnswer: true,
+      chosenText,
+    };
+  }
+
+  // Second wrong attempt onwards: reveal canonical answer + full explanation
+  const full = explanationForExercise(lesson, exercise, result.correctAnswer, locale);
+  return {
+    explanation: specific ? `${specific} ${full}` : full,
+    withholdAnswer: false,
+    chosenText,
+  };
+}
+
+/**
+ * Deterministic, zero-cost simulated QA reply for contextual optional BritJoy Help.
+ * Explicitly labelled as QA simulation (never claims live AI model inference).
+ * Guides without solving before the learner tries; explains option failure after checking.
+ */
+export function simulateContextualTutorReply(ctx: {
+  courseId: string;
+  courseName: string;
+  lessonId: string;
+  lessonTitle: string;
+  prompt: string;
+  chosenOption?: string | null;
+  attempted: boolean;
+  correct?: boolean | null;
+  lesson: Lesson;
+  exercise: Exercise;
+  locale: 'es' | 'en';
+}): { badge: string; reply: string } {
+  const es = ctx.locale === 'es';
+  const badge = es
+    ? 'SIMULACIÓN DE QA · No es respuesta de IA en vivo (cero gasto / sin red)'
+    : 'QA SIMULATION · Not a live AI reply (zero cost / offline)';
+  const hint = gradualHintForExercise(ctx.lesson, ctx.exercise, ctx.locale);
+  const chosen = (ctx.chosenOption ?? '').trim();
+  const specific = lookupOptionExplanation(ctx.exercise.optionExplanations, chosen);
+
+  if (!ctx.attempted) {
+    return {
+      badge,
+      reply: es
+        ? `[Curso ${ctx.courseId} · ${ctx.lessonTitle}] Veo tu pregunta actual («${clipText(ctx.prompt, 80)}»)${chosen ? ` y que estás considerando «${clipText(chosen, 45)}»` : ''}. No te doy la solución antes de que lo intentes: ${hint}`
+        : `[Course ${ctx.courseId} · ${ctx.lessonTitle}] I see your current task (“${clipText(ctx.prompt, 80)}”)${chosen ? ` and your draft choice “${clipText(chosen, 45)}”` : ''}. I won’t give away the answer before you try: ${hint}`,
+    };
+  }
+
+  if (ctx.correct === false) {
+    const why = specific
+      ? specific
+      : es
+        ? `Tu opción «${clipText(chosen || 'anterior', 45)}» no cumple la condición clave del ejercicio.`
+        : `Your choice “${clipText(chosen || 'previous', 45)}” misses the key condition of this exercise.`;
+    return {
+      badge,
+      reply: es
+        ? `[Curso ${ctx.courseId} · ${ctx.lessonTitle}] Revisemos por qué falló «${clipText(chosen || 'tu intento', 45)}»: ${why} ${hint}`
+        : `[Course ${ctx.courseId} · ${ctx.lessonTitle}] Let’s check why “${clipText(chosen || 'your try', 45)}” failed: ${why} ${hint}`,
+    };
+  }
+
+  return {
+    badge,
+    reply: es
+      ? `[Curso ${ctx.courseId} · ${ctx.lessonTitle}] ¡Bien resuelto! Ahora piensa cómo aplicarías esta misma regla a un segundo caso distinto sin memorizar la frase literal.`
+      : `[Course ${ctx.courseId} · ${ctx.lessonTitle}] Well solved! Now test how you would apply this exact rule to a second case without memorising the literal sentence.`,
+  };
+}

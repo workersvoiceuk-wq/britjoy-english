@@ -142,7 +142,13 @@ type AnyExercise =
   | FillBlankExercise;
 
 /** Every exercise can name its Busuu-style lesson phase (e.g. "Aprende", "Diálogo", "Practica"). */
-export type Exercise = AnyExercise & { section?: string };
+export type Exercise = AnyExercise & {
+  section?: string;
+  /** Optional gradual hint before checking (never discloses the right answer). */
+  gradualHint?: string;
+  /** Optional per-option failure/success explanations keyed by option text. */
+  optionExplanations?: Record<string, string>;
+};
 
 export type ExerciseType = Exercise['type'];
 
@@ -167,8 +173,8 @@ export interface Unit {
   lessons: Lesson[];
 }
 
-/** english = CEFR levels A1–C2 · life = Vivir en UK · daily / tourist = story courses · ai = IA con Britjoy. */
-export type TrackId = 'english' | 'life' | 'daily' | 'tourist' | 'ai' | 'spain' | 'colombia' | 'consulados' | 'migrar-uk' | 'ciudades';
+/** english = CEFR levels A1–C2 · life = Vivir en UK · daily / tourist = story courses · ai = IA con Britjoy · ampliacion = progressive curriculum tracks. */
+export type TrackId = 'english' | 'life' | 'daily' | 'tourist' | 'ai' | 'spain' | 'colombia' | 'consulados' | 'migrar-uk' | 'ciudades' | 'ampliacion';
 
 export interface LevelDefinition {
   id: LevelId;

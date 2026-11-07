@@ -1,0 +1,230 @@
+{
+  "level": "B2",
+  "unit": "Unit 2",
+  "title": "Academic & Professional Communication",
+  "lessons": [
+    {
+      "id": "b2-u2-l1",
+      "title": "Hedging & Academic Stance",
+      "tip": "Strong professional and academic writing avoids unverified absolutes: use hedging («The data suggest that...», «tends to») to match the strength of your evidence.",
+      "exercises": [
+        {
+          "type": "explain",
+          "section": "Learn",
+          "title": "Calibrating Claims with Evidence (Oxford CACE Reference)",
+          "body": "• Goal: distinguish sweeping assertions from cautious, evidence-calibrated English in reports and essays.\n• Sweeping claim: «Remote work always destroys team cohesion.» (easily refuted by one counter-example).\n• Calibrated stance: «Survey findings suggest that hybrid schedules may require clearer handover protocols.»",
+          "phrases": [
+            { "en": "The evidence suggests that...", "es": "Los datos sugieren que..." },
+            { "en": "tends to reduce", "es": "tiende a reducir" },
+            { "en": "to a large extent", "es": "en gran medida" }
+          ],
+          "link": {
+            "label": "Oxford Language Centre — CACE",
+            "url": "https://www.lang.ox.ac.uk/cace"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "section": "Check",
+          "prompt": "A pilot study of 40 commuters shows shorter wait times. Which sentence reports this accurately in a professional report?",
+          "options": [
+            "Initial results indicate that the revised timetable may reduce average waiting times.",
+            "This study proves beyond doubt that no passenger will ever wait again.",
+            "Everybody obviously knows the new buses are perfect."
+          ],
+          "answer": "Initial results indicate that the revised timetable may reduce average waiting times.",
+          "gradualHint": "Match the certainty of your verb to a small 40-person pilot sample rather than universal proof.",
+          "optionExplanations": {
+            "Initial results indicate that the revised timetable may reduce average waiting times.": "Spot on: «indicate» and «may reduce» accurately reflect preliminary evidence without overclaiming.",
+            "This study proves beyond doubt that no passenger will ever wait again.": "Overgeneralises a 40-person pilot into an absolute guarantee («proves beyond doubt», «never»).",
+            "Everybody obviously knows the new buses are perfect.": "Relies on informal emotional booster words («obviously», «perfect») instead of evidence."
+          }
+        },
+        {
+          "type": "matching",
+          "section": "Practise",
+          "pairs": [
+            { "en": "indicate", "es": "indicar / apuntar a" },
+            { "en": "nevertheless", "es": "no obstante" },
+            { "en": "assumption", "es": "suposición" },
+            { "en": "findings", "es": "hallazgos / resultados" }
+          ]
+        },
+        {
+          "type": "fillBlank",
+          "section": "Practise",
+          "sentence": "Higher staff turnover ___ to increase training costs in the first quarter.",
+          "hint": "Cautious generalisation verb (present simple, singular subject).",
+          "options": ["tends", "proves", "forces"],
+          "answer": "tends",
+          "gradualHint": "Look for the verb followed by «to + infinitive» that expresses a frequent pattern rather than an iron law.",
+          "optionExplanations": {
+            "tends": "Correct: «tends to + infinitive» expresses a regular empirical pattern without claiming 100% inevitability.",
+            "proves": "«Proves to increase» changes meaning and claims absolute proof where a trend is described.",
+            "forces": "Grammatically requires a direct object («forces companies to increase»), so «forces to increase» is ungrammatical."
+          }
+        },
+        {
+          "type": "wordBank",
+          "section": "Practise",
+          "prompt": "Los datos sugieren que hacen falta más pruebas.",
+          "words": ["The", "data", "suggest", "that", "further", "testing", "is", "needed.", "proves", "more"],
+          "answer": "The data suggest that further testing is needed.",
+          "gradualHint": "Start with «The data suggest that...» and use the formal collocation «further testing»."
+        },
+        {
+          "type": "listening",
+          "section": "Listen",
+          "text": "While the sample is small, the trend appears consistent",
+          "options": [
+            "While the sample is small, the trend appears consistent",
+            "Because the sample is huge, the trend is finished",
+            "While the sample is small, the result is impossible"
+          ],
+          "answer": "While the sample is small, the trend appears consistent",
+          "gradualHint": "Listen for the concession clause («While...») paired with cautious «appears consistent»."
+        },
+        {
+          "type": "multipleChoice",
+          "section": "Transfer",
+          "prompt": "Second case: you need to acknowledge a limitation in your own proposal during a meeting. Which phrasing is strongest?",
+          "options": [
+            "One limitation of this estimate is that winter demand has not yet been modelled.",
+            "Our estimate has zero flaws so nobody should question it.",
+            "Maybe everything in my spreadsheet is totally wrong, who knows."
+          ],
+          "answer": "One limitation of this estimate is that winter demand has not yet been modelled.",
+          "gradualHint": "Transparent professional English names the specific scope boundary calmly without self-sabotage or bluster.",
+          "optionExplanations": {
+            "One limitation of this estimate is that winter demand has not yet been modelled.": "Excellent: naming the exact scope boundary builds credibility and invites constructive scrutiny.",
+            "Our estimate has zero flaws so nobody should question it.": "Dismissing scrutiny undermines trust as soon as a seasonal variable is raised.",
+            "Maybe everything in my spreadsheet is totally wrong, who knows.": "Vague self-deprecation fails to identify which assumption actually needs checking."
+          }
+        },
+        {
+          "type": "typing",
+          "section": "Transfer",
+          "prompt": "Translate into formal English: «Sin embargo, los resultados varían según la región.»",
+          "answer": "However, results vary by region",
+          "alternatives": [
+            "However, the results vary by region",
+            "Nevertheless, results vary by region",
+            "However, results vary depending on the region"
+          ],
+          "gradualHint": "Open with «However,» and use «vary by region»."
+        }
+      ]
+    },
+    {
+      "id": "b2-u2-l2",
+      "title": "Argument Structure & Presentations",
+      "tip": "Signpost each move in a presentation or essay: state your claim, anchor it in evidence, address counter-arguments, and state the practical implication.",
+      "exercises": [
+        {
+          "type": "explain",
+          "section": "Learn",
+          "title": "Cohesive Paragraphing & Spoken Signposting",
+          "body": "• Goal: structure a clear argument (Topic Claim → Evidence → Counter-point → Conclusion) in written briefs and spoken presentations.\n• Use signposting phrases («Turning now to...», «By contrast, ...») so listeners never have to guess how two ideas connect.\n• Reference: practical academic/workplace English inspired by Oxford Language Centre CACE (distinct from literary criticism).",
+          "phrases": [
+            { "en": "Turning now to the budget impact", "es": "Pasando ahora al impacto presupuestario" },
+            { "en": "By contrast, the second option...", "es": "En cambio, la segunda opción..." },
+            { "en": "To sum up our main recommendation", "es": "Para resumir nuestra recomendación principal" }
+          ],
+          "link": {
+            "label": "Council of Europe — CEFR B2/C1 Descriptors",
+            "url": "https://www.coe.int/en/web/common-european-framework-reference-languages/table-1-cefr-3.3-common-reference-levels-global-scale"
+          }
+        },
+        {
+          "type": "multipleChoice",
+          "section": "Check",
+          "prompt": "In a presentation, you finish discussing staffing and want to move cleanly to safety metrics. Which signpost works best?",
+          "options": [
+            "Turning now to safety metrics, let's examine last quarter's incident rate.",
+            "Anyway, random other thing, numbers!",
+            "As I already finished everything, goodbye—wait, safety."
+          ],
+          "answer": "Turning now to safety metrics, let's examine last quarter's incident rate.",
+          "gradualHint": "Choose the explicit transition marker that announces the new topic and tells the audience what to focus on.",
+          "optionExplanations": {
+            "Turning now to safety metrics, let's examine last quarter's incident rate.": "Clear and natural: «Turning now to...» signals a deliberate section shift for listeners.",
+            "Anyway, random other thing, numbers!": "Too informal and vague; listeners cannot tell how the slide relates to your argument.",
+            "As I already finished everything, goodbye—wait, safety.": "Signals a false ending and breaks the structure of the talk."
+          }
+        },
+        {
+          "type": "matching",
+          "section": "Practise",
+          "pairs": [
+            { "en": "furthermore", "es": "además (añade argumento)" },
+            { "en": "consequently", "es": "en consecuencia" },
+            { "en": "albeit", "es": "si bien / aunque" },
+            { "en": "on the other hand", "es": "por otra parte" }
+          ]
+        },
+        {
+          "type": "fillBlank",
+          "section": "Practise",
+          "sentence": "Upfront installation costs are higher; ___, long-term maintenance falls by 30%.",
+          "hint": "Contrast connector between two clauses separated by a semicolon and comma.",
+          "options": ["however", "despite", "although"],
+          "answer": "however",
+          "gradualHint": "Check the punctuation: a semicolon before and a comma after («; ___,») requires a conjunctive adverb, not a preposition or subordinator.",
+          "optionExplanations": {
+            "however": "Correct: «; however,» links two independent clauses with contrast.",
+            "despite": "«Despite» is a preposition and must be followed by a noun phrase or -ing form, never a comma + full clause.",
+            "although": "«Although» introduces a subordinate clause without a following comma."
+          }
+        },
+        {
+          "type": "wordBank",
+          "section": "Practise",
+          "prompt": "Para resumir, recomendamos una prueba piloto de tres meses.",
+          "words": ["To", "sum", "up,", "we", "recommend", "a", "three-month", "pilot.", "three-months", "for"],
+          "answer": "To sum up, we recommend a three-month pilot.",
+          "gradualHint": "Hyphenated adjectives before a noun («a three-month pilot») stay singular in English."
+        },
+        {
+          "type": "listening",
+          "section": "Listen",
+          "text": "Let me illustrate this point with a concrete example",
+          "options": [
+            "Let me illustrate this point with a concrete example",
+            "Let me ignore this point without any example",
+            "Let me finish the report before the example"
+          ],
+          "answer": "Let me illustrate this point with a concrete example",
+          "gradualHint": "Listen for the verb meaning to clarify an argument through a specific case."
+        },
+        {
+          "type": "multipleChoice",
+          "section": "Transfer",
+          "prompt": "Second case: during Q&A, someone asks for a figure you don't have in front of you. How do you respond professionally?",
+          "options": [
+            "I don't have the exact breakdown to hand, so I'll verify it after the session and send it over today.",
+            "I'll invent 42% right now so I look confident.",
+            "That question is forbidden."
+          ],
+          "answer": "I don't have the exact breakdown to hand, so I'll verify it after the session and send it over today.",
+          "gradualHint": "Professional credibility comes from stating what you know, declining to guess, and committing to a concrete follow-up.",
+          "optionExplanations": {
+            "I don't have the exact breakdown to hand, so I'll verify it after the session and send it over today.": "Spot on: «to hand» is idiomatic British English, and promising verified follow-up protects accuracy.",
+            "I'll invent 42% right now so I look confident.": "Guessing numbers in a meeting risks false decisions and damages trust.",
+            "That question is forbidden.": "Hostile and unprofessional in workplace or academic Q&A."
+          }
+        },
+        {
+          "type": "typing",
+          "section": "Transfer",
+          "prompt": "Translate: «Pasando ahora al segundo punto»",
+          "answer": "Turning now to the second point",
+          "alternatives": [
+            "Moving on to the second point",
+            "Turning to the second point"
+          ],
+          "gradualHint": "Use the presentation signpost from the opening card: «Turning now to...»."
+        }
+      ]
+    }
+  ]
+}

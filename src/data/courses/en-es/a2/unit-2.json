@@ -1,0 +1,222 @@
+{
+  "level": "A2",
+  "unit": "Unit 2",
+  "title": "Trabajo, salud y trámites cotidianos",
+  "lessons": [
+    {
+      "id": "a2-u2-l1",
+      "title": "Turnos y entrevistas de trabajo",
+      "tip": "En entrevistas en el Reino Unido se usa «I worked as a...» para empleos pasados cerrados y «I am responsible for...» para funciones actuales.",
+      "exercises": [
+        {
+          "type": "explain",
+          "section": "Aprende",
+          "title": "Hablar de tu experiencia laboral con claridad",
+          "body": "• Objetivo: presentar tu puesto anterior, tu horario disponible y una tarea concreta en una entrevista.\n• Para un empleo anterior usa past simple + «as a»: «I worked as a warehouse operative».\n• Para pedir aclaración educada usa «Could you repeat that, please?» en lugar de un «What?» seco.",
+          "phrases": [
+            { "en": "I worked as a receptionist", "es": "Trabajé como recepcionista" },
+            { "en": "I'm available full-time", "es": "Estoy disponible a jornada completa" },
+            { "en": "morning shift", "es": "turno de mañana" }
+          ]
+        },
+        {
+          "type": "multipleChoice",
+          "section": "Comprueba",
+          "prompt": "¿Cómo dices con naturalidad «Trabajé como operario de almacén durante dos años»?",
+          "options": [
+            "I worked as a warehouse operative for two years.",
+            "I worked like warehouse operative since two years.",
+            "I am work in warehouse during two years."
+          ],
+          "answer": "I worked as a warehouse operative for two years.",
+          "gradualHint": "En inglés los puestos de trabajo llevan «as a/an» y una duración cerrada lleva «for».",
+          "optionExplanations": {
+            "I worked as a warehouse operative for two years.": "Exacto: «worked as a» introduce el puesto profesional y «for two years» expresa la duración.",
+            "I worked like warehouse operative since two years.": "En inglés «like» compara («como si fuera»), no introduce tu puesto oficial, y «since» pide una fecha de inicio, no una cantidad de años.",
+            "I am work in warehouse during two years.": "Mezcla presente («am») con infinitivo («work»); para una etapa terminada necesitas pasado simple."
+          }
+        },
+        {
+          "type": "matching",
+          "section": "Practica",
+          "pairs": [
+            { "en": "payslip", "es": "nómina" },
+            { "en": "night shift", "es": "turno de noche" },
+            { "en": "part-time", "es": "media jornada" },
+            { "en": "job interview", "es": "entrevista de trabajo" }
+          ]
+        },
+        {
+          "type": "wordBank",
+          "section": "Practica",
+          "prompt": "Estoy disponible para empezar el lunes.",
+          "words": ["I'm", "available", "to", "start", "on", "Monday.", "in", "for"],
+          "answer": "I'm available to start on Monday.",
+          "gradualHint": "Los días de la semana en inglés llevan siempre la preposición «on»."
+        },
+        {
+          "type": "fillBlank",
+          "section": "Practica",
+          "sentence": "Could you ___ that question, please?",
+          "hint": "¿Podría repetir esa pregunta, por favor?",
+          "options": ["repeat", "repeating", "repeated"],
+          "answer": "repeat",
+          "gradualHint": "Después del modal «Could you...» el verbo principal va siempre en forma base (sin -ing ni -ed).",
+          "optionExplanations": {
+            "repeat": "Correcto: tras el modal «Could» se usa el infinitivo sin «to».",
+            "repeating": "«Could you» nunca va seguido de forma en -ing.",
+            "repeated": "«Could» ya marca cortesía modal; el verbo principal no se pone en pasado."
+          }
+        },
+        {
+          "type": "listening",
+          "section": "Escucha",
+          "text": "I can work the morning shift",
+          "options": [
+            "I can work the morning shift",
+            "I can't walk in the morning",
+            "I worked the night shift"
+          ],
+          "answer": "I can work the morning shift",
+          "gradualHint": "Presta atención al verbo modal afirmativo y al momento del día."
+        },
+        {
+          "type": "multipleChoice",
+          "section": "Transfiere",
+          "prompt": "Segundo caso: el entrevistador habla muy rápido por teléfono. ¿Qué respuesta mantiene un registro profesional?",
+          "options": [
+            "Sorry, could you speak a bit more slowly, please?",
+            "Speak slow now!",
+            "I nothing understand you."
+          ],
+          "answer": "Sorry, could you speak a bit more slowly, please?",
+          "gradualHint": "Busca la petición indirecta con modal de cortesía y adverbio comparativo.",
+          "optionExplanations": {
+            "Sorry, could you speak a bit more slowly, please?": "Muy bien: combina disculpa breve, «could you» y el adverbio «more slowly».",
+            "Speak slow now!": "Suena a orden brusca en imperativo y usa el adjetivo «slow» en vez del adverbio «slowly».",
+            "I nothing understand you.": "El orden y la negación son incorrectos en inglés («I don't understand»)."
+          }
+        },
+        {
+          "type": "typing",
+          "section": "Transfiere",
+          "prompt": "Traduce: «Tengo experiencia en atención al cliente.»",
+          "answer": "I have experience in customer service",
+          "alternatives": [
+            "I've got experience in customer service",
+            "I have customer service experience"
+          ],
+          "gradualHint": "«Atención al cliente» en inglés laboral es un sintagma fijo de dos palabras muy común."
+        }
+      ]
+    },
+    {
+      "id": "a2-u2-l2",
+      "title": "Salud, farmacia y gestiones",
+      "tip": "Para síntomas continuos usa «I have a sore throat / headache», y para pedir cita en el centro de salud (GP) usa «I'd like to book an appointment».",
+      "exercises": [
+        {
+          "type": "explain",
+          "section": "Aprende",
+          "title": "Pedir cita médica y explicar síntomas cotidianos",
+          "body": "• Objetivo: reservar una cita no urgente, describir desde cuándo tienes un síntoma y recoger una receta.\n• En el Reino Unido pides cita en tu GP surgery con «I'd like to book an appointment».\n• Para indicar cuándo empezó una molestia usa «since yesterday» (punto de inicio) o «for three days» (duración).",
+          "phrases": [
+            { "en": "I'd like to book an appointment", "es": "Quisiera pedir una cita" },
+            { "en": "I've had a cough for three days", "es": "Llevo tres días con tos" },
+            { "en": "prescription", "es": "receta médica" }
+          ]
+        },
+        {
+          "type": "multipleChoice",
+          "section": "Comprueba",
+          "prompt": "Llamas a la recepción de tu centro de salud para pedir hora. ¿Qué frase es la adecuada?",
+          "options": [
+            "Hello, I'd like to book an appointment with the GP, please.",
+            "Hello, I want one date with the doctor now.",
+            "Give me a medical hour today."
+          ],
+          "answer": "Hello, I'd like to book an appointment with the GP, please.",
+          "gradualHint": "En inglés británico una cita médica o profesional nunca es «date» (cita romántica/fecha), sino otro sustantivo específico.",
+          "optionExplanations": {
+            "Hello, I'd like to book an appointment with the GP, please.": "Exacto: «book an appointment» con «I'd like to» es la fórmula estándar y cortés.",
+            "Hello, I want one date with the doctor now.": "«Date» significa fecha o cita social/romántica, no turno médico, y «I want... now» suena exigente.",
+            "Give me a medical hour today.": "Calco literal del español («dar hora»); en inglés se reserva un «appointment»."
+          }
+        },
+        {
+          "type": "matching",
+          "section": "Practica",
+          "pairs": [
+            { "en": "sore throat", "es": "dolor de garganta" },
+            { "en": "high temperature", "es": "fiebre" },
+            { "en": "pharmacy / chemist's", "es": "farmacia" },
+            { "en": "proof of address", "es": "comprobante de domicilio" }
+          ]
+        },
+        {
+          "type": "fillBlank",
+          "section": "Practica",
+          "sentence": "I've had a headache ___ yesterday morning.",
+          "hint": "Tengo dolor de cabeza desde ayer por la mañana.",
+          "options": ["since", "for", "from"],
+          "answer": "since",
+          "gradualHint": "«Yesterday morning» marca el momento exacto en que empezó, no una suma de horas o días.",
+          "optionExplanations": {
+            "since": "Correcto: con present perfect, «since» introduce el momento de inicio.",
+            "for": "«For» se usa con periodos de tiempo contables («for two days»), no con un punto de inicio como «yesterday morning».",
+            "from": "Con present perfect continuo/estado que sigue abierto hasta ahora se emplea «since», no «from»."
+          }
+        },
+        {
+          "type": "wordBank",
+          "section": "Practica",
+          "prompt": "Necesito recoger mi receta médica.",
+          "words": ["I", "need", "to", "pick", "up", "my", "prescription.", "recipe", "for"],
+          "answer": "I need to pick up my prescription.",
+          "gradualHint": "Ojo con el falso amigo: «recipe» es receta de cocina; la médica empieza por «pres-»."
+        },
+        {
+          "type": "listening",
+          "section": "Escucha",
+          "text": "Take one tablet twice a day after meals",
+          "options": [
+            "Take one tablet twice a day after meals",
+            "Take two tablets once a day before meals",
+            "Take one tablet every week"
+          ],
+          "answer": "Take one tablet twice a day after meals",
+          "gradualHint": "Escucha cuántas pastillas («one»), la frecuencia («twice») y si es antes o después de comer."
+        },
+        {
+          "type": "multipleChoice",
+          "section": "Transfiere",
+          "prompt": "Segundo caso: te registras en un servicio local y te piden «proof of address». ¿Qué documento sirve?",
+          "options": [
+            "A recent utility bill or council tax letter showing your name and address",
+            "A supermarket loyalty card without an address",
+            "A bus ticket from yesterday"
+          ],
+          "answer": "A recent utility bill or council tax letter showing your name and address",
+          "gradualHint": "Piensa qué documento oficial o recibo vincula tu nombre con la vivienda donde resides.",
+          "optionExplanations": {
+            "A recent utility bill or council tax letter showing your name and address": "Correcto: una factura de suministros reciente o carta del council incluye tu nombre y domicilio.",
+            "A supermarket loyalty card without an address": "Una tarjeta de puntos sin domicilio impreso no acredita dónde vives.",
+            "A bus ticket from yesterday": "Un billete de transporte es anónimo y no muestra tu dirección."
+          }
+        },
+        {
+          "type": "typing",
+          "section": "Transfiere",
+          "prompt": "Traduce: «Me duele la garganta.»",
+          "answer": "I have a sore throat",
+          "alternatives": [
+            "I've got a sore throat",
+            "My throat hurts",
+            "My throat is sore"
+          ],
+          "gradualHint": "Puedes usar la estructura muy frecuente «I have a sore ...»."
+        }
+      ]
+    }
+  ]
+}
