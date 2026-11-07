@@ -6,8 +6,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { Page, Route } from '@playwright/test';
 import {
-  VD_PRODUCT, accessChangeFromEvent, accessStatus, applyAccessChange, canStartCheckout, decideModule, vdPriceIds,
-  type CourseAccessRow,
+  VD_PRODUCT, accessChangeFromEvent, accessStatus, applyAccessChange, applyPayment, canStartCheckout, decideModule,
+  paymentFromEvent, planCheckout, vdPriceIds, type CheckoutState, type CourseAccessRow,
 } from '../supabase/functions/_shared/vida-diaria';
 
 // Paid content comes from the private package (VD_PREMIUM_DIR), never from this public repository.
@@ -28,22 +28,36 @@ export class FakeBackend {
 
   /** Stripe-style signed delivery → verify → contract → course_access row (like billing-webhook + apply_course_access). */
   deliver(type: string, user: string, sub: { status?: string; end?: number; cancel?: boolean }) {
-    const event = {
-      id: `evt_e2e_${++this.n}`, type, created: this.now,
-      data: { object: { id: `sub_e2e_${user}`, status: sub.status ?? 'active', customer: `cus_e2e_${user}`, cancel_at_period_end: sub.cancel ?? false,
-        metadata: { user_id: user, product: VD_PRODUCT }, items: { data: [{ price: { id: PRICE }, current_period_end: sub.end ?? this.now + 30 * DAY }] } } },
-    };
+    const end = sub.end ?? this.now + 30 * DAY;
+    const object = type === 'invoice.paid'
+      ? { parent: { subscription_details: { metadata: { user_id: user, product: VD_PRODUCT }, subscription: `sub_e2e_${user}` } },
+          lines: { data: [{ period: { start: end - 30 * DAY, end }, pricing: { price_details: { price: PRICE } } }] } }
+      : { id: `sub_e2e_${user}`, status: sub.status ?? 'active', customer: `cus_e2e_${user}`, cancel_at_period_end: sub.cancel ?? false,
+          metadata: { user_id: user, product: VD_PRODUCT }, items: { data: [{ price: { id: PRICE }, current_period_start: end - 30 * DAY, current_period_end: end }] } };
+    const event = { id: `evt_e2e_${++this.n}`, type, created: this.now, data: { object } };
     const payload = JSON.stringify(event);
     const header = `t=${this.now},v1=${createHmac('sha256', SECRET).update(`${this.now}.${payload}`).digest('hex')}`;
     const v1 = header.split(',')[1].slice(3);
     const expected = createHmac('sha256', SECRET).update(`${header.split(',')[0].slice(2)}.${payload}`).digest('hex');
     if (!timingSafeEqual(Buffer.from(v1), Buffer.from(expected))) throw new Error('bad signature');
-    const change = accessChangeFromEvent(JSON.parse(payload), vdPriceIds(PRICE));
+    const parsed = JSON.parse(payload);
+    const payment = paymentFromEvent(parsed, vdPriceIds(PRICE));
+    const change = payment ? null : accessChangeFromEvent(parsed, vdPriceIds(PRICE));
+    if (payment) applyPayment(this.rows, this.seen, payment);
     if (change) applyAccessChange(this.rows, this.seen, change);
     this.log.push(`${type} ${user} ${sub.status ?? 'active'}${sub.cancel ? ' cancel_at_period_end' : ''}`);
   }
 
   row(user: string) { return this.rows.get(`${user}:${VD_PRODUCT}`) ?? null; }
+
+  /** Stripe test checkout completed and paid: the two signed events, payment first (any order is valid). */
+  subscribe(user: string, end = this.now + 30 * DAY) {
+    this.deliver('invoice.paid', user, { end });
+    this.deliver('customer.subscription.created', user, { end });
+  }
+
+  checkouts = new Map<string, CheckoutState>();
+  sessionsCreated = 0;
 
   async install(page: Page) {
     await page.route(`${API}/**`, (route) => this.handle(route));
@@ -70,8 +84,13 @@ export class FakeBackend {
     if (fn === 'billing-checkout') {
       if (body.product !== VD_PRODUCT) return json(400, { error: 'invalid_product' });
       if (!canStartCheckout(row, nowMs)) return json(409, { error: 'already_active' });
-      // Stripe test checkout completes → subscription.created is delivered signed to the webhook.
-      this.deliver('customer.subscription.created', user.id, {});
+      const plan = planCheckout(user.id, this.checkouts.get(user.id) ?? null, nowMs);
+      if (plan.action === 'create') {
+        this.sessionsCreated++;
+        this.checkouts.set(user.id, { attempt: plan.attempt, session_id: `cs_e2e_${this.sessionsCreated}`, url: 'http://127.0.0.1:4174/vida-diaria/?pago=ok', expires_at: new Date(nowMs + 3600_000).toISOString() });
+      }
+      // Stripe test checkout completes → invoice.paid and subscription.created are delivered signed to the webhook.
+      this.subscribe(user.id);
       return json(200, { url: 'http://127.0.0.1:4174/vida-diaria/?pago=ok' });
     }
     if (fn === 'billing-portal') return json(200, { url: 'http://127.0.0.1:4174/vida-diaria/#/' });

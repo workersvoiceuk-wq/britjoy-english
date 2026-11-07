@@ -4,8 +4,11 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { APP_URL, admin, cors, currentUser, json, preflight } from "../_shared/http.ts";
 import { PRODUCTS, isProduct } from "../_shared/products.ts";
-import { stripe } from "../_shared/stripe.ts";
-import { VD_PRODUCT, canStartCheckout, liveChargesAllowed, vdPriceIds, type CourseAccessRow } from "../_shared/vida-diaria.ts";
+import { Stripe, stripe } from "../_shared/stripe.ts";
+import {
+  VD_PRODUCT, automaticTaxEnabled, canStartCheckout, checkoutIdempotencyKey, checkoutParams, liveChargesAllowed, vdPriceIds,
+  type CourseAccessRow,
+} from "../_shared/vida-diaria.ts";
 
 /** Where the learner returns after paying for «Inglés para el día a día». */
 const VD_URL = Deno.env.get("VIDA_DIARIA_URL") ?? "https://vozunidamundo.com/britjoy-english/vida-diaria/";
@@ -31,19 +34,24 @@ Deno.serve(async (req: Request) => {
     const db = admin();
     const { data: access } = await db.from("course_access").select("*").eq("user_id", user.id).eq("product", VD_PRODUCT).maybeSingle();
     if (!canStartCheckout(access as CourseAccessRow | null)) return json({ error: "already_active" }, 409, headers);
+    // Una sesión abierta por alumno: decisión tomada con bloqueo en la base de datos (begin_course_checkout).
+    const { data: plan, error: planError } = await db.rpc("begin_course_checkout", { p_user: user.id, p_product: VD_PRODUCT }).single();
+    if (planError || !plan) return json({ error: "retry" }, 503, headers);
+    const step = plan as { action: string; attempt: number; url: string | null };
+    if (step.action === "reuse" && step.url) return json({ url: step.url, reused: true }, 200, headers);
     const { data: profile } = await db.from("profiles").select("stripe_customer_id").eq("id", user.id).maybeSingle();
-    const session = await client.checkout.sessions.create({
-      mode: "subscription",
-      line_items: [{ price, quantity: 1 }],
-      client_reference_id: user.id,
-      metadata: { user_id: user.id, product: VD_PRODUCT },
-      // El acceso se concede con los eventos de la suscripción: su metadata identifica cuenta y producto.
-      subscription_data: { metadata: { user_id: user.id, product: VD_PRODUCT } },
-      ...(profile?.stripe_customer_id
-        ? { customer: profile.stripe_customer_id }
-        : { customer_email: user.email }),
-      success_url: `${VD_URL}?pago=ok`,
-      cancel_url: `${VD_URL}?pago=cancelado`,
+    const params = checkoutParams({
+      price, user: user.id, email: user.email, customer: profile?.stripe_customer_id ?? null, returnUrl: VD_URL,
+      // Stripe Tax solo cuando el dueño confirme el tratamiento del IVA: VIDA_DIARIA_AUTOMATIC_TAX=on.
+      automaticTax: automaticTaxEnabled(Deno.env.get("VIDA_DIARIA_AUTOMATIC_TAX")),
+    });
+    // Clave estable por (alumno, intento): peticiones simultáneas reciben la MISMA sesión de Stripe.
+    const session = await client.checkout.sessions.create(params as Stripe.Checkout.SessionCreateParams, {
+      idempotencyKey: checkoutIdempotencyKey(user.id, step.attempt),
+    });
+    await db.rpc("record_course_checkout", {
+      p_user: user.id, p_product: VD_PRODUCT, p_attempt: step.attempt, p_session: session.id, p_url: session.url,
+      p_expires: session.expires_at ? new Date(session.expires_at * 1000).toISOString() : null,
     });
     return json({ url: session.url }, 200, headers);
   }

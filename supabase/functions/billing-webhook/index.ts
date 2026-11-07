@@ -7,7 +7,7 @@ import { admin } from "../_shared/http.ts";
 import { PRODUCTS, isProduct } from "../_shared/products.ts";
 import { Stripe, periodEnd, stripe } from "../_shared/stripe.ts";
 import { isAcademySubscription } from "../_shared/academy.ts";
-import { accessChangeFromEvent, isVidaDiariaCheckout, vdPriceIds } from "../_shared/vida-diaria.ts";
+import { accessChangeFromEvent, isVidaDiariaCheckout, paymentFromEvent, vdPriceIds } from "../_shared/vida-diaria.ts";
 
 const cryptoProvider = Stripe.createSubtleCryptoProvider();
 const ok = () => new Response("ok", { status: 200 });
@@ -51,7 +51,17 @@ Deno.serve(async (req: Request) => {
   try {
     // «Inglés para el día a día»: producto aparte. Sus suscripciones solo escriben course_access (nunca plus_until
     // ni créditos) y su checkout no concede nada por sí mismo: el acceso llega con customer.subscription.*.
-    const vd = accessChangeFromEvent(event, vdPriceIds(Deno.env.get("STRIPE_PRICE_VIDA_DIARIA")));
+    const vdPrices = vdPriceIds(Deno.env.get("STRIPE_PRICE_VIDA_DIARIA"));
+    // Pago efectivo de una factura del curso: fija hasta cuándo está pagado (el acceso no pasa de ahí).
+    const paid = paymentFromEvent(event, vdPrices);
+    if (paid) {
+      const { error } = await db.rpc("apply_course_payment", {
+        p_event: paid.event, p_user: paid.user, p_product: paid.product, p_paid_until: paid.paidUntil, p_subscription: paid.subscription,
+      });
+      if (error) throw error;
+      return ok();
+    }
+    const vd = accessChangeFromEvent(event, vdPrices);
     if (vd) {
       const { error } = await db.rpc("apply_course_access", {
         p_event: vd.event, p_event_created: vd.eventCreated, p_user: vd.user, p_product: vd.product, p_status: vd.status,

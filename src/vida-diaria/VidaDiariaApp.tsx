@@ -81,7 +81,8 @@ export default function VidaDiariaApp() {
     let timer = 0;
     const poll = async () => {
       const a = await refresh();
-      if (pago === 'ok' && !(a.kind === 'status' && a.active) && ++tries < 6) timer = window.setTimeout(poll, 2000);
+      const waiting = pago === 'ok' || (a.kind === 'status' && a.status === 'pending');
+      if (waiting && !(a.kind === 'status' && a.active) && ++tries < 10) timer = window.setTimeout(poll, 2000);
       else if (pago === 'ok') setNotice(null);
     };
     if (pago === 'ok') setNotice(T[ui].paid);
@@ -254,9 +255,9 @@ function AccessPanel({ t, ui, access, onAccessChange, setNotice }: {
                 {access.cancelAtPeriodEnd && access.until ? t.endsOn(fmtDate(access.until, ui)) : access.until ? t.activeUntil(fmtDate(access.until, ui)) : ''}
               </p>
             ) : (
-              access.status !== 'none' && <p className="font-bold text-ink">{t.expired}</p>
+              access.status === 'pending' ? <p className="font-bold text-brand-dark" role="status">{t.paid}</p> : access.status !== 'none' && <p className="font-bold text-ink">{t.expired}</p>
             )}
-            {!access.active && (
+            {!access.active && access.status !== 'pending' && (
               <button type="button" disabled={busy} onClick={subscribe} className="press min-h-[48px] w-full rounded-2xl px-4 font-black text-white disabled:opacity-60" style={{ background: ACCENT }}>
                 {t.subscribe} · {t.price(price)}
               </button>

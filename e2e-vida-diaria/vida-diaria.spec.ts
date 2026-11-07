@@ -152,7 +152,8 @@ test('compra de prueba, cancelación, caducidad y cuenta distinta (servidor con 
   await page.getByRole('button', { name: /Suscribirme/ }).click();
   await expect(page).toHaveURL(/vida-diaria\/(\?pago=ok)?#?\/?$/);
   await expect(page.locator('[data-vd-access="active"]')).toBeVisible();
-  expect(backend.log).toEqual([`customer.subscription.created ${USERS.a.id} active`]);
+  expect(backend.log).toEqual([`invoice.paid ${USERS.a.id} active`, `customer.subscription.created ${USERS.a.id} active`]);
+  expect(backend.sessionsCreated).toBe(1);
   await expect(page.locator('[data-vd-module="02-compras"]')).toHaveAttribute('data-vd-state', 'open');
 
   // Módulo de pago: vídeo servido por la función (memoria, no URL pública) y lección cargada del servidor.
@@ -187,6 +188,7 @@ test('compra de prueba, cancelación, caducidad y cuenta distinta (servidor con 
 
   // Cuenta distinta mientras A vuelve a estar activa: B no ve nada de pago.
   backend.now = Math.floor(Date.now() / 1000);
+  backend.deliver('invoice.paid', USERS.a.id, { end: backend.now + 30 * 86_400 });
   backend.deliver('customer.subscription.updated', USERS.a.id, { end: backend.now + 30 * 86_400 });
   const other = await browser.newContext({ viewport: page.viewportSize() ?? undefined });
   const pb = await other.newPage();
