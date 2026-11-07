@@ -1,6 +1,9 @@
 /**
  * Story courses organised by real-life situations (always open; modules in order).
- * - Día a día: 12 modules for living in the UK, following the García family.
+ * - Día a día: 12 modules for living in the UK, following the García family. It is a separate paid product
+ *   («Inglés para el día a día», vida-diaria/): only module 1 (the free sample) is in this folder and bundle; the
+ *   paid modules are not in this public repository: they live in a private package and the private Supabase
+ *   Storage bucket «vida-diaria-premium», served only by the vida-diaria function after access is verified.
  * - Turistas: "tus primeros días en Inglaterra", 12 missions following Sofía's trip.
  *
  * New module: add `dia-a-dia/NN-name.json` (or `turistas/…`), import it here and
@@ -52,5 +55,5 @@ export const AI_LEVEL: LevelDefinition = {
   units: units(import.meta.glob('./ia/*.json', { eager: true })),
 };
 
-/** Topic courses listed in the course selector (after the A1–C2 levels). */
-export const SITUATION_LEVELS = [DAILY_LEVEL, TOURIST_LEVEL, AI_LEVEL];
+/** Topic courses listed in the course selector (after the A1–C2 levels). Día a día has its own page (vida-diaria/). */
+export const SITUATION_LEVELS = [TOURIST_LEVEL, AI_LEVEL];

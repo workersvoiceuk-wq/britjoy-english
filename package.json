@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:e2e:vida-diaria": "playwright test -c playwright.vida-diaria.config.ts",
+    "test:sql:vida-diaria": "scripts/test-vida-diaria-sql.sh"
   },
   "dependencies": {
     "@capacitor-community/text-to-speech": "8.0.2",

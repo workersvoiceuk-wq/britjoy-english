@@ -86,6 +86,11 @@ function AppScreens() {
       const st = useProgressStore.getState();
       if (lang && !st.uiLang && isUiLang(lang)) st.setUiLang(lang);
       const course = CATALOG.find((c) => c.id === courseId);
+      if (course?.open.tab === 'product') {
+        // Old links (?curso=dia-a-dia) keep working: they open the course's own page.
+        window.location.replace(new URL(course.open.href + (lang ? `?lang=${encodeURIComponent(lang)}` : ''), window.location.href).href);
+        return;
+      }
       if (course) {
         if (!st.placementDone) useProgressStore.setState({ placementDone: true });
         if (course.open.tab === 'english') {

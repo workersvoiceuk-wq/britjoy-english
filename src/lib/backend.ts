@@ -126,6 +126,20 @@ export async function callFunction<T>(name: string, body: unknown): Promise<{ ok
   return { ok: res.ok, status: res.status, data };
 }
 
+/** Same as callFunction, but returns the raw response (binary media of a paid course). */
+export async function callFunctionRaw(name: string, body: unknown): Promise<Response> {
+  const session = await currentSession();
+  return fetch(functionUrl(name), {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: KEY ?? '',
+      Authorization: `Bearer ${session?.access_token ?? KEY ?? ''}`,
+    },
+    body: JSON.stringify(body),
+  });
+}
+
 export type ProductId = 'credits_100';
 
 /** VUM Academy is sold on Voz Unida Mundo's website; it unlocks the app by email. */

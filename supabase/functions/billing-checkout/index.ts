@@ -5,6 +5,10 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { APP_URL, admin, cors, currentUser, json, preflight } from "../_shared/http.ts";
 import { PRODUCTS, isProduct } from "../_shared/products.ts";
 import { stripe } from "../_shared/stripe.ts";
+import { VD_PRODUCT, canStartCheckout, liveChargesAllowed, vdPriceIds, type CourseAccessRow } from "../_shared/vida-diaria.ts";
+
+/** Where the learner returns after paying for «Inglés para el día a día». */
+const VD_URL = Deno.env.get("VIDA_DIARIA_URL") ?? "https://vozunidamundo.com/britjoy-english/vida-diaria/";
 
 Deno.serve(async (req: Request) => {
   const headers = cors(req.headers.get("origin"));
@@ -17,6 +21,32 @@ Deno.serve(async (req: Request) => {
   if (!client) return json({ error: "not_configured" }, 503, headers);
 
   const { product } = (await req.json().catch(() => ({}))) as { product?: unknown };
+  if (product === VD_PRODUCT) {
+    // Cobros reales apagados hasta que el dueño ponga VIDA_DIARIA_LIVE=on tras verificar el acceso en modo de prueba.
+    if (!liveChargesAllowed(Deno.env.get("STRIPE_SECRET_KEY"), Deno.env.get("VIDA_DIARIA_LIVE"))) {
+      return json({ error: "live_disabled" }, 503, headers);
+    }
+    const price = [...vdPriceIds(Deno.env.get("STRIPE_PRICE_VIDA_DIARIA"))][0];
+    if (!price) return json({ error: "not_configured" }, 503, headers);
+    const db = admin();
+    const { data: access } = await db.from("course_access").select("*").eq("user_id", user.id).eq("product", VD_PRODUCT).maybeSingle();
+    if (!canStartCheckout(access as CourseAccessRow | null)) return json({ error: "already_active" }, 409, headers);
+    const { data: profile } = await db.from("profiles").select("stripe_customer_id").eq("id", user.id).maybeSingle();
+    const session = await client.checkout.sessions.create({
+      mode: "subscription",
+      line_items: [{ price, quantity: 1 }],
+      client_reference_id: user.id,
+      metadata: { user_id: user.id, product: VD_PRODUCT },
+      // El acceso se concede con los eventos de la suscripción: su metadata identifica cuenta y producto.
+      subscription_data: { metadata: { user_id: user.id, product: VD_PRODUCT } },
+      ...(profile?.stripe_customer_id
+        ? { customer: profile.stripe_customer_id }
+        : { customer_email: user.email }),
+      success_url: `${VD_URL}?pago=ok`,
+      cancel_url: `${VD_URL}?pago=cancelado`,
+    });
+    return json({ url: session.url }, 200, headers);
+  }
   if (!isProduct(product)) return json({ error: "invalid_product" }, 400, headers);
   const spec = PRODUCTS[product];
   const price = Deno.env.get(spec.priceEnv);

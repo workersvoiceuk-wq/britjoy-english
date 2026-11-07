@@ -6,6 +6,8 @@ import { createClient, type SupabaseClient, type User } from "npm:@supabase/supa
 export const ALLOWED_ORIGINS = new Set([
   "https://workersvoiceuk-wq.github.io",
   "https://ingles.vozunidamundo.com",
+  "https://vozunidamundo.com", // /britjoy-english/vida-diaria/ en Sites
+  "https://www.vozunidamundo.com",
   "capacitor://localhost", // iOS app
   "https://localhost", // Android app
   "http://localhost:5173", // local development
