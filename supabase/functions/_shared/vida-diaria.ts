@@ -9,7 +9,7 @@
 // - El acceso pertenece al user_id verificado que creó el checkout (metadata.user_id), nunca a un email ni al cliente.
 // - active / trialing / past_due dan acceso hasta el final del periodo pagado; cancelar al final del periodo mantiene
 //   el acceso hasta esa fecha; deleted, unpaid, incomplete… lo cierran.
-// - El acceso nunca pasa de la fecha EFECTIVAMENTE pagada: paid_until solo avanza con invoice.paid firmados, y una
+// - El acceso nunca pasa de la fecha EFECTIVAMENTE pagada para esa suscripción: paid_until solo avanza con su invoice.paid, y una
 //   renovación impagada (past_due) se queda en el inicio del periodo no pagado.
 // - Los eventos se aplican una vez (id) y nunca un evento más antiguo encima de uno más nuevo (created).
 // - El módulo 1 es la muestra gratuita: no necesita cuenta ni tarjeta y va en el bundle público.
@@ -135,14 +135,14 @@ export function isVidaDiariaCheckout(session: { metadata?: Record<string, string
 }
 
 /** Same rule as the SQL function apply_course_access: one application per event, never older over newer. */
-export function applyAccessChange(rows: Map<string, CourseAccessRow>, seen: Set<string>, c: AccessChange): boolean {
+export function applyAccessChange(rows: Map<string, CourseAccessRow>, seen: Set<string>, payments: Map<string, string>, c: AccessChange): boolean {
   if (seen.has(c.event)) return false;
   seen.add(c.event);
   const key = `${c.user}:${c.product}`;
   const prev = rows.get(key);
   if (prev && prev.last_event_created > c.eventCreated) return false;
   rows.set(key, {
-    paid_until: prev?.paid_until ?? null,
+    paid_until: payments.get(`${key}:${c.subscription}`) ?? null,
     user_id: c.user,
     product: c.product,
     status: c.status,
@@ -155,7 +155,7 @@ export function applyAccessChange(rows: Map<string, CourseAccessRow>, seen: Set<
   return true;
 }
 
-export interface PaymentChange { event: string; user: string; product: typeof VD_PRODUCT; paidUntil: string; subscription: string | null }
+export interface PaymentChange { event: string; user: string; product: typeof VD_PRODUCT; paidUntil: string; subscription: string }
 
 interface InvoiceLike {
   subscription?: string | { id: string } | null;
@@ -174,16 +174,21 @@ export function paymentFromEvent(event: { id: string; type: string; data: { obje
   const end = Math.max(0, ...lines.map((l) => l.period?.end ?? 0));
   if (!end) return null;
   const sub = inv.parent?.subscription_details?.subscription ?? (typeof inv.subscription === 'string' ? inv.subscription : inv.subscription?.id ?? null);
+  if (!sub) return null;
   return { event: event.id, user: meta.user_id, product: VD_PRODUCT, paidUntil: new Date(end * 1000).toISOString(), subscription: sub };
 }
 
-/** Same rule as apply_course_payment: once per event; paid_until only moves forward. */
-export function applyPayment(rows: Map<string, CourseAccessRow>, seen: Set<string>, p: PaymentChange): boolean {
+/** Same rule as apply_course_payment: once per event and scoped to the invoiced subscription. */
+export function applyPayment(rows: Map<string, CourseAccessRow>, seen: Set<string>, payments: Map<string, string>, p: PaymentChange): boolean {
   if (seen.has(p.event)) return false;
   seen.add(p.event);
   const key = `${p.user}:${p.product}`;
+  const paymentKey = `${key}:${p.subscription}`;
   const prev = rows.get(key);
-  const paid = prev?.paid_until && Date.parse(prev.paid_until) > Date.parse(p.paidUntil) ? prev.paid_until : p.paidUntil;
+  const priorPayment = payments.get(paymentKey);
+  const paid = priorPayment && Date.parse(priorPayment) > Date.parse(p.paidUntil) ? priorPayment : p.paidUntil;
+  payments.set(paymentKey, paid);
+  if (prev && prev.stripe_subscription_id !== p.subscription) return true;
   rows.set(key, prev ? { ...prev, paid_until: paid } : {
     user_id: p.user, product: p.product, status: 'incomplete', access_until: null, cancel_at_period_end: false,
     stripe_subscription_id: p.subscription, stripe_customer_id: null, last_event_created: 0, paid_until: paid,

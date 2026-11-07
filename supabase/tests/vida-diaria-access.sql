@@ -25,6 +25,15 @@ do $$ begin
   assert public.apply_course_payment('evt_pb', '00000000-0000-4000-8000-00000000000b', 'vida_diaria_monthly', now() + interval '30 days', 'sub_b'), 'pago B';
   assert (select stripe_customer_id is null from public.profiles where id = '00000000-0000-4000-8000-00000000000b'), 'Vida Diaria no asigna el cliente al perfil general';
   assert (select status = 'incomplete' and access_until is null from public.course_access where user_id = '00000000-0000-4000-8000-00000000000b'), 'B pendiente';
+  -- Cambiar de suscripción requiere la factura de la nueva alta, en cualquier orden.
+  assert public.apply_course_access('evt_new_a', 350, '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'active', now() + interval '30 days', false, 'sub_new_a', 'cus_1'), 'nueva alta A';
+  assert public.apply_course_payment('evt_old_a_late', '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', now() + interval '40 days', 'sub_1'), 'factura anterior tardía';
+  assert (select paid_until is null from public.course_access where user_id = '00000000-0000-4000-8000-00000000000a'), 'la factura anterior no desbloquea la nueva alta';
+  assert public.apply_course_payment('evt_new_a_paid', '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', now() + interval '10 days', 'sub_new_a'), 'factura propia de A';
+  assert (select paid_until = now() + interval '10 days' from public.course_access where user_id = '00000000-0000-4000-8000-00000000000a'), 'solo la fecha de la nueva factura';
+  assert public.apply_course_payment('evt_new_b_paid_first', '00000000-0000-4000-8000-00000000000b', 'vida_diaria_monthly', now() + interval '20 days', 'sub_new_b'), 'factura B antes del alta';
+  assert public.apply_course_access('evt_new_b', 350, '00000000-0000-4000-8000-00000000000b', 'vida_diaria_monthly', 'active', now() + interval '30 days', false, 'sub_new_b', 'cus_b'), 'nueva alta B';
+  assert (select paid_until = now() + interval '20 days' from public.course_access where user_id = '00000000-0000-4000-8000-00000000000b'), 'se recupera la factura previa al alta';
 end $$;
 -- Checkout: una sesión por alumno; mismo intento hasta registrar; reutilizar; recuperar al caducar.
 do $$

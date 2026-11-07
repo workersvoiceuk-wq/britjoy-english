@@ -34,12 +34,13 @@ function verify(payload: string, header: string, now: number, secret = SECRET) {
 
 let n = 0;
 /** invoice.paid for the period [start, end] (newest Stripe API shape: parent.subscription_details + pricing). */
-function paidEvent(created: number, end: number, opts: Partial<{ user: string; price: string; product: string; legacy: boolean }> = {}) {
+function paidEvent(created: number, end: number, opts: Partial<{ user: string; price: string; product: string; legacy: boolean; subscription: string }> = {}) {
   const meta = { user_id: opts.user ?? 'user-a', product: opts.product ?? VD_PRODUCT };
+  const subscription = opts.subscription ?? 'sub_test_1';
   const line = opts.legacy ? { period: { start: end - 30 * DAY, end }, price: { id: opts.price ?? PRICE } } : { period: { start: end - 30 * DAY, end }, pricing: { price_details: { price: opts.price ?? PRICE } } };
   const object = opts.legacy
-    ? { subscription: 'sub_test_1', subscription_details: { metadata: meta }, lines: { data: [line] } }
-    : { parent: { subscription_details: { metadata: meta, subscription: 'sub_test_1' } }, lines: { data: [line] } };
+    ? { subscription, subscription_details: { metadata: meta }, lines: { data: [line] } }
+    : { parent: { subscription_details: { metadata: meta, subscription } }, lines: { data: [line] } };
   return { id: `evt_test_${++n}`, type: 'invoice.paid', created, data: { object } };
 }
 
@@ -66,14 +67,15 @@ function subEvent(type: string, created: number, sub: Partial<{ status: string; 
 function server() {
   const rows = new Map<string, CourseAccessRow>();
   const seen = new Set<string>();
+  const payments = new Map<string, string>();
   return {
     webhook(event: { id: string; type: string; created: number; data: { object: unknown } }, now: number, header?: string) {
       const payload = JSON.stringify(event);
       const verified = verify(payload, header ?? sign(payload, now), now);
       const payment = paymentFromEvent(verified, prices);
-      if (payment) return applyPayment(rows, seen, payment);
+      if (payment) return applyPayment(rows, seen, payments, payment);
       const change = accessChangeFromEvent(verified, prices);
-      return change ? applyAccessChange(rows, seen, change) : false;
+      return change ? applyAccessChange(rows, seen, payments, change) : false;
     },
     /** A paid subscription: subscription.created + invoice.paid for its first period. */
     subscribe(user: string, now: number, end = now + 30 * DAY) {
@@ -227,6 +229,25 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
     expect(s.webhook(deleted, T0 + 2 * DAY)).toBe(true);
     expect(s.webhook(lateUpdate, T0 + 2 * DAY)).toBe(false); // llega tarde y es más antiguo
     expect(s.status('user-a', T0 + 2 * DAY).active).toBe(false);
+  });
+
+  it.each([false, true])('una nueva alta espera su propia factura aunque los avisos lleguen desordenados (%s)', (invoiceFirst) => {
+    const s = server();
+    const now = T0 + 3 * DAY;
+    const paidThrough = now + 10 * DAY;
+    s.subscribe('user-a', T0);
+    s.webhook(subEvent('customer.subscription.deleted', now - DAY, { status: 'canceled' }), now - DAY);
+    const replacement = subEvent('customer.subscription.created', now, { id: 'sub_replacement', end: now + 30 * DAY });
+    const payment = paidEvent(now, paidThrough, { subscription: 'sub_replacement' });
+    if (invoiceFirst) s.webhook(payment, now);
+    s.webhook(replacement, now);
+    s.webhook(paidEvent(now, now + 20 * DAY), now);
+    if (!invoiceFirst) {
+      expect(s.module('user-a', '02-compras', now)).toBe('payment_required');
+      s.webhook(payment, now);
+    }
+    expect(s.module('user-a', '02-compras', now)).toBe('granted');
+    expect(s.status('user-a', now).until).toBe(new Date(paidThrough * 1000).toISOString());
   });
 
   it('checkout concurrente: una sola sesión por alumno; se reutiliza mientras vale y se recupera al caducar', async () => {

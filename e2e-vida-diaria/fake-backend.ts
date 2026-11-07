@@ -22,6 +22,7 @@ export const USERS = { a: { id: '00000000-0000-4000-8000-00000000000a', email: '
 export class FakeBackend {
   rows = new Map<string, CourseAccessRow>();
   seen = new Set<string>();
+  payments = new Map<string, string>();
   now = Math.floor(Date.now() / 1000);
   log: string[] = [];
   private n = 0;
@@ -43,8 +44,8 @@ export class FakeBackend {
     const parsed = JSON.parse(payload);
     const payment = paymentFromEvent(parsed, vdPriceIds(PRICE));
     const change = payment ? null : accessChangeFromEvent(parsed, vdPriceIds(PRICE));
-    if (payment) applyPayment(this.rows, this.seen, payment);
-    if (change) applyAccessChange(this.rows, this.seen, change);
+    if (payment) applyPayment(this.rows, this.seen, this.payments, payment);
+    if (change) applyAccessChange(this.rows, this.seen, this.payments, change);
     this.log.push(`${type} ${user} ${sub.status ?? 'active'}${sub.cancel ? ' cancel_at_period_end' : ''}`);
   }
 

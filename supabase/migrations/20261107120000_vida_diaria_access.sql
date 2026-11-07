@@ -37,8 +37,13 @@ create table public.course_access_events (
   stripe_event_id text primary key,
   user_id uuid references auth.users (id) on delete set null,
   product text not null,
+  stripe_subscription_id text,
+  paid_until timestamptz,
   created_at timestamptz not null default now()
 );
+
+create index course_access_paid_subscription on public.course_access_events (user_id, product, stripe_subscription_id)
+  where paid_until is not null;
 
 alter table public.course_access enable row level security;
 alter table public.course_access_events enable row level security;
@@ -65,28 +70,33 @@ begin
       values (p_event, null, p_product) on conflict (stripe_event_id) do nothing;
     return false;
   end if;
+  -- Both webhook paths lock the same row before reading or recording invoices.
+  insert into public.course_access (user_id, product, status) values (p_user, p_product, 'incomplete')
+    on conflict (user_id, product) do nothing;
+  select last_event_created into v_prev from public.course_access
+    where user_id = p_user and product = p_product for update;
   insert into public.course_access_events (stripe_event_id, user_id, product)
     values (p_event, p_user, p_product) on conflict (stripe_event_id) do nothing;
   if not found then
     return false; -- ya aplicado
   end if;
-  select last_event_created into v_prev from public.course_access
-    where user_id = p_user and product = p_product for update;
   if v_prev is not null and v_prev > p_event_created then
     return false; -- evento antiguo que llega tarde
   end if;
-  insert into public.course_access as a (user_id, product, status, access_until, cancel_at_period_end,
-      stripe_subscription_id, stripe_customer_id, last_event_created, updated_at)
-    values (p_user, p_product, p_status, p_access_until, coalesce(p_cancel, false), p_subscription, p_customer,
-      p_event_created, now())
-  on conflict (user_id, product) do update set
-    status = excluded.status,
-    access_until = excluded.access_until,
-    cancel_at_period_end = excluded.cancel_at_period_end,
-    stripe_subscription_id = excluded.stripe_subscription_id,
-    stripe_customer_id = coalesce(excluded.stripe_customer_id, a.stripe_customer_id),
-    last_event_created = excluded.last_event_created,
-    updated_at = now();
+  update public.course_access as a set
+    status = p_status,
+    access_until = p_access_until,
+    cancel_at_period_end = coalesce(p_cancel, false),
+    stripe_subscription_id = p_subscription,
+    stripe_customer_id = coalesce(p_customer, a.stripe_customer_id),
+    paid_until = (
+      select max(e.paid_until) from public.course_access_events e
+      where e.user_id = p_user and e.product = p_product and e.stripe_subscription_id = p_subscription
+        and e.paid_until is not null
+    ),
+    last_event_created = p_event_created,
+    updated_at = now()
+  where a.user_id = p_user and a.product = p_product;
   return true;
 end;
 $$;
@@ -96,26 +106,31 @@ revoke all on function public.apply_course_access(text, bigint, uuid, text, text
 grant execute on function public.apply_course_access(text, bigint, uuid, text, text, timestamptz, boolean, text, text)
   to service_role;
 
--- invoice.paid: avanza paid_until (nunca hacia atrás), una vez por evento.
+-- Guarda el pago para su suscripción, aunque su evento de alta todavía no haya llegado.
 create function public.apply_course_payment(p_event text, p_user uuid, p_product text, p_paid_until timestamptz, p_subscription text)
 returns boolean
 language plpgsql security definer set search_path = '' as $$
 begin
+  if p_subscription is null then
+    return false;
+  end if;
   if not exists (select 1 from auth.users where id = p_user) then
     insert into public.course_access_events (stripe_event_id, user_id, product) values (p_event, null, p_product)
       on conflict (stripe_event_id) do nothing;
     return false;
   end if;
-  insert into public.course_access_events (stripe_event_id, user_id, product) values (p_event, p_user, p_product)
+  insert into public.course_access (user_id, product, status, stripe_subscription_id)
+    values (p_user, p_product, 'incomplete', p_subscription)
+    on conflict (user_id, product) do nothing;
+  perform 1 from public.course_access where user_id = p_user and product = p_product for update;
+  insert into public.course_access_events (stripe_event_id, user_id, product, stripe_subscription_id, paid_until)
+    values (p_event, p_user, p_product, p_subscription, p_paid_until)
     on conflict (stripe_event_id) do nothing;
   if not found then
     return false;
   end if;
-  insert into public.course_access as a (user_id, product, status, paid_until, stripe_subscription_id, updated_at)
-    values (p_user, p_product, 'incomplete', p_paid_until, p_subscription, now())
-  on conflict (user_id, product) do update set
-    paid_until = greatest(coalesce(a.paid_until, excluded.paid_until), excluded.paid_until),
-    updated_at = now();
+  update public.course_access as a set paid_until = greatest(a.paid_until, p_paid_until), updated_at = now()
+    where a.user_id = p_user and a.product = p_product and a.stripe_subscription_id = p_subscription;
   return true;
 end;
 $$;
