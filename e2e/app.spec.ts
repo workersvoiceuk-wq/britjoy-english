@@ -29,6 +29,11 @@ test('a full A1 lesson can be completed and progress is saved', async ({ page })
   await start(page);
   await page.getByText('Empezar desde cero (A1)').click();
   await page.getByRole('button', { name: /Hola \(disponible\)/ }).click();
+  const prediction = 'Primero saludaría según el momento del día.';
+  await page.locator('#lesson-prediction').fill(prediction);
+  await page.locator('#lesson-prediction').press('Enter');
+  await expect(page.getByRole('button', { name: 'Explorar la lección', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Explorar la lección', exact: true }).click();
 
   for (const ex of unit1.lessons[0].exercises as any[]) {
     if (ex.type === 'multipleChoice' || (ex.type === 'listening' && ex.options)) {
@@ -51,6 +56,14 @@ test('a full A1 lesson can be completed and progress is saved', async ({ page })
     await page.getByRole('button', { name: 'Continuar' }).click();
   }
 
+  await expect(page.getByRole('heading', { name: '¿Qué cambió en tu idea?', exact: true })).toBeVisible();
+  await expect(page.getByText(prediction, { exact: true })).toBeVisible();
+  const beforeReflection = await page.evaluate(() => JSON.parse(localStorage.getItem('britjoy-english-progress-v1')!));
+  expect(beforeReflection.state.levels.A1?.completedLessons?.['a1-u1-l1']).toBeUndefined();
+  await page.locator('#lesson-reflection').fill('En otra tienda también respondería al saludo.');
+  await page.locator('#lesson-reflection').press('Enter');
+  await expect(page.getByRole('button', { name: 'Terminar y ver resultado', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Terminar y ver resultado', exact: true }).click();
   await expect(page.getByText('¡Lección completada!')).toBeVisible();
   await page.getByRole('button', { name: 'Continuar' }).click();
   await expect(page.getByRole('button', { name: /Hola \(completada\)/ })).toBeVisible();
@@ -71,6 +84,7 @@ test('Vivir en UK: every topic is open and the share code video loads', async ({
     await expect(page.getByRole('button', { name: new RegExp(`${title.replace(/[?¿]/g, '.')} \\(disponible\\)`) })).toBeEnabled();
   }
   await page.getByRole('button', { name: /Share code para trabajar \(disponible\)/ }).click();
+  await page.getByRole('button', { name: 'Explorar la lección', exact: true }).click();
   const duration = await page.locator('video').evaluate(
     (v: HTMLVideoElement) =>
       new Promise<number>((resolve) => (v.readyState >= 1 ? resolve(v.duration) : v.addEventListener('loadedmetadata', () => resolve(v.duration)))),
@@ -104,6 +118,7 @@ test('running out of hearts ends the lesson', async ({ page }) => {
   });
   await page.goto('/');
   await page.getByRole('button', { name: /Hola \(disponible\)/ }).click();
+  await page.getByRole('button', { name: 'Explorar la lección', exact: true }).click();
   await page.locator('main button.tile', { hasText: 'Goodbye' }).first().click();
   await page.getByRole('button', { name: 'Comprobar' }).click();
   await page.getByRole('button', { name: 'Continuar' }).click();
