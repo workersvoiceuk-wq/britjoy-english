@@ -25,7 +25,7 @@ function StoryShell({ title, children, onExit, locale }: { title: string; childr
   );
 }
 
-export function LessonPrelude({ lesson, locale, courseName, onExit, onContinue }: Props & { onContinue: (prediction: string) => void }) {
+export function LessonPrelude({ lesson, locale, courseName, onExit, onContinue, chapterVideo }: Props & { onContinue: (prediction: string) => void; chapterVideo?: React.ReactNode }) {
   const [prediction, setPrediction] = useState('');
   const story = storyForLesson(lesson, locale);
   const objective = objectiveForLesson(lesson, locale);
@@ -43,6 +43,7 @@ export function LessonPrelude({ lesson, locale, courseName, onExit, onContinue }
         <h2 className="mt-1 text-xl font-black text-navy">{es ? 'Antes de ver la demostración…' : 'Before watching the demo…'}</h2>
         <p className="mt-2 text-base font-semibold leading-relaxed">{story.scene}</p>
       </article>
+      {chapterVideo && <div data-chapter-video="true">{chapterVideo}</div>}
       <div>
         <label htmlFor="lesson-prediction" className="block text-lg font-black text-navy">{story.prediction}</label>
         <p id="prediction-note" className="my-2 text-sm font-semibold text-ink-soft">{es ? 'Una intuición breve, no un examen. Es opcional y no cuesta corazones.' : 'A quick intuition, not a test. Optional, with no hearts at stake.'}</p>

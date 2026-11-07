@@ -299,6 +299,19 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
           setPrediction(text);
           setStoryReady(true);
         }}
+        chapterVideo={
+          // Lessons without an explain card show their chapter demo here, before the tasks (watch → do).
+          lesson.exercises.some((e) => e.type === 'explain') ? undefined : (
+            <QuestionVideoHelp
+              key={`qvh-${lesson.id}-capitulo`}
+              lessonId={lesson.id}
+              locale={level.instructionLanguage}
+              targetLanguage={level.targetLanguage || 'en'}
+              track={level.track}
+              onStopAudio={hush}
+            />
+          )
+        }
       />
     );
   }

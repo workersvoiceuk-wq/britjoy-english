@@ -35,6 +35,7 @@ describe('BritJoy A2 review pilots', () => {
     const level = { id: 'A2', name: 'A2', track: 'english', units: [{ unit: unit.unit, lessons: lessons.map(({ id }) => ({ id })) }] };
     const audit = auditLevels([level], { questionVideos: BRITJOY_REVIEW_VIDEO_MANIFEST.concepts });
     expect(audit.presentFiles.filter((path) => path.startsWith('videos/ingles-a2/'))).toHaveLength(16);
-    expect(audit.unreferencedFiles.filter((path) => path.startsWith('videos/ingles-a2/'))).toEqual([]);
+    // Unit 1 videos (videos/ingles-a2/a2-u1-*) belong to the unit 1 audit in english-a2-unit1-videos.test.ts.
+    expect(audit.unreferencedFiles.filter((path) => path.startsWith('videos/ingles-a2/britjoy-'))).toEqual([]);
   });
 });
