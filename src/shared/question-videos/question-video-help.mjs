@@ -3749,10 +3749,10 @@ export function mountQuestionVideoHelp({
         state.isPlaying = false;
         syncPlayButton();
       });
-      const showingTrack = () => trackNodes.find(({ track }) => track.mode === 'showing');
+      const showingTrack = () => trackNodes.find(({ track }) => track?.mode === 'showing');
       function updateCaption() {
         const track = showingTrack();
-        const nativeText = track?.track.activeCues?.[0]?.text;
+        const nativeText = track?.track?.activeCues?.[0]?.text;
         const t = Number(video.currentTime || 0);
         const useFallback = trackNodes.length < 2 || track?.srclang === resolved.video.defaultCaptionLanguage;
         const fallback = useFallback ? resolved.captions.find((c) => t >= c.start && t < c.end)?.text : '';
@@ -3760,7 +3760,7 @@ export function mountQuestionVideoHelp({
         if (captionLive.textContent !== text) captionLive.textContent = text;
       }
       video.addEventListener('timeupdate', updateCaption);
-      for (const node of trackNodes) node.track.addEventListener('cuechange', updateCaption);
+      for (const node of trackNodes) node.track?.addEventListener?.('cuechange', updateCaption);
       video.addEventListener('error', () => {
         stop();
         state.videoFailed = true;
@@ -3777,15 +3777,16 @@ export function mountQuestionVideoHelp({
       if (trackNodes.length > 1) {
         const select = makeEl('select', 'qvh-caption-select');
         select.setAttribute('aria-label', inSpanish ? 'Subtítulos' : 'Captions');
-        select.append(new Option(inSpanish ? 'Sin subtítulos' : 'Captions off', ''));
-        for (const track of trackNodes) select.append(new Option(track.label, track.srclang));
+        const option = (label, value) => { const o = makeEl('option', '', label); o.value = value; o.setAttribute('value', value); return o; };
+        select.append(option(inSpanish ? 'Sin subtítulos' : 'Captions off', ''));
+        for (const track of trackNodes) select.append(option(track.label, track.srclang));
         select.value = resolved.video.defaultCaptionLanguage ?? '';
         select.addEventListener('change', () => {
           const language = select.value;
-          for (const node of trackNodes) node.track.mode = node.srclang === language ? 'showing' : 'disabled';
+          for (const node of trackNodes) if (node.track) node.track.mode = node.srclang === language ? 'showing' : 'disabled';
           updateCaption();
         });
-        video.textTracks.addEventListener('change', () => {
+        video.textTracks?.addEventListener?.('change', () => {
           select.value = showingTrack()?.srclang ?? '';
           updateCaption();
         });

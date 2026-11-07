@@ -197,13 +197,16 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
     }
     const r = checkAnswer(exercise, response);
     const message = pick(r.correct ? dialogue.correct : dialogue.wrong);
+    // With no retry left (last heart, no Plus), the answer is shown now instead of being withheld for a retry
+    // that cannot happen.
+    const noRetryLeft = !r.correct && !hasPlus() && useProgressStore.getState().hearts <= 1;
     const fb = feedbackForAttempt({
       lesson,
       exercise,
       response,
       result: r,
       locale: level.instructionLanguage,
-      attemptNumber: attemptKey,
+      attemptNumber: noRetryLeft ? Math.max(attemptKey, 1) : attemptKey,
     });
     setResult({ ...r, message, explanation: fb.explanation, withholdAnswer: fb.withholdAnswer, chosenText: fb.chosenText });
     if (r.correct) {
@@ -506,7 +509,7 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
         <div className="mx-auto flex max-w-2xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
           {result && (
             <div role="status" className={result.correct ? 'text-brand-dark' : 'text-bad-dark'}>
-              <p className="text-xl font-black">{result.correct ? `✓ ${copy.correct}` : `✗ ${copy.wrong}`}</p>
+              <p className="text-xl font-black">{result.correct ? `✓ ${copy.correct}` : result.withholdAnswer ? `✗ ${copy.notYet}` : `✗ ${copy.wrong}`}</p>
               {!result.correct && !result.withholdAnswer && (
                 <p data-revealed-answer="true" className="text-lg font-extrabold">{result.correctAnswer}</p>
               )}

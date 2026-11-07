@@ -30,6 +30,7 @@ for (const viewport of [
               soundOn: false,
               placementDone: true,
               currentLevel: 'IA',
+              tab: 'home',
               hearts: 5,
               levels: {
                 IA: {
