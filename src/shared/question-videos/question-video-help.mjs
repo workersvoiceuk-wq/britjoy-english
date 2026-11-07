@@ -3402,7 +3402,14 @@ export function resolveQuestionVideoHelp(query = {}, manifest = QUESTION_VIDEO_M
 
   const playable = isConceptPlayable(matchedConcept);
   const rawCaptions = matchedConcept.video?.captions || {};
-  const captionPath = rawCaptions[String(locale).split('-')[0]] || rawCaptions.es || rawCaptions.en || null;
+  const requestedLanguage = String(locale).split('-')[0].toLowerCase();
+  const captionTracks = Object.entries(rawCaptions).flatMap(([language, path]) => {
+    const src = resolveRelativeMediaUrl(path, baseUrl);
+    return src ? [{ language, src }] : [];
+  });
+  const defaultTrack = [requestedLanguage, 'es', 'en']
+    .map((language) => captionTracks.find((track) => track.language === language))
+    .find(Boolean);
 
   return {
     schemaVersion: manifest.schemaVersion,
@@ -3453,9 +3460,10 @@ export function resolveQuestionVideoHelp(query = {}, manifest = QUESTION_VIDEO_M
           poster: isValidRelativeMediaPath(matchedConcept.video?.poster)
             ? resolveRelativeMediaUrl(matchedConcept.video.poster, baseUrl)
             : null,
-          captionsUrl: isValidRelativeMediaPath(captionPath)
-            ? resolveRelativeMediaUrl(captionPath, baseUrl)
-            : null,
+          captionsUrl: defaultTrack?.src ?? null,
+          captionTracks,
+          defaultCaptionLanguage: defaultTrack?.language,
+          narration: matchedConcept.video.narration,
         }
       : null,
   };
@@ -3577,7 +3585,6 @@ export function mountQuestionVideoHelp({
 
   let activeVideoEl = null;
   let activePlayBtn = null;
-  let activeCaptionBox = null;
 
   function syncPlayButton() {
     if (!activePlayBtn) return;
@@ -3647,7 +3654,6 @@ export function mountQuestionVideoHelp({
     stop();
     activeVideoEl = null;
     activePlayBtn = null;
-    activeCaptionBox = null;
 
     const resolved = state.resolved;
     if (!resolved) {
@@ -3687,14 +3693,16 @@ export function mountQuestionVideoHelp({
         video.poster = resolved.video.poster;
         video.setAttribute('poster', resolved.video.poster);
       }
-      if (resolved.video.captionsUrl) {
-        const trackNode = makeEl('track');
-        trackNode.setAttribute('kind', 'captions');
-        trackNode.setAttribute('src', resolved.video.captionsUrl);
-        trackNode.setAttribute('srclang', String(state.locale || 'es').split('-')[0]);
-        trackNode.setAttribute('default', '');
-        video.append(trackNode);
-      }
+      const trackNodes = resolved.video.captionTracks.map(({ language, src }) => {
+        const track = makeEl('track');
+        track.kind = 'captions';
+        track.src = src;
+        track.srclang = language;
+        track.label = ({ es: 'Español', en: 'English' })[language] || language;
+        track.default = language === resolved.video.defaultCaptionLanguage;
+        video.append(track);
+        return track;
+      });
 
       const captionLive = makeEl('p', 'qvh-caption-live', resolved.captions?.[0]?.text || '');
       captionLive.setAttribute('aria-live', 'polite');
@@ -3741,11 +3749,18 @@ export function mountQuestionVideoHelp({
         state.isPlaying = false;
         syncPlayButton();
       });
-      video.addEventListener('timeupdate', () => {
+      const showingTrack = () => trackNodes.find(({ track }) => track.mode === 'showing');
+      function updateCaption() {
+        const track = showingTrack();
+        const nativeText = track?.track.activeCues?.[0]?.text;
         const t = Number(video.currentTime || 0);
-        const cue = (resolved.captions || []).find((c) => t >= c.start && t <= c.end);
-        if (cue && activeCaptionBox) activeCaptionBox.textContent = cue.text;
-      });
+        const useFallback = trackNodes.length < 2 || track?.srclang === resolved.video.defaultCaptionLanguage;
+        const fallback = useFallback ? resolved.captions.find((c) => t >= c.start && t < c.end)?.text : '';
+        const text = nativeText ?? fallback ?? '';
+        if (captionLive.textContent !== text) captionLive.textContent = text;
+      }
+      video.addEventListener('timeupdate', updateCaption);
+      for (const node of trackNodes) node.track.addEventListener('cuechange', updateCaption);
       video.addEventListener('error', () => {
         stop();
         state.videoFailed = true;
@@ -3754,12 +3769,34 @@ export function mountQuestionVideoHelp({
 
       activeVideoEl = video;
       activePlayBtn = playToggle;
-      activeCaptionBox = captionLive;
       syncPlayButton();
 
       const controlsBar = makeEl('div', 'qvh-player-controls');
       controlsBar.append(playToggle);
+      const inSpanish = state.locale.toLowerCase().split('-')[0] === 'es';
+      if (trackNodes.length > 1) {
+        const select = makeEl('select', 'qvh-caption-select');
+        select.setAttribute('aria-label', inSpanish ? 'Subtítulos' : 'Captions');
+        select.append(new Option(inSpanish ? 'Sin subtítulos' : 'Captions off', ''));
+        for (const track of trackNodes) select.append(new Option(track.label, track.srclang));
+        select.value = resolved.video.defaultCaptionLanguage ?? '';
+        select.addEventListener('change', () => {
+          const language = select.value;
+          for (const node of trackNodes) node.track.mode = node.srclang === language ? 'showing' : 'disabled';
+          updateCaption();
+        });
+        video.textTracks.addEventListener('change', () => {
+          select.value = showingTrack()?.srclang ?? '';
+          updateCaption();
+        });
+        controlsBar.append(select);
+      }
       playerBox.append(video, controlsBar, captionLive);
+      if (resolved.video.narration === 'pending-original-voice') {
+        playerBox.append(makeEl('p', 'qvh-editorial-note', inSpanish
+          ? 'Vídeo de revisión con texto. Locución original pendiente.'
+          : 'Review video with text. Original narration pending.'));
+      }
       nodes.push(playerBox);
     } else if (resolved.playable && (state.videoFailed || isOffline)) {
       const fallbackNote = makeEl('p', 'qvh-fallback-note', uiCopy(state.locale, 'videoFallbackNote'));

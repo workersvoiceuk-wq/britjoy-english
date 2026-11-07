@@ -222,5 +222,681 @@
       "url": "https://www.pexels.com/video/woman-using-smartphone-6631689/",
       "kind": "media"
     }
+  },
+  {
+    "id": "britjoy-trabajo-pregunta-2",
+    "lessonId": "a2-u2-l1",
+    "questionId": "a2-u2-l1:2",
+    "duration": 19,
+    "title": [
+      "Documentos y horarios",
+      "Documents and hours"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "La nómina informa del pago. Un turno de noche indica a qué hora trabajas.",
+          "A payslip shows your pay. A night shift tells you when you work."
+        ],
+        "title": [
+          "Documentos y horarios",
+          "Documents and hours"
+        ],
+        "detail": "payslip → nómina · night shift → turno de noche"
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "text": [
+          "Part-time describe una jornada parcial. Job interview es una entrevista de trabajo.",
+          "Part-time describes reduced working hours. Job interview names the interview."
+        ],
+        "title": [
+          "Contratos y entrevistas",
+          "Contracts and interviews"
+        ],
+        "detail": "part-time → media jornada · job interview → entrevista"
+      },
+      {
+        "start": 12,
+        "end": 19,
+        "text": [
+          "Una persona puede trabajar part-time y también hacer night shifts. Una palabra indica jornada y la otra indica horario.",
+          "Someone may work part-time and also do night shifts. One term describes hours and the other describes timing."
+        ],
+        "title": [
+          "Distingue las dos ideas",
+          "Tell the ideas apart"
+        ],
+        "detail": "part-time = jornada · night shift = horario"
+      }
+    ],
+    "source": {
+      "title": "Tiger Lily · Pexels",
+      "url": "https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/",
+      "kind": "media"
+    }
+  },
+  {
+    "id": "britjoy-trabajo-pregunta-3",
+    "lessonId": "a2-u2-l1",
+    "questionId": "a2-u2-l1:3",
+    "duration": 19,
+    "title": [
+      "Expresa disponibilidad",
+      "Say when you are available"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "Empieza con «I’m available». Añade «to start» para decir que estás disponible para empezar.",
+          "Start with “I’m available.” Add “to start” to say that you are available to begin."
+        ],
+        "title": [
+          "Expresa disponibilidad",
+          "Say when you are available"
+        ],
+        "detail": "I’m available · to start"
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "text": [
+          "Para este día concreto, di «on Monday». En un ejemplo distinto, «in May» señala el mes.",
+          "For this specific day, say “on Monday.” In a different example, “in May” names the month."
+        ],
+        "title": [
+          "Usa on con el día",
+          "Use on with the day"
+        ],
+        "detail": "on Monday · in May"
+      },
+      {
+        "start": 13,
+        "end": 19,
+        "text": [
+          "«I’m available to start on Monday.» Cambia Monday por Friday para practicar otra fecha.",
+          "“I’m available to start on Monday.” Swap Monday for Friday to practise a different date."
+        ],
+        "title": [
+          "Ordena la frase",
+          "Put the sentence in order"
+        ],
+        "detail": "I’m available to start · on Monday."
+      }
+    ],
+    "source": {
+      "title": "Tiger Lily · Pexels",
+      "url": "https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/",
+      "kind": "media"
+    }
+  },
+  {
+    "id": "britjoy-trabajo-pregunta-4",
+    "lessonId": "a2-u2-l1",
+    "questionId": "a2-u2-l1:4",
+    "duration": 18,
+    "title": [
+      "Ubica el verbo",
+      "Find the verb"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "En una petición con «Could you…?», después de «you» va el verbo en su forma base.",
+          "In a request with “Could you…?”, the base form comes after “you.”"
+        ],
+        "title": [
+          "Ubica el verbo",
+          "Find the verb"
+        ],
+        "detail": "Could you…? · verbo base"
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "text": [
+          "«Repeat» es la forma base. «Repeating» añade -ing y «repeated» cambia la forma del verbo.",
+          "“Repeat” is the base form. “Repeating” adds -ing and “repeated” changes the verb form."
+        ],
+        "title": [
+          "Elige repeat",
+          "Choose repeat"
+        ],
+        "detail": "repeat ✓ · repeating / repeated ✕"
+      },
+      {
+        "start": 12,
+        "end": 18,
+        "text": [
+          "«Could you repeat that question, please?» En otro contexto puedes decir «Could you explain that again, please?».",
+          "“Could you repeat that question, please?” In another situation, try “Could you explain that again, please?”."
+        ],
+        "title": [
+          "Completa la petición",
+          "Complete the request"
+        ],
+        "detail": "repeat that question · explain that again"
+      }
+    ],
+    "source": {
+      "title": "Tiger Lily · Pexels",
+      "url": "https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/",
+      "kind": "media"
+    }
+  },
+  {
+    "id": "britjoy-trabajo-pregunta-5",
+    "lessonId": "a2-u2-l1",
+    "questionId": "a2-u2-l1:5",
+    "duration": 18,
+    "title": [
+      "Oye la disponibilidad",
+      "Listen for availability"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "«I can work» indica que la persona sí puede trabajar. «I can’t» expresa lo contrario.",
+          "“I can work” means the speaker is able to work. “I can’t” reverses that meaning."
+        ],
+        "title": [
+          "Oye la disponibilidad",
+          "Listen for availability"
+        ],
+        "detail": "I can work · I can’t work"
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "text": [
+          "«Morning shift» indica turno de mañana. «Walk in the morning» hablaría de caminar, no de trabajar.",
+          "“Morning shift” refers to a shift in the morning. “Walk in the morning” would describe walking."
+        ],
+        "title": [
+          "Identifica el turno",
+          "Identify the shift"
+        ],
+        "detail": "morning shift · walk in the morning"
+      },
+      {
+        "start": 12,
+        "end": 18,
+        "text": [
+          "«I can work the morning shift.» Vuelve al audio de la lección y escucha «work» y «shift».",
+          "“I can work the morning shift.” Replay the lesson audio and listen for “work” and “shift.”"
+        ],
+        "title": [
+          "Recupera el enunciado",
+          "Recall the sentence"
+        ],
+        "detail": "I can work · the morning shift"
+      }
+    ],
+    "source": {
+      "title": "Tiger Lily · Pexels",
+      "url": "https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/",
+      "kind": "media"
+    }
+  },
+  {
+    "id": "britjoy-trabajo-pregunta-6",
+    "lessonId": "a2-u2-l1",
+    "questionId": "a2-u2-l1:6",
+    "duration": 19,
+    "title": [
+      "Interrumpe con cortesía",
+      "Interrupt politely"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "Por teléfono, «Sorry, could you…» pide ayuda sin sonar como una orden.",
+          "On the phone, “Sorry, could you…” asks for help without sounding like an order."
+        ],
+        "title": [
+          "Interrumpe con cortesía",
+          "Interrupt politely"
+        ],
+        "detail": "Sorry, could you… · Speak slow now!"
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "text": [
+          "«Speak a bit more slowly» indica qué necesitas y suaviza la petición. «Please» completa la frase.",
+          "“Speak a bit more slowly” names what you need and softens the request. “Please” completes it."
+        ],
+        "title": [
+          "Pide que reduzca el ritmo",
+          "Ask for a slower pace"
+        ],
+        "detail": "a bit more slowly · please"
+      },
+      {
+        "start": 13,
+        "end": 19,
+        "text": [
+          "«Sorry, could you speak a bit more slowly, please?» Puedes usarla en una entrevista o llamada.",
+          "“Sorry, could you speak a bit more slowly, please?” You can use it in an interview or call."
+        ],
+        "title": [
+          "Practica la frase entera",
+          "Practise the whole phrase"
+        ],
+        "detail": "Sorry, could you speak · a bit more slowly, please?"
+      }
+    ],
+    "source": {
+      "title": "Tiger Lily · Pexels",
+      "url": "https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/",
+      "kind": "media"
+    }
+  },
+  {
+    "id": "britjoy-trabajo-pregunta-7",
+    "lessonId": "a2-u2-l1",
+    "questionId": "a2-u2-l1:7",
+    "duration": 18,
+    "title": [
+      "Habla de tu experiencia",
+      "Talk about experience"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "Empieza con «I have experience». Aquí «experience» habla de experiencia acumulada, sin artículo.",
+          "Start with “I have experience.” Here “experience” means accumulated experience, with no article."
+        ],
+        "title": [
+          "Habla de tu experiencia",
+          "Talk about experience"
+        ],
+        "detail": "I have experience · experiencia acumulada"
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "text": [
+          "«In customer service» señala el área de atención al cliente.",
+          "“In customer service” names the field of helping customers."
+        ],
+        "title": [
+          "Nombra el área",
+          "Name the field"
+        ],
+        "detail": "experience in… · customer service"
+      },
+      {
+        "start": 12,
+        "end": 18,
+        "text": [
+          "«I have experience in customer service.» Prueba también con otro ámbito, por ejemplo «in retail».",
+          "“I have experience in customer service.” Try another field, such as “in retail.”"
+        ],
+        "title": [
+          "Completa la traducción",
+          "Complete the translation"
+        ],
+        "detail": "I have experience · in customer service"
+      }
+    ],
+    "source": {
+      "title": "Tiger Lily · Pexels",
+      "url": "https://www.pexels.com/video/people-talking-in-the-warehouse-4284181/",
+      "kind": "media"
+    }
+  },
+  {
+    "id": "britjoy-gp-pregunta-2",
+    "lessonId": "a2-u2-l2",
+    "questionId": "a2-u2-l2:2",
+    "duration": 18,
+    "title": [
+      "Reconoce los síntomas",
+      "Recognise the symptoms"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "«Sore throat» significa dolor de garganta. «High temperature» se traduce aquí como fiebre.",
+          "“Sore throat” means pain in the throat. “High temperature” is paired with fever in this exercise."
+        ],
+        "title": [
+          "Reconoce los síntomas",
+          "Recognise the symptoms"
+        ],
+        "detail": "sore throat → garganta · high temperature → fiebre"
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "text": [
+          "«Pharmacy» o «chemist’s» es farmacia. «Proof of address» se refiere al comprobante de domicilio.",
+          "“Pharmacy” or “chemist’s” means a pharmacy. “Proof of address” is a document that confirms where you live."
+        ],
+        "title": [
+          "Distingue lugar y documento",
+          "Distinguish a place and a document"
+        ],
+        "detail": "pharmacy → farmacia · proof of address → domicilio"
+      },
+      {
+        "start": 12,
+        "end": 18,
+        "text": [
+          "«At the pharmacy» señala un lugar. «Bring proof of address» menciona un documento.",
+          "“At the pharmacy” names a place. “Bring proof of address” names a document."
+        ],
+        "title": [
+          "Practica con dos contextos",
+          "Practise in two contexts"
+        ],
+        "detail": "at the pharmacy · bring proof of address"
+      }
+    ],
+    "source": {
+      "title": "Kaboompics · Pexels",
+      "url": "https://www.pexels.com/video/woman-using-smartphone-6631689/",
+      "kind": "media"
+    }
+  },
+  {
+    "id": "britjoy-gp-pregunta-3",
+    "lessonId": "a2-u2-l2",
+    "questionId": "a2-u2-l2:3",
+    "duration": 18,
+    "title": [
+      "Busca el inicio",
+      "Find the starting point"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "«Yesterday morning» señala cuándo empezó el dolor, no cuánto tiempo lleva.",
+          "“Yesterday morning” says when it started rather than how long it has lasted."
+        ],
+        "title": [
+          "Busca el inicio",
+          "Find the starting point"
+        ],
+        "detail": "yesterday morning · punto de inicio"
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "text": [
+          "En este ejercicio, «since» marca el inicio. «For two days» señalaría una duración.",
+          "In this exercise, “since” marks the start. “For two days” would give a duration."
+        ],
+        "title": [
+          "Contrasta since y for",
+          "Compare since and for"
+        ],
+        "detail": "since yesterday morning · for two days"
+      },
+      {
+        "start": 12,
+        "end": 18,
+        "text": [
+          "«I’ve had a headache since yesterday morning.» Sustituye el inicio por «since Monday» para practicar.",
+          "“I’ve had a headache since yesterday morning.” Swap the start for “since Monday” to practise."
+        ],
+        "title": [
+          "Completa la frase",
+          "Complete the sentence"
+        ],
+        "detail": "I’ve had a headache · since yesterday morning"
+      }
+    ],
+    "source": {
+      "title": "Kaboompics · Pexels",
+      "url": "https://www.pexels.com/video/woman-using-smartphone-6631689/",
+      "kind": "media"
+    }
+  },
+  {
+    "id": "britjoy-gp-pregunta-4",
+    "lessonId": "a2-u2-l2",
+    "questionId": "a2-u2-l2:4",
+    "duration": 19,
+    "title": [
+      "Expresa lo que necesitas",
+      "Say what you need"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "«I need to» introduce una acción necesaria. Aquí la acción es recoger algo.",
+          "“I need to” introduces a necessary action. Here the action is collecting something."
+        ],
+        "title": [
+          "Expresa lo que necesitas",
+          "Say what you need"
+        ],
+        "detail": "I need to · necesito…"
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "text": [
+          "«Pick up» significa recoger en este contexto. «My prescription» identifica lo que vas a recoger.",
+          "“Pick up” means collect in this context. “My prescription” identifies what you will collect."
+        ],
+        "title": [
+          "Usa pick up",
+          "Use pick up"
+        ],
+        "detail": "pick up → recoger · my prescription → mi receta"
+      },
+      {
+        "start": 12,
+        "end": 19,
+        "text": [
+          "«I need to pick up my prescription.» Di primero la necesidad, luego la acción y por último el objeto.",
+          "“I need to pick up my prescription.” Say the need first, the action next and the object last."
+        ],
+        "title": [
+          "Ordena la frase",
+          "Put the sentence in order"
+        ],
+        "detail": "I need to pick up · my prescription."
+      }
+    ],
+    "source": {
+      "title": "Kaboompics · Pexels",
+      "url": "https://www.pexels.com/video/woman-using-smartphone-6631689/",
+      "kind": "media"
+    }
+  },
+  {
+    "id": "britjoy-gp-pregunta-5",
+    "lessonId": "a2-u2-l2",
+    "questionId": "a2-u2-l2:5",
+    "duration": 19,
+    "title": [
+      "Oye la cantidad",
+      "Listen for the quantity"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "En el audio del ejercicio, «one tablet» indica una unidad. «Two tablets» indicaría dos.",
+          "In the lesson audio, “one tablet” names one unit. “Two tablets” would mean two."
+        ],
+        "title": [
+          "Oye la cantidad",
+          "Listen for the quantity"
+        ],
+        "detail": "one tablet · two tablets"
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "text": [
+          "«Twice a day» significa dos veces al día. «Once a day» significa una vez al día.",
+          "“Twice a day” means two times each day. “Once a day” means one time each day."
+        ],
+        "title": [
+          "Distingue la frecuencia",
+          "Distinguish the frequency"
+        ],
+        "detail": "twice a day · once a day"
+      },
+      {
+        "start": 12,
+        "end": 19,
+        "text": [
+          "El enunciado del ejercicio dice «Take one tablet twice a day after meals». «After meals» significa después de las comidas.",
+          "The exercise sentence is “Take one tablet twice a day after meals.” “After meals” means following meals."
+        ],
+        "title": [
+          "Ubica after meals",
+          "Identify after meals"
+        ],
+        "detail": "after meals · before meals"
+      }
+    ],
+    "source": {
+      "title": "Kaboompics · Pexels",
+      "url": "https://www.pexels.com/video/woman-using-smartphone-6631689/",
+      "kind": "media"
+    },
+    "notice": [
+      "Práctica de inglés · No es una pauta médica",
+      "English practice · not medical instructions"
+    ]
+  },
+  {
+    "id": "britjoy-gp-pregunta-6",
+    "lessonId": "a2-u2-l2",
+    "questionId": "a2-u2-l2:6",
+    "duration": 20,
+    "title": [
+      "Entiende proof of address",
+      "Understand proof of address"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "En el ejercicio, se pide un documento que permita relacionar tu nombre con tu domicilio.",
+          "In the exercise, you are asked for a document that links your name to your address."
+        ],
+        "title": [
+          "Entiende proof of address",
+          "Understand proof of address"
+        ],
+        "detail": "Nombre · Dirección"
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "text": [
+          "De las opciones, la factura reciente o carta de council tax con ambos datos encaja con lo pedido.",
+          "Of the choices, the recent utility bill or council tax letter with both details fits the request."
+        ],
+        "title": [
+          "Compara los documentos",
+          "Compare the documents"
+        ],
+        "detail": "Utility bill · Council tax letter"
+      },
+      {
+        "start": 13,
+        "end": 20,
+        "text": [
+          "Un billete de autobús o una tarjeta sin dirección no aportan los datos que pide este ejercicio.",
+          "A bus ticket or a card without an address does not provide the details requested in this exercise."
+        ],
+        "title": [
+          "Descarta lo que falta",
+          "Rule out missing information"
+        ],
+        "detail": "Nombre + dirección ✓ · Sin dirección ✕"
+      }
+    ],
+    "source": {
+      "title": "Kaboompics · Pexels",
+      "url": "https://www.pexels.com/video/woman-using-smartphone-6631689/",
+      "kind": "media"
+    }
+  },
+  {
+    "id": "britjoy-gp-pregunta-7",
+    "lessonId": "a2-u2-l2",
+    "questionId": "a2-u2-l2:7",
+    "duration": 19,
+    "title": [
+      "Nombra la molestia",
+      "Name the symptom"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 6,
+        "text": [
+          "«Sore» significa dolorido en este contexto. «Throat» se refiere a la garganta.",
+          "“Sore” means painful in this context. “Throat” names the part of the body."
+        ],
+        "title": [
+          "Nombra la molestia",
+          "Name the symptom"
+        ],
+        "detail": "sore · throat"
+      },
+      {
+        "start": 6,
+        "end": 13,
+        "text": [
+          "En «I have a sore throat», «a» introduce el síntoma. Es una forma natural de decirlo.",
+          "In “I have a sore throat,” “a” introduces the symptom. This is a natural way to say it."
+        ],
+        "title": [
+          "Usa I have con el síntoma",
+          "Use I have with the symptom"
+        ],
+        "detail": "I have… · a sore throat"
+      },
+      {
+        "start": 13,
+        "end": 19,
+        "text": [
+          "«I have a sore throat.» Puedes practicar el mismo patrón con «I have a headache».",
+          "“I have a sore throat.” Practise the same pattern with “I have a headache.”"
+        ],
+        "title": [
+          "Completa la traducción",
+          "Complete the translation"
+        ],
+        "detail": "I have a sore throat · I have a headache"
+      }
+    ],
+    "source": {
+      "title": "Kaboompics · Pexels",
+      "url": "https://www.pexels.com/video/woman-using-smartphone-6631689/",
+      "kind": "media"
+    }
   }
 ]

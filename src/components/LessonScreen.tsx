@@ -338,7 +338,7 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
       </header>
       <div className="bunting" aria-hidden />
 
-      <main data-single-task-stage="true" className="mx-auto w-full max-w-2xl flex-1 px-4 pb-52 pt-4">
+      <main data-single-task-stage="true" className="mx-auto w-full max-w-2xl flex-1 px-4 pb-6 pt-4">
         {sections.length > 1 && (
           <ol className="mb-3 flex flex-wrap gap-1.5" aria-label="Fases de la lección">
             {sections.map((s, i) => (
@@ -495,7 +495,7 @@ export function LessonScreen({ level, lesson, onExit, onFinish }: Props) {
 
       <footer
         data-feedback-state={result ? (result.correct ? 'right' : 'wrong') : 'idle'}
-        className={`fixed inset-x-0 bottom-0 border-t-2 pb-[env(safe-area-inset-bottom)] ${
+        className={`sticky bottom-0 z-10 border-t-2 pb-[env(safe-area-inset-bottom)] ${
           result
             ? result.correct
               ? 'animate-slide-up border-brand bg-brand-light'

@@ -9,7 +9,7 @@ const reviewConcepts = clips.map((clip) => ({
   status: 'ready',
   durationSeconds: clip.duration,
   title: clip.title,
-  context: clip.cues[0].text,
+  context: clip.notice ?? clip.cues[0].text,
   visualExample: {
     kind: 'steps',
     badge: ['Demostración de práctica', 'Practice demonstration'],
@@ -25,6 +25,7 @@ const reviewConcepts = clips.map((clip) => ({
   sources: [clip.source],
   video: {
     src: `videos/ingles-a2/${clip.id}.mp4`,
+    narration: 'pending-original-voice',
     captions: {
       es: `videos/ingles-a2/${clip.id}.es.vtt`,
       en: `videos/ingles-a2/${clip.id}.en.vtt`,

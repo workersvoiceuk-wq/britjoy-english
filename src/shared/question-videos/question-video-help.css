@@ -126,6 +126,15 @@
   cursor: pointer;
 }
 
+.qvh-caption-select {
+  max-width: 100%;
+  border: 1px solid #94a3b8;
+  border-radius: 0.5rem;
+  padding: 0.45rem;
+  background: #fff;
+  color: #0f1d40;
+}
+
 .qvh-caption-live {
   margin: 0.45rem 0 0;
   padding: 0.35rem 0.55rem;
