@@ -2,16 +2,13 @@
 // sell digital goods outside Google Play / App Store billing). The subscription,
 // VUM Academy, is sold on vozunidamundo.com.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { APP_URL, admin, cors, currentUser, json, preflight } from "../_shared/http.ts";
+import { APP_URL, VIDA_DIARIA_URL, admin, cors, currentUser, json, preflight } from "../_shared/http.ts";
 import { PRODUCTS, isProduct } from "../_shared/products.ts";
 import { Stripe, stripe } from "../_shared/stripe.ts";
 import {
   VD_PRODUCT, automaticTaxEnabled, canStartCheckout, checkoutIdempotencyKey, checkoutParams, liveChargesAllowed, vdPriceIds,
   type CourseAccessRow,
 } from "../_shared/vida-diaria.ts";
-
-/** Where the learner returns after paying for «Inglés para el día a día». */
-const VD_URL = Deno.env.get("VIDA_DIARIA_URL") ?? "https://vozunidamundo.com/britjoy-english/vida-diaria/";
 
 Deno.serve(async (req: Request) => {
   const headers = cors(req.headers.get("origin"));
@@ -32,7 +29,8 @@ Deno.serve(async (req: Request) => {
     const price = [...vdPriceIds(Deno.env.get("STRIPE_PRICE_VIDA_DIARIA"))][0];
     if (!price) return json({ error: "not_configured" }, 503, headers);
     const db = admin();
-    const { data: access } = await db.from("course_access").select("*").eq("user_id", user.id).eq("product", VD_PRODUCT).maybeSingle();
+    const { data: access, error: accessError } = await db.from("course_access").select("*").eq("user_id", user.id).eq("product", VD_PRODUCT).maybeSingle();
+    if (accessError) return json({ error: "retry" }, 503, headers);
     if (!canStartCheckout(access as CourseAccessRow | null)) return json({ error: "already_active" }, 409, headers);
     // Una sesión abierta por alumno: decisión tomada con bloqueo en la base de datos (begin_course_checkout).
     const { data: plan, error: planError } = await db.rpc("begin_course_checkout", { p_user: user.id, p_product: VD_PRODUCT }).single();
@@ -41,7 +39,8 @@ Deno.serve(async (req: Request) => {
     if (step.action === "reuse" && step.url) return json({ url: step.url, reused: true }, 200, headers);
     const { data: profile } = await db.from("profiles").select("stripe_customer_id").eq("id", user.id).maybeSingle();
     const params = checkoutParams({
-      price, user: user.id, email: user.email, customer: profile?.stripe_customer_id ?? null, returnUrl: VD_URL,
+      price, user: user.id, email: user.email, customer: (access as CourseAccessRow | null)?.stripe_customer_id ?? profile?.stripe_customer_id ?? null,
+      returnUrl: VIDA_DIARIA_URL,
       // Stripe Tax solo cuando el dueño confirme el tratamiento del IVA: VIDA_DIARIA_AUTOMATIC_TAX=on.
       automaticTax: automaticTaxEnabled(Deno.env.get("VIDA_DIARIA_AUTOMATIC_TAX")),
     });

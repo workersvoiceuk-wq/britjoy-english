@@ -16,6 +16,7 @@ export const ALLOWED_ORIGINS = new Set([
 
 /** Where Stripe sends the learner back after paying (the published web app). */
 export const APP_URL = Deno.env.get("APP_URL") ?? "https://workersvoiceuk-wq.github.io/britjoy-english/";
+export const VIDA_DIARIA_URL = Deno.env.get("VIDA_DIARIA_URL") ?? "https://vozunidamundo.com/britjoy-english/vida-diaria/";
 
 export function cors(origin: string | null): Record<string, string> {
   const allowed = origin && ALLOWED_ORIGINS.has(origin) ? origin : "https://workersvoiceuk-wq.github.io";

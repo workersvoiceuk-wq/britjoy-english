@@ -170,6 +170,11 @@ test('compra de prueba, cancelación, caducidad y cuenta distinta (servidor con 
   await expect(page.getByText((compras!.lessons[0].exercises[0] as { title: string }).title).first()).toBeVisible();
 
   // Cancelación al final del periodo: conserva el acceso hasta esa fecha.
+  await page.goto('/vida-diaria/#/');
+  const portal = page.waitForResponse((res) => res.url().endsWith('/functions/v1/vida-diaria') && res.request().postDataJSON()?.action === 'portal');
+  await page.getByRole('button', { name: 'Gestionar o cancelar la suscripción' }).click();
+  expect((await portal).ok()).toBe(true);
+  expect(backend.portalCustomers).toEqual([`cus_e2e_${USERS.a.id}`]);
   const end = backend.row(USERS.a.id)!.access_until!;
   backend.now += 86_400;
   backend.deliver('customer.subscription.updated', USERS.a.id, { cancel: true, end: Math.floor(Date.parse(end) / 1000) });

@@ -229,6 +229,7 @@ function AccessPanel({ t, ui, access, onAccessChange, setNotice }: {
 }) {
   const [busy, setBusy] = useState(false);
   const price = access?.kind === 'status' ? access.price.display : '£19.99';
+  const paymentDue = access?.kind === 'status' && !access.active && access.status === 'past_due';
   const subscribe = async () => {
     setBusy(true);
     const r = await startCheckout().catch(() => 'error' as const);
@@ -255,14 +256,14 @@ function AccessPanel({ t, ui, access, onAccessChange, setNotice }: {
                 {access.cancelAtPeriodEnd && access.until ? t.endsOn(fmtDate(access.until, ui)) : access.until ? t.activeUntil(fmtDate(access.until, ui)) : ''}
               </p>
             ) : (
-              access.status === 'pending' ? <p className="font-bold text-brand-dark" role="status">{t.paid}</p> : access.status !== 'none' && <p className="font-bold text-ink">{t.expired}</p>
+              access.status === 'pending' ? <p className="font-bold text-brand-dark" role="status">{t.paid}</p> : access.status !== 'none' && <p className="font-bold text-ink">{paymentDue ? t.paymentDue : t.expired}</p>
             )}
-            {!access.active && access.status !== 'pending' && (
+            {!access.active && !paymentDue && access.status !== 'pending' && (
               <button type="button" disabled={busy} onClick={subscribe} className="press min-h-[48px] w-full rounded-2xl px-4 font-black text-white disabled:opacity-60" style={{ background: ACCENT }}>
                 {t.subscribe} · {t.price(price)}
               </button>
             )}
-            {access.active && (
+            {(access.active || paymentDue) && (
               <button type="button" onClick={() => void manageSubscription().catch(() => setNotice(t.error))} className="press min-h-[44px] w-full rounded-2xl border-2 border-navy/20 px-4 font-black text-navy">
                 {t.manage}
               </button>

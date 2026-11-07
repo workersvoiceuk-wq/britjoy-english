@@ -3,10 +3,12 @@
 // El contenido de pago NO está en este repositorio ni en la web: vive en el bucket PRIVADO de Supabase Storage
 // «vida-diaria-premium» (lo sube el dueño con el paquete privado) y solo esta función lo lee, con service role.
 //   POST { action: "status" }                                  → AccessStatus
+//   POST { action: "portal" }                                  → URL de Stripe para el cliente del curso
 //   POST { action: "module", module: "02-…" }                  → { module } | 402 | 404
 //   POST { action: "media", module, kind: video|es|en, source } → MP4 / VTT | 402 | 404
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { admin, cors, currentUser, json, preflight } from "../_shared/http.ts";
+import { VIDA_DIARIA_URL, admin, cors, currentUser, json, preflight } from "../_shared/http.ts";
+import { stripe } from "../_shared/stripe.ts";
 import { VD_PRODUCT, accessStatus, decideModule, type CourseAccessRow } from "../_shared/vida-diaria.ts";
 
 const BUCKET = "vida-diaria-premium";
@@ -20,9 +22,17 @@ Deno.serve(async (req: Request) => {
 
   const body = (await req.json().catch(() => ({}))) as { action?: unknown; module?: unknown; kind?: unknown; source?: unknown };
   const db = admin();
-  const { data } = await db.from("course_access").select("*").eq("user_id", user.id).eq("product", VD_PRODUCT).maybeSingle();
+  const { data, error: accessError } = await db.from("course_access").select("*").eq("user_id", user.id).eq("product", VD_PRODUCT).maybeSingle();
+  if (accessError) return json({ error: "retry" }, 503, headers);
   const row = (data as CourseAccessRow | null) ?? null;
   if (body.action === "status") return json(accessStatus(row), 200, headers);
+  if (body.action === "portal") {
+    if (!row?.stripe_customer_id) return json({ error: "no_customer" }, 404, headers);
+    const client = stripe();
+    if (!client) return json({ error: "not_configured" }, 503, headers);
+    const session = await client.billingPortal.sessions.create({ customer: row.stripe_customer_id, return_url: VIDA_DIARIA_URL });
+    return json({ url: session.url }, 200, headers);
+  }
 
   if (body.action !== "module" && body.action !== "media") return json({ error: "invalid_action" }, 400, headers);
   const decision = decideModule(body.module, row);

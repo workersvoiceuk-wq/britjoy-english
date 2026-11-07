@@ -1,6 +1,6 @@
 // «Inglés para el día a día»: talks to the server (Supabase Edge Functions). The access state shown in the page is
 // whatever the server says; nothing in the browser can unlock a paid module. Paid lessons are kept in memory only.
-import { backendConfigured, callFunction, callFunctionRaw, currentSession, manageSubscription } from '../lib/backend';
+import { backendConfigured, callFunction, callFunctionRaw, currentSession } from '../lib/backend';
 import type { Unit } from '../types';
 import sample from '../data/courses/dia-a-dia/01-presentaciones.json';
 
@@ -79,4 +79,8 @@ export async function loadMedia(module: string, kind: 'video' | 'es' | 'en', sou
   return url;
 }
 
-export { manageSubscription };
+export async function manageSubscription(): Promise<void> {
+  const { ok, data } = await callFunction<{ url?: string; error?: string }>('vida-diaria', { action: 'portal' });
+  if (!ok || !data.url) throw new Error(data.error ?? 'portal_failed');
+  window.location.assign(data.url);
+}

@@ -58,6 +58,7 @@ export class FakeBackend {
 
   checkouts = new Map<string, CheckoutState>();
   sessionsCreated = 0;
+  portalCustomers: string[] = [];
 
   async install(page: Page) {
     await page.route(`${API}/**`, (route) => this.handle(route));
@@ -93,9 +94,13 @@ export class FakeBackend {
       this.subscribe(user.id);
       return json(200, { url: 'http://127.0.0.1:4174/vida-diaria/?pago=ok' });
     }
-    if (fn === 'billing-portal') return json(200, { url: 'http://127.0.0.1:4174/vida-diaria/#/' });
     if (fn !== 'vida-diaria') return json(404, { error: 'not_found' });
     if (body.action === 'status') return json(200, accessStatus(row, nowMs));
+    if (body.action === 'portal') {
+      if (!row?.stripe_customer_id) return json(404, { error: 'no_customer' });
+      this.portalCustomers.push(row.stripe_customer_id);
+      return json(200, { url: 'http://127.0.0.1:4174/vida-diaria/#/' });
+    }
     const decision = decideModule(body.module, row, nowMs);
     if (decision === 'unknown_module') return json(404, { error: decision });
     if (decision === 'payment_required') return json(402, { error: decision });

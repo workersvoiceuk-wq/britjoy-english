@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
-  CHECKOUT_REUSE_MARGIN_MS, VD_PRODUCT, accessChangeFromEvent, accessStatus, applyAccessChange, applyPayment, automaticTaxEnabled,
+  VD_PRODUCT, accessChangeFromEvent, accessStatus, applyAccessChange, applyPayment, automaticTaxEnabled,
   VD_WEBHOOK_EVENTS, canStartCheckout, checkoutParams, decideModule, isVidaDiariaCheckout, isVidaDiariaEvent, liveChargesAllowed,
   paymentFromEvent, planCheckout,
   vdPriceIds, type CheckoutState, type CourseAccessRow,
@@ -43,7 +43,7 @@ function paidEvent(created: number, end: number, opts: Partial<{ user: string; p
   return { id: `evt_test_${++n}`, type: 'invoice.paid', created, data: { object } };
 }
 
-function subEvent(type: string, created: number, sub: Partial<{ status: string; user: string; end: number; start: number; cancel: boolean; price: string; product: string; id: string }>) {
+function subEvent(type: string, created: number, sub: Partial<{ status: string; user: string; end: number; start: number; cancel: boolean; cancelAt: number; price: string; product: string; id: string }>) {
   return {
     id: `evt_test_${++n}`,
     type,
@@ -54,6 +54,7 @@ function subEvent(type: string, created: number, sub: Partial<{ status: string; 
         status: sub.status ?? 'active',
         customer: 'cus_test_1',
         cancel_at_period_end: sub.cancel ?? false,
+        cancel_at: sub.cancelAt ?? null,
         metadata: { user_id: sub.user ?? 'user-a', product: sub.product ?? VD_PRODUCT },
         items: { data: [{ price: { id: sub.price ?? PRICE }, current_period_start: sub.start ?? (sub.end ?? T0 + 30 * DAY) - 30 * DAY, current_period_end: sub.end ?? T0 + 30 * DAY }] },
       },
@@ -101,6 +102,7 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
     expect(s.webhook(subEvent('customer.subscription.created', T0, {}), T0)).toBe(true);
     // Subscription without its paid invoice yet: not open (events can arrive in any order).
     expect(s.status('user-a', T0)).toMatchObject({ active: false, status: 'pending' });
+    expect(canStartCheckout(s.row('user-a'), T0 * 1000)).toBe(false);
     expect(s.webhook(paidEvent(T0, T0 + 30 * DAY), T0)).toBe(true);
     expect(s.status('user-a', T0)).toMatchObject({ active: true, status: 'active', cancelAtPeriodEnd: false });
     for (const id of ['02-compras', '07-trabajo', '12-opiniones']) expect(s.module('user-a', id, T0)).toBe('granted');
@@ -135,6 +137,15 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
     s.webhook(subEvent('customer.subscription.deleted', T0 + DAY, { status: 'canceled' }), T0 + DAY);
     expect(s.module('user-a', '03-transporte', T0 + DAY)).toBe('payment_required');
     expect(canStartCheckout(s.row('user-a'), (T0 + DAY) * 1000)).toBe(true); // puede volver a suscribirse
+  });
+
+  it('cancelación con fecha (modo flexible): muestra el fin programado y lo respeta', () => {
+    const s = server();
+    const cancelAt = T0 + 20 * DAY;
+    s.subscribe('user-a', T0);
+    s.webhook(subEvent('customer.subscription.updated', T0 + DAY, { cancelAt }), T0 + DAY);
+    expect(s.status('user-a', T0 + DAY)).toMatchObject({ active: true, cancelAtPeriodEnd: true, until: new Date(cancelAt * 1000).toISOString() });
+    expect(s.module('user-a', '05-salud', cancelAt)).toBe('payment_required');
   });
 
   it('caducidad: sin renovación el acceso termina al final del periodo; una renovación lo amplía; impago lo cierra', () => {
@@ -183,6 +194,8 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
     s.webhook(subEvent('customer.subscription.updated', end + 3600, { start: end, end: end + 30 * DAY, status: 'past_due' }), end + 3600);
     expect(s.row('user-a')!.access_until).toBe(new Date(end * 1000).toISOString());
     expect(s.module('user-a', '06-empleo', end + 2 * DAY)).toBe('payment_required');
+    expect(s.status('user-a', end + 2 * DAY)).toMatchObject({ active: false, status: 'past_due' });
+    expect(canStartCheckout(s.row('user-a'), (end + 2 * DAY) * 1000)).toBe(false);
     // Paying later reopens it up to the newly paid date.
     s.webhook(paidEvent(end + 3 * DAY, end + 30 * DAY), end + 3 * DAY);
     s.webhook(subEvent('customer.subscription.updated', end + 3 * DAY + 1, { start: end, end: end + 30 * DAY }), end + 3 * DAY + 1);
@@ -250,7 +263,9 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
     expect(await request('user-a')).toBe(urls[0]); // reused while open
     expect(await request('user-b')).not.toBe(urls[0]); // another account gets its own
     expect(stripe.created).toBe(2);
-    clock += 3600_000 - CHECKOUT_REUSE_MARGIN_MS + 1000; // about to expire → recover with a new attempt
+    clock += 3600_000 - 1000;
+    expect(await request('user-a')).toBe(urls[0]); // the old session can still take payment
+    clock += 1000; // expired → recover with a new attempt
     const after = await Promise.all([request('user-a'), request('user-a'), request('user-a')]);
     expect(new Set(after).size).toBe(1);
     expect(after[0]).not.toBe(urls[0]);
@@ -262,11 +277,12 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
     expect(automaticTaxEnabled(undefined)).toBe(false);
     expect(automaticTaxEnabled('true')).toBe(false);
     expect(automaticTaxEnabled('on')).toBe(true);
-    const base = { price: PRICE, user: 'user-a', email: 'a@example.com', returnUrl: 'https://vozunidamundo.com/britjoy-english/vida-diaria/', now: T0 * 1000 };
+    const base = { price: PRICE, user: 'user-a', email: 'a@example.com', returnUrl: 'https://vozunidamundo.com/britjoy-english/vida-diaria/' };
     const off = checkoutParams({ ...base, automaticTax: false });
     expect(off).not.toHaveProperty('automatic_tax');
     expect(off).toMatchObject({ mode: 'subscription', line_items: [{ price: PRICE, quantity: 1 }], customer_email: 'a@example.com',
-      subscription_data: { metadata: { user_id: 'user-a', product: VD_PRODUCT } }, expires_at: T0 + 3600 });
+      subscription_data: { metadata: { user_id: 'user-a', product: VD_PRODUCT } } });
+    expect(off).not.toHaveProperty('expires_at'); // Stripe sets it; time-sensitive request values would break idempotent retries.
     const on = checkoutParams({ ...base, automaticTax: true });
     expect(on).toMatchObject({ automatic_tax: { enabled: true }, billing_address_collection: 'required' });
     expect(on).not.toHaveProperty('customer_update'); // only for an existing customer

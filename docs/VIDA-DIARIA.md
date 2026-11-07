@@ -62,7 +62,7 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
 1. **Publicar** el `dist/` de esta rama en `/britjoy-english/`, conservando la ruta `vida-diaria/`. Las rutas son relativas (`base: './'`).
 2. **Compilar** con `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`. La clave pública ya la usa la app; no es secreta.
 3. **Endpoints**, en `https://<ref>.supabase.co/functions/v1/…`:
-   - `vida-diaria` y `billing-checkout`, con la sesión del alumno;
+   - `vida-diaria` (acceso, contenido y portal de facturas/cancelación) y `billing-checkout`, con la sesión del alumno;
    - `vida-diaria-webhook`, firmado por Stripe desde el destino propio del curso.
 4. **CORS:** se han añadido `https://vozunidamundo.com` y `https://www.vozunidamundo.com`, sin comodines.
 5. **El enlace antiguo `?curso=dia-a-dia`** redirige a `vida-diaria/`, y la ficha del catálogo general abre la página del curso.
@@ -90,19 +90,20 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
 
       No hay que añadir estos eventos a los destinos de Academy ni de membresías.
    3. Copiar el secreto de firma de ese destino (`whsec_…`) en el secreto `STRIPE_WEBHOOK_SECRET_VIDA_DIARIA` de Supabase. Es distinto del secreto `STRIPE_WEBHOOK_SECRET` de `billing-webhook`.
-   4. IVA: cuando se confirme, activar Stripe Tax y poner `VIDA_DIARIA_AUTOMATIC_TAX=on`. Hasta entonces, el checkout no calcula impuestos.
+   4. Habilitar el historial de facturas y la cancelación al final del periodo en el portal de clientes del sandbox. El portal se abre con el cliente Stripe de la suscripción del curso.
+   5. IVA: dejar `VIDA_DIARIA_AUTOMATIC_TAX` desactivado mientras no corresponda cobrar IVA. Activarlo únicamente cuando exista un registro fiscal activo y se haya confirmado el tratamiento aplicable.
 4. **Secretos opcionales:** `VIDA_DIARIA_URL`, la URL de vuelta tras el pago (por defecto `https://vozunidamundo.com/britjoy-english/vida-diaria/`).
 5. **Prueba completa en el sandbox:**
    - una compra con tarjeta de prueba: en el destino nuevo llegan `invoice.paid` y `customer.subscription.created` con respuesta 200;
    - acceso a los módulos 2 a 12;
-   - dos clics seguidos en «Suscribirme»: una sola sesión;
-   - cancelar desde el portal: el acceso se mantiene hasta la fecha;
-   - una renovación con tarjeta que falla (por ejemplo, con un *test clock*): el acceso no pasa de la fecha pagada;
+   - dos clics seguidos en «Suscribirme»: una sola sesión que se reutiliza hasta que Stripe la expire;
+   - abrir la factura y cancelar desde el portal: el acceso se mantiene hasta la fecha programada (`cancel_at` en modo flexible);
+   - una renovación con tarjeta que falla (por ejemplo, con un *test clock*): el acceso no pasa de la fecha pagada y el alumno gestiona el pago pendiente desde el portal;
    - otra cuenta: sin acceso;
    - una petición sin sesión: 401.
 
    Comprobar también en Stripe que los destinos de Academy y de membresías **no** han recibido nada nuevo del curso.
-6. **Producción:** solo tras esa verificación y la confirmación del IVA.
+6. **Producción:** solo tras completar las pruebas y confirmar el tratamiento de IVA que corresponda.
    - Crear el mismo destino separado en el modo real, con su propio `whsec_`, y el precio real.
    - Cambiar a la clave `sk_live_` y poner `VIDA_DIARIA_LIVE=on`.
    - Lo decide y lo hace el dueño, sin tocar los webhooks existentes.

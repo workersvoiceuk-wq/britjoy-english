@@ -31,6 +31,7 @@ export interface SubscriptionLike {
   status: string;
   customer: string | { id: string };
   cancel_at_period_end?: boolean;
+  cancel_at?: number | null;
   current_period_end?: number;
   current_period_start?: number;
   metadata?: Record<string, string> | null;
@@ -96,7 +97,8 @@ export function accessChangeFromEvent(
   if (!user) return null;
   const deleted = event.type === 'customer.subscription.deleted';
   // An unpaid renewal (past_due) keeps access only up to the start of the unpaid period, i.e. the date paid for.
-  const end = sub.status === 'past_due' ? periodStartSeconds(sub) : periodEndSeconds(sub);
+  const periodEnd = sub.status === 'past_due' ? periodStartSeconds(sub) : periodEndSeconds(sub);
+  const end = periodEnd !== null && sub.cancel_at != null ? Math.min(periodEnd, sub.cancel_at) : periodEnd;
   const live = !deleted && LIVE.has(sub.status) && end !== null;
   return {
     event: event.id,
@@ -105,7 +107,7 @@ export function accessChangeFromEvent(
     product: VD_PRODUCT,
     status: deleted ? 'canceled' : sub.status,
     accessUntil: live ? new Date(end! * 1000).toISOString() : null,
-    cancelAtPeriodEnd: Boolean(sub.cancel_at_period_end),
+    cancelAtPeriodEnd: Boolean(sub.cancel_at_period_end || sub.cancel_at != null),
     subscription: sub.id,
     customer: typeof sub.customer === 'string' ? sub.customer : sub.customer?.id ?? null,
   };
@@ -223,8 +225,8 @@ export function accessStatus(row: CourseAccessRow | null | undefined, now = Date
     product: VD_PRODUCT,
     price: VD_PRICE,
     active,
-    // none · active/trialing/past_due (with access) · pending (paid or subscribed, the other signed event not in yet) · expired
-    status: !row ? 'none' : active ? row.status : pendingActivation(row, now) ? 'pending' : 'expired',
+    // An overdue learner can manage the same subscription even after paid access expires.
+    status: !row ? 'none' : active || row.status === 'past_due' ? row.status : pendingActivation(row, now) ? 'pending' : 'expired',
     until: active ? new Date(effectiveUntil(row)!).toISOString() : null,
     cancelAtPeriodEnd: Boolean(row?.cancel_at_period_end && active),
     sample: VD_SAMPLE_MODULES,
@@ -239,9 +241,9 @@ export function decideModule(moduleId: unknown, row: CourseAccessRow | null | un
   return hasCourseAccess(row, now) ? 'granted' : 'payment_required';
 }
 
-/** New sign-ups only: a learner who already has live access is not sent to a second checkout. */
+/** Payment retries for an existing subscription belong in the portal. */
 export function canStartCheckout(row: CourseAccessRow | null | undefined, now = Date.now()): boolean {
-  return !hasCourseAccess(row, now);
+  return !row || (row.status !== 'past_due' && !hasCourseAccess(row, now) && !pendingActivation(row, now));
 }
 
 /** Real charges stay off until the owner switches them on after verifying access in test mode. */
@@ -259,11 +261,6 @@ export function liveChargesAllowed(secretKey: string | undefined, liveFlag: stri
 export interface CheckoutState { attempt: number; session_id: string | null; url: string | null; expires_at: string | null }
 export type CheckoutPlan = { action: 'reuse'; url: string } | { action: 'create'; attempt: number; idempotencyKey: string };
 
-/** Minimum life left (ms) for a recorded session to be handed out again. */
-export const CHECKOUT_REUSE_MARGIN_MS = 5 * 60_000;
-/** Lifetime requested for new sessions (Stripe allows 30 min to 24 h). */
-export const CHECKOUT_TTL_S = 60 * 60;
-
 export function checkoutIdempotencyKey(user: string, attempt: number): string {
   return `vida-diaria-checkout:${user}:${attempt}`;
 }
@@ -272,10 +269,10 @@ export function checkoutIdempotencyKey(user: string, attempt: number): string {
 export function planCheckout(user: string, state: CheckoutState | null, now = Date.now()): CheckoutPlan {
   if (!state) return { action: 'create', attempt: 1, idempotencyKey: checkoutIdempotencyKey(user, 1) };
   const exp = state.expires_at ? Date.parse(state.expires_at) : null;
-  if (state.url && exp !== null && exp - CHECKOUT_REUSE_MARGIN_MS > now) return { action: 'reuse', url: state.url };
+  if (state.url && exp !== null && exp > now) return { action: 'reuse', url: state.url };
   // No session recorded yet for this attempt (another request is creating it): same attempt, same key, same session.
   if (!state.session_id) return { action: 'create', attempt: state.attempt, idempotencyKey: checkoutIdempotencyKey(user, state.attempt) };
-  // Recorded session expired (or about to): recover with a new attempt.
+  // Recorded session expired: recover with a new attempt.
   const attempt = state.attempt + 1;
   return { action: 'create', attempt, idempotencyKey: checkoutIdempotencyKey(user, attempt) };
 }
@@ -284,18 +281,18 @@ export function planCheckout(user: string, state: CheckoutState | null, now = Da
 export const automaticTaxEnabled = (flag: string | undefined) => flag === 'on';
 
 export function checkoutParams(a: {
-  price: string; user: string; email?: string | null; customer?: string | null; returnUrl: string; automaticTax: boolean; now?: number;
+  price: string; user: string; email?: string | null; customer?: string | null; returnUrl: string; automaticTax: boolean;
 }): Record<string, unknown> {
-  const now = Math.floor((a.now ?? Date.now()) / 1000);
   return {
     mode: 'subscription',
+    integration_identifier: 'vum-vida-diaria-wnkcfbtr',
     line_items: [{ price: a.price, quantity: 1 }],
     client_reference_id: a.user,
     metadata: { user_id: a.user, product: VD_PRODUCT },
     // Access comes from the subscription events: their metadata names the account and the product.
     subscription_data: { metadata: { user_id: a.user, product: VD_PRODUCT } },
     ...(a.customer ? { customer: a.customer } : { customer_email: a.email ?? undefined }),
-    expires_at: now + CHECKOUT_TTL_S,
+    // Stripe sets the expiry so retries with the same idempotency key send the same parameters.
     ...(a.automaticTax
       ? { automatic_tax: { enabled: true }, billing_address_collection: 'required', ...(a.customer ? { customer_update: { address: 'auto', name: 'auto' } } : {}) }
       : {}),

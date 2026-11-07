@@ -37,6 +37,9 @@ begin
   assert r.action = 'reuse' and r.url = 'https://x/1', 'reutilizar';
   update public.course_checkout set expires_at = now() + interval '2 minutes';
   select * into r from public.begin_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly');
+  assert r.action = 'reuse', 'reutilizar mientras la sesión aún pueda cobrar';
+  update public.course_checkout set expires_at = now() - interval '1 second';
+  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly');
   assert r.action = 'create' and r.attempt = 2, 'recuperar al caducar';
   assert public.record_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 1, 'cs_old', 'https://x/old', now() + interval '1 hour') is null, 'un intento viejo no pisa';
 end $$;

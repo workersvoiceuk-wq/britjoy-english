@@ -44,6 +44,9 @@ alter table public.course_access enable row level security;
 alter table public.course_access_events enable row level security;
 alter table public.course_checkout enable row level security; -- sin políticas: solo service role
 
+grant select on public.course_access to authenticated;
+grant select, insert, update on public.course_access, public.course_access_events, public.course_checkout to service_role;
+
 create policy "read own course access" on public.course_access
   for select to authenticated using ((select auth.uid()) = user_id);
 
@@ -121,7 +124,7 @@ $$;
 
 -- Toma (con bloqueo por alumno) la decisión de Checkout: reutilizar la sesión abierta o crear con un intento.
 -- Mismo criterio que planCheckout() en _shared/vida-diaria.ts.
-create function public.begin_course_checkout(p_user uuid, p_product text, p_reuse_margin interval default interval '5 minutes')
+create function public.begin_course_checkout(p_user uuid, p_product text)
 returns table (action text, attempt integer, url text)
 language plpgsql security definer set search_path = '' as $$
 #variable_conflict use_column
@@ -131,7 +134,7 @@ begin
   insert into public.course_checkout (user_id, product, attempt) values (p_user, p_product, 1)
     on conflict (user_id, product) do nothing;
   select * into v from public.course_checkout c where c.user_id = p_user and c.product = p_product for update;
-  if v.url is not null and v.expires_at is not null and v.expires_at - p_reuse_margin > now() then
+  if v.url is not null and v.expires_at > now() then
     return query select 'reuse'::text, v.attempt, v.url;
   elsif v.session_id is null then
     return query select 'create'::text, v.attempt, null::text;
@@ -153,10 +156,10 @@ language sql security definer set search_path = '' as $$
 $$;
 
 revoke all on function public.apply_course_payment(text, uuid, text, timestamptz, text) from public, anon, authenticated;
-revoke all on function public.begin_course_checkout(uuid, text, interval) from public, anon, authenticated;
+revoke all on function public.begin_course_checkout(uuid, text) from public, anon, authenticated;
 revoke all on function public.record_course_checkout(uuid, text, integer, text, text, timestamptz) from public, anon, authenticated;
 grant execute on function public.apply_course_payment(text, uuid, text, timestamptz, text) to service_role;
-grant execute on function public.begin_course_checkout(uuid, text, interval) to service_role;
+grant execute on function public.begin_course_checkout(uuid, text) to service_role;
 grant execute on function public.record_course_checkout(uuid, text, integer, text, text, timestamptz) to service_role;
 
 -- Contenido de pago (módulos 02–12, vídeos y subtítulos): bucket PRIVADO. Sin políticas para anon ni authenticated:
