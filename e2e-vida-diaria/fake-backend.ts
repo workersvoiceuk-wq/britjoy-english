@@ -6,8 +6,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { Page, Route } from '@playwright/test';
 import {
-  VD_PRODUCT, accessChangeFromEvent, accessStatus, applyAccessChange, applyPayment, canStartCheckout, decideModule,
-  paymentFromEvent, planCheckout, vdPriceIds, type CheckoutState, type CourseAccessRow,
+  VD_PRODUCT, accessStatus, applyVidaDiariaEvent, canStartCheckout, decideModule, newPaymentBook,
+  planCheckout, vdPriceIds, type CheckoutState, type CourseAccessRow,
 } from '../supabase/functions/_shared/vida-diaria';
 
 // Paid content comes from the private package (VD_PREMIUM_DIR), never from this public repository.
@@ -22,7 +22,7 @@ export const USERS = { a: { id: '00000000-0000-4000-8000-00000000000a', email: '
 export class FakeBackend {
   rows = new Map<string, CourseAccessRow>();
   seen = new Set<string>();
-  payments = new Map<string, string>();
+  book = newPaymentBook();
   now = Math.floor(Date.now() / 1000);
   log: string[] = [];
   private n = 0;
@@ -31,7 +31,7 @@ export class FakeBackend {
   deliver(type: string, user: string, sub: { status?: string; end?: number; cancel?: boolean }) {
     const end = sub.end ?? this.now + 30 * DAY;
     const object = type === 'invoice.paid'
-      ? { parent: { subscription_details: { metadata: { user_id: user, product: VD_PRODUCT }, subscription: `sub_e2e_${user}` } },
+      ? { id: `in_e2e_${user}_${end}`, parent: { subscription_details: { metadata: { user_id: user, product: VD_PRODUCT }, subscription: `sub_e2e_${user}` } },
           lines: { data: [{ period: { start: end - 30 * DAY, end }, pricing: { price_details: { price: PRICE } } }] } }
       : { id: `sub_e2e_${user}`, status: sub.status ?? 'active', customer: `cus_e2e_${user}`, cancel_at_period_end: sub.cancel ?? false,
           metadata: { user_id: user, product: VD_PRODUCT }, items: { data: [{ price: { id: PRICE }, current_period_start: end - 30 * DAY, current_period_end: end }] } };
@@ -42,10 +42,7 @@ export class FakeBackend {
     const expected = createHmac('sha256', SECRET).update(`${header.split(',')[0].slice(2)}.${payload}`).digest('hex');
     if (!timingSafeEqual(Buffer.from(v1), Buffer.from(expected))) throw new Error('bad signature');
     const parsed = JSON.parse(payload);
-    const payment = paymentFromEvent(parsed, vdPriceIds(PRICE));
-    const change = payment ? null : accessChangeFromEvent(parsed, vdPriceIds(PRICE));
-    if (payment) applyPayment(this.rows, this.seen, this.payments, payment);
-    if (change) applyAccessChange(this.rows, this.seen, this.payments, change);
+    applyVidaDiariaEvent(this.rows, this.seen, this.book, parsed, vdPriceIds(PRICE));
     this.log.push(`${type} ${user} ${sub.status ?? 'active'}${sub.cancel ? ' cancel_at_period_end' : ''}`);
   }
 

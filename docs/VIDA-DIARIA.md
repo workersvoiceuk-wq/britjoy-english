@@ -44,9 +44,10 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
 | `supabase/functions/_shared/vida-diaria.ts` | Contrato puro: precio, módulos, decisión de acceso y aplicación de eventos (una vez cada uno y nunca uno antiguo sobre uno nuevo). |
 | `supabase/functions/vida-diaria` | Responde a `POST {action:"status"\|"module"\|"media"}` con sesión. Devuelve **401** sin sesión, **402** sin pago y **404** si el módulo no existe. |
 | `billing-checkout` (`product: "vida_diaria_monthly"`) | Checkout de suscripción con `subscription_data.metadata` (`user_id` y `product`). Solo admite altas nuevas: con acceso activo responde 409. **Una sesión abierta por alumno:** `begin_course_checkout` decide con un bloqueo por alumno si se reutiliza la sesión abierta (le quedan más de 5 minutos) o se crea otra. La sesión se crea con una clave de idempotencia de Stripe estable por (alumno, intento), de modo que peticiones simultáneas reciben la misma. Al caducar, se abre un intento nuevo. **IVA:** `automatic_tax` (con dirección de facturación obligatoria) solo se activa con `VIDA_DIARIA_AUTOMATIC_TAX=on`, cuando el tratamiento fiscal esté confirmado. **Cobros reales apagados** salvo con clave `sk_test_`, o si el dueño pone `VIDA_DIARIA_LIVE=on`. |
-| `vida-diaria-webhook` (**destino propio en Stripe**) | Webhook exclusivo del curso, sin JWT y firmado con su **propio** secreto, `STRIPE_WEBHOOK_SECRET_VIDA_DIARIA`. Aplica los eventos `customer.subscription.*` e `invoice.paid` con el precio `STRIPE_PRICE_VIDA_DIARIA` y `metadata.product` del curso. El acceso se escribe en `course_access`; nunca toca `plus_until` (Academy) ni los créditos. `invoice.paid` fija `paid_until`, la fecha efectivamente pagada, que solo avanza. |
+| `vida-diaria-webhook` (**destino propio en Stripe**) | Webhook exclusivo del curso, sin JWT y firmado con su **propio** secreto, `STRIPE_WEBHOOK_SECRET_VIDA_DIARIA`. Aplica los eventos `customer.subscription.*` e `invoice.paid` con el precio `STRIPE_PRICE_VIDA_DIARIA` y `metadata.product` del curso. El acceso se escribe en `course_access`; nunca toca `plus_until` (Academy) ni los créditos. `invoice.paid` registra cada factura con su cuenta, suscripción y periodo. `paid_until` es el fin más tardío entre las facturas de la suscripción que no se han reembolsado por completo ni están en disputa (ver «Reembolsos, disputas y fraude»). |
 | `billing-webhook` (créditos) | **Ignora** cualquier evento del curso (`isVidaDiariaEvent`), así que un evento del curso nunca concede VUM Academy ni créditos. En lo demás no cambia. |
 | Migración `20261107120000_vida_diaria_access.sql` | Crea `course_access`, `course_access_events`, `apply_course_access` (solo service role), RLS de «lee solo tu fila» y el bucket privado. No modifica ninguna tabla existente. |
+| Migración `20261108120000_vida_diaria_reversals.sql` | Aditiva. Añade `course_access.payment_reversed` y las tablas `course_invoices`, `course_payment_links` y `course_payment_reversals`, sin políticas: solo service role. Sustituye `apply_course_access` y `apply_course_payment`, que gana `p_invoice`, y añade `apply_course_payment_link` y `apply_course_reversal`. No toca `profiles`, `plus_until`, créditos ni Academy. |
 
 **Reglas de acceso:**
 - El acceso termina en la **más temprana** de dos fechas: el final del periodo de la suscripción y `paid_until`. Una renovación todavía no pagada no abre el periodo nuevo.
@@ -77,7 +78,7 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
 > **No hay que modificar ni reactivar ninguno de ellos.** El curso necesita **un destino nuevo y separado** que apunte a la función `vida-diaria-webhook`. Primero en el **sandbox**; producción, solo después.
 
 1. **Supabase, en un entorno de pruebas:**
-   - aplicar la migración `20261107120000_vida_diaria_access.sql`;
+   - aplicar las migraciones `20261107120000_vida_diaria_access.sql` y `20261108120000_vida_diaria_reversals.sql`, en ese orden;
    - desplegar `vida-diaria`, `vida-diaria-webhook` y `billing-checkout`.
 
    No hace falta volver a desplegar `billing-webhook` para el curso: su cambio solo hace que ignore los eventos del curso.
@@ -86,7 +87,12 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
    1. Crear el producto «Inglés para el día a día» con un precio recurrente mensual en GBP de £19.99. Poner su ID en el secreto `STRIPE_PRICE_VIDA_DIARIA`.
    2. **Añadir un destino de webhook NUEVO**, solo para el curso:
       - URL: `https://<ref>.supabase.co/functions/v1/vida-diaria-webhook`;
-      - eventos: **exactamente** los que usa el código (`VD_WEBHOOK_EVENTS`): `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted` e `invoice.paid`.
+      - eventos: **exactamente** los que usa el código (`VD_WEBHOOK_EVENTS`):
+        - `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`;
+        - `invoice.paid`, `invoice_payment.paid`;
+        - `charge.refunded`;
+        - `charge.dispute.created`, `charge.dispute.updated`, `charge.dispute.closed`;
+        - `radar.early_fraud_warning.created`.
 
       No hay que añadir estos eventos a los destinos de Academy ni de membresías.
    3. Copiar el secreto de firma de ese destino (`whsec_…`) en el secreto `STRIPE_WEBHOOK_SECRET_VIDA_DIARIA` de Supabase. Es distinto del secreto `STRIPE_WEBHOOK_SECRET` de `billing-webhook`.
@@ -100,6 +106,9 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
    - abrir la factura y cancelar desde el portal: el acceso se mantiene hasta la fecha programada (`cancel_at` en modo flexible);
    - una renovación con tarjeta que falla (por ejemplo, con un *test clock*): el acceso no pasa de la fecha pagada y el alumno gestiona el pago pendiente desde el portal;
    - otra cuenta: sin acceso;
+   - un **reembolso completo** de la factura desde el panel: el acceso se cierra aunque la suscripción siga activa. Después, cancelar la suscripción para que el alumno pueda volver a comprar;
+   - un **reembolso parcial**: el acceso sigue;
+   - una **disputa** con la tarjeta de prueba de contracargo: el acceso se cierra; al ganarla con la evidencia de prueba, se reabre;
    - una petición sin sesión: 401.
 
    Comprobar también en Stripe que los destinos de Academy y de membresías **no** han recibido nada nuevo del curso.
@@ -108,10 +117,33 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
    - Cambiar a la clave `sk_live_` y poner `VIDA_DIARIA_LIVE=on`.
    - Lo decide y lo hace el dueño, sin tocar los webhooks existentes.
 
+## Reembolsos, disputas y fraude
+
+Cada factura pagada del curso se guarda con su cuenta, suscripción y fin de periodo. `invoice_payment.paid` la enlaza con su PaymentIntent, o con su cargo si no tiene PaymentIntent. En esta versión de la API de Stripe (`2026-09-30`, stripe-node 23), el cargo ya no indica su factura, así que el enlace es necesario. Los reembolsos y las disputas llevan el cargo y el PaymentIntent, y con ellos se localiza la factura.
+
+| Evento | Efecto en el acceso |
+|---|---|
+| `charge.refunded` con `refunded: true` (reembolso **completo**) | Esa factura deja de contar. Si era el periodo vigente, el acceso se cierra. |
+| `charge.refunded` con `refunded: false` (reembolso **parcial**) | Ninguno. |
+| `charge.dispute.*` en `needs_response`, `under_review` o `lost` (contracargo abierto o perdido; Stripe retira los fondos) | Esa factura deja de contar. |
+| `charge.dispute.*` en `won` | Vuelve a contar. |
+| `charge.dispute.*` en `warning_*` (consulta sin retirada de fondos) o `prevented` | Ninguno. |
+| `radar.early_fraud_warning.created` | Se registra y no cambia el acceso: por sí sola no mueve dinero. Si después hay un reembolso o una disputa, se aplica su regla. Suspender el acceso con la alerta sería una decisión de negocio, no algo que diga Stripe. |
+| `invoice.payment_failed` (renovación fallida) | Ninguno por sí mismo. Con `customer.subscription.updated` en `past_due`, el acceso termina en el fin del periodo pagado, como antes. |
+
+**Garantías:**
+- **Alcance:** solo cae el periodo de esa factura, en esa suscripción y en esa cuenta. Los periodos pagados posteriores siguen contando y las demás cuentas no cambian.
+- **Duplicados:** cada evento se aplica una vez. Una misma factura reenviada con otro evento no cambia nada.
+- **Orden:** los eventos pueden llegar en cualquier orden. Para una misma disputa o un mismo reembolso, un estado más antiguo no pisa uno más nuevo.
+- **Concurrencia:** las escrituras se serializan con un bloqueo de transacción, así que un pago y su reembolso simultáneos no se pierden el uno al otro.
+- **Otros productos:** sus cargos, disputas y enlaces llegan al mismo destino, porque los eventos de la cuenta no llevan metadata del producto. Solo se guardan sus IDs y no cambian nada, porque no enlazan con ninguna factura del curso.
+- **Nueva compra:** tras un reembolso o una disputa, mientras la misma suscripción siga viva en Stripe, no se abre un checkout nuevo (cobraría dos veces). El estado es `expired` y el alumno vuelve a poder comprar cuando se cancela la suscripción.
+
 ## Pruebas
 
 | Comando | Qué cubre |
 |---|---|
 | `npm test` (Vitest) | **Contrato:** muestra, compra de prueba, firma, cancelación, caducidad, cuenta distinta, separación de Academy, idempotencia y orden, y cobros reales apagados. **Contenido:** IDs. **Repositorio público:** sin contenido de pago. **Manifiesto de medios.** **Pedagogía:** el feedback por opción y la pista no dan la respuesta. Sin `VD_PREMIUM_DIR` se omiten las comprobaciones que necesitan el contenido de pago. |
 | `VD_PREMIUM_DIR=… npx playwright test -c playwright.vida-diaria.config.ts` | Móvil 390 px y escritorio 1280 px con un servidor de pruebas que aplica el mismo contrato a eventos firmados. **Muestra:** vídeo de Flow, subtítulos, transcripción, fallo, feedback, pista, reintento, repaso y progreso. **Compra de prueba:** vídeo de pago servido en memoria; cancelación, caducidad y otra cuenta. **Acceso anónimo rechazado. Enlaces del catálogo general.** |
-| `scripts/test-vida-diaria-sql.sh` | La migración en PostgreSQL local: idempotencia, orden, usuario inexistente, Academy sin tocar, `paid_until` que no retrocede, checkout (reutilizar, mismo intento, recuperar al caducar, un intento viejo no pisa y **dos sesiones concurrentes reales obtienen el mismo intento**), bucket privado y RLS (A, B y anónimo). |
+| `npx vitest run tests/vida-diaria-reversals.test.ts` | **Reembolsos y disputas:** reembolso completo y parcial; duplicados; las 24 llegadas posibles de alta, factura, enlace y reembolso; renovación posterior; reembolso de un periodo antiguo; otras cuentas y otro producto; otra suscripción; disputa abierta, ganada, perdida, consulta y en orden inverso; alerta de fraude; renovación fallida. **Control negativo:** con el `vida-diaria.ts` de `acf931a1` fallan 9 de 12; las 3 restantes son casos que no deben cambiar el acceso. |
+| `scripts/test-vida-diaria-sql.sh` | Las migraciones en PostgreSQL local. **Reversiones:** reembolso antes que el enlace, la factura y el alta; duplicados; parcial; otro producto; renovación posterior; disputa abierta, ganada y antigua tardía; alerta de fraude; tablas nuevas invisibles para el alumno; funciones nuevas no ejecutables por `anon` ni `authenticated`. **Además:** idempotencia, orden, usuario inexistente, Academy sin tocar, `paid_until` que no retrocede, checkout (reutilizar, mismo intento, recuperar al caducar, un intento viejo no pisa y **dos sesiones concurrentes reales obtienen el mismo intento**), bucket privado y RLS (A, B y anónimo). |

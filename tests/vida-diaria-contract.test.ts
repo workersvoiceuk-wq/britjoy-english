@@ -6,9 +6,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
-  VD_PRODUCT, accessChangeFromEvent, accessStatus, applyAccessChange, applyPayment, automaticTaxEnabled,
+  VD_PRODUCT, accessChangeFromEvent, accessStatus, applyVidaDiariaEvent, automaticTaxEnabled, newPaymentBook,
   VD_WEBHOOK_EVENTS, canStartCheckout, checkoutParams, decideModule, isVidaDiariaCheckout, isVidaDiariaEvent, liveChargesAllowed,
-  paymentFromEvent, planCheckout,
+  paymentFromEvent, paymentLinkFromEvent, planCheckout, reversalFromEvent,
   vdPriceIds, type CheckoutState, type CourseAccessRow,
 } from '../supabase/functions/_shared/vida-diaria';
 
@@ -34,13 +34,14 @@ function verify(payload: string, header: string, now: number, secret = SECRET) {
 
 let n = 0;
 /** invoice.paid for the period [start, end] (newest Stripe API shape: parent.subscription_details + pricing). */
-function paidEvent(created: number, end: number, opts: Partial<{ user: string; price: string; product: string; legacy: boolean; subscription: string }> = {}) {
+function paidEvent(created: number, end: number, opts: Partial<{ user: string; price: string; product: string; legacy: boolean; subscription: string; invoice: string }> = {}) {
   const meta = { user_id: opts.user ?? 'user-a', product: opts.product ?? VD_PRODUCT };
   const subscription = opts.subscription ?? 'sub_test_1';
   const line = opts.legacy ? { period: { start: end - 30 * DAY, end }, price: { id: opts.price ?? PRICE } } : { period: { start: end - 30 * DAY, end }, pricing: { price_details: { price: opts.price ?? PRICE } } };
+  const id = opts.invoice ?? `in_test_${++n}`;
   const object = opts.legacy
-    ? { subscription, subscription_details: { metadata: meta }, lines: { data: [line] } }
-    : { parent: { subscription_details: { metadata: meta, subscription } }, lines: { data: [line] } };
+    ? { id, subscription, subscription_details: { metadata: meta }, lines: { data: [line] } }
+    : { id, parent: { subscription_details: { metadata: meta, subscription } }, lines: { data: [line] } };
   return { id: `evt_test_${++n}`, type: 'invoice.paid', created, data: { object } };
 }
 
@@ -67,15 +68,12 @@ function subEvent(type: string, created: number, sub: Partial<{ status: string; 
 function server() {
   const rows = new Map<string, CourseAccessRow>();
   const seen = new Set<string>();
-  const payments = new Map<string, string>();
+  const book = newPaymentBook();
   return {
     webhook(event: { id: string; type: string; created: number; data: { object: unknown } }, now: number, header?: string) {
       const payload = JSON.stringify(event);
       const verified = verify(payload, header ?? sign(payload, now), now);
-      const payment = paymentFromEvent(verified, prices);
-      if (payment) return applyPayment(rows, seen, payments, payment);
-      const change = accessChangeFromEvent(verified, prices);
-      return change ? applyAccessChange(rows, seen, payments, change) : false;
+      return applyVidaDiariaEvent(rows, seen, book, verified, prices);
     },
     /** A paid subscription: subscription.created + invoice.paid for its first period. */
     subscribe(user: string, now: number, end = now + 30 * DAY) {
@@ -337,13 +335,29 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
     const guard = shared.indexOf('if (isVidaDiariaEvent(event)) return ok();');
     expect(guard).toBeGreaterThan(0);
     expect(guard).toBeLessThan(shared.indexOf('switch (event.type)'));
-    expect(shared).not.toMatch(/apply_course_(access|payment)/);
+    expect(shared).not.toMatch(/apply_course_(access|payment|reversal)/);
     // The events the destination must send are exactly the ones the code handles.
-    expect([...VD_WEBHOOK_EVENTS]).toEqual(['customer.subscription.created', 'customer.subscription.updated', 'customer.subscription.deleted', 'invoice.paid']);
+    expect([...VD_WEBHOOK_EVENTS]).toEqual([
+      'customer.subscription.created', 'customer.subscription.updated', 'customer.subscription.deleted', 'invoice.paid',
+      'invoice_payment.paid', 'charge.refunded', 'charge.dispute.created', 'charge.dispute.updated', 'charge.dispute.closed',
+      'radar.early_fraud_warning.created',
+    ]);
+    expect(own).toContain('db.rpc("apply_course_payment_link"');
+    expect(own).toContain('db.rpc("apply_course_reversal"');
     for (const type of VD_WEBHOOK_EVENTS) {
-      const ev = type === 'invoice.paid' ? paidEvent(T0, T0 + 30 * DAY) : subEvent(type, T0, {});
-      expect(isVidaDiariaEvent(ev)).toBe(true);
-      expect(Boolean(paymentFromEvent(ev, prices) ?? accessChangeFromEvent(ev, prices))).toBe(true);
+      if (type.startsWith('customer.subscription.') || type === 'invoice.paid') {
+        const ev = type === 'invoice.paid' ? paidEvent(T0, T0 + 30 * DAY) : subEvent(type, T0, {});
+        expect(isVidaDiariaEvent(ev)).toBe(true);
+        expect(Boolean(paymentFromEvent(ev, prices) ?? accessChangeFromEvent(ev, prices))).toBe(true);
+        continue;
+      }
+      // Payment links, refunds, disputes and fraud warnings carry no course metadata: they only count through an invoice.
+      const object = type === 'invoice_payment.paid'
+        ? { id: 'inpay_1', invoice: 'in_1', status: 'paid', payment: { type: 'payment_intent', payment_intent: 'pi_1' } }
+        : type === 'charge.refunded' ? { id: 'ch_1', payment_intent: 'pi_1', refunded: true }
+        : { id: 'x_1', charge: 'ch_1', payment_intent: 'pi_1', status: 'needs_response' };
+      const ev = { id: `evt_${type}`, type, created: T0, data: { object } };
+      expect(Boolean(paymentLinkFromEvent(ev) ?? reversalFromEvent(ev))).toBe(true);
     }
     expect(isVidaDiariaEvent(paidEvent(T0, T0 + DAY, { legacy: true }))).toBe(true);
     expect(isVidaDiariaEvent({ type: 'checkout.session.completed', data: { object: { metadata: { product: VD_PRODUCT } } } })).toBe(true);

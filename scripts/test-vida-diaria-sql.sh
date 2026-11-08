@@ -10,6 +10,11 @@ psql -v ON_ERROR_STOP=1 -q -d "$DB" -f supabase/tests/vida-diaria-stubs.sql
 for f in supabase/migrations/*.sql; do psql -v ON_ERROR_STOP=1 -q -d "$DB" -f "$f"; done
 psql -v ON_ERROR_STOP=1 -q -d "$DB" -c "grant select on all tables in schema public to anon, authenticated; grant all on all tables in schema public to service_role;"
 psql -v ON_ERROR_STOP=1 -q -d "$DB" -c "set role anon; select public.apply_course_access('e',1,'00000000-0000-4000-8000-00000000000a','vida_diaria_monthly','active',now(),false,'s',null);" 2>/dev/null && { echo 'anon ejecutó apply_course_access'; exit 1; } || true
+for call in "apply_course_reversal('e',1,'s','refund',array['x'],true)" "apply_course_payment_link('e','in',array['x'])" "apply_course_payment('e','00000000-0000-4000-8000-00000000000a','vida_diaria_monthly',now(),'s','in')"; do
+  for role in anon authenticated; do
+    psql -v ON_ERROR_STOP=1 -q -d "$DB" -c "set role $role; select public.$call;" 2>/dev/null && { echo "$role ejecutó $call"; exit 1; } || true
+  done
+done
 psql -v ON_ERROR_STOP=1 -tA -d "$DB" -f supabase/tests/vida-diaria-access.sql | tail -1
 # Concurrencia real: dos sesiones piden checkout a la vez para un alumno nuevo → mismo intento (misma clave de Stripe).
 psql -qtA -d "$DB" -c "insert into auth.users (id, email, email_confirmed_at) values ('00000000-0000-4000-8000-0000000000cc','c@example.com',now())"

@@ -12,6 +12,9 @@
 // - El acceso nunca pasa de la fecha EFECTIVAMENTE pagada para esa suscripción: paid_until solo avanza con su invoice.paid, y una
 //   renovación impagada (past_due) se queda en el inicio del periodo no pagado.
 // - Los eventos se aplican una vez (id) y nunca un evento más antiguo encima de uno más nuevo (created).
+// - Reembolso completo o disputa abierta/perdida: la factura de ESE pago deja de contar para paid_until. Se enlaza
+//   factura → pago (invoice_payment.paid) → cargo/PaymentIntent (charge.refunded, charge.dispute.*), así que solo
+//   cae el periodo de esa factura, de esa suscripción y de esa cuenta; otros periodos pagados siguen contando.
 // - El módulo 1 es la muestra gratuita: no necesita cuenta ni tarjeta y va en el bundle público.
 
 export const VD_PRODUCT = 'vida_diaria_monthly';
@@ -51,6 +54,8 @@ export interface CourseAccessRow {
   last_event_created: number;
   /** ISO end of the last period actually paid (invoice.paid); access never goes past it. */
   paid_until: string | null;
+  /** The latest paid invoice of this subscription was fully refunded or charged back (not a pending activation). */
+  payment_reversed?: boolean;
 }
 
 export interface AccessChange {
@@ -127,22 +132,71 @@ export function isVidaDiariaEvent(event: { type: string; data: { object: unknown
 }
 
 /** Events the course's webhook destination must send (exactly what vida-diaria-webhook uses). */
-export const VD_WEBHOOK_EVENTS = ['customer.subscription.created', 'customer.subscription.updated', 'customer.subscription.deleted', 'invoice.paid'] as const;
+export const VD_WEBHOOK_EVENTS = [
+  'customer.subscription.created', 'customer.subscription.updated', 'customer.subscription.deleted', 'invoice.paid',
+  'invoice_payment.paid', 'charge.refunded', 'charge.dispute.created', 'charge.dispute.updated', 'charge.dispute.closed',
+  'radar.early_fraud_warning.created',
+] as const;
 
 /** Checkout sessions of this course grant nothing by themselves (the subscription events do). */
 export function isVidaDiariaCheckout(session: { metadata?: Record<string, string> | null }): boolean {
   return session.metadata?.product === VD_PRODUCT;
 }
 
+// ── Pagos, enlaces y reversiones ─────────────────────────────────────────────────────────────────────────────────
+// Libro de pagos del curso (mismo modelo que las tablas course_invoices, course_payment_links y
+// course_payment_reversals). Cada factura pagada guarda cuenta, suscripción y fin del periodo; invoice_payment.paid
+// enlaza la factura con su PaymentIntent o cargo; charge.refunded y charge.dispute.* marcan ese cargo. paid_until es
+// el fin más tardío entre las facturas de la suscripción que NO tienen una reversión activa.
+
+export interface PaidInvoice { key: string; subscription: string; paidUntil: string }
+export type ReversalKind = 'refund' | 'dispute' | 'fraud_warning';
+export interface Reversal { kind: ReversalKind; refs: string[]; active: boolean; created: number }
+export interface PaymentBook {
+  invoices: Map<string, PaidInvoice>;
+  /** PaymentIntent or charge id → invoice id. */
+  links: Map<string, string>;
+  /** refund:<charge> · dispute:<id> · efw:<id> → latest state. */
+  reversals: Map<string, Reversal>;
+}
+export const newPaymentBook = (): PaymentBook => ({ invoices: new Map(), links: new Map(), reversals: new Map() });
+
+function invoiceReversed(book: PaymentBook, invoice: string): boolean {
+  for (const r of book.reversals.values()) if (r.active && r.refs.some((ref) => book.links.get(ref) === invoice)) return true;
+  return false;
+}
+
+/** Latest paid period of (account, subscription) among invoices that were not refunded or charged back. */
+export function paidUntilFor(book: PaymentBook, key: string, subscription: string): { paidUntil: string | null; reversed: boolean } {
+  let best: string | null = null;
+  let latest: { id: string; until: string } | null = null;
+  for (const [id, inv] of book.invoices) {
+    if (inv.key !== key || inv.subscription !== subscription) continue;
+    if (!latest || Date.parse(inv.paidUntil) > Date.parse(latest.until)) latest = { id, until: inv.paidUntil };
+    if (invoiceReversed(book, id)) continue;
+    if (!best || Date.parse(inv.paidUntil) > Date.parse(best)) best = inv.paidUntil;
+  }
+  return { paidUntil: best, reversed: latest !== null && invoiceReversed(book, latest.id) };
+}
+
+function refreshRow(rows: Map<string, CourseAccessRow>, book: PaymentBook, key: string, subscription: string) {
+  const row = rows.get(key);
+  if (!row || row.stripe_subscription_id !== subscription) return;
+  const { paidUntil, reversed } = paidUntilFor(book, key, subscription);
+  rows.set(key, { ...row, paid_until: paidUntil, payment_reversed: reversed });
+}
+
 /** Same rule as the SQL function apply_course_access: one application per event, never older over newer. */
-export function applyAccessChange(rows: Map<string, CourseAccessRow>, seen: Set<string>, payments: Map<string, string>, c: AccessChange): boolean {
+export function applyAccessChange(rows: Map<string, CourseAccessRow>, seen: Set<string>, book: PaymentBook, c: AccessChange): boolean {
   if (seen.has(c.event)) return false;
   seen.add(c.event);
   const key = `${c.user}:${c.product}`;
   const prev = rows.get(key);
   if (prev && prev.last_event_created > c.eventCreated) return false;
+  const paid = paidUntilFor(book, key, c.subscription);
   rows.set(key, {
-    paid_until: payments.get(`${key}:${c.subscription}`) ?? null,
+    paid_until: paid.paidUntil,
+    payment_reversed: paid.reversed,
     user_id: c.user,
     product: c.product,
     status: c.status,
@@ -155,9 +209,10 @@ export function applyAccessChange(rows: Map<string, CourseAccessRow>, seen: Set<
   return true;
 }
 
-export interface PaymentChange { event: string; user: string; product: typeof VD_PRODUCT; paidUntil: string; subscription: string }
+export interface PaymentChange { event: string; invoice: string; user: string; product: typeof VD_PRODUCT; paidUntil: string; subscription: string }
 
 interface InvoiceLike {
+  id?: string;
   subscription?: string | { id: string } | null;
   subscription_details?: { metadata?: Record<string, string> | null } | null;
   parent?: { subscription_details?: { metadata?: Record<string, string> | null; subscription?: string } | null } | null;
@@ -174,26 +229,106 @@ export function paymentFromEvent(event: { id: string; type: string; data: { obje
   const end = Math.max(0, ...lines.map((l) => l.period?.end ?? 0));
   if (!end) return null;
   const sub = inv.parent?.subscription_details?.subscription ?? (typeof inv.subscription === 'string' ? inv.subscription : inv.subscription?.id ?? null);
-  if (!sub) return null;
-  return { event: event.id, user: meta.user_id, product: VD_PRODUCT, paidUntil: new Date(end * 1000).toISOString(), subscription: sub };
+  if (!sub || !inv.id) return null;
+  return { event: event.id, invoice: inv.id, user: meta.user_id, product: VD_PRODUCT, paidUntil: new Date(end * 1000).toISOString(), subscription: sub };
 }
 
-/** Same rule as apply_course_payment: once per event and scoped to the invoiced subscription. */
-export function applyPayment(rows: Map<string, CourseAccessRow>, seen: Set<string>, payments: Map<string, string>, p: PaymentChange): boolean {
+/** Same rule as apply_course_payment: once per event, once per invoice, scoped to the invoiced subscription. */
+export function applyPayment(rows: Map<string, CourseAccessRow>, seen: Set<string>, book: PaymentBook, p: PaymentChange): boolean {
   if (seen.has(p.event)) return false;
   seen.add(p.event);
   const key = `${p.user}:${p.product}`;
-  const paymentKey = `${key}:${p.subscription}`;
-  const prev = rows.get(key);
-  const priorPayment = payments.get(paymentKey);
-  const paid = priorPayment && Date.parse(priorPayment) > Date.parse(p.paidUntil) ? priorPayment : p.paidUntil;
-  payments.set(paymentKey, paid);
-  if (prev && prev.stripe_subscription_id !== p.subscription) return true;
-  rows.set(key, prev ? { ...prev, paid_until: paid } : {
-    user_id: p.user, product: p.product, status: 'incomplete', access_until: null, cancel_at_period_end: false,
-    stripe_subscription_id: p.subscription, stripe_customer_id: null, last_event_created: 0, paid_until: paid,
-  });
+  // A redelivered invoice (another event id, same invoice) keeps its first record.
+  if (!book.invoices.has(p.invoice)) book.invoices.set(p.invoice, { key, subscription: p.subscription, paidUntil: p.paidUntil });
+  if (!rows.has(key)) {
+    rows.set(key, {
+      user_id: p.user, product: p.product, status: 'incomplete', access_until: null, cancel_at_period_end: false,
+      stripe_subscription_id: p.subscription, stripe_customer_id: null, last_event_created: 0, paid_until: null,
+    });
+  }
+  refreshRow(rows, book, key, p.subscription);
   return true;
+}
+
+export interface LinkChange { event: string; invoice: string; refs: string[] }
+
+/** invoice_payment.paid: which PaymentIntent (or charge) paid which invoice. It carries no account or product. */
+export function paymentLinkFromEvent(event: { id: string; type: string; data: { object: unknown } }): LinkChange | null {
+  if (event.type !== 'invoice_payment.paid') return null;
+  const o = event.data.object as { invoice?: string | { id: string }; status?: string; payment?: { payment_intent?: string | { id: string }; charge?: string | { id: string } } };
+  const invoice = typeof o?.invoice === 'string' ? o.invoice : o?.invoice?.id;
+  const refs = [o?.payment?.payment_intent, o?.payment?.charge].map((r) => (typeof r === 'string' ? r : r?.id)).filter((r): r is string => Boolean(r));
+  if (o?.status !== 'paid' || !invoice || refs.length === 0) return null;
+  return { event: event.id, invoice, refs };
+}
+
+export interface ReversalChange { event: string; created: number; source: string; kind: ReversalKind; refs: string[]; active: boolean }
+
+/** Dispute states in which the funds are withdrawn (chargeback open or lost). Inquiries (warning_*), won and prevented are not. */
+export const DISPUTE_REVOKES = new Set(['needs_response', 'under_review', 'lost']);
+const DISPUTE_EVENTS = new Set(['charge.dispute.created', 'charge.dispute.updated', 'charge.dispute.closed', 'charge.dispute.funds_withdrawn', 'charge.dispute.funds_reinstated']);
+const idOf = (r: unknown) => (typeof r === 'string' ? r : (r as { id?: string } | null | undefined)?.id ?? null);
+
+/**
+ * charge.refunded → a FULL refund (charge.refunded === true; Stripe leaves it false for partial refunds) reverses that
+ * payment. charge.dispute.* → reversed while the chargeback is open or lost; won restores it. An early fraud warning
+ * moves no money by itself: it is recorded without changing access (a refund or dispute that follows does).
+ */
+export function reversalFromEvent(event: { id: string; type: string; created: number; data: { object: unknown } }): ReversalChange | null {
+  const o = event.data.object as { id?: string; refunded?: boolean; status?: string; charge?: unknown; payment_intent?: unknown };
+  if (!o?.id) return null;
+  const base = { event: event.id, created: event.created };
+  if (event.type === 'charge.refunded') {
+    const refs = [o.id, idOf(o.payment_intent)].filter((r): r is string => Boolean(r));
+    return { ...base, source: `refund:${o.id}`, kind: 'refund', refs, active: o.refunded === true };
+  }
+  const refs = [idOf(o.charge), idOf(o.payment_intent)].filter((r): r is string => Boolean(r));
+  if (refs.length === 0) return null;
+  if (DISPUTE_EVENTS.has(event.type)) return { ...base, source: `dispute:${o.id}`, kind: 'dispute', refs, active: DISPUTE_REVOKES.has(o.status ?? '') };
+  if (event.type === 'radar.early_fraud_warning.created' || event.type === 'radar.early_fraud_warning.updated') {
+    return { ...base, source: `efw:${o.id}`, kind: 'fraud_warning', refs, active: false };
+  }
+  return null;
+}
+
+function refreshInvoice(rows: Map<string, CourseAccessRow>, book: PaymentBook, invoice: string | undefined) {
+  const inv = invoice ? book.invoices.get(invoice) : undefined;
+  if (inv) refreshRow(rows, book, inv.key, inv.subscription);
+}
+
+/** Same rule as apply_course_payment_link. */
+export function applyPaymentLink(rows: Map<string, CourseAccessRow>, seen: Set<string>, book: PaymentBook, l: LinkChange): boolean {
+  if (seen.has(l.event)) return false;
+  seen.add(l.event);
+  for (const ref of l.refs) if (!book.links.has(ref)) book.links.set(ref, l.invoice);
+  refreshInvoice(rows, book, l.invoice);
+  return true;
+}
+
+/** Same rule as apply_course_reversal: once per event, never an older state of the same refund/dispute over a newer one. */
+export function applyReversal(rows: Map<string, CourseAccessRow>, seen: Set<string>, book: PaymentBook, r: ReversalChange): boolean {
+  if (seen.has(r.event)) return false;
+  seen.add(r.event);
+  const prev = book.reversals.get(r.source);
+  if (prev && prev.created > r.created) return false;
+  book.reversals.set(r.source, { kind: r.kind, refs: [...new Set([...(prev?.refs ?? []), ...r.refs])], active: r.active, created: r.created });
+  for (const ref of r.refs) refreshInvoice(rows, book, book.links.get(ref));
+  return true;
+}
+
+/** One entry point for every event of the course destination (the webhook, the e2e backend and the tests use it). */
+export function applyVidaDiariaEvent(
+  rows: Map<string, CourseAccessRow>, seen: Set<string>, book: PaymentBook,
+  event: { id: string; type: string; created: number; data: { object: unknown } }, prices: Set<string>,
+): boolean {
+  const payment = paymentFromEvent(event, prices);
+  if (payment) return applyPayment(rows, seen, book, payment);
+  const link = paymentLinkFromEvent(event);
+  if (link) return applyPaymentLink(rows, seen, book, link);
+  const reversal = reversalFromEvent(event);
+  if (reversal) return applyReversal(rows, seen, book, reversal);
+  const change = accessChangeFromEvent(event, prices);
+  return change ? applyAccessChange(rows, seen, book, change) : false;
 }
 
 /** Access ends at the earlier of the subscription period and the date actually paid. */
@@ -211,7 +346,7 @@ export function hasCourseAccess(row: Pick<CourseAccessRow, 'status' | 'access_un
 function pendingActivation(row: CourseAccessRow, now: number): boolean {
   const paidFuture = row.paid_until !== null && Date.parse(row.paid_until) > now;
   const subFuture = LIVE.has(row.status) && row.access_until !== null && Date.parse(row.access_until) > now;
-  return (paidFuture && !row.access_until && row.status !== 'canceled') || (subFuture && !row.paid_until);
+  return (paidFuture && !row.access_until && row.status !== 'canceled') || (subFuture && !row.paid_until && !row.payment_reversed);
 }
 
 export interface AccessStatus {
@@ -248,7 +383,11 @@ export function decideModule(moduleId: unknown, row: CourseAccessRow | null | un
 
 /** Payment retries for an existing subscription belong in the portal. */
 export function canStartCheckout(row: CourseAccessRow | null | undefined, now = Date.now()): boolean {
-  return !row || (row.status !== 'past_due' && !hasCourseAccess(row, now) && !pendingActivation(row, now));
+  if (!row) return true;
+  // Refunded or charged back while the same subscription is still running: a second checkout would bill twice.
+  const stillSubscribed = LIVE.has(row.status) && row.access_until !== null && Date.parse(row.access_until) > now;
+  if (row.payment_reversed && stillSubscribed) return false;
+  return row.status !== 'past_due' && !hasCourseAccess(row, now) && !pendingActivation(row, now);
 }
 
 /** Real charges stay off until the owner switches them on after verifying access in test mode. */

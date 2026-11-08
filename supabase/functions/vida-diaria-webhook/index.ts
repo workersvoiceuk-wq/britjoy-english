@@ -3,11 +3,15 @@
 // Se despliega SIN verificación JWT (Stripe no envía token de Supabase). Cada petición debe llevar la firma de Stripe
 // de ESTE destino (secreto STRIPE_WEBHOOK_SECRET_VIDA_DIARIA). Solo escribe course_access; nunca plus_until ni créditos.
 // Eventos que debe enviar el destino (y nada más): VD_WEBHOOK_EVENTS =
-//   customer.subscription.created · customer.subscription.updated · customer.subscription.deleted · invoice.paid
+//   customer.subscription.created · customer.subscription.updated · customer.subscription.deleted · invoice.paid ·
+//   invoice_payment.paid · charge.refunded · charge.dispute.created · charge.dispute.updated · charge.dispute.closed ·
+//   radar.early_fraud_warning.created
+// Los cargos, disputas y enlaces de pago de OTROS productos de la cuenta también llegan aquí: solo se guardan sus IDs
+// y no cambian nada, porque únicamente cuentan si enlazan con una factura de este curso.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { admin } from "../_shared/http.ts";
 import { Stripe, stripe } from "../_shared/stripe.ts";
-import { accessChangeFromEvent, paymentFromEvent, vdPriceIds } from "../_shared/vida-diaria.ts";
+import { accessChangeFromEvent, paymentFromEvent, paymentLinkFromEvent, reversalFromEvent, vdPriceIds } from "../_shared/vida-diaria.ts";
 
 const cryptoProvider = Stripe.createSubtleCryptoProvider();
 const ok = () => new Response("ok", { status: 200 });
@@ -32,6 +36,24 @@ Deno.serve(async (req: Request) => {
     if (paid) {
       const { error } = await db.rpc("apply_course_payment", {
         p_event: paid.event, p_user: paid.user, p_product: paid.product, p_paid_until: paid.paidUntil, p_subscription: paid.subscription,
+        p_invoice: paid.invoice,
+      });
+      if (error) throw error;
+      return ok();
+    }
+    // Qué PaymentIntent o cargo pagó cada factura (para poder localizar después su reembolso o disputa).
+    const link = paymentLinkFromEvent(event);
+    if (link) {
+      const { error } = await db.rpc("apply_course_payment_link", { p_event: link.event, p_invoice: link.invoice, p_refs: link.refs });
+      if (error) throw error;
+      return ok();
+    }
+    // Reembolso completo o disputa: solo deja de contar la factura de ese pago.
+    const reversal = reversalFromEvent(event);
+    if (reversal) {
+      const { error } = await db.rpc("apply_course_reversal", {
+        p_event: reversal.event, p_event_created: reversal.created, p_source: reversal.source, p_kind: reversal.kind,
+        p_refs: reversal.refs, p_active: reversal.active,
       });
       if (error) throw error;
       return ok();
