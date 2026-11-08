@@ -214,3 +214,59 @@ describe('Vida Diaria · disputas, alertas de fraude y renovación fallida', () 
     expect(s.status('a', P1 + 60).status).toBe('past_due');
   });
 });
+
+describe('Vida Diaria · disputas en el mismo segundo: el cierre terminal precede a la apertura (#issuecomment-6728269789)', () => {
+  const opened = (t: number, id = 'dp_s') => dispute('charge.dispute.created', t, id, 'ch_a_1', 'pi_a_1', 'needs_response');
+  const updated = (t: number, status: string, id = 'dp_s') => dispute('charge.dispute.updated', t, id, 'ch_a_1', 'pi_a_1', status);
+  const closed = (t: number, status: 'won' | 'lost', id = 'dp_s') => dispute('charge.dispute.closed', t, id, 'ch_a_1', 'pi_a_1', status);
+  const run = (events: Ev[]) => { const s = server(); s.subscribe(); s.all(events); return s.module('a', '02-compras', NOW + 10); };
+
+  it('won con el mismo event.created: abierto en los dos órdenes de llegada', () => {
+    expect(run([opened(NOW), closed(NOW, 'won')])).toBe('granted');
+    expect(run([closed(NOW, 'won'), opened(NOW)])).toBe('granted'); // la regresión reproducida
+    expect(run([closed(NOW, 'won'), updated(NOW, 'under_review'), opened(NOW)])).toBe('granted');
+  });
+
+  it('lost con el mismo event.created: cerrado en los dos órdenes de llegada', () => {
+    expect(run([opened(NOW), closed(NOW, 'lost')])).toBe('payment_required');
+    expect(run([closed(NOW, 'lost'), opened(NOW)])).toBe('payment_required');
+  });
+
+  it('segundos distintos: manda la cronología en cualquier orden de llegada; el ID del evento no se usa como reloj', () => {
+    const chain = [opened(NOW), updated(NOW + 1, 'under_review'), closed(NOW + 2, 'won')];
+    expect(run(chain)).toBe('granted');
+    expect(run([...chain].reverse())).toBe('granted');
+    expect(run([chain[2], chain[0], chain[1]])).toBe('granted');
+    const lost = [opened(NOW), closed(NOW + 2, 'lost')];
+    expect(run([...lost].reverse())).toBe('payment_required');
+    // Un estado no terminal de un segundo POSTERIOR sí se aplica (cronología, no tipo de evento).
+    expect(run([closed(NOW, 'won'), updated(NOW + 1, 'needs_response')])).toBe('payment_required');
+    // IDs de evento en orden opuesto a la cronología: el resultado no cambia.
+    const a = { ...closed(NOW, 'won'), id: 'evt_000_closed' };
+    const b = { ...opened(NOW), id: 'evt_zzz_opened' };
+    expect(run([b, a])).toBe('granted');
+    expect(run([a, b])).toBe('granted');
+  });
+
+  it('duplicados: el mismo cierre o la misma apertura reenviados se aplican una vez', () => {
+    const s = server();
+    s.subscribe();
+    const c = closed(NOW, 'won');
+    const o = opened(NOW);
+    expect(s.apply(c)).toBe(true);
+    expect(s.apply(o)).toBe(false);
+    expect(s.apply(c)).toBe(false);
+    expect(s.apply(o)).toBe(false);
+    expect(s.module('a', '02-compras', NOW + 10)).toBe('granted');
+  });
+
+  it('el reembolso y la renovación siguen igual con la precedencia nueva', () => {
+    const s = server();
+    s.subscribe();
+    s.all([closed(NOW, 'won'), opened(NOW)]);
+    s.apply(refunded(NOW, 'ch_a_1', 'pi_a_1'));
+    expect(s.module('a', '02-compras', NOW + 10)).toBe('payment_required');
+    s.all([sub('customer.subscription.updated', P1 + 10, { start: P1, end: P2 }), invoicePaid(P1 + 11, 'in_a_2', P2), invoicePayment(P1 + 12, 'in_a_2', 'pi_a_2')]);
+    expect(s.status('a', P1 + 20)).toMatchObject({ active: true, until: new Date(P2 * 1000).toISOString() });
+  });
+});

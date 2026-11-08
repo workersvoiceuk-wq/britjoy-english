@@ -53,7 +53,7 @@ Deno.serve(async (req: Request) => {
     if (reversal) {
       const { error } = await db.rpc("apply_course_reversal", {
         p_event: reversal.event, p_event_created: reversal.created, p_source: reversal.source, p_kind: reversal.kind,
-        p_refs: reversal.refs, p_active: reversal.active,
+        p_refs: reversal.refs, p_active: reversal.active, p_terminal: reversal.terminal,
       });
       if (error) throw error;
       return ok();

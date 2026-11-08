@@ -75,7 +75,7 @@ declare
   p constant text := 'vida_diaria_monthly';
 begin
   -- U1: el reembolso completo llega ANTES que el enlace, la factura y el alta (orden inverso).
-  assert public.apply_course_reversal('evt_r1', 900, 'refund:ch_u1_1', 'refund', array['ch_u1_1','pi_u1_1'], true), 'reembolso primero';
+  assert public.apply_course_reversal('evt_r1', 900, 'refund:ch_u1_1', 'refund', array['ch_u1_1','pi_u1_1'], true, false), 'reembolso primero';
   assert public.apply_course_payment_link('evt_l1', 'in_u1_1', array['pi_u1_1']), 'enlace';
   assert public.apply_course_payment('evt_i1', u1, p, now() + interval '30 days', 'sub_u1', 'in_u1_1'), 'factura';
   assert public.apply_course_access('evt_s1', 800, u1, p, 'active', now() + interval '30 days', false, 'sub_u1', 'cus_u1'), 'alta';
@@ -86,16 +86,16 @@ begin
   perform public.apply_course_payment_link('evt_l2', 'in_u2_1', array['pi_u2_1']);
   assert (select paid_until > now() and not payment_reversed from public.course_access where user_id = u2), 'U2 abierta: el reembolso de U1 no la toca';
   -- Duplicados: mismo evento → false; la misma factura reenviada con otro evento no reabre.
-  assert not public.apply_course_reversal('evt_r1', 900, 'refund:ch_u1_1', 'refund', array['ch_u1_1','pi_u1_1'], true), 'reembolso repetido';
+  assert not public.apply_course_reversal('evt_r1', 900, 'refund:ch_u1_1', 'refund', array['ch_u1_1','pi_u1_1'], true, false), 'reembolso repetido';
   assert not public.apply_course_payment_link('evt_l1', 'in_u1_1', array['pi_u1_1']), 'enlace repetido';
   assert public.apply_course_payment('evt_i1_again', u1, p, now() + interval '30 days', 'sub_u1', 'in_u1_1'), 'factura reenviada';
   assert (select paid_until is null from public.course_access where user_id = u1), 'la factura reembolsada reenviada no reabre';
   -- Reembolso parcial de U2: no cierra.
-  perform public.apply_course_reversal('evt_rp', 950, 'refund:ch_u2_1', 'refund', array['ch_u2_1','pi_u2_1'], false);
+  perform public.apply_course_reversal('evt_rp', 950, 'refund:ch_u2_1', 'refund', array['ch_u2_1','pi_u2_1'], false, false);
   assert (select paid_until > now() from public.course_access where user_id = u2), 'parcial no cierra';
   -- Un cargo de otro producto (sin factura del curso) no cambia nada.
   perform public.apply_course_payment_link('evt_lx', 'in_academy', array['pi_academy']);
-  perform public.apply_course_reversal('evt_rx', 901, 'refund:ch_academy', 'refund', array['ch_academy','pi_academy'], true);
+  perform public.apply_course_reversal('evt_rx', 901, 'refund:ch_academy', 'refund', array['ch_academy','pi_academy'], true, false);
   assert (select paid_until > now() from public.course_access where user_id = u2), 'Academy no toca el curso';
   -- Renovación posterior pagada de U1: vuelve a abrir hasta el nuevo periodo.
   perform public.apply_course_access('evt_s1b', 950, u1, p, 'active', now() + interval '60 days', false, 'sub_u1', null);
@@ -103,13 +103,13 @@ begin
   perform public.apply_course_payment_link('evt_l1b', 'in_u1_2', array['pi_u1_2']);
   assert (select paid_until > now() + interval '59 days' and not payment_reversed from public.course_access where user_id = u1), 'renovación posterior abre';
   -- Disputa del periodo vigente de U2: abierta cierra; ganada reabre; un estado antiguo tardío no pisa.
-  assert public.apply_course_reversal('evt_d1', 1000, 'dispute:dp_1', 'dispute', array['ch_u2_1','pi_u2_1'], true), 'disputa abierta';
+  assert public.apply_course_reversal('evt_d1', 1000, 'dispute:dp_1', 'dispute', array['ch_u2_1','pi_u2_1'], true, false), 'disputa abierta';
   assert (select paid_until is null and payment_reversed from public.course_access where user_id = u2), 'disputa abierta cierra';
-  assert public.apply_course_reversal('evt_d3', 1200, 'dispute:dp_1', 'dispute', array['ch_u2_1','pi_u2_1'], false), 'disputa ganada';
-  assert not public.apply_course_reversal('evt_d2', 1100, 'dispute:dp_1', 'dispute', array['ch_u2_1','pi_u2_1'], true), 'estado antiguo tardío';
+  assert public.apply_course_reversal('evt_d3', 1200, 'dispute:dp_1', 'dispute', array['ch_u2_1','pi_u2_1'], false, true), 'disputa ganada';
+  assert not public.apply_course_reversal('evt_d2', 1100, 'dispute:dp_1', 'dispute', array['ch_u2_1','pi_u2_1'], true, false), 'estado antiguo tardío';
   assert (select paid_until > now() and not payment_reversed from public.course_access where user_id = u2), 'ganada reabre';
   -- Alerta de fraude: se registra sin cambiar el acceso.
-  assert public.apply_course_reversal('evt_f1', 1300, 'efw:issfr_1', 'fraud_warning', array['ch_u2_1','pi_u2_1'], false), 'alerta de fraude';
+  assert public.apply_course_reversal('evt_f1', 1300, 'efw:issfr_1', 'fraud_warning', array['ch_u2_1','pi_u2_1'], false, false), 'alerta de fraude';
   assert (select paid_until > now() from public.course_access where user_id = u2), 'la alerta sola no cierra';
   -- Las cuentas de la primera parte conservan su estado.
   assert (select paid_until > now() + interval '19 days' and not payment_reversed from public.course_access where user_id = '00000000-0000-4000-8000-00000000000b'), 'B intacta';
@@ -120,6 +120,61 @@ do $$ begin
   assert (select count(*) = 0 from public.course_invoices), 'facturas invisibles para el alumno';
   assert (select count(*) = 0 from public.course_payment_links), 'enlaces invisibles para el alumno';
   assert (select count(*) = 0 from public.course_payment_reversals), 'reversiones invisibles para el alumno';
+end $$;
+reset role;
+-- Disputas con el mismo event.created: el cierre terminal precede a la apertura (#issuecomment-6728269789).
+insert into auth.users (id, email, email_confirmed_at) values
+ ('00000000-0000-4000-8000-0000000000e1','e1@example.com',now()),('00000000-0000-4000-8000-0000000000e2','e2@example.com',now()),
+ ('00000000-0000-4000-8000-0000000000e3','e3@example.com',now()),('00000000-0000-4000-8000-0000000000e4','e4@example.com',now()),
+ ('00000000-0000-4000-8000-0000000000e5','e5@example.com',now());
+set role service_role;
+do $$
+declare
+  p constant text := 'vida_diaria_monthly';
+  u uuid;
+  k text;
+begin
+  -- Cinco alumnos con alta pagada; cada uno recibe una disputa sobre su propio pago.
+  for i in 1..5 loop
+    u := ('00000000-0000-4000-8000-0000000000e' || i)::uuid; k := 'e' || i;
+    perform public.apply_course_access('evt_s_' || k, 800, u, p, 'active', now() + interval '30 days', false, 'sub_' || k, 'cus_' || k);
+    perform public.apply_course_payment('evt_i_' || k, u, p, now() + interval '30 days', 'sub_' || k, 'in_' || k);
+    perform public.apply_course_payment_link('evt_l_' || k, 'in_' || k, array['pi_' || k]);
+  end loop;
+  -- e1: won antes que needs_response, mismo segundo → abierto (la regresión reproducida).
+  assert public.apply_course_reversal('evt_e1_closed', 2000, 'dispute:dp_e1', 'dispute', array['ch_e1','pi_e1'], false, true), 'e1 cierre';
+  assert not public.apply_course_reversal('evt_e1_open', 2000, 'dispute:dp_e1', 'dispute', array['ch_e1','pi_e1'], true, false), 'e1 apertura del mismo segundo descartada';
+  assert not public.apply_course_reversal('evt_e1_upd', 2000, 'dispute:dp_e1', 'dispute', array['ch_e1','pi_e1'], true, false), 'e1 actualización del mismo segundo descartada';
+  assert (select paid_until > now() and not payment_reversed from public.course_access where user_id = '00000000-0000-4000-8000-0000000000e1'), 'e1 abierto';
+  -- e2: orden normal, won → abierto.
+  assert public.apply_course_reversal('evt_e2_open', 2000, 'dispute:dp_e2', 'dispute', array['ch_e2','pi_e2'], true, false), 'e2 apertura';
+  assert public.apply_course_reversal('evt_e2_closed', 2000, 'dispute:dp_e2', 'dispute', array['ch_e2','pi_e2'], false, true), 'e2 cierre del mismo segundo';
+  assert (select paid_until > now() from public.course_access where user_id = '00000000-0000-4000-8000-0000000000e2'), 'e2 abierto';
+  -- e3: lost antes que needs_response, mismo segundo → cerrado; e4: lost en orden normal → cerrado.
+  assert public.apply_course_reversal('evt_e3_closed', 2000, 'dispute:dp_e3', 'dispute', array['ch_e3','pi_e3'], true, true), 'e3 cierre';
+  assert not public.apply_course_reversal('evt_e3_open', 2000, 'dispute:dp_e3', 'dispute', array['ch_e3','pi_e3'], true, false), 'e3 apertura descartada';
+  assert (select paid_until is null and payment_reversed from public.course_access where user_id = '00000000-0000-4000-8000-0000000000e3'), 'e3 cerrado';
+  perform public.apply_course_reversal('evt_e4_open', 2000, 'dispute:dp_e4', 'dispute', array['ch_e4','pi_e4'], true, false);
+  perform public.apply_course_reversal('evt_e4_closed', 2000, 'dispute:dp_e4', 'dispute', array['ch_e4','pi_e4'], true, true);
+  assert (select paid_until is null from public.course_access where user_id = '00000000-0000-4000-8000-0000000000e4'), 'e4 cerrado';
+  -- e5: segundos distintos llegando al revés (cierre won 2002, actualización 2001, apertura 2000) → abierto;
+  --     después un no terminal de un segundo POSTERIOR sí se aplica (cronología).
+  assert public.apply_course_reversal('evt_e5_closed', 2002, 'dispute:dp_e5', 'dispute', array['ch_e5','pi_e5'], false, true), 'e5 cierre';
+  assert not public.apply_course_reversal('evt_e5_upd', 2001, 'dispute:dp_e5', 'dispute', array['ch_e5','pi_e5'], true, false), 'e5 actualización antigua';
+  assert not public.apply_course_reversal('evt_e5_open', 2000, 'dispute:dp_e5', 'dispute', array['ch_e5','pi_e5'], true, false), 'e5 apertura antigua';
+  assert (select paid_until > now() from public.course_access where user_id = '00000000-0000-4000-8000-0000000000e5'), 'e5 abierto';
+  -- Duplicados: el mismo evento no se aplica dos veces.
+  assert not public.apply_course_reversal('evt_e5_closed', 2002, 'dispute:dp_e5', 'dispute', array['ch_e5','pi_e5'], false, true), 'e5 cierre repetido';
+  assert public.apply_course_reversal('evt_e5_later', 2003, 'dispute:dp_e5', 'dispute', array['ch_e5','pi_e5'], true, false), 'e5 no terminal posterior';
+  assert (select paid_until is null from public.course_access where user_id = '00000000-0000-4000-8000-0000000000e5'), 'e5 cronología';
+  -- Un reembolso completo sigue cerrando aunque la disputa se ganara (e1).
+  perform public.apply_course_reversal('evt_e1_refund', 2100, 'refund:ch_e1', 'refund', array['ch_e1','pi_e1'], true, false);
+  assert (select paid_until is null from public.course_access where user_id = '00000000-0000-4000-8000-0000000000e1'), 'e1 reembolso cierra';
+  -- La renovación pagada posterior de e1 vuelve a abrir.
+  perform public.apply_course_access('evt_s_e1b', 2200, '00000000-0000-4000-8000-0000000000e1', p, 'active', now() + interval '60 days', false, 'sub_e1', null);
+  perform public.apply_course_payment('evt_i_e1b', '00000000-0000-4000-8000-0000000000e1', p, now() + interval '60 days', 'sub_e1', 'in_e1_2');
+  perform public.apply_course_payment_link('evt_l_e1b', 'in_e1_2', array['pi_e1_2']);
+  assert (select paid_until > now() + interval '59 days' from public.course_access where user_id = '00000000-0000-4000-8000-0000000000e1'), 'e1 renovación abre';
 end $$;
 reset role;
 select 'vida-diaria SQL: OK';

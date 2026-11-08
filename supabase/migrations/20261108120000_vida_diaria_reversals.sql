@@ -38,6 +38,8 @@ create table public.course_payment_reversals (
   kind text not null check (kind in ('refund', 'dispute', 'fraud_warning')),
   refs text[] not null,
   active boolean not null,
+  -- Estado final de la disputa (won, lost, warning_closed, prevented): en el mismo segundo gana a una apertura.
+  terminal boolean not null default false,
   last_event_created bigint not null,
   updated_at timestamptz not null default now()
 );
@@ -189,11 +191,14 @@ end;
 $$;
 
 -- charge.refunded / charge.dispute.* / radar.early_fraud_warning.*: último estado de ese reembolso o disputa.
-create function public.apply_course_reversal(p_event text, p_event_created bigint, p_source text, p_kind text, p_refs text[], p_active boolean)
+-- event.created tiene resolución de 1 s: con el mismo segundo, un estado terminal es más nuevo que uno no terminal.
+-- El ID del evento no se usa como reloj. Mismo criterio que reversalIsOlder() en _shared/vida-diaria.ts.
+create function public.apply_course_reversal(p_event text, p_event_created bigint, p_source text, p_kind text, p_refs text[], p_active boolean, p_terminal boolean)
 returns boolean
 language plpgsql security definer set search_path = '' as $$
 declare
   v_prev bigint;
+  v_prev_terminal boolean;
   i record;
 begin
   perform public.lock_course_payment_book();
@@ -202,15 +207,15 @@ begin
   if not found then
     return false;
   end if;
-  select last_event_created into v_prev from public.course_payment_reversals where source_id = p_source;
-  if v_prev is not null and v_prev > p_event_created then
-    return false; -- estado antiguo de la misma disputa o reembolso
+  select last_event_created, terminal into v_prev, v_prev_terminal from public.course_payment_reversals where source_id = p_source;
+  if v_prev is not null and (v_prev > p_event_created or (v_prev = p_event_created and v_prev_terminal and not coalesce(p_terminal, false))) then
+    return false; -- estado antiguo de la misma disputa o reembolso (o no terminal tras el cierre en el mismo segundo)
   end if;
-  insert into public.course_payment_reversals (source_id, kind, refs, active, last_event_created)
-    values (p_source, p_kind, p_refs, p_active, p_event_created)
+  insert into public.course_payment_reversals (source_id, kind, refs, active, terminal, last_event_created)
+    values (p_source, p_kind, p_refs, p_active, coalesce(p_terminal, false), p_event_created)
     on conflict (source_id) do update set
       refs = (select array_agg(distinct x) from unnest(public.course_payment_reversals.refs || excluded.refs) as x),
-      active = excluded.active, last_event_created = excluded.last_event_created, updated_at = now();
+      active = excluded.active, terminal = excluded.terminal, last_event_created = excluded.last_event_created, updated_at = now();
   for i in
     select distinct inv.* from public.course_invoices inv
     join public.course_payment_links l on l.stripe_invoice_id = inv.stripe_invoice_id
@@ -228,7 +233,7 @@ revoke all on function public.refresh_course_paid(uuid, text, text) from public,
 revoke all on function public.lock_course_payment_book() from public, anon, authenticated;
 revoke all on function public.apply_course_payment(text, uuid, text, timestamptz, text, text) from public, anon, authenticated;
 revoke all on function public.apply_course_payment_link(text, text, text[]) from public, anon, authenticated;
-revoke all on function public.apply_course_reversal(text, bigint, text, text, text[], boolean) from public, anon, authenticated;
+revoke all on function public.apply_course_reversal(text, bigint, text, text, text[], boolean, boolean) from public, anon, authenticated;
 grant execute on function public.apply_course_payment(text, uuid, text, timestamptz, text, text) to service_role;
 grant execute on function public.apply_course_payment_link(text, text, text[]) to service_role;
-grant execute on function public.apply_course_reversal(text, bigint, text, text, text[], boolean) to service_role;
+grant execute on function public.apply_course_reversal(text, bigint, text, text, text[], boolean, boolean) to service_role;

@@ -151,7 +151,7 @@ export function isVidaDiariaCheckout(session: { metadata?: Record<string, string
 
 export interface PaidInvoice { key: string; subscription: string; paidUntil: string }
 export type ReversalKind = 'refund' | 'dispute' | 'fraud_warning';
-export interface Reversal { kind: ReversalKind; refs: string[]; active: boolean; created: number }
+export interface Reversal { kind: ReversalKind; refs: string[]; active: boolean; created: number; terminal: boolean }
 export interface PaymentBook {
   invoices: Map<string, PaidInvoice>;
   /** PaymentIntent or charge id → invoice id. */
@@ -262,10 +262,12 @@ export function paymentLinkFromEvent(event: { id: string; type: string; data: { 
   return { event: event.id, invoice, refs };
 }
 
-export interface ReversalChange { event: string; created: number; source: string; kind: ReversalKind; refs: string[]; active: boolean }
+export interface ReversalChange { event: string; created: number; source: string; kind: ReversalKind; refs: string[]; active: boolean; terminal: boolean }
 
 /** Dispute states in which the funds are withdrawn (chargeback open or lost). Inquiries (warning_*), won and prevented are not. */
 export const DISPUTE_REVOKES = new Set(['needs_response', 'under_review', 'lost']);
+/** Final dispute states: nothing follows them. Within the same second they win over an opening or an update. */
+export const DISPUTE_TERMINAL = new Set(['won', 'lost', 'warning_closed', 'prevented']);
 const DISPUTE_EVENTS = new Set(['charge.dispute.created', 'charge.dispute.updated', 'charge.dispute.closed', 'charge.dispute.funds_withdrawn', 'charge.dispute.funds_reinstated']);
 const idOf = (r: unknown) => (typeof r === 'string' ? r : (r as { id?: string } | null | undefined)?.id ?? null);
 
@@ -280,13 +282,15 @@ export function reversalFromEvent(event: { id: string; type: string; created: nu
   const base = { event: event.id, created: event.created };
   if (event.type === 'charge.refunded') {
     const refs = [o.id, idOf(o.payment_intent)].filter((r): r is string => Boolean(r));
-    return { ...base, source: `refund:${o.id}`, kind: 'refund', refs, active: o.refunded === true };
+    return { ...base, source: `refund:${o.id}`, kind: 'refund', refs, active: o.refunded === true, terminal: false };
   }
   const refs = [idOf(o.charge), idOf(o.payment_intent)].filter((r): r is string => Boolean(r));
   if (refs.length === 0) return null;
-  if (DISPUTE_EVENTS.has(event.type)) return { ...base, source: `dispute:${o.id}`, kind: 'dispute', refs, active: DISPUTE_REVOKES.has(o.status ?? '') };
+  if (DISPUTE_EVENTS.has(event.type)) {
+    return { ...base, source: `dispute:${o.id}`, kind: 'dispute', refs, active: DISPUTE_REVOKES.has(o.status ?? ''), terminal: DISPUTE_TERMINAL.has(o.status ?? '') };
+  }
   if (event.type === 'radar.early_fraud_warning.created' || event.type === 'radar.early_fraud_warning.updated') {
-    return { ...base, source: `efw:${o.id}`, kind: 'fraud_warning', refs, active: false };
+    return { ...base, source: `efw:${o.id}`, kind: 'fraud_warning', refs, active: false, terminal: false };
   }
   return null;
 }
@@ -305,13 +309,22 @@ export function applyPaymentLink(rows: Map<string, CourseAccessRow>, seen: Set<s
   return true;
 }
 
+/**
+ * Whether a state of the same refund/dispute must be ignored because the recorded one is newer. Stripe's
+ * event.created has 1-second resolution: in the same second a terminal state (won/lost…) is newer than an opening or
+ * update. Event ids are not ordered and are never used as a clock.
+ */
+export function reversalIsOlder(prev: Pick<Reversal, 'created' | 'terminal'>, next: Pick<ReversalChange, 'created' | 'terminal'>): boolean {
+  return prev.created > next.created || (prev.created === next.created && prev.terminal && !next.terminal);
+}
+
 /** Same rule as apply_course_reversal: once per event, never an older state of the same refund/dispute over a newer one. */
 export function applyReversal(rows: Map<string, CourseAccessRow>, seen: Set<string>, book: PaymentBook, r: ReversalChange): boolean {
   if (seen.has(r.event)) return false;
   seen.add(r.event);
   const prev = book.reversals.get(r.source);
-  if (prev && prev.created > r.created) return false;
-  book.reversals.set(r.source, { kind: r.kind, refs: [...new Set([...(prev?.refs ?? []), ...r.refs])], active: r.active, created: r.created });
+  if (prev && reversalIsOlder(prev, r)) return false;
+  book.reversals.set(r.source, { kind: r.kind, refs: [...new Set([...(prev?.refs ?? []), ...r.refs])], active: r.active, created: r.created, terminal: r.terminal });
   for (const ref of r.refs) refreshInvoice(rows, book, book.links.get(ref));
   return true;
 }
