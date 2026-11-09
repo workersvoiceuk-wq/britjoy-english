@@ -6,8 +6,8 @@ import { APP_URL, VIDA_DIARIA_URL, admin, cors, currentUser, json, preflight } f
 import { PRODUCTS, isProduct } from "../_shared/products.ts";
 import { Stripe, stripe } from "../_shared/stripe.ts";
 import {
-  VD_PRODUCT, automaticTaxEnabled, canStartCheckout, checkoutIdempotencyKey, checkoutParams, liveChargesAllowed, vdPriceIds,
-  type CourseAccessRow,
+  VD_PRODUCT, automaticTaxEnabled, canStartCheckout, checkoutIdempotencyKey, checkoutParams, isVdOffer, liveChargesAllowed,
+  offerPriceIds, orientationOnSale, vdPrices, verifyConceptPrice, type CourseAccessRow, type VdOffer,
 } from "../_shared/vida-diaria.ts";
 
 Deno.serve(async (req: Request) => {
@@ -20,14 +20,25 @@ Deno.serve(async (req: Request) => {
   const client = stripe();
   if (!client) return json({ error: "not_configured" }, 503, headers);
 
-  const { product } = (await req.json().catch(() => ({}))) as { product?: unknown };
+  const { product, offer: requestedOffer } = (await req.json().catch(() => ({}))) as { product?: unknown; offer?: unknown };
   if (product === VD_PRODUCT) {
     // Cobros reales apagados hasta que el dueño ponga VIDA_DIARIA_LIVE=on tras verificar el acceso en modo de prueba.
     if (!liveChargesAllowed(Deno.env.get("STRIPE_SECRET_KEY"), Deno.env.get("VIDA_DIARIA_LIVE"))) {
       return json({ error: "live_disabled" }, 503, headers);
     }
-    const price = [...vdPriceIds(Deno.env.get("STRIPE_PRICE_VIDA_DIARIA"))][0];
+    // Oferta: el curso (por defecto) o el curso con orientación, que sigue en borrador hasta VIDA_DIARIA_ORIENTACION=on.
+    const offer: VdOffer = requestedOffer === undefined ? "curso" : isVdOffer(requestedOffer) ? requestedOffer : ("" as VdOffer);
+    if (!offer) return json({ error: "invalid_offer" }, 400, headers);
+    if (offer === "curso_orientacion" && !orientationOnSale(Deno.env.get("VIDA_DIARIA_ORIENTACION"))) return json({ error: "offer_draft" }, 409, headers);
+    const prices = vdPrices(Deno.env.get("STRIPE_PRICE_VIDA_DIARIA"), Deno.env.get("STRIPE_PRICE_VIDA_DIARIA_ORIENTACION"));
+    const price = offerPriceIds(offer, prices);
     if (!price) return json({ error: "not_configured" }, 503, headers);
+    // Cada Price de Stripe debe ser exactamente el concepto confirmado (activo, mensual, GBP, importe con IVA incluido).
+    const automaticTax = automaticTaxEnabled(Deno.env.get("VIDA_DIARIA_AUTOMATIC_TAX"));
+    for (const id of price) {
+      const mismatch = verifyConceptPrice(await client.prices.retrieve(id), prices.get(id)!, automaticTax);
+      if (mismatch) return json({ error: "price_mismatch", detail: mismatch }, 503, headers);
+    }
     const db = admin();
     const { data: access, error: accessError } = await db.from("course_access").select("*").eq("user_id", user.id).eq("product", VD_PRODUCT).maybeSingle();
     if (accessError) return json({ error: "retry" }, 503, headers);
@@ -41,7 +52,7 @@ Deno.serve(async (req: Request) => {
       price, user: user.id, email: user.email, customer: (access as CourseAccessRow | null)?.stripe_customer_id ?? null,
       returnUrl: VIDA_DIARIA_URL,
       // Stripe Tax solo cuando el dueño confirme el tratamiento del IVA: VIDA_DIARIA_AUTOMATIC_TAX=on.
-      automaticTax: automaticTaxEnabled(Deno.env.get("VIDA_DIARIA_AUTOMATIC_TAX")),
+      automaticTax,
     });
     // Clave estable por (alumno, intento): peticiones simultáneas reciben la MISMA sesión de Stripe.
     const session = await client.checkout.sessions.create(params as Stripe.Checkout.SessionCreateParams, {

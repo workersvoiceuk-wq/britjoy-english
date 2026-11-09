@@ -37,11 +37,14 @@ let n = 0;
 function paidEvent(created: number, end: number, opts: Partial<{ user: string; price: string; product: string; legacy: boolean; subscription: string; invoice: string }> = {}) {
   const meta = { user_id: opts.user ?? 'user-a', product: opts.product ?? VD_PRODUCT };
   const subscription = opts.subscription ?? 'sub_test_1';
-  const line = opts.legacy ? { period: { start: end - 30 * DAY, end }, price: { id: opts.price ?? PRICE } } : { period: { start: end - 30 * DAY, end }, pricing: { price_details: { price: opts.price ?? PRICE } } };
+  // A real paid invoice of the course concept (£12, VAT included): paid, GBP, one line, total = amount paid.
+  const amounts = { amount: 1200, currency: 'gbp', quantity: 1 };
+  const line = opts.legacy ? { ...amounts, period: { start: end - 30 * DAY, end }, price: { id: opts.price ?? PRICE } } : { ...amounts, period: { start: end - 30 * DAY, end }, pricing: { price_details: { price: opts.price ?? PRICE } } };
   const id = opts.invoice ?? `in_test_${++n}`;
+  const paid = { status: 'paid', currency: 'gbp', total: 1200, amount_paid: 1200 };
   const object = opts.legacy
-    ? { id, subscription, subscription_details: { metadata: meta }, lines: { data: [line] } }
-    : { id, parent: { subscription_details: { metadata: meta, subscription } }, lines: { data: [line] } };
+    ? { id, ...paid, subscription, subscription_details: { metadata: meta }, lines: { data: [line] } }
+    : { id, ...paid, parent: { subscription_details: { metadata: meta, subscription } }, lines: { data: [line] } };
   return { id: `evt_test_${++n}`, type: 'invoice.paid', created, data: { object } };
 }
 
@@ -92,7 +95,7 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
     expect(s.module('nadie', '01-presentaciones', T0)).toBe('sample');
     expect(s.module('nadie', '02-compras', T0)).toBe('payment_required');
     expect(s.module('nadie', '99-falso', T0)).toBe('unknown_module');
-    expect(s.status('nadie', T0)).toMatchObject({ active: false, status: 'none', price: { amount: 1999, currency: 'gbp', interval: 'month', display: '£19.99' } });
+    expect(s.status('nadie', T0)).toMatchObject({ active: false, status: 'none', price: { amount: 1200, currency: 'gbp', interval: 'month', display: '£12' }, orientation: { included: false, until: null } });
   });
 
   it('compra de prueba: el checkout solo no abre nada; la suscripción firmada abre los 12 módulos', () => {
@@ -177,7 +180,7 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
     expect(s.webhook(subEvent('customer.subscription.created', T0, { product: 'vum_academy' }), T0)).toBe(false); // precio del curso, metadata ajena
     expect(s.status('user-a', T0).active).toBe(false);
     expect(accessChangeFromEvent({ id: 'e', type: 'checkout.session.completed', created: T0, data: { object: {} } }, prices)).toBeNull();
-    expect(vdPriceIds('')).toEqual(new Set()); // sin precio configurado el curso no se vende
+    expect(vdPriceIds('').size).toBe(0); // sin precio configurado el curso no se vende
     expect(accessChangeFromEvent(subEvent('customer.subscription.created', T0, {}), vdPriceIds(''))).toBeNull();
   });
 

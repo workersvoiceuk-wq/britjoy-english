@@ -52,7 +52,7 @@ test('muestra gratis sin cuenta: módulo 1 con vídeo, fallo → feedback y pist
   await expect(page.locator('[data-vd-module="01-presentaciones"]')).toHaveAttribute('data-vd-state', 'sample');
   await expect(page.locator('[data-vd-state="locked"]')).toHaveCount(11);
   await expect(page.locator('[data-vd-access="signed-out"]')).toBeVisible();
-  await expect(page.getByText('£19.99 al mes').first()).toBeVisible();
+  await expect(page.getByText('£12 al mes').first()).toBeVisible();
   await page.locator('[data-vd-guide] summary').click();
   await expect(page.locator('[data-vd-guide]')).toContainText('un ejercicio por pantalla');
   await page.getByRole('button', { name: 'English' }).click();
@@ -222,7 +222,7 @@ test('catálogo general: ficha y enlace antiguo llevan al curso; el progreso ant
   await page.getByRole('button', { name: 'Cursos', exact: true }).click();
   await page.getByRole('button', { name: /Inglés para el día a día.*Ver curso/ }).click();
   await expect(page.getByRole('dialog')).toContainText('12 módulos');
-  await expect(page.getByRole('dialog')).toContainText('Módulo 1 gratis · £19.99/mes');
+  await expect(page.getByRole('dialog')).toContainText('Módulo 1 gratis · £12/mes');
   await page.getByRole('dialog').getByRole('button', { name: /(Empezar|Continuar) el curso/ }).click();
   await expect(page).toHaveURL(/\/vida-diaria\/$/);
   // Las demás fichas siguen abriendo la app general.

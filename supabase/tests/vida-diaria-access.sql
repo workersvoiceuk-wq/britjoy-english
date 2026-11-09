@@ -7,32 +7,32 @@ insert into public.profiles (id) values ('00000000-0000-4000-8000-00000000000a')
 update public.profiles set stripe_customer_id = 'cus_academy' where id = '00000000-0000-4000-8000-00000000000a';
 set role service_role;
 do $$ begin
-  assert public.apply_course_access('evt_1', 100, '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'active', now() + interval '30 days', false, 'sub_1', 'cus_1'), 'compra';
-  assert not public.apply_course_access('evt_1', 100, '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'active', now() + interval '30 days', false, 'sub_1', 'cus_1'), 'reintento';
-  assert public.apply_course_access('evt_2', 200, '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'active', now() + interval '30 days', true, 'sub_1', null), 'cancelar al final';
-  assert not public.apply_course_access('evt_0', 50, '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'canceled', null, false, 'sub_1', null), 'antiguo tarde';
-  assert not public.apply_course_access('evt_x', 300, '00000000-0000-4000-8000-0000000000ff', 'vida_diaria_monthly', 'active', now(), false, 'sub_x', null), 'usuario inexistente';
+  assert public.apply_course_access('evt_1', 100, '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'active', now() + interval '30 days', false, 'sub_1', 'cus_1', false), 'compra';
+  assert not public.apply_course_access('evt_1', 100, '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'active', now() + interval '30 days', false, 'sub_1', 'cus_1', false), 'reintento';
+  assert public.apply_course_access('evt_2', 200, '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'active', now() + interval '30 days', true, 'sub_1', null, false), 'cancelar al final';
+  assert not public.apply_course_access('evt_0', 50, '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'canceled', null, false, 'sub_1', null, false), 'antiguo tarde';
+  assert not public.apply_course_access('evt_x', 300, '00000000-0000-4000-8000-0000000000ff', 'vida_diaria_monthly', 'active', now(), false, 'sub_x', null, false), 'usuario inexistente';
   assert (select status = 'active' and cancel_at_period_end and access_until > now() and stripe_customer_id = 'cus_1' and last_event_created = 200 from public.course_access), 'fila A';
   assert (select plus_until is null and stripe_customer_id = 'cus_academy' from public.profiles where id = '00000000-0000-4000-8000-00000000000a'), 'VUM Academy conserva su cliente';
 end $$;
 -- invoice.paid: paid_until avanza, no retrocede, una vez por evento y por factura.
 do $$ begin
-  assert public.apply_course_payment('evt_p1', '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', now() + interval '30 days', 'sub_1', 'in_evt_p1'), 'pago';
-  assert not public.apply_course_payment('evt_p1', '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', now() + interval '30 days', 'sub_1', 'in_evt_p1'), 'pago repetido';
-  assert public.apply_course_payment('evt_p0', '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', now() + interval '1 day', 'sub_1', 'in_evt_p0'), 'pago antiguo tarde';
+  assert public.apply_course_payment('evt_p1', '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', now() + interval '30 days', 'sub_1', 'in_evt_p1', null), 'pago';
+  assert not public.apply_course_payment('evt_p1', '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', now() + interval '30 days', 'sub_1', 'in_evt_p1', null), 'pago repetido';
+  assert public.apply_course_payment('evt_p0', '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', now() + interval '1 day', 'sub_1', 'in_evt_p0', null), 'pago antiguo tarde';
   assert (select paid_until > now() + interval '29 days' from public.course_access where user_id = '00000000-0000-4000-8000-00000000000a'), 'paid_until no retrocede';
   -- pago antes que la suscripción (otro alumno): fila pendiente
-  assert public.apply_course_payment('evt_pb', '00000000-0000-4000-8000-00000000000b', 'vida_diaria_monthly', now() + interval '30 days', 'sub_b', 'in_evt_pb'), 'pago B';
+  assert public.apply_course_payment('evt_pb', '00000000-0000-4000-8000-00000000000b', 'vida_diaria_monthly', now() + interval '30 days', 'sub_b', 'in_evt_pb', null), 'pago B';
   assert (select stripe_customer_id is null from public.profiles where id = '00000000-0000-4000-8000-00000000000b'), 'Vida Diaria no asigna el cliente al perfil general';
   assert (select status = 'incomplete' and access_until is null from public.course_access where user_id = '00000000-0000-4000-8000-00000000000b'), 'B pendiente';
   -- Cambiar de suscripción requiere la factura de la nueva alta, en cualquier orden.
-  assert public.apply_course_access('evt_new_a', 350, '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'active', now() + interval '30 days', false, 'sub_new_a', 'cus_1'), 'nueva alta A';
-  assert public.apply_course_payment('evt_old_a_late', '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', now() + interval '40 days', 'sub_1', 'in_evt_old_a_late'), 'factura anterior tardía';
+  assert public.apply_course_access('evt_new_a', 350, '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'active', now() + interval '30 days', false, 'sub_new_a', 'cus_1', false), 'nueva alta A';
+  assert public.apply_course_payment('evt_old_a_late', '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', now() + interval '40 days', 'sub_1', 'in_evt_old_a_late', null), 'factura anterior tardía';
   assert (select paid_until is null from public.course_access where user_id = '00000000-0000-4000-8000-00000000000a'), 'la factura anterior no desbloquea la nueva alta';
-  assert public.apply_course_payment('evt_new_a_paid', '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', now() + interval '10 days', 'sub_new_a', 'in_evt_new_a_paid'), 'factura propia de A';
+  assert public.apply_course_payment('evt_new_a_paid', '00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', now() + interval '10 days', 'sub_new_a', 'in_evt_new_a_paid', null), 'factura propia de A';
   assert (select paid_until = now() + interval '10 days' from public.course_access where user_id = '00000000-0000-4000-8000-00000000000a'), 'solo la fecha de la nueva factura';
-  assert public.apply_course_payment('evt_new_b_paid_first', '00000000-0000-4000-8000-00000000000b', 'vida_diaria_monthly', now() + interval '20 days', 'sub_new_b', 'in_evt_new_b_paid_first'), 'factura B antes del alta';
-  assert public.apply_course_access('evt_new_b', 350, '00000000-0000-4000-8000-00000000000b', 'vida_diaria_monthly', 'active', now() + interval '30 days', false, 'sub_new_b', 'cus_b'), 'nueva alta B';
+  assert public.apply_course_payment('evt_new_b_paid_first', '00000000-0000-4000-8000-00000000000b', 'vida_diaria_monthly', now() + interval '20 days', 'sub_new_b', 'in_evt_new_b_paid_first', null), 'factura B antes del alta';
+  assert public.apply_course_access('evt_new_b', 350, '00000000-0000-4000-8000-00000000000b', 'vida_diaria_monthly', 'active', now() + interval '30 days', false, 'sub_new_b', 'cus_b', false), 'nueva alta B';
   assert (select paid_until = now() + interval '20 days' from public.course_access where user_id = '00000000-0000-4000-8000-00000000000b'), 'se recupera la factura previa al alta';
 end $$;
 -- Checkout: una sesión por alumno; mismo intento hasta registrar; reutilizar; recuperar al caducar.
@@ -77,18 +77,18 @@ begin
   -- U1: el reembolso completo llega ANTES que el enlace, la factura y el alta (orden inverso).
   assert public.apply_course_reversal('evt_r1', 900, 'refund:ch_u1_1', 'refund', array['ch_u1_1','pi_u1_1'], true, false), 'reembolso primero';
   assert public.apply_course_payment_link('evt_l1', 'in_u1_1', array['pi_u1_1']), 'enlace';
-  assert public.apply_course_payment('evt_i1', u1, p, now() + interval '30 days', 'sub_u1', 'in_u1_1'), 'factura';
-  assert public.apply_course_access('evt_s1', 800, u1, p, 'active', now() + interval '30 days', false, 'sub_u1', 'cus_u1'), 'alta';
+  assert public.apply_course_payment('evt_i1', u1, p, now() + interval '30 days', 'sub_u1', 'in_u1_1', null), 'factura';
+  assert public.apply_course_access('evt_s1', 800, u1, p, 'active', now() + interval '30 days', false, 'sub_u1', 'cus_u1', false), 'alta';
   assert (select paid_until is null and payment_reversed from public.course_access where user_id = u1), 'U1 cerrada aunque el reembolso llegó primero';
   -- U2: alta pagada normal.
-  perform public.apply_course_access('evt_s2', 800, u2, p, 'active', now() + interval '30 days', false, 'sub_u2', 'cus_u2');
-  perform public.apply_course_payment('evt_i2', u2, p, now() + interval '30 days', 'sub_u2', 'in_u2_1');
+  perform public.apply_course_access('evt_s2', 800, u2, p, 'active', now() + interval '30 days', false, 'sub_u2', 'cus_u2', false);
+  perform public.apply_course_payment('evt_i2', u2, p, now() + interval '30 days', 'sub_u2', 'in_u2_1', null);
   perform public.apply_course_payment_link('evt_l2', 'in_u2_1', array['pi_u2_1']);
   assert (select paid_until > now() and not payment_reversed from public.course_access where user_id = u2), 'U2 abierta: el reembolso de U1 no la toca';
   -- Duplicados: mismo evento → false; la misma factura reenviada con otro evento no reabre.
   assert not public.apply_course_reversal('evt_r1', 900, 'refund:ch_u1_1', 'refund', array['ch_u1_1','pi_u1_1'], true, false), 'reembolso repetido';
   assert not public.apply_course_payment_link('evt_l1', 'in_u1_1', array['pi_u1_1']), 'enlace repetido';
-  assert public.apply_course_payment('evt_i1_again', u1, p, now() + interval '30 days', 'sub_u1', 'in_u1_1'), 'factura reenviada';
+  assert public.apply_course_payment('evt_i1_again', u1, p, now() + interval '30 days', 'sub_u1', 'in_u1_1', null), 'factura reenviada';
   assert (select paid_until is null from public.course_access where user_id = u1), 'la factura reembolsada reenviada no reabre';
   -- Reembolso parcial de U2: no cierra.
   perform public.apply_course_reversal('evt_rp', 950, 'refund:ch_u2_1', 'refund', array['ch_u2_1','pi_u2_1'], false, false);
@@ -98,8 +98,8 @@ begin
   perform public.apply_course_reversal('evt_rx', 901, 'refund:ch_academy', 'refund', array['ch_academy','pi_academy'], true, false);
   assert (select paid_until > now() from public.course_access where user_id = u2), 'Academy no toca el curso';
   -- Renovación posterior pagada de U1: vuelve a abrir hasta el nuevo periodo.
-  perform public.apply_course_access('evt_s1b', 950, u1, p, 'active', now() + interval '60 days', false, 'sub_u1', null);
-  perform public.apply_course_payment('evt_i1b', u1, p, now() + interval '60 days', 'sub_u1', 'in_u1_2');
+  perform public.apply_course_access('evt_s1b', 950, u1, p, 'active', now() + interval '60 days', false, 'sub_u1', null, false);
+  perform public.apply_course_payment('evt_i1b', u1, p, now() + interval '60 days', 'sub_u1', 'in_u1_2', null);
   perform public.apply_course_payment_link('evt_l1b', 'in_u1_2', array['pi_u1_2']);
   assert (select paid_until > now() + interval '59 days' and not payment_reversed from public.course_access where user_id = u1), 'renovación posterior abre';
   -- Disputa del periodo vigente de U2: abierta cierra; ganada reabre; un estado antiguo tardío no pisa.
@@ -137,8 +137,8 @@ begin
   -- Cinco alumnos con alta pagada; cada uno recibe una disputa sobre su propio pago.
   for i in 1..5 loop
     u := ('00000000-0000-4000-8000-0000000000e' || i)::uuid; k := 'e' || i;
-    perform public.apply_course_access('evt_s_' || k, 800, u, p, 'active', now() + interval '30 days', false, 'sub_' || k, 'cus_' || k);
-    perform public.apply_course_payment('evt_i_' || k, u, p, now() + interval '30 days', 'sub_' || k, 'in_' || k);
+    perform public.apply_course_access('evt_s_' || k, 800, u, p, 'active', now() + interval '30 days', false, 'sub_' || k, 'cus_' || k, false);
+    perform public.apply_course_payment('evt_i_' || k, u, p, now() + interval '30 days', 'sub_' || k, 'in_' || k, null);
     perform public.apply_course_payment_link('evt_l_' || k, 'in_' || k, array['pi_' || k]);
   end loop;
   -- e1: won antes que needs_response, mismo segundo → abierto (la regresión reproducida).
@@ -171,10 +171,35 @@ begin
   perform public.apply_course_reversal('evt_e1_refund', 2100, 'refund:ch_e1', 'refund', array['ch_e1','pi_e1'], true, false);
   assert (select paid_until is null from public.course_access where user_id = '00000000-0000-4000-8000-0000000000e1'), 'e1 reembolso cierra';
   -- La renovación pagada posterior de e1 vuelve a abrir.
-  perform public.apply_course_access('evt_s_e1b', 2200, '00000000-0000-4000-8000-0000000000e1', p, 'active', now() + interval '60 days', false, 'sub_e1', null);
-  perform public.apply_course_payment('evt_i_e1b', '00000000-0000-4000-8000-0000000000e1', p, now() + interval '60 days', 'sub_e1', 'in_e1_2');
+  perform public.apply_course_access('evt_s_e1b', 2200, '00000000-0000-4000-8000-0000000000e1', p, 'active', now() + interval '60 days', false, 'sub_e1', null, false);
+  perform public.apply_course_payment('evt_i_e1b', '00000000-0000-4000-8000-0000000000e1', p, now() + interval '60 days', 'sub_e1', 'in_e1_2', null);
   perform public.apply_course_payment_link('evt_l_e1b', 'in_e1_2', array['pi_e1_2']);
   assert (select paid_until > now() + interval '59 days' from public.course_access where user_id = '00000000-0000-4000-8000-0000000000e1'), 'e1 renovación abre';
+end $$;
+reset role;
+-- Conceptos (migración 20261109120000): curso £12 y orientación £8; la factura ya llega comprobada.
+insert into auth.users (id, email, email_confirmed_at) values ('00000000-0000-4000-8000-0000000000f1','f1@example.com',now());
+set role service_role;
+do $$
+declare
+  u constant uuid := '00000000-0000-4000-8000-0000000000f1';
+  p constant text := 'vida_diaria_monthly';
+begin
+  assert public.apply_course_access('evt_of_s', 800, u, p, 'active', now() + interval '30 days', false, 'sub_f1', 'cus_f1', true), 'alta con orientación';
+  assert not public.apply_course_payment('evt_of_none', u, p, null, 'sub_f1', 'in_none', null), 'sin periodo no cuenta';
+  assert public.apply_course_payment('evt_of_i', u, p, now() + interval '30 days', 'sub_f1', 'in_f1', now() + interval '30 days'), 'factura £20';
+  assert (select orientation and orientation_until > now() and paid_until > now() from public.course_access where user_id = u), 'curso y orientación pagados';
+  -- Se quita la orientación: la fila la marca como no incluida.
+  assert public.apply_course_access('evt_of_s2', 900, u, p, 'active', now() + interval '30 days', false, 'sub_f1', null, false), 'quitar orientación';
+  assert (select not orientation and paid_until > now() from public.course_access where user_id = u), 'curso sigue sin orientación';
+  -- Vuelve con prorrateo pagado solo de orientación: no alarga el curso.
+  assert public.apply_course_access('evt_of_s3', 1000, u, p, 'active', now() + interval '30 days', false, 'sub_f1', null, true), 'añadir orientación';
+  assert public.apply_course_payment('evt_of_up', u, p, null, 'sub_f1', 'in_up', now() + interval '30 days'), 'prorrateo de orientación';
+  assert (select orientation and orientation_until > now() and paid_until < now() + interval '31 days' from public.course_access where user_id = u), 'prorrateo no alarga el curso';
+  -- Reembolso completo de la factura de £20: cae ese periodo de curso; la orientación del prorrateo sigue contando.
+  perform public.apply_course_payment_link('evt_of_l', 'in_f1', array['pi_f1']);
+  perform public.apply_course_reversal('evt_of_r', 1100, 'refund:ch_f1', 'refund', array['ch_f1','pi_f1'], true, false);
+  assert (select paid_until is null and payment_reversed from public.course_access where user_id = u), 'reembolso cierra el curso';
 end $$;
 reset role;
 select 'vida-diaria SQL: OK';

@@ -2,7 +2,11 @@
 
 - **Identificadores:** catálogo `dia-a-dia`, nivel `DIA`, 12 módulos. Las lecciones conservan sus IDs, de `dia-01-presentaciones` a `dia-12-opiniones`, y el progreso sigue en la misma clave (`britjoy-english-progress-v1`).
 - **Producto aparte:** se vende fuera de VUM Academy y del curso Life in the UK.
-- **Destino comercial:** Reino Unido, **£19.99 GBP al mes** para altas nuevas.
+- **Destino comercial:** Reino Unido, con IVA incluido.
+  - **Curso:** **£12 GBP al mes**.
+  - **Orientación básica escrita:** **£8 al mes**, solo junto al curso (total £20). Sigue **en borrador** hasta verificarla en el entorno de prueba.
+  - Si un caso necesita más intervención, se envía un presupuesto aparte y no se continúa hasta que el alumno lo acepta.
+  - No hay contratos anteriores de £19.99: ese precio nunca se activó.
 - **Ruta propuesta:** `/britjoy-english/vida-diaria/`.
 
 > **Estado:**
@@ -47,6 +51,7 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
 | `vida-diaria-webhook` (**destino propio en Stripe**) | Webhook exclusivo del curso, sin JWT y firmado con su **propio** secreto, `STRIPE_WEBHOOK_SECRET_VIDA_DIARIA`. Aplica los eventos `customer.subscription.*` e `invoice.paid` con el precio `STRIPE_PRICE_VIDA_DIARIA` y `metadata.product` del curso. El acceso se escribe en `course_access`; nunca toca `plus_until` (Academy) ni los créditos. `invoice.paid` registra cada factura con su cuenta, suscripción y periodo. `paid_until` es el fin más tardío entre las facturas de la suscripción que no se han reembolsado por completo ni están en disputa (ver «Reembolsos, disputas y fraude»). |
 | `billing-webhook` (créditos) | **Ignora** cualquier evento del curso (`isVidaDiariaEvent`), así que un evento del curso nunca concede VUM Academy ni créditos. En lo demás no cambia. |
 | Migración `20261107120000_vida_diaria_access.sql` | Crea `course_access`, `course_access_events`, `apply_course_access` (solo service role), RLS de «lee solo tu fila» y el bucket privado. No modifica ninguna tabla existente. |
+| Migración `20261109120000_vida_diaria_conceptos.sql` | Aditiva. Añade `course_access.orientation` y `orientation_until`, y `course_invoices.orientation_until`; `course_invoices.paid_until` pasa a admitir nulos (prorrateo solo de orientación). Sustituye `apply_course_access` (gana `p_orientation`) y `apply_course_payment` (gana `p_orientation_until`). |
 | Migración `20261108120000_vida_diaria_reversals.sql` | Aditiva. Añade `course_access.payment_reversed` y las tablas `course_invoices`, `course_payment_links` y `course_payment_reversals`, sin políticas: solo service role. Sustituye `apply_course_access` y `apply_course_payment`, que gana `p_invoice`, y añade `apply_course_payment_link` y `apply_course_reversal`. No toca `profiles`, `plus_until`, créditos ni Academy. |
 
 **Reglas de acceso:**
@@ -78,13 +83,17 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
 > **No hay que modificar ni reactivar ninguno de ellos.** El curso necesita **un destino nuevo y separado** que apunte a la función `vida-diaria-webhook`. Primero en el **sandbox**; producción, solo después.
 
 1. **Supabase, en un entorno de pruebas:**
-   - aplicar las migraciones `20261107120000_vida_diaria_access.sql` y `20261108120000_vida_diaria_reversals.sql`, en ese orden;
+   - aplicar las migraciones `20261107120000_vida_diaria_access.sql`, `20261108120000_vida_diaria_reversals.sql` y `20261109120000_vida_diaria_conceptos.sql`, en ese orden;
    - desplegar `vida-diaria`, `vida-diaria-webhook` y `billing-checkout`.
 
    No hace falta volver a desplegar `billing-webhook` para el curso: su cambio solo hace que ignore los eventos del curso.
 2. **Paquete privado:** subirlo con `scripts/upload-premium.mjs`, usando `SUPABASE_URL` y `SUPABASE_SERVICE_ROLE_KEY` del entorno del dueño.
 3. **Stripe, en el sandbox (modo de prueba):**
-   1. Crear el producto «Inglés para el día a día» con un precio recurrente mensual en GBP de £19.99. Poner su ID en el secreto `STRIPE_PRICE_VIDA_DIARIA`.
+   1. **Precios:** los dos conceptos ya existen desactivados en Stripe y **no hay que crear otros**.
+      - El precio del **curso** (£12 al mes, GBP, IVA incluido) va en el secreto `STRIPE_PRICE_VIDA_DIARIA`.
+      - El de la **orientación** (£8 al mes) va en `STRIPE_PRICE_VIDA_DIARIA_ORIENTACION`.
+      - Antes de crear cada sesión, el checkout lee los dos precios en Stripe. Si alguno no está activo, no es mensual, no está en GBP, no tiene el importe exacto o no incluye el IVA cuando el impuesto automático está activado, responde `price_mismatch` y no cobra.
+      - La oferta con orientación solo se vende con `VIDA_DIARIA_ORIENTACION=on`; hasta entonces responde `offer_draft`.
    2. **Añadir un destino de webhook NUEVO**, solo para el curso:
       - URL: `https://<ref>.supabase.co/functions/v1/vida-diaria-webhook`;
       - eventos: **exactamente** los que usa el código (`VD_WEBHOOK_EVENTS`):
@@ -117,6 +126,22 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
    - Cambiar a la clave `sk_live_` y poner `VIDA_DIARIA_LIVE=on`.
    - Lo decide y lo hace el dueño, sin tocar los webhooks existentes.
 
+## Comprobación de la factura
+
+Antes de abrir nada, `paymentFromEvent` exige que se cumpla todo esto:
+- **Factura:** `status: paid`, `currency: gbp`, sin `paid_out_of_band`, `amount_paid = total` y `total > 0`, con las líneas completas (sin `has_more`).
+- **Líneas:** todas son de un concepto del curso. Una línea ajena, por ejemplo de Academy, invalida la factura.
+- **Cada línea:**
+  - va en `gbp` y con cantidad 1;
+  - su importe es exactamente el del concepto (1200 o 800, IVA incluido);
+  - si es un prorrateo, el importe es mayor que 0 y como mucho el del concepto;
+  - el periodo dura 32 días como máximo.
+- **Suma:** la de las líneas es igual al total.
+
+**Qué abre cada factura:**
+- **Curso:** solo una línea completa del curso amplía su periodo. Los prorrateos del curso no lo amplían.
+- **Orientación:** una línea de orientación, completa o de prorrateo, la abre para su propio periodo. Además, la suscripción actual debe incluir la orientación y el curso debe estar activo.
+
 ## Reembolsos, disputas y fraude
 
 Cada factura pagada del curso se guarda con su cuenta, suscripción y fin de periodo. `invoice_payment.paid` la enlaza con su PaymentIntent, o con su cargo si no tiene PaymentIntent. En esta versión de la API de Stripe (`2026-09-30`, stripe-node 23), el cargo ya no indica su factura, así que el enlace es necesario. Los reembolsos y las disputas llevan el cargo y el PaymentIntent, y con ellos se localiza la factura.
@@ -145,5 +170,6 @@ Cada factura pagada del curso se guarda con su cuenta, suscripción y fin de per
 |---|---|
 | `npm test` (Vitest) | **Contrato:** muestra, compra de prueba, firma, cancelación, caducidad, cuenta distinta, separación de Academy, idempotencia y orden, y cobros reales apagados. **Contenido:** IDs. **Repositorio público:** sin contenido de pago. **Manifiesto de medios.** **Pedagogía:** el feedback por opción y la pista no dan la respuesta. Sin `VD_PREMIUM_DIR` se omiten las comprobaciones que necesitan el contenido de pago. |
 | `VD_PREMIUM_DIR=… npx playwright test -c playwright.vida-diaria.config.ts` | Móvil 390 px y escritorio 1280 px con un servidor de pruebas que aplica el mismo contrato a eventos firmados. **Muestra:** vídeo de Flow, subtítulos, transcripción, fallo, feedback, pista, reintento, repaso y progreso. **Compra de prueba:** vídeo de pago servido en memoria; cancelación, caducidad y otra cuenta. **Acceso anónimo rechazado. Enlaces del catálogo general.** |
+| `npx vitest run tests/vida-diaria-conceptos.test.ts` | **Comprobación de la factura:** 14 facturas insuficientes que no abren nada (estado, moneda, importe 1, importe 1199, importe de otro concepto, `amount_paid < total`, total distinto de la suma, fuera de banda, línea ajena, `has_more`, cantidad 2, periodo largo, línea sin importe, prorrateo solo del curso) y la factura correcta en los dos formatos de Stripe. **Orientación:** curso solo; curso y orientación; orientación sin pagar; quitarla; añadirla con prorrateo; renovación; reembolso; duplicados; suscripción solo de orientación. **Precios y ofertas:** `verifyConceptPrice`, `offerPriceIds` y la orientación en borrador. **Control negativo:** con `0aaeadb` fallan 24 de 27, incluidas las 14 facturas insuficientes. |
 | `npx vitest run tests/vida-diaria-reversals.test.ts` | **Reembolsos y disputas:** reembolso completo y parcial; duplicados; las 24 llegadas posibles de alta, factura, enlace y reembolso; renovación posterior; reembolso de un periodo antiguo; otras cuentas y otro producto; otra suscripción; disputa abierta, ganada, perdida, consulta y en orden inverso; **mismo segundo**: `won` y `lost` en los dos órdenes, cronología de segundos distintos, IDs de evento en orden opuesto y duplicados; alerta de fraude; renovación fallida. **Control negativo:** con el `vida-diaria.ts` de `acf931a1` fallan 9 de 12; las 3 restantes son casos que no deben cambiar el acceso. |
 | `scripts/test-vida-diaria-sql.sh` | Las migraciones en PostgreSQL local. **Reversiones:** reembolso antes que el enlace, la factura y el alta; duplicados; parcial; otro producto; renovación posterior; disputa abierta, ganada y antigua tardía; disputas del mismo segundo con `won` y `lost` en los dos órdenes; segundos distintos al revés; duplicados; reembolso y renovación después de la disputa; alerta de fraude; tablas nuevas invisibles para el alumno; funciones nuevas no ejecutables por `anon` ni `authenticated`. **Además:** idempotencia, orden, usuario inexistente, Academy sin tocar, `paid_until` que no retrocede, checkout (reutilizar, mismo intento, recuperar al caducar, un intento viejo no pisa y **dos sesiones concurrentes reales obtienen el mismo intento**), bucket privado y RLS (A, B y anónimo). |

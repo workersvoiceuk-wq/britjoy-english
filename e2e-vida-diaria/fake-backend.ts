@@ -31,8 +31,8 @@ export class FakeBackend {
   deliver(type: string, user: string, sub: { status?: string; end?: number; cancel?: boolean }) {
     const end = sub.end ?? this.now + 30 * DAY;
     const object = type === 'invoice.paid'
-      ? { id: `in_e2e_${user}_${end}`, parent: { subscription_details: { metadata: { user_id: user, product: VD_PRODUCT }, subscription: `sub_e2e_${user}` } },
-          lines: { data: [{ period: { start: end - 30 * DAY, end }, pricing: { price_details: { price: PRICE } } }] } }
+      ? { id: `in_e2e_${user}_${end}`, status: 'paid', currency: 'gbp', total: 1200, amount_paid: 1200, parent: { subscription_details: { metadata: { user_id: user, product: VD_PRODUCT }, subscription: `sub_e2e_${user}` } },
+          lines: { data: [{ amount: 1200, currency: 'gbp', quantity: 1, period: { start: end - 30 * DAY, end }, pricing: { price_details: { price: PRICE } } }] } }
       : { id: `sub_e2e_${user}`, status: sub.status ?? 'active', customer: `cus_e2e_${user}`, cancel_at_period_end: sub.cancel ?? false,
           metadata: { user_id: user, product: VD_PRODUCT }, items: { data: [{ price: { id: PRICE }, current_period_start: end - 30 * DAY, current_period_end: end }] } };
     const event = { id: `evt_e2e_${++this.n}`, type, created: this.now, data: { object } };

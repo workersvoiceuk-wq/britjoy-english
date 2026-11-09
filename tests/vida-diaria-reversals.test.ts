@@ -25,9 +25,9 @@ const sub = (type: string, created: number, o: Partial<{ user: string; id: strin
   });
 const invoicePaid = (created: number, invoice: string, end: number, o: Partial<{ user: string; sub: string }> = {}, id?: string) =>
   ev('invoice.paid', created, {
-    id: invoice,
+    id: invoice, status: 'paid', currency: 'gbp', total: 1200, amount_paid: 1200,
     parent: { subscription_details: { metadata: { user_id: o.user ?? 'a', product: vd.VD_PRODUCT }, subscription: o.sub ?? `sub_${o.user ?? 'a'}` } },
-    lines: { data: [{ period: { start: end - 30 * DAY, end }, pricing: { price_details: { price: PRICE } } }] },
+    lines: { data: [{ amount: 1200, currency: 'gbp', quantity: 1, period: { start: end - 30 * DAY, end }, pricing: { price_details: { price: PRICE } } }] },
   }, id);
 const invoicePayment = (created: number, invoice: string, pi: string, id?: string) =>
   ev('invoice_payment.paid', created, { id: `inpay_${invoice}`, object: 'invoice_payment', invoice, status: 'paid', payment: { type: 'payment_intent', payment_intent: pi } }, id);

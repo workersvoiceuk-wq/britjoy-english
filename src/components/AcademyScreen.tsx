@@ -12,7 +12,7 @@ import { toDateKey, visibleStreak } from '../logic/gamification';
 import { Certificate } from './Certificate';
 
 // «Inglés para el día a día» is a separate paid course (UK, monthly); its free part is module 1.
-const PRODUCT_PRICE_LABEL = 'Módulo 1 gratis · £19.99/mes';
+const PRODUCT_PRICE_LABEL = 'Módulo 1 gratis · £12/mes';
 
 
 function ProgressBar({ value, color }: { value: number; color: string }) {

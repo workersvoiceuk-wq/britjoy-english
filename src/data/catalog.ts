@@ -96,7 +96,7 @@ export const CATALOG: CatalogCourse[] = [
     level: 'A1 → B1',
     emoji: '🏙️',
     color: DAILY_LEVEL.accent,
-    badges: ['Con historia', 'Muestra gratis', '£19.99/mes'],
+    badges: ['Con historia', 'Muestra gratis', '£12/mes'],
     learn: [
       'Presentarte y hablar de tu familia',
       'Comprar, pedir devoluciones y entender recibos',

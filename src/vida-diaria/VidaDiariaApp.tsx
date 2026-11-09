@@ -228,7 +228,7 @@ function AccessPanel({ t, ui, access, onAccessChange, setNotice }: {
   t: Strings; ui: Ui; access: AccessView | null; onAccessChange: () => Promise<AccessView>; setNotice: (s: string | null) => void;
 }) {
   const [busy, setBusy] = useState(false);
-  const price = access?.kind === 'status' ? access.price.display : '£19.99';
+  const price = access?.kind === 'status' ? access.price.display : '£12';
   const paymentDue = access?.kind === 'status' && !access.active && access.status === 'past_due';
   const subscribe = async () => {
     setBusy(true);
