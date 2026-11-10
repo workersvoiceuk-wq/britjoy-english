@@ -164,6 +164,34 @@ Cada factura pagada del curso se guarda con su cuenta, suscripción y fin de per
 - **Otros productos:** sus cargos, disputas y enlaces llegan al mismo destino, porque los eventos de la cuenta no llevan metadata del producto. Solo se guardan sus IDs y no cambian nada, porque no enlazan con ninguna factura del curso.
 - **Nueva compra:** tras un reembolso o una disputa, mientras la misma suscripción siga viva en Stripe, no se abre un checkout nuevo (cobraría dos veces). El estado es `expired` y el alumno vuelve a poder comprar cuando se cancela la suscripción.
 
+## Niveles, motivo del bloqueo y reto de cierre (10 nov 2026)
+
+Rama de revisión `claude/vida-diaria-niveles-2026-11-10`, sobre `dd78a8d` (cabeza del PR #16). No cambia precios, Stripe, webhooks, migraciones ni funciones del servidor.
+
+**Tres niveles sobre los mismos 12 módulos.** `src/vida-diaria/levels.ts`. Los IDs de módulo (`01-presentaciones` …), de lección (`dia-01-presentaciones` …), las rutas (`#/modulo/…`) y la clave de progreso (`britjoy-english-progress-v1`, nivel `DIA`) no cambian: un nivel solo agrupa y recomienda un orden.
+
+| Nivel | Módulos | Objetivo |
+|---|---|---|
+| 1 · Primeros pasos | 01 Presentaciones · 02 Compras · 03 Transporte · 11 Conversación social | Presentarte, pedir un precio y preguntar cómo llegar |
+| 2 · Resolver situaciones | 04 Vivienda · 05 Salud · 06 Buscar empleo · 10 Servicios públicos | Explicar una avería, describir un problema en una cita y responder en una entrevista |
+| 3 · Conversaciones con más autonomía | 07 Inglés en el trabajo · 08 Llamadas y correos · 09 Colegio y familia · 12 Opiniones y problemas | Resolver un malentendido en el trabajo, gestionar una llamada y explicar una opinión |
+
+**Criterio de asignación.** Los nueve módulos citados en el encargo van a su nivel por su situación. Los otros tres (09, 10, 11) se asignan por la longitud media de las frases y respuestas que enseñan (11 ≈ 5,1 palabras por frase; 10 ≈ 6,0; 09 ≈ 7,4). Es una medida aproximada: los 11 módulos de pago comparten la misma estructura de ejercicios (3 explicaciones, 2 de elección, construir frase, unir, escuchar, completar, escribir y hablar), así que no hay otra diferencia medible sin reescribirlos.
+
+**Ayuda de la práctica por nivel** (`guideFor`). Nivel 1: las frases de la lección con su traducción, abiertas. Nivel 2: la situación a la vista y las frases cerradas, a petición. Nivel 3: sin frases ni situación; la pista llega solo si se pide.
+
+**Reto de cierre por nivel.** Ruta `#/nivel/N/reto`. Se abre al completar los 4 módulos del nivel y reutiliza ejercicios de esos módulos (nivel 1: elección y huecos; nivel 2: construir y escuchar; nivel 3: escribir y construir). Se compone con las lecciones que sirve `loadModule`, por lo que un módulo de pago solo entra en el reto si el servidor lo ha servido. El resultado se guarda en `localStorage` (`vd-retos-v1`), no en el store de progreso: así `DIA` sigue contando solo las 12 lecciones («1 de 12»). Cuenta como completado al terminar, sin nota mínima.
+
+**Motivo real del bloqueo** (`moduleAccess`). Cada módulo cerrado dice por qué: `not-enabled` (sin servidor en esta versión), `signed-out` (sesión requerida), `no-access` (sin suscripción), `expired`, `payment-due`, `pending` (verificando el pago), `checking` o `error`. El acceso lo decide solo el servidor; el progreso y el nivel nunca abren un módulo. Al terminar un módulo, la pantalla de resultado muestra el siguiente paso real (módulo, reto o el motivo por el que no se abre) con un enlace a `#/acceso`.
+
+**Acceso: «Sign in with ChatGPT».** Este árbol no contiene ese botón ni ese texto. El inicio de sesión de este curso es el código de 6 dígitos por email (Supabase OTP). El botón de la captura viene de otra copia de la página que sirve Sites.
+
+**Práctica.** Un fallo en una pregunta de opciones marca solo la elegida en rojo y ya no pinta en verde la correcta antes del reintento (`ChoiceList` ganó un `reveal` opcional, por defecto `true`, así que el resto de la app no cambia). La interfaz de los ejercicios sigue el idioma ES/EN; las frases que se enseñan siguen en inglés.
+
+**Pendiente de contenido (no se ha inventado):**
+- *Diálogos con decisiones* en el nivel 3: requieren lecciones nuevas en el paquete privado y su carga por el servidor.
+- *Voz original de Óscar:* sigue pendiente en los 12 módulos; los clips son sin voz.
+
 ## Pruebas
 
 | Comando | Qué cubre |

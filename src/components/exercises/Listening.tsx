@@ -5,7 +5,7 @@ import { speak, speechSupported, stopSpeaking } from '../../lib/speech';
 import { ChoiceList } from './ChoiceList';
 import { TextAnswer } from './TextAnswer';
 
-export function Listening({ exercise, locked, correct, copy, onResponse }: ExerciseProps<ListeningExercise>) {
+export function Listening({ exercise, locked, correct, copy, reveal, onResponse }: ExerciseProps<ListeningExercise>) {
   const supported = speechSupported();
   const [revealed, setRevealed] = useState(false);
 
@@ -49,6 +49,7 @@ export function Listening({ exercise, locked, correct, copy, onResponse }: Exerc
           options={exercise.options}
           answer={exercise.answer}
           locked={locked}
+          reveal={reveal}
           onChoose={(value) => onResponse({ kind: 'text', value })}
         />
       ) : (

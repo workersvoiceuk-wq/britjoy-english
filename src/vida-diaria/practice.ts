@@ -9,9 +9,27 @@ export const isPractice = (e: Exercise) => e.type !== 'explain' && e.type !== 'd
 
 /** English phrases taught in the lesson's explanation cards, with their Spanish meaning. */
 export function lessonPhrases(lesson: Lesson): Map<string, string> {
-  const map = new Map<string, string>();
-  for (const e of lesson.exercises) if (e.type === 'explain') for (const p of e.phrases ?? []) map.set(norm(p.en), p.es);
-  return map;
+  return phraseMap(lessonPhraseList(lesson));
+}
+
+/** The same phrases as written (English as taught, Spanish meaning), in lesson order and without repeats. */
+export function lessonPhraseList(lesson: Lesson): Array<{ en: string; es: string }> {
+  const seen = new Set<string>();
+  const out: Array<{ en: string; es: string }> = [];
+  for (const e of lesson.exercises)
+    if (e.type === 'explain')
+      for (const p of e.phrases ?? []) {
+        const k = norm(p.en);
+        if (!seen.has(k)) {
+          seen.add(k);
+          out.push({ en: p.en, es: p.es });
+        }
+      }
+  return out;
+}
+
+export function phraseMap(list: ReadonlyArray<{ en: string; es: string }>): Map<string, string> {
+  return new Map(list.map((p) => [norm(p.en), p.es]));
 }
 
 const norm = (s: string) => s.toLowerCase().replace(/[.,!?¿¡'’"]/g, '').replace(/\s+/g, ' ').trim();

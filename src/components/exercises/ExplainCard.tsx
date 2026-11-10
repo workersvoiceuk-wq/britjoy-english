@@ -60,7 +60,7 @@ export function ExplainCard({ exercise, onResponse, copy }: ExerciseProps<Explai
 
       {exercise.phrases && exercise.phrases.length > 0 && (
         <div className="mt-5">
-          <p className="mb-2 text-xs font-black uppercase tracking-wider text-navy/60">Frases útiles · toca para escuchar</p>
+          <p className="mb-2 text-xs font-black uppercase tracking-wider text-navy/60">{es ? 'Frases útiles · toca para escuchar' : 'Useful phrases · tap to listen'}</p>
           <ul className="grid gap-2">
             {exercise.phrases.map((p) => (
               <li key={p.en}>
