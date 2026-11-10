@@ -6,13 +6,15 @@ interface Props {
   options: string[];
   answer: string;
   locked: boolean;
+  /** Show the right option once locked. Practice screens that allow a retry pass false after a first miss. */
+  reveal?: boolean;
   onChoose: (value: string) => void;
   /** Use a compact grid of chips instead of full-width rows. */
   compact?: boolean;
 }
 
 /** Shared option picker for multiple choice, listening and fill-in-the-blank. */
-export function ChoiceList({ options, answer, locked, onChoose, compact }: Props) {
+export function ChoiceList({ options, answer, locked, reveal = true, onChoose, compact }: Props) {
   const shuffled = useMemo(() => shuffle(options), [options]);
   const [selected, setSelected] = useState<string | null>(null);
 
@@ -22,7 +24,8 @@ export function ChoiceList({ options, answer, locked, onChoose, compact }: Props
         const isSelected = selected === option;
         const isAnswer = normalizeText(option) === normalizeText(answer);
         let state = '';
-        if (locked && isAnswer) state = 'tile-correct';
+        const showAnswer = locked && (reveal || (isSelected && isAnswer));
+        if (showAnswer && isAnswer) state = 'tile-correct';
         else if (locked && isSelected) state = 'tile-wrong';
         else if (isSelected) state = 'tile-selected';
         return (
@@ -42,7 +45,7 @@ export function ChoiceList({ options, answer, locked, onChoose, compact }: Props
               </span>
             )}
             <span>{option}</span>
-            {locked && (isAnswer || isSelected) && (
+            {locked && ((isAnswer && showAnswer) || isSelected) && (
               <span aria-hidden className="ms-auto font-black">
                 {isAnswer ? '✓' : '✗'}
               </span>

@@ -39,7 +39,7 @@ export function ExplainCard({ exercise, onResponse, copy }: ExerciseProps<Explai
         <button type="button" onClick={() => { hush(); void narrate(line, es ? 'es-ES' : 'en-GB'); }} className="rounded-xl bg-navy/5 px-3 py-2 font-bold">{es ? '🔊 Escuchar esta idea' : '🔊 Listen to this idea'}</button>
         <button type="button" disabled={segment >= paragraphs.length - 1} onClick={() => setSegment((n) => n + 1)} className="rounded-xl border-2 border-navy/15 px-3 py-2 font-bold disabled:opacity-40">{es ? 'Siguiente idea' : 'Next idea'}</button>
       </div>
-      {exercise.say && <button type="button" onClick={() => { hush(); void narrate(exercise.say!, es ? 'es-ES' : 'en-GB'); }} className="mt-3 text-sm font-bold text-royal underline">{es ? 'Escuchar el resumen original' : 'Listen to the original summary'}</button>}
+      {exercise.say && <button type="button" onClick={() => { hush(); void narrate(exercise.say!, es ? 'es-ES' : 'en-GB'); }} className="mt-3 text-sm font-bold text-royal underline">{es ? 'Escuchar el resumen con la voz del dispositivo' : 'Listen to the summary with the device voice'}</button>}
 
       {exercise.video && (
         <figure className="mx-auto mt-4 max-w-[320px]">
@@ -60,7 +60,7 @@ export function ExplainCard({ exercise, onResponse, copy }: ExerciseProps<Explai
 
       {exercise.phrases && exercise.phrases.length > 0 && (
         <div className="mt-5">
-          <p className="mb-2 text-xs font-black uppercase tracking-wider text-navy/60">Frases útiles · toca para escuchar</p>
+          <p className="mb-2 text-xs font-black uppercase tracking-wider text-navy/60">{es ? 'Frases útiles · toca para escuchar' : 'Useful phrases · tap to listen'}</p>
           <ul className="grid gap-2">
             {exercise.phrases.map((p) => (
               <li key={p.en}>

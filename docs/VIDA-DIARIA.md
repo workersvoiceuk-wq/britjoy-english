@@ -165,6 +165,34 @@ Cada factura pagada del curso se guarda con su cuenta, suscripción y fin de per
 - **Otros productos:** sus cargos, disputas y enlaces llegan al mismo destino, porque los eventos de la cuenta no llevan metadata del producto. Solo se guardan sus IDs y no cambian nada, porque no enlazan con ninguna factura del curso.
 - **Nueva compra:** tras un reembolso o una disputa, mientras la misma suscripción siga viva en Stripe, no se abre un checkout nuevo (cobraría dos veces). El estado es `expired` y el alumno vuelve a poder comprar cuando se cancela la suscripción.
 
+## Niveles, motivo del bloqueo y reto de cierre (10 nov 2026)
+
+Rama de revisión `claude/vida-diaria-niveles-2026-11-10`, sobre `dd78a8d` (cabeza del PR #16). No cambia precios, Stripe, webhooks, migraciones ni funciones del servidor.
+
+**Tres niveles sobre los mismos 12 módulos.** `src/vida-diaria/levels.ts`. Los IDs de módulo (`01-presentaciones` …), de lección (`dia-01-presentaciones` …), las rutas (`#/modulo/…`) y la clave de progreso (`britjoy-english-progress-v1`, nivel `DIA`) no cambian: un nivel solo agrupa y recomienda un orden.
+
+| Nivel | Módulos | Objetivo |
+|---|---|---|
+| 1 · Primeros pasos | 01 Presentaciones · 02 Compras · 03 Transporte · 11 Conversación social | Presentarte, pedir un precio y preguntar cómo llegar |
+| 2 · Resolver situaciones | 04 Vivienda · 05 Salud · 06 Buscar empleo · 10 Servicios públicos | Explicar una avería, describir un problema en una cita y responder en una entrevista |
+| 3 · Conversaciones con más autonomía | 07 Inglés en el trabajo · 08 Llamadas y correos · 09 Colegio y familia · 12 Opiniones y problemas | Resolver un malentendido en el trabajo, gestionar una llamada y explicar una opinión |
+
+**Criterio de asignación.** Los nueve módulos citados en el encargo van a su nivel por su situación. Los otros tres (09, 10, 11) se asignan por la longitud media de las frases y respuestas que enseñan (11 ≈ 5,1 palabras por frase; 10 ≈ 6,0; 09 ≈ 7,4). Es una medida aproximada: los 11 módulos de pago comparten la misma estructura de ejercicios (3 explicaciones, 2 de elección, construir frase, unir, escuchar, completar, escribir y hablar), así que no hay otra diferencia medible sin reescribirlos.
+
+**Ayuda de la práctica por nivel** (`guideFor`). Nivel 1: las frases de la lección con su traducción, abiertas. Nivel 2: la situación a la vista y las frases cerradas, a petición. Nivel 3: sin frases ni situación; la pista llega solo si se pide.
+
+**Reto de cierre por nivel.** Ruta `#/nivel/N/reto`. Se abre al completar los 4 módulos del nivel y reutiliza ejercicios de esos módulos (nivel 1: elección y huecos; nivel 2: construir y escuchar; nivel 3: escribir y construir). Se compone con las lecciones que sirve `loadModule`, por lo que un módulo de pago solo entra en el reto si el servidor lo ha servido. El resultado se guarda en `localStorage` (`vd-retos-v1`), no en el store de progreso: así `DIA` sigue contando solo las 12 lecciones («1 de 12»). Cuenta como completado al terminar, sin nota mínima.
+
+**Motivo real del bloqueo** (`moduleAccess`). Cada módulo cerrado dice por qué: `not-enabled` (sin servidor en esta versión), `signed-out` (sesión requerida), `no-access` (sin suscripción), `expired`, `payment-due`, `pending` (verificando el pago), `checking` o `error`. El acceso lo decide solo el servidor; el progreso y el nivel nunca abren un módulo. Al terminar un módulo, la pantalla de resultado muestra el siguiente paso real (módulo, reto o el motivo por el que no se abre) con un enlace a `#/acceso`.
+
+**Acceso: «Sign in with ChatGPT».** Este árbol no contiene ese botón ni ese texto. El inicio de sesión de este curso es el código de 6 dígitos por email (Supabase OTP). El botón de la captura viene de otra copia de la página que sirve Sites.
+
+**Práctica.** Un fallo en una pregunta de opciones marca solo la elegida en rojo y ya no pinta en verde la correcta antes del reintento (`ChoiceList` ganó un `reveal` opcional, por defecto `true`, así que el resto de la app no cambia). La interfaz de los ejercicios sigue el idioma ES/EN; las frases que se enseñan siguen en inglés.
+
+**Pendiente de contenido (no se ha inventado):**
+- *Diálogos con decisiones* en el nivel 3: requieren lecciones nuevas en el paquete privado y su carga por el servidor.
+- *Voz original de Óscar:* sigue pendiente en los 12 módulos; los clips son sin voz.
+
 ## Pruebas
 
 | Comando | Qué cubre |
@@ -174,3 +202,28 @@ Cada factura pagada del curso se guarda con su cuenta, suscripción y fin de per
 | `npx vitest run tests/vida-diaria-conceptos.test.ts` | **Comprobación de la factura:** 14 facturas insuficientes que no abren nada (estado, moneda, importe 1, importe 1199, importe de otro concepto, `amount_paid < total`, total distinto de la suma, fuera de banda, línea ajena, `has_more`, cantidad 2, periodo largo, línea sin importe, prorrateo solo del curso) y la factura correcta en los dos formatos de Stripe. **Orientación:** curso solo; curso y orientación; orientación sin pagar; quitarla; añadirla con prorrateo; renovación; reembolso; duplicados; suscripción solo de orientación. **Precios y ofertas:** `verifyConceptPrice`, `offerPriceIds` y la orientación en borrador. **Control negativo:** con `0aaeadb` fallan 24 de 27, incluidas las 14 facturas insuficientes. |
 | `npx vitest run tests/vida-diaria-reversals.test.ts` | **Reembolsos y disputas:** reembolso completo y parcial; duplicados; las 24 llegadas posibles de alta, factura, enlace y reembolso; renovación posterior; reembolso de un periodo antiguo; otras cuentas y otro producto; otra suscripción; disputa abierta, ganada, perdida, consulta y en orden inverso; **mismo segundo**: `won` y `lost` en los dos órdenes, cronología de segundos distintos, IDs de evento en orden opuesto y duplicados; alerta de fraude; renovación fallida. **Control negativo:** con el `vida-diaria.ts` de `acf931a1` fallan 9 de 12; las 3 restantes son casos que no deben cambiar el acceso. |
 | `scripts/test-vida-diaria-sql.sh` | Las migraciones en PostgreSQL local. **Reversiones:** reembolso antes que el enlace, la factura y el alta; duplicados; parcial; otro producto; renovación posterior; disputa abierta, ganada y antigua tardía; disputas del mismo segundo con `won` y `lost` en los dos órdenes; segundos distintos al revés; duplicados; reembolso y renovación después de la disputa; alerta de fraude; tablas nuevas invisibles para el alumno; funciones nuevas no ejecutables por `anon` ni `authenticated`. **Además:** idempotencia, orden, usuario inexistente, Academy sin tocar, `paid_until` que no retrocede, checkout (reutilizar, mismo intento, recuperar al caducar, un intento viejo no pisa y **dos sesiones concurrentes reales obtienen el mismo intento**), bucket privado y RLS (A, B y anónimo). |
+
+### Candidato de Sites con inscripciones cerradas
+
+Para revisar solo la muestra en el Site, compilar con
+`VITE_VIDA_DIARIA_SITE_PREVIEW=1 VITE_SUPABASE_URL= VITE_SUPABASE_ANON_KEY= npm run build`.
+El candidato muestra los tres niveles, las rutas de la muestra y el enlace a `/mi-vum/`.
+Ese enlace abre la cuenta existente de VUM. La autenticación por correo de BritJoy
+se comprueba por separado con el backend de prueba. El candidato no conecta las dos
+identidades ni modifica el almacenamiento de progreso. La copia para Sites usa
+`./videos/vida-diaria/` y `./resources/` dentro del directorio de la lección.
+
+### Incorporar la voz original
+
+El reproductor permite abrir el capítulo y el clip breve por separado. El
+manifiesto registra que los doce capítulos y clips carecen de voz. Grabar,
+aprobar y sincronizar una pista por capítulo a partir de los guiones y marcas
+existentes. Presentaciones usa la copia pública. Compras–Opiniones mantienen
+sus archivos dentro del paquete privado y se sirven por el acceso del curso.
+
+Al incorporar cada grabación, conservar el MP4 sin voz como respaldo, el
+archivo de lección, el ID y los VTT ES/EN. Añadir la pista al capítulo con
+vídeo H.264 y audio AAC, validar audio decodificable y sincronización, y
+actualizar entonces el estado y la etiqueta de voz en el manifiesto y la
+interfaz. La voz del dispositivo sigue siendo una ayuda opcional y la
+transcripción permanece disponible.

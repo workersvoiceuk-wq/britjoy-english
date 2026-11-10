@@ -8,5 +8,7 @@ export interface ExerciseProps<E extends Exercise = Exercise> {
   /** Result of the check (only meaningful when locked). */
   correct: boolean | null;
   copy: Copy;
+  /** When false, a locked wrong answer is marked red without revealing the right option (default true). */
+  reveal?: boolean;
   onResponse: (response: ExerciseResponse | null) => void;
 }
