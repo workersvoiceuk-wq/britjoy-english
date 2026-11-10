@@ -376,7 +376,8 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
     expect(core).toContain('liveChargesAllowed(');
     expect(checkout).toContain('vidaDiariaCheckout(body,');
     expect(checkout).toContain('db.rpc("begin_course_checkout", { p_user: user.id, p_product: VD_PRODUCT, p_offer: offer })');
-    expect(core).toContain('checkoutIdempotencyKey(d.user.id, plan.row.attempt, offer)');
+    expect(core).toContain('checkoutIdempotencyKey(d.user.id, attempt, o)');
+    expect(checkout).toContain('return !error && data === true;');
     expect(checkout).toContain('automaticTaxEnabled(Deno.env.get("VIDA_DIARIA_AUTOMATIC_TAX"))');
     const sql = fs.readFileSync(path.join(root, 'supabase/migrations/20261107120000_vida_diaria_access.sql'), 'utf8');
     expect(sql).not.toMatch(/plus_until\s*=/);

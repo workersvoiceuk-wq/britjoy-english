@@ -13,8 +13,9 @@ drop function public.record_course_checkout(uuid, text, integer, text, text, tim
 -- Toma (con bloqueo por alumno) la decisión de Checkout para una oferta:
 --   reuse    → sesión abierta de la MISMA oferta (misma URL);
 --   create   → crear con este intento (y clave estable por alumno, intento y oferta);
---   conflict → otra oferta tiene la sesión abierta (other_offer) o la está creando ahora (in_progress).
--- Una creación de otra oferta que lleva más de 2 minutos sin registrarse (p. ej. Stripe falló) deja de bloquear.
+--   conflict → otra oferta tiene la sesión abierta (other_offer), la está creando ahora (in_progress, menos de 2 minutos)
+--              o su creación nunca se registró (unrecorded: registro fallido o proveedor tardío). Una creación sin
+--              registrar NUNCA cede el paso a otra oferta: el handler la recupera con su clave estable y la registra.
 create function public.begin_course_checkout(p_user uuid, p_product text, p_offer text)
 returns table (action text, attempt integer, url text, offer text, session_id text, reason text)
 language plpgsql security definer set search_path = '' as $$
@@ -42,8 +43,7 @@ begin
     elsif v.updated_at > now() - interval '2 minutes' then
       return query select 'conflict'::text, v.attempt, null::text, v_held, null::text, 'in_progress'::text;
     else
-      update public.course_checkout c set offer = p_offer, updated_at = now() where c.user_id = p_user and c.product = p_product;
-      return query select 'create'::text, v.attempt, null::text, p_offer, null::text, null::text;
+      return query select 'conflict'::text, v.attempt, null::text, v_held, null::text, 'unrecorded'::text;
     end if;
   else
     update public.course_checkout c set attempt = c.attempt + 1, session_id = null, url = null, expires_at = null, offer = p_offer, updated_at = now()

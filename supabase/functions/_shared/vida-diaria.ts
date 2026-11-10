@@ -527,13 +527,14 @@ export interface CheckoutState {
   updated_at?: string | null;
 }
 
-/** How long an unrecorded session creation of another offer blocks a different offer (same rule in SQL). */
+/** Within this margin an unrecorded creation of another offer is treated as in progress; after it, it must be recovered
+ * (same rule in SQL). It never lets a different offer create a second payable session. */
 export const CHECKOUT_CREATE_GRACE_MS = 2 * 60_000;
 export type CheckoutPlan =
   | { action: 'reuse'; url: string }
   | { action: 'create'; attempt: number; idempotencyKey: string }
   /** Another offer holds the learner's only payable session (open, or still being created). */
-  | { action: 'conflict'; reason: 'other_offer' | 'in_progress'; offer: VdOffer | null; session: string | null };
+  | { action: 'conflict'; reason: 'other_offer' | 'in_progress' | 'unrecorded'; offer: VdOffer | null; session: string | null };
 
 /** Stable per (learner, attempt, offer): retries of the same offer get the same session; another offer never does. */
 export function checkoutIdempotencyKey(user: string, attempt: number, offer?: VdOffer): string {
@@ -551,9 +552,10 @@ export function planCheckout(user: string, state: CheckoutState | null, offer: V
   }
   // No session recorded yet for this attempt (another request is creating it): same offer → same key, same session.
   if (!state.session_id) {
-    const creating = state.updated_at ? Date.parse(state.updated_at) > now - CHECKOUT_CREATE_GRACE_MS : false;
-    if (held !== offer && creating) return { action: 'conflict', reason: 'in_progress', offer: held, session: null };
-    return { action: 'create', attempt: state.attempt, idempotencyKey: checkoutIdempotencyKey(user, state.attempt, offer) };
+    if (held === offer) return { action: 'create', attempt: state.attempt, idempotencyKey: checkoutIdempotencyKey(user, state.attempt, offer) };
+    // Another offer's creation was never recorded (in progress, failed write or late provider): it may exist at Stripe.
+    const creating = state.updated_at ? Date.parse(state.updated_at) > now - CHECKOUT_CREATE_GRACE_MS : true;
+    return { action: 'conflict', reason: creating ? 'in_progress' : 'unrecorded', offer: held, session: null };
   }
   // Recorded session expired: recover with a new attempt for the requested offer.
   const attempt = state.attempt + 1;

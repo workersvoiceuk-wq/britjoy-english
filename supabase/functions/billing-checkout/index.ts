@@ -33,6 +33,10 @@ Deno.serve(async (req: Request) => {
         retrievePrice: (id) => client.prices.retrieve(id),
         createSession: (params, idempotencyKey) =>
           client.checkout.sessions.create(params as Stripe.Checkout.SessionCreateParams, { idempotencyKey }),
+        retrieveSession: async (id) => {
+          const s = await client.checkout.sessions.retrieve(id);
+          return { id: s.id, url: s.url, expires_at: s.expires_at, status: s.status };
+        },
         expireSession: async (id) => {
           try {
             return { status: (await client.checkout.sessions.expire(id)).status };
@@ -51,10 +55,12 @@ Deno.serve(async (req: Request) => {
           const { data, error } = await db.rpc("begin_course_checkout", { p_user: user.id, p_product: VD_PRODUCT, p_offer: offer }).single();
           return { row: (data as BeginRow | null) ?? null, error };
         },
+        // Solo cuenta como registrada si la función confirma que la fila guarda esta sesión (true); un error no lanza.
         record: async (attempt, offer, session) => {
-          await db.rpc("record_course_checkout", {
+          const { data, error } = await db.rpc("record_course_checkout", {
             p_user: user.id, p_product: VD_PRODUCT, p_attempt: attempt, p_offer: offer, p_session: session.id, p_url: session.url, p_expires: session.expires,
           });
+          return !error && data === true;
         },
         release: async (session) => {
           await db.rpc("release_course_checkout", { p_user: user.id, p_product: VD_PRODUCT, p_session: session });

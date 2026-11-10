@@ -230,11 +230,23 @@ begin
   assert public.record_course_checkout(u, p, 2, 'curso_orientacion', 'cs_c2', 'https://x/20', now() + interval '1 hour'), 'registrar £20';
   select * into r from public.begin_course_checkout(u, p, 'curso');
   assert r.action = 'conflict' and r.offer = 'curso_orientacion', 'orden inverso también en conflicto';
-  -- creación de otra oferta que nunca se registró: deja de bloquear a los 2 minutos
+  -- creación de otra oferta que nunca se registró: en curso 2 minutos; después «unrecorded» (hay que recuperarla),
+  -- nunca un «create» de la otra oferta (podría existir una sesión pagable en Stripe).
   perform public.begin_course_checkout('00000000-0000-4000-8000-0000000000c2', p, 'curso');
+  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-0000000000c2', p, 'curso_orientacion');
+  assert r.action = 'conflict' and r.reason = 'in_progress', 'en curso';
   update public.course_checkout set updated_at = now() - interval '3 minutes' where user_id = '00000000-0000-4000-8000-0000000000c2';
   select * into r from public.begin_course_checkout('00000000-0000-4000-8000-0000000000c2', p, 'curso_orientacion');
-  assert r.action = 'create' and r.attempt = 1 and r.offer = 'curso_orientacion', 'creación abandonada no bloquea';
+  assert r.action = 'conflict' and r.reason = 'unrecorded' and r.offer = 'curso' and r.attempt = 1, 'sin registrar: recuperar, no ceder';
+  -- la misma oferta sí puede repetir la creación con su clave estable (mismo intento)
+  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-0000000000c2', p, 'curso');
+  assert r.action = 'create' and r.attempt = 1 and r.offer = 'curso', 'misma oferta recupera con el mismo intento';
+  -- recuperada y registrada como caducada → la otra oferta abre un intento nuevo
+  assert public.record_course_checkout('00000000-0000-4000-8000-0000000000c2', p, 1, 'curso', 'cs_c2_old', 'https://x/old', now() - interval '1 second'), 'registrar caducada';
+  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-0000000000c2', p, 'curso_orientacion');
+  assert r.action = 'create' and r.attempt = 2 and r.offer = 'curso_orientacion', 'nuevo intento tras recuperar';
+  -- un registro tardío del intento anterior no pisa el nuevo
+  assert public.record_course_checkout('00000000-0000-4000-8000-0000000000c2', p, 1, 'curso', 'cs_late', 'https://x/late', now() + interval '1 hour') is null, 'registro tardío no pisa';
   begin perform public.begin_course_checkout(u, p, 'orientacion'); assert false, 'oferta inválida'; exception when raise_exception then null; end;
 end $$;
 reset role;

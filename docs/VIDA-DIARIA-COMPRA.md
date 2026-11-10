@@ -22,6 +22,7 @@ La Básica histórica, Academy y las suscripciones existentes no cambian.
 | Reembolsos y disputas | Un reembolso completo no cerraba el acceso | El reembolso completo y la disputa abierta o perdida cierran el periodo de esa factura; la disputa ganada lo reabre; cuenta el orden y el mismo segundo | `baf23fa`, `0aaeadb` |
 | Orientación | No existía | Incluida solo si la suscripción la tiene y su línea está pagada; en **borrador** (`VIDA_DIARIA_ORIENTACION`) | `dd78a8d` |
 | Una sesión por alumno | Sí, pero sin oferta: con una sesión abierta, la otra oferta recibía su URL | La sesión recuerda su oferta. Otra oferta recibe **409 `checkout_open`**. El cambio explícito (`replace: true`) caduca la sesión en Stripe y crea la nueva. Si la anterior se está pagando, `checkout_completing` | este commit |
+| Registro fallido y proveedor tardío | — | Se comprueba el resultado de `record_course_checkout`: sin registro **no se entrega la URL** y se caduca la sesión. Una creación sin registrar no cede el paso a otra oferta: dentro de 2 minutos responde `checkout_in_progress`; después se **recupera** con su clave estable (alumno, intento, oferta), se lee su estado real en Stripe y se registra antes de permitir otra oferta. Estado indeterminado → 503 `retry` | ver PR |
 | Vinculación | Cuenta iniciada (`client_reference_id` y metadatos) | Igual, más `metadata.offer`. Sin Payment Links | — |
 | Cobros reales | Apagados salvo `sk_test_` o `VIDA_DIARIA_LIVE=on` | Igual | — |
 
@@ -37,7 +38,7 @@ La Básica histórica, Academy y las suscripciones existentes no cambian.
 |---|---|---|---|---|
 | Comprobación de factura (£12 y £8) | Sí | Sí: 27 casos y control negativo | — | No (falta el sandbox) |
 | Reembolsos, disputas y orden | Sí | Sí: 17 casos y PostgreSQL 16 | — | No (falta el sandbox) |
-| Checkout por oferta, una sesión pagable | Sí | Sí: 10 casos con el handler real y dobles, SQL y concurrencia real con dos ofertas | — | No (falta el sandbox) |
+| Checkout por oferta, una sesión pagable | Sí | Sí: 19 casos deterministas con el handler real y dobles (registro fallido, caducidad fallida, proveedor tardío, error del proveedor, dos ofertas y reintentos), SQL y concurrencia real con dos ofertas | — | No (falta el sandbox) |
 | Precio verificado en Stripe | Sí | Sí, con dobles | Precios reales inactivos (correcto) | No |
 | Orientación (£8) | Sí, en borrador | Sí | Activación, portal para añadirla o quitarla, e interfaz para `checkout_open`/`replace` | No |
 | Sandbox dedicado (precios de prueba y webhook propio) | — | — | **Por validar** | — |
@@ -46,6 +47,7 @@ La Básica histórica, Academy y las suscripciones existentes no cambian.
 ## Casos reproducibles
 | Comando | Qué demuestra |
 |---|---|
+| `npx vitest run tests/vida-diaria-checkout-ofertas.test.ts` (bloque «registro fallido, proveedor tardío y reintentos») | La reproducción de #issuecomment-6760045844 (primer registro fallido, 120001 ms, la otra oferta) ya no deja dos sesiones pagables; tampoco si falla la caducidad, ni con el proveedor tardío, con o sin cambio explícito; un reintento no entrega una URL caducada. **Control negativo** con `14854ea`: fallan 8 de 19 |
 | `npx vitest run tests/vida-diaria-checkout-ofertas.test.ts` | Handler real `vidaDiariaCheckout` con dobles: controles en limpio; curso → orientación y orientación → curso devuelven **409** y nunca la URL de la otra oferta; `replace` caduca y crea; `checkout_completing`; 25 rondas de 8 peticiones simultáneas mezcladas (una sola sesión); reintentos; caducidad; creación abandonada que deja de bloquear a los 2 minutos; otra cuenta |
 | `npx vitest run tests/vida-diaria-conceptos.test.ts` | Las 14 facturas insuficientes no abren nada; orientación; precios y ofertas |
 | `npx vitest run tests/vida-diaria-reversals.test.ts` | Reembolsos, disputas, orden y mismo segundo |
