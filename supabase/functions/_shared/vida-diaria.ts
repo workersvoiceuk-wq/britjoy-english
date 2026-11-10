@@ -1,5 +1,6 @@
 // «Inglés para el día a día» (catálogo dia-a-dia, nivel DIA): producto individual, separado de VUM Academy y de
-// Life in the UK. Suscripción mensual de £19.99 GBP para altas nuevas. Este módulo es lógica pura (sin Deno, sin red),
+// Life in the UK. Altas nuevas en Reino Unido, IVA incluido: curso £12 al mes, o £20 al mes con la orientación básica
+// escrita, en dos conceptos (£12 + £8; la orientación sigue en borrador). Este módulo es lógica pura (sin Deno, sin red),
 // así la comparten el webhook, la función de acceso, las pruebas y el servidor de pruebas de la interfaz.
 //
 // Reglas del contrato:

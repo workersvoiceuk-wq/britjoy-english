@@ -7,7 +7,7 @@
   - una animación breve con subtítulos ES/EN, sin voz (la locución original está pendiente) y con transcripción;
   - práctica con un ejercicio por pantalla.
 - **Si fallas:** ves por qué tu opción no encaja y una pista, y puedes intentarlo de nuevo. Si vuelves a fallar, ves la respuesta y el ejercicio vuelve en el repaso de fallos al final.
-- **Acceso:** el módulo 1 es gratis, sin cuenta ni tarjeta. Los módulos 2 a 12 se incluyen en la suscripción mensual (£19.99 para altas nuevas; el precio final con IVA se muestra al pagar). Puedes cancelar cuando quieras y mantienes el acceso hasta el final del periodo pagado.
+- **Acceso:** el módulo 1 es gratis, sin cuenta ni tarjeta. Las inscripciones a los módulos 2 a 12 están cerradas por ahora.
 - **Progreso:** se guarda en tu dispositivo, junto con tu progreso de BritJoy English.
 
 ## English
@@ -17,5 +17,5 @@
   - a short animation with ES/EN subtitles, no voice (original narration pending) and a transcript;
   - practice with one exercise per screen.
 - **If you miss:** you see why your option does not fit and a hint, and you can try again. If you miss again, you see the answer and the exercise comes back in the review of mistakes at the end.
-- **Access:** module 1 is free, with no account and no card. Modules 2 to 12 are included in the monthly subscription (£19.99 for new sign-ups; the final price including VAT is shown at checkout). You can cancel at any time and keep access until the end of the paid period.
+- **Access:** module 1 is free, with no account and no card. Enrolment for modules 2 to 12 is closed for now.
 - **Progress:** saved on your device, together with your BritJoy English progress.
