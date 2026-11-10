@@ -12,6 +12,7 @@ import { CONSULATE_LEVELS } from './courses/consulados';
 import { MIGRATE_UK_LEVELS } from './courses/migrar-uk';
 import { UK_CITY_LEVELS, ES_CITY_LEVELS, CO_CITY_LEVELS } from './courses/ciudades';
 import type { LevelDefinition } from '../types';
+import { DAILY_OUTLINE_LEVEL, VIDA_DIARIA_PATH } from './vida-diaria/outline';
 
 export type Category = 'ingles' | 'situaciones' | 'vida' | 'espana' | 'colombia' | 'ia';
 
@@ -28,7 +29,11 @@ export interface CatalogCourse {
   /** Levels whose lessons make up this course. */
   levels: LevelDefinition[];
   /** Where "Empezar" takes the learner: an English level/course id, or the Vivir en UK tab. */
-  open: { tab: 'english'; level: string } | { tab: 'life' } | { tab: 'local' };
+  /**
+   * Where "Empezar" takes the learner: an English level/course id, the Vivir en UK tab, or a separate product page
+   * (relative to the web app, e.g. «Inglés para el día a día» at vida-diaria/).
+   */
+  open: { tab: 'english'; level: string } | { tab: 'life' } | { tab: 'local' } | { tab: 'product'; href: string };
 }
 
 export const CATEGORIES: { id: Category | 'todos'; label: string }[] = [
@@ -86,12 +91,12 @@ export const CATALOG: CatalogCourse[] = [
   {
     id: 'dia-a-dia',
     title: DAILY_LEVEL.name,
-    subtitle: 'Sigue a la familia García en su primer año en Londres: 12 módulos con historia y una misión en cada uno.',
+    subtitle: 'Sigue a la familia García en su primer año en Londres: 12 módulos con historia y una misión en cada uno. Curso aparte: módulo 1 gratis, sin tarjeta.',
     category: 'situaciones',
     level: 'A1 → B1',
     emoji: '🏙️',
     color: DAILY_LEVEL.accent,
-    badges: ['Con historia', 'Nuevo'],
+    badges: ['Con historia', 'Muestra gratis', '£12/mes'],
     learn: [
       'Presentarte y hablar de tu familia',
       'Comprar, pedir devoluciones y entender recibos',
@@ -100,8 +105,9 @@ export const CATALOG: CatalogCourse[] = [
       'Buscar empleo, hacer entrevistas e inglés en el trabajo',
       'Llamadas, correos, colegio, servicios públicos y vida social',
     ],
-    levels: [DAILY_LEVEL],
-    open: { tab: 'english', level: DAILY_LEVEL.id },
+    // The paid modules are not in this bundle: the outline gives the real module and lesson counts.
+    levels: [DAILY_OUTLINE_LEVEL],
+    open: { tab: 'product', href: VIDA_DIARIA_PATH },
   },
   {
     id: 'turistas',

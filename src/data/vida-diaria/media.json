@@ -1,0 +1,529 @@
+{
+ "curso": "dia-a-dia",
+ "actualizado": "2026-11-07",
+ "estados": {
+  "lista-sin-voz": "animación subtitulada real, sin voz; no cuenta como vídeo de la lección",
+  "pendiente": "no hay vídeo",
+  "en-flow-pendiente-revision": "clip generado fuera del repositorio, sin revisar ni subtitular"
+ },
+ "modules": [
+  {
+   "module": "01-presentaciones",
+   "lessonId": "dia-01-presentaciones",
+   "title": [
+    "Hola, soy Ana",
+    "Hi, I'm Ana"
+   ],
+   "objective": "Hablar de ti, tu país, tu familia y tus intereses.",
+   "animacion": {
+    "estado": "lista-sin-voz",
+    "cuentaComoVideo": false,
+    "descripcion": "Animación VUM de diapositivas con captura real de la app, subtítulos ES/EN y sin voz (locución original pendiente). En pantalla se identifica como demostración de capítulo.",
+    "archivo": "dia-01-presentaciones-capitulo.mp4",
+    "subtitulos": {
+     "es": "dia-01-presentaciones-capitulo.es.vtt",
+     "en": "dia-01-presentaciones-capitulo.en.vtt"
+    },
+    "duracionSegundos": 65.5,
+    "acceso": "publico",
+    "ruta": "videos/vida-diaria/dia-01-presentaciones-capitulo.mp4",
+    "guion": "transcripción incluida aquí (muestra pública); guion completo en el paquete privado",
+    "transcripcion": [
+     {
+      "title": [
+       "Capítulo 1 · Una casa nueva en Londres (1/2)",
+       "Chapter 1 · A new home in London (1/2)"
+      ],
+      "text": [
+       "Ana García acaba de llegar a Londres desde Valencia con su pareja, Diego, y su hija Lucía, de 8 años. Es sábado por la mañana y la vecina de al lado, Margaret, llama a la puerta con una bandeja de galletas.",
+       "Ana García has just arrived in London from Valencia with her partner, Diego, and their 8-year-old daughter, Lucía. It is Saturday morning and Margaret, the next-door neighbour, knocks on the door with a tray of biscuits."
+      ]
+     },
+     {
+      "title": [
+       "Capítulo 1 · Una casa nueva en Londres (2/2)",
+       "Chapter 1 · A new home in London (2/2)"
+      ],
+      "text": [
+       "«Hello! I'm Margaret, from number 12. Welcome to the street!» Ana respira hondo. Es su primera conversación en inglés en su nuevo barrio.",
+       "“Hello! I'm Margaret, from number 12. Welcome to the street!” Ana takes a deep breath. It is her first conversation in English in her new neighbourhood."
+      ]
+     },
+     {
+      "title": [
+       "Habla de tu familia y tus gustos (1/2)",
+       "Talk about your family and what you like (1/2)"
+      ],
+      "text": [
+       "Margaret pregunta por la familia y por qué les gusta hacer. En inglés es normal hacer preguntas cortas y responder con frases sencillas. Para la familia: «This is my partner, Diego» / «This is my daughter, Lucía».",
+       "Margaret asks about the family and what they like doing. In English it is normal to ask short questions and answer with simple sentences. For family: “This is my partner, Diego” / “This is my daughter, Lucía”."
+      ]
+     },
+     {
+      "title": [
+       "Habla de tu familia y tus gustos (2/2)",
+       "Talk about your family and what you like (2/2)"
+      ],
+      "text": [
+       "Para gustos: «I like…» / «I love…» / «I'm into…» (me interesa).",
+       "For likes: “I like…” / “I love…” / “I'm into…” (I'm interested in)."
+      ]
+     },
+     {
+      "title": [
+       "🎯 Misión",
+       "🎯 Mission"
+      ],
+      "text": [
+       "Preséntate a Margaret: di tu nombre, de dónde eres, con quién vives y una cosa que te gusta hacer.",
+       "Introduce yourself to Margaret: say your name, where you are from, who you live with and one thing you like doing."
+      ]
+     },
+     {
+      "title": [
+       "Tu turno",
+       "Your turn"
+      ],
+      "text": [
+       "Di en voz alta: «I like cooking.».",
+       "Say it aloud: “I like cooking.”."
+      ]
+     }
+    ]
+   },
+   "video": {
+    "estado": "listo-sin-voz",
+    "origen": "Google Flow (Ultra), clip realista sin voz con subtítulos didácticos ES/EN",
+    "archivo": "dia-01-presentaciones-flow.mp4",
+    "subtitulos": {
+     "es": "dia-01-presentaciones-flow.es.vtt",
+     "en": "dia-01-presentaciones-flow.en.vtt"
+    },
+    "formato": "720×1280 (vertical)",
+    "duracionSegundos": 10,
+    "conAudio": false,
+    "acceso": "publico",
+    "ruta": "videos/vida-diaria/dia-01-presentaciones-flow.mp4",
+    "zipSha256": "45806b3fb2c7d2bb92eb5485409524fe7059881fd796df194b4d97ff8a29ab72"
+   }
+  },
+  {
+   "module": "02-compras",
+   "lessonId": "dia-02-compras",
+   "title": [
+    "En el supermercado",
+    "At the supermarket"
+   ],
+   "objective": "Preguntar precios, encontrar productos y pedir una devolución.",
+   "animacion": {
+    "estado": "lista-sin-voz",
+    "cuentaComoVideo": false,
+    "descripcion": "Animación VUM de diapositivas con captura real de la app, subtítulos ES/EN y sin voz (locución original pendiente). En pantalla se identifica como demostración de capítulo.",
+    "archivo": "dia-02-compras-capitulo.mp4",
+    "subtitulos": {
+     "es": "dia-02-compras-capitulo.es.vtt",
+     "en": "dia-02-compras-capitulo.en.vtt"
+    },
+    "duracionSegundos": 79.8,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-02-compras-capitulo.mp4 → POST vida-diaria {action:'media'}",
+    "guion": "paquete privado: docs/guion-animaciones.json"
+   },
+   "video": {
+    "estado": "listo-sin-voz",
+    "origen": "Google Flow (Ultra), clip realista sin voz con subtítulos didácticos ES/EN",
+    "archivo": "dia-02-compras-flow.mp4",
+    "subtitulos": {
+     "es": "dia-02-compras-flow.es.vtt",
+     "en": "dia-02-compras-flow.en.vtt"
+    },
+    "formato": "720×1280 (vertical)",
+    "duracionSegundos": 10,
+    "conAudio": false,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-02-compras-flow.mp4 → POST vida-diaria {action:'media', source:'flow'}",
+    "zipSha256": "45806b3fb2c7d2bb92eb5485409524fe7059881fd796df194b4d97ff8a29ab72"
+   }
+  },
+  {
+   "module": "03-transporte",
+   "lessonId": "dia-03-transporte",
+   "title": [
+    "¿Cómo llego a…?",
+    "How do I get to…?"
+   ],
+   "objective": "Pedir indicaciones, comprar billetes y entender anuncios.",
+   "animacion": {
+    "estado": "lista-sin-voz",
+    "cuentaComoVideo": false,
+    "descripcion": "Animación VUM de diapositivas con captura real de la app, subtítulos ES/EN y sin voz (locución original pendiente). En pantalla se identifica como demostración de capítulo.",
+    "archivo": "dia-03-transporte-capitulo.mp4",
+    "subtitulos": {
+     "es": "dia-03-transporte-capitulo.es.vtt",
+     "en": "dia-03-transporte-capitulo.en.vtt"
+    },
+    "duracionSegundos": 57,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-03-transporte-capitulo.mp4 → POST vida-diaria {action:'media'}",
+    "guion": "paquete privado: docs/guion-animaciones.json"
+   },
+   "video": {
+    "estado": "listo-sin-voz",
+    "origen": "Google Flow (Ultra), clip realista sin voz con subtítulos didácticos ES/EN",
+    "archivo": "dia-03-transporte-flow.mp4",
+    "subtitulos": {
+     "es": "dia-03-transporte-flow.es.vtt",
+     "en": "dia-03-transporte-flow.en.vtt"
+    },
+    "formato": "720×1280 (vertical)",
+    "duracionSegundos": 10,
+    "conAudio": false,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-03-transporte-flow.mp4 → POST vida-diaria {action:'media', source:'flow'}",
+    "zipSha256": "45806b3fb2c7d2bb92eb5485409524fe7059881fd796df194b4d97ff8a29ab72"
+   }
+  },
+  {
+   "module": "04-vivienda",
+   "lessonId": "dia-04-vivienda",
+   "title": [
+    "La caldera no funciona",
+    "The boiler isn't working"
+   ],
+   "objective": "Buscar habitación, hablar con el propietario y comunicar una avería.",
+   "animacion": {
+    "estado": "lista-sin-voz",
+    "cuentaComoVideo": false,
+    "descripcion": "Animación VUM de diapositivas con captura real de la app, subtítulos ES/EN y sin voz (locución original pendiente). En pantalla se identifica como demostración de capítulo.",
+    "archivo": "dia-04-vivienda-capitulo.mp4",
+    "subtitulos": {
+     "es": "dia-04-vivienda-capitulo.es.vtt",
+     "en": "dia-04-vivienda-capitulo.en.vtt"
+    },
+    "duracionSegundos": 78.8,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-04-vivienda-capitulo.mp4 → POST vida-diaria {action:'media'}",
+    "guion": "paquete privado: docs/guion-animaciones.json"
+   },
+   "video": {
+    "estado": "listo-sin-voz",
+    "origen": "Google Flow (Ultra), clip realista sin voz con subtítulos didácticos ES/EN",
+    "archivo": "dia-04-vivienda-flow.mp4",
+    "subtitulos": {
+     "es": "dia-04-vivienda-flow.es.vtt",
+     "en": "dia-04-vivienda-flow.en.vtt"
+    },
+    "formato": "720×1280 (vertical)",
+    "duracionSegundos": 10,
+    "conAudio": false,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-04-vivienda-flow.mp4 → POST vida-diaria {action:'media', source:'flow'}",
+    "zipSha256": "45806b3fb2c7d2bb92eb5485409524fe7059881fd796df194b4d97ff8a29ab72"
+   }
+  },
+  {
+   "module": "05-salud",
+   "lessonId": "dia-05-salud",
+   "title": [
+    "Lucía tiene fiebre",
+    "Lucía has a fever"
+   ],
+   "objective": "Pedir cita con el GP, explicar síntomas y hablar en la farmacia.",
+   "animacion": {
+    "estado": "lista-sin-voz",
+    "cuentaComoVideo": false,
+    "descripcion": "Animación VUM de diapositivas con captura real de la app, subtítulos ES/EN y sin voz (locución original pendiente). En pantalla se identifica como demostración de capítulo.",
+    "archivo": "dia-05-salud-capitulo.mp4",
+    "subtitulos": {
+     "es": "dia-05-salud-capitulo.es.vtt",
+     "en": "dia-05-salud-capitulo.en.vtt"
+    },
+    "duracionSegundos": 66.9,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-05-salud-capitulo.mp4 → POST vida-diaria {action:'media'}",
+    "guion": "paquete privado: docs/guion-animaciones.json"
+   },
+   "video": {
+    "estado": "listo-sin-voz",
+    "origen": "Google Flow (Ultra), clip realista sin voz con subtítulos didácticos ES/EN",
+    "archivo": "dia-05-salud-flow.mp4",
+    "subtitulos": {
+     "es": "dia-05-salud-flow.es.vtt",
+     "en": "dia-05-salud-flow.en.vtt"
+    },
+    "formato": "720×1280 (vertical)",
+    "duracionSegundos": 10,
+    "conAudio": false,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-05-salud-flow.mp4 → POST vida-diaria {action:'media', source:'flow'}",
+    "zipSha256": "45806b3fb2c7d2bb92eb5485409524fe7059881fd796df194b4d97ff8a29ab72"
+   }
+  },
+  {
+   "module": "06-empleo",
+   "lessonId": "dia-06-empleo",
+   "title": [
+    "La entrevista de Ana",
+    "Ana's interview"
+   ],
+   "objective": "Entender ofertas, preparar el CV y responder en entrevistas.",
+   "animacion": {
+    "estado": "lista-sin-voz",
+    "cuentaComoVideo": false,
+    "descripcion": "Animación VUM de diapositivas con captura real de la app, subtítulos ES/EN y sin voz (locución original pendiente). En pantalla se identifica como demostración de capítulo.",
+    "archivo": "dia-06-empleo-capitulo.mp4",
+    "subtitulos": {
+     "es": "dia-06-empleo-capitulo.es.vtt",
+     "en": "dia-06-empleo-capitulo.en.vtt"
+    },
+    "duracionSegundos": 70.9,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-06-empleo-capitulo.mp4 → POST vida-diaria {action:'media'}",
+    "guion": "paquete privado: docs/guion-animaciones.json"
+   },
+   "video": {
+    "estado": "listo-sin-voz",
+    "origen": "Google Flow (Ultra), clip realista sin voz con subtítulos didácticos ES/EN",
+    "archivo": "dia-06-empleo-flow.mp4",
+    "subtitulos": {
+     "es": "dia-06-empleo-flow.es.vtt",
+     "en": "dia-06-empleo-flow.en.vtt"
+    },
+    "formato": "720×1280 (vertical)",
+    "duracionSegundos": 10,
+    "conAudio": false,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-06-empleo-flow.mp4 → POST vida-diaria {action:'media', source:'flow'}",
+    "zipSha256": "45806b3fb2c7d2bb92eb5485409524fe7059881fd796df194b4d97ff8a29ab72"
+   }
+  },
+  {
+   "module": "07-trabajo",
+   "lessonId": "dia-07-trabajo",
+   "title": [
+    "Primer día en la cocina",
+    "First day in the kitchen"
+   ],
+   "objective": "Entender instrucciones, explicar tareas y pedir materiales.",
+   "animacion": {
+    "estado": "lista-sin-voz",
+    "cuentaComoVideo": false,
+    "descripcion": "Animación VUM de diapositivas con captura real de la app, subtítulos ES/EN y sin voz (locución original pendiente). En pantalla se identifica como demostración de capítulo.",
+    "archivo": "dia-07-trabajo-capitulo.mp4",
+    "subtitulos": {
+     "es": "dia-07-trabajo-capitulo.es.vtt",
+     "en": "dia-07-trabajo-capitulo.en.vtt"
+    },
+    "duracionSegundos": 52.8,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-07-trabajo-capitulo.mp4 → POST vida-diaria {action:'media'}",
+    "guion": "paquete privado: docs/guion-animaciones.json"
+   },
+   "video": {
+    "estado": "listo-sin-voz",
+    "origen": "Google Flow (Ultra), clip realista sin voz con subtítulos didácticos ES/EN",
+    "archivo": "dia-07-trabajo-flow.mp4",
+    "subtitulos": {
+     "es": "dia-07-trabajo-flow.es.vtt",
+     "en": "dia-07-trabajo-flow.en.vtt"
+    },
+    "formato": "720×1280 (vertical)",
+    "duracionSegundos": 10,
+    "conAudio": false,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-07-trabajo-flow.mp4 → POST vida-diaria {action:'media', source:'flow'}",
+    "zipSha256": "45806b3fb2c7d2bb92eb5485409524fe7059881fd796df194b4d97ff8a29ab72"
+   }
+  },
+  {
+   "module": "08-llamadas",
+   "lessonId": "dia-08-llamadas",
+   "title": [
+    "Deja un mensaje después de la señal",
+    "Leave a message after the tone"
+   ],
+   "objective": "Dejar mensajes, confirmar citas y escribir solicitudes.",
+   "animacion": {
+    "estado": "lista-sin-voz",
+    "cuentaComoVideo": false,
+    "descripcion": "Animación VUM de diapositivas con captura real de la app, subtítulos ES/EN y sin voz (locución original pendiente). En pantalla se identifica como demostración de capítulo.",
+    "archivo": "dia-08-llamadas-capitulo.mp4",
+    "subtitulos": {
+     "es": "dia-08-llamadas-capitulo.es.vtt",
+     "en": "dia-08-llamadas-capitulo.en.vtt"
+    },
+    "duracionSegundos": 45.2,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-08-llamadas-capitulo.mp4 → POST vida-diaria {action:'media'}",
+    "guion": "paquete privado: docs/guion-animaciones.json"
+   },
+   "video": {
+    "estado": "listo-sin-voz",
+    "origen": "Google Flow (Ultra), clip realista sin voz con subtítulos didácticos ES/EN",
+    "archivo": "dia-08-llamadas-flow.mp4",
+    "subtitulos": {
+     "es": "dia-08-llamadas-flow.es.vtt",
+     "en": "dia-08-llamadas-flow.en.vtt"
+    },
+    "formato": "720×1280 (vertical)",
+    "duracionSegundos": 10,
+    "conAudio": false,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-08-llamadas-flow.mp4 → POST vida-diaria {action:'media', source:'flow'}",
+    "zipSha256": "45806b3fb2c7d2bb92eb5485409524fe7059881fd796df194b4d97ff8a29ab72"
+   }
+  },
+  {
+   "module": "09-colegio",
+   "lessonId": "dia-09-colegio",
+   "title": [
+    "La reunión con la profesora",
+    "The meeting with the teacher"
+   ],
+   "objective": "Hablar con profesores y entender comunicaciones escolares.",
+   "animacion": {
+    "estado": "lista-sin-voz",
+    "cuentaComoVideo": false,
+    "descripcion": "Animación VUM de diapositivas con captura real de la app, subtítulos ES/EN y sin voz (locución original pendiente). En pantalla se identifica como demostración de capítulo.",
+    "archivo": "dia-09-colegio-capitulo.mp4",
+    "subtitulos": {
+     "es": "dia-09-colegio-capitulo.es.vtt",
+     "en": "dia-09-colegio-capitulo.en.vtt"
+    },
+    "duracionSegundos": 69.5,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-09-colegio-capitulo.mp4 → POST vida-diaria {action:'media'}",
+    "guion": "paquete privado: docs/guion-animaciones.json"
+   },
+   "video": {
+    "estado": "listo-sin-voz",
+    "origen": "Google Flow (Ultra), clip realista sin voz con subtítulos didácticos ES/EN",
+    "archivo": "dia-09-colegio-flow.mp4",
+    "subtitulos": {
+     "es": "dia-09-colegio-flow.es.vtt",
+     "en": "dia-09-colegio-flow.en.vtt"
+    },
+    "formato": "720×1280 (vertical)",
+    "duracionSegundos": 10,
+    "conAudio": false,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-09-colegio-flow.mp4 → POST vida-diaria {action:'media', source:'flow'}",
+    "zipSha256": "45806b3fb2c7d2bb92eb5485409524fe7059881fd796df194b4d97ff8a29ab72"
+   }
+  },
+  {
+   "module": "10-servicios",
+   "lessonId": "dia-10-servicios",
+   "title": [
+    "En la biblioteca y el council",
+    "At the library and the council"
+   ],
+   "objective": "Pedir información, completar formularios y solicitar ayuda.",
+   "animacion": {
+    "estado": "lista-sin-voz",
+    "cuentaComoVideo": false,
+    "descripcion": "Animación VUM de diapositivas con captura real de la app, subtítulos ES/EN y sin voz (locución original pendiente). En pantalla se identifica como demostración de capítulo.",
+    "archivo": "dia-10-servicios-capitulo.mp4",
+    "subtitulos": {
+     "es": "dia-10-servicios-capitulo.es.vtt",
+     "en": "dia-10-servicios-capitulo.en.vtt"
+    },
+    "duracionSegundos": 56.2,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-10-servicios-capitulo.mp4 → POST vida-diaria {action:'media'}",
+    "guion": "paquete privado: docs/guion-animaciones.json"
+   },
+   "video": {
+    "estado": "listo-sin-voz",
+    "origen": "Google Flow (Ultra), clip realista sin voz con subtítulos didácticos ES/EN",
+    "archivo": "dia-10-servicios-flow.mp4",
+    "subtitulos": {
+     "es": "dia-10-servicios-flow.es.vtt",
+     "en": "dia-10-servicios-flow.en.vtt"
+    },
+    "formato": "720×1280 (vertical)",
+    "duracionSegundos": 10,
+    "conAudio": false,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-10-servicios-flow.mp4 → POST vida-diaria {action:'media', source:'flow'}",
+    "zipSha256": "45806b3fb2c7d2bb92eb5485409524fe7059881fd796df194b4d97ff8a29ab72"
+   }
+  },
+  {
+   "module": "11-social",
+   "lessonId": "dia-11-social",
+   "title": [
+    "Hablar del tiempo",
+    "Talking about the weather"
+   ],
+   "objective": "Hablar del tiempo, hacer planes y conversar con compañeros.",
+   "animacion": {
+    "estado": "lista-sin-voz",
+    "cuentaComoVideo": false,
+    "descripcion": "Animación VUM de diapositivas con captura real de la app, subtítulos ES/EN y sin voz (locución original pendiente). En pantalla se identifica como demostración de capítulo.",
+    "archivo": "dia-11-social-capitulo.mp4",
+    "subtitulos": {
+     "es": "dia-11-social-capitulo.es.vtt",
+     "en": "dia-11-social-capitulo.en.vtt"
+    },
+    "duracionSegundos": 49.5,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-11-social-capitulo.mp4 → POST vida-diaria {action:'media'}",
+    "guion": "paquete privado: docs/guion-animaciones.json"
+   },
+   "video": {
+    "estado": "listo-sin-voz",
+    "origen": "Google Flow (Ultra), clip realista sin voz con subtítulos didácticos ES/EN",
+    "archivo": "dia-11-social-flow.mp4",
+    "subtitulos": {
+     "es": "dia-11-social-flow.es.vtt",
+     "en": "dia-11-social-flow.en.vtt"
+    },
+    "formato": "720×1280 (vertical)",
+    "duracionSegundos": 10,
+    "conAudio": false,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-11-social-flow.mp4 → POST vida-diaria {action:'media', source:'flow'}",
+    "zipSha256": "45806b3fb2c7d2bb92eb5485409524fe7059881fd796df194b4d97ff8a29ab72"
+   }
+  },
+  {
+   "module": "12-opiniones",
+   "lessonId": "dia-12-opiniones",
+   "title": [
+    "Un problema con el turno",
+    "A problem with the shifts"
+   ],
+   "objective": "Expresar desacuerdos, dar consejos y explicar una dificultad.",
+   "animacion": {
+    "estado": "lista-sin-voz",
+    "cuentaComoVideo": false,
+    "descripcion": "Animación VUM de diapositivas con captura real de la app, subtítulos ES/EN y sin voz (locución original pendiente). En pantalla se identifica como demostración de capítulo.",
+    "archivo": "dia-12-opiniones-capitulo.mp4",
+    "subtitulos": {
+     "es": "dia-12-opiniones-capitulo.es.vtt",
+     "en": "dia-12-opiniones-capitulo.en.vtt"
+    },
+    "duracionSegundos": 68.9,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-12-opiniones-capitulo.mp4 → POST vida-diaria {action:'media'}",
+    "guion": "paquete privado: docs/guion-animaciones.json"
+   },
+   "video": {
+    "estado": "listo-sin-voz",
+    "origen": "Google Flow (Ultra), clip realista sin voz con subtítulos didácticos ES/EN",
+    "archivo": "dia-12-opiniones-flow.mp4",
+    "subtitulos": {
+     "es": "dia-12-opiniones-flow.es.vtt",
+     "en": "dia-12-opiniones-flow.en.vtt"
+    },
+    "formato": "720×1280 (vertical)",
+    "duracionSegundos": 10,
+    "conAudio": false,
+    "acceso": "servidor",
+    "ruta": "bucket privado vida-diaria-premium: media/dia-12-opiniones-flow.mp4 → POST vida-diaria {action:'media', source:'flow'}",
+    "zipSha256": "45806b3fb2c7d2bb92eb5485409524fe7059881fd796df194b4d97ff8a29ab72"
+   }
+  }
+ ]
+}

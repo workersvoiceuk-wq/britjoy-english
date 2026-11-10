@@ -1,5 +1,6 @@
 import { LEVELS } from '../data/courses/en-es';
 import { SITUATION_LEVELS } from '../data/courses/situaciones';
+import { VIDA_DIARIA_PATH } from '../data/vida-diaria/outline';
 import { SPAIN_LEVELS } from '../data/courses/espana';
 import { COLOMBIA_LEVELS } from '../data/courses/colombia';
 import { CONSULATE_LEVELS } from '../data/courses/consulados';
@@ -94,6 +95,20 @@ export function LevelSelector({ onClose }: Props) {
 
         <h3 className="mb-2 mt-6 text-sm font-black uppercase tracking-wider text-royal">{t('levels.topics')}</h3>
         <ul className="space-y-3">
+          <li>
+            <a
+              href={VIDA_DIARIA_PATH}
+              data-vida-diaria-link=""
+              style={{ borderColor: '#C8102E' }}
+              className="press flex w-full items-center gap-4 rounded-2xl border-2 border-b-4 bg-white p-3 text-left"
+            >
+              <span className="text-3xl" aria-hidden>🏙️</span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-lg font-black text-navy">Inglés para el día a día</span>
+                <span className="block text-sm font-semibold text-ink-soft">Curso aparte · módulo 1 gratis, sin tarjeta</span>
+              </span>
+            </a>
+          </li>
           {[...SITUATION_LEVELS, ...MIGRATE_UK_LEVELS, ...CONSULATE_LEVELS, ...SPAIN_LEVELS, ...COLOMBIA_LEVELS, ...CITY_LEVELS].map((course) => {
             const lessons = course.units.flatMap((u) => u.lessons);
             const done = lessons.filter((l) => l.id in (completed[course.id] ?? {})).length;

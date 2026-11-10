@@ -7,6 +7,7 @@ import { admin } from "../_shared/http.ts";
 import { PRODUCTS, isProduct } from "../_shared/products.ts";
 import { Stripe, periodEnd, stripe } from "../_shared/stripe.ts";
 import { isAcademySubscription } from "../_shared/academy.ts";
+import { isVidaDiariaEvent } from "../_shared/vida-diaria.ts";
 
 const cryptoProvider = Stripe.createSubtleCryptoProvider();
 const ok = () => new Response("ok", { status: 200 });
@@ -48,6 +49,9 @@ Deno.serve(async (req: Request) => {
   };
 
   try {
+    // «Inglés para el día a día» tiene su propio destino de webhook (vida-diaria-webhook, con su propio secreto).
+    // Aquí sus eventos se ignoran: nunca conceden VUM Academy (plus_until) ni créditos.
+    if (isVidaDiariaEvent(event)) return ok();
     switch (event.type) {
       case "checkout.session.completed": {
         const s = event.data.object as Stripe.Checkout.Session;

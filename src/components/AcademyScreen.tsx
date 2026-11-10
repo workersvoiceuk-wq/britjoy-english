@@ -11,6 +11,9 @@ import { achievements } from '../logic/achievements';
 import { toDateKey, visibleStreak } from '../logic/gamification';
 import { Certificate } from './Certificate';
 
+// «Inglés para el día a día» is a separate paid course (UK, monthly); its free part is module 1.
+const PRODUCT_PRICE_LABEL = 'Módulo 1 gratis · £12/mes';
+
 
 function ProgressBar({ value, color }: { value: number; color: string }) {
   return (
@@ -49,7 +52,7 @@ function CourseCard({ course, onOpen }: { course: CatalogCourse; onOpen: () => v
           ))}
         </span>
         <span className="mt-3 text-xs font-bold text-ink-soft">
-          {mods} · {less} · {t('academy.hours', { n: stats.hours })} · <span className="text-brand-dark">{t('academy.free')}</span>
+          {mods} · {less} · {t('academy.hours', { n: stats.hours })} · <span className="text-brand-dark">{course.open.tab === 'product' ? PRODUCT_PRICE_LABEL : t('academy.free')}</span>
         </span>
         <span className="mt-auto pt-3">
           <ProgressBar value={pct} color={course.color} />
@@ -82,7 +85,7 @@ function CourseDetail({ course, onClose, onStart }: { course: CatalogCourse; onC
         <div className="relative flex items-center gap-4 px-5 py-6 text-white" style={{ background: course.color }}>
           <span className="text-6xl" aria-hidden>{course.emoji}</span>
           <div className="min-w-0 flex-1">
-            <p className="text-xs font-black uppercase tracking-wider">{course.level} · {t('academy.free')}</p>
+            <p className="text-xs font-black uppercase tracking-wider">{course.level} · {course.open.tab === 'product' ? PRODUCT_PRICE_LABEL : t('academy.free')}</p>
             <h2 className="text-2xl font-black leading-tight">{course.title}</h2>
           </div>
           <button onClick={onClose} className="absolute right-3 top-3 rounded-full bg-black/20 px-2.5 py-1 text-lg" aria-label="Cerrar">✕</button>
@@ -227,6 +230,7 @@ export function AcademyScreen() {
   const start = (course: CatalogCourse) => {
     sfx.tap();
     setOpen(null);
+    if (course.open.tab === 'product') return window.location.assign(new URL(course.open.href, window.location.href).href);
     if (course.open.tab !== 'english') return setTab(course.open.tab);
     // English ladder: keep the learner's current level if they are already on it.
     const target = course.id === 'ingles-a1-c2' && /^[ABC][12]$/.test(currentLevel) ? currentLevel : course.open.level;

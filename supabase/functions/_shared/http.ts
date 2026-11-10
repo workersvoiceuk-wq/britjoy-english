@@ -6,6 +6,8 @@ import { createClient, type SupabaseClient, type User } from "npm:@supabase/supa
 export const ALLOWED_ORIGINS = new Set([
   "https://workersvoiceuk-wq.github.io",
   "https://ingles.vozunidamundo.com",
+  "https://vozunidamundo.com", // /britjoy-english/vida-diaria/ en Sites
+  "https://www.vozunidamundo.com",
   "capacitor://localhost", // iOS app
   "https://localhost", // Android app
   "http://localhost:5173", // local development
@@ -14,6 +16,7 @@ export const ALLOWED_ORIGINS = new Set([
 
 /** Where Stripe sends the learner back after paying (the published web app). */
 export const APP_URL = Deno.env.get("APP_URL") ?? "https://workersvoiceuk-wq.github.io/britjoy-english/";
+export const VIDA_DIARIA_URL = Deno.env.get("VIDA_DIARIA_URL") ?? "https://vozunidamundo.com/britjoy-english/vida-diaria/";
 
 export function cors(origin: string | null): Record<string, string> {
   const allowed = origin && ALLOWED_ORIGINS.has(origin) ? origin : "https://workersvoiceuk-wq.github.io";

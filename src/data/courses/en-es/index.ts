@@ -8,7 +8,7 @@
  */
 import type { LevelDefinition, Unit } from '../../../types';
 import { LIFE_LEVEL } from '../vivir-uk';
-import { SITUATION_LEVELS } from '../situaciones';
+import { DAILY_LEVEL, SITUATION_LEVELS } from '../situaciones';
 import { SPAIN_LEVELS } from '../espana';
 import { COLOMBIA_LEVELS } from '../colombia';
 import { CONSULATE_LEVELS } from '../consulados';
@@ -97,7 +97,8 @@ export const LEVELS: LevelDefinition[] = [
 export const LEVEL_IDS = LEVELS.map((l) => l.id);
 
 /** Every course: English levels, the story courses by situation and "Vivir en UK". */
-export const ALL_LEVELS: LevelDefinition[] = [...LEVELS, ...SITUATION_LEVELS, LIFE_LEVEL, ...SPAIN_LEVELS, ...COLOMBIA_LEVELS, ...MIGRATE_UK_LEVELS, ...CONSULATE_LEVELS, ...CITY_LEVELS];
+// DAILY_LEVEL stays registered (free sample, saved progress under «DIA») but is opened from its own page.
+export const ALL_LEVELS: LevelDefinition[] = [...LEVELS, DAILY_LEVEL, ...SITUATION_LEVELS, LIFE_LEVEL, ...SPAIN_LEVELS, ...COLOMBIA_LEVELS, ...MIGRATE_UK_LEVELS, ...CONSULATE_LEVELS, ...CITY_LEVELS];
 
 export function getLevel(id: string): LevelDefinition {
   return ALL_LEVELS.find((l) => l.id === id) ?? LEVELS[0];

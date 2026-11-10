@@ -1,0 +1,210 @@
+{
+  "level": "DIA",
+  "catalogId": "dia-a-dia",
+  "modules": [
+    {
+      "id": "01-presentaciones",
+      "unit": "Módulo 1",
+      "title": "Presentaciones",
+      "icon": "👋",
+      "sample": true,
+      "lessons": [
+        {
+          "id": "dia-01-presentaciones",
+          "title": "Hola, soy Ana",
+          "icon": "👋",
+          "objective": "Hablar de ti, tu país, tu familia y tus intereses.",
+          "steps": 11,
+          "practice": 8
+        }
+      ]
+    },
+    {
+      "id": "02-compras",
+      "unit": "Módulo 2",
+      "title": "Compras",
+      "icon": "🛒",
+      "sample": false,
+      "lessons": [
+        {
+          "id": "dia-02-compras",
+          "title": "En el supermercado",
+          "icon": "🛒",
+          "objective": "Preguntar precios, encontrar productos y pedir una devolución.",
+          "steps": 11,
+          "practice": 8
+        }
+      ]
+    },
+    {
+      "id": "03-transporte",
+      "unit": "Módulo 3",
+      "title": "Transporte",
+      "icon": "🚇",
+      "sample": false,
+      "lessons": [
+        {
+          "id": "dia-03-transporte",
+          "title": "¿Cómo llego a…?",
+          "icon": "🚇",
+          "objective": "Pedir indicaciones, comprar billetes y entender anuncios.",
+          "steps": 11,
+          "practice": 8
+        }
+      ]
+    },
+    {
+      "id": "04-vivienda",
+      "unit": "Módulo 4",
+      "title": "Vivienda",
+      "icon": "🏠",
+      "sample": false,
+      "lessons": [
+        {
+          "id": "dia-04-vivienda",
+          "title": "La caldera no funciona",
+          "icon": "🏠",
+          "objective": "Buscar habitación, hablar con el propietario y comunicar una avería.",
+          "steps": 11,
+          "practice": 8
+        }
+      ]
+    },
+    {
+      "id": "05-salud",
+      "unit": "Módulo 5",
+      "title": "Salud",
+      "icon": "🩺",
+      "sample": false,
+      "lessons": [
+        {
+          "id": "dia-05-salud",
+          "title": "Lucía tiene fiebre",
+          "icon": "🩺",
+          "objective": "Pedir cita con el GP, explicar síntomas y hablar en la farmacia.",
+          "steps": 11,
+          "practice": 8
+        }
+      ]
+    },
+    {
+      "id": "06-empleo",
+      "unit": "Módulo 6",
+      "title": "Buscar empleo",
+      "icon": "💼",
+      "sample": false,
+      "lessons": [
+        {
+          "id": "dia-06-empleo",
+          "title": "La entrevista de Ana",
+          "icon": "💼",
+          "objective": "Entender ofertas, preparar el CV y responder en entrevistas.",
+          "steps": 11,
+          "practice": 8
+        }
+      ]
+    },
+    {
+      "id": "07-trabajo",
+      "unit": "Módulo 7",
+      "title": "Inglés en el trabajo",
+      "icon": "🧹",
+      "sample": false,
+      "lessons": [
+        {
+          "id": "dia-07-trabajo",
+          "title": "Primer día en la cocina",
+          "icon": "🧹",
+          "objective": "Entender instrucciones, explicar tareas y pedir materiales.",
+          "steps": 11,
+          "practice": 8
+        }
+      ]
+    },
+    {
+      "id": "08-llamadas",
+      "unit": "Módulo 8",
+      "title": "Llamadas y correos",
+      "icon": "📞",
+      "sample": false,
+      "lessons": [
+        {
+          "id": "dia-08-llamadas",
+          "title": "Deja un mensaje después de la señal",
+          "icon": "📞",
+          "objective": "Dejar mensajes, confirmar citas y escribir solicitudes.",
+          "steps": 11,
+          "practice": 8
+        }
+      ]
+    },
+    {
+      "id": "09-colegio",
+      "unit": "Módulo 9",
+      "title": "Colegio y familia",
+      "icon": "👨‍👩‍👧",
+      "sample": false,
+      "lessons": [
+        {
+          "id": "dia-09-colegio",
+          "title": "La reunión con la profesora",
+          "icon": "👨‍👩‍👧",
+          "objective": "Hablar con profesores y entender comunicaciones escolares.",
+          "steps": 11,
+          "practice": 8
+        }
+      ]
+    },
+    {
+      "id": "10-servicios",
+      "unit": "Módulo 10",
+      "title": "Servicios públicos",
+      "icon": "🏛️",
+      "sample": false,
+      "lessons": [
+        {
+          "id": "dia-10-servicios",
+          "title": "En la biblioteca y el council",
+          "icon": "🏛️",
+          "objective": "Pedir información, completar formularios y solicitar ayuda.",
+          "steps": 11,
+          "practice": 8
+        }
+      ]
+    },
+    {
+      "id": "11-social",
+      "unit": "Módulo 11",
+      "title": "Conversación social",
+      "icon": "☕",
+      "sample": false,
+      "lessons": [
+        {
+          "id": "dia-11-social",
+          "title": "Hablar del tiempo",
+          "icon": "☕",
+          "objective": "Hablar del tiempo, hacer planes y conversar con compañeros.",
+          "steps": 11,
+          "practice": 8
+        }
+      ]
+    },
+    {
+      "id": "12-opiniones",
+      "unit": "Módulo 12",
+      "title": "Opiniones y problemas",
+      "icon": "🗣️",
+      "sample": false,
+      "lessons": [
+        {
+          "id": "dia-12-opiniones",
+          "title": "Un problema con el turno",
+          "icon": "🗣️",
+          "objective": "Expresar desacuerdos, dar consejos y explicar una dificultad.",
+          "steps": 11,
+          "practice": 8
+        }
+      ]
+    }
+  ]
+}
