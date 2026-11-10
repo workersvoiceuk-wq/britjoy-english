@@ -191,7 +191,6 @@ Rama de revisión `claude/vida-diaria-niveles-2026-11-10`, sobre `dd78a8d` (cabe
 **Pendiente de contenido (no se ha inventado):**
 - *Diálogos con decisiones* en el nivel 3: requieren lecciones nuevas en el paquete privado y su carga por el servidor.
 - *Voz original de Óscar:* sigue pendiente en los 12 módulos; los clips son sin voz.
-- Las tarjetas de explicación (`ExplainCard`) tienen textos fijos en español.
 
 ## Pruebas
 
