@@ -83,7 +83,7 @@ export class FakeBackend {
     if (fn === 'billing-checkout') {
       if (body.product !== VD_PRODUCT) return json(400, { error: 'invalid_product' });
       if (!canStartCheckout(row, nowMs)) return json(409, { error: 'already_active' });
-      const plan = planCheckout(user.id, this.checkouts.get(user.id) ?? null, nowMs);
+      const plan = planCheckout(user.id, this.checkouts.get(user.id) ?? null, 'curso', nowMs);
       if (plan.action === 'create') {
         this.sessionsCreated++;
         this.checkouts.set(user.id, { attempt: plan.attempt, session_id: `cs_e2e_${this.sessionsCreated}`, url: 'http://127.0.0.1:4174/vida-diaria/?pago=ok', expires_at: new Date(nowMs + 3600_000).toISOString() });

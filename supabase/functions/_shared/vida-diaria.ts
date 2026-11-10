@@ -519,23 +519,45 @@ export function liveChargesAllowed(secretKey: string | undefined, liveFlag: stri
 // course_checkout and creates sessions with a STABLE Stripe idempotency key per user and attempt, so simultaneous
 // requests get the same session. A new attempt (new key, new session) starts only once the recorded session has expired.
 
-export interface CheckoutState { attempt: number; session_id: string | null; url: string | null; expires_at: string | null }
-export type CheckoutPlan = { action: 'reuse'; url: string } | { action: 'create'; attempt: number; idempotencyKey: string };
+export interface CheckoutState {
+  attempt: number; session_id: string | null; url: string | null; expires_at: string | null;
+  /** Offer the recorded (or in-progress) session sells; null for sessions recorded before offers existed. */
+  offer?: VdOffer | null;
+  /** Last change of the row; a creation of another offer older than 2 minutes no longer blocks (e.g. Stripe failed). */
+  updated_at?: string | null;
+}
 
-export function checkoutIdempotencyKey(user: string, attempt: number): string {
-  return `vida-diaria-checkout:${user}:${attempt}`;
+/** How long an unrecorded session creation of another offer blocks a different offer (same rule in SQL). */
+export const CHECKOUT_CREATE_GRACE_MS = 2 * 60_000;
+export type CheckoutPlan =
+  | { action: 'reuse'; url: string }
+  | { action: 'create'; attempt: number; idempotencyKey: string }
+  /** Another offer holds the learner's only payable session (open, or still being created). */
+  | { action: 'conflict'; reason: 'other_offer' | 'in_progress'; offer: VdOffer | null; session: string | null };
+
+/** Stable per (learner, attempt, offer): retries of the same offer get the same session; another offer never does. */
+export function checkoutIdempotencyKey(user: string, attempt: number, offer?: VdOffer): string {
+  return `vida-diaria-checkout:${user}:${attempt}${offer ? `:${offer}` : ''}`;
 }
 
 /** Decision taken while holding the per-user lock (SQL begin_course_checkout does the same). */
-export function planCheckout(user: string, state: CheckoutState | null, now = Date.now()): CheckoutPlan {
-  if (!state) return { action: 'create', attempt: 1, idempotencyKey: checkoutIdempotencyKey(user, 1) };
+export function planCheckout(user: string, state: CheckoutState | null, offer: VdOffer = 'curso', now = Date.now()): CheckoutPlan {
+  if (!state) return { action: 'create', attempt: 1, idempotencyKey: checkoutIdempotencyKey(user, 1, offer) };
+  const held = state.offer ?? 'curso';
   const exp = state.expires_at ? Date.parse(state.expires_at) : null;
-  if (state.url && exp !== null && exp > now) return { action: 'reuse', url: state.url };
-  // No session recorded yet for this attempt (another request is creating it): same attempt, same key, same session.
-  if (!state.session_id) return { action: 'create', attempt: state.attempt, idempotencyKey: checkoutIdempotencyKey(user, state.attempt) };
-  // Recorded session expired: recover with a new attempt.
+  if (state.url && exp !== null && exp > now) {
+    // One payable session per learner: reuse it only for the same offer.
+    return held === offer ? { action: 'reuse', url: state.url } : { action: 'conflict', reason: 'other_offer', offer: held, session: state.session_id };
+  }
+  // No session recorded yet for this attempt (another request is creating it): same offer → same key, same session.
+  if (!state.session_id) {
+    const creating = state.updated_at ? Date.parse(state.updated_at) > now - CHECKOUT_CREATE_GRACE_MS : false;
+    if (held !== offer && creating) return { action: 'conflict', reason: 'in_progress', offer: held, session: null };
+    return { action: 'create', attempt: state.attempt, idempotencyKey: checkoutIdempotencyKey(user, state.attempt, offer) };
+  }
+  // Recorded session expired: recover with a new attempt for the requested offer.
   const attempt = state.attempt + 1;
-  return { action: 'create', attempt, idempotencyKey: checkoutIdempotencyKey(user, attempt) };
+  return { action: 'create', attempt, idempotencyKey: checkoutIdempotencyKey(user, attempt, offer) };
 }
 
 /** Stripe Tax: only with VIDA_DIARIA_AUTOMATIC_TAX=on, once the owner has confirmed the VAT treatment. */

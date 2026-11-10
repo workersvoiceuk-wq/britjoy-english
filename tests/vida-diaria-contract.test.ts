@@ -264,10 +264,11 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
       lock = new Promise((r) => (release = r));
       await prev; // serialised like SELECT … FOR UPDATE
       const state = rows.get(user) ?? null;
-      const plan = planCheckout(user, state, clock);
+      const plan = planCheckout(user, state, 'curso', clock);
       if (plan.action === 'create') rows.set(user, state && state.attempt === plan.attempt ? state : { attempt: plan.attempt, session_id: null, url: null, expires_at: null });
       release();
       if (plan.action === 'reuse') return plan.url;
+      if (plan.action === 'conflict') throw new Error('a single offer never conflicts with itself');
       await new Promise((r) => setTimeout(r, Math.random() * 5)); // Stripe latency, requests overlap here
       let session = stripe.byKey.get(plan.idempotencyKey);
       if (!session) {
@@ -371,9 +372,11 @@ describe('Inglés para el día a día · contrato de acceso (modo de prueba)', (
   it('el checkout del curso no toca el camino de VUM Academy ni de los créditos', () => {
     const root = path.resolve(__dirname, '..');
     const checkout = fs.readFileSync(path.join(root, 'supabase/functions/billing-checkout/index.ts'), 'utf8');
-    expect(checkout).toContain('liveChargesAllowed(');
-    expect(checkout).toContain('db.rpc("begin_course_checkout"');
-    expect(checkout).toContain('idempotencyKey: checkoutIdempotencyKey(user.id, step.attempt)');
+    const core = fs.readFileSync(path.join(root, 'supabase/functions/_shared/vida-diaria-checkout.ts'), 'utf8');
+    expect(core).toContain('liveChargesAllowed(');
+    expect(checkout).toContain('vidaDiariaCheckout(body,');
+    expect(checkout).toContain('db.rpc("begin_course_checkout", { p_user: user.id, p_product: VD_PRODUCT, p_offer: offer })');
+    expect(core).toContain('checkoutIdempotencyKey(d.user.id, plan.row.attempt, offer)');
     expect(checkout).toContain('automaticTaxEnabled(Deno.env.get("VIDA_DIARIA_AUTOMATIC_TAX"))');
     const sql = fs.readFileSync(path.join(root, 'supabase/migrations/20261107120000_vida_diaria_access.sql'), 'utf8');
     expect(sql).not.toMatch(/plus_until\s*=/);

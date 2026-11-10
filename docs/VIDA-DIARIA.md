@@ -83,7 +83,7 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
 > **No hay que modificar ni reactivar ninguno de ellos.** El curso necesita **un destino nuevo y separado** que apunte a la función `vida-diaria-webhook`. Primero en el **sandbox**; producción, solo después.
 
 1. **Supabase, en un entorno de pruebas:**
-   - aplicar las migraciones `20261107120000_vida_diaria_access.sql`, `20261108120000_vida_diaria_reversals.sql` y `20261109120000_vida_diaria_conceptos.sql`, en ese orden;
+   - aplicar las migraciones `20261107120000_vida_diaria_access.sql`, `20261108120000_vida_diaria_reversals.sql` `20261109120000_vida_diaria_conceptos.sql` y `20261110120000_vida_diaria_checkout_oferta.sql`, en ese orden;
    - desplegar `vida-diaria`, `vida-diaria-webhook` y `billing-checkout`.
 
    No hace falta volver a desplegar `billing-webhook` para el curso: su cambio solo hace que ignore los eventos del curso.
@@ -94,6 +94,7 @@ Todo eso va en un **paquete privado** aparte, que se sube al bucket **privado** 
       - El de la **orientación** (£8 al mes) va en `STRIPE_PRICE_VIDA_DIARIA_ORIENTACION`.
       - Antes de crear cada sesión, el checkout lee los dos precios en Stripe. Si alguno no está activo, no es mensual, no está en GBP, no tiene el importe exacto o no incluye el IVA cuando el impuesto automático está activado, responde `price_mismatch` y no cobra.
       - La oferta con orientación solo se vende con `VIDA_DIARIA_ORIENTACION=on`; hasta entonces responde `offer_draft`.
+      - Una sola sesión pagable por alumno, ligada a su oferta: otra oferta con la sesión abierta recibe 409 `checkout_open`. El cambio explícito (`replace: true`) caduca la sesión en Stripe antes de crear la nueva. Detalle y estados en `docs/VIDA-DIARIA-COMPRA.md`.
    2. **Añadir un destino de webhook NUEVO**, solo para el curso:
       - URL: `https://<ref>.supabase.co/functions/v1/vida-diaria-webhook`;
       - eventos: **exactamente** los que usa el código (`VD_WEBHOOK_EVENTS`):

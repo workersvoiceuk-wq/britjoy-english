@@ -172,10 +172,11 @@ describe('Vida Diaria · precios verificados y ofertas', () => {
   it('el checkout verifica cada Price en Stripe, deja la orientación en borrador y el webhook lee los dos conceptos', () => {
     const root = path.resolve(__dirname, '..');
     const checkout = fs.readFileSync(path.join(root, 'supabase/functions/billing-checkout/index.ts'), 'utf8');
-    expect(checkout).toContain('client.prices.retrieve(id)');
-    expect(checkout).toContain('verifyConceptPrice(');
-    expect(checkout).toContain('"offer_draft"');
-    expect(checkout).toContain('orientationOnSale(Deno.env.get("VIDA_DIARIA_ORIENTACION"))');
+    const core = fs.readFileSync(path.join(root, 'supabase/functions/_shared/vida-diaria-checkout.ts'), 'utf8');
+    expect(checkout).toContain('retrievePrice: (id) => client.prices.retrieve(id)');
+    expect(core).toContain('verifyConceptPrice(');
+    expect(core).toContain("'offer_draft'");
+    expect(core).toContain("orientationOnSale(d.env('VIDA_DIARIA_ORIENTACION'))");
     const webhook = fs.readFileSync(path.join(root, 'supabase/functions/vida-diaria-webhook/index.ts'), 'utf8');
     expect(webhook).toContain('vdPrices(Deno.env.get("STRIPE_PRICE_VIDA_DIARIA"), Deno.env.get("STRIPE_PRICE_VIDA_DIARIA_ORIENTACION"))');
     expect(webhook).toContain('p_orientation_until: paid.orientationUntil');

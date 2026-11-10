@@ -5,10 +5,8 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { APP_URL, VIDA_DIARIA_URL, admin, cors, currentUser, json, preflight } from "../_shared/http.ts";
 import { PRODUCTS, isProduct } from "../_shared/products.ts";
 import { Stripe, stripe } from "../_shared/stripe.ts";
-import {
-  VD_PRODUCT, automaticTaxEnabled, canStartCheckout, checkoutIdempotencyKey, checkoutParams, isVdOffer, liveChargesAllowed,
-  offerPriceIds, orientationOnSale, vdPrices, verifyConceptPrice, type CourseAccessRow, type VdOffer,
-} from "../_shared/vida-diaria.ts";
+import { VD_PRODUCT, automaticTaxEnabled, type CourseAccessRow } from "../_shared/vida-diaria.ts";
+import { vidaDiariaCheckout, type BeginRow } from "../_shared/vida-diaria-checkout.ts";
 
 Deno.serve(async (req: Request) => {
   const headers = cors(req.headers.get("origin"));
@@ -20,49 +18,50 @@ Deno.serve(async (req: Request) => {
   const client = stripe();
   if (!client) return json({ error: "not_configured" }, 503, headers);
 
-  const { product, offer: requestedOffer } = (await req.json().catch(() => ({}))) as { product?: unknown; offer?: unknown };
+  const body = (await req.json().catch(() => ({}))) as { product?: unknown; offer?: unknown; replace?: unknown };
+  const { product } = body;
   if (product === VD_PRODUCT) {
-    // Cobros reales apagados hasta que el dueño ponga VIDA_DIARIA_LIVE=on tras verificar el acceso en modo de prueba.
-    if (!liveChargesAllowed(Deno.env.get("STRIPE_SECRET_KEY"), Deno.env.get("VIDA_DIARIA_LIVE"))) {
-      return json({ error: "live_disabled" }, 503, headers);
-    }
-    // Oferta: el curso (por defecto) o el curso con orientación, que sigue en borrador hasta VIDA_DIARIA_ORIENTACION=on.
-    const offer: VdOffer = requestedOffer === undefined ? "curso" : isVdOffer(requestedOffer) ? requestedOffer : ("" as VdOffer);
-    if (!offer) return json({ error: "invalid_offer" }, 400, headers);
-    if (offer === "curso_orientacion" && !orientationOnSale(Deno.env.get("VIDA_DIARIA_ORIENTACION"))) return json({ error: "offer_draft" }, 409, headers);
-    const prices = vdPrices(Deno.env.get("STRIPE_PRICE_VIDA_DIARIA"), Deno.env.get("STRIPE_PRICE_VIDA_DIARIA_ORIENTACION"));
-    const price = offerPriceIds(offer, prices);
-    if (!price) return json({ error: "not_configured" }, 503, headers);
-    // Cada Price de Stripe debe ser exactamente el concepto confirmado (activo, mensual, GBP, importe con IVA incluido).
-    const automaticTax = automaticTaxEnabled(Deno.env.get("VIDA_DIARIA_AUTOMATIC_TAX"));
-    for (const id of price) {
-      const mismatch = verifyConceptPrice(await client.prices.retrieve(id), prices.get(id)!, automaticTax);
-      if (mismatch) return json({ error: "price_mismatch", detail: mismatch }, 503, headers);
-    }
+    // La lógica vive en _shared/vida-diaria-checkout.ts (probada con dobles); aquí solo se conectan Stripe y Supabase.
     const db = admin();
-    const { data: access, error: accessError } = await db.from("course_access").select("*").eq("user_id", user.id).eq("product", VD_PRODUCT).maybeSingle();
-    if (accessError) return json({ error: "retry" }, 503, headers);
-    if (!canStartCheckout(access as CourseAccessRow | null)) return json({ error: "already_active" }, 409, headers);
-    // Una sesión abierta por alumno: decisión tomada con bloqueo en la base de datos (begin_course_checkout).
-    const { data: plan, error: planError } = await db.rpc("begin_course_checkout", { p_user: user.id, p_product: VD_PRODUCT }).single();
-    if (planError || !plan) return json({ error: "retry" }, 503, headers);
-    const step = plan as { action: string; attempt: number; url: string | null };
-    if (step.action === "reuse" && step.url) return json({ url: step.url, reused: true }, 200, headers);
-    const params = checkoutParams({
-      price, user: user.id, email: user.email, customer: (access as CourseAccessRow | null)?.stripe_customer_id ?? null,
+    const result = await vidaDiariaCheckout(body, {
+      env: (name) => Deno.env.get(name),
+      user: { id: user.id, email: user.email },
       returnUrl: VIDA_DIARIA_URL,
       // Stripe Tax solo cuando el dueño confirme el tratamiento del IVA: VIDA_DIARIA_AUTOMATIC_TAX=on.
-      automaticTax,
+      automaticTax: automaticTaxEnabled(Deno.env.get("VIDA_DIARIA_AUTOMATIC_TAX")),
+      stripe: {
+        retrievePrice: (id) => client.prices.retrieve(id),
+        createSession: (params, idempotencyKey) =>
+          client.checkout.sessions.create(params as Stripe.Checkout.SessionCreateParams, { idempotencyKey }),
+        expireSession: async (id) => {
+          try {
+            return { status: (await client.checkout.sessions.expire(id)).status };
+          } catch {
+            // Ya caducada o completada: se informa su estado real.
+            return { status: (await client.checkout.sessions.retrieve(id)).status };
+          }
+        },
+      },
+      db: {
+        access: async () => {
+          const { data, error } = await db.from("course_access").select("*").eq("user_id", user.id).eq("product", VD_PRODUCT).maybeSingle();
+          return { row: (data as CourseAccessRow | null) ?? null, error };
+        },
+        begin: async (offer) => {
+          const { data, error } = await db.rpc("begin_course_checkout", { p_user: user.id, p_product: VD_PRODUCT, p_offer: offer }).single();
+          return { row: (data as BeginRow | null) ?? null, error };
+        },
+        record: async (attempt, offer, session) => {
+          await db.rpc("record_course_checkout", {
+            p_user: user.id, p_product: VD_PRODUCT, p_attempt: attempt, p_offer: offer, p_session: session.id, p_url: session.url, p_expires: session.expires,
+          });
+        },
+        release: async (session) => {
+          await db.rpc("release_course_checkout", { p_user: user.id, p_product: VD_PRODUCT, p_session: session });
+        },
+      },
     });
-    // Clave estable por (alumno, intento): peticiones simultáneas reciben la MISMA sesión de Stripe.
-    const session = await client.checkout.sessions.create(params as Stripe.Checkout.SessionCreateParams, {
-      idempotencyKey: checkoutIdempotencyKey(user.id, step.attempt),
-    });
-    await db.rpc("record_course_checkout", {
-      p_user: user.id, p_product: VD_PRODUCT, p_attempt: step.attempt, p_session: session.id, p_url: session.url,
-      p_expires: session.expires_at ? new Date(session.expires_at * 1000).toISOString() : null,
-    });
-    return json({ url: session.url }, 200, headers);
+    return json(result.body, result.status, headers);
   }
   if (!isProduct(product)) return json({ error: "invalid_product" }, 400, headers);
   const spec = PRODUCTS[product];

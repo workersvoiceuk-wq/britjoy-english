@@ -39,20 +39,20 @@ end $$;
 do $$
 declare r record;
 begin
-  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly');
+  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'curso');
   assert r.action = 'create' and r.attempt = 1, 'primer intento';
-  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly');
+  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'curso');
   assert r.action = 'create' and r.attempt = 1, 'misma clave mientras no hay sesión';
-  assert public.record_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 1, 'cs_1', 'https://x/1', now() + interval '1 hour'), 'registrar';
-  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly');
+  assert public.record_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 1, 'curso', 'cs_1', 'https://x/1', now() + interval '1 hour'), 'registrar';
+  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'curso');
   assert r.action = 'reuse' and r.url = 'https://x/1', 'reutilizar';
   update public.course_checkout set expires_at = now() + interval '2 minutes';
-  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly');
+  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'curso');
   assert r.action = 'reuse', 'reutilizar mientras la sesión aún pueda cobrar';
   update public.course_checkout set expires_at = now() - interval '1 second';
-  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly');
+  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 'curso');
   assert r.action = 'create' and r.attempt = 2, 'recuperar al caducar';
-  assert public.record_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 1, 'cs_old', 'https://x/old', now() + interval '1 hour') is null, 'un intento viejo no pisa';
+  assert public.record_course_checkout('00000000-0000-4000-8000-00000000000a', 'vida_diaria_monthly', 1, 'curso', 'cs_old', 'https://x/old', now() + interval '1 hour') is null, 'un intento viejo no pisa';
 end $$;
 reset role;
 do $$ begin assert (select not public from storage.buckets where id = 'vida-diaria-premium'), 'bucket privado'; end $$;
@@ -200,6 +200,42 @@ begin
   perform public.apply_course_payment_link('evt_of_l', 'in_f1', array['pi_f1']);
   perform public.apply_course_reversal('evt_of_r', 1100, 'refund:ch_f1', 'refund', array['ch_f1','pi_f1'], true, false);
   assert (select paid_until is null and payment_reversed from public.course_access where user_id = u), 'reembolso cierra el curso';
+end $$;
+reset role;
+-- Checkout por oferta (migración 20261110120000): una sola sesión pagable y solo para su oferta.
+insert into auth.users (id, email, email_confirmed_at) values ('00000000-0000-4000-8000-0000000000c1','c1@example.com',now()),('00000000-0000-4000-8000-0000000000c2','c2@example.com',now());
+set role service_role;
+do $$
+declare
+  u constant uuid := '00000000-0000-4000-8000-0000000000c1';
+  p constant text := 'vida_diaria_monthly';
+  r record;
+begin
+  -- curso abierto → curso_orientacion recibe conflicto, nunca la URL de £12
+  select * into r from public.begin_course_checkout(u, p, 'curso');
+  assert r.action = 'create' and r.attempt = 1 and r.offer = 'curso', 'crear curso';
+  select * into r from public.begin_course_checkout(u, p, 'curso_orientacion');
+  assert r.action = 'conflict' and r.reason = 'in_progress' and r.url is null, 'otra oferta mientras se crea';
+  assert public.record_course_checkout(u, p, 1, 'curso', 'cs_c1', 'https://x/12', now() + interval '1 hour'), 'registrar curso';
+  assert public.record_course_checkout(u, p, 1, 'curso_orientacion', 'cs_bad', 'https://x/bad', now() + interval '1 hour') is null, 'otra oferta no pisa';
+  select * into r from public.begin_course_checkout(u, p, 'curso_orientacion');
+  assert r.action = 'conflict' and r.reason = 'other_offer' and r.offer = 'curso' and r.session_id = 'cs_c1' and r.url is null, 'otra oferta con sesión abierta';
+  select * into r from public.begin_course_checkout(u, p, 'curso');
+  assert r.action = 'reuse' and r.url = 'https://x/12', 'misma oferta reutiliza';
+  -- cambio explícito: tras caducar en Stripe se libera y se crea un intento nuevo con la otra oferta
+  assert public.release_course_checkout(u, p, 'cs_otra') is null, 'liberar otra sesión no hace nada';
+  assert public.release_course_checkout(u, p, 'cs_c1'), 'liberar la sesión caducada';
+  select * into r from public.begin_course_checkout(u, p, 'curso_orientacion');
+  assert r.action = 'create' and r.attempt = 2 and r.offer = 'curso_orientacion', 'nuevo intento con la otra oferta';
+  assert public.record_course_checkout(u, p, 2, 'curso_orientacion', 'cs_c2', 'https://x/20', now() + interval '1 hour'), 'registrar £20';
+  select * into r from public.begin_course_checkout(u, p, 'curso');
+  assert r.action = 'conflict' and r.offer = 'curso_orientacion', 'orden inverso también en conflicto';
+  -- creación de otra oferta que nunca se registró: deja de bloquear a los 2 minutos
+  perform public.begin_course_checkout('00000000-0000-4000-8000-0000000000c2', p, 'curso');
+  update public.course_checkout set updated_at = now() - interval '3 minutes' where user_id = '00000000-0000-4000-8000-0000000000c2';
+  select * into r from public.begin_course_checkout('00000000-0000-4000-8000-0000000000c2', p, 'curso_orientacion');
+  assert r.action = 'create' and r.attempt = 1 and r.offer = 'curso_orientacion', 'creación abandonada no bloquea';
+  begin perform public.begin_course_checkout(u, p, 'orientacion'); assert false, 'oferta inválida'; exception when raise_exception then null; end;
 end $$;
 reset role;
 select 'vida-diaria SQL: OK';
