@@ -1,9 +1,11 @@
-name: Claude · agente ingeniero
+name: Claude · agentes de VUM
 
-# Escribe «/ingeniero …» en una issue, un PR o un comentario (solo el propietario).
-# El agente trabaja en su propia rama y deja el resultado para revisión. Nunca fusiona, despliega ni publica.
-# Requiere el secreto CLAUDE_CODE_OAUTH_TOKEN o ANTHROPIC_API_KEY y la app de Claude instalada en el repositorio.
-# Para citar la frase sin activar el agente, escríbela entre comillas invertidas: `/ingeniero`.
+# Escribe en una issue, un PR o un comentario (solo el propietario del repositorio):
+#   /ingeniero …    ingeniero de sistemas        (.claude/agents/ingeniero-sistemas-vum.md)
+#   /cursos …       cursos estilo Busuu/Duolingo  (.claude/agents/disenador-cursos-vum.md)
+# Cada encargo va a su propia rama; nunca fusiona, despliega ni publica.
+# Requiere el secreto CLAUDE_CODE_OAUTH_TOKEN o ANTHROPIC_API_KEY y la app de Claude instalada.
+# Para citar una frase sin activar nada, escríbela entre comillas invertidas: `/ingeniero`.
 
 on:
   issue_comment:
@@ -23,13 +25,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  ingeniero:
+  agente:
     if: >-
       github.actor == github.repository_owner && (
-        (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/ingeniero')) ||
-        (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '/ingeniero')) ||
-        (github.event_name == 'pull_request_review' && contains(github.event.review.body, '/ingeniero')) ||
-        (github.event_name == 'issues' && (contains(github.event.issue.body, '/ingeniero') || contains(github.event.issue.title, '/ingeniero')))
+        contains(format('{0} {1} {2} {3}', github.event.comment.body, github.event.review.body, github.event_name == 'issues' && github.event.issue.title || '', github.event_name == 'issues' && github.event.issue.body || ''), '/ingeniero') ||
+        contains(format('{0} {1} {2} {3}', github.event.comment.body, github.event.review.body, github.event_name == 'issues' && github.event.issue.title || '', github.event_name == 'issues' && github.event.issue.body || ''), '/cursos')
       )
     runs-on: ubuntu-24.04
     timeout-minutes: 45
@@ -40,16 +40,45 @@ jobs:
       id-token: write
       actions: read
     steps:
+      - name: Elegir el agente por la primera frase escrita
+        id: elegir
+        env:
+          COMMENT: ${{ github.event.comment.body }}
+          REVIEW: ${{ github.event.review.body }}
+          ISSUE_TITLE: ${{ github.event_name == 'issues' && github.event.issue.title || '' }}
+          ISSUE_BODY: ${{ github.event_name == 'issues' && github.event.issue.body || '' }}
+        run: |
+          node -e '
+            const text = [process.env.COMMENT, process.env.REVIEW, process.env.ISSUE_TITLE, process.env.ISSUE_BODY].filter(Boolean).join("\n");
+            const agents = {
+              "/ingeniero":   ["ingeniero-sistemas-vum", "ingeniero", 80, 6],
+              "/cursos":      ["disenador-cursos-vum", "cursos", 80, 6],
+            };
+            // Same boundaries as the action: the phrase must stand alone, not inside `code` or a path.
+            let best = null;
+            for (const phrase of Object.keys(agents)) {
+              const m = new RegExp("(^|\\s)" + phrase.replace("/", "\\/") + "([\\s.,!?;:]|$)").exec(text);
+              if (m && (!best || m.index < best.index)) best = {phrase, index: m.index};
+            }
+            const out = [];
+            if (best) { const [agent, slug, turns, budget] = agents[best.phrase]; out.push(`agent=${agent}`, `slug=${slug}`, `phrase=${best.phrase}`, `turns=${turns}`, `budget=${budget}`); }
+            else out.push("agent=");
+            require("fs").appendFileSync(process.env.GITHUB_OUTPUT, out.join("\n") + "\n");
+            console.log(best ? `Agente: ${agents[best.phrase][0]}` : "Ninguna frase activa: no se ejecuta Claude.");
+          '
       - name: Abrir el repositorio
+        if: steps.elegir.outputs.agent != ''
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
         with:
           fetch-depth: 0
       - name: Preparar Node
+        if: steps.elegir.outputs.agent != ''
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version: '22.23.3'
           cache: npm
       - name: Comprobar autenticación sin mostrar credenciales
+        if: steps.elegir.outputs.agent != ''
         env:
           CLAUDE_OAUTH_PRESENT: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_PRESENT: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -60,22 +89,24 @@ jobs:
             exit 1
           fi
       - name: Instalar dependencias del lockfile y comprobar la guardia
+        if: steps.elegir.outputs.agent != ''
         run: |
           set -eu
           npm ci
           node .claude/hooks/guardia-agente.selftest.mjs
-      - name: Agente ingeniero de sistemas
+      - name: Agente de Claude
+        if: steps.elegir.outputs.agent != ''
         uses: anthropics/claude-code-action@d535f5172dec02b204866b393d6b20b9b2aaf98d
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           anthropic_api_key: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN == '' && secrets.ANTHROPIC_API_KEY || '' }}
-          trigger_phrase: "/ingeniero"
-          branch_prefix: "claude/ingeniero-"
+          trigger_phrase: ${{ steps.elegir.outputs.phrase }}
+          branch_prefix: claude/${{ steps.elegir.outputs.slug }}-
           additional_permissions: |
             actions: read
           settings: |
             {"hooks":{"PreToolUse":[{"matcher":"Bash|Edit|Write|NotebookEdit|mcp__.*","hooks":[{"type":"command","command":"node \"${CLAUDE_PROJECT_DIR:-$GITHUB_WORKSPACE}/.claude/hooks/guardia-agente.mjs\" --siempre"}]}]}}
           claude_args: |
-            --max-turns 80
-            --max-budget-usd 6
-            --append-system-prompt "Actúas como el agente ingeniero-sistemas-vum. Antes de nada lee .claude/agents/ingeniero-sistemas-vum.md y README.md, y cúmplelos. Trabaja solo en la rama que te asigna este flujo, ejecuta las pruebas y deja el resultado para revisión; nunca fusiones, despliegues ni publiques."
+            --max-turns ${{ steps.elegir.outputs.turns }}
+            --max-budget-usd ${{ steps.elegir.outputs.budget }}
+            --append-system-prompt "Actúas como el agente ${{ steps.elegir.outputs.agent }}. Antes de nada lee .claude/agents/${{ steps.elegir.outputs.agent }}.md y README.md, y cúmplelos. Trabaja solo en la rama que te asigna este flujo y deja el resultado para revisión; nunca fusiones, despliegues ni publiques."

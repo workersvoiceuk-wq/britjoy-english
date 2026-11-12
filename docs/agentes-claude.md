@@ -1,8 +1,13 @@
 # Agentes de Claude para VUM · cómo usarlos
 
-En este repositorio trabaja por Óscar el **ingeniero de sistemas** (`ingeniero-sistemas-vum`, en `.claude/agents/ingeniero-sistemas-vum.md`). Diagnostica y corrige fallos, compila y prueba la web y las apps Android e iOS, revisa PR y se coordina en la issue #25 de `lumi-uk-beta`. El guionista de la serie de humor negro vive en `lumi-uk-beta`.
+En este repositorio trabajan por Óscar dos agentes, en `.claude/agents/`:
 
-Crea ramas, cambian archivos, ejecutan pruebas y dejan el trabajo para revisión. **Nunca** fusionan, despliegan, publican, tocan pagos ni credenciales: eso lo decide Óscar.
+| Agente | Frase en GitHub | Para qué |
+|---|---|---|
+| **Ingeniero de sistemas** (`ingeniero-sistemas-vum`) | `/ingeniero` | Diagnosticar y corregir fallos, compilar y probar la web y las apps Android e iOS, revisar PR y coordinarse en la issue #25 de `lumi-uk-beta` |
+| **Diseñador de cursos** (`disenador-cursos-vum`) | `/cursos` | Adaptar BritJoy English y los cursos LUMI a lo que hace eficaces a Duolingo y Busuu, con diseño propio y midiendo el efecto |
+
+El guionista de humor negro y el agente del marketplace viven en `lumi-uk-beta`. Crean ramas, cambian archivos, ejecutan pruebas y dejan el trabajo para revisión. **Nunca** fusionan, despliegan, publican, tocan pagos ni credenciales: eso lo decide Óscar.
 
 ## 1. En Claude Code (web, app o terminal)
 Disponible en cualquier sesión abierta sobre una rama que contenga `.claude/agents/`, normalmente `main` una vez fusionado este cambio.
@@ -13,11 +18,12 @@ Disponible en cualquier sesión abierta sobre una rama que contenga `.claude/age
 ## 2. Desde GitHub
 Escribe en una issue, un PR o un comentario:
 - `/ingeniero` seguido del encargo. Por ejemplo: «/ingeniero revisa por qué falla el build de Android y prepara el arreglo».
+- `/cursos` seguido del encargo. Por ejemplo: «/cursos añade la meta diaria con protección de racha, sin culpabilizar».
 
 Lo ejecuta `.github/workflows/claude-agente.yml`:
 - **Quién lo activa:** solo el propietario del repositorio.
-- **Dónde trabaja:** cada encargo va a su propia rama, `claude/ingeniero-…`, y Claude deja un comentario con el progreso y el enlace para abrir el PR.
-- **Límites:** 80 turnos, 6 USD y 45 min. Se ajustan en `claude_args` del flujo.
+- **Dónde trabaja:** cada encargo va a su propia rama (`claude/ingeniero-…` o `claude/cursos-…`), y Claude deja un comentario con el progreso y el enlace para abrir el PR.
+- **Límites:** 80 turnos, 6 USD y 45 min. Se ajustan en el paso «Elegir el agente» del flujo.
 - **Citar sin activar:** escribe la frase entre comillas invertidas (`` `/ingeniero` ``). El trabajo de GitHub puede llegar a arrancar, pero Claude no se ejecuta.
 
 **Requisitos (una sola vez):**
@@ -43,5 +49,5 @@ Lo ejecuta `.github/workflows/claude-agente.yml`:
 Su autoprueba es `node .claude/hooks/guardia-agente.selftest.mjs`, y el flujo de GitHub la ejecuta antes de cada encargo. La guardia es una red de seguridad: las reglas completas están en cada agente.
 
 ## 4. Apagarlo
-- **Flujo de GitHub:** *Actions → «Claude · agente ingeniero» → Disable workflow*, o borrar el archivo.
+- **Flujo de GitHub:** *Actions → «Claude · agentes de VUM» → Disable workflow*, o borrar el archivo.
 - **Agentes:** borrar `.claude/agents/`.
