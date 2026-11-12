@@ -1,0 +1,81 @@
+name: Claude · agente ingeniero
+
+# Escribe «/ingeniero …» en una issue, un PR o un comentario (solo el propietario).
+# El agente trabaja en su propia rama y deja el resultado para revisión. Nunca fusiona, despliega ni publica.
+# Requiere el secreto CLAUDE_CODE_OAUTH_TOKEN o ANTHROPIC_API_KEY y la app de Claude instalada en el repositorio.
+# Para citar la frase sin activar el agente, escríbela entre comillas invertidas: `/ingeniero`.
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  pull_request_review:
+    types: [submitted]
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: claude-agente-${{ github.event.issue.number || github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  ingeniero:
+    if: >-
+      github.actor == github.repository_owner && (
+        (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/ingeniero')) ||
+        (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '/ingeniero')) ||
+        (github.event_name == 'pull_request_review' && contains(github.event.review.body, '/ingeniero')) ||
+        (github.event_name == 'issues' && (contains(github.event.issue.body, '/ingeniero') || contains(github.event.issue.title, '/ingeniero')))
+      )
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: read
+    steps:
+      - name: Abrir el repositorio
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          fetch-depth: 0
+      - name: Preparar Node
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22.23.3'
+          cache: npm
+      - name: Comprobar autenticación sin mostrar credenciales
+        env:
+          CLAUDE_OAUTH_PRESENT: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          ANTHROPIC_API_PRESENT: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set -eu
+          if [ -z "$CLAUDE_OAUTH_PRESENT" ] && [ -z "$ANTHROPIC_API_PRESENT" ]; then
+            echo '::error::Configura CLAUDE_CODE_OAUTH_TOKEN o ANTHROPIC_API_KEY en los secretos de Actions. Claude no se ha ejecutado.'
+            exit 1
+          fi
+      - name: Instalar dependencias del lockfile y comprobar la guardia
+        run: |
+          set -eu
+          npm ci
+          node .claude/hooks/guardia-agente.selftest.mjs
+      - name: Agente ingeniero de sistemas
+        uses: anthropics/claude-code-action@d535f5172dec02b204866b393d6b20b9b2aaf98d
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          anthropic_api_key: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN == '' && secrets.ANTHROPIC_API_KEY || '' }}
+          trigger_phrase: "/ingeniero"
+          branch_prefix: "claude/ingeniero-"
+          additional_permissions: |
+            actions: read
+          settings: |
+            {"hooks":{"PreToolUse":[{"matcher":"Bash|Edit|Write|NotebookEdit|mcp__.*","hooks":[{"type":"command","command":"node \"${CLAUDE_PROJECT_DIR:-$GITHUB_WORKSPACE}/.claude/hooks/guardia-agente.mjs\" --siempre"}]}]}}
+          claude_args: |
+            --max-turns 80
+            --max-budget-usd 6
+            --append-system-prompt "Actúas como el agente ingeniero-sistemas-vum. Antes de nada lee .claude/agents/ingeniero-sistemas-vum.md y README.md, y cúmplelos. Trabaja solo en la rama que te asigna este flujo, ejecuta las pruebas y deja el resultado para revisión; nunca fusiones, despliegues ni publiques."
